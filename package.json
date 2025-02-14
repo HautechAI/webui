@@ -1,14 +1,17 @@
 {
-  "name": "@hautechai/webui",
-  "private": true,
-  "dependencies": {
-    "@storybook/test": "^8.5.5",
-    "react": "^19.0.0",
-    "typescript": "^5.7.3"
-  },
-  "devDependencies": {
-    "@types/node": "^22.13.4",
-    "@types/react": "^19.0.8",
-    "lerna": "^8.1.9"
-  }
+    "name": "@hautechai/webui",
+    "private": true,
+    "scripts": {
+        "dev": "lerna run storybook"
+    },
+    "dependencies": {
+        "@storybook/test": "^8.5.5",
+        "react": "^19.0.0",
+        "typescript": "^5.7.3"
+    },
+    "devDependencies": {
+        "@types/node": "^22.13.4",
+        "@types/react": "^19.0.8",
+        "lerna": "^8.1.9"
+    }
 }

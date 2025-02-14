@@ -80,6 +80,8 @@ importers:
         specifier: workspace:^
         version: link:../Button
 
+  components/Logo: {}
+
   components/Theme:
     dependencies:
       '@hautechai/webui.themeprovider':
