@@ -1,7 +1,7 @@
 {
-  "name": "@hautechai/webui.button",
+  "name": "@hautechai/webui.theme",
   "description": "",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "type": "module",
   "main": "src/index.tsx",
   "publishConfig": {
@@ -18,6 +18,11 @@
   },
   "author": "HautechAI",
   "dependencies": {
-    "@hautechai/webui.themeprovider": "workspace:^"
+    "@hautechai/webui.themeprovider": "workspace:^",
+    "lodash": "^4.17.21"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.17.15",
+    "type-fest": "^4.34.1"
   }
 }

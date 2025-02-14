@@ -1,3 +1,2 @@
-export const Button = () => {
-  return <button value={"Button"}>button</button>;
-};
+export type { ButtonProps } from './Button';
+export { Button } from './Button';
