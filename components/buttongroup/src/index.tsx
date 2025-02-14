@@ -5,6 +5,7 @@ export const ButtonGroup = () => {
     <>
       <Button />
       <Button />
+      <Button />
     </>
   );
 };
