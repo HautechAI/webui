@@ -61,13 +61,13 @@ importers:
         specifier: ^8.5.5
         version: 8.5.5
 
-  components/button: {}
+  components/Button: {}
 
-  components/buttongroup:
+  components/ButtonGroup:
     dependencies:
       '@hautechai/webui.button':
         specifier: workspace:^
-        version: link:../button
+        version: link:../Button
 
 packages:
 
