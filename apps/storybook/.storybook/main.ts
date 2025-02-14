@@ -6,6 +6,5 @@ const config: StorybookConfig = {
         name: '@storybook/react-vite',
         options: {},
     },
-    staticDirs: [{ from: '../node_modules/@hautechai/webui.theme/fonts', to: '/fonts' }],
 };
 export default config;
