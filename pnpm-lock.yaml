@@ -69,6 +69,8 @@ importers:
         specifier: workspace:^
         version: link:../Button
 
+  components/ThemeProvider: {}
+
 packages:
 
   '@adobe/css-tools@4.4.2':

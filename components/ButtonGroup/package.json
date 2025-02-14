@@ -16,9 +16,7 @@
   "scripts": {
     "prepack": "tsc"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "HautechAI",
   "dependencies": {
     "@hautechai/webui.button": "workspace:^"
   }
