@@ -30,7 +30,11 @@ const StyledButton = styled.button<Required<Pick<ButtonProps, 'variant' | 'hiera
 
     border-radius: ${({ theme }) => theme.foundation.cornerRadius.m}px;
     border-style: solid;
-    border-width: ${({ theme }) => theme.foundation.stroke.thin}px;
+    border-width: ${({ theme, variant }) =>
+        ({
+            filled: 0,
+            outlined: theme.foundation.stroke.thin,
+        }[variant])}px;
 
     border-color: ${({ theme, variant, hierarchy }) =>
         variant === 'outlined' && hierarchy === 'primary'
