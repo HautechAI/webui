@@ -1,10 +1,13 @@
 {
   "name": "@hautechai/webui.button",
-  "version": "0.1.5",
   "description": "",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "version": "0.1.5",
   "type": "module",
+  "main": "src/index.tsx",
+  "publishConfig": {
+    "main": "dist/index.js",
+    "typings": "dist/index.d.ts"
+  },
   "files": [
     "dist/**/*.js",
     "dist/**/*.d.ts"
