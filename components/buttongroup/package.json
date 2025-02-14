@@ -6,7 +6,8 @@
   "main": "src/index.tsx",
   "publishConfig": {
     "main": "dist/index.js",
-    "typings": "dist/index.d.ts"
+    "typings": "dist/index.d.ts",
+    "access": "public"
   },
   "files": [
     "dist/**/*.js",
