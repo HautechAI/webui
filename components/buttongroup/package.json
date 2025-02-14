@@ -16,6 +16,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@webui/button": "workspace:^"
+    "@hautechai/webui.button": "workspace:^"
   }
 }

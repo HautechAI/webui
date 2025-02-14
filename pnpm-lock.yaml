@@ -29,7 +29,7 @@ importers:
 
   components/buttongroup:
     dependencies:
-      '@webui/button':
+      '@hautechai/webui.button':
         specifier: workspace:^
         version: link:../button
 
