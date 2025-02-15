@@ -92,7 +92,19 @@ importers:
         specifier: workspace:^
         version: link:../Typography
 
+  components/DataList:
+    dependencies:
+      '@hautechai/webui.themeprovider':
+        specifier: workspace:^
+        version: link:../ThemeProvider
+
   components/Logo: {}
+
+  components/Panel:
+    dependencies:
+      '@hautechai/webui.themeprovider':
+        specifier: workspace:^
+        version: link:../ThemeProvider
 
   components/Sidebar:
     dependencies:
