@@ -29,9 +29,6 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Build the package
-        run: pnpm build
-
       - name: Publish the package
         run: pnpm --filter=\!storybook -r publish
         env:
