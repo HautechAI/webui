@@ -26,7 +26,7 @@ export const User = (props: UserProps) => {
         <Container>
             <Avatar src={props.avatar} />
             <LabelsContainer>
-                <Typography variant="Text5">{props.title}</Typography>
+                <Typography variant="Text1">{props.title}</Typography>
                 <Typography variant="Text4">{props.subtitle}</Typography>
             </LabelsContainer>
         </Container>

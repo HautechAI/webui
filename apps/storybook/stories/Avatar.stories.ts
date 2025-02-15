@@ -1,5 +1,5 @@
 import img from '../../../assets/Avatar.png';
-import { Avatar } from '../src';
+import { Avatar } from '../../../components/Avatar/src';
 
 export default {
     title: 'Data Display/Avatar',

@@ -1,6 +1,6 @@
 import avatar from '../../../assets/Avatar.png';
 
-import { User } from '../src';
+import { User } from '../../../components/User/src';
 
 export default {
     title: 'Data Display/User',

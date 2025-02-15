@@ -1,6 +1,6 @@
 import { fn } from '@storybook/test';
 
-import { Button } from '../src';
+import { Button } from '../../../components/Button/src';
 
 export default {
     title: 'Input/Button',
@@ -12,7 +12,7 @@ export default {
     argTypes: {
         backgroundColor: { control: 'color' },
     },
-    args: { onClick: fn() },
+    args: { onClick: fn() as any },
 };
 
 export const PrimaryMedium = {

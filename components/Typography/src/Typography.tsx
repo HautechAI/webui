@@ -1,5 +1,14 @@
 import { styled } from '@hautechai/webui.themeprovider';
 
+const Text1 = styled.div`
+    color: ${({ theme }) => theme.palette.layout.onSurface.primary};
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px;
+`;
+
 const Text4 = styled.div`
     color: ${({ theme }) => theme.palette.layout.onSurface.tertiary};
     font-family: Inter;
@@ -19,6 +28,7 @@ const Text5 = styled.div`
 `;
 
 const variants = {
+    Text1,
     Text4,
     Text5,
 };
