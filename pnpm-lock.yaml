@@ -112,6 +112,15 @@ importers:
         specifier: workspace:^
         version: link:../ThemeProvider
 
+  components/Price:
+    dependencies:
+      '@hautechai/webui.themeprovider':
+        specifier: workspace:^
+        version: link:../ThemeProvider
+      '@hautechai/webui.typography':
+        specifier: workspace:^
+        version: link:../Typography
+
   components/Row:
     dependencies:
       '@hautechai/webui.themeprovider':

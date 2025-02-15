@@ -9,6 +9,15 @@ const Text1 = styled.div`
     line-height: 20px;
 `;
 
+const Text2 = styled.div`
+    color: ${({ theme }) => theme.palette.layout.onSurface.tertiary};
+    font-family: Inter;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 16px;
+`;
+
 const Text4 = styled.div`
     color: ${({ theme }) => theme.palette.layout.onSurface.tertiary};
     font-family: Inter;
@@ -36,11 +45,22 @@ const Text6 = styled.div`
     line-height: 22px;
 `;
 
+const Text7 = styled.div`
+    color: ${({ theme }) => theme.palette.layout.onSurface.primary};
+    font-family: Inter;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 28px;
+`;
+
 const variants = {
     Text1,
+    Text2,
     Text4,
     Text5,
     Text6,
+    Text7,
 };
 
 export type TypographyProps = {
