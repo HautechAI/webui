@@ -7,7 +7,7 @@ const Label = styled.span<Required<Pick<TextButtonProps, 'size' | 'hierarchy'>>>
     font-size: ${({ size }) => ({ medium: 16, small: 14, xSmall: 12 }[size])}px; // TODO: replace with theme values
     font-style: normal;
     font-weight: 500;
-    line-height: ${({ size }) => ({ medium: 24, small: 20, xSmall: 16 }[size])}; // TODO: replace with theme values
+    line-height: ${({ size }) => ({ medium: 24, small: 20, xSmall: 16 }[size])}px; // TODO: replace with theme values
     text-decoration: ${({ hierarchy }) => ({ primary: 'none', secondary: 'none', link: 'underline' }[hierarchy])};
 `;
 
