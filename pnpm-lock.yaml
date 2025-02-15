@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@hautechai/webui.typography':
+        specifier: workspace:^
+        version: link:components/Typography
       '@storybook/test':
         specifier: ^8.5.5
         version: 8.5.5(storybook@8.5.5)
@@ -112,6 +115,12 @@ importers:
       '@emotion/styled':
         specifier: ^11.14.0
         version: 11.14.0(@emotion/react@11.14.0(@types/react@19.0.8)(react@19.0.0))(@types/react@19.0.8)(react@19.0.0)
+
+  components/Typography:
+    dependencies:
+      '@hautechai/webui.themeprovider':
+        specifier: workspace:^
+        version: link:../ThemeProvider
 
   components/User:
     dependencies:

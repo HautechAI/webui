@@ -1,5 +1,6 @@
 import { Avatar } from '@hautechai/webui.avatar';
 import { styled } from '@hautechai/webui.themeprovider';
+import { Typography } from '@hautechai/webui.typography';
 
 const Container = styled.div`
     display: flex;
@@ -25,8 +26,8 @@ export const User = (props: UserProps) => {
         <Container>
             <Avatar src={props.avatar} />
             <LabelsContainer>
-                <span>{props.title}</span>
-                <span>{props.subtitle}</span>
+                <Typography variant="Text5">{props.title}</Typography>
+                <Typography variant="Text4">{props.subtitle}</Typography>
             </LabelsContainer>
         </Container>
     );
