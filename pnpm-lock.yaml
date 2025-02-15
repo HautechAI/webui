@@ -68,6 +68,12 @@ importers:
         specifier: ^8.5.5
         version: 8.5.5
 
+  components/Avatar:
+    dependencies:
+      '@hautechai/webui.themeprovider':
+        specifier: workspace:^
+        version: link:../ThemeProvider
+
   components/Button:
     dependencies:
       '@hautechai/webui.themeprovider':
@@ -106,6 +112,15 @@ importers:
       '@emotion/styled':
         specifier: ^11.14.0
         version: 11.14.0(@emotion/react@11.14.0(@types/react@19.0.8)(react@19.0.0))(@types/react@19.0.8)(react@19.0.0)
+
+  components/User:
+    dependencies:
+      '@hautechai/webui.avatar':
+        specifier: workspace:^
+        version: link:../Avatar
+      '@hautechai/webui.themeprovider':
+        specifier: workspace:^
+        version: link:../ThemeProvider
 
 packages:
 
