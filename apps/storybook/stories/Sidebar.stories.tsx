@@ -3,7 +3,7 @@ import { Logo } from '../../../components/Logo/src';
 import { User } from '../../../components/User/src';
 
 export default {
-    title: 'Navigation/Sidebar',
+    title: 'Surfaces/Sidebar',
     component: Sidebar,
     parameters: {
         layout: 'fullscreen',
@@ -20,6 +20,13 @@ export default {
 };
 
 export const Main = {
+    args: {
+        top: <>Top</>,
+        bottom: <>Bottom</>,
+    },
+};
+
+export const WithSomeComponents = {
     args: {
         top: (
             <>
