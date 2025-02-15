@@ -16,5 +16,6 @@
     "scripts": {
         "prepack": "tsc"
     },
-    "author": "HautechAI"
+    "author": "HautechAI",
+    "license": "Apache-2.0"
 }

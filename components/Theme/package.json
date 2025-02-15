@@ -25,5 +25,6 @@
   "devDependencies": {
     "@types/lodash": "^4.17.15",
     "type-fest": "^4.34.1"
-  }
+  },
+  "license": "Apache-2.0"
 }
