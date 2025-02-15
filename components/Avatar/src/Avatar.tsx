@@ -6,8 +6,8 @@ export type AvatarProps = {
 
 export const Avatar = styled.div<AvatarProps>`
     display: flex;
-    width: 44px;
-    height: 44px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     background-color: ${({ theme }) => theme.palette.layout.strokes};
     background-image: ${({ src }) => src && `url(${src})`};
