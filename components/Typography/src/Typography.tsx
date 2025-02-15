@@ -27,10 +27,20 @@ const Text5 = styled.div`
     line-height: 22px;
 `;
 
+const Text6 = styled.div`
+    color: ${({ theme }) => theme.palette.layout.onSurface.tertiary};
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 22px;
+`;
+
 const variants = {
     Text1,
     Text4,
     Text5,
+    Text6,
 };
 
 export type TypographyProps = {
