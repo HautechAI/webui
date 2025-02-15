@@ -27,7 +27,7 @@ jobs:
           cache: pnpm
 
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+        run: pnpm install --frozen-lockfile --no-git-checks
 
       - name: Publish the package
         run: pnpm --filter=\!storybook -r publish
