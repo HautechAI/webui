@@ -1,0 +1,23 @@
+{
+    "name": "@hautechai/webui.row",
+    "description": "",
+    "version": "0.1.7",
+    "type": "module",
+    "main": "src/index.tsx",
+    "publishConfig": {
+        "main": "dist/index.js",
+        "typings": "dist/index.d.ts",
+        "access": "public"
+    },
+    "files": [
+        "dist/**/*.js",
+        "dist/**/*.d.ts"
+    ],
+    "scripts": {
+        "prepack": "tsc"
+    },
+    "author": "HautechAI",
+    "dependencies": {
+        "@hautechai/webui.themeprovider": "workspace:^"
+    }
+}

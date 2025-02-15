@@ -83,6 +83,12 @@ importers:
         specifier: workspace:^
         version: link:../ThemeProvider
 
+  components/Column:
+    dependencies:
+      '@hautechai/webui.themeprovider':
+        specifier: workspace:^
+        version: link:../ThemeProvider
+
   components/DataItem:
     dependencies:
       '@hautechai/webui.themeprovider':
@@ -92,7 +98,7 @@ importers:
         specifier: workspace:^
         version: link:../Typography
 
-  components/DataList:
+  components/Divider:
     dependencies:
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
@@ -101,6 +107,12 @@ importers:
   components/Logo: {}
 
   components/Panel:
+    dependencies:
+      '@hautechai/webui.themeprovider':
+        specifier: workspace:^
+        version: link:../ThemeProvider
+
+  components/Row:
     dependencies:
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
