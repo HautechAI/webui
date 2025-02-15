@@ -91,6 +91,12 @@ importers:
         specifier: workspace:^
         version: link:../ThemeProvider
 
+  components/TextButton:
+    dependencies:
+      '@hautechai/webui.themeprovider':
+        specifier: workspace:^
+        version: link:../ThemeProvider
+
   components/Theme:
     dependencies:
       '@hautechai/webui.themeprovider':
