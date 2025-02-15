@@ -1,4 +1,4 @@
-import { Typography } from './src';
+import { Typography } from '../src';
 
 const TEXT =
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ut placerat sapien. Nulla massa lacus, porta non lobortis non, venenatis eget sapien.';

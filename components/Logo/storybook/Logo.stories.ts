@@ -1,7 +1,7 @@
-import { Logo } from './src';
+import { Logo } from '../src';
 
 export default {
-    title: 'Graphics/Logo',
+    title: 'Data Display/Logo',
     component: Logo,
     parameters: {
         layout: 'centered',

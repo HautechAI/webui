@@ -8,9 +8,6 @@ importers:
 
   .:
     dependencies:
-      '@hautechai/webui.typography':
-        specifier: workspace:^
-        version: link:components/Typography
       '@storybook/test':
         specifier: ^8.5.5
         version: 8.5.5(storybook@8.5.5)
@@ -83,13 +80,13 @@ importers:
         specifier: workspace:^
         version: link:../ThemeProvider
 
-  components/ButtonGroup:
-    dependencies:
-      '@hautechai/webui.button':
-        specifier: workspace:^
-        version: link:../Button
-
   components/Logo: {}
+
+  components/Sidebar:
+    dependencies:
+      '@hautechai/webui.themeprovider':
+        specifier: workspace:^
+        version: link:../ThemeProvider
 
   components/Theme:
     dependencies:
@@ -130,6 +127,9 @@ importers:
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
         version: link:../ThemeProvider
+      '@hautechai/webui.typography':
+        specifier: workspace:^
+        version: link:../Typography
 
 packages:
 

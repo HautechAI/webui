@@ -5,7 +5,6 @@
         "dev": "lerna run storybook"
     },
     "dependencies": {
-        "@hautechai/webui.typography": "workspace:^",
         "@storybook/test": "^8.5.5",
         "react": "^19.0.0",
         "typescript": "^5.7.3"

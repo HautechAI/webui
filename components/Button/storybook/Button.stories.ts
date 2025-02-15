@@ -1,6 +1,6 @@
 import { fn } from '@storybook/test';
 
-import { Button } from './src';
+import { Button } from '../src';
 
 export default {
     title: 'Input/Button',

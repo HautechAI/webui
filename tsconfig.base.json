@@ -3,6 +3,9 @@
     "_version": "2.0.0",
 
     "compilerOptions": {
+        "composite": true,
+
+        "outDir": "${configDir}/dist",
         "lib": ["dom", "dom.iterable", "esnext"],
         "module": "esnext",
         "moduleResolution": "bundler",
@@ -18,5 +21,6 @@
         "strict": true,
         "declaration": true
     },
-    "include": ["./type.d.ts"]
+
+    "include": ["${configDir}/src", "${configDir}/.storybook", "${configDir}/storybook", "./type.d.ts"]
 }
