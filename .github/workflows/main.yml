@@ -27,9 +27,9 @@ jobs:
           cache: pnpm
 
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile --no-git-checks
+        run: pnpm install --frozen-lockfile
 
       - name: Publish the package
-        run: pnpm --filter=\!storybook -r publish
+        run: pnpm --filter=\!storybook -r publish --no-git-checks
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
