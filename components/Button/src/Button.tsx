@@ -8,6 +8,7 @@ export type ButtonProps = {
     leadingIcon?: React.ReactNode;
     trailingIcon?: React.ReactNode;
     disabled?: boolean;
+    onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
 };
 
 const Label = styled.span<Required<Pick<ButtonProps, 'size'>>>`
