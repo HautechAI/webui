@@ -104,6 +104,8 @@ importers:
         specifier: workspace:^
         version: link:../ThemeProvider
 
+  components/Icon: {}
+
   components/Logo: {}
 
   components/Modal:
