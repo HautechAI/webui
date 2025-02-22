@@ -3,7 +3,7 @@ import type { SVGProps } from 'react';
 const SvgMedium = (props: SVGProps<SVGSVGElement>) => (
     <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} fill="none" {...props}>
         <path
-            stroke="#656565"
+            stroke={props.color ?? '#656565'}
             strokeLinecap="round"
             strokeLinejoin="round"
             strokeWidth={1.2}
