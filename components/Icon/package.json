@@ -18,6 +18,8 @@
         "prepack": "tsc"
     },
     "author": "HautechAI",
-    "dependencies": {},
+    "dependencies": {
+        "@hautechai/webui.themeprovider": "workspace:^"
+    },
     "license": "Apache-2.0"
 }

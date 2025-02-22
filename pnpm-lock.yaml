@@ -104,7 +104,11 @@ importers:
         specifier: workspace:^
         version: link:../ThemeProvider
 
-  components/Icon: {}
+  components/Icon:
+    dependencies:
+      '@hautechai/webui.themeprovider':
+        specifier: workspace:^
+        version: link:../ThemeProvider
 
   components/Logo: {}
 
