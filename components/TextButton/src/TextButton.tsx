@@ -53,6 +53,7 @@ export type TextButtonProps = {
     leadingIcon?: React.ReactNode;
     trailingIcon?: React.ReactNode;
     disabled?: boolean;
+    onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
 };
 
 export const TextButton = (props: TextButtonProps) => {

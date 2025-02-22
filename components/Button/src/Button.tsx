@@ -83,7 +83,7 @@ const StyledButton = styled.button<Required<Pick<ButtonProps, 'variant' | 'hiera
             },
         }[variant][hierarchy])};
 
-    :hover {
+    :hover, :focus-visible {
         background-color: ${({ theme, variant, hierarchy }) =>
             ({
                 filled: {
