@@ -1,9 +1,11 @@
 import * as React from 'react';
 import type { SVGProps } from 'react';
 import { type ThemeType, useTheme } from '@hautechai/webui.themeprovider';
+import { DeepKeys } from '../../types';
+import { get } from 'lodash';
 const SvgMedium = (
     props: SVGProps<SVGSVGElement> & {
-        color?: keyof ThemeType['palette']['actions'] | `#${string}` | `rgba(${string})`;
+        color?: DeepKeys<ThemeType['palette']> | 'currentColor' | 'currentColor' | `#${string}` | `rgba(${string})`;
     },
 ) => {
     const theme = useTheme();
@@ -11,9 +13,11 @@ const SvgMedium = (
         <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} fill="none" {...props}>
             <path
                 fill={
-                    theme.palette.actions[props.color as keyof ThemeType['palette']['actions']] ??
-                    props.color ??
-                    '#656565'
+                    get(
+                        theme.palette,
+                        props.color as keyof ThemeType['palette'],
+                        props.color ?? 'currentColor',
+                    ) as string
                 }
                 fillRule="evenodd"
                 d="M13.5 5.426c0-.783-.5-1.678-1.283-1.68h-.765c-1.933 0-3.447 0-4.63.16-1.208.162-2.163.502-2.912 1.25-.75.75-1.089 1.704-1.25 2.914-.16 1.181-.16 2.696-.16 4.629v.095c0 1.933 0 3.448.16 4.63.161 1.209.501 2.163 1.25 2.913.75.749 1.704 1.088 2.913 1.25 1.182.16 2.696.16 4.63.16h.095c1.933 0 3.447 0 4.63-.16 1.208-.162 2.163-.502 2.912-1.25.75-.75 1.088-1.704 1.25-2.914.16-1.181.16-2.696.16-4.629V12.7q.002-.985-.006-1.83c-.009-.77-.724-1.318-1.494-1.318-3.038 0-5.5-1.847-5.5-4.125Z"
@@ -25,17 +29,21 @@ const SvgMedium = (
             />
             <path
                 fill={
-                    theme.palette.actions[props.color as keyof ThemeType['palette']['actions']] ??
-                    props.color ??
-                    '#656565'
+                    get(
+                        theme.palette,
+                        props.color as keyof ThemeType['palette'],
+                        props.color ?? 'currentColor',
+                    ) as string
                 }
                 d="m21.298 4.973-.807-.24a2.06 2.06 0 0 1-1.417-1.415l-.24-.806c-.087-.283-.544-.283-.631 0l-.24.806a2.06 2.06 0 0 1-1.417 1.416l-.806.24c-.131.043-.24.173-.24.304 0 .13.087.262.24.305l.806.24c.698.196 1.22.74 1.417 1.415l.24.806c.043.13.174.24.305.24a.32.32 0 0 0 .305-.24l.24-.806a2.06 2.06 0 0 1 1.416-1.415l.807-.24c.13-.043.24-.174.24-.305 0-.13-.066-.261-.218-.305M18.53 6.868A2.78 2.78 0 0 0 16.96 5.3a2.78 2.78 0 0 0 1.57-1.568c.283.719.85 1.285 1.569 1.568a2.78 2.78 0 0 0-1.57 1.568Z"
             />
             <path
                 fill={
-                    theme.palette.actions[props.color as keyof ThemeType['palette']['actions']] ??
-                    props.color ??
-                    '#656565'
+                    get(
+                        theme.palette,
+                        props.color as keyof ThemeType['palette'],
+                        props.color ?? 'currentColor',
+                    ) as string
                 }
                 d="M18.53 6.868A2.78 2.78 0 0 0 16.96 5.3a2.78 2.78 0 0 0 1.57-1.568c.283.719.85 1.285 1.569 1.568a2.78 2.78 0 0 0-1.57 1.568Z"
             />
