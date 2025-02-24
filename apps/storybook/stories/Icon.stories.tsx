@@ -24,7 +24,7 @@ const AllIcons = () => (
     >
         {Object.entries(Icons).map(([name, Icon]) => (
             <div key={name}>
-                <Icon />
+                <Icon color={'currentColor'} />
                 <p>{name}</p>
             </div>
         ))}

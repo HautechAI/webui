@@ -2,7 +2,7 @@ import * as React from 'react';
 import type { SVGProps } from 'react';
 import { type ThemeType, useTheme } from '@hautechai/webui.themeprovider';
 import { DeepKeys } from '../../types';
-import { get } from 'lodash';
+import get from 'lodash/get';
 const SvgMedium = (
     props: SVGProps<SVGSVGElement> & {
         color?: DeepKeys<ThemeType['palette']> | 'currentColor' | 'currentColor' | `#${string}` | `rgba(${string})`;
