@@ -1,11 +1,12 @@
 import * as React from 'react';
 import type { SVGProps } from 'react';
 import { type ThemeType, useTheme } from '@hautechai/webui.themeprovider';
-import { DeepKeys } from '../../types';
+import { Paths } from 'type-fest';
+
 import get from 'lodash/get';
 const SvgMedium = (
     props: SVGProps<SVGSVGElement> & {
-        color?: DeepKeys<ThemeType['palette']> | 'currentColor' | 'currentColor' | `#${string}` | `rgba(${string})`;
+        color?: Paths<ThemeType['palette'], { leavesOnly: true }> | 'currentColor' | `#${string}` | `rgba(${string})`;
     },
 ) => {
     const theme = useTheme();
