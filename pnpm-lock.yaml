@@ -140,18 +140,9 @@ importers:
 
   components/ImageInput:
     dependencies:
-      '@hautechai/webui.button':
+      '@hautechai/webui.fileinput':
         specifier: workspace:^
-        version: link:../Button
-      '@hautechai/webui.themeprovider':
-        specifier: workspace:^
-        version: link:../ThemeProvider
-      '@hautechai/webui.typography':
-        specifier: workspace:^
-        version: link:../Typography
-      react-dropzone:
-        specifier: ^14.3.8
-        version: 14.3.8(react@19.0.0)
+        version: link:../FileInput
 
   components/Logo: {}
 

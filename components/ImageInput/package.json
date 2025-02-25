@@ -1,5 +1,5 @@
 {
-    "name": "@hautechai/webui.fileinput",
+    "name": "@hautechai/webui.imageinput",
     "description": "",
     "version": "0.0.1",
     "type": "module",
@@ -19,10 +19,7 @@
     },
     "author": "HautechAI",
     "dependencies": {
-        "@hautechai/webui.button": "workspace:^",
-        "@hautechai/webui.themeprovider": "workspace:^",
-        "@hautechai/webui.typography": "workspace:^",
-        "react-dropzone": "^14.3.8"
+        "@hautechai/webui.fileinput": "workspace:^"
     },
     "license": "Apache-2.0"
 }

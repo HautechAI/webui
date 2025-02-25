@@ -40,12 +40,16 @@ export type FileInputProps = {
 
     /** @property Optional label to display when files are being dragged over the input */
     labelDragActive?: string;
+
+    /** @property Optional label for upload button */
+    labelButton?: string;
 };
 
 export const FileInput: React.FC<FileInputProps> = (props) => {
     const {
         label = 'Drag and drop your file here', //
         labelDragActive = 'Drop your file here',
+        labelButton = 'Open file',
     } = props;
 
     const onDrop = (acceptedFiles: File[]) => {
@@ -67,7 +71,7 @@ export const FileInput: React.FC<FileInputProps> = (props) => {
             <Typography variant="H1" color="layout.onSurface.primary">
                 {isDragActive ? labelDragActive : label}
             </Typography>
-            <Button label="Open file" leadingIcon={<UploadSmall />} />
+            <Button label={labelButton} leadingIcon={<UploadSmall />} />
             {/* {isDragActive && <p>Drop here...</p>}
             {isDragReject && <p>Rejected...</p>}
             {isDragAccept && <p>Accepted...</p>}
