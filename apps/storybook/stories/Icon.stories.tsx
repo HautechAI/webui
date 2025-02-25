@@ -9,6 +9,7 @@ export default {
             },
         },
     },
+    tags: ['autodocs'],
 };
 
 const AllIcons = () => (
