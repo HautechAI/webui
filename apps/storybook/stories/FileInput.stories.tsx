@@ -15,3 +15,10 @@ export default {
 export const Main = {
     args: {},
 };
+
+export const MaxTwoFilesOneMegaEach = {
+    args: {
+        maxFiles: 2,
+        maxSize: 1024 * 1024,
+    },
+};

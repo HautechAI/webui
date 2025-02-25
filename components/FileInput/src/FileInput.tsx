@@ -68,10 +68,10 @@ export const FileInput: React.FC<FileInputProps> = (props) => {
                 {isDragActive ? labelDragActive : label}
             </Typography>
             <Button label="Open file" leadingIcon={<UploadSmall />} />
-            {/* {isDragActive && <p>Drop here...</p>}
+            {isDragActive && <p>Drop here...</p>}
             {isDragReject && <p>Rejected...</p>}
             {isDragAccept && <p>Accepted...</p>}
-            {fileRejections && JSON.stringify(fileRejections)} */}
+            {fileRejections && JSON.stringify(fileRejections)}
         </FileInputContainer>
     );
 };
