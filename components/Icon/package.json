@@ -1,0 +1,30 @@
+{
+    "name": "@hautechai/webui.icon",
+    "description": "",
+    "version": "0.0.1",
+    "type": "module",
+    "main": "src/index.tsx",
+    "sideEffects": false,
+    "publishConfig": {
+        "main": "dist/index.js",
+        "typings": "dist/index.d.ts",
+        "access": "public"
+    },
+    "files": [
+        "dist/**/*.js",
+        "dist/**/*.d.ts"
+    ],
+    "scripts": {
+        "prepack": "tsc"
+    },
+    "author": "HautechAI",
+    "dependencies": {
+        "@hautechai/webui.themeprovider": "workspace:^",
+        "lodash": "^4.17.21"
+    },
+    "devDependencies": {
+        "@types/lodash": "^4.17.15",
+        "type-fest": "^4.34.1"
+    },
+    "license": "Apache-2.0"
+}
