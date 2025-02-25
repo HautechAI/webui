@@ -1,6 +1,7 @@
 import { fn } from '@storybook/test';
 
 import { Button } from '../../../components/Button/src';
+import { UploadSmall } from '../../../components/Icon/src';
 
 export default {
     title: 'Input/Button',
@@ -24,6 +25,29 @@ export const PrimaryMedium = {
         label: 'Button',
     },
 };
+
+export const WithLeadingIcon = {
+    args: {
+        hierarchy: 'primary',
+        size: 'medium',
+        variant: 'filled',
+        disabled: false,
+        label: 'Button',
+        leadingIcon: <UploadSmall />,
+    },
+};
+
+export const WithTrailingIcon = {
+    args: {
+        hierarchy: 'primary',
+        size: 'medium',
+        variant: 'filled',
+        disabled: false,
+        label: 'Button',
+        trailingIcon: <UploadSmall />,
+    },
+};
+
 export const PrimarySmall = {
     args: {
         hierarchy: 'primary',
