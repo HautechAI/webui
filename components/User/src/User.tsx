@@ -26,8 +26,12 @@ export const User = (props: UserProps) => {
         <Container>
             <Avatar src={props.avatar} />
             <LabelsContainer>
-                <Typography variant="Text1">{props.title}</Typography>
-                <Typography variant="Text4">{props.subtitle}</Typography>
+                <Typography variant="LabelMediumEmphasized" color="layout.onSurface.primary">
+                    {props.title}
+                </Typography>
+                <Typography variant="LabelSmallEmphasized" color="layout.onSurface.tertiary">
+                    {props.subtitle}
+                </Typography>
             </LabelsContainer>
         </Container>
     );

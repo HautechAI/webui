@@ -18,7 +18,12 @@
     },
     "author": "HautechAI",
     "dependencies": {
-        "@hautechai/webui.themeprovider": "workspace:^"
+        "@hautechai/webui.themeprovider": "workspace:^",
+        "lodash": "^4.17.21"
     },
-    "license": "Apache-2.0"
+    "license": "Apache-2.0",
+    "devDependencies": {
+        "@types/lodash": "^4.17.15",
+        "type-fest": "^4.34.1"
+    }
 }

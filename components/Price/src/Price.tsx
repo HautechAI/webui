@@ -16,9 +16,15 @@ export type PriceProps = {
 export const Price = (props: PriceProps) => {
     return (
         <Container>
-            <Typography variant="Text7">{props.price}</Typography>
-            <Typography variant="Text2">/</Typography>
-            <Typography variant="Text2">{props.period}</Typography>
+            <Typography variant="H1" color="layout.onSurface.primary">
+                {props.price}
+            </Typography>
+            <Typography variant="LabelMediumRegular" color="layout.onSurface.tertiary">
+                /
+            </Typography>
+            <Typography variant="LabelMediumRegular" color="layout.onSurface.tertiary">
+                {props.period}
+            </Typography>
         </Container>
     );
 };

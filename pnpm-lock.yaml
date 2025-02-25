@@ -197,6 +197,16 @@ importers:
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
         version: link:../ThemeProvider
+      lodash:
+        specifier: ^4.17.21
+        version: 4.17.21
+    devDependencies:
+      '@types/lodash':
+        specifier: ^4.17.15
+        version: 4.17.15
+      type-fest:
+        specifier: ^4.34.1
+        version: 4.34.1
 
   components/User:
     dependencies:

@@ -15,8 +15,10 @@ export type DataItemProps = {
 export const DataItem = (props: DataItemProps) => {
     return (
         <Container>
-            <Typography variant="Text6">{props.label}</Typography>
-            <Typography variant="Text1">{props.value}</Typography>
+            <Typography variant="LabelSmallRegular" color="layout.onSurface.tertiary">
+                {props.label}
+            </Typography>
+            <Typography variant="LabelMediumEmphasized" color='layout.onSurface.primary'>{props.value}</Typography>
         </Container>
     );
 };
