@@ -177,6 +177,18 @@ importers:
         specifier: workspace:^
         version: link:../Typography
 
+  components/LinkButton:
+    dependencies:
+      '@hautechai/webui.buttonbase':
+        specifier: workspace:^
+        version: link:../ButtonBase
+      '@hautechai/webui.themeprovider':
+        specifier: workspace:^
+        version: link:../ThemeProvider
+      '@hautechai/webui.typography':
+        specifier: workspace:^
+        version: link:../Typography
+
   components/Logo: {}
 
   components/Modal:
