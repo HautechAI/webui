@@ -1,0 +1,28 @@
+{
+    "name": "@hautechai/webui.tiletabitem",
+    "description": "",
+    "version": "0.0.1",
+    "type": "module",
+    "main": "src/index.tsx",
+    "sideEffects": false,
+    "publishConfig": {
+        "main": "dist/index.js",
+        "typings": "dist/index.d.ts",
+        "access": "public"
+    },
+    "files": [
+        "dist/**/*.js",
+        "dist/**/*.d.ts"
+    ],
+    "scripts": {
+        "prepack": "tsc"
+    },
+    "author": "HautechAI",
+    "dependencies": {
+        "@hautechai/webui.buttonbase": "workspace:^",
+        "@hautechai/webui.themeprovider": "workspace:^",
+        "@hautechai/webui.tile": "workspace:^",
+        "@hautechai/webui.typography": "workspace:^"
+    },
+    "license": "Apache-2.0"
+}

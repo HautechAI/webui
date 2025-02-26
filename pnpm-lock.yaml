@@ -273,6 +273,27 @@ importers:
         specifier: workspace:^
         version: link:../ThemeProvider
 
+  components/TileTabGroup:
+    dependencies:
+      '@hautechai/webui.themeprovider':
+        specifier: workspace:^
+        version: link:../ThemeProvider
+
+  components/TileTabItem:
+    dependencies:
+      '@hautechai/webui.buttonbase':
+        specifier: workspace:^
+        version: link:../ButtonBase
+      '@hautechai/webui.themeprovider':
+        specifier: workspace:^
+        version: link:../ThemeProvider
+      '@hautechai/webui.tile':
+        specifier: workspace:^
+        version: link:../Tile
+      '@hautechai/webui.typography':
+        specifier: workspace:^
+        version: link:../Typography
+
   components/Typography:
     dependencies:
       '@hautechai/webui.themeprovider':
