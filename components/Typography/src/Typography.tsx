@@ -2,9 +2,12 @@ import { styled, ThemeType } from '@hautechai/webui.themeprovider';
 import { Paths } from 'type-fest';
 import { get } from 'lodash';
 
-const BaseText = styled.div`
+type TextAlign = 'left' | 'right' | 'center' | 'inherit';
+
+const BaseText = styled.div<{ textAlign?: TextAlign }>`
     font-family: Inter;
     color: ${({ theme, color }) => (color ? get(theme.palette, color) : 'currentColor')};
+    text-align: ${({ textAlign }) => textAlign ?? 'inherit'};
 `;
 
 // Heading
@@ -138,12 +141,16 @@ const variants = {
 
 export type TypographyProps = {
     variant: keyof typeof variants;
-    color?: Paths<ThemeType['palette'], { leavesOnly: true }>;
+
     children: React.ReactNode;
+    color?: Paths<ThemeType['palette'], { leavesOnly: true }>;
+    textAlign?: TextAlign;
 };
 
 export const Typography = (props: TypographyProps) => {
+    const { variant, ...rest } = props;
+
     const Variant = variants[props.variant];
 
-    return <Variant color={props.color}>{props.children}</Variant>;
+    return <Variant {...rest} />;
 };

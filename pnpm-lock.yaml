@@ -83,6 +83,12 @@ importers:
         specifier: workspace:^
         version: link:../ThemeProvider
 
+  components/ButtonBase:
+    dependencies:
+      '@hautechai/webui.themeprovider':
+        specifier: workspace:^
+        version: link:../ThemeProvider
+
   components/Column:
     dependencies:
       '@hautechai/webui.themeprovider':
@@ -143,6 +149,27 @@ importers:
       '@hautechai/webui.fileinput':
         specifier: workspace:^
         version: link:../FileInput
+
+  components/ImageInputWithSamples:
+    dependencies:
+      '@hautechai/webui.buttonbase':
+        specifier: workspace:^
+        version: link:../ButtonBase
+      '@hautechai/webui.column':
+        specifier: workspace:^
+        version: link:../Column
+      '@hautechai/webui.imageinput':
+        specifier: workspace:^
+        version: link:../ImageInput
+      '@hautechai/webui.row':
+        specifier: workspace:^
+        version: link:../Row
+      '@hautechai/webui.tile':
+        specifier: workspace:^
+        version: link:../Tile
+      '@hautechai/webui.typography':
+        specifier: workspace:^
+        version: link:../Typography
 
   components/Logo: {}
 
@@ -215,6 +242,12 @@ importers:
       '@emotion/styled':
         specifier: ^11.14.0
         version: 11.14.0(@emotion/react@11.14.0(@types/react@19.0.8)(react@19.0.0))(@types/react@19.0.8)(react@19.0.0)
+
+  components/Tile:
+    dependencies:
+      '@hautechai/webui.themeprovider':
+        specifier: workspace:^
+        version: link:../ThemeProvider
 
   components/Typography:
     dependencies:
