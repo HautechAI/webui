@@ -1,6 +1,7 @@
 import { fn } from '@storybook/test';
 
 import { TextButton } from '../../../components/TextButton/src';
+import { UploadSmall } from '../../../components/Icon/src';
 
 export default {
     title: 'Input/TextButton',
@@ -23,6 +24,27 @@ export const PrimaryMedium = {
         label: 'TextButton',
     },
 };
+
+export const PrimaryMediumWithLeadingIcon = {
+    args: {
+        hierarchy: 'primary',
+        size: 'medium',
+        disabled: false,
+        label: 'TextButton',
+        leadingIcon: <UploadSmall />,
+    },
+};
+
+export const PrimaryMediumWithTrailingIcon = {
+    args: {
+        hierarchy: 'primary',
+        size: 'medium',
+        disabled: false,
+        label: 'TextButton',
+        trailingIcon: <UploadSmall />,
+    },
+};
+
 export const PrimarySmall = {
     args: {
         hierarchy: 'primary',
@@ -52,25 +74,7 @@ export const SecondarySmall = {
 export const SecondaryXSmall = {
     args: {
         hierarchy: 'secondary',
-        size: 'xSmall',
-        disabled: false,
-        label: 'TextButton',
-    },
-};
-
-export const LinkSmall = {
-    args: {
-        hierarchy: 'link',
-        size: 'small',
-        disabled: false,
-        label: 'TextButton',
-    },
-};
-
-export const LinkXSmall = {
-    args: {
-        hierarchy: 'link',
-        size: 'xSmall',
+        size: 'xsmall',
         disabled: false,
         label: 'TextButton',
     },

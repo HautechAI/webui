@@ -1,4 +1,6 @@
+import { ButtonBase } from '@hautechai/webui.buttonbase';
 import { styled } from '@hautechai/webui.themeprovider';
+import { Typography, TypographyProps } from '@hautechai/webui.typography';
 
 export type ButtonProps = {
     variant?: 'filled' | 'outlined';
@@ -11,21 +13,7 @@ export type ButtonProps = {
     onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
 };
 
-const Label = styled.span<Required<Pick<ButtonProps, 'size'>>>`
-    text-align: center;
-    font-feature-settings: 'liga' off, 'clig' off;
-    font-family: Inter;
-    font-size: ${({ size }) => (size === 'medium' ? 16 : 14)}px; // TODO: replace with theme values
-    font-style: normal;
-    font-weight: ${({ size }) => (size === 'medium' ? 500 : 400)}; // TODO: replace with theme values
-    line-height: ${({ size }) => (size === 'medium' ? 24 : 20)}px; // TODO: replace with theme values
-`;
-
-const StyledButton = styled.button<Required<Pick<ButtonProps, 'variant' | 'hierarchy' | 'size'>>>`
-    all: unset;
-    cursor: pointer;
-
-    display: inline-flex;
+const StyledButton = styled(ButtonBase)<Required<Pick<ButtonProps, 'variant' | 'hierarchy' | 'size'>>>`
     justify-content: center;
     align-items: center;
 
@@ -89,11 +77,23 @@ const StyledButton = styled.button<Required<Pick<ButtonProps, 'variant' | 'hiera
             ({
                 filled: {
                     primary: theme.palette.actions.onSecondary, //
-                    secondary: theme.palette.actions.onSecondary, // TODO: replace with theme values
+                    secondary: theme.palette.actions.tertiary,
                 },
                 outlined: {
-                    primary: theme.palette.actions.primary, // TODO: replace with theme values
-                    secondary: theme.palette.actions.secondary, // TODO: replace with theme values
+                    primary: theme.palette.actions.onPrimary,
+                    secondary: theme.palette.layout.surfaceHigh,
+                },
+            }[variant][hierarchy])};
+
+        color: ${({ theme, variant, hierarchy }) =>
+            ({
+                filled: {
+                    primary: theme.palette.actions.onPrimary, //
+                    secondary: theme.palette.actions.onTertiary,
+                },
+                outlined: {
+                    primary: theme.palette.actions.primary, //
+                    secondary: theme.palette.layout.onSurface.secondary,
                 },
             }[variant][hierarchy])};
     }
@@ -103,6 +103,11 @@ const StyledButton = styled.button<Required<Pick<ButtonProps, 'variant' | 'hiera
         color: ${({ theme }) => theme.palette.layout.onSurface.tertiary};
     }
 `;
+
+const LabelVariants: Record<Required<ButtonProps>['size'], TypographyProps['variant']> = {
+    small: 'LabelSmallRegular',
+    medium: 'LabelMediumButton',
+};
 
 export const Button = (props: ButtonProps) => {
     const {
@@ -116,9 +121,9 @@ export const Button = (props: ButtonProps) => {
     } = props;
 
     return (
-        <StyledButton value={'Button'} hierarchy={hierarchy} size={size} variant={variant} {...rest}>
+        <StyledButton hierarchy={hierarchy} size={size} variant={variant} {...rest}>
             {props.leadingIcon}
-            <Label size={size}>{label}</Label>
+            <Typography variant={LabelVariants[size]}>{label}</Typography>
             {props.trailingIcon}
         </StyledButton>
     );

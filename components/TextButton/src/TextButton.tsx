@@ -1,21 +1,8 @@
+import { ButtonBase } from '@hautechai/webui.buttonbase';
 import { styled } from '@hautechai/webui.themeprovider';
+import { Typography, TypographyProps } from '@hautechai/webui.typography';
 
-const Label = styled.span<Required<Pick<TextButtonProps, 'size' | 'hierarchy'>>>`
-    text-align: center;
-    font-feature-settings: 'liga' off, 'clig' off;
-    font-family: Inter;
-    font-size: ${({ size }) => ({ medium: 16, small: 14, xSmall: 12 }[size])}px; // TODO: replace with theme values
-    font-style: normal;
-    font-weight: 500;
-    line-height: ${({ size }) => ({ medium: 24, small: 20, xSmall: 16 }[size])}px; // TODO: replace with theme values
-    text-decoration: ${({ hierarchy }) => ({ primary: 'none', secondary: 'none', link: 'underline' }[hierarchy])};
-`;
-
-const StyledButton = styled.button<Required<Pick<TextButtonProps, 'hierarchy' | 'size'>>>`
-    all: unset;
-    cursor: pointer;
-
-    display: inline-flex;
+const StyledButton = styled(ButtonBase)<Required<Pick<TextButtonProps, 'hierarchy' | 'size'>>>`
     justify-content: center;
     align-items: center;
 
@@ -23,13 +10,13 @@ const StyledButton = styled.button<Required<Pick<TextButtonProps, 'hierarchy' | 
         ({
             medium: theme.foundation.spacing.m, //
             small: theme.foundation.spacing.s,
+            xsmall: theme.foundation.spacing.s,
         }[size])}px;
 
     color: ${({ theme, hierarchy }) =>
         ({
             primary: theme.palette.actions.primary, //
             secondary: theme.palette.layout.onSurface.secondary,
-            link: theme.palette.layout.onSurface.secondary,
         }[hierarchy])};
 
     :hover {
@@ -37,7 +24,6 @@ const StyledButton = styled.button<Required<Pick<TextButtonProps, 'hierarchy' | 
             ({
                 primary: theme.palette.actions.onSecondary, //
                 secondary: theme.palette.layout.onSurface.primary,
-                link: theme.palette.layout.onSurface.primary,
             }[hierarchy])};
     }
 
@@ -47,8 +33,8 @@ const StyledButton = styled.button<Required<Pick<TextButtonProps, 'hierarchy' | 
 `;
 
 export type TextButtonProps = {
-    hierarchy?: 'primary' | 'secondary' | 'link';
-    size?: 'medium' | 'small';
+    hierarchy?: 'primary' | 'secondary';
+    size?: 'medium' | 'small' | 'xsmall';
     label: string;
     leadingIcon?: React.ReactNode;
     trailingIcon?: React.ReactNode;
@@ -56,14 +42,20 @@ export type TextButtonProps = {
     onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
 };
 
+const LabelVariants: Record<Required<TextButtonProps>['size'], TypographyProps['variant']> = {
+    medium: 'LabelMediumButton',
+    small: 'LabelSmallRegular',
+    xsmall: 'CaptionEmphasized',
+};
+
 export const TextButton = (props: TextButtonProps) => {
     const { hierarchy = 'primary', size = 'medium', leadingIcon, trailingIcon, label, ...rest } = props;
 
     return (
-        <StyledButton value={'Button'} hierarchy={hierarchy} size={size} {...rest}>
-            <Label hierarchy={hierarchy} size={size}>
-                {label}
-            </Label>
+        <StyledButton hierarchy={hierarchy} size={size} {...rest}>
+            {leadingIcon}
+            <Typography variant={LabelVariants[size]}>{label}</Typography>
+            {trailingIcon}
         </StyledButton>
     );
 };
