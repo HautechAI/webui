@@ -1,6 +1,6 @@
 import { PlaceholderSmall } from '../../../components/Icon/src';
 import { Tile } from '../../../components/Tile/src';
-import Shirt from '../../../assets/shirt.png';
+import Desert from '../../../assets/desert.png';
 
 export default {
     title: 'Data Display/Tile',
@@ -24,13 +24,13 @@ export const WithIcon = {
 
 export const WithImage = {
     args: {
-        image: Shirt,
+        image: Desert,
     },
 };
 
 export const Selected = {
     args: {
-        image: Shirt,
+        image: Desert,
         selected: true,
     },
 };

@@ -21,14 +21,15 @@ const StyledTile = styled.div<Omit<TileProps, 'icon'>>`
     background-size: cover;
     background-position: center;
 
-    border-color: ${({ selected, theme }) => (selected ? `${theme.palette.actions.primary}` : 'transparent')};
-    border-width: ${({ theme }) => theme.foundation.stroke.standard}px;
+    border-color: ${({ theme }) => theme.palette.actions.primary};
+    border-width: ${({ selected, theme }) => (selected ? theme.foundation.stroke.standard : 0)}px;
     border-style: solid;
 
+    background-origin: border-box;
+    box-sizing: border-box;
+
     .htch-webui-hoverable:hover & {
-        border-color: ${({ theme }) => `${theme.palette.actions.primary}`};
         border-width: ${({ theme }) => `${theme.foundation.stroke.standard}`}px;
-        border-style: solid;
     }
 `;
 
