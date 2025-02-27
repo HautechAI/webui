@@ -1,10 +1,11 @@
 import { styled } from '@hautechai/webui.themeprovider';
 
-type TileSize = 'medium' | 'small';
+type TileSize = 'medium' | 'small' | 'xlarge';
 
 const tileSize = {
     small: 100,
     medium: 120,
+    xlarge: 200,
 };
 
 const StyledTile = styled.div<Omit<TileProps, 'icon'>>`
