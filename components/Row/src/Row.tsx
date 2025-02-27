@@ -1,10 +1,10 @@
 import { css, styled, ThemeType } from '@hautechai/webui.themeprovider';
 
-const Container = styled.div<Pick<DataListProps, 'spacing' | 'wrap' | 'stretch'>>`
+const Container = styled.div<Pick<DataListProps, 'spacing' | 'stretch'> & { $wrap?: boolean }>`
     display: flex;
     flex-direction: row;
-    ${({ wrap }) =>
-        wrap &&
+    ${({ $wrap }) =>
+        $wrap &&
         css`
             flex-wrap: wrap;
         `}
@@ -25,6 +25,10 @@ export type DataListProps = {
 };
 
 export const Row = (props: DataListProps) => {
-    const { children, ...rest } = props;
-    return <Container {...rest}>{children}</Container>;
+    const { children, wrap, ...rest } = props;
+    return (
+        <Container $wrap={wrap} {...rest}>
+            {children}
+        </Container>
+    );
 };

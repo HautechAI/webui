@@ -1,3 +1,4 @@
+import { wrap } from 'module';
 import { Button } from '../../../components/Button/src';
 import { Row } from '../../../components/Row/src';
 
@@ -34,4 +35,28 @@ export const SpacingXXXL = {
             </>
         ),
     },
+};
+
+export const Wrap = {
+    args: {
+        wrap: true,
+        children: (
+            <>
+                <Button label="Button" />
+                <Button label="Button" />
+                <Button label="Button" />
+                <Button label="Button" />
+                <Button label="Button" />
+                <Button label="Button" />
+                <Button label="Button" />
+            </>
+        ),
+    },
+    decorators: [
+        (Story: any) => (
+            <div style={{ width: '200px' }}>
+                <Story />
+            </div>
+        ),
+    ],
 };
