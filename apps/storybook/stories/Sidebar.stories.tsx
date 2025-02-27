@@ -1,6 +1,7 @@
 import { Sidebar } from '../../../components/Sidebar/src';
 import { Logo } from '../../../components/Logo/src';
 import { User } from '../../../components/User/src';
+import { AppBar } from '../../../components/AppBar/src';
 
 export default {
     title: 'Surfaces/Sidebar',
@@ -36,6 +37,32 @@ export const WithSomeComponents = {
         bottom: (
             <>
                 <User title="John Doe" />
+            </>
+        ),
+    },
+};
+
+export const HierarchyLow = {
+    args: {
+        hierarchy: 'low',
+        top: (
+            <>
+                <Logo />
+            </>
+        ),
+        bottom: (
+            <>
+                <User title="John Doe" />
+            </>
+        ),
+    },
+};
+
+export const WithHeader = {
+    args: {
+        header: (
+            <>
+                <AppBar hierarchy="low" />
             </>
         ),
     },
