@@ -1,9 +1,6 @@
-import { ButtonBase } from '@hautechai/webui.buttonbase';
 import { styled } from '@hautechai/webui.themeprovider';
-import { Tile, TileProps } from '@hautechai/webui.tile';
 
-import { Typography } from '@hautechai/webui.typography';
-import React, { PropsWithChildren, useCallback } from 'react';
+import React, { PropsWithChildren } from 'react';
 
 const StyledTileTabGroup = styled.div`
     display: flex;
