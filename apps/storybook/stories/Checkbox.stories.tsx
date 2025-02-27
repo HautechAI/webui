@@ -8,6 +8,13 @@ export default {
     },
     tags: ['autodocs'],
     args: {},
+    decorators: [
+        (Story: any) => (
+            <label>
+                <Story /> test
+            </label>
+        ),
+    ],
 };
 
 export const Uncontroller = {
@@ -16,7 +23,7 @@ export const Uncontroller = {
 
 export const Unchecked = {
     args: {
-        checked: false
+        checked: false,
     },
 };
 

@@ -21,7 +21,6 @@ export const TileTabGroup = (props: TileTabGroupProps) => {
     return (
         <StyledTileTabGroup>
             {React.Children.map(props.children, (child) => {
-                console.log({ child });
                 if (React.isValidElement(child)) {
                     const value = (child.props as any)['value'] as string;
                     return React.cloneElement(child, {

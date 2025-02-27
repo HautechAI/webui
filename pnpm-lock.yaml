@@ -143,6 +143,15 @@ importers:
         specifier: ^14.3.8
         version: 14.3.8(react@19.0.0)
 
+  components/HoverControls:
+    dependencies:
+      '@hautechai/webui.checkbox':
+        specifier: workspace:^
+        version: link:../Checkbox
+      '@hautechai/webui.themeprovider':
+        specifier: workspace:^
+        version: link:../ThemeProvider
+
   components/Icon:
     dependencies:
       '@hautechai/webui.themeprovider':

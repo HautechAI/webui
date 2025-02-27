@@ -6,9 +6,9 @@ const StyledCheckboxContainer = styled.label<CheckboxProps>`
     cursor: pointer;
 
     display: inline-block;
+    line-height: 24px;
     position: relative;
-    padding-left: 35px;
-    margin-bottom: 12px;
+
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
@@ -23,7 +23,6 @@ const StyledInput = styled.input`
 `;
 
 const StyledCheckmarkContainer = styled.span`
-    position: absolute;
     top: 0;
     left: 0;
     display: flex;
@@ -58,9 +57,10 @@ export type CheckboxProps = PropsWithChildren<{
 }>;
 
 export const Checkbox = (props: CheckboxProps) => {
+    const { checked, ...rest } = props;
     return (
-        <StyledCheckboxContainer>
-            <StyledInput type="checkbox" checked={props.checked} />
+        <StyledCheckboxContainer {...rest}>
+            <StyledInput type="checkbox" checked={checked !== undefined ? !!checked : undefined} />
             <StyledCheckmarkContainer>
                 <StyledCheckmark />
             </StyledCheckmarkContainer>
