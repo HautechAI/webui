@@ -5,14 +5,14 @@ const StyledBox = styled.div<Omit<BoxProps, 'icon'>>`
     ${({ width }) =>
         width
             ? css`
-                  padding: ${width}px;
+                  width: ${width}px;
               `
             : ''}
 
     ${({ height }) =>
         height
             ? css`
-                  padding: ${height}px;
+                  height: ${height}px;
               `
             : ''}
 
