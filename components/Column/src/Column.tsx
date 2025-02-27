@@ -1,7 +1,7 @@
 import { css, styled, ThemeType } from '@hautechai/webui.themeprovider';
 import { PropsWithChildren } from 'react';
 
-const Container = styled.div<Pick<ColumnProps, 'align' | 'spacing'>>`
+const Container = styled.div<Pick<ColumnProps, 'align' | 'spacing' | 'stretch'>>`
     display: flex;
     flex-direction: column;
     gap: ${({ theme, spacing }) => (spacing ? theme.foundation.spacing[spacing] : 0)}px;
@@ -9,6 +9,11 @@ const Container = styled.div<Pick<ColumnProps, 'align' | 'spacing'>>`
         align &&
         css`
             align-items: ${align};
+        `}
+    ${({ stretch }) =>
+        stretch &&
+        css`
+            flex: 1;
         `}
 `;
 
@@ -18,6 +23,7 @@ export type ColumnProps = PropsWithChildren<{
     className?: string;
     spacing?: keyof ThemeType['foundation']['spacing'];
     align?: Align;
+    stretch?: boolean;
 }>;
 
 export const Column = (props: ColumnProps) => {
