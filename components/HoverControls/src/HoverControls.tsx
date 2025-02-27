@@ -33,7 +33,7 @@ export const HoverControls = (props: HoverControlsProps) => {
     return (
         <StyledHoverControls className="htch-webui-hoverable" onClick={handleClick} {...rest}>
             <ControlsContainer>
-                <StyledCheckbox checked={!!props.selected} />
+                <StyledCheckbox checked={!!props.selected} readOnly />
             </ControlsContainer>
             {React.Children.map(props.children, (child) => {
                 if (React.isValidElement(child)) {

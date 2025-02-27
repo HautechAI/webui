@@ -8,6 +8,14 @@ export default {
     },
     tags: ['autodocs'],
     args: {},
+};
+
+export const Uncontroller = {
+    args: {},
+};
+
+export const UncontrolledWihtLabel = {
+    args: {},
     decorators: [
         (Story: any) => (
             <label>
@@ -15,10 +23,6 @@ export default {
             </label>
         ),
     ],
-};
-
-export const Uncontroller = {
-    args: {},
 };
 
 export const Unchecked = {

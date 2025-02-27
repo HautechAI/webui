@@ -2,7 +2,7 @@ import { CheckSmall } from '@hautechai/webui.icon';
 import { styled } from '@hautechai/webui.themeprovider';
 import { PropsWithChildren } from 'react';
 
-const StyledCheckboxContainer = styled.label<CheckboxProps>`
+const StyledCheckboxContainer = styled.label<Pick<CheckboxProps, 'checked'>>`
     cursor: pointer;
 
     display: inline-block;
@@ -54,14 +54,21 @@ const StyledCheckmark = styled(CheckSmall)`
 
 export type CheckboxProps = PropsWithChildren<{
     checked?: boolean;
+    onChange?: (checked: boolean) => void;
+    readOnly?: boolean;
 }>;
 
 export const Checkbox = (props: CheckboxProps) => {
-    const { checked, ...rest } = props;
+    const { checked, onChange, ...rest } = props;
     return (
         <StyledCheckboxContainer {...rest}>
-            <StyledInput type="checkbox" checked={checked !== undefined ? !!checked : undefined} />
-            <StyledCheckmarkContainer>
+            <StyledInput
+                type="checkbox"
+                checked={checked !== undefined ? !!checked : undefined}
+                onChange={(e) => props?.onChange?.(e.target.checked)}
+                readOnly={props.readOnly}
+            />
+            <StyledCheckmarkContainer onClick={(e) => e.stopPropagation()}>
                 <StyledCheckmark />
             </StyledCheckmarkContainer>
         </StyledCheckboxContainer>
