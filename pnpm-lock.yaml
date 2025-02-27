@@ -77,6 +77,12 @@ importers:
         specifier: workspace:^
         version: link:../ThemeProvider
 
+  components/Box:
+    dependencies:
+      '@hautechai/webui.themeprovider':
+        specifier: workspace:^
+        version: link:../ThemeProvider
+
   components/Button:
     dependencies:
       '@hautechai/webui.buttonbase':
