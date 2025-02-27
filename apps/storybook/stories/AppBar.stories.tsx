@@ -13,7 +13,7 @@ export default {
     argTypes: {},
 };
 
-export const Main = {
+export const Mid = {
     args: {
         left: <>Left</>,
         center: <>Center</>,
@@ -21,11 +21,11 @@ export const Main = {
     },
 };
 
-export const WithSomeComponents = {
+export const MidWithSomeComponents = {
     args: {
         left: (
             <>
-                <Typography variant="Text5">Left</Typography>
+                <Typography variant="H3">Left</Typography>
             </>
         ),
         center: (
@@ -38,5 +38,14 @@ export const WithSomeComponents = {
                 <User title="John Doe" />
             </>
         ),
+    },
+};
+
+export const Low = {
+    args: {
+        hierarchy: 'low',
+        left: <>Left</>,
+        center: <>Center</>,
+        right: <>Right</>,
     },
 };
