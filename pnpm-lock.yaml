@@ -95,6 +95,15 @@ importers:
         specifier: workspace:^
         version: link:../ThemeProvider
 
+  components/Checkbox:
+    dependencies:
+      '@hautechai/webui.icon':
+        specifier: workspace:^
+        version: link:../Icon
+      '@hautechai/webui.themeprovider':
+        specifier: workspace:^
+        version: link:../ThemeProvider
+
   components/Column:
     dependencies:
       '@hautechai/webui.themeprovider':
