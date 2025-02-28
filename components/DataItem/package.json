@@ -1,7 +1,7 @@
 {
     "name": "@hautechai/webui.dataitem",
     "description": "",
-    "version": "0.3.0",
+    "version": "0.3.9",
     "type": "module",
     "main": "src/index.tsx",
     "publishConfig": {
