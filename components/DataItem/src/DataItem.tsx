@@ -1,10 +1,15 @@
-import { styled } from '@hautechai/webui.themeprovider';
+import { css, styled } from '@hautechai/webui.themeprovider';
 import { Typography, TypographyProps } from '@hautechai/webui.typography';
 
-const Container = styled.div<Pick<DataItemProps, 'size' | 'primary'>>`
+const Container = styled.div<Pick<DataItemProps, 'size' | 'primary' | 'stretch'>>`
     display: flex;
     flex-direction: column;
     gap: ${({ theme, size }) => (size === 'medium' ? theme.foundation.spacing.s : 0)}px;
+    ${({ stretch }) =>
+        stretch &&
+        css`
+            flex: 1;
+        `}
 `;
 
 export type DataItemProps = {
@@ -12,6 +17,7 @@ export type DataItemProps = {
     value: string;
     size?: 'medium' | 'small';
     primary?: 'data' | 'heading';
+    stretch?: boolean;
 };
 
 const HeadingTypographyVariants: Record<
@@ -43,7 +49,7 @@ const DataTypographyVariants: Record<
 };
 
 export const DataItem = (props: DataItemProps) => {
-    const { size = 'medium', primary = 'data' } = props;
+    const { size = 'medium', primary = 'data', stretch } = props;
     return (
         <Container size={size} primary={primary}>
             <Typography
