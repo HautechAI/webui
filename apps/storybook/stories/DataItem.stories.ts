@@ -18,3 +18,30 @@ export const Main = {
         value: 'Basic',
     },
 };
+
+export const SmallData = {
+    args: {
+        label: 'Current plan',
+        value: 'Basic',
+        size: 'small',
+        primary: 'data',
+    },
+};
+
+export const MediumHeading = {
+    args: {
+        label: 'Current plan',
+        value: 'Basic',
+        size: 'medium',
+        primary: 'heading',
+    },
+};
+
+export const SmallHeading = {
+    args: {
+        label: 'Current plan',
+        value: 'Basic',
+        size: 'small',
+        primary: 'heading',
+    },
+};

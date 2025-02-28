@@ -5,8 +5,9 @@ const Container = styled.div<Required<Pick<PanelProps, 'hierarchy'>>>`
     padding: ${({ theme }) => theme.foundation.spacing.l}px;
     background-color: ${({ theme, hierarchy }) =>
         ({
-            mid: theme.palette.layout.surfaceMid,
             low: theme.palette.layout.surfaceLow,
+            mid: theme.palette.layout.surfaceMid,
+            high: theme.palette.layout.surfaceHigh,
         }[hierarchy])};
 
     border-radius: ${({ theme }) => theme.foundation.cornerRadius.l}px;
@@ -14,20 +15,22 @@ const Container = styled.div<Required<Pick<PanelProps, 'hierarchy'>>>`
     border-style: solid;
     border-width: ${({ theme, hierarchy }) =>
         ({
-            mid: 0,
             low: theme.foundation.stroke.thin,
+            mid: 0,
+            high: theme.foundation.stroke.thin,
         }[hierarchy])}px;
     border-color: ${({ theme, hierarchy }) =>
         ({
-            mid: 0,
             low: theme.palette.layout.strokes,
+            mid: 0,
+            high: theme.palette.layout.strokes,
         }[hierarchy])};
 `;
 
 export type PanelProps = {
     className?: string;
     children?: React.ReactNode;
-    hierarchy?: 'mid' | 'low';
+    hierarchy?: 'mid' | 'low' | 'high';
 };
 
 export const Panel = (props: PanelProps) => {

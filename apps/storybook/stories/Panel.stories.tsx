@@ -23,3 +23,10 @@ export const Low = {
         children: <DataItem label="Current plan" value="Basic" />,
     },
 };
+
+export const High = {
+    args: {
+        hierarchy: 'high',
+        children: <DataItem label="Current plan" value="Basic" />,
+    },
+};
