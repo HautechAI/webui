@@ -1,6 +1,8 @@
 import { wrap } from 'module';
 import { Button } from '../../../components/Button/src';
 import { Row } from '../../../components/Row/src';
+import { IconButton } from '../../../components/IconButton/src';
+import { BurgerMedium } from '../../../components/Icon/src';
 
 export default {
     title: 'Data Display/Row',
@@ -59,4 +61,17 @@ export const Wrap = {
             </div>
         ),
     ],
+};
+
+export const AlignCenter = {
+    args: {
+        spacing: 's',
+        align: 'center',
+        children: (
+            <>
+                <IconButton icon={<BurgerMedium />} />
+                <IconButton icon={<BurgerMedium />} size="small" />
+            </>
+        ),
+    },
 };

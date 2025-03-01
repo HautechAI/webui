@@ -34,3 +34,24 @@ export const Selected = {
         selected: true,
     },
 };
+
+export const FixedWidthHeight = {
+    args: {
+        width: 200,
+        height: 300,
+    },
+};
+
+export const FixedWidthAspectRatio = {
+    args: {
+        width: 300,
+        aspectRatio: 3 / 2,
+    },
+};
+
+export const FixedHeightAspectRatio = {
+    args: {
+        height: 300,
+        aspectRatio: 3 / 2,
+    },
+};

@@ -101,6 +101,27 @@ importers:
         specifier: workspace:^
         version: link:../ThemeProvider
 
+  components/Card:
+    dependencies:
+      '@hautechai/webui.column':
+        specifier: workspace:^
+        version: link:../Column
+      '@hautechai/webui.icon':
+        specifier: workspace:^
+        version: link:../Icon
+      '@hautechai/webui.iconbutton':
+        specifier: workspace:^
+        version: link:../IconButton
+      '@hautechai/webui.row':
+        specifier: workspace:^
+        version: link:../Row
+      '@hautechai/webui.tile':
+        specifier: workspace:^
+        version: link:../Tile
+      '@hautechai/webui.typography':
+        specifier: workspace:^
+        version: link:../Typography
+
   components/Checkbox:
     dependencies:
       '@hautechai/webui.icon':
@@ -173,6 +194,15 @@ importers:
       type-fest:
         specifier: ^4.34.1
         version: 4.34.1
+
+  components/IconButton:
+    dependencies:
+      '@hautechai/webui.buttonbase':
+        specifier: workspace:^
+        version: link:../ButtonBase
+      '@hautechai/webui.themeprovider':
+        specifier: workspace:^
+        version: link:../ThemeProvider
 
   components/ImageInput:
     dependencies:
@@ -360,12 +390,6 @@ importers:
       '@hautechai/webui.row':
         specifier: workspace:^
         version: link:../Row
-      '@hautechai/webui.themeprovider':
-        specifier: workspace:^
-        version: link:../ThemeProvider
-      '@hautechai/webui.typography':
-        specifier: workspace:^
-        version: link:../Typography
 
 packages:
 

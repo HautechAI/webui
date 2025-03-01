@@ -1,4 +1,4 @@
-import { styled } from '@hautechai/webui.themeprovider';
+import { css, styled } from '@hautechai/webui.themeprovider';
 
 type TileSize = 'medium' | 'small' | 'xlarge';
 
@@ -15,8 +15,23 @@ const StyledTile = styled.div<Omit<TileProps, 'icon'>>`
 
     background-color: ${({ theme }) => theme.palette.layout.surfaceMid};
     border-radius: 8px;
-    width: ${({ size }) => tileSize[size ?? 'medium']}px;
-    height: ${({ size }) => tileSize[size ?? 'medium']}px;
+
+    ${({ width, size }) =>
+        (width || size) &&
+        css`
+            width: ${width ?? tileSize[size ?? 'medium']}px;
+        `};
+    ${({ height, size }) =>
+        (height || size) &&
+        css`
+            height: ${height ?? tileSize[size ?? 'medium']}px;
+        `};
+
+    ${({ aspectRatio }) =>
+        aspectRatio &&
+        css`
+            aspect-ratio: ${aspectRatio};
+        `};
 
     background-image: ${({ image }) => (image ? `url(${image})` : 'none')};
     background-size: cover;
@@ -39,9 +54,29 @@ export type TileProps = {
     image?: string;
     selected?: boolean;
     size?: TileSize;
+    width?: number;
+    height?: number;
+    aspectRatio?: number;
 };
 
 export const Tile = (props: TileProps) => {
-    const { icon, ...rest } = props;
-    return <StyledTile {...rest}>{icon}</StyledTile>;
+    const { icon, size, aspectRatio, ...rest } = props;
+    const { width, height } = props;
+
+    if (size && (width || height || aspectRatio)) {
+        throw new Error('size and width/height/aspectRatio are mutually exclusive');
+    }
+    if (aspectRatio && width && height) {
+        throw new Error('aspectRatio can be used only with one of width/height');
+    }
+
+    return (
+        <StyledTile
+            size={size ?? (!width && !height) ? 'medium' : undefined} // default medium size if no other size or width/height is provided
+            aspectRatio={aspectRatio ?? (!size && (!width || !height) ? 1 : undefined)} // default aspect ratio to 1 if no other aspect ratio or width/height is provided
+            {...rest}
+        >
+            {icon}
+        </StyledTile>
+    );
 };
