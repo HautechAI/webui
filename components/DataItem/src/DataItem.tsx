@@ -51,7 +51,7 @@ const DataTypographyVariants: Record<
 export const DataItem = (props: DataItemProps) => {
     const { size = 'medium', primary = 'data', stretch } = props;
     return (
-        <Container size={size} primary={primary}>
+        <Container size={size} primary={primary} stretch={stretch}>
             <Typography
                 variant={HeadingTypographyVariants[size][primary]}
                 color={primary === 'data' ? 'layout.onSurface.tertiary' : 'layout.onSurface.primary'}
