@@ -1,0 +1,27 @@
+{
+    "name": "@hautechai/webui.userbalance",
+    "description": "",
+    "version": "0.3.10",
+    "type": "module",
+    "main": "src/index.tsx",
+    "publishConfig": {
+        "main": "dist/index.js",
+        "typings": "dist/index.d.ts",
+        "access": "public"
+    },
+    "files": [
+        "dist/**/*.js",
+        "dist/**/*.d.ts"
+    ],
+    "scripts": {
+        "prepack": "tsc"
+    },
+    "author": "HautechAI",
+    "dependencies": {
+        "@hautechai/webui.button": "workspace:^",
+        "@hautechai/webui.dataitem": "workspace:^",
+        "@hautechai/webui.panel": "workspace:^",
+        "@hautechai/webui.row": "workspace:^"
+    },
+    "license": "Apache-2.0"
+}

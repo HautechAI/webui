@@ -346,6 +346,27 @@ importers:
         specifier: workspace:^
         version: link:../Typography
 
+  components/UserBalance:
+    dependencies:
+      '@hautechai/webui.button':
+        specifier: workspace:^
+        version: link:../Button
+      '@hautechai/webui.dataitem':
+        specifier: workspace:^
+        version: link:../DataItem
+      '@hautechai/webui.panel':
+        specifier: workspace:^
+        version: link:../Panel
+      '@hautechai/webui.row':
+        specifier: workspace:^
+        version: link:../Row
+      '@hautechai/webui.themeprovider':
+        specifier: workspace:^
+        version: link:../ThemeProvider
+      '@hautechai/webui.typography':
+        specifier: workspace:^
+        version: link:../Typography
+
 packages:
 
   '@adobe/css-tools@4.4.2':
