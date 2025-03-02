@@ -1,4 +1,7 @@
 import { Box } from '../../../components/Box/src';
+import { Button } from '../../../components/Button/src';
+import { Column } from '../../../components/Column/src';
+import { Tile } from '../../../components/Tile/src';
 
 export default {
     title: 'Data Display/Box',
@@ -48,5 +51,19 @@ export const PaddingLeft = {
     args: {
         children: 'content',
         paddingLeft: 'l',
+    },
+};
+
+export const Overflow = {
+    args: {
+        children: (
+            <Column spacing="l">
+                <Button label="button" />
+                <Button label="button" />
+                <Button label="button" />
+            </Column>
+        ),
+        height: 100,
+        overflow: 'scroll',
     },
 };
