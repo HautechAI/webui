@@ -1,7 +1,7 @@
 {
     "name": "@hautechai/webui.imageinputwithsamples",
     "description": "",
-    "version": "0.3.11",
+    "version": "0.3.12",
     "type": "module",
     "main": "src/index.tsx",
     "sideEffects": false,
