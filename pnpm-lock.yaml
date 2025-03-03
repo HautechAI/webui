@@ -131,6 +131,18 @@ importers:
         specifier: workspace:^
         version: link:../ThemeProvider
 
+  components/Chip:
+    dependencies:
+      '@hautechai/webui.row':
+        specifier: workspace:^
+        version: link:../Row
+      '@hautechai/webui.themeprovider':
+        specifier: workspace:^
+        version: link:../ThemeProvider
+      '@hautechai/webui.typography':
+        specifier: workspace:^
+        version: link:../Typography
+
   components/Column:
     dependencies:
       '@hautechai/webui.themeprovider':
