@@ -1,2 +1,1 @@
-export { default as MoonMedium } from './Medium';
-export { default as MoonSmall } from './Small';
+export { default as Moon } from './Small';

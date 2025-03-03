@@ -1,2 +1,1 @@
-export { default as HomeMedium } from './Medium';
-export { default as HomeSmall } from './Small';
+export { default as Home } from './Small';

@@ -1,2 +1,1 @@
-export { default as DownloadMedium } from './Medium';
-export { default as DownloadSmall } from './Small';
+export { default as Download } from './Small';

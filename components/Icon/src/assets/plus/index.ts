@@ -1,2 +1,1 @@
-export { default as PlusMedium } from './Medium';
-export { default as PlusSmall } from './Small';
+export { default as Plus } from './Small';

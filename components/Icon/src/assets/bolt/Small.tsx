@@ -6,12 +6,20 @@ import { Paths } from 'type-fest';
 import get from 'lodash/get';
 const SvgSmall = (
     props: SVGProps<SVGSVGElement> & {
+        size?: number;
         color?: Paths<ThemeType['palette'], { leavesOnly: true }> | 'currentColor' | `#${string}` | `rgba(${string})`;
     },
 ) => {
     const theme = useTheme();
     return (
-        <svg xmlns="http://www.w3.org/2000/svg" width={20} height={20} fill="none" {...props}>
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width={props.size ?? 20}
+            viewBox="0 0 20 20"
+            height={props.size ?? 20}
+            fill="none"
+            {...props}
+        >
             <g clipPath="url(#small_svg__a)">
                 <path
                     fill={

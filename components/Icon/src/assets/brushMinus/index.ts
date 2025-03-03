@@ -1,2 +1,1 @@
-export { default as BrushMinusMedium } from './Medium';
-export { default as BrushMinusSmall } from './Small';
+export { default as BrushMinus } from './Small';
