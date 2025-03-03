@@ -14,9 +14,9 @@ const SvgSmall = (
     return (
         <svg
             xmlns="http://www.w3.org/2000/svg"
-            width={props.size ?? 20}
+            width={props.size ?? 24}
             viewBox="0 0 20 20"
-            height={props.size ?? 20}
+            height={props.size ?? 24}
             fill="none"
             {...props}
         >
