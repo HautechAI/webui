@@ -1,5 +1,5 @@
 import { Column } from '@hautechai/webui.column';
-import { DownloadSmall, MoreSmall } from '@hautechai/webui.icon';
+import { Download, More } from '@hautechai/webui.icon';
 import { IconButton } from '@hautechai/webui.iconbutton';
 import { Row } from '@hautechai/webui.row';
 import { Tile } from '@hautechai/webui.tile';
@@ -24,8 +24,8 @@ export const Card = (props: CardProps) => {
                 </Typography>
                 <Column stretch></Column>
                 <Row spacing="s">
-                    <IconButton icon={<MoreSmall />} size="small" variant="flat" />
-                    <IconButton icon={<DownloadSmall />} size="small" variant="flat" onClick={props.onDownload} />
+                    <IconButton icon={<More size={20} />} size="small" variant="flat" />
+                    <IconButton icon={<Download size={20} />} size="small" variant="flat" onClick={props.onDownload} />
                 </Row>
             </Row>
         </Column>
