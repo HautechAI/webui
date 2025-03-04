@@ -11,15 +11,16 @@ export default {
 };
 
 const images = [
-    'https://picsum.photos/200/300?image=1050',
-    'https://picsum.photos/400/400?image=1039',
-    'https://picsum.photos/400/400?image=1080',
-    'https://picsum.photos/200/200?image=997',
-    'https://picsum.photos/500/400?image=287',
-    'https://picsum.photos/400/500?image=955',
-    'https://picsum.photos/200/300?image=916',
-    'https://picsum.photos/300/300?image=110',
-    'https://picsum.photos/300/300?image=206',
+    'https://images.unsplash.com/photo-1605763240000-7e93b172d754',
+    'https://images.unsplash.com/photo-1592246031359-5a5a6eeb777b',
+    'https://images.unsplash.com/photo-1494578379344-d6c710782a3d',
+    'https://images.unsplash.com/photo-1605763269552-4705d8c8e301',
+    'https://images.unsplash.com/photo-1713357831333-8b93263edadd',
+    'https://images.unsplash.com/photo-1600074249296-cf0175062aca',
+    'https://images.unsplash.com/photo-1515372039744-b8f02a3ae446',
+    'https://images.unsplash.com/photo-1617687445812-f21eff24d53c',
+    'https://images.unsplash.com/photo-1643490744955-b3726bd60bb5',
+    'https://images.unsplash.com/photo-1568252542512-9fe8fe9c87bb',
 ];
 
 export const Main = {
