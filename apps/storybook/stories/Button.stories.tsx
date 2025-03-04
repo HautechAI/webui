@@ -1,7 +1,7 @@
 import { fn } from '@storybook/test';
 
 import { Button } from '../../../components/Button/src';
-import { UploadSmall } from '../../../components/Icon/src';
+import { Upload } from '../../../components/Icon/src';
 
 export default {
     title: 'Input/Button',
@@ -33,7 +33,7 @@ export const WithLeadingIcon = {
         variant: 'filled',
         disabled: false,
         label: 'Button',
-        leadingIcon: <UploadSmall />,
+        leadingIcon: <Upload size={20} />,
     },
 };
 
@@ -44,7 +44,7 @@ export const WithTrailingIcon = {
         variant: 'filled',
         disabled: false,
         label: 'Button',
-        trailingIcon: <UploadSmall />,
+        trailingIcon: <Upload size={20} />,
     },
 };
 

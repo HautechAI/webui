@@ -1,7 +1,7 @@
 import { fn } from '@storybook/test';
 
 import { LinkButton } from '../../../components/LinkButton/src';
-import { UploadSmall } from '../../../components/Icon/src';
+import { Upload } from '../../../components/Icon/src';
 
 export default {
     title: 'Input/LinkButton',
@@ -31,7 +31,7 @@ export const LinkSmallWithLeadingIcon = {
         size: 'small',
         disabled: false,
         label: 'LinkButton',
-        leadingIcon: <UploadSmall />,
+        leadingIcon: <Upload size={20} />,
     },
 };
 
@@ -41,7 +41,7 @@ export const LinkSmallWithTrailingIcon = {
         size: 'small',
         disabled: false,
         label: 'LinkButton',
-        trailingIcon: <UploadSmall />,
+        trailingIcon: <Upload size={20} />,
     },
 };
 
