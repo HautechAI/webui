@@ -1,4 +1,7 @@
+import { ReactNode } from 'react';
+
 export type ChipProps = {
-    image: string;
+    icon?: ReactNode;
+    image?: string;
     label: string;
 };

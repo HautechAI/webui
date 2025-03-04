@@ -1,5 +1,6 @@
 import { Chip } from '../../../components/Chip/src';
 import Desert from '../../../assets/desert.png';
+import { UploadSmall } from '../../../components/Icon/src';
 
 export default {
     title: 'Compositions/Chip',
@@ -12,9 +13,16 @@ export default {
     args: {},
 };
 
-export const Main = {
+export const WithIcon = {
+    args: {
+        icon: <UploadSmall />,
+        label: 'Model',
+    },
+};
+
+export const WithImage = {
     args: {
         image: Desert,
-        label: 'Model',
+        label: 'Desert',
     },
 };
