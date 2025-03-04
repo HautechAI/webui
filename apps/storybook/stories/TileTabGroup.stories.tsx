@@ -1,5 +1,5 @@
 import { fn } from '@storybook/test';
-import { BackgroundMedium, ModelMedium, PlaceholderSmall, PoseMedium } from '../../../components/Icon/src';
+import { Background, Model, Pose } from '../../../components/Icon/src';
 import { TileTabGroup, TileTabGroupProps } from '../../../components/TileTabGroup/src';
 import { TileTabItem } from '../../../components/TileTabItem/src';
 import { useState } from 'react';
@@ -29,9 +29,9 @@ export default {
 export const Main = {
     args: {
         children: [
-            <TileTabItem value="model" label="Model" icon={<ModelMedium />} />,
-            <TileTabItem value="background" label="Background" icon={<BackgroundMedium />} />,
-            <TileTabItem value="pose" label="Pose" icon={<PoseMedium />} />,
+            <TileTabItem value="model" label="Model" icon={<Model />} />,
+            <TileTabItem value="background" label="Background" icon={<Background />} />,
+            <TileTabItem value="pose" label="Pose" icon={<Pose />} />,
         ],
     },
 };
@@ -39,9 +39,9 @@ export const Main = {
 export const Wrap = {
     args: {
         children: [
-            <TileTabItem value="model" label="Model" icon={<ModelMedium />} />,
-            <TileTabItem value="background" label="Background" icon={<BackgroundMedium />} />,
-            <TileTabItem value="pose" label="Pose" icon={<PoseMedium />} />,
+            <TileTabItem value="model" label="Model" icon={<Model />} />,
+            <TileTabItem value="background" label="Background" icon={<Background />} />,
+            <TileTabItem value="pose" label="Pose" icon={<Pose />} />,
         ],
     },
     decorators: [
