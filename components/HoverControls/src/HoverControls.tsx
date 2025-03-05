@@ -4,6 +4,7 @@ import React, { PropsWithChildren, useCallback } from 'react';
 
 const StyledHoverControls = styled.div<HoverControlsProps>`
     cursor: pointer;
+    position: relative;
 `;
 
 const ControlsContainer = styled.div`
