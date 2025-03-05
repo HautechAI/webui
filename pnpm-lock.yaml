@@ -71,6 +71,18 @@ importers:
         specifier: workspace:^
         version: link:../ThemeProvider
 
+  components/AspectRatio:
+    dependencies:
+      '@hautechai/webui.icon':
+        specifier: workspace:^
+        version: link:../Icon
+      '@hautechai/webui.segmentedcontrol':
+        specifier: workspace:^
+        version: link:../SegmentedControl
+      '@hautechai/webui.themeprovider':
+        specifier: workspace:^
+        version: link:../ThemeProvider
+
   components/Avatar:
     dependencies:
       '@hautechai/webui.themeprovider':
