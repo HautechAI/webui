@@ -3,7 +3,7 @@ import Desert from '../../../assets/desert.png';
 import { UploadSmall } from '../../../components/Icon/src';
 
 export default {
-    title: 'Compositions/Chip',
+    title: 'Data Display/Chip',
     component: Chip,
     parameters: {
         layout: 'centered',
