@@ -24,6 +24,7 @@ export const HIGContainer = styled.div`
 export const HIGRow = styled.div<{ selected: boolean }>`
     flex-direction: row;
     display: flex;
+    align-items: center;
     padding: ${({ theme }) => theme.foundation.spacing.m}px ${({ theme }) => theme.foundation.spacing.s}px;
     background-color: ${({ theme, selected }) => (selected ? theme.palette.layout.surfaceHigh : 'transparent')};
     pointer: cursor;
