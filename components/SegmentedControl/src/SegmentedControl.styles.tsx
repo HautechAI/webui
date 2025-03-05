@@ -1,4 +1,4 @@
-import { styled } from '@hautechai/webui.themeprovider';
+import { styled, ThemeType } from '@hautechai/webui.themeprovider';
 
 export const MaterialContainer = styled.div`
     display: flex;
@@ -44,7 +44,9 @@ export const MaterialRow = styled.div<{ selected: boolean }>`
     border-bottom-width: ${({ theme }) => theme.foundation.stroke.thick}px;
 `;
 
-export const EmptySpace = styled.div`
-    height: 16px;
-    width: 16px;
+export const EmptySpace = styled.div<{ whitespace?: keyof ThemeType['foundation']['spacing'] }>`
+    height: ${({ theme, whitespace }) =>
+        whitespace ? theme.foundation.spacing[whitespace] : theme.foundation.spacing.l}px;
+    width: ${({ theme, whitespace }) =>
+        whitespace ? theme.foundation.spacing[whitespace] : theme.foundation.spacing.l}px;
 `;

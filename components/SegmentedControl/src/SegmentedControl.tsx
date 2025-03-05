@@ -1,6 +1,7 @@
 import React, { useCallback, useMemo, useState } from 'react';
 import { Typography } from '@hautechai/webui.typography';
 import { MaterialContainer, HIGContainer, MaterialRow, HIGRow, EmptySpace } from './SegmentedControl.styles';
+import { ThemeType } from '@hautechai/webui.themeprovider';
 
 type Option = {
     label?: string;
@@ -13,9 +14,16 @@ export type SegmentedControlProps = {
     defaultSelectedIndex?: number;
     onTabChange?: (index: number) => void;
     material?: boolean;
+    whitespace?: keyof ThemeType['foundation']['spacing'];
 };
 
-const SegmentedControl = ({ options, defaultSelectedIndex = 0, onTabChange, material }: SegmentedControlProps) => {
+const SegmentedControl = ({
+    options,
+    defaultSelectedIndex = 0,
+    onTabChange,
+    material,
+    whitespace,
+}: SegmentedControlProps) => {
     const [selected, setSelected] = useState(defaultSelectedIndex);
 
     const handleClick = useCallback(
@@ -36,7 +44,7 @@ const SegmentedControl = ({ options, defaultSelectedIndex = 0, onTabChange, mate
                 const showEmptySpace = !material && (label || !!leadingIcon === !!trailingIcon);
                 return (
                     <Row selected={isSelected} key={index} onClick={() => handleClick(index)}>
-                        {showEmptySpace && <EmptySpace />}
+                        {showEmptySpace && <EmptySpace whitespace={whitespace} />}
                         {leadingIcon}
                         {label && (
                             <Typography
@@ -47,7 +55,7 @@ const SegmentedControl = ({ options, defaultSelectedIndex = 0, onTabChange, mate
                             </Typography>
                         )}
                         {trailingIcon}
-                        {showEmptySpace && <EmptySpace />}
+                        {showEmptySpace && <EmptySpace whitespace={whitespace} />}
                     </Row>
                 );
             })}

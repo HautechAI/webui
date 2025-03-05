@@ -14,7 +14,6 @@ export default {
 export const HIG = {
     args: {
         options: [{ label: 'All' }, { label: 'Classic' }, { label: 'Batch' }],
-        material: false,
     },
 };
 
@@ -32,8 +31,14 @@ export const HIGWithIcons = {
             { label: 'Classic', trailingIcon: <Hint size={18} /> },
             { leadingIcon: <ArrowAltRight size={18} /> },
         ],
-        material: false,
         defaultSelectedIndex: 1,
         onTabChange: (index: number) => console.log('Selected tab:', index),
+    },
+};
+
+export const HIGWithWhitespace = {
+    args: {
+        options: [{ label: 'All' }, { label: 'Classic' }, { label: 'Batch' }],
+        whitespace: 'xl',
     },
 };
