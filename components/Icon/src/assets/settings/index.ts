@@ -1,2 +1,1 @@
-export { default as SettingsMedium } from './Medium';
-export { default as SettingsSmall } from './Small';
+export { default as Settings } from './Small';

@@ -2,7 +2,7 @@ import { wrap } from 'module';
 import { Button } from '../../../components/Button/src';
 import { Row } from '../../../components/Row/src';
 import { IconButton } from '../../../components/IconButton/src';
-import { BurgerMedium } from '../../../components/Icon/src';
+import { Burger } from '../../../components/Icon/src';
 
 export default {
     title: 'Data Display/Row',
@@ -69,8 +69,8 @@ export const AlignCenter = {
         align: 'center',
         children: (
             <>
-                <IconButton icon={<BurgerMedium />} />
-                <IconButton icon={<BurgerMedium />} size="small" />
+                <IconButton icon={<Burger />} />
+                <IconButton icon={<Burger />} size="small" />
             </>
         ),
     },

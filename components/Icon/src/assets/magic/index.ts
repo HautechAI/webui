@@ -1,2 +1,1 @@
-export { default as MagicMedium } from './Medium';
-export { default as MagicSmall } from './Small';
+export { default as Magic } from './Small';

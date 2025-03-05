@@ -6,6 +6,7 @@ import { Paths } from 'type-fest';
 import get from 'lodash/get';
 const SvgXsmall = (
     props: SVGProps<SVGSVGElement> & {
+        size?: number;
         color?: Paths<ThemeType['palette'], { leavesOnly: true }> | 'currentColor' | `#${string}` | `rgba(${string})`;
     },
 ) => {

@@ -1,2 +1,1 @@
-export { default as LaptopMedium } from './Medium';
-export { default as LaptopSmall } from './Small';
+export { default as Laptop } from './Small';

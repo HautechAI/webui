@@ -1,2 +1,1 @@
-export { default as ExpandMedium } from './Medium';
-export { default as ExpandSmall } from './Small';
+export { default as Expand } from './Small';

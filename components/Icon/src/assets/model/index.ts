@@ -1,2 +1,1 @@
-export { default as ModelMedium } from './Medium';
-export { default as ModelSmall } from './Small';
+export { default as Model } from './Small';

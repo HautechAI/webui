@@ -1,2 +1,1 @@
-export { default as LogoutMedium } from './Medium';
-export { default as LogoutSmall } from './Small';
+export { default as Logout } from './Small';

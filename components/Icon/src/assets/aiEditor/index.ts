@@ -1,4 +1,2 @@
-export { default as AiEditorMedium } from './Medium';
-export { default as AiEditorSmall } from './Small';
-export { default as AiEditorBoldMedium } from './MediumBold';
-export { default as AiEditorBoldSmall } from './SmallBold';
+export { default as AiEditor } from './Small';
+export { default as AiEditorBold } from './SmallBold';

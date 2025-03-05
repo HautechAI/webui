@@ -1,2 +1,1 @@
-export { default as ArrowAltRightMedium } from './Medium';
-export { default as ArrowAltRightSmall } from './Small';
+export { default as ArrowAltRight } from './Small';

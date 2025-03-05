@@ -1,5 +1,5 @@
 import { Button } from '@hautechai/webui.button';
-import { UploadSmall } from '@hautechai/webui.icon';
+import { Upload } from '@hautechai/webui.icon';
 import { styled } from '@hautechai/webui.themeprovider';
 import { Typography } from '@hautechai/webui.typography';
 import React from 'react';
@@ -71,7 +71,7 @@ export const FileInput: React.FC<FileInputProps> = (props) => {
             <Typography variant="H1" color="layout.onSurface.primary">
                 {isDragActive ? labelDragActive : label}
             </Typography>
-            <Button label={labelButton} leadingIcon={<UploadSmall />} />
+            <Button label={labelButton} leadingIcon={<Upload size={20} />} />
             {/* {isDragActive && <p>Drop here...</p>}
             {isDragReject && <p>Rejected...</p>}
             {isDragAccept && <p>Accepted...</p>}

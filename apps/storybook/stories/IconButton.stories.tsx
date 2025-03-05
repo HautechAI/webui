@@ -1,7 +1,7 @@
 import { fn } from '@storybook/test';
 
 import { IconButton } from '../../../components/IconButton/src';
-import { BurgerMedium, BurgerSmall } from '../../../components/Icon/src';
+import { Burger } from '../../../components/Icon/src';
 
 export default {
     title: 'Input/IconButton',
@@ -18,7 +18,7 @@ export const FilledMedium = {
     args: {
         variant: 'filled',
         size: 'medium',
-        icon: <BurgerMedium />,
+        icon: <Burger />,
     },
 };
 
@@ -26,7 +26,7 @@ export const FilledSmall = {
     args: {
         variant: 'filled',
         size: 'small',
-        icon: <BurgerSmall />,
+        icon: <Burger size={20} />,
     },
 };
 
@@ -34,7 +34,7 @@ export const OutlinedMedium = {
     args: {
         variant: 'outlined',
         size: 'medium',
-        icon: <BurgerMedium />,
+        icon: <Burger />,
     },
 };
 
@@ -42,7 +42,7 @@ export const OutlinedSmall = {
     args: {
         variant: 'outlined',
         size: 'small',
-        icon: <BurgerSmall />,
+        icon: <Burger size={20} />,
     },
 };
 
@@ -50,7 +50,7 @@ export const FlatMedium = {
     args: {
         variant: 'flat',
         size: 'medium',
-        icon: <BurgerMedium />,
+        icon: <Burger />,
     },
 };
 
@@ -58,7 +58,7 @@ export const FlatSmall = {
     args: {
         variant: 'flat',
         size: 'small',
-        icon: <BurgerSmall />,
+        icon: <Burger size={20} />,
     },
 };
 
@@ -67,7 +67,7 @@ export const FilledMediumDisabled = {
         variant: 'filled',
         size: 'medium',
         disabled: true,
-        icon: <BurgerMedium />,
+        icon: <Burger />,
     },
 };
 export const OutlinedMediumDisabled = {
@@ -75,7 +75,7 @@ export const OutlinedMediumDisabled = {
         variant: 'outlined',
         size: 'medium',
         disabled: true,
-        icon: <BurgerMedium />,
+        icon: <Burger />,
     },
 };
 export const FlatMediumDisabled = {
@@ -83,6 +83,6 @@ export const FlatMediumDisabled = {
         variant: 'flat',
         size: 'medium',
         disabled: true,
-        icon: <BurgerMedium />,
+        icon: <Burger />,
     },
 };
