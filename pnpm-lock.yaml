@@ -77,6 +77,15 @@ importers:
         specifier: workspace:^
         version: link:../ThemeProvider
 
+  components/Badge:
+    dependencies:
+      '@hautechai/webui.themeprovider':
+        specifier: workspace:^
+        version: link:../ThemeProvider
+      '@hautechai/webui.typography':
+        specifier: workspace:^
+        version: link:../Typography
+
   components/Box:
     dependencies:
       '@hautechai/webui.themeprovider':
@@ -3049,7 +3058,7 @@ packages:
 
   react-responsive-masonry@2.7.1:
     resolution: {integrity: sha512-Q+u+nOH87PzjqGFd2PgTcmLpHPZnCmUPREHYoNBc8dwJv6fi51p9U6hqwG8g/T8MN86HrFjrU+uQU6yvETU7cA==}
-    
+
   react-tiny-popover@8.1.6:
     resolution: {integrity: sha512-jeZnGqHxb5TX7pCzpqLoVJned7DTVnLrLoCQQGFTyvlxXB/QUaet7O0krG22t5FReMBH035SLnzThKvk8tIfsg==}
     peerDependencies:
@@ -6642,7 +6651,7 @@ snapshots:
   react-is@18.3.1: {}
 
   react-responsive-masonry@2.7.1: {}
-  
+
   react-tiny-popover@8.1.6(react-dom@19.0.0(react@19.0.0))(react@19.0.0):
     dependencies:
       react: 19.0.0
