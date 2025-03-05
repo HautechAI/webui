@@ -1,2 +1,1 @@
-export { default as TrashMedium } from './Medium';
-export { default as TrashSmall } from './Small';
+export { default as Trash } from './Small';

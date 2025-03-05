@@ -1,2 +1,1 @@
-export { default as TrousersMedium } from './Medium';
-export { default as TrousersSmall } from './Small';
+export { default as Trousers } from './Small';

@@ -131,6 +131,18 @@ importers:
         specifier: workspace:^
         version: link:../ThemeProvider
 
+  components/Chip:
+    dependencies:
+      '@hautechai/webui.row':
+        specifier: workspace:^
+        version: link:../Row
+      '@hautechai/webui.themeprovider':
+        specifier: workspace:^
+        version: link:../ThemeProvider
+      '@hautechai/webui.typography':
+        specifier: workspace:^
+        version: link:../Typography
+
   components/Column:
     dependencies:
       '@hautechai/webui.themeprovider':
@@ -269,6 +281,15 @@ importers:
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
         version: link:../ThemeProvider
+
+  components/Popover:
+    dependencies:
+      '@hautechai/webui.themeprovider':
+        specifier: workspace:^
+        version: link:../ThemeProvider
+      react-tiny-popover:
+        specifier: 8.1.6
+        version: 8.1.6(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
 
   components/Price:
     dependencies:
@@ -3028,6 +3049,12 @@ packages:
 
   react-responsive-masonry@2.7.1:
     resolution: {integrity: sha512-Q+u+nOH87PzjqGFd2PgTcmLpHPZnCmUPREHYoNBc8dwJv6fi51p9U6hqwG8g/T8MN86HrFjrU+uQU6yvETU7cA==}
+    
+  react-tiny-popover@8.1.6:
+    resolution: {integrity: sha512-jeZnGqHxb5TX7pCzpqLoVJned7DTVnLrLoCQQGFTyvlxXB/QUaet7O0krG22t5FReMBH035SLnzThKvk8tIfsg==}
+    peerDependencies:
+      react: '>=16.8.0'
+      react-dom: '>=16.8.0'
 
   react@19.0.0:
     resolution: {integrity: sha512-V8AVnmPIICiWpGfm6GLzCR/W5FXLchHop40W4nXBmdlEceh16rCN8O8LNWm5bh5XUX91fh7KpA+W0TgMKmgTpQ==}
@@ -6615,6 +6642,11 @@ snapshots:
   react-is@18.3.1: {}
 
   react-responsive-masonry@2.7.1: {}
+  
+  react-tiny-popover@8.1.6(react-dom@19.0.0(react@19.0.0))(react@19.0.0):
+    dependencies:
+      react: 19.0.0
+      react-dom: 19.0.0(react@19.0.0)
 
   react@19.0.0: {}
 

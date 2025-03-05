@@ -1,2 +1,1 @@
-export { default as StarMedium } from './Medium';
-export { default as StarSmall } from './Small';
+export { default as Star } from './Small';

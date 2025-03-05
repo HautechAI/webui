@@ -1,2 +1,1 @@
-export { default as CommunityMedium } from './Medium';
-export { default as CommunitySmall } from './Small';
+export { default as Community } from './Small';

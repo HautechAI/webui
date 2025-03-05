@@ -1,2 +1,1 @@
-export { default as HistoryMedium } from './Medium';
-export { default as HistorySmall } from './Small';
+export { default as History } from './Small';

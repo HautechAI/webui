@@ -1,2 +1,1 @@
-export { default as MoreMedium } from './Medium';
-export { default as MoreSmall } from './Small';
+export { default as More } from './Small';
