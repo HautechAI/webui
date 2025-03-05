@@ -1,0 +1,49 @@
+import { styled } from '@hautechai/webui.themeprovider';
+
+export const MaterialContainer = styled.div`
+    display: flex;
+    overflow: hidden;
+    gap: ${({ theme }) => theme.foundation.spacing.xl}px;
+    border-bottom-color: ${({ theme }) => theme.palette.layout.strokes};
+    border-bottom-style: solid;
+    border-bottom-width: ${({ theme }) => theme.foundation.stroke.thin}px;
+    padding: 0 ${({ theme }) => theme.foundation.spacing.l}px;
+`;
+
+export const HIGContainer = styled.div`
+    display: flex;
+    border-color: ${({ theme }) => theme.palette.layout.strokes};
+    border-radius: ${({ theme }) => theme.foundation.cornerRadius.s}px;
+    border-style: solid;
+    border-width: ${({ theme }) => theme.foundation.stroke.thin}px;
+    overflow: hidden;
+    padding: ${({ theme }) => theme.foundation.spacing.xs}px;
+    gap: ${({ theme }) => theme.foundation.spacing.s}px;
+`;
+
+export const HIGRow = styled.div<{ selected: boolean }>`
+    flex-direction: row;
+    display: flex;
+    padding: ${({ theme }) => theme.foundation.spacing.m}px ${({ theme }) => theme.foundation.spacing.s}px;
+    background-color: ${({ theme, selected }) => (selected ? theme.palette.layout.surfaceHigh : 'transparent')};
+    pointer: cursor;
+    border-radius: ${({ theme }) => theme.foundation.cornerRadius.s}px;
+    gap: ${({ theme }) => theme.foundation.spacing.s}px;
+`;
+
+export const MaterialRow = styled.div<{ selected: boolean }>`
+    flex-direction: row;
+    display: flex;
+    padding: ${({ theme }) => theme.foundation.spacing.s}px;
+    padding-bottom: ${({ theme }) => theme.foundation.spacing.ml}px;
+    pointer: cursor;
+    gap: ${({ theme }) => theme.foundation.spacing.s}px;
+    border-bottom-color: ${({ theme, selected }) => (selected ? theme.palette.actions.primary : 'transparent')};
+    border-bottom-style: solid;
+    border-bottom-width: ${({ theme }) => theme.foundation.stroke.thick}px;
+`;
+
+export const EmptySpace = styled.div`
+    height: 16px;
+    width: 16px;
+`;
