@@ -5,7 +5,7 @@ import { IconButton } from '../../../components/IconButton/src';
 import { Burger } from '../../../components/Icon/src';
 
 export default {
-    title: 'Data Display/Row',
+    title: 'Layout/Row',
     component: Row,
     parameters: {
         layout: 'centered',

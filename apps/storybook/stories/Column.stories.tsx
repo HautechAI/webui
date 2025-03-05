@@ -2,7 +2,7 @@ import { Button } from '../../../components/Button/src';
 import { Column } from '../../../components/Column/src';
 
 export default {
-    title: 'Data Display/Column',
+    title: 'Layout/Column',
     component: Column,
     parameters: {
         layout: 'centered',
