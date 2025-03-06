@@ -27,7 +27,7 @@ export const HIGRow = styled.div<{ selected: boolean }>`
     align-items: center;
     padding: ${({ theme }) => theme.foundation.spacing.m}px ${({ theme }) => theme.foundation.spacing.s}px;
     background-color: ${({ theme, selected }) => (selected ? theme.palette.layout.surfaceHigh : 'transparent')};
-    pointer: cursor;
+    cursor: pointer;
     border-radius: ${({ theme }) => theme.foundation.cornerRadius.s}px;
     gap: ${({ theme }) => theme.foundation.spacing.s}px;
 `;
@@ -37,7 +37,7 @@ export const MaterialRow = styled.div<{ selected: boolean }>`
     display: flex;
     padding: ${({ theme }) => theme.foundation.spacing.s}px;
     padding-bottom: ${({ theme }) => theme.foundation.spacing.ml}px;
-    pointer: cursor;
+    cursor: pointer;
     gap: ${({ theme }) => theme.foundation.spacing.s}px;
     border-bottom-color: ${({ theme, selected }) => (selected ? theme.palette.actions.primary : 'transparent')};
     border-bottom-style: solid;
