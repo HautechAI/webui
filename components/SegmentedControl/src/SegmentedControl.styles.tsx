@@ -44,9 +44,15 @@ export const MaterialRow = styled.div<{ selected: boolean }>`
     border-bottom-width: ${({ theme }) => theme.foundation.stroke.thick}px;
 `;
 
-export const EmptySpace = styled.div<{ whitespace?: keyof ThemeType['foundation']['spacing'] }>`
+export const WhiteSpace = styled.div<{ whitespace?: keyof ThemeType['foundation']['spacing'] }>`
     height: ${({ theme, whitespace }) =>
         whitespace ? theme.foundation.spacing[whitespace] : theme.foundation.spacing.l}px;
     width: ${({ theme, whitespace }) =>
         whitespace ? theme.foundation.spacing[whitespace] : theme.foundation.spacing.l}px;
+`;
+
+export const Icon = styled.div<{ selected: boolean }>`
+    display: flex;
+    color: ${({ theme, selected }) =>
+        selected ? theme.palette.layout.onSurface.primary : theme.palette.layout.onSurface.tertiary};
 `;

@@ -1,6 +1,6 @@
-import React, { useCallback, useMemo, useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { Typography } from '@hautechai/webui.typography';
-import { MaterialContainer, HIGContainer, MaterialRow, HIGRow, EmptySpace } from './SegmentedControl.styles';
+import { MaterialContainer, HIGContainer, MaterialRow, HIGRow, WhiteSpace, Icon } from './SegmentedControl.styles';
 import { ThemeType } from '@hautechai/webui.themeprovider';
 
 type Option = {
@@ -34,8 +34,8 @@ const SegmentedControl = ({
         [onTabChange],
     );
 
-    const Container = useMemo(() => (material ? MaterialContainer : HIGContainer), [material]);
-    const Row = useMemo(() => (material ? MaterialRow : HIGRow), [material]);
+    const Container = material ? MaterialContainer : HIGContainer;
+    const Row = material ? MaterialRow : HIGRow;
 
     return (
         <Container>
@@ -44,8 +44,8 @@ const SegmentedControl = ({
                 const showEmptySpace = !material && (label || !!leadingIcon === !!trailingIcon);
                 return (
                     <Row selected={isSelected} key={index} onClick={() => handleClick(index)}>
-                        {showEmptySpace && <EmptySpace whitespace={whitespace} />}
-                        {leadingIcon}
+                        {showEmptySpace && <WhiteSpace whitespace={whitespace} />}
+                        <Icon selected={isSelected}>{leadingIcon}</Icon>
                         {label && (
                             <Typography
                                 variant={isSelected ? 'LabelSmallEmphasized' : 'LabelSmallRegular'}
@@ -54,8 +54,8 @@ const SegmentedControl = ({
                                 {label}
                             </Typography>
                         )}
-                        {trailingIcon}
-                        {showEmptySpace && <EmptySpace whitespace={whitespace} />}
+                        <Icon selected={isSelected}>{trailingIcon}</Icon>
+                        {showEmptySpace && <WhiteSpace whitespace={whitespace} />}
                     </Row>
                 );
             })}
