@@ -1,7 +1,7 @@
 import { fn } from '@storybook/test';
 
 import { TextButton } from '../../../components/TextButton/src';
-import { Upload } from '../../../components/Icon/src';
+import { UploadIcon } from '../../../components/Icon/src';
 
 export default {
     title: 'Input/TextButton',
@@ -31,7 +31,7 @@ export const PrimaryMediumWithLeadingIcon = {
         size: 'medium',
         disabled: false,
         label: 'TextButton',
-        leadingIcon: <Upload size={20} />,
+        leadingIcon: <UploadIcon size={20} />,
     },
 };
 
@@ -41,7 +41,7 @@ export const PrimaryMediumWithTrailingIcon = {
         size: 'medium',
         disabled: false,
         label: 'TextButton',
-        trailingIcon: <Upload size={20} />,
+        trailingIcon: <UploadIcon size={20} />,
     },
 };
 

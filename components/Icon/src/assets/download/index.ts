@@ -1,1 +1,1 @@
-export { default as Download } from './Small';
+export { default as DownloadIcon } from './Small';

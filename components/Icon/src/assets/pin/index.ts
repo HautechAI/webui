@@ -1,1 +1,1 @@
-export { default as Pin } from './Small';
+export { default as PinIcon } from './Small';

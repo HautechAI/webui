@@ -1,1 +1,1 @@
-export { default as Star } from './Small';
+export { default as StarIcon } from './Small';

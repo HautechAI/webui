@@ -1,1 +1,1 @@
-export { default as Settings } from './Small';
+export { default as SettingsIcon } from './Small';

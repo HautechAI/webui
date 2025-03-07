@@ -1,1 +1,1 @@
-export { default as Loader } from './Small';
+export { default as LoaderIcon } from './Small';

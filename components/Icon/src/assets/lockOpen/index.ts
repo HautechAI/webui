@@ -1,1 +1,1 @@
-export { default as LockOpen } from './Small';
+export { default as LockOpenIcon } from './Small';

@@ -1,1 +1,1 @@
-export { default as Brush } from './Small';
+export { default as BrushIcon } from './Small';

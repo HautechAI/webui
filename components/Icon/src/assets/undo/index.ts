@@ -1,1 +1,1 @@
-export { default as Undo } from './Small';
+export { default as UndoIcon } from './Small';

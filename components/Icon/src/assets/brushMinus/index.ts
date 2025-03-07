@@ -1,1 +1,1 @@
-export { default as BrushMinus } from './Small';
+export { default as BrushMinusIcon } from './Small';
