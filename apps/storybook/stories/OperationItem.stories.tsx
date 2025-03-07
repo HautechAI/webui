@@ -17,7 +17,6 @@ export const Main = {
     args: {
         avatars: {
             images: [img, img, img, img],
-            maxAmount: 4,
             size: 24,
         },
         badge: {

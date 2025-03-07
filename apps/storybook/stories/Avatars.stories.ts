@@ -14,19 +14,11 @@ export default {
 export const WithImage = {
     args: {
         images: [img, img, img],
-        maxAmount: 3,
     },
 };
 
 export const Empty = {
     args: {
         images: [],
-    },
-};
-
-export const CutBymaxAmount = {
-    args: {
-        images: [img, img, img],
-        maxAmount: 2,
     },
 };
