@@ -1,7 +1,7 @@
 import { css, styled, ThemeType } from '@hautechai/webui.themeprovider';
 
 const Container = styled.div<
-    Pick<DataListProps, 'spacing' | 'stretch' | 'align' | 'justify' | 'fullHeight'> & { $wrap?: boolean }
+    Pick<DataListProps, 'spacing' | 'stretch' | 'align' | 'justify' | 'fullHeight' | 'noOverflow'> & { $wrap?: boolean }
 >`
     display: flex;
     flex-direction: row;
@@ -30,6 +30,11 @@ const Container = styled.div<
         css`
             height: 100%;
         `}
+    ${({ noOverflow }) =>
+        noOverflow &&
+        css`
+            overflow: hidden;
+        `}
     gap: ${({ theme, spacing }) => (spacing ? theme.foundation.spacing[spacing] : 0)}px;
 `;
 
@@ -45,6 +50,7 @@ export type DataListProps = {
     align?: Align;
     justify?: Justify;
     fullHeight?: boolean;
+    noOverflow?: boolean;
 };
 
 export const Row = (props: DataListProps) => {
