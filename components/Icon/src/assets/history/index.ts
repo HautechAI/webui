@@ -1,1 +1,1 @@
-export { default as History } from './Small';
+export { default as HistoryIcon } from './Small';

@@ -1,1 +1,1 @@
-export { default as Danger } from './Small';
+export { default as DangerIcon } from './Small';

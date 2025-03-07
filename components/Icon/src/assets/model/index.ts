@@ -1,1 +1,1 @@
-export { default as Model } from './Small';
+export { default as ModelIcon } from './Small';

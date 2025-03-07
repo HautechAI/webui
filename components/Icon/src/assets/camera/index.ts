@@ -1,1 +1,1 @@
-export { default as Camera } from './Small';
+export { default as CameraIcon } from './Small';

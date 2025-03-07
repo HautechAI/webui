@@ -1,1 +1,1 @@
-export { default as Filter } from './Small';
+export { default as FilterIcon } from './Small';

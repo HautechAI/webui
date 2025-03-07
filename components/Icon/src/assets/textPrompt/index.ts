@@ -1,1 +1,1 @@
-export { default as TextPrompt } from './Small';
+export { default as TextPromptIcon } from './Small';

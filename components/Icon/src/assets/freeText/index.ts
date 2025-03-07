@@ -1,2 +1,2 @@
-export { default as FreeText } from './Small';
-export { default as FreeTextBold } from './SmallBold';
+export { default as FreeTextIcon } from './Small';
+export { default as FreeTextBoldIcon } from './SmallBold';

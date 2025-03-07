@@ -1,1 +1,1 @@
-export { default as Archive } from './Small';
+export { default as ArchiveIcon } from './Small';

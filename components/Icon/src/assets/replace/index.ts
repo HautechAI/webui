@@ -1,1 +1,1 @@
-export { default as Replace } from './Small';
+export { default as ReplaceIcon } from './Small';

@@ -1,2 +1,2 @@
-export { default as Folder } from './Small';
-export { default as FolderBold } from './SmallBold';
+export { default as FolderIcon } from './Small';
+export { default as FolderBoldIcon } from './SmallBold';

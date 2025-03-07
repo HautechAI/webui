@@ -1,1 +1,1 @@
-export { default as Enhance } from './Small';
+export { default as EnhanceIcon } from './Small';

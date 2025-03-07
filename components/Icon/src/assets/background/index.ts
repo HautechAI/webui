@@ -1,1 +1,1 @@
-export { default as Background } from './Small';
+export { default as BackgroundIcon } from './Small';
