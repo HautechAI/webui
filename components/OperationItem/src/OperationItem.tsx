@@ -1,4 +1,4 @@
-import { Avatars } from '@hautechai/webui.avatars';
+import { Previews } from '@hautechai/webui.previews';
 import { Badge } from '@hautechai/webui.badge';
 import { Chip } from '@hautechai/webui.chip';
 import { OperationItemProps } from './OperationItem.types';
@@ -17,7 +17,7 @@ export const OperationItem = (props: OperationItemProps) => {
                             {props.title}
                         </Typography>
                     </Row>
-                    <Avatars {...props.avatars} />
+                    <Previews {...props.previews} images={props.previews.images.slice(0, 4)} />
                     <Badge {...props.badge} />
                 </Row>
                 <Typography color="layout.onSurface.tertiary" variant="LabelSmallRegular">

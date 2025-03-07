@@ -1,15 +1,20 @@
 import { styled } from '@hautechai/webui.themeprovider';
 
 export default {
-    AvatarContainer: styled.div<{ size: number }>`
+    Container: styled('div')`
+        display: flex;
+        flex-direction: row;
+    `,
+    Preview: styled.img`
+        border-radius: 50%;
+        height: 24px;
+        width: 24px;
+    `,
+    PreviewContainer: styled.div`
         border-color: ${({ theme }) => theme.palette.layout.surfaceLow};
         border-radius: 50%;
         border-style: solid;
         border-width: ${({ theme }) => theme.foundation.stroke.standard}px;
-        margin-left: -${({ size }) => size / 4}px;
-    `,
-    Container: styled('div')`
-        display: flex;
-        flex-direction: row;
+        margin-left: -6px;
     `,
 };

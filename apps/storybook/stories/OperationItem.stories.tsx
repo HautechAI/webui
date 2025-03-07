@@ -15,7 +15,7 @@ export default {
 
 export const Main = {
     args: {
-        avatars: {
+        previews: {
             images: [img, img, img, img],
             size: 24,
         },

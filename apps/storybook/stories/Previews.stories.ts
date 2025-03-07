@@ -1,9 +1,9 @@
-import { Avatars } from '../../../components/Avatars/src';
+import { Previews } from '../../../components/Previews/src';
 import img from '../../../assets/Avatar.png';
 
 export default {
-    title: 'Data Display/Avatars',
-    component: Avatars,
+    title: 'Data Display/Previews',
+    component: Previews,
     parameters: {
         layout: 'centered',
     },
