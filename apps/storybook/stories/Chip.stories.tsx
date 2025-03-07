@@ -1,6 +1,6 @@
 import { Chip } from '../../../components/Chip/src';
 import Desert from '../../../assets/desert.png';
-import { UploadIcon } from '../../../components/Icon/src';
+import { Download } from '../../../components/Icon/src';
 
 export default {
     title: 'Data Display/Chip',
@@ -15,7 +15,7 @@ export default {
 
 export const WithIcon = {
     args: {
-        icon: <UploadIcon size={20} />,
+        icon: <Download size={14} />,
         label: 'Model',
     },
 };
