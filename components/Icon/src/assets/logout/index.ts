@@ -1,1 +1,1 @@
-export { default as Logout } from './Small';
+export { default as LogoutIcon } from './Small';

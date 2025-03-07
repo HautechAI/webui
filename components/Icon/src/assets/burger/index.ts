@@ -1,1 +1,1 @@
-export { default as Burger } from './Small';
+export { default as BurgerIcon } from './Small';

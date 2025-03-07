@@ -1,4 +1,4 @@
-import { Check } from '@hautechai/webui.icon';
+import { CheckIcon } from '@hautechai/webui.icon';
 import { styled } from '@hautechai/webui.themeprovider';
 import { PropsWithChildren } from 'react';
 
@@ -45,7 +45,7 @@ const StyledCheckmarkContainer = styled.span`
     }
 `;
 
-const StyledCheckmark = styled(Check)`
+const StyledCheckmark = styled(CheckIcon)`
     display: none;
     *:checked ~ * > & {
         display: block;

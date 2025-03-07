@@ -1,1 +1,1 @@
-export { default as Pose } from './Small';
+export { default as PoseIcon } from './Small';

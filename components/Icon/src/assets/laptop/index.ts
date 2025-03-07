@@ -1,1 +1,1 @@
-export { default as Laptop } from './Small';
+export { default as LaptopIcon } from './Small';

@@ -1,4 +1,4 @@
-import { Placeholder } from '../../../components/Icon/src';
+import { PlaceholderIcon } from '../../../components/Icon/src';
 import { Tile } from '../../../components/Tile/src';
 import Desert from '../../../assets/desert.png';
 
@@ -18,7 +18,7 @@ export const Main = {
 
 export const WithIcon = {
     args: {
-        icon: <Placeholder size={20} />,
+        icon: <PlaceholderIcon size={20} />,
     },
 };
 

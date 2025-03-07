@@ -1,3 +1,3 @@
-export { default as TShirt } from './Small';
+export { default as TShirtIcon } from './Small';
 
-export { default as TShirtBold } from './SmallBold';
+export { default as TShirtBoldIcon } from './SmallBold';

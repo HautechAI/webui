@@ -1,1 +1,1 @@
-export { default as Home } from './Small';
+export { default as HomeIcon } from './Small';

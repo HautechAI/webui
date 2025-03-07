@@ -1,1 +1,1 @@
-export { default as Edit } from './Small';
+export { default as EditIcon } from './Small';

@@ -1,1 +1,1 @@
-export { default as Minus } from './Small';
+export { default as MinusIcon } from './Small';

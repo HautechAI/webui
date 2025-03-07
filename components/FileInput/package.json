@@ -1,7 +1,7 @@
 {
     "name": "@hautechai/webui.fileinput",
     "description": "",
-    "version": "0.3.0",
+    "version": "0.3.15",
     "type": "module",
     "main": "src/index.tsx",
     "sideEffects": false,

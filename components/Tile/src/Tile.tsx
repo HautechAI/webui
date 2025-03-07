@@ -72,7 +72,7 @@ export const Tile = (props: TileProps) => {
 
     return (
         <StyledTile
-            size={size ?? (!width && !height) ? 'medium' : undefined} // default medium size if no other size or width/height is provided
+            size={size ?? (!width && !height ? 'medium' : undefined)} // default medium size if no other size or width/height is provided
             aspectRatio={aspectRatio ?? (!size && (!width || !height) ? 1 : undefined)} // default aspect ratio to 1 if no other aspect ratio or width/height is provided
             {...rest}
         >
