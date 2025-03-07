@@ -25,6 +25,7 @@ const StyledButton = styled(ButtonBase)<Required<Pick<IconButtonProps, 'variant'
                 background-color: ${theme.palette.layout.surfaceMid};
             `}
         color: ${({ theme }) => theme.palette.layout.onSurface.tertiary};
+        cursor: default;
     }
 `;
 
