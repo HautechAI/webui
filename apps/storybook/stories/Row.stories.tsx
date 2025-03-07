@@ -6,7 +6,7 @@ import { BurgerIcon } from '../../../components/Icon/src';
 
 export default {
     title: 'Data Display/Row',
-    component: Row,
+    component: Row as any,
     parameters: {
         layout: 'centered',
     },

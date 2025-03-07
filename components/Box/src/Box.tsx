@@ -57,6 +57,21 @@ const StyledBox = styled.div<Omit<BoxProps, 'icon'>>`
                   overflow: ${overflow};
               `
             : ''}
+
+
+    ${({ overflowX }) =>
+        overflowX
+            ? css`
+                  overflow-x: ${overflowX};
+              `
+            : ''}
+
+${({ overflowY }) =>
+        overflowY
+            ? css`
+                  overflow-y: ${overflowY};
+              `
+            : ''}
 `;
 
 export type BoxProps = PropsWithChildren<{
@@ -68,6 +83,8 @@ export type BoxProps = PropsWithChildren<{
     paddingBottom?: keyof ThemeType['foundation']['spacing'];
     paddingLeft?: keyof ThemeType['foundation']['spacing'];
     overflow?: 'hidden' | 'visible' | 'scroll' | 'auto';
+    overflowX?: 'hidden' | 'visible' | 'scroll' | 'auto';
+    overflowY?: 'hidden' | 'visible' | 'scroll' | 'auto';
 }>;
 
 export const Box = (props: BoxProps) => {
