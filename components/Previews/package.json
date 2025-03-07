@@ -18,7 +18,6 @@
     },
     "author": "HautechAI",
     "dependencies": {
-        "@hautechai/webui.avatar": "workspace:^",
         "@hautechai/webui.row": "workspace:^",
         "@hautechai/webui.themeprovider": "workspace:^"
     },

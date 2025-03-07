@@ -1,4 +1,3 @@
-import { Avatar } from '@hautechai/webui.avatar';
 import { PreviewsProps } from './Previews.types';
 import S from './Previews.styles';
 import { Row } from '@hautechai/webui.row';
