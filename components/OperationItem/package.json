@@ -1,7 +1,7 @@
 {
     "name": "@hautechai/webui.operationItem",
     "description": "",
-    "version": "0.3.12",
+    "version": "0.3.17",
     "type": "module",
     "main": "src/index.tsx",
     "publishConfig": {
@@ -18,12 +18,12 @@
     },
     "author": "HautechAI",
     "dependencies": {
-        "@hautechai/webui.previews": "workspace:^",
         "@hautechai/webui.badge": "workspace:^",
         "@hautechai/webui.chip": "workspace:^",
+        "@hautechai/webui.previews": "workspace:^",
         "@hautechai/webui.row": "workspace:^",
-        "@hautechai/webui.typography": "workspace:^",
-        "@hautechai/webui.themeprovider": "workspace:^"
+        "@hautechai/webui.themeprovider": "workspace:^",
+        "@hautechai/webui.typography": "workspace:^"
     },
     "license": "Apache-2.0"
 }
