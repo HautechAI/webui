@@ -1,12 +1,19 @@
 import { css, styled, ThemeType } from '@hautechai/webui.themeprovider';
 
-const Container = styled.div<Pick<DataListProps, 'spacing' | 'stretch' | 'align' | 'fullHeight'> & { $wrap?: boolean }>`
+const Container = styled.div<
+    Pick<DataListProps, 'spacing' | 'stretch' | 'align' | 'justify' | 'fullHeight'> & { $wrap?: boolean }
+>`
     display: flex;
     flex-direction: row;
     ${({ align }) =>
         align &&
         css`
             align-items: ${align};
+        `}
+    ${({ justify }) =>
+        justify &&
+        css`
+            justify-content: ${justify};
         `}
     ${({ $wrap }) =>
         $wrap &&
@@ -27,6 +34,7 @@ const Container = styled.div<Pick<DataListProps, 'spacing' | 'stretch' | 'align'
 `;
 
 type Align = 'start' | 'center' | 'end' | 'stretch';
+type Justify = 'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-around' | 'space-evenly';
 
 export type DataListProps = {
     className?: string;
@@ -35,6 +43,7 @@ export type DataListProps = {
     wrap?: boolean;
     stretch?: boolean;
     align?: Align;
+    justify?: Justify;
     fullHeight?: boolean;
 };
 
