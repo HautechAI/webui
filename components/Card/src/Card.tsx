@@ -25,7 +25,7 @@ export const Card = (props: CardProps) => {
                 <Column stretch></Column>
                 <Row spacing="s">
                     <IconButton icon={<MoreIcon size={20} />} size="small" variant="flat" />
-                    <IconButton icon={<DownloadIcon size={20} />} size="small" variant="flat" onClick={props.onDownloadIcon} />
+                    <IconButton icon={<DownloadIcon size={20} />} size="small" variant="flat" onClick={props.onDownload} />
                 </Row>
             </Row>
         </Column>
