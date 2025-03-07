@@ -77,6 +77,18 @@ importers:
         specifier: workspace:^
         version: link:../ThemeProvider
 
+  components/Avatars:
+    dependencies:
+      '@hautechai/webui.avatar':
+        specifier: workspace:^
+        version: link:../Avatar
+      '@hautechai/webui.row':
+        specifier: workspace:^
+        version: link:../Row
+      '@hautechai/webui.themeprovider':
+        specifier: workspace:^
+        version: link:../ThemeProvider
+
   components/Badge:
     dependencies:
       '@hautechai/webui.themeprovider':
@@ -284,6 +296,24 @@ importers:
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
         version: link:../ThemeProvider
+
+  components/OperationItem:
+    dependencies:
+      '@hautechai/webui.avatars':
+        specifier: workspace:^
+        version: link:../Avatars
+      '@hautechai/webui.badge':
+        specifier: workspace:^
+        version: link:../Badge
+      '@hautechai/webui.row':
+        specifier: workspace:^
+        version: link:../Row
+      '@hautechai/webui.themeprovider':
+        specifier: workspace:^
+        version: link:../ThemeProvider
+      '@hautechai/webui.typography':
+        specifier: workspace:^
+        version: link:../Typography
 
   components/Panel:
     dependencies:
