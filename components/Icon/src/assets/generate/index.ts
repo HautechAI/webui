@@ -1,2 +1,2 @@
-export { default as Generate } from './Small';
-export { default as GenerateBold } from './SmallBold';
+export { default as GenerateIcon } from './Small';
+export { default as GenerateBoldIcon } from './SmallBold';

@@ -1,1 +1,1 @@
-export { default as Community } from './Small';
+export { default as CommunityIcon } from './Small';

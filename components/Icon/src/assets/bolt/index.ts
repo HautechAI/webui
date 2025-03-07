@@ -1,1 +1,1 @@
-export { default as Bolt } from './Small';
+export { default as BoltIcon } from './Small';

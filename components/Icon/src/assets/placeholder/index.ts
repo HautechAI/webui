@@ -1,1 +1,1 @@
-export { default as Placeholder } from './Small';
+export { default as PlaceholderIcon } from './Small';

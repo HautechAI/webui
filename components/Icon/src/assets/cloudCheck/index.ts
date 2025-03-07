@@ -1,1 +1,1 @@
-export { default as CloudCheck } from './Small';
+export { default as CloudCheckIcon } from './Small';

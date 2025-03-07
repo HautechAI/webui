@@ -1,1 +1,1 @@
-export { default as Redo } from './Small';
+export { default as RedoIcon } from './Small';
