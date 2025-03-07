@@ -305,6 +305,9 @@ importers:
       '@hautechai/webui.badge':
         specifier: workspace:^
         version: link:../Badge
+      '@hautechai/webui.chip':
+        specifier: workspace:^
+        version: link:../Chip
       '@hautechai/webui.row':
         specifier: workspace:^
         version: link:../Row

@@ -20,6 +20,7 @@
     "dependencies": {
         "@hautechai/webui.avatars": "workspace:^",
         "@hautechai/webui.badge": "workspace:^",
+        "@hautechai/webui.chip": "workspace:^",
         "@hautechai/webui.row": "workspace:^",
         "@hautechai/webui.typography": "workspace:^",
         "@hautechai/webui.themeprovider": "workspace:^"

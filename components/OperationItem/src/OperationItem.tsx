@@ -1,5 +1,6 @@
 import { Avatars } from '@hautechai/webui.avatars';
 import { Badge } from '@hautechai/webui.badge';
+import { Chip } from '@hautechai/webui.chip';
 import { OperationItemProps } from './OperationItem.types';
 import S from './OperationItem.styles';
 import { Row } from '@hautechai/webui.row';
@@ -8,19 +9,28 @@ import { Typography } from '@hautechai/webui.typography';
 export const OperationItem = (props: OperationItemProps) => {
     return (
         <S.Container>
-            <Row align="center" justify="space-between" spacing="s">
-                <Row align="center" spacing="s">
-                    {props.unread && <S.UnreadIndicator />}
-                    <Typography color="layout.onSurface.secondary" variant="LabelMediumRegular">
-                        {props.title}
-                    </Typography>
+            <S.TopContainer>
+                <Row align="center" justify="space-between" spacing="s">
+                    <Row align="center" spacing="s">
+                        {props.unread && <S.UnreadIndicator />}
+                        <Typography color="layout.onSurface.secondary" variant="LabelMediumRegular">
+                            {props.title}
+                        </Typography>
+                    </Row>
+                    <Avatars {...props.avatars} />
+                    <Badge {...props.badge} />
                 </Row>
-                <Avatars {...props.avatars} />
-                <Badge {...props.badge} />
-            </Row>
-            <Typography color="layout.onSurface.tertiary" variant="LabelSmallRegular">
-                {props.date}
-            </Typography>
+                <Typography color="layout.onSurface.tertiary" variant="LabelSmallRegular">
+                    {props.date}
+                </Typography>
+            </S.TopContainer>
+            {props.chips && (
+                <Row spacing="m" wrap>
+                    {props.chips.map((chip) => (
+                        <Chip {...chip} />
+                    ))}
+                </Row>
+            )}
         </S.Container>
     );
 };
