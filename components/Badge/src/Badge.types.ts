@@ -1,7 +1,4 @@
-import { ReactNode } from 'react';
-import { ThemeType } from '@hautechai/webui.themeprovider';
-
-export type BadgeColor = 'success' | 'error' | 'warning';
+export type BadgeColor = 'success' | 'error' | 'info';
 
 export type BadgeProps = {
     color: BadgeColor;

@@ -25,9 +25,9 @@ export const Error = {
     },
 };
 
-export const Warning = {
+export const Info = {
     args: {
-        color: 'warning',
-        label: 'Warning',
+        color: 'info',
+        label: 'Info',
     },
 };
