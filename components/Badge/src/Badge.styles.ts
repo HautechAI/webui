@@ -4,16 +4,16 @@ import { BadgeColor } from './Badge.types';
 
 const getBackgroundColor = (color: BadgeColor, theme: ThemeType) =>
     ({
-        success: '#C9F3CC',
-        error: '#FBF4F3',
-        warning: '#F7EDCB',
+        success: theme.palette.actions.onSuccess,
+        error: theme.palette.actions.onError,
+        info: theme.palette.layout.surfaceMid,
     }[color]);
 
 const getTextColor = (color: BadgeColor, theme: ThemeType) =>
     ({
         success: theme.palette.actions.success,
         error: theme.palette.actions.error,
-        warning: '#96750B',
+        info: theme.palette.layout.onSurface.secondary,
     }[color]);
 
 export default {
