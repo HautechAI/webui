@@ -75,3 +75,43 @@ export const AlignCenter = {
         ),
     },
 };
+
+export const NoOverflow = {
+    args: {
+        noOverflow: true,
+        wrap: true,
+        children: (
+            <>
+                <Button label="Button" />
+                <Button label="Button" />
+                <Button label="Button" />
+                <Button label="Button" />
+                <Button label="Button" />
+                <Button label="Button" />
+                <Button label="Button" />
+                <Button label="Button" />
+                <Button label="Button" />
+                <Button label="Button" />
+                <Button label="Button" />
+                <Button label="Button" />
+                <Button label="Button" />
+                <Button label="Button" />
+            </>
+        ),
+    },
+    decorators: [
+        (Story: any) => (
+            <div
+                style={{
+                    display: 'flex',
+                    width: '200px',
+                    height: '200px',
+                    border: '1px solid red',
+                    flexDirection: 'column',
+                }}
+            >
+                <Story />
+            </div>
+        ),
+    ],
+};
