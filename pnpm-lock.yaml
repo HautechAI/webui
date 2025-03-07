@@ -89,6 +89,15 @@ importers:
         specifier: workspace:^
         version: link:../ThemeProvider
 
+  components/Badge:
+    dependencies:
+      '@hautechai/webui.themeprovider':
+        specifier: workspace:^
+        version: link:../ThemeProvider
+      '@hautechai/webui.typography':
+        specifier: workspace:^
+        version: link:../Typography
+
   components/Box:
     dependencies:
       '@hautechai/webui.themeprovider':

@@ -1,1 +1,1 @@
-export { default as Sun } from './Small';
+export { default as SunIcon } from './Small';

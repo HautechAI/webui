@@ -2,11 +2,11 @@ import { wrap } from 'module';
 import { Button } from '../../../components/Button/src';
 import { Row } from '../../../components/Row/src';
 import { IconButton } from '../../../components/IconButton/src';
-import { Burger } from '../../../components/Icon/src';
+import { BurgerIcon } from '../../../components/Icon/src';
 
 export default {
-    title: 'Layout/Row',
-    component: Row,
+    title: 'Data Display/Row',
+    component: Row as any,
     parameters: {
         layout: 'centered',
     },
@@ -69,8 +69,8 @@ export const AlignCenter = {
         align: 'center',
         children: (
             <>
-                <IconButton icon={<Burger />} />
-                <IconButton icon={<Burger />} size="small" />
+                <IconButton icon={<BurgerIcon />} />
+                <IconButton icon={<BurgerIcon />} size="small" />
             </>
         ),
     },

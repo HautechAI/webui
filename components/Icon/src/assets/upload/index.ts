@@ -1,1 +1,1 @@
-export { default as Upload } from './Small';
+export { default as UploadIcon } from './Small';

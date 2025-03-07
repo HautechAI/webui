@@ -67,3 +67,29 @@ export const Overflow = {
         overflow: 'scroll',
     },
 };
+export const OverflowX = {
+    args: {
+        children: (
+            <Column spacing="l">
+                <Button label="button" />
+                <Button label="button" />
+                <Button label="button" />
+            </Column>
+        ),
+        height: 100,
+        overflowX: 'scroll',
+    },
+};
+export const OverflowY = {
+    args: {
+        children: (
+            <Column spacing="l">
+                <Button label="button" />
+                <Button label="button" />
+                <Button label="button" />
+            </Column>
+        ),
+        height: 100,
+        overflowY: 'scroll',
+    },
+};

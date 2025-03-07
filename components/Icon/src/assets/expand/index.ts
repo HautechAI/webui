@@ -1,1 +1,1 @@
-export { default as Expand } from './Small';
+export { default as ExpandIcon } from './Small';

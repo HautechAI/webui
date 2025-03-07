@@ -7,6 +7,7 @@ const Container = styled.div<{ open?: boolean }>`
     width: 100%;
     height: 100%;
     pointer-events: none;
+    z-index: 999;
 `;
 
 const Backdrop = styled.div`

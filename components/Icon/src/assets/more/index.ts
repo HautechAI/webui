@@ -1,1 +1,1 @@
-export { default as More } from './Small';
+export { default as MoreIcon } from './Small';

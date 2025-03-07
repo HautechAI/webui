@@ -1,1 +1,1 @@
-export { default as Moon } from './Small';
+export { default as MoonIcon } from './Small';

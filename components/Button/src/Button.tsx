@@ -101,6 +101,7 @@ const StyledButton = styled(ButtonBase)<Required<Pick<ButtonProps, 'variant' | '
     :disabled {
         background-color: ${({ theme }) => theme.palette.layout.surfaceMid};
         color: ${({ theme }) => theme.palette.layout.onSurface.tertiary};
+        cursor: default;
     }
 `;
 

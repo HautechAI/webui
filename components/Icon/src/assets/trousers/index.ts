@@ -1,1 +1,1 @@
-export { default as Trousers } from './Small';
+export { default as TrousersIcon } from './Small';

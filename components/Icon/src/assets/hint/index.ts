@@ -1,1 +1,1 @@
-export { default as Hint } from './Small';
+export { default as HintIcon } from './Small';

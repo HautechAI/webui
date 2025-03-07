@@ -1,1 +1,1 @@
-export { default as Magic } from './Small';
+export { default as MagicIcon } from './Small';
