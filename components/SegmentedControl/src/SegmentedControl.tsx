@@ -48,7 +48,7 @@ const SegmentedControl = ({
                         <Icon selected={isSelected}>{leadingIcon}</Icon>
                         {label && (
                             <Typography
-                                variant={isSelected ? 'LabelSmallEmphasized' : 'LabelSmallRegular'}
+                                variant={'LabelSmallRegular'}
                                 color={isSelected ? 'layout.onSurface.primary' : 'layout.onSurface.tertiary'}
                             >
                                 {label}
