@@ -1,5 +1,5 @@
 {
-    "name": "@hautechai/webui.userbalance",
+    "name": "@hautechai/webui.operationItem",
     "description": "",
     "version": "0.3.17",
     "type": "module",
@@ -18,10 +18,12 @@
     },
     "author": "HautechAI",
     "dependencies": {
-        "@hautechai/webui.button": "workspace:^",
-        "@hautechai/webui.dataitem": "workspace:^",
-        "@hautechai/webui.panel": "workspace:^",
-        "@hautechai/webui.row": "workspace:^"
+        "@hautechai/webui.badge": "workspace:^",
+        "@hautechai/webui.chip": "workspace:^",
+        "@hautechai/webui.previews": "workspace:^",
+        "@hautechai/webui.row": "workspace:^",
+        "@hautechai/webui.themeprovider": "workspace:^",
+        "@hautechai/webui.typography": "workspace:^"
     },
     "license": "Apache-2.0"
 }

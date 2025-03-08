@@ -297,6 +297,27 @@ importers:
         specifier: workspace:^
         version: link:../ThemeProvider
 
+  components/OperationItem:
+    dependencies:
+      '@hautechai/webui.badge':
+        specifier: workspace:^
+        version: link:../Badge
+      '@hautechai/webui.chip':
+        specifier: workspace:^
+        version: link:../Chip
+      '@hautechai/webui.previews':
+        specifier: workspace:^
+        version: link:../Previews
+      '@hautechai/webui.row':
+        specifier: workspace:^
+        version: link:../Row
+      '@hautechai/webui.themeprovider':
+        specifier: workspace:^
+        version: link:../ThemeProvider
+      '@hautechai/webui.typography':
+        specifier: workspace:^
+        version: link:../Typography
+
   components/Panel:
     dependencies:
       '@hautechai/webui.themeprovider':
@@ -311,6 +332,15 @@ importers:
       react-tiny-popover:
         specifier: 8.1.6
         version: 8.1.6(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+
+  components/Previews:
+    dependencies:
+      '@hautechai/webui.row':
+        specifier: workspace:^
+        version: link:../Row
+      '@hautechai/webui.themeprovider':
+        specifier: workspace:^
+        version: link:../ThemeProvider
 
   components/Price:
     dependencies:
