@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Slider } from '../../../components/Slider/src';
 
 export default {
-    title: 'Data Display/Slider',
+    title: 'Input/Slider',
     component: Slider,
     parameters: {
         layout: 'centered',
