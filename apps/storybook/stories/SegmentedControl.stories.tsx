@@ -32,7 +32,8 @@ export const HIGWithIcons = {
             { leadingIcon: <ArrowAltRightIcon size={18} /> },
         ],
         defaultSelectedIndex: 1,
-        onTabChange: (index: number) => console.log('Selected tab:', index),
+        onTabChange: (event: React.MouseEvent<HTMLDivElement, MouseEvent>, index: number) =>
+            console.log('Selected tab:', index),
     },
 };
 

@@ -12,7 +12,7 @@ type Option = {
 export type SegmentedControlProps = {
     options: Option[];
     defaultSelectedIndex?: number;
-    onTabChange?: (index: number) => void;
+    onTabChange?: (event: React.MouseEvent<HTMLDivElement, MouseEvent>, index: number) => void;
     material?: boolean;
     whitespace?: keyof ThemeType['foundation']['spacing'];
 };
@@ -27,9 +27,9 @@ const SegmentedControl = ({
     const [selected, setSelected] = useState(defaultSelectedIndex);
 
     const handleClick = useCallback(
-        (index: number) => {
+        (e: React.MouseEvent<HTMLDivElement, MouseEvent>, index: number) => {
             setSelected(index);
-            if (onTabChange) onTabChange(index);
+            if (onTabChange) onTabChange(e, index);
         },
         [onTabChange],
     );
@@ -43,9 +43,9 @@ const SegmentedControl = ({
                 const isSelected = selected === index;
                 const showEmptySpace = !material && (label || !!leadingIcon === !!trailingIcon);
                 return (
-                    <Row selected={isSelected} key={index} onClick={() => handleClick(index)}>
+                    <Row selected={isSelected} key={index} onClick={(e) => handleClick(e, index)}>
                         {showEmptySpace && <WhiteSpace whitespace={whitespace} />}
-                        <Icon selected={isSelected}>{leadingIcon}</Icon>
+                        {leadingIcon && <Icon selected={isSelected}>{leadingIcon}</Icon>}
                         {label && (
                             <Typography
                                 variant={'LabelSmallRegular'}
@@ -54,7 +54,7 @@ const SegmentedControl = ({
                                 {label}
                             </Typography>
                         )}
-                        <Icon selected={isSelected}>{trailingIcon}</Icon>
+                        {trailingIcon && <Icon selected={isSelected}>{trailingIcon}</Icon>}
                         {showEmptySpace && <WhiteSpace whitespace={whitespace} />}
                     </Row>
                 );

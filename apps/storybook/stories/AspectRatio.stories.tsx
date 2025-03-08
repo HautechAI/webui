@@ -11,6 +11,7 @@ export default {
 
 export const Main = {
     args: {
-        onTabChange: (selectedTab: number) => console.log('Selected tab:', selectedTab),
+        onTabChange: (event: React.MouseEvent<HTMLDivElement, MouseEvent>, selectedTab: number) =>
+            console.log('Selected tab:', selectedTab),
     },
 };
