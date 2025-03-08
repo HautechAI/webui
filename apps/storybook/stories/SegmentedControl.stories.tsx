@@ -1,8 +1,8 @@
 import { SegmentedControl } from '../../../components/SegmentedControl/src';
-import { Upload, Hint, ArrowAltRight } from '../../../components/Icon/src';
+import { UploadIcon, HintIcon, ArrowAltRightIcon } from '../../../components/Icon/src';
 
 export default {
-    title: 'Navigation/SegmentedControl',
+    title: 'Navigation/Segmented Control',
     component: SegmentedControl,
     parameters: {
         layout: 'centered',
@@ -27,9 +27,9 @@ export const Material = {
 export const HIGWithIcons = {
     args: {
         options: [
-            { label: 'All', leadingIcon: <Upload size={18} /> },
-            { label: 'Classic', trailingIcon: <Hint size={18} /> },
-            { leadingIcon: <ArrowAltRight size={18} /> },
+            { label: 'All', leadingIcon: <UploadIcon size={18} /> },
+            { label: 'Classic', trailingIcon: <HintIcon size={18} /> },
+            { leadingIcon: <ArrowAltRightIcon size={18} /> },
         ],
         defaultSelectedIndex: 1,
         onTabChange: (index: number) => console.log('Selected tab:', index),

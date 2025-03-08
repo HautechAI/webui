@@ -3,7 +3,7 @@ import img from '../../../assets/Avatar.png';
 import { OperationItem } from '../../../components/OperationItem/src';
 
 export default {
-    title: 'Compositions/OperationItem',
+    title: 'Compositions/Operation Item',
     component: OperationItem,
     parameters: {
         layout: 'centered',

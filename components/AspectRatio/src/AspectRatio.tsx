@@ -1,5 +1,5 @@
 import { SegmentedControl, SegmentedControlProps } from '@hautechai/webui.segmentedcontrol';
-import { ArrowAltRight } from '@hautechai/webui.icon';
+import { ArrowAltRightIcon } from '@hautechai/webui.icon';
 import { styled } from '@hautechai/webui.themeprovider';
 
 const Box = styled.div<{ width: number; height: number }>`
@@ -20,7 +20,7 @@ export const AspectRatio = (props: SegmentedControlProps) => {
                 { label: '1:1', leadingIcon: <Box width={16} height={16} /> },
                 { label: '2:3', leadingIcon: <Box width={13} height={16} /> },
                 { label: '12:5', leadingIcon: <Box width={16} height={13} /> },
-                { leadingIcon: <ArrowAltRight /> },
+                { leadingIcon: <ArrowAltRightIcon /> },
             ]}
             whitespace="m"
         />
