@@ -20,6 +20,14 @@
     "dependencies": {
         "@hautechai/webui.segmentedcontrol": "workspace:^",
         "@hautechai/webui.themeprovider": "workspace:^",
+        "@hautechai/webui.typography": "workspace:^",
+        "@hautechai/webui.column": "workspace:^",
+        "@hautechai/webui.divider": "workspace:^",
+        "@hautechai/webui.box": "workspace:^",
+        "@hautechai/webui.row": "workspace:^",
+        "@hautechai/webui.slider": "workspace:^",
+        "@hautechai/webui.checkbox": "workspace:^",
+        "@hautechai/webui.modal": "workspace:^",
         "@hautechai/webui.icon": "workspace:^"
     },
     "license": "Apache-2.0"
