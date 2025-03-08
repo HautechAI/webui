@@ -1,4 +1,4 @@
-import { styled } from '@hautechai/webui.themeprovider';
+import { css, styled } from '@hautechai/webui.themeprovider';
 
 const Container = styled.div<{ open?: boolean }>`
     position: fixed;
@@ -8,6 +8,7 @@ const Container = styled.div<{ open?: boolean }>`
     height: 100%;
     pointer-events: none;
     z-index: 999;
+    display: ${({ open }) => (open ? 'block' : 'none')};
 `;
 
 const Backdrop = styled.div`
@@ -20,16 +21,45 @@ const Backdrop = styled.div`
     pointer-events: auto;
 `;
 
-const ContentContainer = styled.div`
+const ContentContainer = styled.div<{
+    customPosition: boolean;
+    contentPosition?: { left?: number; top?: number; right?: number; bottom?: number };
+}>`
     position: absolute;
-    left: 0;
-    top: 0;
     width: 100%;
     height: 100%;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: ${({ customPosition }) => (customPosition ? 'flex-start' : 'center')};
+    align-items: ${({ customPosition }) => (customPosition ? 'flex-start' : 'center')};
     pointer-events: none;
+
+    ${({ contentPosition }) =>
+        contentPosition?.left
+            ? css`
+                  left: ${contentPosition.left}px;
+              `
+            : ''};
+
+    ${({ contentPosition }) =>
+        contentPosition?.right
+            ? css`
+                  right: ${contentPosition.right}px;
+              `
+            : ''};
+
+    ${({ contentPosition }) =>
+        contentPosition?.bottom
+            ? css`
+                  bottom: ${contentPosition.bottom}px;
+              `
+            : ''};
+
+    ${({ contentPosition }) =>
+        contentPosition?.top
+            ? css`
+                  top: ${contentPosition.top}px;
+              `
+            : ''};
 `;
 
 const Content = styled.div`
@@ -40,13 +70,16 @@ export type ModalProps = {
     open?: boolean;
     onClose?: () => void;
     children: React.ReactNode;
+    contentPosition?: { left?: number; top?: number; right?: number; bottom?: number };
+    backdropStyle?: React.CSSProperties;
 };
 
 export const Modal = (props: ModalProps) => {
+    const contentPosition = { top: 0, left: 0, ...props.contentPosition };
     return (
-        <Container style={{ display: props.open ? 'block' : 'none' }}>
-            <Backdrop onClick={props.onClose} />
-            <ContentContainer>
+        <Container open={props.open}>
+            <Backdrop onClick={props.onClose} style={props.backdropStyle} />
+            <ContentContainer customPosition={!!props.contentPosition} contentPosition={contentPosition}>
                 <Content>{props.children}</Content>
             </ContentContainer>
         </Container>
