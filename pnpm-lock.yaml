@@ -372,6 +372,12 @@ importers:
         specifier: workspace:^
         version: link:../ThemeProvider
 
+  components/Slider:
+    dependencies:
+      '@hautechai/webui.themeprovider':
+        specifier: workspace:^
+        version: link:../ThemeProvider
+
   components/Table:
     dependencies:
       '@hautechai/webui.themeprovider':
