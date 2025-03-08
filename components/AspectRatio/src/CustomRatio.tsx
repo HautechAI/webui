@@ -19,18 +19,20 @@ import {
 } from './styles';
 import { AspectRatioProps } from './AspectRatio';
 
+export const maxSize = 320;
+
 const aspectRatios: Record<string, { width: number; height: number; sliderOrder: number; portrait?: boolean }> = {
-    '1:1': { width: 320, height: 320, sliderOrder: 4 },
+    '1:1': { width: maxSize, height: maxSize, sliderOrder: 4 },
 
-    '7:9': { width: Math.round((320 / 9) * 7), height: 320, portrait: true, sliderOrder: 0 },
-    '13:19': { width: Math.round((320 / 19) * 13), height: 320, portrait: true, sliderOrder: 1 },
-    '4:7': { width: Math.round((320 / 7) * 4), height: 320, portrait: true, sliderOrder: 2 },
-    '5:12': { width: Math.round((320 / 12) * 5), height: 320, portrait: true, sliderOrder: 3 },
+    '7:9': { width: Math.round((maxSize / 9) * 7), height: maxSize, portrait: true, sliderOrder: 0 },
+    '13:19': { width: Math.round((maxSize / 19) * 13), height: maxSize, portrait: true, sliderOrder: 1 },
+    '4:7': { width: Math.round((maxSize / 7) * 4), height: maxSize, portrait: true, sliderOrder: 2 },
+    '5:12': { width: Math.round((maxSize / 12) * 5), height: maxSize, portrait: true, sliderOrder: 3 },
 
-    '9:7': { width: 320, height: Math.round((320 / 9) * 7), portrait: false, sliderOrder: 8 },
-    '19:13': { width: 320, height: Math.round((320 / 19) * 13), portrait: false, sliderOrder: 7 },
-    '7:4': { width: 320, height: Math.round((320 / 7) * 4), portrait: false, sliderOrder: 6 },
-    '12:5': { width: 320, height: Math.round((320 / 12) * 5), portrait: false, sliderOrder: 5 },
+    '9:7': { width: maxSize, height: Math.round((maxSize / 9) * 7), portrait: false, sliderOrder: 8 },
+    '19:13': { width: maxSize, height: Math.round((maxSize / 19) * 13), portrait: false, sliderOrder: 7 },
+    '7:4': { width: maxSize, height: Math.round((maxSize / 7) * 4), portrait: false, sliderOrder: 6 },
+    '12:5': { width: maxSize, height: Math.round((maxSize / 12) * 5), portrait: false, sliderOrder: 5 },
 };
 
 type AspectRatios = keyof typeof aspectRatios;

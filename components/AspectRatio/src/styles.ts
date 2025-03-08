@@ -1,4 +1,5 @@
 import { styled } from '@hautechai/webui.themeprovider';
+import { maxSize } from './CustomRatio';
 
 export const OptionLabel = styled.div`
     padding-left: ${({ theme }) => theme.foundation.spacing.ml}px;
@@ -7,8 +8,8 @@ export const OptionLabel = styled.div`
 `;
 
 export const AspectRatioBoxContainer = styled.div`
-    min-width: 322px;
-    min-height: 322px;
+    min-width: ${({}) => maxSize + 2}px;
+    min-height: ${({}) => maxSize + 2}px;
     align-items: center;
     justify-content: center;
     display: flex;
