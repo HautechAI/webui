@@ -6,6 +6,7 @@ import { Row } from '@hautechai/webui.row';
 export type UserBalanceProps = {
     balance: string;
     label?: string;
+    onTopUpClick?: () => void;
 };
 
 export const UserBalance = (props: UserBalanceProps) => {
@@ -14,7 +15,7 @@ export const UserBalance = (props: UserBalanceProps) => {
         <Panel hierarchy="high">
             <Row spacing="ml" stretch>
                 <DataItem label={label} value={props.balance} size="small" stretch />
-                <Button label="Top up" size="small" />
+                <Button label="Top up" size="small" onClick={props.onTopUpClick} />
             </Row>
         </Panel>
     );

@@ -9,7 +9,7 @@ export default {
         layout: 'centered',
     },
     tags: ['autodocs'],
-    args: { onTopUp: fn() as any },
+    args: { onTopUpClick: fn() as any },
     decorators: [
         (Story: any) => (
             <div style={{ width: '300px' }}>
