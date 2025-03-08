@@ -4,7 +4,7 @@ import { Column } from '../../../components/Column/src';
 import { Tile } from '../../../components/Tile/src';
 
 export default {
-    title: 'Data Display/Box',
+    title: 'Layout/Box',
     component: Box,
     parameters: {
         layout: 'centered',
