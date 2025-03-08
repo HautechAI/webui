@@ -84,7 +84,7 @@ export const CheckAsDefault = styled.div`
     display: flex;
     flex-direction: row;
     gap: ${({ theme }) => theme.foundation.spacing.m}px;
-    padding-top: ${({ theme }) => theme.foundation.spacing.xl}px;
-    padding-left: ${({ theme }) => theme.foundation.spacing.ml}px;
+    margin-top: ${({ theme }) => theme.foundation.spacing.xl}px;
+    margin-left: ${({ theme }) => theme.foundation.spacing.ml}px;
     align-items: center;
 `;

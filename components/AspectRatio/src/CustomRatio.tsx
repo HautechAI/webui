@@ -65,6 +65,14 @@ const CustomRatio = (props: AspectRatioProps) => {
         [props.onAspectRatioChange],
     );
 
+    const onClickDefaultCheckbox = useCallback(
+        (checked: boolean) => {
+            setDefaultChecked(checked);
+            props.onCheckAsDefault?.(selectedRatio, checked);
+        },
+        [props.onCheckAsDefault, selectedRatio],
+    );
+
     const renderOption = (option: AspectRatios, description?: string) => (
         <Ratio
             selected={selectedRatio === option}
@@ -152,8 +160,8 @@ const CustomRatio = (props: AspectRatioProps) => {
                 </Typography>
                 <LockIcon size={20} color="layout.onSurface.secondary" />
             </CustomRatioContainer>
-            <CheckAsDefault onClick={() => props.onCheckAsDefault?.(selectedRatio, defaultChecked)}>
-                <Checkbox checked={defaultChecked} onChange={setDefaultChecked} />
+            <CheckAsDefault>
+                <Checkbox checked={defaultChecked} onChange={onClickDefaultCheckbox} />
                 <Typography variant="LabelSmallRegular" color="layout.onSurface.primary">
                     Set as default
                 </Typography>
