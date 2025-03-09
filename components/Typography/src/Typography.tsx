@@ -39,7 +39,7 @@ const LabelMediumButton = styled(BaseText)`
     font-size: 16px;
     font-style: normal;
     font-weight: 500;
-    line-height: 20px;
+    line-height: 24px;
 `;
 
 const LabelMediumEmphasized = styled(BaseText)`
