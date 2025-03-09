@@ -23,11 +23,14 @@ const Icon = styled('div')`
     width: 20px;
 `;
 
-const Image = styled('img')`
+const Image = styled('div')<{ src: string }>`
     border-color: ${({ theme }) => theme.palette.layout.strokes};
     border-radius: ${({ theme }) => theme.foundation.cornerRadius.xs}px;
     border-style: solid;
     border-width: ${({ theme }) => theme.foundation.stroke.thin}px;
+    background-image: url(${(props) => props.src});
+    background-position: center;
+    background-size: cover;
     height: 20px;
     width: 20px;
 `;
@@ -66,7 +69,9 @@ export const Chip = (props: ChipProps) => {
                 </Icon>
             )}
             {props.image && <Image src={props.image} />}
-            <Label variant="LabelSmallRegular" maxWidth={props.maxWidth}>{props.label}</Label>
+            <Label variant="LabelSmallRegular" maxWidth={props.maxWidth}>
+                {props.label}
+            </Label>
         </Container>
     );
 };
