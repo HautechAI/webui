@@ -1,17 +1,72 @@
-import { ChipProps } from './Chip.types';
-import S from './Chip.styles';
-import { Row } from '@hautechai/webui.row';
+import { css, styled } from '@hautechai/webui.themeprovider';
+import { Typography } from '@hautechai/webui.typography';
+import React, { ReactNode } from 'react';
+
+const Container = styled('div')`
+    display: flex;
+    flex-direction: row;
+    border-color: ${({ theme }) => theme.palette.layout.strokes};
+    border-radius: ${({ theme }) => theme.foundation.cornerRadius.s}px;
+    border-style: solid;
+    border-width: ${({ theme }) => theme.foundation.stroke.thin}px;
+    gap: ${({ theme }) => theme.foundation.spacing.s}px;
+    padding: ${({ theme }) => theme.foundation.spacing.s}px;
+`;
+
+const Icon = styled('div')`
+    align-self: center;
+    border-color: ${({ theme }) => theme.palette.layout.strokes};
+    border-radius: ${({ theme }) => theme.foundation.cornerRadius.s}px;
+    border-style: solid;
+    border-width: ${({ theme }) => theme.foundation.stroke.thin}px;
+    height: 20px;
+    width: 20px;
+`;
+
+const Image = styled('img')`
+    border-color: ${({ theme }) => theme.palette.layout.strokes};
+    border-radius: ${({ theme }) => theme.foundation.cornerRadius.xs}px;
+    border-style: solid;
+    border-width: ${({ theme }) => theme.foundation.stroke.thin}px;
+    height: 20px;
+    width: 20px;
+`;
+
+const Label = styled(Typography)<{ maxWidth?: number }>`
+    ${({ theme, maxWidth }) =>
+        maxWidth &&
+        css`
+            max-width: ${maxWidth}px;
+        `}
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+`;
+
+export type ChipProps = {
+    icon?: ReactNode;
+    image?: string;
+    label: string;
+    maxWidth?: number;
+};
 
 export const Chip = (props: ChipProps) => {
     return (
-        <S.Container>
-            <Row align="center" spacing="s">
-                {props.icon && <S.Icon>{props.icon}</S.Icon>}
-                {props.image && <S.Image src={props.image} />}
-                <S.Text color="layout.onSurface.primary" variant="LabelSmallRegular">
-                    {props.label}
-                </S.Text>
-            </Row>
-        </S.Container>
+        <Container>
+            {props.icon && (
+                <Icon>
+                    {React.Children.map(props.icon, (child) => {
+                        if (React.isValidElement(child)) {
+                            return React.cloneElement(child, {
+                                size: 20,
+                            } as any);
+                        }
+                        return child;
+                    })}
+                </Icon>
+            )}
+            {props.image && <Image src={props.image} />}
+            <Label variant="LabelSmallRegular" maxWidth={props.maxWidth}>{props.label}</Label>
+        </Container>
     );
 };

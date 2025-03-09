@@ -140,6 +140,7 @@ const variants = {
 };
 
 export type TypographyProps = {
+    className?: string;
     variant: keyof typeof variants;
 
     children: React.ReactNode;

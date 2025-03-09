@@ -15,7 +15,7 @@ export default {
 
 export const WithIcon = {
     args: {
-        icon: <DownloadIcon size={14} />,
+        icon: <DownloadIcon />,
         label: 'Model',
     },
 };

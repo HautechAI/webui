@@ -7,6 +7,6 @@ export type OperationItemProps = {
     chips?: ChipProps[];
     date: string;
     previews: PreviewsProps;
-    unread: boolean;
+    unread?: boolean;
     title: string;
 };
