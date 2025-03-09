@@ -154,12 +154,14 @@ const CustomRatio = (props: AspectRatioProps) => {
                 <Divider />
             </Box>
             <Box paddingBottom="xs">{renderOption('1:1', '(Square)')}</Box>
-            <CustomRatioContainer onClick={props.onPressCustomRatio}>
-                <Typography variant="LabelSmallRegular" color="layout.onSurface.primary">
-                    Custom
-                </Typography>
-                <LockIcon size={20} color="layout.onSurface.secondary" />
-            </CustomRatioContainer>
+            {props.onPressCustomRatio && (
+                <CustomRatioContainer onClick={props.onPressCustomRatio}>
+                    <Typography variant="LabelSmallRegular" color="layout.onSurface.primary">
+                        Custom
+                    </Typography>
+                    <LockIcon size={20} color="layout.onSurface.secondary" />
+                </CustomRatioContainer>
+            )}
             <CheckAsDefault>
                 <Checkbox checked={defaultChecked} onChange={onClickDefaultCheckbox} />
                 <Typography variant="LabelSmallRegular" color="layout.onSurface.primary">
