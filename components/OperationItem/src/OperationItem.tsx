@@ -26,8 +26,8 @@ export const OperationItem = (props: OperationItemProps) => {
             </S.TopContainer>
             {props.chips && (
                 <Row spacing="m" wrap>
-                    {props.chips.map((chip) => (
-                        <Chip {...chip} maxWidth={100} />
+                    {props.chips.map((chip, i) => (
+                        <Chip key={i} {...chip} maxWidth={100} />
                     ))}
                 </Row>
             )}
