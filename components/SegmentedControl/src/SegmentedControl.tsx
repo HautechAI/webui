@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { Typography } from '@hautechai/webui.typography';
 import { MaterialContainer, HIGContainer, MaterialRow, HIGRow, WhiteSpace, Icon } from './SegmentedControl.styles';
 import { ThemeType } from '@hautechai/webui.themeprovider';
@@ -15,6 +15,7 @@ export type SegmentedControlProps = {
     onTabChange?: (event: React.MouseEvent<HTMLDivElement, MouseEvent>, index: number) => void;
     material?: boolean;
     whitespace?: keyof ThemeType['foundation']['spacing'];
+    selectedTab?: number;
 };
 
 const SegmentedControl = ({
@@ -23,8 +24,13 @@ const SegmentedControl = ({
     onTabChange,
     material,
     whitespace,
+    selectedTab,
 }: SegmentedControlProps) => {
     const [selected, setSelected] = useState(defaultSelectedIndex);
+
+    useEffect(() => {
+        if (selectedTab !== undefined) setSelected(selectedTab);
+    }, [selectedTab]);
 
     const handleClick = useCallback(
         (e: React.MouseEvent<HTMLDivElement, MouseEvent>, index: number) => {
