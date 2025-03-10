@@ -39,7 +39,7 @@ const LabelMediumButton = styled(BaseText)`
     font-size: 16px;
     font-style: normal;
     font-weight: 500;
-    line-height: 20px;
+    line-height: 24px;
 `;
 
 const LabelMediumEmphasized = styled(BaseText)`
@@ -140,6 +140,7 @@ const variants = {
 };
 
 export type TypographyProps = {
+    className?: string;
     variant: keyof typeof variants;
 
     children: React.ReactNode;

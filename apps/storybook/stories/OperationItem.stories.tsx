@@ -1,6 +1,9 @@
 import Desert from '../../../assets/desert.png';
 import img from '../../../assets/Avatar.png';
 import { OperationItem } from '../../../components/OperationItem/src';
+import { Badge } from '../../../components/Badge/src';
+import { Chip } from '../../../components/Chip/src';
+import { Previews } from '../../../components/Previews/src';
 
 export default {
     title: 'Compositions/Operation Item',
@@ -15,18 +18,12 @@ export default {
 
 export const Main = {
     args: {
-        previews: {
-            images: [img, img, img, img],
-            size: 24,
-        },
-        badge: {
-            color: 'success',
-            label: 'Success',
-        },
+        previews: <Previews images={[img, img, img, img]} />,
+        badge: <Badge color="success" label="Success" />,
         chips: [
-            { image: Desert, label: 'Desert' },
-            { image: Desert, label: 'Desert' },
-            { image: Desert, label: 'Very long label here' },
+            <Chip image={Desert} label="Desert" maxWidth={100} />,
+            <Chip image={Desert} label="Desert" maxWidth={100} />,
+            <Chip image={Desert} label="Very long label here" maxWidth={100} />,
         ],
         date: '15 mins ago',
         unread: true,

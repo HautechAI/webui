@@ -93,3 +93,17 @@ export const OverflowY = {
         overflowY: 'scroll',
     },
 };
+
+export const MaxHeight = {
+    args: {
+        children: (
+            <Column spacing="l">
+                <Button label="button" />
+                <Button label="button" />
+                <Button label="button" />
+            </Column>
+        ),
+        maxHeight: 100,
+        overflowY: 'scroll',
+    },
+};

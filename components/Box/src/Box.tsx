@@ -15,6 +15,20 @@ const StyledBox = styled.div<Omit<BoxProps, 'icon'>>`
                   height: ${height}px;
               `
             : ''}
+    
+    ${({ maxWidth }) =>
+        maxWidth
+            ? css`
+                  max-width: ${maxWidth}px;
+              `
+            : ''}
+
+    ${({ maxHeight }) =>
+        maxHeight
+            ? css`
+                  max-height: ${maxHeight}px;
+              `
+            : ''}
 
     ${({ theme, padding }) =>
         padding
@@ -77,6 +91,8 @@ ${({ overflowY }) =>
 export type BoxProps = PropsWithChildren<{
     width?: number;
     height?: number;
+    maxWidth?: number;
+    maxHeight?: number;
     padding?: keyof ThemeType['foundation']['spacing'];
     paddingTop?: keyof ThemeType['foundation']['spacing'];
     paddingRight?: keyof ThemeType['foundation']['spacing'];

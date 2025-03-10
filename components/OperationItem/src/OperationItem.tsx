@@ -17,8 +17,8 @@ export const OperationItem = (props: OperationItemProps) => {
                             {props.title}
                         </Typography>
                     </Row>
-                    <Previews {...props.previews} images={props.previews.images.slice(0, 4)} />
-                    <Badge {...props.badge} />
+                    {props.previews}
+                    {props.badge}
                 </Row>
                 <Typography color="layout.onSurface.tertiary" variant="LabelSmallRegular">
                     {props.date}
@@ -26,9 +26,7 @@ export const OperationItem = (props: OperationItemProps) => {
             </S.TopContainer>
             {props.chips && (
                 <Row spacing="m" wrap>
-                    {props.chips.map((chip) => (
-                        <Chip {...chip} />
-                    ))}
+                    {props.chips}
                 </Row>
             )}
         </S.Container>
