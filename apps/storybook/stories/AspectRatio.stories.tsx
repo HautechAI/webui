@@ -18,8 +18,6 @@ export default {
 
 export const Main = {
     args: {
-        onTabChange: (event: React.MouseEvent<HTMLDivElement, MouseEvent>, selectedTab: number) =>
-            console.log('Selected tab:', selectedTab),
         onAspectRatioChange: (aspectRatio: string) => console.log('Selected aspect ratio:', aspectRatio),
         onCheckAsDefault: (aspectRatio: string, checked: boolean) =>
             console.log('Set as default:', aspectRatio, checked),
