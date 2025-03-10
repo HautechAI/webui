@@ -1,8 +1,13 @@
 import { styled } from '@hautechai/webui.themeprovider';
 
-const Container = styled.div<Required<Pick<PanelProps, 'hierarchy'>>>`
+const Container = styled.div<Required<Pick<PanelProps, 'hierarchy' | 'size'>>>`
     display: flex;
-    padding: ${({ theme }) => theme.foundation.spacing.l}px;
+    padding: ${({ theme, size }) =>
+        ({
+            small: theme.foundation.spacing.ml,
+            medium: theme.foundation.spacing.l,
+        }[size])}px;
+
     background-color: ${({ theme, hierarchy }) =>
         ({
             low: theme.palette.layout.surfaceLow,
@@ -10,7 +15,11 @@ const Container = styled.div<Required<Pick<PanelProps, 'hierarchy'>>>`
             high: theme.palette.layout.surfaceHigh,
         }[hierarchy])};
 
-    border-radius: ${({ theme }) => theme.foundation.cornerRadius.l}px;
+    border-radius: ${({ theme, size }) =>
+        ({
+            small: theme.foundation.cornerRadius.m,
+            medium: theme.foundation.cornerRadius.l,
+        }[size])}px;
 
     border-style: solid;
     border-width: ${({ theme, hierarchy }) =>
@@ -31,12 +40,13 @@ export type PanelProps = {
     className?: string;
     children?: React.ReactNode;
     hierarchy?: 'mid' | 'low' | 'high';
+    size?: 'small' | 'medium';
 };
 
 export const Panel = (props: PanelProps) => {
     const { hierarchy = 'mid' } = props;
     return (
-        <Container className={props.className} hierarchy={hierarchy}>
+        <Container className={props.className} hierarchy={hierarchy} size={props.size ?? 'medium'}>
             {props.children}
         </Container>
     );
