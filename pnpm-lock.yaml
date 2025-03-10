@@ -375,6 +375,21 @@ importers:
         specifier: workspace:^
         version: link:../Typography
 
+  components/TextField:
+    dependencies:
+      '@hautechai/webui.column':
+        specifier: workspace:^
+        version: link:../Column
+      '@hautechai/webui.row':
+        specifier: workspace:^
+        version: link:../Row
+      '@hautechai/webui.themeprovider':
+        specifier: workspace:^
+        version: link:../ThemeProvider
+      '@hautechai/webui.typography':
+        specifier: workspace:^
+        version: link:../Typography
+
   components/Theme:
     dependencies:
       '@hautechai/webui.themeprovider':
