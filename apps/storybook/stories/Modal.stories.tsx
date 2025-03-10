@@ -46,3 +46,30 @@ export const Main = {
         ),
     },
 };
+
+export const CustomPosition = {
+    args: {
+        children: (
+            <ModalContent>
+                <Logo />
+            </ModalContent>
+        ),
+        contentPosition: {
+            left: 100,
+            top: 100,
+        },
+    },
+};
+
+export const CustomBackdropColor = {
+    args: {
+        children: (
+            <ModalContent>
+                <Logo />
+            </ModalContent>
+        ),
+        backdropStyle: {
+            backgroundColor: 'rgba(111, 222, 333, 0.5)',
+        },
+    },
+};
