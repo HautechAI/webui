@@ -3,7 +3,7 @@ import { DataItem } from '../../../components/DataItem/src';
 
 export default {
     title: 'Data Display/Panel',
-    component: Panel,
+    component: Panel as any,
     parameters: {
         layout: 'centered',
     },
@@ -17,15 +17,31 @@ export const Mid = {
     },
 };
 
-export const Low = {
+export const MediumLow = {
     args: {
         hierarchy: 'low',
         children: <DataItem label="Current plan" value="Basic" />,
     },
 };
 
-export const High = {
+export const MediumHigh = {
     args: {
+        hierarchy: 'high',
+        children: <DataItem label="Current plan" value="Basic" />,
+    },
+};
+
+export const SmallLow = {
+    args: {
+        size: 'small',
+        hierarchy: 'low',
+        children: <DataItem label="Current plan" value="Basic" />,
+    },
+};
+
+export const SmallHigh = {
+    args: {
+        size: 'small',
         hierarchy: 'high',
         children: <DataItem label="Current plan" value="Basic" />,
     },
