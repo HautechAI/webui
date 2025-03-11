@@ -264,12 +264,6 @@ importers:
         specifier: workspace:^
         version: link:../Typography
 
-  components/Loader:
-    dependencies:
-      '@lottiefiles/dotlottie-react':
-        specifier: ^0.13.2
-        version: 0.13.2(react@19.0.0)
-
   components/Logo: {}
 
   components/Masonry:
@@ -344,6 +338,12 @@ importers:
       '@hautechai/webui.typography':
         specifier: workspace:^
         version: link:../Typography
+
+  components/Progress:
+    dependencies:
+      '@lottiefiles/dotlottie-react':
+        specifier: ^0.13.2
+        version: 0.13.2(react@19.0.0)
 
   components/Row:
     dependencies:
