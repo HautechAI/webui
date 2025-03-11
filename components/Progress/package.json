@@ -1,0 +1,24 @@
+{
+    "name": "@hautechai/webui.progress",
+    "description": "",
+    "version": "0.3.20",
+    "type": "module",
+    "main": "src/index.tsx",
+    "publishConfig": {
+        "main": "dist/index.js",
+        "typings": "dist/index.d.ts",
+        "access": "public"
+    },
+    "files": [
+        "dist/**/*.js",
+        "dist/**/*.d.ts"
+    ],
+    "scripts": {
+        "prepack": "tsc"
+    },
+    "author": "HautechAI",
+    "license": "Apache-2.0",
+    "dependencies": {
+        "@lottiefiles/dotlottie-react": "^0.13.2"
+    }
+}
