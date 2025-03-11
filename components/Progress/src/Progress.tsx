@@ -1,7 +1,7 @@
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 import { data } from './data.lottie.json';
 
-export type LoaderProps = {
+export type ProgressProps = {
     size?: number;
 };
 
@@ -14,7 +14,7 @@ function base64ToArrayBuffer(base64: string) {
     return bytes.buffer;
 }
 
-export const Loader = (props: LoaderProps) => {
+export const Progress = (props: ProgressProps) => {
     return (
         <DotLottieReact
             data={base64ToArrayBuffer(data)}
@@ -25,4 +25,4 @@ export const Loader = (props: LoaderProps) => {
     );
 };
 
-export default Loader;
+export default Progress;

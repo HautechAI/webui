@@ -1,8 +1,8 @@
-import { Loader } from '../../../components/Loader/src';
+import { Progress } from '../../../components/Progress/src';
 
 export default {
-    title: 'Data Display/Loader',
-    component: Loader,
+    title: 'Data Display/Progress',
+    component: Progress,
     parameters: {
         layout: 'centered',
     },
@@ -19,7 +19,6 @@ export const Size128 = {
         size: 128,
     },
 };
-
 
 export const Size64 = {
     args: {
