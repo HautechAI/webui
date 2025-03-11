@@ -1,7 +1,7 @@
 {
     "name": "@hautechai/webui.textfield",
     "description": "",
-    "version": "0.3.26",
+    "version": "0.3.27",
     "type": "module",
     "main": "src/index.tsx",
     "publishConfig": {
