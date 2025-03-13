@@ -19,7 +19,7 @@ export default {
     ],
 };
 
-const menuItems = [
+export const menuItems = [
     { label: 'Home', leadingIcon: <UploadIcon size={20} />, onClick: () => console.log('Home clicked') },
     { label: 'Profile', trailingIcon: <MoreIcon size={20} />, onClick: () => console.log('Profile clicked') },
     { type: 'divider' },
