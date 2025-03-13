@@ -14,12 +14,12 @@ export type MenuItem = {
 };
 
 export type MenuProps = {
-    model: MenuItem[];
-    trigger: () => React.ReactNode;
+    items: MenuItem[];
+    trigger?: () => React.ReactNode;
     contentPositions?: PopoverProps['contentPositions'];
 };
 
-const Menu: React.FC<MenuProps> = ({ model, trigger, contentPositions }) => {
+const Menu: React.FC<MenuProps> = ({ items, trigger, contentPositions }) => {
     const popoverRef = useRef<PopoverRef>(null);
 
     const handleClickItem = useCallback((item: MenuItem) => {
@@ -53,7 +53,7 @@ const Menu: React.FC<MenuProps> = ({ model, trigger, contentPositions }) => {
 
     const renderMenuList = () => (
         <Container>
-            {model.map((item, index) => {
+            {items.map((item, index) => {
                 return renderMenuItem(item, index);
             })}
         </Container>

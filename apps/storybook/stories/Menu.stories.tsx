@@ -35,13 +35,13 @@ const menuItems = [
 
 export const Default = {
     args: {
-        model: menuItems,
+        items: menuItems,
     },
 };
 
 export const Popover = {
     args: {
-        model: menuItems,
+        items: menuItems,
         trigger: () => <div>Open Popover Menu</div>,
         contentPositions: ['top'],
     },
