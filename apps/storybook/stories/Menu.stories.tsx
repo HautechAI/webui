@@ -42,7 +42,7 @@ export const Default = {
 export const Popover = {
     args: {
         items: menuItems,
-        trigger: () => <div>Open Popover Menu</div>,
+        trigger: () => <button>Open Popover Menu</button>,
         contentPositions: ['top'],
     },
 };
