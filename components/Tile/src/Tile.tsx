@@ -37,16 +37,19 @@ const StyledTile = styled.div<Omit<TileProps, 'icon'>>`
     background-size: cover;
     background-position: center;
 
-    border-color: ${({ theme }) => theme.palette.actions.primary};
-    border-width: ${({ selected, theme }) => (selected ? theme.foundation.stroke.standard : 0)}px;
+    border-width: ${({ theme }) => `${theme.foundation.stroke.standard}`}px;
     border-style: solid;
 
     background-origin: border-box;
     box-sizing: border-box;
 
+    transition: background-color 0.3s ease, border-color 0.3s ease, outline-color 0.3s ease, transform 0.3s ease;
+    
+    border-color: ${({ selected, theme }) => (selected ? theme.palette.actions.primary : 'transparent')};
     .htch-webui-hoverable:hover & {
-        border-width: ${({ theme }) => `${theme.foundation.stroke.standard}`}px;
+        border-color: ${({ theme }) => theme.palette.actions.primary};
     }
+
 `;
 
 export type TileProps = {

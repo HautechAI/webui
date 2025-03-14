@@ -22,3 +22,13 @@ export const Main = {
         aspectRatio: 16 / 9,
     },
 };
+
+export const Clickable = {
+    args: {
+        label: '35 min ago',
+        image: Desert,
+        width: 300,
+        aspectRatio: 16 / 9,
+        onClick: fn() as any,
+    },
+};
