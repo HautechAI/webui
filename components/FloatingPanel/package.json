@@ -1,7 +1,7 @@
 {
-    "name": "@hautechai/webui.userbalance",
+    "name": "@hautechai/webui.floatingpanel",
     "description": "",
-    "version": "0.3.29",
+    "version": "0.3.31",
     "type": "module",
     "main": "src/index.tsx",
     "publishConfig": {
@@ -18,10 +18,11 @@
     },
     "author": "HautechAI",
     "dependencies": {
-        "@hautechai/webui.button": "workspace:^",
-        "@hautechai/webui.dataitem": "workspace:^",
-        "@hautechai/webui.panel": "workspace:^",
-        "@hautechai/webui.row": "workspace:^"
+        "@hautechai/webui.icon": "^0.3.20",
+        "@hautechai/webui.iconbutton": "^0.3.20",
+        "@hautechai/webui.progress": "^0.3.28",
+        "@hautechai/webui.themeprovider": "workspace:^",
+        "@hautechai/webui.typography": "^0.3.24"
     },
     "license": "Apache-2.0"
 }

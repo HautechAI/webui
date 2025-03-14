@@ -1,6 +1,8 @@
 import avatar from '../../../assets/Avatar.png';
 
-import { DataItem } from '../../../components/DataItem/src';
+import { PlaceholderIcon } from '../../../components/Icon/src';
+import { Box } from '../../../components/Box/src';
+import { DataItem } from '../../../components/DataItem/src/DataItem';
 
 export default {
     title: 'Data Display/DataItem',
@@ -9,10 +11,16 @@ export default {
         layout: 'centered',
     },
     tags: ['autodocs'],
-    argTypes: {},
+    decorators: [
+        (Story: any) => (
+            <Box width={300}>
+                <Story />
+            </Box>
+        ),
+    ],
 };
 
-export const Main = {
+export const Column = {
     args: {
         label: 'Current plan',
         value: 'Basic',
@@ -25,6 +33,7 @@ export const SmallData = {
         value: 'Basic',
         size: 'small',
         primary: 'data',
+        direction: 'column',
     },
 };
 
@@ -34,6 +43,7 @@ export const MediumHeading = {
         value: 'Basic',
         size: 'medium',
         primary: 'heading',
+        direction: 'column',
     },
 };
 
@@ -43,5 +53,23 @@ export const SmallHeading = {
         value: 'Basic',
         size: 'small',
         primary: 'heading',
+        direction: 'column',
+    },
+};
+
+export const Row = {
+    args: {
+        label: 'Heading',
+        value: 'Data',
+        direction: 'row',
+    },
+};
+
+export const RowWithIcon = {
+    args: {
+        label: 'Heading',
+        value: 'Data',
+        direction: 'row',
+        trailingIcon: <PlaceholderIcon />,
     },
 };

@@ -1,7 +1,7 @@
 {
-    "name": "@hautechai/webui.userbalance",
+    "name": "@hautechai/webui.progress",
     "description": "",
-    "version": "0.3.29",
+    "version": "0.3.28",
     "type": "module",
     "main": "src/index.tsx",
     "publishConfig": {
@@ -17,11 +17,8 @@
         "prepack": "tsc"
     },
     "author": "HautechAI",
+    "license": "Apache-2.0",
     "dependencies": {
-        "@hautechai/webui.button": "workspace:^",
-        "@hautechai/webui.dataitem": "workspace:^",
-        "@hautechai/webui.panel": "workspace:^",
-        "@hautechai/webui.row": "workspace:^"
-    },
-    "license": "Apache-2.0"
+        "@lottiefiles/dotlottie-react": "^0.13.2"
+    }
 }
