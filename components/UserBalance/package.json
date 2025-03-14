@@ -1,7 +1,7 @@
 {
     "name": "@hautechai/webui.userbalance",
     "description": "",
-    "version": "0.3.27",
+    "version": "0.3.35",
     "type": "module",
     "main": "src/index.tsx",
     "publishConfig": {

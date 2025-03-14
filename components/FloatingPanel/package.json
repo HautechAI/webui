@@ -1,10 +1,9 @@
 {
-    "name": "@hautechai/webui.imageinput",
+    "name": "@hautechai/webui.floatingpanel",
     "description": "",
     "version": "0.3.34",
     "type": "module",
     "main": "src/index.tsx",
-    "sideEffects": false,
     "publishConfig": {
         "main": "dist/index.js",
         "typings": "dist/index.d.ts",
@@ -19,7 +18,11 @@
     },
     "author": "HautechAI",
     "dependencies": {
-        "@hautechai/webui.fileinput": "workspace:^"
+        "@hautechai/webui.icon": "workspace:^",
+        "@hautechai/webui.iconbutton": "workspace:^",
+        "@hautechai/webui.progress": "workspace:^",
+        "@hautechai/webui.themeprovider": "workspace:^",
+        "@hautechai/webui.typography": "workspace:^"
     },
     "license": "Apache-2.0"
 }

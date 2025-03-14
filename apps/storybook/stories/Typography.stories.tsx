@@ -110,3 +110,35 @@ export const LinkExtraSmall = {
         children: TEXT,
     },
 };
+
+export const OverflowHidden = {
+    args: {
+        variant: 'LinkExtraSmall',
+        children: TEXT,
+        overflow: 'hidden',
+        noWrap: true,
+    },
+    decorators: [
+        (Story: any) => (
+            <div style={{ width: '300px' }}>
+                <Story />
+            </div>
+        ),
+    ],
+};
+
+export const OverflowEllipsis = {
+    args: {
+        variant: 'LinkExtraSmall',
+        children: TEXT,
+        overflow: 'ellipsis',
+        noWrap: true,
+    },
+    decorators: [
+        (Story: any) => (
+            <div style={{ width: '300px' }}>
+                <Story />
+            </div>
+        ),
+    ],
+};
