@@ -25,6 +25,7 @@ const Container = styled.div<Pick<FloatingPanelProps, 'width'>>`
 
     display: flex;
     flex-direction: column;
+    z-index: 500;
 
     /* shadow_01 */
     box-shadow: 0px 0px 24px 0px rgba(42, 47, 60, 0.1);
