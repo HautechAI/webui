@@ -15,7 +15,9 @@ const StyledButton = styled(ButtonBase)<Required<Pick<IconButtonProps, 'variant'
         variant === 'filled' ? theme.palette.layout.surfaceLow : 'transparent'};
 
     &:hover {
-        background-color: ${({ theme }) => theme.palette.layout.surfaceHigh};
+        &:not(:disabled) {
+            background-color: ${({ theme }) => theme.palette.layout.surfaceHigh};
+        }
     }
 
     &:disabled {
@@ -25,7 +27,7 @@ const StyledButton = styled(ButtonBase)<Required<Pick<IconButtonProps, 'variant'
                 background-color: ${theme.palette.layout.surfaceMid};
             `}
         color: ${({ theme }) => theme.palette.layout.onSurface.tertiary};
-        cursor: default;
+        cursor: not-allowed;
     }
 `;
 
