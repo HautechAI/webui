@@ -99,9 +99,20 @@ const StyledButton = styled(ButtonBase)<Required<Pick<ButtonProps, 'variant' | '
     }
 
     :disabled {
-        background-color: ${({ theme }) => theme.palette.layout.surfaceMid};
+        background-color: ${({ theme, variant, hierarchy }) =>
+            ({
+                filled: {
+                    primary: theme.palette.layout.surfaceMid,
+                    secondary: theme.palette.layout.surfaceMid,
+                },
+                outlined: {
+                    primary: 'transparent',
+                    secondary: 'transparent',
+                },
+            }[variant][hierarchy])};
         color: ${({ theme }) => theme.palette.layout.onSurface.tertiary};
-        cursor: default;
+        cursor: not-allowed;
+        border-color: ${({ theme }) => theme.palette.layout.strokes};
     }
 `;
 
