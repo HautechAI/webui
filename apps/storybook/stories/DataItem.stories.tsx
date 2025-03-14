@@ -3,6 +3,7 @@ import avatar from '../../../assets/Avatar.png';
 import { PlaceholderIcon } from '../../../components/Icon/src';
 import { Box } from '../../../components/Box/src';
 import { DataItem } from '../../../components/DataItem/src/DataItem';
+import { IconButton } from '../../../components/IconButton/src';
 
 export default {
     title: 'Data Display/DataItem',
@@ -71,5 +72,14 @@ export const RowWithIcon = {
         value: 'Data',
         direction: 'row',
         trailingIcon: <PlaceholderIcon />,
+    },
+};
+
+export const RowWithButton = {
+    args: {
+        label: 'Heading',
+        value: 'Data',
+        direction: 'row',
+        trailingIcon: <IconButton size="small" variant="flat" icon={<PlaceholderIcon />} />,
     },
 };

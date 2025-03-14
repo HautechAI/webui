@@ -59,14 +59,14 @@ const DataTypographyVariants: Record<
 export const DataItem = (props: DataItemProps) => {
     const { size = 'medium', primary = 'data', stretch } = props;
     return props.direction === 'row' ? (
-        <RowContainer justify="space-between" stretch={stretch}>
+        <RowContainer justify="space-between" align='center' stretch={stretch}>
             <Typography
                 variant="LabelSmallEmphasized"
                 color={primary === 'data' ? 'layout.onSurface.tertiary' : 'layout.onSurface.primary'}
             >
                 {props.label}
             </Typography>
-            <Row spacing="ml">
+            <Row spacing="ml" align='center'>
                 <Typography
                     variant="LabelSmallRegular"
                     color={primary === 'data' ? 'layout.onSurface.primary' : 'layout.onSurface.tertiary'}
