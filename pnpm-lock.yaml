@@ -112,6 +112,9 @@ importers:
 
   components/Card:
     dependencies:
+      '@hautechai/webui.buttonbase':
+        specifier: workspace:^
+        version: link:../ButtonBase
       '@hautechai/webui.column':
         specifier: workspace:^
         version: link:../Column

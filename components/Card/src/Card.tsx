@@ -1,10 +1,10 @@
+import { ButtonBase } from '@hautechai/webui.buttonbase';
 import { Column } from '@hautechai/webui.column';
 import { DownloadIcon, MoreIcon } from '@hautechai/webui.icon';
 import { IconButton } from '@hautechai/webui.iconbutton';
 import { Row } from '@hautechai/webui.row';
 import { Tile } from '@hautechai/webui.tile';
 import { Typography } from '@hautechai/webui.typography';
-import { ButtonBase } from '../../ButtonBase/src';
 
 export type CardProps = {
     label: string;
