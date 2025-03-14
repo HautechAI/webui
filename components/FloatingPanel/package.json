@@ -1,0 +1,28 @@
+{
+    "name": "@hautechai/webui.floatingpanel",
+    "description": "",
+    "version": "0.3.27",
+    "type": "module",
+    "main": "src/index.tsx",
+    "publishConfig": {
+        "main": "dist/index.js",
+        "typings": "dist/index.d.ts",
+        "access": "public"
+    },
+    "files": [
+        "dist/**/*.js",
+        "dist/**/*.d.ts"
+    ],
+    "scripts": {
+        "prepack": "tsc"
+    },
+    "author": "HautechAI",
+    "dependencies": {
+        "@hautechai/webui.icon": "^0.3.20",
+        "@hautechai/webui.iconbutton": "^0.3.20",
+        "@hautechai/webui.progress": "^0.3.28",
+        "@hautechai/webui.themeprovider": "workspace:^",
+        "@hautechai/webui.typography": "^0.3.24"
+    },
+    "license": "Apache-2.0"
+}

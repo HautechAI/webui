@@ -10,4 +10,5 @@ export type OperationItemProps = {
     previews: ReactNode;
     unread?: boolean;
     title: string;
+    progress?: number;
 };
