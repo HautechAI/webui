@@ -52,7 +52,7 @@ export type FloatingPanelProps = {
     className?: string;
     children?: React.ReactNode;
     title: string;
-    width: number;
+    width?: number;
     collapsed?: boolean;
     onToggleCollapsed?: () => void;
     showProgress?: boolean;
