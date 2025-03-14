@@ -7,6 +7,17 @@ declare module '@emotion/react' {
 
 export type ThemeType = {
     foundation: {
+        animation: {
+            duration: {
+                normal: number;
+                slow: number;
+            };
+            timing: {
+                ease: string;
+                easeInOut: string;
+                customBounce: string;
+            };
+        };
         cornerRadius: {
             xs: number;
             s: number;
@@ -14,6 +25,10 @@ export type ThemeType = {
             l: number;
             xl: number;
             xxl: number;
+        };
+        elevation: {
+            one: string;
+            two: string;
         };
         spacing: {
             xs: number;

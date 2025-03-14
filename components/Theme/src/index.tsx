@@ -4,6 +4,17 @@ import { merge } from 'lodash';
 
 export const Theme: ThemeType = {
     foundation: {
+        animation: {
+            duration: {
+                normal: 0.5,
+                slow: 1,
+            },
+            timing: {
+                ease: 'ease',
+                easeInOut: 'ease-in-out',
+                customBounce: 'cubic-bezier(0.34, 1.56, 0.64, 1)',
+            },
+        },
         cornerRadius: {
             xs: 2,
             s: 4,
@@ -11,6 +22,10 @@ export const Theme: ThemeType = {
             l: 16,
             xl: 24,
             xxl: 32,
+        },
+        elevation: {
+            one: '0px 0px 24px 0px rgba(42, 47, 60, 0.1)',
+            two: '0px 0px 14px 0px rgba(42, 47, 60, 0.08)',
         },
         spacing: {
             xs: 2,
