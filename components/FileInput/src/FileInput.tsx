@@ -1,11 +1,35 @@
 import { Button } from '@hautechai/webui.button';
 import { UploadIcon } from '@hautechai/webui.icon';
-import { styled } from '@hautechai/webui.themeprovider';
-import { Typography } from '@hautechai/webui.typography';
-import React from 'react';
+import { styled, ThemeType } from '@hautechai/webui.themeprovider';
+import { Typography, TypographyProps } from '@hautechai/webui.typography';
+import React, { useEffect, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
 
-const FileInputContainer = styled.div`
+type ContainerProps = {
+    isDragActive: boolean;
+    isDragAccept: boolean;
+    isDragReject: boolean;
+};
+
+const getBackgroundColor = ({
+    theme,
+    isDragActive,
+    isDragAccept,
+    isDragReject,
+}: { theme: ThemeType } & ContainerProps) => {
+    if (isDragReject) return theme.palette.actions.onError;
+    if (isDragAccept) return theme.palette.actions.onSuccess;
+    if (isDragActive) return theme.palette.layout.surfaceHigh;
+    return 'transparent';
+};
+
+const getBorderColor = ({ theme, isDragAccept, isDragReject }: { theme: ThemeType } & ContainerProps) => {
+    if (isDragReject) return theme.palette.actions.error;
+    if (isDragAccept) return theme.palette.actions.success;
+    return theme.palette.layout.strokes;
+};
+
+const FileInputContainer = styled.div<ContainerProps>`
     display: flex;
     width: 400px;
     height: 200px;
@@ -15,9 +39,9 @@ const FileInputContainer = styled.div`
     align-items: center;
     gap: ${({ theme }) => theme.foundation.spacing.xl}px;
     flex-shrink: 0;
-
+    background-color: ${getBackgroundColor};
     border-radius: ${({ theme }) => theme.foundation.cornerRadius.l}px;
-    border-color: ${({ theme }) => theme.palette.layout.strokes};
+    border-color: ${getBorderColor};
     border-style: dashed;
     border-width: ${({ theme }) => theme.foundation.stroke.thick}px;
 `;
@@ -41,6 +65,12 @@ export type FileInputProps = {
     /** @property Optional label to display when files are being dragged over the input */
     labelDragActive?: string;
 
+    /** @property Optional label to display when files are being dragged over the input */
+    labelDragRejected?: string;
+
+    /** @property Optional label to display when files are being dragged over the input */
+    labelDragRejectedButton?: string;
+
     /** @property Optional label for upload button */
     labelButton?: string;
 };
@@ -48,8 +78,10 @@ export type FileInputProps = {
 export const FileInput: React.FC<FileInputProps> = (props) => {
     const {
         label = 'Drag and drop your file here', //
-        labelDragActive = 'Drop your file here',
+        labelDragActive = 'Drop here',
         labelButton = 'Open file',
+        labelDragRejected = 'Uploading error',
+        labelDragRejectedButton = 'Uploading again',
     } = props;
 
     const onDrop = (acceptedFiles: File[]) => {
@@ -65,17 +97,57 @@ export const FileInput: React.FC<FileInputProps> = (props) => {
         maxSize: props.maxSize,
     });
 
+    const [delayedAccept, setDelayedAccept] = useState(false);
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setDelayedAccept(isDragAccept);
+        }, 300);
+
+        return () => clearTimeout(timer);
+    }, [isDragAccept]);
+
+    const renderLabel = (label: string, color: TypographyProps['color']) => (
+        <Typography variant="H1" color={color}>
+            {label}
+        </Typography>
+    );
+
+    const renderContent = () => {
+        if (delayedAccept) {
+            return renderLabel(labelDragActive, 'actions.success');
+        }
+
+        if (isDragActive) {
+            return renderLabel(labelDragActive, 'layout.onSurface.primary');
+        }
+
+        if (isDragReject) {
+            return (
+                <>
+                    {renderLabel(labelDragRejected, 'actions.error')}
+                    <Button label={labelDragRejectedButton} leadingIcon={<UploadIcon size={20} />} />
+                </>
+            );
+        }
+
+        return (
+            <>
+                {renderLabel(label, 'layout.onSurface.primary')}
+                <Button label={labelButton} leadingIcon={<UploadIcon size={20} />} />
+            </>
+        );
+    };
+
     return (
-        <FileInputContainer {...getRootProps({})}>
+        <FileInputContainer
+            isDragReject={isDragReject}
+            isDragAccept={delayedAccept}
+            isDragActive={isDragActive}
+            {...getRootProps({})}
+        >
             <input {...getInputProps()} />
-            <Typography variant="H1" color="layout.onSurface.primary">
-                {isDragActive ? labelDragActive : label}
-            </Typography>
-            <Button label={labelButton} leadingIcon={<UploadIcon size={20} />} />
-            {/* {isDragActive && <p>Drop here...</p>}
-            {isDragReject && <p>Rejected...</p>}
-            {isDragAccept && <p>Accepted...</p>}
-            {fileRejections && JSON.stringify(fileRejections)} */}
+            {renderContent()}
         </FileInputContainer>
     );
 };
