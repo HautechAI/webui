@@ -18,14 +18,6 @@ const RowContainer = styled(Row)`
     padding: ${({ theme }) => theme.foundation.spacing.m}px 0;
 `;
 
-const InnerIconContainer = styled.div`
-    width: 20px;
-    height: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-`;
-
 export type DataItemProps = {
     label: string;
     value: string;
@@ -81,16 +73,15 @@ export const DataItem = (props: DataItemProps) => {
                 >
                     {props.value}
                 </Typography>
-                <InnerIconContainer>
-                    {React.Children.map(props.trailingIcon, (child) => {
-                        if (React.isValidElement(child)) {
-                            return React.cloneElement(child, {
-                                size: 20,
-                            } as any);
-                        }
-                        return child;
-                    })}
-                </InnerIconContainer>
+
+                {React.Children.map(props.trailingIcon, (child) => {
+                    if (React.isValidElement(child)) {
+                        return React.cloneElement(child, {
+                            size: 20,
+                        } as any);
+                    }
+                    return child;
+                })}
             </Row>
         </RowContainer>
     ) : (
