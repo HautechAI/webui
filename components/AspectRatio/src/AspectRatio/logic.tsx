@@ -25,7 +25,6 @@ export const getBoxSize = (aspectRatio: AspectRatios, maxPxSize: number) => {
 };
 
 const useLogic = (props: AspectRatioProps) => {
-    const [segmentedControlTab, setSegmentedControlTab] = useState(1);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [modalPosition, setModalPosition] = useState({ left: 0, top: 0 });
     const [defaultRatios, setDefaultRatios] = useState<AspectRatios[]>(['7:9', '1:1', '9:7']);
@@ -33,8 +32,8 @@ const useLogic = (props: AspectRatioProps) => {
     const theme = useTheme();
 
     const onTabChange = useCallback(
-        (event: React.MouseEvent<HTMLDivElement, MouseEvent>, index: number) => {
-            if (index === 3) {
+        (event: React.MouseEvent<HTMLDivElement, MouseEvent>, value: string) => {
+            if (value === 'custom') {
                 const rect = event.currentTarget.getBoundingClientRect();
                 setModalPosition({
                     left: rect.right + theme.foundation.spacing.l,
@@ -42,21 +41,17 @@ const useLogic = (props: AspectRatioProps) => {
                 });
                 setIsModalOpen(true);
             } else {
-                selectedCustomRatio.current = defaultRatios[index];
                 setIsModalOpen(false);
-                props.onAspectRatioChange(defaultRatios[index]);
             }
-            setSegmentedControlTab(index);
-            props.onTabChange?.(event, index);
+            props.onChange?.(event, value);
         },
-        [props.onTabChange, props.onAspectRatioChange, defaultRatios],
+        [props.onChange, props.onAspectRatioChange, defaultRatios],
     );
 
     const onCloseModal = useCallback(() => {
         props.onAspectRatioChange(selectedCustomRatio.current);
         if (selectedCustomRatio.current === '1:1') {
             setIsModalOpen(false);
-            setSegmentedControlTab(1);
             return;
         }
         const [width, height] = selectedCustomRatio.current.split(':').map(Number);
@@ -66,7 +61,6 @@ const useLogic = (props: AspectRatioProps) => {
         const defaultRatios = [portraitRatio, '1:1', landscapeRatio];
         setIsModalOpen(false);
         setDefaultRatios(defaultRatios);
-        setSegmentedControlTab(defaultRatios.findIndex((ratio) => ratio === selectedCustomRatio.current));
     }, [selectedCustomRatio, props.onAspectRatioChange]);
 
     return {
@@ -77,7 +71,6 @@ const useLogic = (props: AspectRatioProps) => {
         isModalOpen,
         onCloseModal,
         selectedCustomRatio,
-        segmentedControlTab,
     };
 };
 

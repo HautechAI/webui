@@ -5,51 +5,42 @@ import { ThemeType } from '@hautechai/webui.themeprovider';
 
 type Option = {
     label?: string;
+    value: string;
     leadingIcon?: React.ReactNode;
     trailingIcon?: React.ReactNode;
 };
 
 export type SegmentedControlProps = {
     options: Option[];
-    defaultSelectedIndex?: number;
-    onTabChange?: (event: React.MouseEvent<HTMLDivElement, MouseEvent>, index: number) => void;
+    defaultValue?: string;
+    value?: number;
+    onChange?: (event: React.MouseEvent<HTMLDivElement, MouseEvent>, value: string) => void;
     material?: boolean;
     whitespace?: keyof ThemeType['foundation']['spacing'];
-    selectedTab?: number;
 };
 
-const SegmentedControl = ({
-    options,
-    defaultSelectedIndex = 0,
-    onTabChange,
-    material,
-    whitespace,
-    selectedTab,
-}: SegmentedControlProps) => {
-    const [selected, setSelected] = useState(defaultSelectedIndex);
+const SegmentedControl = ({ options, defaultValue, value, onChange, material, whitespace }: SegmentedControlProps) => {
+    const [selected, setSelected] = useState(value ?? defaultValue ?? options[0].value);
 
     useEffect(() => {
-        if (selectedTab !== undefined) setSelected(selectedTab);
-    }, [selectedTab]);
+        if (value !== undefined) setSelected(value);
+    }, [value]);
 
-    const handleClick = useCallback(
-        (e: React.MouseEvent<HTMLDivElement, MouseEvent>, index: number) => {
-            setSelected(index);
-            if (onTabChange) onTabChange(e, index);
-        },
-        [onTabChange],
-    );
+    const handleClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>, value: string) => {
+        setSelected(value);
+        onChange?.(e, value);
+    };
 
     const Container = material ? MaterialContainer : HIGContainer;
     const Row = material ? MaterialRow : HIGRow;
 
     return (
         <Container>
-            {options.map(({ label, leadingIcon, trailingIcon }, index) => {
-                const isSelected = selected === index;
+            {options.map(({ label, leadingIcon, trailingIcon, value }) => {
+                const isSelected = selected === value;
                 const showEmptySpace = !material && (label || !!leadingIcon === !!trailingIcon);
                 return (
-                    <Row selected={isSelected} key={index} onClick={(e) => handleClick(e, index)}>
+                    <Row selected={isSelected} key={value} onClick={(e) => handleClick(e, value)}>
                         {showEmptySpace && <WhiteSpace whitespace={whitespace} />}
                         {leadingIcon && <Icon selected={isSelected}>{leadingIcon}</Icon>}
                         {label && (

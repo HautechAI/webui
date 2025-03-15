@@ -13,16 +13,8 @@ export type AspectRatioProps = SegmentedControlProps & {
 };
 
 export const AspectRatio = (props: AspectRatioProps) => {
-    const {
-        onTabChange,
-        getBoxSize,
-        defaultRatios,
-        modalPosition,
-        isModalOpen,
-        onCloseModal,
-        selectedCustomRatio,
-        segmentedControlTab,
-    } = useLogic(props);
+    const { onTabChange, getBoxSize, defaultRatios, modalPosition, isModalOpen, onCloseModal, selectedCustomRatio } =
+        useLogic(props);
 
     return (
         <>
@@ -30,14 +22,15 @@ export const AspectRatio = (props: AspectRatioProps) => {
                 {...props}
                 options={[
                     ...defaultRatios.map((label) => ({
+                        value: label,
                         label,
                         leadingIcon: <SmallRatioBox {...getBoxSize(label, 16)} />,
                     })),
-                    { leadingIcon: <ArrowAltRightIcon /> },
+                    { value: 'custom', leadingIcon: <ArrowAltRightIcon /> },
                 ]}
-                selectedTab={segmentedControlTab}
+                // value={segmentedControlTab}
                 whitespace="m"
-                onTabChange={onTabChange}
+                onChange={onTabChange}
             />
             {isModalOpen && (
                 <Modal
