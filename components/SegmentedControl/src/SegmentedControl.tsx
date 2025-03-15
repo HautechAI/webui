@@ -13,7 +13,7 @@ type Option = {
 export type SegmentedControlProps = {
     options: Option[];
     defaultValue?: string;
-    value?: number;
+    value?: string;
     onChange?: (event: React.MouseEvent<HTMLDivElement, MouseEvent>, value: string) => void;
     material?: boolean;
     whitespace?: keyof ThemeType['foundation']['spacing'];
