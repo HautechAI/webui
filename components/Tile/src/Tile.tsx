@@ -44,15 +44,15 @@ const StyledTile = styled.div<Omit<TileProps, 'icon'>>`
     box-sizing: border-box;
 
     transition: background-color 0.3s ease, border-color 0.3s ease, outline-color 0.3s ease, transform 0.3s ease;
-    
+
     border-color: ${({ selected, theme }) => (selected ? theme.palette.actions.primary : 'transparent')};
     .htch-webui-hoverable:hover & {
         border-color: ${({ theme }) => theme.palette.actions.primary};
     }
-
 `;
 
 export type TileProps = {
+    className?: string;
     icon?: React.ReactNode;
     image?: string;
     selected?: boolean;
