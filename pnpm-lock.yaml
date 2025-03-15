@@ -71,6 +71,42 @@ importers:
         specifier: workspace:^
         version: link:../ThemeProvider
 
+  components/AspectRatio:
+    dependencies:
+      '@hautechai/webui.box':
+        specifier: workspace:^
+        version: link:../Box
+      '@hautechai/webui.checkbox':
+        specifier: workspace:^
+        version: link:../Checkbox
+      '@hautechai/webui.column':
+        specifier: workspace:^
+        version: link:../Column
+      '@hautechai/webui.divider':
+        specifier: workspace:^
+        version: link:../Divider
+      '@hautechai/webui.icon':
+        specifier: workspace:^
+        version: link:../Icon
+      '@hautechai/webui.modal':
+        specifier: workspace:^
+        version: link:../Modal
+      '@hautechai/webui.row':
+        specifier: workspace:^
+        version: link:../Row
+      '@hautechai/webui.segmentedcontrol':
+        specifier: workspace:^
+        version: link:../SegmentedControl
+      '@hautechai/webui.slider':
+        specifier: workspace:^
+        version: link:../Slider
+      '@hautechai/webui.themeprovider':
+        specifier: workspace:^
+        version: link:../ThemeProvider
+      '@hautechai/webui.typography':
+        specifier: workspace:^
+        version: link:../Typography
+
   components/Avatar:
     dependencies:
       '@hautechai/webui.themeprovider':
@@ -374,6 +410,15 @@ importers:
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
         version: link:../ThemeProvider
+
+  components/SegmentedControl:
+    dependencies:
+      '@hautechai/webui.themeprovider':
+        specifier: workspace:^
+        version: link:../ThemeProvider
+      '@hautechai/webui.typography':
+        specifier: workspace:^
+        version: link:../Typography
 
   components/Sidebar:
     dependencies:

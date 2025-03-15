@@ -6,7 +6,7 @@ import { Chip } from '../../../components/Chip/src';
 import { Previews } from '../../../components/Previews/src';
 
 export default {
-    title: 'Compositions/OperationItem',
+    title: 'Compositions/Operation Item',
     component: OperationItem,
     parameters: {
         layout: 'centered',
