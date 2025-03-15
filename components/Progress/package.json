@@ -1,7 +1,7 @@
 {
     "name": "@hautechai/webui.progress",
     "description": "",
-    "version": "0.3.28",
+    "version": "0.3.40",
     "type": "module",
     "main": "src/index.tsx",
     "publishConfig": {
