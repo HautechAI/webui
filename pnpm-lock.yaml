@@ -148,6 +148,9 @@ importers:
 
   components/Card:
     dependencies:
+      '@hautechai/webui.buttonbase':
+        specifier: workspace:^
+        version: link:../ButtonBase
       '@hautechai/webui.column':
         specifier: workspace:^
         version: link:../Column
@@ -233,20 +236,20 @@ importers:
   components/FloatingPanel:
     dependencies:
       '@hautechai/webui.icon':
-        specifier: ^0.3.20
-        version: 0.3.20(@types/react@19.0.8)(react@19.0.0)
+        specifier: workspace:^
+        version: link:../Icon
       '@hautechai/webui.iconbutton':
-        specifier: ^0.3.20
-        version: 0.3.20(@types/react@19.0.8)(react@19.0.0)
+        specifier: workspace:^
+        version: link:../IconButton
       '@hautechai/webui.progress':
-        specifier: ^0.3.28
-        version: 0.3.28(react@19.0.0)
+        specifier: workspace:^
+        version: link:../Progress
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
         version: link:../ThemeProvider
       '@hautechai/webui.typography':
-        specifier: ^0.3.24
-        version: 0.3.24(@types/react@19.0.8)(react@19.0.0)
+        specifier: workspace:^
+        version: link:../Typography
 
   components/HoverControls:
     dependencies:
@@ -839,24 +842,6 @@ packages:
     engines: {node: '>=18'}
     cpu: [x64]
     os: [win32]
-
-  '@hautechai/webui.buttonbase@0.3.20':
-    resolution: {integrity: sha512-PoTBnw56YlYs48WUJxOHCSEiFRkveZRjsGCSQmJaUFIk5RzQ+Nh70F2+2H+FT/tifeq7qgUySY6N6GG04kWO9w==}
-
-  '@hautechai/webui.icon@0.3.20':
-    resolution: {integrity: sha512-RGnvwaiZ4hKqP/pfKwgAtPfq2FBJX+qW4xGV2K1N4YmPtQqtjaPK0BCCS5H7370OaEeVlkrvFda72Gb3f78eAA==}
-
-  '@hautechai/webui.iconbutton@0.3.20':
-    resolution: {integrity: sha512-FoMhIU5TKrA2tDvTnsmz42cPzRoDXcCvAJVB6JveIi6cLHkHKmplZDfr3TXsRlF1O77flY3ysYOZxCOqrHKiog==}
-
-  '@hautechai/webui.progress@0.3.28':
-    resolution: {integrity: sha512-/UUq/3nT/GwpCa1WaCttpjkdlpUyBMw4/Fg8iRZv3QE4jYXg8boUPHrQazdBi+HX04+bkzNxPi8glVQRWf6j5A==}
-
-  '@hautechai/webui.themeprovider@0.3.20':
-    resolution: {integrity: sha512-MQ7a3/+HDPNcmFH4CqxAjBziPGNEJ04lfcMQELeFO7qRywptb1mfdv3Gc60d7cMuZKsSFDs089WiGgH55YmNug==}
-
-  '@hautechai/webui.typography@0.3.24':
-    resolution: {integrity: sha512-0hhymcmC20pFivRmF/U3Hk3I3puSMomniXT+8r3c0sl6Ed52OGdY3X914K7Rhao51Vtt6Q3chilh88DS+0QHbg==}
 
   '@hutson/parse-repository-url@3.0.2':
     resolution: {integrity: sha512-H9XAx3hc0BQHY6l+IFSWHDySypcXsvsuLhgYLUGywmJ5pswRVQJUHpOsobnLYp2ZUaUlKiKDrgWWhosOwAEM8Q==}
@@ -4108,56 +4093,6 @@ snapshots:
 
   '@esbuild/win32-x64@0.24.2':
     optional: true
-
-  '@hautechai/webui.buttonbase@0.3.20(@types/react@19.0.8)(react@19.0.0)':
-    dependencies:
-      '@hautechai/webui.themeprovider': 0.3.20(@types/react@19.0.8)(react@19.0.0)
-    transitivePeerDependencies:
-      - '@types/react'
-      - react
-      - supports-color
-
-  '@hautechai/webui.icon@0.3.20(@types/react@19.0.8)(react@19.0.0)':
-    dependencies:
-      '@hautechai/webui.themeprovider': 0.3.20(@types/react@19.0.8)(react@19.0.0)
-      lodash: 4.17.21
-    transitivePeerDependencies:
-      - '@types/react'
-      - react
-      - supports-color
-
-  '@hautechai/webui.iconbutton@0.3.20(@types/react@19.0.8)(react@19.0.0)':
-    dependencies:
-      '@hautechai/webui.buttonbase': 0.3.20(@types/react@19.0.8)(react@19.0.0)
-      '@hautechai/webui.themeprovider': 0.3.20(@types/react@19.0.8)(react@19.0.0)
-    transitivePeerDependencies:
-      - '@types/react'
-      - react
-      - supports-color
-
-  '@hautechai/webui.progress@0.3.28(react@19.0.0)':
-    dependencies:
-      '@lottiefiles/dotlottie-react': 0.13.2(react@19.0.0)
-    transitivePeerDependencies:
-      - react
-
-  '@hautechai/webui.themeprovider@0.3.20(@types/react@19.0.8)(react@19.0.0)':
-    dependencies:
-      '@emotion/react': 11.14.0(@types/react@19.0.8)(react@19.0.0)
-      '@emotion/styled': 11.14.0(@emotion/react@11.14.0(@types/react@19.0.8)(react@19.0.0))(@types/react@19.0.8)(react@19.0.0)
-    transitivePeerDependencies:
-      - '@types/react'
-      - react
-      - supports-color
-
-  '@hautechai/webui.typography@0.3.24(@types/react@19.0.8)(react@19.0.0)':
-    dependencies:
-      '@hautechai/webui.themeprovider': 0.3.20(@types/react@19.0.8)(react@19.0.0)
-      lodash: 4.17.21
-    transitivePeerDependencies:
-      - '@types/react'
-      - react
-      - supports-color
 
   '@hutson/parse-repository-url@3.0.2': {}
 

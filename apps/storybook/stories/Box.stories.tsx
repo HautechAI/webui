@@ -107,3 +107,11 @@ export const MaxHeight = {
         overflowY: 'scroll',
     },
 };
+
+export const Width50Percent = {
+    args: {
+        children: 'content',
+        width: '50%',
+        style: { border: 'dashed blue 1px' },
+    },
+};

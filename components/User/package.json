@@ -1,7 +1,7 @@
 {
     "name": "@hautechai/webui.user",
     "description": "",
-    "version": "0.3.24",
+    "version": "0.3.34",
     "type": "module",
     "main": "src/index.tsx",
     "publishConfig": {

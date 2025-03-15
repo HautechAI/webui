@@ -14,16 +14,9 @@ const ColumnContainer = styled.div<Pick<DataItemProps, 'size' | 'primary' | 'str
         `}
 `;
 
-const RowContainer = styled(Row)`
-    padding: ${({ theme }) => theme.foundation.spacing.m}px 0;
-`;
-
-const InnerIconContainer = styled.div`
-    width: 20px;
-    height: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+const RowContainer = styled(Row)<Pick<DataItemProps, 'size'>>`
+    padding: ${({ theme, size }) => (size === 'small' ? 0 : theme.foundation.spacing.m)}px 0;
+    gap: ${({ theme }) => theme.foundation.spacing.m}px;
 `;
 
 export type DataItemProps = {
@@ -67,30 +60,31 @@ const DataTypographyVariants: Record<
 export const DataItem = (props: DataItemProps) => {
     const { size = 'medium', primary = 'data', stretch } = props;
     return props.direction === 'row' ? (
-        <RowContainer justify="space-between" stretch={stretch}>
+        <RowContainer justify="space-between" align="center" stretch={stretch} size={props.size}>
             <Typography
                 variant="LabelSmallEmphasized"
                 color={primary === 'data' ? 'layout.onSurface.tertiary' : 'layout.onSurface.primary'}
             >
                 {props.label}
             </Typography>
-            <Row spacing="ml">
+            <Row spacing="ml" align="center" noOverflow>
                 <Typography
                     variant="LabelSmallRegular"
                     color={primary === 'data' ? 'layout.onSurface.primary' : 'layout.onSurface.tertiary'}
+                    noWrap
+                    overflow="ellipsis"
                 >
                     {props.value}
                 </Typography>
-                <InnerIconContainer>
-                    {React.Children.map(props.trailingIcon, (child) => {
-                        if (React.isValidElement(child)) {
-                            return React.cloneElement(child, {
-                                size: 20,
-                            } as any);
-                        }
-                        return child;
-                    })}
-                </InnerIconContainer>
+
+                {React.Children.map(props.trailingIcon, (child) => {
+                    if (React.isValidElement(child)) {
+                        return React.cloneElement(child, {
+                            size: 20,
+                        } as any);
+                    }
+                    return child;
+                })}
             </Row>
         </RowContainer>
     ) : (
