@@ -2,7 +2,7 @@ import { SegmentedControl } from '../../../components/SegmentedControl/src';
 import { UploadIcon, HintIcon, ArrowAltRightIcon } from '../../../components/Icon/src';
 
 export default {
-    title: 'Navigation/Segmented Control',
+    title: 'Input/SegmentedControl',
     component: SegmentedControl,
     parameters: {
         layout: 'centered',
