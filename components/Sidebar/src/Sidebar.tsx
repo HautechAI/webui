@@ -17,7 +17,7 @@ const StyledContent = styled.div`
     flex-direction: column;
     justify-content: space-between;
     flex: 1;
-    padding: ${({ theme }) => theme.foundation.spacing.l}px ${({ theme }) => theme.foundation.spacing.xl}px;
+    padding: ${({ theme }) => theme.foundation.spacing.l}px ${({ theme }) => theme.foundation.spacing.l}px;
 `;
 
 const StyledTopContainer = styled.div`

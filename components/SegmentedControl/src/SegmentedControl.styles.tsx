@@ -21,21 +21,23 @@ export const HIGContainer = styled.div`
     gap: ${({ theme }) => theme.foundation.spacing.s}px;
 `;
 
-export const HIGRow = styled.div<{ selected: boolean }>`
+export const HIGRow = styled.div<{ selected: boolean; whitespace?: keyof ThemeType['foundation']['spacing'] }>`
     flex-direction: row;
     display: flex;
     align-items: center;
-    padding: ${({ theme }) => theme.foundation.spacing.s*1.5}px ${({ theme }) => theme.foundation.spacing.s}px;
+    padding: ${({ theme }) => theme.foundation.spacing.s * 1.5}px
+        ${({ theme, whitespace }) => (whitespace ? theme.foundation.spacing[whitespace] : theme.foundation.spacing.s)}px;
     background-color: ${({ theme, selected }) => (selected ? theme.palette.layout.surfaceHigh : 'transparent')};
     cursor: pointer;
     border-radius: ${({ theme }) => theme.foundation.cornerRadius.s}px;
     gap: ${({ theme }) => theme.foundation.spacing.s}px;
 `;
 
-export const MaterialRow = styled.div<{ selected: boolean }>`
+export const MaterialRow = styled.div<{ selected: boolean; whitespace?: keyof ThemeType['foundation']['spacing'] }>`
     flex-direction: row;
     display: flex;
-    padding: ${({ theme }) => theme.foundation.spacing.s}px;
+    padding: ${({ theme }) => theme.foundation.spacing.s}px
+        ${({ theme, whitespace }) => (whitespace ? theme.foundation.spacing[whitespace] : theme.foundation.spacing.s)}px;
     padding-bottom: ${({ theme }) => theme.foundation.spacing.ml}px;
     cursor: pointer;
     gap: ${({ theme }) => theme.foundation.spacing.s}px;

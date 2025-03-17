@@ -413,6 +413,9 @@ importers:
 
   components/SegmentedControl:
     dependencies:
+      '@hautechai/webui.box':
+        specifier: workspace:^
+        version: link:../Box
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
         version: link:../ThemeProvider

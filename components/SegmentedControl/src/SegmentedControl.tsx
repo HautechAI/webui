@@ -40,8 +40,12 @@ const SegmentedControl = ({ options, defaultValue, value, onChange, material, wh
                 const isSelected = selected === value;
                 const showEmptySpace = !material && (label || !!leadingIcon === !!trailingIcon);
                 return (
-                    <Row selected={isSelected} key={value} onClick={(e) => handleClick(e, value)}>
-                        {showEmptySpace && <WhiteSpace whitespace={whitespace} />}
+                    <Row
+                        selected={isSelected}
+                        key={value}
+                        whitespace={showEmptySpace && whitespace}
+                        onClick={(e) => handleClick(e, value)}
+                    >
                         {leadingIcon && <Icon selected={isSelected}>{leadingIcon}</Icon>}
                         {label && (
                             <Typography
@@ -52,7 +56,6 @@ const SegmentedControl = ({ options, defaultValue, value, onChange, material, wh
                             </Typography>
                         )}
                         {trailingIcon && <Icon selected={isSelected}>{trailingIcon}</Icon>}
-                        {showEmptySpace && <WhiteSpace whitespace={whitespace} />}
                     </Row>
                 );
             })}

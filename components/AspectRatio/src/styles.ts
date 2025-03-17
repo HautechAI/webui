@@ -35,7 +35,6 @@ export const SmallRatioBox = styled.div<{ width: number; height: number }>`
     border-style: solid;
     border-width: ${({ theme }) => theme.foundation.stroke.standard}px;
     border-radius: ${({ theme }) => theme.foundation.cornerRadius.s}px;
-    margin-right: ${({ theme }) => theme.foundation.spacing.xs}px;
 `;
 
 export const RatioBoxContainer = styled.div`
