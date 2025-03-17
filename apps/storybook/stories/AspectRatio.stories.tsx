@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { AspectRatio } from '../../../components/AspectRatio/src';
 
 export default {
@@ -7,21 +8,24 @@ export default {
         layout: 'fullscreen',
     },
     tags: ['autodocs'],
+
     decorators: [
-        (Story: any) => (
-            <div style={{ display: 'flex', width: 'auto', marginTop: '500px' }}>
-                <Story />
-            </div>
-        ),
+        (Story: React.FC<any>, { args }: any) => {
+            const [value, setValue] = useState('1:1');
+            return (
+                <div style={{ display: 'flex', width: 'auto', marginTop: '500px' }}>
+                    <Story args={{ ...args, value, onChange: setValue }} />
+                </div>
+            );
+        },
     ],
 };
 
 export const Main = {
     args: {
-        onAspectRatioChange: (aspectRatio: string) => console.log('Selected aspect ratio:', aspectRatio),
-        onCheckAsDefault: (aspectRatio: string, checked: boolean) =>
-            console.log('Set as default:', aspectRatio, checked),
-        calculateBoxSize: (aspectRatio: string) => {
+        options: ['1:1', '7:9', '13:19', '4:7', '5:12', '9:7', '19:13', '7:4', '12:5'],
+        defaultOptions: ['7:9', '1:1', '9:7'],
+        sizeForRatio: (aspectRatio: string) => {
             const [width, height] = aspectRatio.split(':').map(Number); // '7:9' => [7, 9]
             const ratio = width / height;
             const maxSide = 1024;

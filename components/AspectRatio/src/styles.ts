@@ -31,11 +31,19 @@ export const SmallRatioBox = styled.div<{ width: number; height: number }>`
     display: flex;
     height: ${({ height }) => height}px;
     width: ${({ width }) => width}px;
-    border-color: ${({ theme }) => theme.palette.layout.onSurface.primary};
+    border-color: currentcolor;
     border-style: solid;
     border-width: ${({ theme }) => theme.foundation.stroke.standard}px;
     border-radius: ${({ theme }) => theme.foundation.cornerRadius.s}px;
     margin-right: ${({ theme }) => theme.foundation.spacing.xs}px;
+`;
+
+export const RatioBoxContainer = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
 `;
 
 export const ModalContentContainer = styled.div`

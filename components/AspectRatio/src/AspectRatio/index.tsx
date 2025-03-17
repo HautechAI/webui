@@ -1,47 +1,66 @@
 import { SegmentedControl, SegmentedControlProps } from '@hautechai/webui.segmentedcontrol';
 import { ArrowAltRightIcon } from '@hautechai/webui.icon';
-import { Modal } from '@hautechai/webui.modal';
 import CustomRatio from '../CustomRatio';
-import { SmallRatioBox } from '../styles';
+import { RatioBoxContainer, SmallRatioBox } from '../styles';
 import useLogic from './logic';
+import { styled } from '@hautechai/webui.themeprovider';
 
-export type AspectRatioProps = SegmentedControlProps & {
-    calculateBoxSize: (aspectRatio: string) => { width: number; height: number };
-    onAspectRatioChange: (aspectRation: string) => void;
-    onPressCustomRatio?: () => void;
-    onCheckAsDefault?: (aspectRation: string, checked: boolean) => void;
+const Container = styled.div`
+    display: flex;
+`;
+
+export type AspectRatioProps = {
+    options: string[];
+    defaultOptions: [string, string, string];
+    sizeForRatio: (aspectRatio: string) => { width: number; height: number };
+    value?: string;
+    onChange?: (aspectRatio: string) => void;
 };
 
 export const AspectRatio = (props: AspectRatioProps) => {
-    const { onTabChange, getBoxSize, defaultRatios, modalPosition, isModalOpen, onCloseModal, selectedCustomRatio } =
-        useLogic(props);
+    const {
+        ref, //
+        selected,
+        onTabChange,
+        getBoxSize,
+        modalPosition,
+        onCloseModal,
+        isModalOpen,
+        modalSelected,
+        setModalSelected,
+        displayOptions,
+    } = useLogic(props);
 
     return (
-        <>
+        <Container ref={ref}>
             <SegmentedControl
                 {...props}
                 options={[
-                    ...defaultRatios.map((label) => ({
-                        value: label,
-                        label,
-                        leadingIcon: <SmallRatioBox {...getBoxSize(label, 16)} />,
+                    ...displayOptions.map((option) => ({
+                        value: option,
+                        label: option,
+                        leadingIcon: (
+                            <RatioBoxContainer>
+                                <SmallRatioBox {...getBoxSize(option, 16)} />
+                            </RatioBoxContainer>
+                        ),
                     })),
                     { value: 'custom', leadingIcon: <ArrowAltRightIcon /> },
                 ]}
-                // value={segmentedControlTab}
-                whitespace="m"
+                value={selected}
+                whitespace="s"
                 onChange={onTabChange}
             />
-            {isModalOpen && (
-                <Modal
-                    open
-                    onClose={onCloseModal}
-                    backdropStyle={{ backgroundColor: 'transparent' }}
-                    contentPosition={{ left: modalPosition.left, top: modalPosition.top }}
-                >
-                    <CustomRatio {...props} selectedCustomRatio={selectedCustomRatio} />
-                </Modal>
-            )}
-        </>
+
+            <CustomRatio
+                open={isModalOpen}
+                onClose={onCloseModal}
+                options={props.options}
+                value={modalSelected}
+                onChange={setModalSelected}
+                sizeForRatio={props.sizeForRatio}
+                position={{ left: modalPosition.left, top: modalPosition.top }}
+            />
+        </Container>
     );
 };

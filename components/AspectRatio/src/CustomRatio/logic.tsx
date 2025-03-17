@@ -1,52 +1,74 @@
-import { useCallback, useState } from 'react';
-import { aspectRatios, AspectRatios } from '../AspectRatio/logic';
+import { useCallback, useMemo, useState } from 'react';
 import { CustomRatioProps } from '.';
 
 const useLogic = (props: CustomRatioProps) => {
-    const [temporaryRatio, setTemporaryRatio] = useState<AspectRatios>(props.selectedCustomRatio.current);
-    const [selectedRatio, setSelectedRatio] = useState<AspectRatios>(props.selectedCustomRatio.current);
-    const [sliderValue, setSliderValue] = useState(aspectRatios[props.selectedCustomRatio.current].sliderOrder);
-    const [defaultChecked, setDefaultChecked] = useState(false);
+    const orderedRatios = useMemo(() => {
+        return props.options.sort((a, b) => {
+            const [widthA, heightA] = a.split(':').map(Number);
+            const [widthB, heightB] = b.split(':').map(Number);
+            return widthA / heightA - widthB / heightB;
+        });
+    }, [props.options]);
+
+    const portraitOptions = useMemo(() => {
+        return props.options
+            .map((ratio) => {
+                const [width, height] = ratio.split(':').map(Number);
+                return [width, height] as const;
+            })
+            .filter(([width, height]) => {
+                return height > width;
+            })
+            .sort(([widthA, heightA], [widthB, heightB]) => {
+                return widthA / heightA - widthB / heightB;
+            })
+            .map(([width, height]) => [width, height].join(':'));
+    }, [props.options]);
+
+    const landscapeOptions = useMemo(() => {
+        return props.options
+            .map((ratio) => {
+                const [width, height] = ratio.split(':').map(Number);
+                return [width, height] as const;
+            })
+            .filter(([width, height]) => {
+                return width > height;
+            })
+            .sort(([widthA, heightA], [widthB, heightB]) => {
+                return widthB / heightB - widthA / heightA;
+            })
+            .map(([width, height]) => [width, height].join(':'));
+    }, [props.options]);
+
+    const [tmpSelected, setTmpSelected] = useState<string | undefined>(undefined);
+
+    const selected = tmpSelected ?? props.value;
+
+    const sliderValue = useMemo(() => {
+        return orderedRatios.indexOf(selected);
+    }, [orderedRatios, selected]);
 
     const onChangeSliderValue = useCallback(
         (value: number) => {
-            setSliderValue(value);
-            const aspectRatio = Object.keys(aspectRatios).find(
-                (key) => aspectRatios[key].sliderOrder === value,
-            ) as AspectRatios;
-            setSelectedRatio(aspectRatio);
-            setTemporaryRatio(aspectRatio);
-            props.selectedCustomRatio.current = aspectRatio;
+            props.onChange(orderedRatios[value]);
         },
-        [props.selectedCustomRatio],
+        [orderedRatios],
     );
 
-    const onClickAspectRatio = useCallback(
-        (value: AspectRatios) => {
-            setSelectedRatio(value);
-            setSliderValue(aspectRatios[value].sliderOrder);
-            props.selectedCustomRatio.current = value;
-        },
-        [props.selectedCustomRatio],
-    );
-
-    const onClickDefaultCheckbox = useCallback(
-        (checked: boolean) => {
-            setDefaultChecked(checked);
-            props.onCheckAsDefault?.(selectedRatio, checked);
-        },
-        [props.onCheckAsDefault, selectedRatio],
-    );
+    const onClickAspectRatio = useCallback((value: string) => {
+        props.onClose?.(value);
+    }, []);
 
     return {
-        temporaryRatio,
-        setTemporaryRatio,
-        selectedRatio,
+        portraitOptions,
+        landscapeOptions,
+        orderedRatios,
+        selected,
         sliderValue,
-        defaultChecked,
         onChangeSliderValue,
         onClickAspectRatio,
-        onClickDefaultCheckbox,
+        tmpSelected,
+        setTmpSelected,
     };
 };
 

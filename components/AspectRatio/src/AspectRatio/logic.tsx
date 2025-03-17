@@ -1,23 +1,8 @@
 import { useTheme } from '@hautechai/webui.themeprovider';
-import { useCallback, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { AspectRatioProps } from '.';
 
-export const aspectRatios: Record<string, { sliderOrder: number }> = {
-    '1:1': { sliderOrder: 4 },
-
-    '7:9': { sliderOrder: 0 },
-    '13:19': { sliderOrder: 1 },
-    '4:7': { sliderOrder: 2 },
-    '5:12': { sliderOrder: 3 },
-
-    '9:7': { sliderOrder: 8 },
-    '19:13': { sliderOrder: 7 },
-    '7:4': { sliderOrder: 6 },
-    '12:5': { sliderOrder: 5 },
-};
-export type AspectRatios = keyof typeof aspectRatios;
-
-export const getBoxSize = (aspectRatio: AspectRatios, maxPxSize: number) => {
+export const getBoxSize = (aspectRatio: string, maxPxSize: number) => {
     const [width, height] = aspectRatio.split(':').map(Number);
     return width >= height
         ? { width: maxPxSize, height: Math.round((maxPxSize / width) * height) }
@@ -25,52 +10,79 @@ export const getBoxSize = (aspectRatio: AspectRatios, maxPxSize: number) => {
 };
 
 const useLogic = (props: AspectRatioProps) => {
-    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [selected, setSelected] = useState<string>(props.value ?? props.defaultOptions[0]);
+
+    const ref = useRef<HTMLDivElement>(null);
+    const [modalSelected, setModalSelected] = useState<string>(props.value ?? props.defaultOptions[0]);
     const [modalPosition, setModalPosition] = useState({ left: 0, top: 0 });
-    const [defaultRatios, setDefaultRatios] = useState<AspectRatios[]>(['7:9', '1:1', '9:7']);
-    const selectedCustomRatio = useRef<AspectRatios>('1:1');
+
+    useEffect(() => {
+        if (props.value) {
+            setSelected(props.value);
+            setModalSelected(props.value);
+        }
+    }, [props.value]);
+
+    const displayOptions = useMemo(() => {
+        if (selected === 'custom') {
+            return props.defaultOptions;
+        }
+        const toNumber = (ratio: string) => {
+            const [w, h] = ratio.split(':').map(Number);
+            return w / h;
+        };
+        if (toNumber(selected) <= toNumber(props.defaultOptions[0])) {
+            return [selected, props.defaultOptions[1], props.defaultOptions[2]];
+        }
+        if (toNumber(selected) >= toNumber(props.defaultOptions[2])) {
+            return [props.defaultOptions[0], props.defaultOptions[1], selected];
+        }
+        return [props.defaultOptions[0], selected, props.defaultOptions[2]];
+    }, [props.defaultOptions, selected]);
+
     const theme = useTheme();
+
+    useEffect(() => {
+        const rect = ref.current?.getBoundingClientRect();
+        if (rect) {
+            setModalPosition({
+                left: rect.right + theme.foundation.spacing.l,
+                top: rect.top - 420, // todo check how modal position can be dynamic according to screen size and position of the element
+            });
+        }
+    }, [theme, ref]);
 
     const onTabChange = useCallback(
         (event: React.MouseEvent<HTMLDivElement, MouseEvent>, value: string) => {
-            if (value === 'custom') {
-                const rect = event.currentTarget.getBoundingClientRect();
-                setModalPosition({
-                    left: rect.right + theme.foundation.spacing.l,
-                    top: rect.top - 420, // todo check how modal position can be dynamic according to screen size and position of the element
-                });
-                setIsModalOpen(true);
-            } else {
-                setIsModalOpen(false);
+            setSelected(value);
+            if (value !== 'custom') {
+                props.onChange?.(value);
             }
-            props.onChange?.(event, value);
         },
-        [props.onChange, props.onAspectRatioChange, defaultRatios],
+        [props.onChange],
     );
 
-    const onCloseModal = useCallback(() => {
-        props.onAspectRatioChange(selectedCustomRatio.current);
-        if (selectedCustomRatio.current === '1:1') {
-            setIsModalOpen(false);
-            return;
-        }
-        const [width, height] = selectedCustomRatio.current.split(':').map(Number);
-        const landscapeRatio = width >= height ? selectedCustomRatio.current : `${height}:${width}`;
-        const portraitRatio = width >= height ? `${height}:${width}` : selectedCustomRatio.current;
+    const onCloseModal = useCallback(
+        (value?: string) => {
+            setSelected(value ?? modalSelected);
+            props.onChange?.(value ?? modalSelected);
+        },
+        [props.value, modalSelected],
+    );
 
-        const defaultRatios = [portraitRatio, '1:1', landscapeRatio];
-        setIsModalOpen(false);
-        setDefaultRatios(defaultRatios);
-    }, [selectedCustomRatio, props.onAspectRatioChange]);
+    const isModalOpen = selected === 'custom';
 
     return {
-        defaultRatios,
+        ref,
+        selected,
         getBoxSize,
         onTabChange,
         modalPosition,
-        isModalOpen,
         onCloseModal,
-        selectedCustomRatio,
+        isModalOpen,
+        modalSelected,
+        setModalSelected,
+        displayOptions,
     };
 };
 

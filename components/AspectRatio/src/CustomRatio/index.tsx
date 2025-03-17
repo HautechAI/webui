@@ -1,49 +1,43 @@
-import { LockIcon } from '@hautechai/webui.icon';
-import { Typography } from '@hautechai/webui.typography';
+import { Box } from '@hautechai/webui.box';
 import { Column } from '@hautechai/webui.column';
 import { Divider } from '@hautechai/webui.divider';
-import { Box } from '@hautechai/webui.box';
 import { Row } from '@hautechai/webui.row';
 import { Slider } from '@hautechai/webui.slider';
-import { Checkbox } from '@hautechai/webui.checkbox';
-import {
-    Ratio,
-    OptionLabel,
-    ModalContentContainer,
-    AspectRatioBoxContainer,
-    RatioBox,
-    Sizes,
-    CustomRatioContainer,
-    CheckAsDefault,
-} from '../styles';
-import { AspectRatioProps } from '../AspectRatio';
-import { AspectRatios, aspectRatios, getBoxSize } from '../AspectRatio/logic';
+import { Typography } from '@hautechai/webui.typography';
+import { Modal } from '@hautechai/webui.modal';
+
+import { getBoxSize } from '../AspectRatio/logic';
+import { AspectRatioBoxContainer, ModalContentContainer, OptionLabel, Ratio, RatioBox, Sizes } from '../styles';
 import useLogic from './logic';
 
 export const maxPxSize = 320;
 
-export type CustomRatioProps = AspectRatioProps & {
-    selectedCustomRatio: React.RefObject<AspectRatios>;
+export type CustomRatioProps = {
+    open?: boolean;
+    onClose?: (value?: string) => void;
+    value: string;
+    onChange: (value: string) => void;
+    options: string[];
+    sizeForRatio: (aspectRatio: string) => { width: number; height: number };
+    position?: { left: number; top: number };
 };
 
 const CustomRatio = (props: CustomRatioProps) => {
     const {
-        sliderValue,
-        defaultChecked,
+        sliderValue, //
         onClickAspectRatio,
-        selectedRatio,
-        temporaryRatio,
-        setTemporaryRatio,
         onChangeSliderValue,
-        onClickDefaultCheckbox,
+        selected,
+        setTmpSelected,
+        portraitOptions,
+        landscapeOptions,
     } = useLogic(props);
 
-    const renderOption = (option: AspectRatios, description?: string) => (
+    const renderOption = (option: string, description?: string) => (
         <Ratio
-            selected={selectedRatio === option}
+            selected={selected === option}
             onClick={() => onClickAspectRatio(option)}
-            onMouseEnter={() => setTemporaryRatio(option as AspectRatios)}
-            onMouseLeave={() => setTemporaryRatio(selectedRatio)}
+            onMouseEnter={() => setTmpSelected(option)}
             key={option}
         >
             <Typography variant="LabelSmallRegular" color="layout.onSurface.primary">
@@ -57,20 +51,14 @@ const CustomRatio = (props: CustomRatioProps) => {
         </Ratio>
     );
 
-    const renderOptions = (label: string, portrait: boolean) => (
+    const renderOptions = (label: string, options: string[]) => (
         <Column>
             <OptionLabel>
                 <Typography variant="LabelSmallRegular" color="layout.onSurface.tertiary">
                     {label}
                 </Typography>
             </OptionLabel>
-            {Object.keys(aspectRatios)
-                .filter((ratio) => {
-                    const [width, height] = ratio.split(':').map(Number);
-                    return portrait ? height > width : width > height;
-                })
-                .filter((ratio) => ratio !== '1:1')
-                .map((ratio) => renderOption(ratio as AspectRatios))}
+            {options.map((option) => renderOption(option))}
         </Column>
     );
 
@@ -78,16 +66,16 @@ const CustomRatio = (props: CustomRatioProps) => {
         return (
             <Column>
                 <AspectRatioBoxContainer>
-                    <RatioBox {...getBoxSize(temporaryRatio, maxPxSize)}>
+                    <RatioBox {...getBoxSize(selected, maxPxSize)}>
                         <Typography variant="LabelMediumEmphasized" color="layout.onSurface.primary">
-                            {temporaryRatio}
+                            {selected}
                         </Typography>
                     </RatioBox>
                 </AspectRatioBoxContainer>
                 <Box paddingTop="xl" paddingBottom="l">
                     <Slider
                         min={0}
-                        max={Object.keys(aspectRatios).length - 1}
+                        max={Object.keys(props.options).length - 1}
                         value={sliderValue}
                         onChange={onChangeSliderValue}
                     />
@@ -98,7 +86,7 @@ const CustomRatio = (props: CustomRatioProps) => {
                             Width
                         </Typography>
                         <Typography variant="LabelSmallRegular" color="layout.onSurface.primary">
-                            {props.calculateBoxSize(selectedRatio).width}px
+                            {props.sizeForRatio(selected).width}px
                         </Typography>
                     </Row>
                     <Row spacing="m">
@@ -106,7 +94,7 @@ const CustomRatio = (props: CustomRatioProps) => {
                             Height
                         </Typography>
                         <Typography variant="LabelSmallRegular" color="layout.onSurface.primary">
-                            {props.calculateBoxSize(selectedRatio).height}px
+                            {props.sizeForRatio(selected).height}px
                         </Typography>
                     </Row>
                 </Sizes>
@@ -115,37 +103,47 @@ const CustomRatio = (props: CustomRatioProps) => {
     };
 
     const renderRightColumn = () => (
-        <Column>
-            <Row spacing="m">
-                {renderOptions('Portrait', true)}
-                {renderOptions('Landscape', false)}
-            </Row>
-            <Box paddingBottom="ml" paddingTop="ml">
-                <Divider />
-            </Box>
-            <Box paddingBottom="xs">{renderOption('1:1', '(Square)')}</Box>
-            {props.onPressCustomRatio && (
+        <div onMouseLeave={() => setTmpSelected(undefined)}>
+            <Column>
+                <Row spacing="m">
+                    {renderOptions('Portrait', portraitOptions)}
+                    {renderOptions('Landscape', landscapeOptions)}
+                </Row>
+
+                <Box paddingBottom="ml" paddingTop="ml">
+                    <Divider />
+                </Box>
+                <Box paddingBottom="xs">{renderOption('1:1', '(Square)')}</Box>
+                {/* {props.onPressCustomRatio && (
                 <CustomRatioContainer onClick={props.onPressCustomRatio}>
                     <Typography variant="LabelSmallRegular" color="layout.onSurface.primary">
                         Custom
                     </Typography>
                     <LockIcon size={20} color="layout.onSurface.secondary" />
                 </CustomRatioContainer>
-            )}
-            <CheckAsDefault>
+            )} */}
+                {/* <CheckAsDefault>
                 <Checkbox checked={defaultChecked} onChange={onClickDefaultCheckbox} />
                 <Typography variant="LabelSmallRegular" color="layout.onSurface.primary">
                     Set as default
                 </Typography>
-            </CheckAsDefault>
-        </Column>
+            </CheckAsDefault> */}
+            </Column>
+        </div>
     );
 
     return (
-        <ModalContentContainer>
-            {renderLeftColumn()}
-            {renderRightColumn()}
-        </ModalContentContainer>
+        <Modal
+            open={props.open}
+            onClose={() => props.onClose?.(selected)}
+            backdropStyle={{ backgroundColor: 'transparent' }}
+            contentPosition={{ left: props.position?.left, top: props.position?.top }}
+        >
+            <ModalContentContainer>
+                {renderLeftColumn()}
+                {renderRightColumn()}
+            </ModalContentContainer>
+        </Modal>
     );
 };
 
