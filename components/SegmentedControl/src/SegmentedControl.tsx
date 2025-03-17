@@ -43,7 +43,7 @@ const SegmentedControl = ({ options, defaultValue, value, onChange, material, wh
                     <Row
                         selected={isSelected}
                         key={value}
-                        whitespace={showEmptySpace && whitespace}
+                        whitespace={showEmptySpace ? whitespace : undefined}
                         onClick={(e) => handleClick(e, value)}
                     >
                         {leadingIcon && <Icon selected={isSelected}>{leadingIcon}</Icon>}
