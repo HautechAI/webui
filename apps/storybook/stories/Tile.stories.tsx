@@ -55,3 +55,17 @@ export const FixedHeightAspectRatio = {
         aspectRatio: 3 / 2,
     },
 };
+
+export const Width100Percent = {
+    args: {
+        width: '100%',
+        aspectRatio: 3 / 2,
+    },
+    decorators: [
+        (Story: any) => (
+            <div style={{ width: '300px', border: 'dashed red 1px' }}>
+                <Story />
+            </div>
+        ),
+    ],
+};

@@ -1,7 +1,9 @@
 import { css, styled } from '@hautechai/webui.themeprovider';
 import { Typography, TypographyProps } from '@hautechai/webui.typography';
+import { Row } from '@hautechai/webui.row';
+import React from 'react';
 
-const Container = styled.div<Pick<DataItemProps, 'size' | 'primary' | 'stretch'>>`
+const ColumnContainer = styled.div<Pick<DataItemProps, 'size' | 'primary' | 'stretch'>>`
     display: flex;
     flex-direction: column;
     gap: ${({ theme, size }) => (size === 'medium' ? theme.foundation.spacing.s : 0)}px;
@@ -12,12 +14,19 @@ const Container = styled.div<Pick<DataItemProps, 'size' | 'primary' | 'stretch'>
         `}
 `;
 
+const RowContainer = styled(Row)<Pick<DataItemProps, 'size'>>`
+    padding: ${({ theme, size }) => (size === 'small' ? 0 : theme.foundation.spacing.m)}px 0;
+    gap: ${({ theme }) => theme.foundation.spacing.m}px;
+`;
+
 export type DataItemProps = {
     label: string;
     value: string;
     size?: 'medium' | 'small';
     primary?: 'data' | 'heading';
     stretch?: boolean;
+    direction?: 'row' | 'column';
+    trailingIcon?: React.ReactNode;
 };
 
 const HeadingTypographyVariants: Record<
@@ -50,8 +59,36 @@ const DataTypographyVariants: Record<
 
 export const DataItem = (props: DataItemProps) => {
     const { size = 'medium', primary = 'data', stretch } = props;
-    return (
-        <Container size={size} primary={primary} stretch={stretch}>
+    return props.direction === 'row' ? (
+        <RowContainer justify="space-between" align="center" stretch={stretch} size={props.size}>
+            <Typography
+                variant="LabelSmallEmphasized"
+                color={primary === 'data' ? 'layout.onSurface.tertiary' : 'layout.onSurface.primary'}
+            >
+                {props.label}
+            </Typography>
+            <Row spacing="ml" align="center" noOverflow>
+                <Typography
+                    variant="LabelSmallRegular"
+                    color={primary === 'data' ? 'layout.onSurface.primary' : 'layout.onSurface.tertiary'}
+                    noWrap
+                    overflow="ellipsis"
+                >
+                    {props.value}
+                </Typography>
+
+                {React.Children.map(props.trailingIcon, (child) => {
+                    if (React.isValidElement(child)) {
+                        return React.cloneElement(child, {
+                            size: 20,
+                        } as any);
+                    }
+                    return child;
+                })}
+            </Row>
+        </RowContainer>
+    ) : (
+        <ColumnContainer size={size} primary={primary} stretch={stretch}>
             <Typography
                 variant={HeadingTypographyVariants[size][primary]}
                 color={primary === 'data' ? 'layout.onSurface.tertiary' : 'layout.onSurface.primary'}
@@ -64,6 +101,6 @@ export const DataItem = (props: DataItemProps) => {
             >
                 {props.value}
             </Typography>
-        </Container>
+        </ColumnContainer>
     );
 };

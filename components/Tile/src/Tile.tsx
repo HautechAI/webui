@@ -8,6 +8,11 @@ const tileSize = {
     xlarge: 200,
 };
 
+const sizeToUnits = (size?: number | string) => {
+    if (!size) return undefined;
+    return typeof size === 'number' ? `${size}px` : size;
+};
+
 const StyledTile = styled.div<Omit<TileProps, 'icon'>>`
     display: flex;
     align-items: center;
@@ -19,12 +24,12 @@ const StyledTile = styled.div<Omit<TileProps, 'icon'>>`
     ${({ width, size }) =>
         (width || size) &&
         css`
-            width: ${width ?? tileSize[size ?? 'medium']}px;
+            width: ${sizeToUnits(width) ?? sizeToUnits(tileSize[size ?? 'medium'])};
         `};
     ${({ height, size }) =>
         (height || size) &&
         css`
-            height: ${height ?? tileSize[size ?? 'medium']}px;
+            height: ${sizeToUnits(height) ?? sizeToUnits(tileSize[size ?? 'medium'])};
         `};
 
     ${({ aspectRatio }) =>
@@ -37,25 +42,28 @@ const StyledTile = styled.div<Omit<TileProps, 'icon'>>`
     background-size: cover;
     background-position: center;
 
-    border-color: ${({ theme }) => theme.palette.actions.primary};
-    border-width: ${({ selected, theme }) => (selected ? theme.foundation.stroke.standard : 0)}px;
+    border-width: ${({ theme }) => `${theme.foundation.stroke.standard}`}px;
     border-style: solid;
 
     background-origin: border-box;
     box-sizing: border-box;
 
+    transition: background-color 0.3s ease, border-color 0.3s ease, outline-color 0.3s ease, transform 0.3s ease;
+
+    border-color: ${({ selected, theme }) => (selected ? theme.palette.actions.primary : 'transparent')};
     .htch-webui-hoverable:hover & {
-        border-width: ${({ theme }) => `${theme.foundation.stroke.standard}`}px;
+        border-color: ${({ theme }) => theme.palette.actions.primary};
     }
 `;
 
 export type TileProps = {
+    className?: string;
     icon?: React.ReactNode;
     image?: string;
     selected?: boolean;
     size?: TileSize;
-    width?: number;
-    height?: number;
+    width?: number | string;
+    height?: number | string;
     aspectRatio?: number;
 };
 

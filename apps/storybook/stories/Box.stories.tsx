@@ -4,7 +4,7 @@ import { Column } from '../../../components/Column/src';
 import { Tile } from '../../../components/Tile/src';
 
 export default {
-    title: 'Data Display/Box',
+    title: 'Layout/Box',
     component: Box,
     parameters: {
         layout: 'centered',
@@ -105,5 +105,13 @@ export const MaxHeight = {
         ),
         maxHeight: 100,
         overflowY: 'scroll',
+    },
+};
+
+export const Width50Percent = {
+    args: {
+        children: 'content',
+        width: '50%',
+        style: { border: 'dashed blue 1px' },
     },
 };

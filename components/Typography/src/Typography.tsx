@@ -1,13 +1,35 @@
-import { styled, ThemeType } from '@hautechai/webui.themeprovider';
-import { Paths } from 'type-fest';
+import { css, styled, ThemeType } from '@hautechai/webui.themeprovider';
 import { get } from 'lodash';
+import { Paths } from 'type-fest';
 
 type TextAlign = 'left' | 'right' | 'center' | 'inherit';
 
-const BaseText = styled.div<{ textAlign?: TextAlign }>`
+const BaseText = styled.div<Pick<TypographyProps, 'textAlign' | 'noWrap' | 'overflow'>>`
     font-family: Inter;
     color: ${({ theme, color }) => (color ? get(theme.palette, color) : 'currentColor')};
     text-align: ${({ textAlign }) => textAlign ?? 'inherit'};
+
+    ${({ noWrap }) =>
+        noWrap &&
+        css`
+            white-space: nowrap;
+        `}
+
+    ${({ overflow }) =>
+        overflow === 'hidden' &&
+        css`
+            overflow: hidden;
+        `}
+
+    ${({ overflow }) => {
+        return (
+            overflow === 'ellipsis' &&
+            css`
+                overflow: hidden;
+                text-overflow: ellipsis;
+            `
+        );
+    }}
 `;
 
 // Heading
@@ -146,6 +168,8 @@ export type TypographyProps = {
     children: React.ReactNode;
     color?: Paths<ThemeType['palette'], { leavesOnly: true }>;
     textAlign?: TextAlign;
+    noWrap?: boolean;
+    overflow?: 'auto' | 'hidden' | 'ellipsis';
 };
 
 export const Typography = (props: TypographyProps) => {

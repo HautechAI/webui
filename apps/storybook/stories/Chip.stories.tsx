@@ -26,3 +26,11 @@ export const WithImage = {
         label: 'Desert',
     },
 };
+
+export const MaxWidth = {
+    args: {
+        image: Desert,
+        label: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+        maxWidth: 300,
+    },
+};

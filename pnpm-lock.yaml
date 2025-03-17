@@ -71,6 +71,42 @@ importers:
         specifier: workspace:^
         version: link:../ThemeProvider
 
+  components/AspectRatio:
+    dependencies:
+      '@hautechai/webui.box':
+        specifier: workspace:^
+        version: link:../Box
+      '@hautechai/webui.checkbox':
+        specifier: workspace:^
+        version: link:../Checkbox
+      '@hautechai/webui.column':
+        specifier: workspace:^
+        version: link:../Column
+      '@hautechai/webui.divider':
+        specifier: workspace:^
+        version: link:../Divider
+      '@hautechai/webui.icon':
+        specifier: workspace:^
+        version: link:../Icon
+      '@hautechai/webui.modal':
+        specifier: workspace:^
+        version: link:../Modal
+      '@hautechai/webui.row':
+        specifier: workspace:^
+        version: link:../Row
+      '@hautechai/webui.segmentedcontrol':
+        specifier: workspace:^
+        version: link:../SegmentedControl
+      '@hautechai/webui.slider':
+        specifier: workspace:^
+        version: link:../Slider
+      '@hautechai/webui.themeprovider':
+        specifier: workspace:^
+        version: link:../ThemeProvider
+      '@hautechai/webui.typography':
+        specifier: workspace:^
+        version: link:../Typography
+
   components/Avatar:
     dependencies:
       '@hautechai/webui.themeprovider':
@@ -112,6 +148,9 @@ importers:
 
   components/Card:
     dependencies:
+      '@hautechai/webui.buttonbase':
+        specifier: workspace:^
+        version: link:../ButtonBase
       '@hautechai/webui.column':
         specifier: workspace:^
         version: link:../Column
@@ -160,6 +199,9 @@ importers:
 
   components/DataItem:
     dependencies:
+      '@hautechai/webui.row':
+        specifier: workspace:^
+        version: link:../Row
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
         version: link:../ThemeProvider
@@ -202,6 +244,24 @@ importers:
       react-dropzone:
         specifier: ^14.3.8
         version: 14.3.8(react@19.0.0)
+
+  components/FloatingPanel:
+    dependencies:
+      '@hautechai/webui.icon':
+        specifier: workspace:^
+        version: link:../Icon
+      '@hautechai/webui.iconbutton':
+        specifier: workspace:^
+        version: link:../IconButton
+      '@hautechai/webui.progress':
+        specifier: workspace:^
+        version: link:../Progress
+      '@hautechai/webui.themeprovider':
+        specifier: workspace:^
+        version: link:../ThemeProvider
+      '@hautechai/webui.typography':
+        specifier: workspace:^
+        version: link:../Typography
 
   components/HoverControls:
     dependencies:
@@ -383,6 +443,15 @@ importers:
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
         version: link:../ThemeProvider
+
+  components/SegmentedControl:
+    dependencies:
+      '@hautechai/webui.themeprovider':
+        specifier: workspace:^
+        version: link:../ThemeProvider
+      '@hautechai/webui.typography':
+        specifier: workspace:^
+        version: link:../Typography
 
   components/Sidebar:
     dependencies:

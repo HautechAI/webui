@@ -6,7 +6,7 @@ import { Chip } from '../../../components/Chip/src';
 import { Previews } from '../../../components/Previews/src';
 
 export default {
-    title: 'Compositions/OperationItem',
+    title: 'Compositions/Operation Item',
     component: OperationItem,
     parameters: {
         layout: 'centered',
@@ -28,5 +28,21 @@ export const Main = {
         date: '15 mins ago',
         unread: true,
         title: 'Operation',
+    },
+};
+
+export const WithProgress = {
+    args: {
+        previews: <Previews images={[img, img, img, img]} />,
+        badge: <Badge color="info" label="In progress" />,
+        chips: [
+            <Chip image={Desert} label="Desert" maxWidth={100} />,
+            <Chip image={Desert} label="Desert" maxWidth={100} />,
+            <Chip image={Desert} label="Very long label here" maxWidth={100} />,
+        ],
+        date: '15 mins ago',
+        unread: true,
+        title: 'Operation',
+        progress: 0.33,
     },
 };

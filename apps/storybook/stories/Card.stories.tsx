@@ -22,3 +22,30 @@ export const Main = {
         aspectRatio: 16 / 9,
     },
 };
+
+export const Clickable = {
+    args: {
+        label: '35 min ago',
+        image: Desert,
+        width: 300,
+        aspectRatio: 16 / 9,
+        onClick: fn() as any,
+    },
+};
+
+export const FullWidth = {
+    args: {
+        label: '35 min ago',
+        image: Desert,
+        fullWidth: '100%',
+        aspectRatio: 16 / 9,
+        onClick: fn() as any,
+    },
+    decorators: [
+        (Story: any) => (
+            <div style={{ width: '350px' }}>
+                <Story />
+            </div>
+        ),
+    ],
+};
