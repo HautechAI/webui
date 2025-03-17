@@ -32,3 +32,20 @@ export const Clickable = {
         onClick: fn() as any,
     },
 };
+
+export const FullWidth = {
+    args: {
+        label: '35 min ago',
+        image: Desert,
+        fullWidth: '100%',
+        aspectRatio: 16 / 9,
+        onClick: fn() as any,
+    },
+    decorators: [
+        (Story: any) => (
+            <div style={{ width: '350px' }}>
+                <Story />
+            </div>
+        ),
+    ],
+};

@@ -8,6 +8,11 @@ const tileSize = {
     xlarge: 200,
 };
 
+const sizeToUnits = (size?: number | string) => {
+    if (!size) return undefined;
+    return typeof size === 'number' ? `${size}px` : size;
+};
+
 const StyledTile = styled.div<Omit<TileProps, 'icon'>>`
     display: flex;
     align-items: center;
@@ -19,12 +24,12 @@ const StyledTile = styled.div<Omit<TileProps, 'icon'>>`
     ${({ width, size }) =>
         (width || size) &&
         css`
-            width: ${width ?? tileSize[size ?? 'medium']}px;
+            width: ${sizeToUnits(width) ?? sizeToUnits(tileSize[size ?? 'medium'])};
         `};
     ${({ height, size }) =>
         (height || size) &&
         css`
-            height: ${height ?? tileSize[size ?? 'medium']}px;
+            height: ${sizeToUnits(height) ?? sizeToUnits(tileSize[size ?? 'medium'])};
         `};
 
     ${({ aspectRatio }) =>
@@ -57,8 +62,8 @@ export type TileProps = {
     image?: string;
     selected?: boolean;
     size?: TileSize;
-    width?: number;
-    height?: number;
+    width?: number | string;
+    height?: number | string;
     aspectRatio?: number;
 };
 

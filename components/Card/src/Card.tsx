@@ -12,15 +12,21 @@ export type CardProps = {
     aspectRatio?: number;
     width?: number;
     height?: number;
+    fullWidth?: boolean;
     onDownload?: () => void;
     onClick?: () => void;
 };
 
 export const Card = (props: CardProps) => {
     return (
-        <Column spacing="s">
+        <Column spacing="s" stretch={props.fullWidth}>
             <ButtonBase disabled={!props.onClick} onClick={props.onClick}>
-                <Tile width={props.width} height={props.height} image={props.image} aspectRatio={props.aspectRatio} />
+                <Tile
+                    width={props.fullWidth ? '100%' : props.width}
+                    height={props.height}
+                    image={props.image}
+                    aspectRatio={props.aspectRatio}
+                />
             </ButtonBase>
             <Row align="center">
                 <Typography variant="LabelSmallRegular" color="layout.onSurface.secondary">
