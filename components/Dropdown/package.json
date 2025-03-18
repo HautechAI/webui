@@ -1,7 +1,7 @@
 {
     "name": "@hautechai/webui.dropdown",
     "description": "",
-    "version": "0.3.24",
+    "version": "0.3.47",
     "type": "module",
     "main": "src/index.tsx",
     "publishConfig": {
@@ -18,9 +18,9 @@
     },
     "author": "HautechAI",
     "dependencies": {
+        "@hautechai/webui.menu": "workspace:^",
         "@hautechai/webui.themeprovider": "workspace:^",
-        "@hautechai/webui.typography": "workspace:^",
-        "@hautechai/webui.menu": "workspace:^"
+        "@hautechai/webui.typography": "workspace:^"
     },
     "license": "Apache-2.0"
 }

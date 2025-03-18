@@ -1,7 +1,7 @@
 {
     "name": "@hautechai/webui.chip",
     "description": "",
-    "version": "0.3.40",
+    "version": "0.3.47",
     "type": "module",
     "main": "src/index.tsx",
     "publishConfig": {

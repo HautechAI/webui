@@ -1,7 +1,7 @@
 {
     "name": "@hautechai/webui.iconbutton",
     "description": "",
-    "version": "0.3.40",
+    "version": "0.3.47",
     "type": "module",
     "main": "src/index.tsx",
     "publishConfig": {
