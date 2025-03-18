@@ -6,11 +6,13 @@ export const Theme: ThemeType = {
     foundation: {
         animation: {
             duration: {
+                fast: 0.25,
                 normal: 0.5,
                 slow: 1,
             },
             timing: {
                 ease: 'ease',
+                easeOut: 'ease-out',
                 easeInOut: 'ease-in-out',
                 customBounce: 'cubic-bezier(0.34, 1.56, 0.64, 1)',
             },
