@@ -9,11 +9,13 @@ export type ThemeType = {
     foundation: {
         animation: {
             duration: {
+                fast: number;
                 normal: number;
                 slow: number;
             };
             timing: {
                 ease: string;
+                easeOut: string;
                 easeInOut: string;
                 customBounce: string;
             };
