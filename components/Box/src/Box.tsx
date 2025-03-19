@@ -111,6 +111,20 @@ const StyledBox = styled.div<Omit<BoxProps, 'icon'>>`
                   justify-content: ${justifyContent};
               `
             : ''}
+
+    ${({ grow }) =>
+        grow
+            ? css`
+                  flex-grow: ${grow};
+              `
+            : ''}
+
+    ${({ shrink }) =>
+        shrink
+            ? css`
+                  flex-shrink: ${shrink};
+              `
+            : ''}
 `;
 
 export type BoxProps = PropsWithChildren<{
@@ -133,6 +147,8 @@ export type BoxProps = PropsWithChildren<{
     display?: 'flex' | 'block' | 'inline-block' | 'inline-flex';
     alignItems?: 'flex-start' | 'flex-end' | 'center' | 'baseline' | 'stretch';
     justifyContent?: 'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-around';
+    grow?: number;
+    shrink?: number;
 }>;
 
 export const Box = (props: BoxProps) => {
