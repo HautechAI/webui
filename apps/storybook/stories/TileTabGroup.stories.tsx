@@ -36,8 +36,28 @@ export const Main = {
     },
 };
 
+export const NoWrap = {
+    args: {
+        children: [
+            <TileTabItem value="model" label="Model" icon={<ModelIcon />} />,
+            <TileTabItem value="background" label="Background" icon={<BackgroundIcon />} />,
+            <TileTabItem value="pose" label="Pose" icon={<PoseIcon />} />,
+        ],
+    },
+    decorators: [
+        (Story: React.FC<any>, { args }: any) => {
+            return (
+                <div style={{ width: '300px', border: 'dashed black 1px' }}>
+                    <Story />
+                </div>
+            );
+        },
+    ],
+};
+
 export const Wrap = {
     args: {
+        wrap: true,
         children: [
             <TileTabItem value="model" label="Model" icon={<ModelIcon />} />,
             <TileTabItem value="background" label="Background" icon={<BackgroundIcon />} />,
