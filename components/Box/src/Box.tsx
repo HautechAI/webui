@@ -113,14 +113,14 @@ const StyledBox = styled.div<Omit<BoxProps, 'icon'>>`
             : ''}
 
     ${({ grow }) =>
-        grow
+        grow !== undefined
             ? css`
                   flex-grow: ${grow};
               `
             : ''}
 
     ${({ shrink }) =>
-        shrink
+        shrink !== undefined
             ? css`
                   flex-shrink: ${shrink};
               `
