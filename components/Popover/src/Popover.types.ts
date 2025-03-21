@@ -6,3 +6,7 @@ export type PopoverProps = {
     contentPositions?: PopoverPosition[];
     trigger: () => ReactNode;
 };
+
+export type PopoverRef = {
+    close: () => void;
+};

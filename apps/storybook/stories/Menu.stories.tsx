@@ -13,12 +13,26 @@ export default {
     tags: ['autodocs'],
     args: {
         options: [
-            { label: 'Option1', value: 'op1' },
-            { label: 'Option2 very long option', value: 'op2' },
-            { label: 'Any text', value: 'op3' },
-            { label: 'Any text', value: 'op4' },
-            { label: 'Option5 very long option', value: 'op5' },
-            { label: 'Option6 very very long option', value: 'op6' },
+            {
+                label: 'Option1',
+                leadingIcon: <PlaceholderIcon />,
+                trailingIcon: <PlaceholderIcon />,
+                onClick: fn() as any,
+                size: 'small',
+            },
+            {
+                label: 'Option2 very long option',
+                leadingIcon: <PlaceholderIcon />,
+                onClick: fn() as any,
+                size: 'small',
+            },
+            {
+                label: 'Option3 very very long option',
+                trailingIcon: <PlaceholderIcon />,
+                onClick: fn() as any,
+                size: 'medium',
+            },
+            { label: 'Any text', onClick: fn() as any, size: 'medium' },
         ],
         onChange: fn() as any,
     },
@@ -35,19 +49,24 @@ export const Main = {
     args: {},
 };
 
-export const WithIcons = {
+export const WithSelectedOption = {
     args: {
         options: [
-            { label: 'Option1', value: 'op1', leadingIcon: <PlaceholderIcon />, trailingIcon: <PlaceholderIcon /> },
-            { label: 'Option2 very long option', value: 'op2', leadingIcon: <PlaceholderIcon /> },
-            { label: 'Option3 very long option', value: 'op3', trailingIcon: <PlaceholderIcon /> },
-            { label: 'Any text', value: 'op4' },
+            {
+                label: 'Option1',
+                leadingIcon: <PlaceholderIcon />,
+                trailingIcon: <PlaceholderIcon />,
+                isSelected: true,
+                onClick: fn() as any,
+            },
+            { label: 'Option2 very long option', leadingIcon: <PlaceholderIcon />, onClick: fn() as any },
         ],
     },
 };
 
-export const WithSelectedOption = {
+export const Popover = {
     args: {
-        value: 'op2',
+        trigger: () => <button>Open Popover Menu</button>,
+        contentPositions: ['top'],
     },
 };

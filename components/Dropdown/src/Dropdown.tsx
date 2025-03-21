@@ -8,6 +8,7 @@ const Container = styled.div<{ disabled?: boolean }>`
     position: relative;
     display: flex;
     flex-direction: column;
+    flex: 1 0 0;
     gap: ${({ theme }) => theme.foundation.spacing.m}px;
 
     ${({ theme, disabled }) =>
@@ -249,7 +250,13 @@ export const Dropdown = (props: DropdownProps) => {
                 </RotatingArrow>
             </ButtonContainer>
             <MenuContainer isOpen={isOpen}>
-                <Menu value={selectedOption?.value} options={props.options} onChange={handleSelect} />
+                <Menu
+                    options={props.options.map((option) => ({
+                        ...option,
+                        onClick: () => handleSelect(option.value),
+                        isSelected: props.value === option.value,
+                    }))}
+                />
             </MenuContainer>
             {props.error && (
                 <Typography variant="CaptionRegular" color="actions.error">

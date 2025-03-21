@@ -197,6 +197,24 @@ importers:
         specifier: workspace:^
         version: link:../ThemeProvider
 
+  components/ContextMenu:
+    dependencies:
+      '@hautechai/webui.badge':
+        specifier: workspace:^
+        version: link:../Badge
+      '@hautechai/webui.column':
+        specifier: workspace:^
+        version: link:../Column
+      '@hautechai/webui.divider':
+        specifier: workspace:^
+        version: link:../Divider
+      '@hautechai/webui.row':
+        specifier: workspace:^
+        version: link:../Row
+      '@hautechai/webui.themeprovider':
+        specifier: workspace:^
+        version: link:../ThemeProvider
+
   components/DataItem:
     dependencies:
       '@hautechai/webui.row':
@@ -220,6 +238,27 @@ importers:
       '@hautechai/webui.menu':
         specifier: workspace:^
         version: link:../Menu
+      '@hautechai/webui.themeprovider':
+        specifier: workspace:^
+        version: link:../ThemeProvider
+      '@hautechai/webui.typography':
+        specifier: workspace:^
+        version: link:../Typography
+
+  components/Field:
+    dependencies:
+      '@hautechai/webui.column':
+        specifier: workspace:^
+        version: link:../Column
+      '@hautechai/webui.row':
+        specifier: workspace:^
+        version: link:../Row
+      '@hautechai/webui.textarea':
+        specifier: workspace:^
+        version: link:../TextArea
+      '@hautechai/webui.textinput':
+        specifier: workspace:^
+        version: link:../TextInput
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
         version: link:../ThemeProvider
@@ -371,6 +410,9 @@ importers:
       '@hautechai/webui.menuitem':
         specifier: workspace:^
         version: link:../MenuItem
+      '@hautechai/webui.popover':
+        specifier: workspace:^
+        version: link:../Popover
 
   components/MenuItem:
     dependencies:
@@ -495,6 +537,18 @@ importers:
         specifier: workspace:^
         version: link:../ThemeProvider
 
+  components/TextArea:
+    dependencies:
+      '@hautechai/webui.iconbutton':
+        specifier: workspace:^
+        version: link:../IconButton
+      '@hautechai/webui.themeprovider':
+        specifier: workspace:^
+        version: link:../ThemeProvider
+      react-textarea-autosize:
+        specifier: 8.5.8
+        version: 8.5.8(@types/react@19.0.10)(react@19.0.0)
+
   components/TextButton:
     dependencies:
       '@hautechai/webui.buttonbase':
@@ -507,14 +561,14 @@ importers:
         specifier: workspace:^
         version: link:../Typography
 
-  components/TextField:
+  components/TextInput:
     dependencies:
+      '@hautechai/webui.iconbutton':
+        specifier: workspace:^
+        version: link:../IconButton
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
         version: link:../ThemeProvider
-      '@hautechai/webui.typography':
-        specifier: workspace:^
-        version: link:../Typography
 
   components/Theme:
     dependencies:
@@ -5467,6 +5521,20 @@ packages:
     resolution: {integrity: sha512-Q+u+nOH87PzjqGFd2PgTcmLpHPZnCmUPREHYoNBc8dwJv6fi51p9U6hqwG8g/T8MN86HrFjrU+uQU6yvETU7cA==}
     dev: false
 
+  /react-textarea-autosize@8.5.8(@types/react@19.0.10)(react@19.0.0):
+    resolution: {integrity: sha512-iUiIj70JefrTuSJ4LbVFiSqWiHHss5L63L717bqaWHMgkm9sz6eEvro4vZ3uQfGJbevzwT6rHOszHKA8RkhRMg==}
+    engines: {node: '>=10'}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
+    dependencies:
+      '@babel/runtime': 7.26.10
+      react: 19.0.0
+      use-composed-ref: 1.4.0(@types/react@19.0.10)(react@19.0.0)
+      use-latest: 1.3.0(@types/react@19.0.10)(react@19.0.0)
+    transitivePeerDependencies:
+      - '@types/react'
+    dev: false
+
   /react-tiny-popover@8.1.6(react-dom@19.0.0)(react@19.0.0):
     resolution: {integrity: sha512-jeZnGqHxb5TX7pCzpqLoVJned7DTVnLrLoCQQGFTyvlxXB/QUaet7O0krG22t5FReMBH035SLnzThKvk8tIfsg==}
     peerDependencies:
@@ -6203,6 +6271,46 @@ packages:
       escalade: 3.2.0
       picocolors: 1.1.1
     dev: true
+    
+  /use-composed-ref@1.4.0(@types/react@19.0.10)(react@19.0.0):
+    resolution: {integrity: sha512-djviaxuOOh7wkj0paeO1Q/4wMZ8Zrnag5H6yBvzN7AKKe8beOaED9SF5/ByLqsku8NP4zQqsvM2u3ew/tJK8/w==}
+    peerDependencies:
+      '@types/react': '*'
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+    dependencies:
+      '@types/react': 19.0.10
+      react: 19.0.0
+    dev: false
+
+  /use-isomorphic-layout-effect@1.2.0(@types/react@19.0.10)(react@19.0.0):
+    resolution: {integrity: sha512-q6ayo8DWoPZT0VdG4u3D3uxcgONP3Mevx2i2b0434cwWBoL+aelL1DzkXI6w3PhTZzUeR2kaVlZn70iCiseP6w==}
+    peerDependencies:
+      '@types/react': '*'
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+    dependencies:
+      '@types/react': 19.0.10
+      react: 19.0.0
+    dev: false
+
+  /use-latest@1.3.0(@types/react@19.0.10)(react@19.0.0):
+    resolution: {integrity: sha512-mhg3xdm9NaM8q+gLT8KryJPnRFOz1/5XPBhmDEVZK1webPzDjrPk7f/mbpeLqTgB9msytYWANxgALOCJKnLvcQ==}
+    peerDependencies:
+      '@types/react': '*'
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+    dependencies:
+      '@types/react': 19.0.10
+      react: 19.0.0
+      use-isomorphic-layout-effect: 1.2.0(@types/react@19.0.10)(react@19.0.0)
+    dev: false
 
   /util-deprecate@1.0.2:
     resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}
