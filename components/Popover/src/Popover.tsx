@@ -1,9 +1,9 @@
-import { useCallback, useState } from 'react';
+import { forwardRef, useCallback, useImperativeHandle, useState } from 'react';
 import { Popover as TinyPopover } from 'react-tiny-popover';
-import { PopoverProps } from './Popover.types';
+import { PopoverProps, PopoverRef } from './Popover.types';
 import S from './Popover.styles';
 
-export const Popover = (props: PopoverProps) => {
+export const Popover = forwardRef<PopoverRef, PopoverProps>((props: PopoverProps, ref) => {
     const [isOpen, setOpen] = useState(false);
 
     const close = useCallback(() => {
@@ -12,6 +12,9 @@ export const Popover = (props: PopoverProps) => {
     const open = useCallback(() => {
         setOpen(true);
     }, []);
+    useImperativeHandle(ref, () => ({
+        close,
+    }));
 
     return (
         <TinyPopover
@@ -23,4 +26,4 @@ export const Popover = (props: PopoverProps) => {
             <div onClick={open}>{props.trigger()}</div>
         </TinyPopover>
     );
-};
+});

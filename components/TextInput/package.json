@@ -1,5 +1,5 @@
 {
-    "name": "@hautechai/webui.textfield",
+    "name": "@hautechai/webui.textinput",
     "description": "",
     "version": "0.3.48",
     "type": "module",
@@ -19,7 +19,7 @@
     "author": "HautechAI",
     "dependencies": {
         "@hautechai/webui.themeprovider": "workspace:^",
-        "@hautechai/webui.typography": "workspace:^"
+        "@hautechai/webui.iconbutton": "workspace:^"
     },
     "license": "Apache-2.0"
 }

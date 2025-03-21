@@ -8,7 +8,7 @@ export default {
         }
     `,
     Container: styled('div')`
-        background-color: white;
+        background-color: ${({ theme }) => theme.palette.layout.surfaceLow};
         border-color: ${({ theme }) => theme.palette.layout.strokes};
         border-radius: ${({ theme }) => theme.foundation.cornerRadius.s}px;
         border-style: solid;
@@ -17,10 +17,5 @@ export default {
         flex-direction: column;
         margin: ${({ theme }) => theme.foundation.spacing.m}px;
         padding: ${({ theme }) => theme.foundation.spacing.m}px;
-    `,
-    Header: styled('div')`
-        display: flex;
-        justify-content: flex-end;
-        padding-bottom: ${({ theme }) => theme.foundation.spacing.xs}px;
     `,
 };

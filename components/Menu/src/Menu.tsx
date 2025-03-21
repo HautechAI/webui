@@ -1,27 +1,35 @@
 import { Column } from '@hautechai/webui.column';
-import { MenuItem } from '@hautechai/webui.menuitem';
+import { MenuItem, MenuItemProps } from '@hautechai/webui.menuitem';
+import { Popover, PopoverProps, PopoverRef } from '@hautechai/webui.popover';
+import { useRef } from 'react';
 
 export type MenuProps = {
-    value?: string;
-    options: Array<{ label: string; value: string; leadingIcon?: React.ReactNode; trailingIcon?: React.ReactNode }>;
-    onChange?: (value: string) => void;
+    options: MenuItemProps[];
+    trigger?: () => React.ReactNode;
+    contentPositions?: PopoverProps['contentPositions'];
 };
 
 export const Menu = (props: MenuProps) => {
-    return (
+    const popoverRef = useRef<PopoverRef>(null);
+
+    const renderMenuList = () => (
         <Column spacing="s">
             {props.options.map((opt) => (
-                <MenuItem
-                    key={opt.value}
-                    label={opt.label}
-                    type="main"
-                    size="small"
-                    leadingIcon={opt.leadingIcon}
-                    trailingIcon={opt.trailingIcon}
-                    isSelected={opt.value === props.value}
-                    onClick={() => props.onChange?.(opt.value)}
-                />
+                <MenuItem key={opt.label} type="main" {...opt} />
             ))}
         </Column>
     );
+
+    if (props.trigger) {
+        return (
+            <Popover
+                ref={popoverRef}
+                content={renderMenuList}
+                contentPositions={props.contentPositions}
+                trigger={props.trigger}
+            />
+        );
+    }
+
+    return renderMenuList();
 };
