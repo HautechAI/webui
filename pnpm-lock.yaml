@@ -112,6 +112,9 @@ importers:
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
         version: link:../ThemeProvider
+      '@hautechai/webui.typography':
+        specifier: workspace:^
+        version: link:../Typography
 
   components/Badge:
     dependencies:
@@ -5506,7 +5509,7 @@ packages:
       prop-types: 15.8.1
       react: 19.0.0
     dev: false
-
+    
   /react-is@16.13.1:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
 
@@ -6271,7 +6274,7 @@ packages:
       escalade: 3.2.0
       picocolors: 1.1.1
     dev: true
-    
+
   /use-composed-ref@1.4.0(@types/react@19.0.10)(react@19.0.0):
     resolution: {integrity: sha512-djviaxuOOh7wkj0paeO1Q/4wMZ8Zrnag5H6yBvzN7AKKe8beOaED9SF5/ByLqsku8NP4zQqsvM2u3ew/tJK8/w==}
     peerDependencies:

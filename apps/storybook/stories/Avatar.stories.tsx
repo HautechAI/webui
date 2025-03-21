@@ -1,4 +1,5 @@
 import img from '../../../assets/Avatar.png';
+import { PlaceholderIcon } from '../../../components/Icon/src';
 import { Avatar } from '../../../components/Avatar/src';
 
 export default {
@@ -18,5 +19,17 @@ export const Empty = {
 export const WithImage = {
     args: {
         src: img,
+    },
+};
+
+export const WithIcon = {
+    args: {
+        icon: <PlaceholderIcon />,
+    },
+};
+
+export const WithInitials = {
+    args: {
+        initials: 'JC',
     },
 };
