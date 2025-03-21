@@ -197,6 +197,24 @@ importers:
         specifier: workspace:^
         version: link:../ThemeProvider
 
+  components/ContextMenu:
+    dependencies:
+      '@hautechai/webui.badge':
+        specifier: workspace:^
+        version: link:../Badge
+      '@hautechai/webui.column':
+        specifier: workspace:^
+        version: link:../Column
+      '@hautechai/webui.divider':
+        specifier: workspace:^
+        version: link:../Divider
+      '@hautechai/webui.row':
+        specifier: workspace:^
+        version: link:../Row
+      '@hautechai/webui.themeprovider':
+        specifier: workspace:^
+        version: link:../ThemeProvider
+
   components/DataItem:
     dependencies:
       '@hautechai/webui.row':
@@ -380,6 +398,9 @@ importers:
       '@hautechai/webui.menuitem':
         specifier: workspace:^
         version: link:../MenuItem
+      '@hautechai/webui.popover':
+        specifier: workspace:^
+        version: link:../Popover
 
   components/MenuItem:
     dependencies:
@@ -5474,7 +5495,6 @@ packages:
       react: 19.0.0
     dev: false
 
-
   /react-is@16.13.1:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
 
@@ -6239,7 +6259,7 @@ packages:
       escalade: 3.2.0
       picocolors: 1.1.1
     dev: true
-
+    
   /use-composed-ref@1.4.0(@types/react@19.0.10)(react@19.0.0):
     resolution: {integrity: sha512-djviaxuOOh7wkj0paeO1Q/4wMZ8Zrnag5H6yBvzN7AKKe8beOaED9SF5/ByLqsku8NP4zQqsvM2u3ew/tJK8/w==}
     peerDependencies:
@@ -6279,7 +6299,6 @@ packages:
       react: 19.0.0
       use-isomorphic-layout-effect: 1.2.0(@types/react@19.0.10)(react@19.0.0)
     dev: false
-
 
   /util-deprecate@1.0.2:
     resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}
