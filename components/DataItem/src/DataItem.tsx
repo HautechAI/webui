@@ -1,7 +1,9 @@
+import React from 'react';
 import { css, styled } from '@hautechai/webui.themeprovider';
 import { Typography, TypographyProps } from '@hautechai/webui.typography';
+import { Avatar } from '@hautechai/webui.avatar';
 import { Row } from '@hautechai/webui.row';
-import React from 'react';
+import { Hint, HintProps } from '@hautechai/webui.hint';
 
 const ColumnContainer = styled.div<Pick<DataItemProps, 'size' | 'primary' | 'stretch'>>`
     display: flex;
@@ -19,15 +21,26 @@ const RowContainer = styled(Row)<Pick<DataItemProps, 'size'>>`
     gap: ${({ theme }) => theme.foundation.spacing.m}px;
 `;
 
-export type DataItemProps = {
+export type DataItemBaseProps = {
     label: string;
     value: string;
-    size?: 'medium' | 'small';
     primary?: 'data' | 'heading';
+    size?: 'medium' | 'small';
     stretch?: boolean;
-    direction?: 'row' | 'column';
+};
+
+export type DataItemRowProps = DataItemBaseProps & {
+    direction?: 'row';
     trailingIcon?: React.ReactNode;
 };
+
+export type DataItemColumnProps = DataItemBaseProps & {
+    direction: 'column';
+    leadingIcon?: React.ReactNode;
+    hintProps?: HintProps;
+};
+
+export type DataItemProps = DataItemRowProps | DataItemColumnProps;
 
 const HeadingTypographyVariants: Record<
     Required<DataItemProps>['size'],
@@ -88,19 +101,25 @@ export const DataItem = (props: DataItemProps) => {
             </Row>
         </RowContainer>
     ) : (
-        <ColumnContainer size={size} primary={primary} stretch={stretch}>
-            <Typography
-                variant={HeadingTypographyVariants[size][primary]}
-                color={primary === 'data' ? 'layout.onSurface.tertiary' : 'layout.onSurface.primary'}
-            >
-                {props.label}
-            </Typography>
-            <Typography
-                variant={DataTypographyVariants[size][primary]}
-                color={primary === 'data' ? 'layout.onSurface.primary' : 'layout.onSurface.tertiary'}
-            >
-                {props.value}
-            </Typography>
-        </ColumnContainer>
+        <Row spacing="m" stretch={stretch}>
+            {props.direction === 'column' && props.leadingIcon && <Avatar icon={props.leadingIcon} />}
+            <ColumnContainer size={size} primary={primary} stretch={stretch}>
+                <Row spacing="xs" align="center">
+                    <Typography
+                        variant={HeadingTypographyVariants[size][primary]}
+                        color={primary === 'data' ? 'layout.onSurface.tertiary' : 'layout.onSurface.primary'}
+                    >
+                        {props.label}
+                    </Typography>
+                    {props.direction === 'column' && props.hintProps && <Hint {...props.hintProps} />}
+                </Row>
+                <Typography
+                    variant={DataTypographyVariants[size][primary]}
+                    color={primary === 'data' ? 'layout.onSurface.primary' : 'layout.onSurface.tertiary'}
+                >
+                    {props.value}
+                </Typography>
+            </ColumnContainer>
+        </Row>
     );
 };
