@@ -305,6 +305,18 @@ importers:
         specifier: workspace:^
         version: link:../Typography
 
+  components/Hint:
+    dependencies:
+      '@hautechai/webui.icon':
+        specifier: workspace:^
+        version: link:../Icon
+      '@hautechai/webui.themeprovider':
+        specifier: workspace:^
+        version: link:../ThemeProvider
+      '@hautechai/webui.tooltip':
+        specifier: workspace:^
+        version: link:../Tooltip
+
   components/HoverControls:
     dependencies:
       '@hautechai/webui.checkbox':
