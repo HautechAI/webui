@@ -1,11 +1,11 @@
 import { fn } from '@storybook/test';
 import { Box } from '../../../components/Box/src';
 import { PlaceholderIcon } from '../../../components/Icon/src';
-import { TextField } from '../../../components/TextField/src';
+import { TextArea } from '../../../components/TextArea/src';
 
 export default {
-    title: 'Input/TextField',
-    component: TextField,
+    title: 'Input/TextArea',
+    component: TextArea,
     parameters: {
         layout: 'centered',
     },
@@ -13,10 +13,14 @@ export default {
     argTypes: {
         backgroundColor: { control: 'color' },
     },
-    args: { onChange: fn() as any },
+    args: {
+        onChange: fn() as any,
+        placeholder: 'Any text',
+        variation: 'filled',
+    },
     decorators: [
         (Story: any) => (
-            <Box width={400}>
+            <Box width={300}>
                 <Story />
             </Box>
         ),
@@ -27,12 +31,6 @@ export const Main = {
     args: {},
 };
 
-export const WithTitle = {
-    args: {
-        title: 'With icons',
-    },
-};
-
 export const WithIcons = {
     args: {
         leadingIcon: <PlaceholderIcon />,
@@ -40,34 +38,23 @@ export const WithIcons = {
     },
 };
 
+export const WithIconButton = {
+    args: {
+        icon: <PlaceholderIcon />,
+        onIconButtonClick: fn() as any,
+    },
+};
+
+export const WithError = {
+    args: {
+        hasError: true,
+    },
+};
+
 export const Disabled = {
     args: {
-        title: 'Disabled',
         disabled: true,
-        leadingIcon: <PlaceholderIcon />,
-    },
-};
-
-export const Error = {
-    args: {
-        error: 'Email is required',
-    },
-};
-
-export const Email = {
-    args: {
-        type: 'email',
-    },
-};
-
-export const Password = {
-    args: {
-        type: 'password',
-    },
-};
-
-export const Number = {
-    args: {
-        type: 'number',
+        icon: <PlaceholderIcon />,
+        onIconButtonClick: fn() as any,
     },
 };
