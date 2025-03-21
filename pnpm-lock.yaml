@@ -589,6 +589,21 @@ importers:
         specifier: workspace:^
         version: link:../Typography
 
+  components/Tooltip:
+    dependencies:
+      '@hautechai/webui.column':
+        specifier: workspace:^
+        version: link:../Column
+      '@hautechai/webui.linkbutton':
+        specifier: workspace:^
+        version: link:../LinkButton
+      '@hautechai/webui.themeprovider':
+        specifier: workspace:^
+        version: link:../ThemeProvider
+      '@hautechai/webui.typography':
+        specifier: workspace:^
+        version: link:../Typography
+
   components/Typography:
     dependencies:
       '@hautechai/webui.themeprovider':
@@ -5459,6 +5474,7 @@ packages:
       react: 19.0.0
     dev: false
 
+
   /react-is@16.13.1:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
 
@@ -6263,6 +6279,7 @@ packages:
       react: 19.0.0
       use-isomorphic-layout-effect: 1.2.0(@types/react@19.0.10)(react@19.0.0)
     dev: false
+
 
   /util-deprecate@1.0.2:
     resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}
