@@ -18,6 +18,7 @@
     },
     "author": "HautechAI",
     "dependencies": {
+        "@hautechai/webui.popover": "workspace:^",
         "@hautechai/webui.column": "workspace:^",
         "@hautechai/webui.menuitem": "workspace:^"
     },

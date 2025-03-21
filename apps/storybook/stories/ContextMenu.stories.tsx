@@ -1,6 +1,7 @@
 import { ContextMenu } from '../../../components/ContextMenu/src';
+import { DataItem } from '../../../components/DataItem/src';
 import { UploadIcon, MoreIcon } from '../../../components/Icon/src';
-import { Typography } from '../../../components/Typography/src';
+import { Menu } from '../../../components/Menu/src';
 
 export default {
     title: 'Navigation/ContextMenu',
@@ -12,23 +13,54 @@ export default {
     },
 };
 
-const menuItems = [
-    { label: 'Home', leadingIcon: <UploadIcon size={20} />, onClick: () => console.log('Home clicked') },
-    { label: 'Profile', trailingIcon: <MoreIcon size={20} />, onClick: () => console.log('Profile clicked') },
-    { type: 'divider' },
-    {
-        custom: (
-            <Typography variant="LabelSmallRegular" color="actions.error">
-                Move to trash
-            </Typography>
-        ),
-        onClick: () => console.log('Move to trash clicked'),
-    },
+const menus = [
+    <Menu
+        options={[
+            {
+                label: 'Option 1',
+                leadingIcon: <UploadIcon />,
+                onClick: () => console.log('clicked'),
+                size: 'medium',
+            },
+            { label: 'Any text', onClick: () => console.log('clicked'), size: 'medium' },
+        ]}
+    />,
+    <Menu
+        options={[
+            {
+                label: 'Option 2',
+                onClick: () => console.log('clicked'),
+                size: 'small',
+            },
+            {
+                label: 'Any text very very long text',
+                trailingIcon: <UploadIcon />,
+                onClick: () => console.log('clicked'),
+                size: 'small',
+            },
+        ]}
+    />,
+    <Menu
+        options={[
+            { label: 'Delete', trailingIcon: <MoreIcon />, onClick: () => console.log('clicked'), size: 'medium' },
+        ]}
+    />,
 ];
 
 export const Default = {
     args: {
-        items: menuItems,
+        menus,
+        children: <div style={{ border: '1px dashed gray', padding: '50px' }}>Right Click me (Context Menu)</div>,
+    },
+};
+
+export const WithHeading = {
+    args: {
+        heading: {
+            data: <DataItem primary="heading" direction="column" label="Heading" value="Data" />,
+            badge: 'Label',
+        },
+        menus,
         children: <div style={{ border: '1px dashed gray', padding: '50px' }}>Right Click me (Context Menu)</div>,
     },
 };

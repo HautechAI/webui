@@ -18,7 +18,7 @@ export const Popover = forwardRef<PopoverRef, PopoverProps>((props: PopoverProps
 
     return (
         <TinyPopover
-            content={<S.Container cleanStyle={props.cleanStyle}>{props.content({ close })}</S.Container>}
+            content={<S.Container>{props.content({ close })}</S.Container>}
             isOpen={isOpen}
             onClickOutside={close}
             positions={props.contentPositions ?? ['top', 'bottom', 'left', 'right']}
