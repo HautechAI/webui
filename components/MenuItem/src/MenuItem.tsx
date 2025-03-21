@@ -38,16 +38,16 @@ export const Container = styled.div<{ type?: 'CTA' | 'main'; size?: 'small' | 'm
                             color: ${theme.palette.layout.onSurface.primary};
                         `
                       : css`
-                            ${size === 'small'
+                            ${size === 'medium'
                                 ? css`
+                                      color: ${theme.palette.layout.onSurface.tertiary};
+                                  `
+                                : css`
                                       color: ${theme.palette.layout.onSurface.secondary};
 
                                       &:hover {
                                           color: ${theme.palette.layout.onSurface.primary};
                                       }
-                                  `
-                                : css`
-                                      color: ${theme.palette.layout.onSurface.tertiary};
                                   `}
                         `}
               `}
@@ -71,7 +71,7 @@ type CtaProps = {
     type: 'CTA';
     size?: never;
 };
-type MenuItemProps = (MainProps | CtaProps) & {
+export type MenuItemProps = (MainProps | CtaProps) & {
     label: string;
     isSelected?: boolean;
     leadingIcon?: React.ReactNode;
@@ -88,7 +88,15 @@ const renderIcon = (icon?: React.ReactNode, color?: string) =>
         </>
     ) : null;
 
-export const MenuItem = ({ label, isSelected, leadingIcon, trailingIcon, type, size, onClick }: MenuItemProps) => {
+export const MenuItem = ({
+    label,
+    isSelected,
+    leadingIcon,
+    trailingIcon,
+    type,
+    size = 'small',
+    onClick,
+}: MenuItemProps) => {
     return (
         <Container selected={isSelected} type={type} size={size} onClick={onClick}>
             <Row spacing="m">
