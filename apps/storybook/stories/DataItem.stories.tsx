@@ -25,6 +25,30 @@ export const Column = {
     args: {
         label: 'Current plan',
         value: 'Basic',
+        direction: 'column',
+    },
+};
+
+export const ColumnWithLeadingIcon = {
+    args: {
+        label: 'Current plan',
+        value: 'Basic',
+        direction: 'column',
+        leadingIcon: <PlaceholderIcon />,
+    },
+};
+
+export const ColumnWithHint = {
+    args: {
+        label: 'Current plan',
+        value: 'Basic',
+        direction: 'column',
+        hintProps: {
+            hint: 'Here hides the hint',
+            position: 'right',
+            buttonLabel: 'Link',
+            onClick: () => console.log('link'),
+        },
     },
 };
 
