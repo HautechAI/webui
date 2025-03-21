@@ -5,5 +5,5 @@
         "rootDir": "../../"
     },
 
-    "include": ["${configDir}/.storybook", "${configDir}/stories", "../../components", "../../type.d.ts", "stories/Avatar.stories.ts", "stories/User.stories.ts"]
+    "include": ["${configDir}/.storybook", "${configDir}/stories", "../../components", "../../type.d.ts", "stories/User.stories.ts"]
 }
