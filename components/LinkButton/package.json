@@ -1,7 +1,7 @@
 {
   "name": "@hautechai/webui.linkbutton",
   "description": "",
-  "version": "0.3.51",
+  "version": "0.3.55",
   "type": "module",
   "main": "src/index.tsx",
   "publishConfig": {
