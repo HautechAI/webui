@@ -2,7 +2,7 @@ import { styled } from '@hautechai/webui.themeprovider';
 
 const Container = styled.div<Omit<BottomSheetProps, 'children'>>`
     position: fixed;
-    display: flex;
+    display: ${({ open }) => (open ? 'flex' : 'none')};
     left: 0;
     top: 0;
     right: 0;
@@ -31,6 +31,7 @@ const ContentContainer = styled.div<Omit<BottomSheetProps, 'children'>>`
 
     display: flex;
     align-items: flex-end;
+    pointer-events: none;
 `;
 
 const Content = styled.div`
@@ -41,6 +42,7 @@ const Content = styled.div`
     border-radius: ${({ theme }) => theme.foundation.cornerRadius.l}px
         ${({ theme }) => theme.foundation.cornerRadius.l}px 0 0;
     max-height: 100%;
+    pointer-events: all;
 `;
 
 export type BottomSheetProps = {
