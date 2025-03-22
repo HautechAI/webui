@@ -24,7 +24,7 @@ export type UserProps = {
 export const User = (props: UserProps) => {
     return (
         <Container>
-            <Avatar src={props.avatar} />
+            <Avatar src={props.avatar!} initials={props?.title?.substring(0, 1)!} />
             <LabelsContainer>
                 <Typography variant="LabelMediumEmphasized" color="layout.onSurface.primary">
                     {props.title}

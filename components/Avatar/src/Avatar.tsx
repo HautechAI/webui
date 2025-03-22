@@ -2,10 +2,7 @@ import React, { ReactNode } from 'react';
 import { styled } from '@hautechai/webui.themeprovider';
 import { Typography } from '@hautechai/webui.typography';
 
-export type AvatarProps =
-    | { src: string; initials?: never; icon?: never }
-    | { initials: string; src?: never; icon?: never }
-    | { icon: ReactNode; src?: never; initials?: never };
+export type AvatarProps = { src?: string; initials?: string; icon?: ReactNode };
 
 const AvatarContainer = styled.div`
     display: flex;
