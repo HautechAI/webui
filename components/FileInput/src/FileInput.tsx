@@ -1,11 +1,11 @@
 import { Button } from '@hautechai/webui.button';
 import { UploadIcon } from '@hautechai/webui.icon';
-import { styled } from '@hautechai/webui.themeprovider';
+import { css, styled } from '@hautechai/webui.themeprovider';
 import { Typography } from '@hautechai/webui.typography';
 import React from 'react';
 import { useDropzone } from 'react-dropzone';
 
-const FileInputContainer = styled.div`
+const FileInputContainer = styled.div<Pick<FileInputProps, 'stretch'>>`
     display: flex;
     width: 320px;
     height: 120px;
@@ -20,10 +20,22 @@ const FileInputContainer = styled.div`
     border-color: ${({ theme }) => theme.palette.layout.strokes};
     border-style: dashed;
     border-width: ${({ theme }) => theme.foundation.stroke.thick}px;
+
+    ${({ stretch }) =>
+        stretch &&
+        css`
+            flex-grow: 1;
+        `}
 `;
 
-const ButtonFileInput = styled.div`
+const ButtonFileInput = styled.div<Pick<FileInputProps, 'stretch'>>`
     display: flex;
+
+    ${({ stretch }) =>
+        stretch &&
+        css`
+            flex-grow: 1;
+        `}
 `;
 
 export type FileInputProps = {
@@ -49,6 +61,7 @@ export type FileInputProps = {
     labelButton?: string;
 
     variant?: 'dropzone' | 'button';
+    stretch?: boolean;
 };
 
 export const FileInput: React.FC<FileInputProps> = (props) => {
@@ -72,12 +85,12 @@ export const FileInput: React.FC<FileInputProps> = (props) => {
     });
 
     return props.variant === 'button' ? (
-        <ButtonFileInput {...getRootProps({})}>
+        <ButtonFileInput {...getRootProps({})} stretch={props.stretch}>
             <input {...getInputProps()} />
             <Button label={labelButton} leadingIcon={<UploadIcon size={20} />} />
         </ButtonFileInput>
     ) : (
-        <FileInputContainer {...getRootProps({})}>
+        <FileInputContainer {...getRootProps({})} stretch={props.stretch}>
             <input {...getInputProps()} />
             <Typography variant="H1" color="layout.onSurface.primary">
                 {isDragActive ? labelDragActive : label}
