@@ -21,3 +21,17 @@ export const VariantButton = {
         variant: 'button',
     },
 };
+
+export const VariantButtonStretch = {
+    args: {
+        variant: 'button',
+        stretch: true,
+    },
+    decorators: [
+        (Story: any) => (
+            <div style={{ width: '300px', display: 'flex', flexDirection:'column', justifyContent:'stretch' }}>
+                <Story />
+            </div>
+        ),
+    ],
+};

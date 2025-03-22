@@ -114,3 +114,21 @@ export const OutlinedSecondarySmall = {
         label: 'Button',
     },
 };
+
+export const Stretch = {
+    args: {
+        hierarchy: 'primary',
+        size: 'medium',
+        variant: 'filled',
+        disabled: false,
+        label: 'Button',
+        stretch: true,
+    },
+    decorators: [
+        (Story: any) => (
+            <div style={{ display: 'flex', width: '400px' }}>
+                <Story />
+            </div>
+        ),
+    ],
+};

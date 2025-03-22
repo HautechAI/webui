@@ -1,5 +1,5 @@
 import { ButtonBase } from '@hautechai/webui.buttonbase';
-import { styled } from '@hautechai/webui.themeprovider';
+import { css, styled } from '@hautechai/webui.themeprovider';
 import { Typography, TypographyProps } from '@hautechai/webui.typography';
 
 export type ButtonProps = {
@@ -11,6 +11,7 @@ export type ButtonProps = {
     trailingIcon?: React.ReactNode;
     disabled?: boolean;
     onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
+    stretch?: boolean;
 };
 
 const StyledButton = styled(ButtonBase)<Required<Pick<ButtonProps, 'variant' | 'hierarchy' | 'size'>>>`
@@ -126,6 +127,7 @@ export const Button = (props: ButtonProps) => {
         variant = 'filled',
         hierarchy = 'primary',
         size = 'medium',
+        stretch = false,
         leadingIcon,
         trailingIcon,
         label,
@@ -133,7 +135,7 @@ export const Button = (props: ButtonProps) => {
     } = props;
 
     return (
-        <StyledButton hierarchy={hierarchy} size={size} variant={variant} {...rest}>
+        <StyledButton hierarchy={hierarchy} size={size} variant={variant} stretch={stretch} {...rest}>
             {props.leadingIcon}
             <Typography variant={LabelVariants[size]}>{label}</Typography>
             {props.trailingIcon}

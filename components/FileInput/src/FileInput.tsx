@@ -20,22 +20,10 @@ const FileInputContainer = styled.div<Pick<FileInputProps, 'stretch'>>`
     border-color: ${({ theme }) => theme.palette.layout.strokes};
     border-style: dashed;
     border-width: ${({ theme }) => theme.foundation.stroke.thick}px;
-
-    ${({ stretch }) =>
-        stretch &&
-        css`
-            flex-grow: 1;
-        `}
 `;
 
 const ButtonFileInput = styled.div<Pick<FileInputProps, 'stretch'>>`
     display: flex;
-
-    ${({ stretch }) =>
-        stretch &&
-        css`
-            flex-grow: 1;
-        `}
 `;
 
 export type FileInputProps = {
@@ -85,12 +73,12 @@ export const FileInput: React.FC<FileInputProps> = (props) => {
     });
 
     return props.variant === 'button' ? (
-        <ButtonFileInput {...getRootProps({})} stretch={props.stretch}>
+        <ButtonFileInput {...getRootProps({})}>
             <input {...getInputProps()} />
-            <Button label={labelButton} leadingIcon={<UploadIcon size={20} />} />
+            <Button label={labelButton} leadingIcon={<UploadIcon size={20} />} stretch={props.stretch} />
         </ButtonFileInput>
     ) : (
-        <FileInputContainer {...getRootProps({})} stretch={props.stretch}>
+        <FileInputContainer {...getRootProps({})}>
             <input {...getInputProps()} />
             <Typography variant="H1" color="layout.onSurface.primary">
                 {isDragActive ? labelDragActive : label}
