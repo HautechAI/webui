@@ -1,7 +1,7 @@
 {
     "name": "@hautechai/webui.box",
     "description": "",
-    "version": "0.3.50",
+    "version": "0.3.51",
     "type": "module",
     "main": "src/index.tsx",
     "sideEffects": false,

@@ -1,7 +1,7 @@
 {
     "name": "@hautechai/webui.textarea",
     "description": "",
-    "version": "0.0.1",
+    "version": "0.3.51",
     "type": "module",
     "main": "src/index.tsx",
     "publishConfig": {
@@ -18,8 +18,8 @@
     },
     "author": "HautechAI",
     "dependencies": {
-        "@hautechai/webui.themeprovider": "workspace:^",
         "@hautechai/webui.iconbutton": "workspace:^",
+        "@hautechai/webui.themeprovider": "workspace:^",
         "react-textarea-autosize": "8.5.8"
     },
     "license": "Apache-2.0"

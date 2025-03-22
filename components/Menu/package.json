@@ -1,7 +1,7 @@
 {
     "name": "@hautechai/webui.menu",
     "description": "",
-    "version": "0.3.48",
+    "version": "0.3.51",
     "type": "module",
     "main": "src/index.tsx",
     "publishConfig": {
@@ -18,9 +18,9 @@
     },
     "author": "HautechAI",
     "dependencies": {
-        "@hautechai/webui.popover": "workspace:^",
         "@hautechai/webui.column": "workspace:^",
-        "@hautechai/webui.menuitem": "workspace:^"
+        "@hautechai/webui.menuitem": "workspace:^",
+        "@hautechai/webui.popover": "workspace:^"
     },
     "license": "Apache-2.0"
 }

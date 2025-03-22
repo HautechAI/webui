@@ -1,7 +1,7 @@
 {
     "name": "@hautechai/webui.dataitem",
     "description": "",
-    "version": "0.3.48",
+    "version": "0.3.51",
     "type": "module",
     "main": "src/index.tsx",
     "publishConfig": {
@@ -19,9 +19,9 @@
     "author": "HautechAI",
     "dependencies": {
         "@hautechai/webui.avatar": "workspace:^",
+        "@hautechai/webui.hint": "workspace:^",
         "@hautechai/webui.row": "workspace:^",
         "@hautechai/webui.themeprovider": "workspace:^",
-        "@hautechai/webui.hint": "workspace:^",
         "@hautechai/webui.typography": "workspace:^"
     },
     "license": "Apache-2.0"
