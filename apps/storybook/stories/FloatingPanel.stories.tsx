@@ -4,7 +4,7 @@ import { FloatingPanel } from '../../../components/FloatingPanel/src';
 import { OperationItem } from '../../../components/OperationItem/src';
 
 export default {
-    title: 'Data Display/FloatingPanel',
+    title: 'Surfaces/FloatingPanel',
     component: FloatingPanel as any,
     parameters: {
         layout: 'centered',
