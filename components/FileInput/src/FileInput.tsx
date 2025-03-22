@@ -7,8 +7,8 @@ import { useDropzone } from 'react-dropzone';
 
 const FileInputContainer = styled.div`
     display: flex;
-    width: 400px;
-    height: 200px;
+    width: 320px;
+    height: 120px;
     padding: ${({ theme }) => theme.foundation.spacing.xxxl}px;
     flex-direction: column;
     justify-content: center;
@@ -20,6 +20,10 @@ const FileInputContainer = styled.div`
     border-color: ${({ theme }) => theme.palette.layout.strokes};
     border-style: dashed;
     border-width: ${({ theme }) => theme.foundation.stroke.thick}px;
+`;
+
+const ButtonFileInput = styled.div`
+    display: flex;
 `;
 
 export type FileInputProps = {
@@ -43,6 +47,8 @@ export type FileInputProps = {
 
     /** @property Optional label for upload button */
     labelButton?: string;
+
+    variant?: 'dropzone' | 'button';
 };
 
 export const FileInput: React.FC<FileInputProps> = (props) => {
@@ -65,7 +71,12 @@ export const FileInput: React.FC<FileInputProps> = (props) => {
         maxSize: props.maxSize,
     });
 
-    return (
+    return props.variant === 'button' ? (
+        <ButtonFileInput {...getRootProps({})}>
+            <input {...getInputProps()} />
+            <Button label={labelButton} leadingIcon={<UploadIcon size={20} />} />
+        </ButtonFileInput>
+    ) : (
         <FileInputContainer {...getRootProps({})}>
             <input {...getInputProps()} />
             <Typography variant="H1" color="layout.onSurface.primary">

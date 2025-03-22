@@ -15,3 +15,9 @@ export default {
 export const Main = {
     args: {},
 };
+
+export const VariantButton = {
+    args: {
+        variant: 'button',
+    },
+};
