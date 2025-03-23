@@ -8,7 +8,8 @@ const Container = styled('div')`
     flex-direction: column;
     gap: ${({ theme }) => theme.foundation.spacing.ml}px;
     padding: ${({ theme }) => theme.foundation.spacing.s}px;
-    width: 310px;
+    min-width: 310px;
+    flex-grow: 1;
 `;
 
 const UnreadIndicator = styled('div')`
