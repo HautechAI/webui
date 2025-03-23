@@ -1,4 +1,4 @@
-import { styled } from '@hautechai/webui.themeprovider';
+import { css, styled } from '@hautechai/webui.themeprovider';
 
 const StyledContainer = styled.div<SidebarProps>`
     display: flex;
@@ -10,6 +10,12 @@ const StyledContainer = styled.div<SidebarProps>`
     border-right-width: ${({ theme }) => theme.foundation.stroke.thin}px;
     border-right-style: solid;
     border-right-color: ${({ theme }) => theme.palette.layout.strokes};
+
+    ${({ stretch }) =>
+        stretch &&
+        css`
+            flex-grow: 1;
+        `}
 `;
 
 const StyledContent = styled.div`
@@ -37,11 +43,12 @@ export type SidebarProps = {
     top?: React.ReactNode;
     bottom?: React.ReactNode;
     hierarchy?: 'mid' | 'low';
+    stretch?: boolean;
 };
 export const Sidebar = (props: SidebarProps) => {
     const { hierarchy = 'mid' } = props;
     return (
-        <StyledContainer hierarchy={hierarchy}>
+        <StyledContainer hierarchy={hierarchy} stretch={props.stretch}>
             {props.header}
             <StyledContent>
                 <StyledTopContainer>{props.top}</StyledTopContainer>
