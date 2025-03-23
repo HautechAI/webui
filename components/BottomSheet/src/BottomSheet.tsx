@@ -36,7 +36,7 @@ const ContentContainer = styled.div<Omit<BottomSheetProps, 'children'>>`
 
 const Content = styled.div`
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     flex-grow: 1;
     background-color: ${({ theme }) => theme.palette.layout.surfaceLow};
     border-radius: ${({ theme }) => theme.foundation.cornerRadius.l}px
