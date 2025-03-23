@@ -1,7 +1,7 @@
 {
     "name": "@hautechai/webui.operationitem",
     "description": "",
-    "version": "0.3.51",
+    "version": "0.3.58",
     "type": "module",
     "main": "src/index.tsx",
     "publishConfig": {
