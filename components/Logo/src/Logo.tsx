@@ -24,12 +24,12 @@ const SvgLogoFull = (props: SVGProps<SVGSVGElement>) => (
 );
 
 const SvgLogoIcon = (props: SVGProps<SVGSVGElement>) => (
-    <svg xmlns="http://www.w3.org/2000/svg" width={32} height={32} viewBox="0 0 32 32" fill="none">
+    <svg xmlns="http://www.w3.org/2000/svg" width={32} height={32} viewBox="0 0 32 32" fill="none" {...props}>
         <g id="logo-favicon">
             <path
                 id="Subtract"
-                fill-rule="evenodd"
-                clip-rule="evenodd"
+                fillRule="evenodd"
+                clipRule="evenodd"
                 d="M29.1594 14.8033C29.0717 13.8258 28.0554 13.2883 27.0786 13.383C26.8298 13.4071 26.5777 13.4194 26.3226 13.4194C22.0468 13.4194 18.5807 9.95321 18.5807 5.67745C18.5807 5.42239 18.593 5.17021 18.6171 4.92147C18.7118 3.94463 18.1743 2.92834 17.1968 2.84058C16.8026 2.80519 16.4034 2.78711 16 2.78711C8.70273 2.78711 2.78711 8.70273 2.78711 16C2.78711 23.2973 8.70273 29.2129 16 29.2129C23.2973 29.2129 29.2129 23.2973 29.2129 16C29.2129 15.5966 29.1948 15.1974 29.1594 14.8033Z"
                 fill="black"
             />
