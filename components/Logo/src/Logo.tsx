@@ -1,7 +1,7 @@
 import type { SVGProps } from 'react';
 
 export type LogoProps = {
-    variant: 'full' | 'icon';
+    variant?: 'full' | 'icon';
 } & SVGProps<SVGSVGElement>;
 
 const SvgLogoFull = (props: SVGProps<SVGSVGElement>) => (
