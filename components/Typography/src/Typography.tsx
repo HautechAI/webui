@@ -14,6 +14,7 @@ const BaseText = styled(BaseComponent)<Pick<TypographyProps, 'textAlign' | 'noWr
     font-family: Inter;
     color: ${({ theme, color }) => (color ? get(theme.palette, color) : 'currentColor')};
     text-align: ${({ textAlign }) => textAlign ?? 'inherit'};
+    -webkit-font-smoothing: antialiased;
 
     ${({ noWrap }) =>
         noWrap &&
