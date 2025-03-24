@@ -21,12 +21,14 @@ const LeftContainer = styled.div`
     flex-direction: row;
     flex: 1;
     gap: ${({ theme }) => theme.foundation.spacing.l}px;
+    align-items: center;
 `;
 
 const CenterContainer = styled.div`
     display: flex;
     flex-direction: row;
     gap: ${({ theme }) => theme.foundation.spacing.l}px;
+    align-items: center;
 `;
 
 const RightContainer = styled.div`
@@ -35,6 +37,7 @@ const RightContainer = styled.div`
     flex: 1;
     justify-content: end;
     gap: ${({ theme }) => theme.foundation.spacing.l}px;
+    align-items: center;
 `;
 
 export type AppBarProps = {
