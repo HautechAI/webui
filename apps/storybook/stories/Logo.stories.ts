@@ -13,3 +13,9 @@ export default {
 export const Main = {
     args: {},
 };
+
+export const Icon = {
+    args: {
+        variant: 'icon',
+    },
+};

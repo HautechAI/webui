@@ -1,5 +1,10 @@
 import type { SVGProps } from 'react';
-const SvgLogo = (props: SVGProps<SVGSVGElement>) => (
+
+export type LogoProps = {
+    variant: 'full' | 'icon';
+} & SVGProps<SVGSVGElement>;
+
+const SvgLogoFull = (props: SVGProps<SVGSVGElement>) => (
     <svg xmlns="http://www.w3.org/2000/svg" width={165} height={40} fill="none" {...props}>
         <path
             fill="#000"
@@ -17,4 +22,29 @@ const SvgLogo = (props: SVGProps<SVGSVGElement>) => (
         />
     </svg>
 );
-export default SvgLogo;
+
+const SvgLogoIcon = (props: SVGProps<SVGSVGElement>) => (
+    <svg xmlns="http://www.w3.org/2000/svg" width={32} height={32} viewBox="0 0 32 32" fill="none">
+        <g id="logo-favicon">
+            <path
+                id="Subtract"
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M29.1594 14.8033C29.0717 13.8258 28.0554 13.2883 27.0786 13.383C26.8298 13.4071 26.5777 13.4194 26.3226 13.4194C22.0468 13.4194 18.5807 9.95321 18.5807 5.67745C18.5807 5.42239 18.593 5.17021 18.6171 4.92147C18.7118 3.94463 18.1743 2.92834 17.1968 2.84058C16.8026 2.80519 16.4034 2.78711 16 2.78711C8.70273 2.78711 2.78711 8.70273 2.78711 16C2.78711 23.2973 8.70273 29.2129 16 29.2129C23.2973 29.2129 29.2129 23.2973 29.2129 16C29.2129 15.5966 29.1948 15.1974 29.1594 14.8033Z"
+                fill="black"
+            />
+            <path
+                id="Star 1"
+                d="M25.7446 0.785348C25.9479 0.255227 26.6979 0.255227 26.9011 0.785348L27.998 3.64565C28.0609 3.80968 28.1905 3.93928 28.3545 4.00218L31.2148 5.09905C31.745 5.30234 31.745 6.05234 31.2148 6.25564L28.3545 7.35251C28.1905 7.41541 28.0609 7.54501 27.998 7.70904L26.9011 10.5693C26.6979 11.0995 25.9479 11.0995 25.7446 10.5693L24.6477 7.70904C24.5848 7.54501 24.4552 7.41541 24.2912 7.35251L21.4309 6.25564C20.9007 6.05234 20.9007 5.30234 21.4309 5.09905L24.2912 4.00218C24.4552 3.93928 24.5848 3.80968 24.6477 3.64565L25.7446 0.785348Z"
+                fill="#989898"
+            />
+        </g>
+    </svg>
+);
+
+export const Logo = (props: LogoProps) => {
+    const { variant = 'full', ...rest } = props;
+    return variant === 'full' ? <SvgLogoFull {...rest} /> : <SvgLogoIcon {...rest} />;
+};
+
+export default Logo;
