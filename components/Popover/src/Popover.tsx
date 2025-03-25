@@ -9,8 +9,8 @@ export const Popover = forwardRef<PopoverRef, PopoverProps>((props: PopoverProps
     const close = useCallback(() => {
         setOpen(false);
     }, []);
-    const open = useCallback(() => {
-        setOpen(true);
+    const toggle = useCallback(() => {
+        setOpen((prev) => !prev);
     }, []);
     useImperativeHandle(ref, () => ({
         close,
@@ -23,7 +23,7 @@ export const Popover = forwardRef<PopoverRef, PopoverProps>((props: PopoverProps
             onClickOutside={close}
             positions={props.contentPositions ?? ['top', 'bottom', 'left', 'right']}
         >
-            <div onClick={open}>{props.trigger()}</div>
+            <div onClick={toggle}>{props.trigger()}</div>
         </TinyPopover>
     );
 });
