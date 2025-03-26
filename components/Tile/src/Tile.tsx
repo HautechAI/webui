@@ -105,10 +105,11 @@ export type TileProps = {
     height?: number | string;
     aspectRatio?: number;
     component?: 'div' | 'img';
+    alt?: string;
 };
 
 export const Tile = (props: TileProps) => {
-    const { icon, size, aspectRatio, image, component, ...rest } = props;
+    const { icon, size, aspectRatio, image, component, alt, ...rest } = props;
     const { width, height } = props;
 
     if (size && (width || height || aspectRatio)) {
@@ -126,6 +127,7 @@ export const Tile = (props: TileProps) => {
             size={size ?? (!width && !height ? 'medium' : undefined)} // default medium size if no other size or width/height is provided
             aspectRatio={aspectRatio ?? (!size && (!width || !height) ? 1 : undefined)} // default aspect ratio to 1 if no other aspect ratio or width/height is provided
             src={image}
+            alt={alt}
             {...rest}
         />
     ) : (
