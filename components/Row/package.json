@@ -1,7 +1,7 @@
 {
     "name": "@hautechai/webui.row",
     "description": "",
-    "version": "0.3.51",
+    "version": "0.3.69",
     "type": "module",
     "main": "src/index.tsx",
     "publishConfig": {
