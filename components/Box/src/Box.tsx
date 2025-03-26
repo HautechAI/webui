@@ -8,7 +8,12 @@ const sizeToCss = (size: number | string) => {
     return `${size}px`;
 };
 
-const StyledBox = styled.div<Omit<BoxProps, 'icon'>>`
+const BaseComponent = (props: Pick<BoxProps, 'className' | 'children' | 'style' | 'id'>) => {
+    const { className, children, style, id } = props;
+    return <div {...{ className, children, style, id }} />;
+};
+
+const StyledBox = styled(BaseComponent)<Omit<BoxProps, 'icon'>>`
     display: ${({ display }) => display ?? 'flex'};
 
     ${({ width }) =>

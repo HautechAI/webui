@@ -36,7 +36,7 @@ const Image = styled('div')<{ src: string }>`
 `;
 
 const Label = styled(Typography)<{ maxWidth?: number }>`
-    ${({ theme, maxWidth }) =>
+    ${({ maxWidth }) =>
         maxWidth &&
         css`
             max-width: ${maxWidth}px;

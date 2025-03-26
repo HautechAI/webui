@@ -5,8 +5,9 @@ import { Paths } from 'type-fest';
 type TextAlign = 'left' | 'right' | 'center' | 'inherit';
 
 const BaseComponent = (props: Pick<TypographyProps, 'className' | 'children' | 'component'>) => {
-    const Component = props.component ?? 'div';
-    return <Component {...props} />;
+    const { className, children, component } = props;
+    const Component = component ?? 'div';
+    return <Component {...{ className, children }} />;
 };
 
 const BaseText = styled(BaseComponent)<Pick<TypographyProps, 'textAlign' | 'noWrap' | 'overflow' | 'color'>>`
