@@ -34,7 +34,6 @@ export default {
             },
             { label: 'Any text', onClick: fn() as any, size: 'medium' },
         ],
-        onChange: fn() as any,
     },
     decorators: [
         (Story: any) => (
@@ -45,8 +44,30 @@ export default {
     ],
 };
 
-export const Main = {
+export const Uncontrolled = {
     args: {},
+};
+
+export const Controlled = {
+    args: {
+        options: [
+            {
+                label: 'Option1',
+                leadingIcon: <PlaceholderIcon />,
+                trailingIcon: <PlaceholderIcon />,
+                size: 'small',
+                value: 'op1',
+            },
+            {
+                label: 'Option2 very long option',
+                leadingIcon: <PlaceholderIcon />,
+                size: 'small',
+                value: 'op2',
+            },
+        ],
+        value: 'op2',
+        onChange: fn() as any,
+    },
 };
 
 export const WithSelectedOption = {
