@@ -64,3 +64,11 @@ export const WithHeading = {
         children: <div style={{ border: '1px dashed gray', padding: '50px' }}>Right Click me (Context Menu)</div>,
     },
 };
+
+export const ForMobile = {
+    args: {
+        menus,
+        children: <div style={{ border: '1px dashed gray', padding: '50px' }}>Right Click me (Context Menu)</div>,
+        variation: 'bottomSheet',
+    },
+};
