@@ -4,7 +4,12 @@ import { Paths } from 'type-fest';
 
 type TextAlign = 'left' | 'right' | 'center' | 'inherit';
 
-const BaseText = styled.div<Pick<TypographyProps, 'textAlign' | 'noWrap' | 'overflow'>>`
+const BaseComponent = (props: Pick<TypographyProps, 'className' | 'children' | 'component'>) => {
+    const Component = props.component ?? 'div';
+    return <Component {...props} />;
+};
+
+const BaseText = styled(BaseComponent)<Pick<TypographyProps, 'textAlign' | 'noWrap' | 'overflow' | 'color'>>`
     font-family: Inter;
     color: ${({ theme, color }) => (color ? get(theme.palette, color) : 'currentColor')};
     text-align: ${({ textAlign }) => textAlign ?? 'inherit'};
@@ -170,6 +175,7 @@ export type TypographyProps = {
     textAlign?: TextAlign;
     noWrap?: boolean;
     overflow?: 'auto' | 'hidden' | 'ellipsis';
+    component?: 'h1' | 'h2' | 'h3' | 'p' | 'span' | 'div';
 };
 
 export const Typography = (props: TypographyProps) => {
