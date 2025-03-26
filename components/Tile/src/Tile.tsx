@@ -117,6 +117,9 @@ export const Tile = (props: TileProps) => {
     if (aspectRatio && width && height) {
         throw new Error('aspectRatio can be used only with one of width/height');
     }
+    if (props.component === 'img' && icon) {
+        throw new Error('icon can not be used with img component');
+    }
 
     return props.component === 'img' ? (
         <StyledTileImg
@@ -124,9 +127,7 @@ export const Tile = (props: TileProps) => {
             aspectRatio={aspectRatio ?? (!size && (!width || !height) ? 1 : undefined)} // default aspect ratio to 1 if no other aspect ratio or width/height is provided
             src={image}
             {...rest}
-        >
-            {icon}
-        </StyledTileImg>
+        />
     ) : (
         <StyledTileDiv
             size={size ?? (!width && !height ? 'medium' : undefined)} // default medium size if no other size or width/height is provided
