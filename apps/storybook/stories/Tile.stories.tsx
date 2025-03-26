@@ -69,3 +69,12 @@ export const Width100Percent = {
         ),
     ],
 };
+
+export const WithImgComponent = {
+    args: {
+        image: Desert,
+        aspectRatio: 3 / 2,
+        width: '50%',
+        component: 'img',
+    },
+};
