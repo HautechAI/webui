@@ -129,6 +129,7 @@ const StyledBox = styled.div<Omit<BoxProps, 'icon'>>`
 
 export type BoxProps = PropsWithChildren<{
     className?: string;
+    id?: string;
     style?: React.CSSProperties;
     width?: number | string;
     height?: number | string;
