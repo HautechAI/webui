@@ -33,6 +33,26 @@ export const Clickable = {
     },
 };
 
+export const Link = {
+    args: {
+        label: '35 min ago',
+        image: Desert,
+        width: 300,
+        aspectRatio: 16 / 9,
+        href: '#',
+    },
+};
+
+export const Img = {
+    args: {
+        label: '35 min ago',
+        image: Desert,
+        width: 300,
+        aspectRatio: 16 / 9,
+        tileComponent: 'img',
+    },
+};
+
 export const FullWidth = {
     args: {
         label: '35 min ago',
