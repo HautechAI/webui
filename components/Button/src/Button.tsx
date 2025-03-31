@@ -115,6 +115,17 @@ const StyledButton = styled(ButtonBase)<Required<Pick<ButtonProps, 'variant' | '
         cursor: not-allowed;
         border-color: ${({ theme }) => theme.palette.layout.strokes};
     }
+
+    ${({ theme }) => {
+        const normalDuration = theme.foundation.animation.duration.fast;
+        const timingFunction = theme.foundation.animation.timing.easeOut;
+
+        return `
+        transition: 
+            background-color ${normalDuration}s ${timingFunction},
+            border-color  ${normalDuration}s ${timingFunction};
+        `;
+    }}
 `;
 
 const LabelVariants: Record<Required<ButtonProps>['size'], TypographyProps['variant']> = {
