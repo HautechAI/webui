@@ -1,7 +1,12 @@
 import { css, styled, ThemeType } from '@hautechai/webui.themeprovider';
 
-const Container = styled.div<
-    Pick<DataListProps, 'spacing' | 'stretch' | 'align' | 'justify' | 'fullHeight' | 'noOverflow'> & { $wrap?: boolean }
+const BaseComponent = (props: Pick<RowProps, 'className' | 'children'>) => {
+    const { className, children } = props;
+    return <div {...{ className, children }} />;
+};
+
+const Container = styled(BaseComponent)<
+    Pick<RowProps, 'spacing' | 'stretch' | 'align' | 'justify' | 'fullHeight' | 'noOverflow'> & { $wrap?: boolean }
 >`
     display: flex;
     flex-direction: row;
@@ -41,7 +46,7 @@ const Container = styled.div<
 type Align = 'start' | 'center' | 'end' | 'stretch';
 type Justify = 'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-around' | 'space-evenly';
 
-export type DataListProps = {
+export type RowProps = {
     className?: string;
     children?: React.ReactNode;
     spacing?: keyof ThemeType['foundation']['spacing'];
@@ -53,7 +58,7 @@ export type DataListProps = {
     noOverflow?: boolean;
 };
 
-export const Row = (props: DataListProps) => {
+export const Row = (props: RowProps) => {
     const { children, wrap, ...rest } = props;
     return (
         <Container $wrap={wrap} {...rest}>

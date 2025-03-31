@@ -142,3 +142,18 @@ export const OverflowEllipsis = {
         ),
     ],
 };
+
+export const SpanComponent = {
+    args: {
+        variant: 'LinkExtraSmall',
+        children: TEXT,
+        component: 'span',
+    },
+    decorators: [
+        (Story: any) => (
+            <div style={{ width: '300px' }}>
+                <Story />
+            </div>
+        ),
+    ],
+};
