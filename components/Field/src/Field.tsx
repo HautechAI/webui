@@ -17,8 +17,8 @@ const Container = styled.div<{ disabled?: boolean }>`
 `;
 
 type LockedProps = {
-    locked: true;
-    onLockedClick: () => void;
+    locked?: true;
+    onLockedClick?: () => void;
 };
 
 type BaseProps = LockedProps & {
