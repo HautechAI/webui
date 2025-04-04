@@ -47,14 +47,7 @@ const SegmentedControl = ({ options, defaultValue, value, onChange, material, wh
                         onClick={(e) => handleClick(e, value)}
                     >
                         {leadingIcon && <Icon selected={isSelected}>{leadingIcon}</Icon>}
-                        {label && (
-                            <Typography
-                                variant={'LabelSmallRegular'}
-                                color={isSelected ? 'layout.onSurface.primary' : 'layout.onSurface.tertiary'}
-                            >
-                                {label}
-                            </Typography>
-                        )}
+                        {label && <Typography variant={'LabelSmallRegular'}>{label}</Typography>}
                         {trailingIcon && <Icon selected={isSelected}>{trailingIcon}</Icon>}
                     </Row>
                 );

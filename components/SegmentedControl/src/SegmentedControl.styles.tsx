@@ -31,6 +31,24 @@ export const HIGRow = styled.div<{ selected: boolean; whitespace?: keyof ThemeTy
     cursor: pointer;
     border-radius: ${({ theme }) => theme.foundation.cornerRadius.s}px;
     gap: ${({ theme }) => theme.foundation.spacing.s}px;
+    color: ${({ theme, selected }) =>
+        selected ? theme.palette.layout.onSurface.primary : theme.palette.layout.onSurface.tertiary};
+
+    &:hover {
+        background-color: ${({ theme }) => theme.palette.layout.surfaceMid};
+        color: ${({ theme }) => theme.palette.layout.onSurface.primary};
+    }
+
+    ${({ theme }) => {
+        const normalDuration = theme.foundation.animation.duration.fast;
+        const timingFunction = theme.foundation.animation.timing.easeOut;
+
+        return `
+        transition: 
+            background-color ${normalDuration}s ${timingFunction},
+            color ${normalDuration}s ${timingFunction};
+        `;
+    }}
 `;
 
 export const MaterialRow = styled.div<{ selected: boolean; whitespace?: keyof ThemeType['foundation']['spacing'] }>`
@@ -44,6 +62,15 @@ export const MaterialRow = styled.div<{ selected: boolean; whitespace?: keyof Th
     border-bottom-color: ${({ theme, selected }) => (selected ? theme.palette.actions.primary : 'transparent')};
     border-bottom-style: solid;
     border-bottom-width: ${({ theme }) => theme.foundation.stroke.thick}px;
+    color: ${({ theme, selected }) =>
+        selected ? theme.palette.layout.onSurface.primary : theme.palette.layout.onSurface.tertiary};
+
+    &:hover {
+        color: ${({ theme }) => theme.palette.layout.onSurface.primary};
+    }
+
+    transition: color ${({ theme }) => theme.foundation.animation.duration.fast}s
+        ${({ theme }) => theme.foundation.animation.timing.easeOut};
 `;
 
 export const WhiteSpace = styled.div<{ whitespace?: keyof ThemeType['foundation']['spacing'] }>`

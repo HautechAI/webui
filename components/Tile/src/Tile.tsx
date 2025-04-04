@@ -48,7 +48,18 @@ const StyledTileDiv = styled.div<Omit<TileProps, 'icon'>>`
     background-origin: border-box;
     box-sizing: border-box;
 
-    transition: background-color 0.3s ease, border-color 0.3s ease, outline-color 0.3s ease, transform 0.3s ease;
+    ${({ theme }) => {
+        const normalDuration = theme.foundation.animation.duration.fast;
+        const timingFunction = theme.foundation.animation.timing.easeOut;
+
+        return `
+        transition: 
+            background-color ${normalDuration}s ${timingFunction},
+            outline-color ${normalDuration}s ${timingFunction},
+            transform ${normalDuration}s ${timingFunction},
+            border-color  ${normalDuration}s ${timingFunction};
+        `;
+    }}
 
     border-color: ${({ selected, theme }) => (selected ? theme.palette.actions.primary : 'transparent')};
     .htch-webui-hoverable:hover & {
