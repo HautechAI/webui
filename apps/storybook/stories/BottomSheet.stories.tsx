@@ -69,3 +69,17 @@ export const LongContent = {
         },
     },
 };
+
+export const CustomBackdropColor = {
+    args: {
+        children: <Logo />,
+        inset: {
+            top: 30,
+            left: 10,
+            right: 10,
+        },
+        backdropStyle: {
+            backgroundColor: 'rgba(111, 222, 333, 0.5)',
+        },
+    },
+};
