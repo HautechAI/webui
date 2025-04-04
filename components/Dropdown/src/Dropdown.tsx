@@ -1,8 +1,8 @@
 import { css, styled } from '@hautechai/webui.themeprovider';
-import { Menu } from '../../Menu/src';
+import { Menu } from '@hautechai/webui.menu';
 import { Typography } from '@hautechai/webui.typography';
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { ArrowAltDownIcon } from '../../../components/Icon/src';
+import { ArrowAltDownIcon } from '@hautechai/webui.icon';
 
 const Container = styled.div<{ disabled?: boolean }>`
     position: relative;
