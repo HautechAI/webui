@@ -65,6 +65,14 @@ export const WithHeading = {
     },
 };
 
+export const LeftClickMenu = {
+    args: {
+        isLeftClick: true,
+        menus,
+        children: <div style={{ border: '1px dashed gray', padding: '50px' }}>Left Click me (Menu)</div>,
+    },
+};
+
 export const ForMobile = {
     args: {
         menus,

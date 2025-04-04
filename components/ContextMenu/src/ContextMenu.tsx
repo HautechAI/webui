@@ -16,6 +16,7 @@ export type ContextMenuProps = {
     menus?: ReactNode[];
     children: React.ReactNode;
     variation?: 'menu' | 'bottomSheet';
+    isLeftClick?: boolean;
 };
 
 const Container = styled.div<{
@@ -52,24 +53,44 @@ const Heading = styled(Row)`
     padding: 0 ${({ theme }) => theme.foundation.spacing.ml}px;
 `;
 
-export const ContextMenu = ({ menus, heading, children, variation = 'menu' }: ContextMenuProps) => {
+export const ContextMenu = ({ menus, heading, children, variation = 'menu', isLeftClick }: ContextMenuProps) => {
     const [isOpen, setIsOpen] = useState(false);
     const [position, setPosition] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
     const menuRef = useRef<HTMLDivElement>(null);
 
     const handleOpen = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
-        e.preventDefault();
+        if (!isLeftClick) {
+            e.preventDefault();
+        }
+        const targetRect = e.currentTarget.getBoundingClientRect();
         setIsOpen(true);
         requestAnimationFrame(() => {
             if (menuRef.current) {
                 const rect = menuRef.current.getBoundingClientRect();
-                let leftPos = e.clientX;
-                if (e.pageX + rect.width > window.innerWidth) {
-                    leftPos = window.innerWidth - rect.width - 4;
-                }
-                let topPos = e.clientY;
-                if (e.pageY + rect.height > window.innerHeight) {
-                    topPos = window.innerHeight - rect.height - 4;
+
+                let leftPos = 0;
+                let topPos = 0;
+
+                if (isLeftClick) {
+                    leftPos = targetRect.left;
+                    topPos = targetRect.bottom + 4;
+
+                    if (leftPos + rect.width > window.innerWidth) {
+                        leftPos = window.innerWidth - rect.width - 4;
+                    }
+                    if (topPos + rect.height > window.innerHeight) {
+                        topPos = targetRect.top - rect.height - 4;
+                    }
+                } else {
+                    leftPos = e.clientX;
+                    topPos = e.clientY;
+
+                    if (e.pageX + rect.width > window.innerWidth) {
+                        leftPos = window.innerWidth - rect.width - 4;
+                    }
+                    if (e.pageY + rect.height > window.innerHeight) {
+                        topPos = window.innerHeight - rect.height - 4;
+                    }
                 }
 
                 setPosition({ x: leftPos, y: topPos });
@@ -88,16 +109,28 @@ export const ContextMenu = ({ menus, heading, children, variation = 'menu' }: Co
     }, []);
 
     useEffect(() => {
-        isOpen
-            ? document.addEventListener('click', handleClickOutside)
-            : document.removeEventListener('click', handleClickOutside);
+        let timeoutId: NodeJS.Timeout;
+
+        if (isOpen) {
+            timeoutId = setTimeout(() => {
+                document.addEventListener('click', handleClickOutside);
+            }, 0);
+        } else {
+            document.removeEventListener('click', handleClickOutside);
+        }
+
         return () => {
+            clearTimeout(timeoutId);
             document.removeEventListener('click', handleClickOutside);
         };
     }, [isOpen]);
 
     return (
-        <div onContextMenu={handleOpen} style={{ display: 'inline-block' }}>
+        <div
+            onContextMenu={!isLeftClick ? handleOpen : undefined}
+            onClick={isLeftClick ? handleOpen : undefined}
+            style={{ display: 'inline-block' }}
+        >
             {children}
             {isOpen &&
                 (variation === 'bottomSheet' ? (
