@@ -1,7 +1,5 @@
 import { Column } from '@hautechai/webui.column';
 import { Row } from '@hautechai/webui.row';
-import { TextArea, TextAreaProps } from '@hautechai/webui.textarea';
-import { TextInput, TextInputProps } from '@hautechai/webui.textinput';
 import { styled } from '@hautechai/webui.themeprovider';
 import { Typography } from '@hautechai/webui.typography';
 import React, { useCallback, useRef } from 'react';
@@ -21,37 +19,16 @@ type LockedProps = {
     onLockedClick?: () => void;
 };
 
-type BaseProps = LockedProps & {
+type FieldProps = LockedProps & {
     title?: string;
     direction?: 'vertical' | 'horizontal';
     error?: string;
     caption?: string;
-    leadingIcon?: React.ReactNode;
-    trailingIcon?: React.ReactNode;
-    onIconButtonClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
-    icon?: React.ReactNode;
+    children: React.ReactNode;
 };
 
-export type FieldProps = BaseProps &
-    (
-        | { type: 'text' | 'password' | 'email' | 'number'; inputProps?: TextInputProps }
-        | { type: 'textarea'; textareaProps?: TextAreaProps }
-    );
-
 export const Field = (props: FieldProps) => {
-    const {
-        type,
-        title,
-        direction = 'vertical',
-        error,
-        caption,
-        locked,
-        leadingIcon,
-        trailingIcon,
-        icon,
-        onIconButtonClick,
-        onLockedClick,
-    } = props;
+    const { title, direction = 'vertical', error, caption, locked, onLockedClick, children } = props;
     const ref = useRef<HTMLDivElement>(null);
     const handleClick = useCallback(
         (event: React.MouseEvent<HTMLDivElement>) => {
@@ -76,28 +53,7 @@ export const Field = (props: FieldProps) => {
                     {locked && <LockIcon size={16} color="layout.onSurface.secondary" />}
                 </Row>
                 <Row stretch spacing="s" align="center">
-                    {type === 'textarea' ? (
-                        <TextArea
-                            hasError={!!error}
-                            icon={icon}
-                            leadingIcon={leadingIcon}
-                            trailingIcon={trailingIcon}
-                            onIconButtonClick={locked ? undefined : onIconButtonClick}
-                            {...props.textareaProps}
-                            onChange={locked ? undefined : props.textareaProps?.onChange}
-                        />
-                    ) : (
-                        <TextInput
-                            type={type}
-                            hasError={!!error}
-                            icon={icon}
-                            leadingIcon={leadingIcon}
-                            trailingIcon={trailingIcon}
-                            onIconButtonClick={locked ? undefined : onIconButtonClick}
-                            {...props.inputProps}
-                            onChange={locked ? undefined : props.inputProps?.onChange}
-                        />
-                    )}
+                    {children}
                 </Row>
             </Main>
             {caption && (
