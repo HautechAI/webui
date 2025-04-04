@@ -1,7 +1,7 @@
 import { css, styled } from '@hautechai/webui.themeprovider';
 import { Typography } from '@hautechai/webui.typography';
 import { Row } from '@hautechai/webui.row';
-import { LockIcon } from '../../../components/Icon/src';
+import { LockIcon } from '@hautechai/webui.icon';
 import { useState } from 'react';
 
 const SwitchContainer = styled.label<{ disabled?: boolean }>`
