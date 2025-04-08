@@ -283,12 +283,6 @@ importers:
       '@hautechai/webui.row':
         specifier: workspace:^
         version: link:../Row
-      '@hautechai/webui.textarea':
-        specifier: workspace:^
-        version: link:../TextArea
-      '@hautechai/webui.textinput':
-        specifier: workspace:^
-        version: link:../TextInput
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
         version: link:../ThemeProvider
