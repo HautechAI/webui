@@ -29,6 +29,17 @@ const StyledButton = styled(ButtonBase)<Required<Pick<IconButtonProps, 'variant'
         color: ${({ theme }) => theme.palette.layout.onSurface.tertiary};
         cursor: not-allowed;
     }
+
+    ${({ theme }) => {
+        const normalDuration = theme.foundation.animation.duration.fast;
+        const timingFunction = theme.foundation.animation.timing.easeOut;
+
+        return `
+        transition: 
+            background-color ${normalDuration}s ${timingFunction},
+            border-color  ${normalDuration}s ${timingFunction};
+        `;
+    }}
 `;
 
 export type IconButtonProps = {
