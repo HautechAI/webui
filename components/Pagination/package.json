@@ -1,7 +1,7 @@
 {
     "name": "@hautechai/webui.pagination",
     "description": "",
-    "version": "0.0.1",
+    "version": "0.3.72",
     "type": "module",
     "main": "src/index.tsx",
     "publishConfig": {
@@ -18,11 +18,11 @@
     },
     "author": "HautechAI",
     "dependencies": {
-        "@hautechai/webui.typography": "workspace:^",
-        "@hautechai/webui.themeprovider": "workspace:^",
-        "@hautechai/webui.row": "workspace:^",
         "@hautechai/webui.icon": "workspace:^",
-        "@hautechai/webui.iconbutton": "workspace:^"
+        "@hautechai/webui.iconbutton": "workspace:^",
+        "@hautechai/webui.row": "workspace:^",
+        "@hautechai/webui.themeprovider": "workspace:^",
+        "@hautechai/webui.typography": "workspace:^"
     },
     "license": "Apache-2.0"
 }

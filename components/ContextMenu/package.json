@@ -1,7 +1,7 @@
 {
     "name": "@hautechai/webui.contextmenu",
     "description": "",
-    "version": "0.3.69",
+    "version": "0.3.72",
     "type": "module",
     "main": "src/index.tsx",
     "publishConfig": {
@@ -21,9 +21,9 @@
         "@hautechai/webui.badge": "workspace:^",
         "@hautechai/webui.bottomsheet": "workspace:^",
         "@hautechai/webui.column": "workspace:^",
-        "@hautechai/webui.iconbutton": "workspace:^",
-        "@hautechai/webui.icon": "workspace:^",
         "@hautechai/webui.divider": "workspace:^",
+        "@hautechai/webui.icon": "workspace:^",
+        "@hautechai/webui.iconbutton": "workspace:^",
         "@hautechai/webui.row": "workspace:^",
         "@hautechai/webui.themeprovider": "workspace:^"
     },

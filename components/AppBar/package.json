@@ -1,7 +1,7 @@
 {
     "name": "@hautechai/webui.appbar",
     "description": "",
-    "version": "0.3.62",
+    "version": "0.3.72",
     "type": "module",
     "main": "src/index.tsx",
     "publishConfig": {
