@@ -19,7 +19,10 @@
     "author": "HautechAI",
     "dependencies": {
         "@hautechai/webui.badge": "workspace:^",
+        "@hautechai/webui.bottomsheet": "workspace:^",
         "@hautechai/webui.column": "workspace:^",
+        "@hautechai/webui.iconbutton": "workspace:^",
+        "@hautechai/webui.icon": "workspace:^",
         "@hautechai/webui.divider": "workspace:^",
         "@hautechai/webui.row": "workspace:^",
         "@hautechai/webui.themeprovider": "workspace:^"

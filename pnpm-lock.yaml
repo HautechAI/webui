@@ -211,12 +211,21 @@ importers:
       '@hautechai/webui.badge':
         specifier: workspace:^
         version: link:../Badge
+      '@hautechai/webui.bottomsheet':
+        specifier: workspace:^
+        version: link:../BottomSheet
       '@hautechai/webui.column':
         specifier: workspace:^
         version: link:../Column
       '@hautechai/webui.divider':
         specifier: workspace:^
         version: link:../Divider
+      '@hautechai/webui.icon':
+        specifier: workspace:^
+        version: link:../Icon
+      '@hautechai/webui.iconbutton':
+        specifier: workspace:^
+        version: link:../IconButton
       '@hautechai/webui.row':
         specifier: workspace:^
         version: link:../Row
@@ -274,12 +283,6 @@ importers:
       '@hautechai/webui.row':
         specifier: workspace:^
         version: link:../Row
-      '@hautechai/webui.textarea':
-        specifier: workspace:^
-        version: link:../TextArea
-      '@hautechai/webui.textinput':
-        specifier: workspace:^
-        version: link:../TextInput
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
         version: link:../ThemeProvider
