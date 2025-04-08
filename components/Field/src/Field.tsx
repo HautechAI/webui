@@ -19,7 +19,7 @@ type LockedProps = {
     onLockedClick?: () => void;
 };
 
-type FieldProps = LockedProps & {
+export type FieldProps = LockedProps & {
     title?: string;
     direction?: 'vertical' | 'horizontal';
     error?: string;
