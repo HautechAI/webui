@@ -11,8 +11,8 @@ export type CardProps = {
     label: string;
     image: string;
     aspectRatio?: number;
-    width?: number;
-    height?: number;
+    width?: number | string;
+    height?: number | string;
     fullWidth?: boolean;
     onDownload?: () => void;
     onClick?: React.MouseEventHandler<HTMLElement>;
