@@ -1,4 +1,3 @@
-import { fn } from '@storybook/test';
 import { Switch } from '../../../components/Switch/src';
 import { SwitchProps } from '../../../components/Switch/src';
 
@@ -19,20 +18,6 @@ export default {
 
 export const Uncontrolled = {
     args: {},
-};
-
-export const WithLabel = {
-    args: {
-        label: 'Label',
-    },
-};
-
-export const Locked = {
-    args: {
-        label: 'Label',
-        locked: true,
-        onLockedClick: fn() as any,
-    },
 };
 
 export const Checked = {

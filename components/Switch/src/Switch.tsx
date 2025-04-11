@@ -1,7 +1,4 @@
 import { css, styled } from '@hautechai/webui.themeprovider';
-import { Typography } from '@hautechai/webui.typography';
-import { Row } from '@hautechai/webui.row';
-import { LockIcon } from '@hautechai/webui.icon';
 import { useState } from 'react';
 
 const SwitchContainer = styled.label<{ disabled?: boolean }>`
@@ -99,31 +96,13 @@ const HiddenCheckbox = styled.input`
 export type SwitchProps = {
     checked?: boolean;
     onChange?: (checked: boolean) => void;
-    label?: string;
     disabled?: boolean;
-    locked?: boolean;
-    onLockedClick?: () => void;
 };
 
-export const Switch = ({
-    checked: controlledChecked,
-    locked,
-    onLockedClick,
-    onChange,
-    label,
-    disabled,
-}: SwitchProps) => {
+export const Switch = ({ checked: controlledChecked, onChange, disabled }: SwitchProps) => {
     const [uncontrolledChecked, setUncontrolledChecked] = useState(false);
     const isControlled = controlledChecked !== undefined;
     const checked = isControlled ? controlledChecked : uncontrolledChecked;
-
-    const handleContainerClick = (event: React.MouseEvent<HTMLLabelElement>) => {
-        if (!disabled && locked && onLockedClick) {
-            event.preventDefault();
-            onLockedClick();
-            return;
-        }
-    };
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         if (!isControlled) {
@@ -134,19 +113,11 @@ export const Switch = ({
     };
 
     return (
-        <SwitchContainer disabled={disabled} onClick={handleContainerClick}>
-            <Row spacing="s">
-                {label && (
-                    <Typography variant="LabelMediumEmphasized" color="layout.onSurface.secondary">
-                        {label}
-                    </Typography>
-                )}
-                {locked && <LockIcon size={20} color="layout.onSurface.secondary" />}
-            </Row>
+        <SwitchContainer disabled={disabled}>
             <HiddenCheckbox
                 type="checkbox"
                 checked={checked !== undefined ? !!checked : undefined}
-                onChange={!disabled && !locked ? handleChange : undefined}
+                onChange={!disabled ? handleChange : undefined}
                 disabled={disabled}
             />
             <SwitchComponent checked={checked ?? false} disabled={disabled} />
