@@ -18,9 +18,9 @@
     },
     "author": "HautechAI",
     "dependencies": {
-        "@hautechai/webui.row": "workspace:^",
         "@hautechai/webui.themeprovider": "workspace:^",
-        "@hautechai/webui.typography": "workspace:^"
+        "@hautechai/webui.typography": "workspace:^",
+        "react-tiny-popover": "8.1.6"
     },
     "license": "Apache-2.0"
 }
