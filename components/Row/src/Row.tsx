@@ -6,10 +6,13 @@ const BaseComponent = (props: Pick<RowProps, 'className' | 'children'>) => {
 };
 
 const Container = styled(BaseComponent)<
-    Pick<RowProps, 'spacing' | 'stretch' | 'align' | 'justify' | 'fullHeight' | 'noOverflow'> & { $wrap?: boolean }
+    Pick<RowProps, 'spacing' | 'stretch' | 'align' | 'justify' | 'fullHeight' | 'noOverflow'> & {
+        $wrap?: boolean;
+        reverse?: boolean;
+    }
 >`
     display: flex;
-    flex-direction: row;
+    flex-direction: ${({ reverse }) => (reverse ? 'row-reverse' : 'row')};
     ${({ align }) =>
         align &&
         css`
@@ -51,6 +54,7 @@ export type RowProps = {
     children?: React.ReactNode;
     spacing?: keyof ThemeType['foundation']['spacing'];
     wrap?: boolean;
+    reverse?: boolean;
     stretch?: boolean;
     align?: Align;
     justify?: Justify;

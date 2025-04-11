@@ -36,17 +36,3 @@ export const WithNoLimits = {
         max: undefined,
     },
 };
-
-export const WithLabel = {
-    args: {
-        label: 'Label',
-    },
-};
-
-export const Locked = {
-    args: {
-        locked: true,
-        label: 'Label',
-        onLockedClick: fn() as any,
-    },
-};
