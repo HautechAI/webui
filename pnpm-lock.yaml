@@ -71,6 +71,12 @@ importers:
         specifier: workspace:^
         version: link:../ThemeProvider
 
+  components/AppBarMobile:
+    dependencies:
+      '@hautechai/webui.themeprovider':
+        specifier: workspace:^
+        version: link:../ThemeProvider
+
   components/AspectRatio:
     dependencies:
       '@hautechai/webui.box':
