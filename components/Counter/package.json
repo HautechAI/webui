@@ -1,7 +1,7 @@
 {
-    "name": "@hautechai/webui.chip",
+    "name": "@hautechai/webui.counter",
     "description": "",
-    "version": "0.3.72",
+    "version": "0.0.1",
     "type": "module",
     "main": "src/index.tsx",
     "publishConfig": {
@@ -20,7 +20,9 @@
     "dependencies": {
         "@hautechai/webui.themeprovider": "workspace:^",
         "@hautechai/webui.typography": "workspace:^",
-        "react-tiny-popover": "8.1.6"
+        "@hautechai/webui.row": "workspace:^",
+        "@hautechai/webui.icon": "workspace:^",
+        "@hautechai/webui.iconbutton": "workspace:^"
     },
     "license": "Apache-2.0"
 }
