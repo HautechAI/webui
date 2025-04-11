@@ -10,6 +10,7 @@ const Container = styled.div<{ disabled?: boolean }>`
     flex-direction: column;
     flex: 1 0 0;
     gap: ${({ theme }) => theme.foundation.spacing.m}px;
+    min-width: 132px;
 
     ${({ theme, disabled }) =>
         disabled &&
@@ -179,14 +180,13 @@ const MenuContainer = styled.div<{ isOpen?: boolean }>`
 `;
 
 export type DropdownProps = {
-    title?: string;
     label?: string;
     disabled?: boolean;
     type?: 'filled' | 'outlined' | 'flat';
-    error?: string;
     value?: string;
     options: Array<{ label: string; value: string }>;
     onChange?: (value: string) => void;
+    hasError?: boolean;
 };
 
 export const Dropdown = (props: DropdownProps) => {
@@ -227,18 +227,10 @@ export const Dropdown = (props: DropdownProps) => {
 
     return (
         <Container disabled={disabled} ref={ref}>
-            {props.title && (
-                <Typography
-                    variant="CaptionEmphasized"
-                    color={disabled ? 'layout.strokes' : 'layout.onSurface.tertiary'}
-                >
-                    {props.title}
-                </Typography>
-            )}
             <ButtonContainer
                 disabled={disabled}
                 type={props.type ?? 'filled'}
-                hasError={!!props.error}
+                hasError={props.hasError}
                 onClick={handleToggle}
                 isOpen={isOpen}
             >
@@ -258,11 +250,6 @@ export const Dropdown = (props: DropdownProps) => {
                     }))}
                 />
             </MenuContainer>
-            {props.error && (
-                <Typography variant="CaptionRegular" color="actions.error">
-                    {props.error}
-                </Typography>
-            )}
         </Container>
     );
 };
