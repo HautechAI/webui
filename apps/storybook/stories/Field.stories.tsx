@@ -4,9 +4,14 @@ import { PlaceholderIcon } from '../../../components/Icon/src';
 import { Field } from '../../../components/Field/src';
 import { TextArea } from '../../../components/TextArea/src';
 import { TextInput } from '../../../components/TextInput/src';
+import { Checkbox } from '../../../components/Checkbox/src';
+import { Switch } from '../../../components/Switch/src';
+import { Dropdown } from '../../../components/Dropdown/src';
+import { SegmentedControl } from '../../../components/SegmentedControl/src';
+import { Counter } from '../../../components/Counter/src';
 
 export default {
-    title: 'Input/Field',
+    label: 'Input/Field',
     component: Field,
     parameters: {
         layout: 'centered',
@@ -14,14 +19,16 @@ export default {
     tags: ['autodocs'],
     argTypes: {
         backgroundColor: { control: 'color' },
-        direction: {
+        labelPosition: {
             control: 'radio',
-            options: ['horizontal', 'vertical'],
+            options: ['top', 'left', 'right'],
         },
     },
     args: {
-        title: 'Title',
-        direction: 'vertical',
+        label: 'Label',
+        labelPosition: 'top',
+        caption: 'Helper text',
+        error: 'Error message',
     },
     decorators: [
         (Story: any) => (
@@ -32,41 +39,75 @@ export default {
     ],
 };
 
-export const InputFilled = {
+export const WithCheckbox = {
     args: {
-        title: 'Title',
+        label: 'Label',
+        children: <Checkbox />,
+    },
+};
+
+export const WithSwitch = {
+    args: {
+        label: 'Label',
+        children: <Switch />,
+    },
+};
+
+export const WithCounter = {
+    args: {
+        label: 'Label',
+        children: <Counter onChange={fn() as any} />,
+    },
+};
+
+export const WithDropdown = {
+    args: {
+        label: 'Label',
+        caption: 'Helper text',
+        children: (
+            <Dropdown
+                label="Option"
+                onChange={fn() as any}
+                options={[
+                    { label: 'Option1', value: 'op1' },
+                    { label: 'Option2 very long option', value: 'op2' },
+                    { label: 'Any text', value: 'op3' },
+                    { label: 'Any text', value: 'op4' },
+                    { label: 'Option5 very long option', value: 'op5' },
+                    { label: 'Option6 very very long option', value: 'op6' },
+                ]}
+            />
+        ),
+    },
+};
+
+export const WithSegmentedControl = {
+    args: {
+        label: 'Label',
+        caption: 'Helper text',
+        children: (
+            <SegmentedControl
+                options={[
+                    { label: 'All', value: 'all' },
+                    { label: 'Classic', value: 'classic' },
+                    { label: 'Batch', value: 'batch' },
+                ]}
+            />
+        ),
+    },
+};
+
+export const WithInput = {
+    args: {
+        label: 'Label',
         caption: 'Helper text',
         children: <TextInput type="text" placeholder="Any text" variation="filled" onChange={fn() as any} />,
     },
 };
 
-export const InputOutlined = {
+export const WithInputWithIcons = {
     args: {
-        title: 'Title',
-        caption: 'Helper text',
-        children: <TextInput type="text" placeholder="Any text" variation="outlined" onChange={fn() as any} />,
-    },
-};
-
-export const InputWithIcons = {
-    args: {
-        title: 'Title',
-        caption: 'Helper text',
-        children: (
-            <TextInput
-                type="text"
-                placeholder="Any text"
-                leadingIcon={<PlaceholderIcon />}
-                trailingIcon={<PlaceholderIcon />}
-                onChange={fn() as any}
-            />
-        ),
-    },
-};
-
-export const InputWithIconButton = {
-    args: {
-        title: 'Title',
+        label: 'Label',
         caption: 'Helper text',
         children: (
             <TextInput
@@ -82,28 +123,11 @@ export const InputWithIconButton = {
     },
 };
 
-export const InputWithError = {
+export const WithInputDisabled = {
     args: {
-        title: 'Title',
+        label: 'Label',
         caption: 'Helper text',
-        error: 'Error message',
-        children: (
-            <TextInput
-                type="text"
-                hasError
-                placeholder="Any text"
-                icon={<PlaceholderIcon />}
-                onIconButtonClick={fn() as any}
-                onChange={fn() as any}
-            />
-        ),
-    },
-};
-
-export const InputDisabled = {
-    args: {
-        title: 'Title',
-        caption: 'Helper text',
+        error: undefined,
         children: (
             <TextInput
                 type="text"
@@ -117,9 +141,9 @@ export const InputDisabled = {
     },
 };
 
-export const InputLocked = {
+export const WithInputLocked = {
     args: {
-        title: 'Title',
+        label: 'Label',
         caption: 'Helper text',
         locked: true,
         onLockedClick: fn() as any,
@@ -135,55 +159,24 @@ export const InputLocked = {
     },
 };
 
-export const AreaWithLongText = {
+export const WithArea = {
     args: {
-        title: 'Title',
+        label: 'Label',
         caption: 'Helper text',
         children: (
             <TextArea
                 placeholder="Any text"
                 variation="filled"
-                value="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur"
+                value="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
                 onChange={fn() as any}
             />
         ),
     },
 };
 
-export const AreaFilled = {
+export const WithAreaWithIcons = {
     args: {
-        title: 'Title',
-        caption: 'Helper text',
-        children: <TextArea placeholder="Any text" variation="filled" onChange={fn() as any} />,
-    },
-};
-
-export const AreaOutlined = {
-    args: {
-        title: 'Title',
-        caption: 'Helper text',
-        children: <TextArea placeholder="Any text" variation="outlined" onChange={fn() as any} />,
-    },
-};
-
-export const AreaWithIcons = {
-    args: {
-        title: 'Title',
-        caption: 'Helper text',
-        children: (
-            <TextArea
-                placeholder="Any text"
-                leadingIcon={<PlaceholderIcon />}
-                trailingIcon={<PlaceholderIcon />}
-                onChange={fn() as any}
-            />
-        ),
-    },
-};
-
-export const AreaWithIconButton = {
-    args: {
-        title: 'Title',
+        label: 'Label',
         caption: 'Helper text',
         children: (
             <TextArea
@@ -198,27 +191,11 @@ export const AreaWithIconButton = {
     },
 };
 
-export const AreaWithError = {
+export const WithAreaDisabled = {
     args: {
-        title: 'Title',
+        label: 'Label',
         caption: 'Helper text',
-        error: 'Error message',
-        children: (
-            <TextArea
-                hasError
-                placeholder="Any text"
-                icon={<PlaceholderIcon />}
-                onIconButtonClick={fn() as any}
-                onChange={fn() as any}
-            />
-        ),
-    },
-};
-
-export const AreaDisabled = {
-    args: {
-        title: 'Title',
-        caption: 'Helper text',
+        error: undefined,
         children: (
             <TextArea
                 disabled
@@ -231,9 +208,9 @@ export const AreaDisabled = {
     },
 };
 
-export const AreaLocked = {
+export const WithAreaLocked = {
     args: {
-        title: 'Title',
+        label: 'Label',
         caption: 'Helper text',
         locked: true,
         onLockedClick: fn() as any,

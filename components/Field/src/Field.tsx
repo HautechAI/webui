@@ -1,15 +1,19 @@
 import { Column } from '@hautechai/webui.column';
 import { Row } from '@hautechai/webui.row';
-import { styled } from '@hautechai/webui.themeprovider';
+import { css, styled } from '@hautechai/webui.themeprovider';
 import { Typography } from '@hautechai/webui.typography';
 import React, { useCallback, useRef } from 'react';
 import { LockIcon } from '@hautechai/webui.icon';
 
-const Container = styled.div<{ disabled?: boolean }>`
+const Container = styled.div<{ disabled?: boolean; noStretch?: boolean }>`
     display: flex;
     flex-direction: column;
     gap: ${({ theme }) => theme.foundation.spacing.s}px;
-    flex: 1;
+    ${({ noStretch }) =>
+        !noStretch &&
+        css`
+            flex: 1;
+        `}
 
     cursor: default;
 `;
@@ -20,40 +24,49 @@ type LockedProps = {
 };
 
 export type FieldProps = LockedProps & {
-    title?: string;
-    direction?: 'vertical' | 'horizontal';
+    label?: string;
+    labelPosition: 'left' | 'right' | 'top';
     error?: string;
     caption?: string;
     children: React.ReactNode;
 };
 
 export const Field = (props: FieldProps) => {
-    const { title, direction = 'vertical', error, caption, locked, onLockedClick, children } = props;
+    const { label, labelPosition = 'top', error, caption, locked, onLockedClick, children } = props;
     const ref = useRef<HTMLDivElement>(null);
+
     const handleClick = useCallback(
         (event: React.MouseEvent<HTMLDivElement>) => {
             if (onLockedClick) {
-                event.stopPropagation();
+                event.preventDefault();
                 onLockedClick();
             }
         },
         [onLockedClick],
     );
-    const Main = direction === 'vertical' ? Column : Row;
+
+    const Main = labelPosition === 'top' ? Column : Row;
 
     return (
-        <Container onClick={handleClick} ref={ref}>
-            <Main spacing={direction === 'vertical' ? 'm' : 'ml'} stretch>
+        <Container onClick={handleClick} ref={ref} noStretch={labelPosition === 'right'}>
+            <Main spacing={labelPosition === 'top' ? 'm' : 'ml'} stretch reverse={labelPosition === 'right'}>
                 <Row spacing="s" align="center">
-                    {title && (
-                        <Typography variant="LabelSmallEmphasized" color={'layout.onSurface.tertiary'}>
-                            {title}
+                    {label && (
+                        <Typography variant="LabelSmallRegular" color={'layout.onSurface.secondary'}>
+                            {label}
                         </Typography>
                     )}
                     {locked && <LockIcon size={16} color="layout.onSurface.secondary" />}
                 </Row>
                 <Row stretch spacing="s" align="center">
-                    {children}
+                    {React.Children.map(children, (child) => {
+                        if (React.isValidElement(child)) {
+                            return React.cloneElement(child, {
+                                hasError: !!error,
+                            } as any);
+                        }
+                        return child;
+                    })}
                 </Row>
             </Main>
             {caption && (

@@ -241,9 +241,6 @@ importers:
       '@hautechai/webui.iconbutton':
         specifier: workspace:^
         version: link:../IconButton
-      '@hautechai/webui.row':
-        specifier: workspace:^
-        version: link:../Row
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
         version: link:../ThemeProvider
@@ -587,18 +584,9 @@ importers:
 
   components/Switch:
     dependencies:
-      '@hautechai/webui.icon':
-        specifier: workspace:^
-        version: link:../Icon
-      '@hautechai/webui.row':
-        specifier: workspace:^
-        version: link:../Row
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
         version: link:../ThemeProvider
-      '@hautechai/webui.typography':
-        specifier: workspace:^
-        version: link:../Typography
 
   components/Table:
     dependencies:

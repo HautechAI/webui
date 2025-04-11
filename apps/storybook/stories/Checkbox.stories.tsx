@@ -10,19 +10,8 @@ export default {
     args: {},
 };
 
-export const Uncontroller = {
+export const Uncontrolled = {
     args: {},
-};
-
-export const UncontrolledWihtLabel = {
-    args: {},
-    decorators: [
-        (Story: any) => (
-            <label>
-                <Story /> test
-            </label>
-        ),
-    ],
 };
 
 export const Unchecked = {
