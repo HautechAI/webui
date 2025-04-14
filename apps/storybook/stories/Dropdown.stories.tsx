@@ -36,28 +36,14 @@ export const Filled = {
     args: {},
 };
 
-export const WithTitle = {
-    args: {
-        title: 'Title',
-    },
-};
-
 export const WithLabel = {
     args: {
         label: 'Label',
     },
 };
 
-export const WithTitleLabel = {
-    args: {
-        title: 'Title',
-        label: 'Label',
-    },
-};
-
 export const Disabled = {
     args: {
-        title: 'Title',
         label: 'Any text',
         disabled: true,
     },
@@ -65,15 +51,13 @@ export const Disabled = {
 
 export const Error = {
     args: {
-        title: 'Title',
         label: 'Label',
-        error: 'Option is required',
+        hasError: true,
     },
 };
 
 export const WithSelectedOption = {
     args: {
-        title: 'Title',
         value: 'op2',
     },
 };
@@ -86,7 +70,6 @@ export const Outlined = {
 
 export const OutlinedWithSelectedOption = {
     args: {
-        title: 'Title',
         value: 'op2',
         type: 'outlined',
     },
@@ -94,7 +77,6 @@ export const OutlinedWithSelectedOption = {
 
 export const Flat = {
     args: {
-        title: 'Title',
         label: 'Label',
         type: 'flat',
     },
@@ -102,7 +84,6 @@ export const Flat = {
 
 export const FlatDisabled = {
     args: {
-        title: 'Title',
         label: 'Any text',
         disabled: true,
         type: 'flat',
@@ -111,9 +92,8 @@ export const FlatDisabled = {
 
 export const FlatError = {
     args: {
-        title: 'Title',
         label: 'Label',
-        error: 'Option is required',
+        hasError: true,
         type: 'flat',
     },
 };
