@@ -30,6 +30,9 @@ const StyledButton = styled(ButtonBase)<Required<Pick<TextButtonProps, 'hierarch
     :disabled {
         color: ${({ theme }) => theme.palette.layout.onSurface.tertiary};
     }
+
+    transition: color ${({ theme }) => theme.foundation.animation.duration.fast}s
+        ${({ theme }) => theme.foundation.animation.timing.easeOut};
 `;
 
 export type TextButtonProps = {

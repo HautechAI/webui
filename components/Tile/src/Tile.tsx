@@ -13,7 +13,7 @@ const sizeToUnits = (size?: number | string) => {
     return typeof size === 'number' ? `${size}px` : size;
 };
 
-const StyledTile = styled.div<Omit<TileProps, 'icon'>>`
+const StyledTileDiv = styled.div<Omit<TileProps, 'icon'>>`
     display: flex;
     align-items: center;
     justify-content: center;
@@ -48,6 +48,56 @@ const StyledTile = styled.div<Omit<TileProps, 'icon'>>`
     background-origin: border-box;
     box-sizing: border-box;
 
+    ${({ theme }) => {
+        const normalDuration = theme.foundation.animation.duration.fast;
+        const timingFunction = theme.foundation.animation.timing.easeOut;
+
+        return `
+        transition: 
+            background-color ${normalDuration}s ${timingFunction},
+            outline-color ${normalDuration}s ${timingFunction},
+            transform ${normalDuration}s ${timingFunction},
+            border-color  ${normalDuration}s ${timingFunction};
+        `;
+    }}
+
+    border-color: ${({ selected, theme }) => (selected ? theme.palette.actions.primary : 'transparent')};
+    .htch-webui-hoverable:hover & {
+        border-color: ${({ theme }) => theme.palette.actions.primary};
+    }
+`;
+
+const StyledTileImg = styled.img<Omit<TileProps, 'icon'>>`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: ${({ theme }) => theme.palette.layout.surfaceMid};
+    border-radius: 8px;
+
+    ${({ width, size }) =>
+        (width || size) &&
+        css`
+            width: ${sizeToUnits(width) ?? sizeToUnits(tileSize[size ?? 'medium'])};
+        `};
+    ${({ height, size }) =>
+        (height || size) &&
+        css`
+            height: ${sizeToUnits(height) ?? sizeToUnits(tileSize[size ?? 'medium'])};
+        `};
+
+    ${({ aspectRatio }) =>
+        aspectRatio &&
+        css`
+            aspect-ratio: ${aspectRatio};
+        `};
+
+    border-width: ${({ theme }) => `${theme.foundation.stroke.standard}`}px;
+    border-style: solid;
+
+    background-origin: border-box;
+    box-sizing: border-box;
+
     transition: background-color 0.3s ease, border-color 0.3s ease, outline-color 0.3s ease, transform 0.3s ease;
 
     border-color: ${({ selected, theme }) => (selected ? theme.palette.actions.primary : 'transparent')};
@@ -65,10 +115,12 @@ export type TileProps = {
     width?: number | string;
     height?: number | string;
     aspectRatio?: number;
+    component?: 'div' | 'img';
+    alt?: string;
 };
 
 export const Tile = (props: TileProps) => {
-    const { icon, size, aspectRatio, ...rest } = props;
+    const { icon, size, aspectRatio, image, component, alt, ...rest } = props;
     const { width, height } = props;
 
     if (size && (width || height || aspectRatio)) {
@@ -77,14 +129,26 @@ export const Tile = (props: TileProps) => {
     if (aspectRatio && width && height) {
         throw new Error('aspectRatio can be used only with one of width/height');
     }
+    if (props.component === 'img' && icon) {
+        throw new Error('icon can not be used with img component');
+    }
 
-    return (
-        <StyledTile
+    return props.component === 'img' ? (
+        <StyledTileImg
             size={size ?? (!width && !height ? 'medium' : undefined)} // default medium size if no other size or width/height is provided
             aspectRatio={aspectRatio ?? (!size && (!width || !height) ? 1 : undefined)} // default aspect ratio to 1 if no other aspect ratio or width/height is provided
+            src={image}
+            alt={alt}
+            {...rest}
+        />
+    ) : (
+        <StyledTileDiv
+            size={size ?? (!width && !height ? 'medium' : undefined)} // default medium size if no other size or width/height is provided
+            aspectRatio={aspectRatio ?? (!size && (!width || !height) ? 1 : undefined)} // default aspect ratio to 1 if no other aspect ratio or width/height is provided
+            image={image}
             {...rest}
         >
             {icon}
-        </StyledTile>
+        </StyledTileDiv>
     );
 };

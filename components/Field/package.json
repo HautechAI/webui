@@ -1,7 +1,7 @@
 {
     "name": "@hautechai/webui.field",
     "description": "",
-    "version": "0.3.55",
+    "version": "0.3.73",
     "type": "module",
     "main": "src/index.tsx",
     "publishConfig": {
@@ -19,9 +19,8 @@
     "author": "HautechAI",
     "dependencies": {
         "@hautechai/webui.column": "workspace:^",
+        "@hautechai/webui.icon": "workspace:^",
         "@hautechai/webui.row": "workspace:^",
-        "@hautechai/webui.textarea": "workspace:^",
-        "@hautechai/webui.textinput": "workspace:^",
         "@hautechai/webui.themeprovider": "workspace:^",
         "@hautechai/webui.typography": "workspace:^"
     },

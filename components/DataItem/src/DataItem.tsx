@@ -8,7 +8,7 @@ import { Hint, HintProps } from '@hautechai/webui.hint';
 const ColumnContainer = styled.div<Pick<DataItemProps, 'size' | 'primary' | 'stretch'>>`
     display: flex;
     flex-direction: column;
-    gap: ${({ theme, size }) => (size === 'medium' ? theme.foundation.spacing.s : 0)}px;
+    align-self: center;
     ${({ stretch }) =>
         stretch &&
         css`

@@ -56,13 +56,14 @@ export type BottomSheetProps = {
         bottom?: number;
     };
     zIndex?: number;
+    backdropStyle?: React.CSSProperties;
 };
 
 export const BottomSheet = (props: BottomSheetProps) => {
     const { children, ...rest } = props;
     return (
         <Container {...rest}>
-            <Backdrop {...rest} onClick={props?.onClose} />
+            <Backdrop {...rest} onClick={props?.onClose} style={props.backdropStyle} />
             <ContentContainer {...rest}>
                 <Content {...rest}>{props.children}</Content>
             </ContentContainer>

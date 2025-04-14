@@ -18,6 +18,7 @@ const StyledButton = styled.button<Pick<ButtonBaseProps, 'stretch' | 'disabled'>
 `;
 
 export type ButtonBaseProps = PropsWithChildren<{
+    id?: string;
     className?: string;
     onClick?: ComponentProps<typeof StyledButton>['onClick'];
     disabled?: boolean;

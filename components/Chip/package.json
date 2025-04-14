@@ -1,7 +1,7 @@
 {
     "name": "@hautechai/webui.chip",
     "description": "",
-    "version": "0.3.51",
+    "version": "0.3.72",
     "type": "module",
     "main": "src/index.tsx",
     "publishConfig": {
@@ -18,9 +18,9 @@
     },
     "author": "HautechAI",
     "dependencies": {
-        "@hautechai/webui.row": "workspace:^",
         "@hautechai/webui.themeprovider": "workspace:^",
-        "@hautechai/webui.typography": "workspace:^"
+        "@hautechai/webui.typography": "workspace:^",
+        "react-tiny-popover": "8.1.6"
     },
     "license": "Apache-2.0"
 }

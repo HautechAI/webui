@@ -8,7 +8,12 @@ const sizeToCss = (size: number | string) => {
     return `${size}px`;
 };
 
-const StyledBox = styled.div<Omit<BoxProps, 'icon'>>`
+const BaseComponent = (props: Pick<BoxProps, 'className' | 'children' | 'style' | 'id'>) => {
+    const { className, children, style, id } = props;
+    return <div {...{ className, children, style, id }} />;
+};
+
+const StyledBox = styled(BaseComponent)<Omit<BoxProps, 'icon'>>`
     display: ${({ display }) => display ?? 'flex'};
 
     ${({ width }) =>
@@ -129,6 +134,7 @@ const StyledBox = styled.div<Omit<BoxProps, 'icon'>>`
 
 export type BoxProps = PropsWithChildren<{
     className?: string;
+    id?: string;
     style?: React.CSSProperties;
     width?: number | string;
     height?: number | string;

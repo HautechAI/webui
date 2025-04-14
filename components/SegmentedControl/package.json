@@ -1,7 +1,7 @@
 {
     "name": "@hautechai/webui.segmentedcontrol",
     "description": "",
-    "version": "0.3.51",
+    "version": "0.3.72",
     "type": "module",
     "main": "src/index.tsx",
     "publishConfig": {
