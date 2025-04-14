@@ -71,6 +71,12 @@ importers:
         specifier: workspace:^
         version: link:../ThemeProvider
 
+  components/AppBarMobile:
+    dependencies:
+      '@hautechai/webui.themeprovider':
+        specifier: workspace:^
+        version: link:../ThemeProvider
+
   components/AspectRatio:
     dependencies:
       '@hautechai/webui.box':
@@ -190,15 +196,15 @@ importers:
 
   components/Chip:
     dependencies:
-      '@hautechai/webui.row':
-        specifier: workspace:^
-        version: link:../Row
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
         version: link:../ThemeProvider
       '@hautechai/webui.typography':
         specifier: workspace:^
         version: link:../Typography
+      react-tiny-popover:
+        specifier: 8.1.6
+        version: 8.1.6(react-dom@19.0.0)(react@19.0.0)
 
   components/Column:
     dependencies:
@@ -232,6 +238,24 @@ importers:
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
         version: link:../ThemeProvider
+
+  components/Counter:
+    dependencies:
+      '@hautechai/webui.icon':
+        specifier: workspace:^
+        version: link:../Icon
+      '@hautechai/webui.iconbutton':
+        specifier: workspace:^
+        version: link:../IconButton
+      '@hautechai/webui.row':
+        specifier: workspace:^
+        version: link:../Row
+      '@hautechai/webui.themeprovider':
+        specifier: workspace:^
+        version: link:../ThemeProvider
+      '@hautechai/webui.typography':
+        specifier: workspace:^
+        version: link:../Typography
 
   components/DataItem:
     dependencies:

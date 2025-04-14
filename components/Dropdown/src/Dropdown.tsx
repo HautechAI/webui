@@ -250,13 +250,7 @@ export const Dropdown = (props: DropdownProps) => {
                 </RotatingArrow>
             </ButtonContainer>
             <MenuContainer isOpen={isOpen}>
-                <Menu
-                    options={props.options.map((option) => ({
-                        ...option,
-                        onClick: () => handleSelect(option.value),
-                        isSelected: props.value === option.value,
-                    }))}
-                />
+                <Menu value={selectedOption?.value} options={props.options} onChange={handleSelect} />
             </MenuContainer>
             {props.error && (
                 <Typography variant="CaptionRegular" color="actions.error">

@@ -8,6 +8,7 @@ import { Hint, HintProps } from '@hautechai/webui.hint';
 const ColumnContainer = styled.div<Pick<DataItemProps, 'size' | 'primary' | 'stretch'>>`
     display: flex;
     flex-direction: column;
+    align-self: center;
     ${({ stretch }) =>
         stretch &&
         css`

@@ -1,7 +1,7 @@
 {
-    "name": "@hautechai/webui.card",
+    "name": "@hautechai/webui.counter",
     "description": "",
-    "version": "0.3.74",
+    "version": "0.0.1",
     "type": "module",
     "main": "src/index.tsx",
     "publishConfig": {
@@ -18,13 +18,11 @@
     },
     "author": "HautechAI",
     "dependencies": {
-        "@hautechai/webui.buttonbase": "workspace:^",
-        "@hautechai/webui.column": "workspace:^",
-        "@hautechai/webui.icon": "workspace:^",
-        "@hautechai/webui.iconbutton": "workspace:^",
+        "@hautechai/webui.themeprovider": "workspace:^",
+        "@hautechai/webui.typography": "workspace:^",
         "@hautechai/webui.row": "workspace:^",
-        "@hautechai/webui.tile": "workspace:^",
-        "@hautechai/webui.typography": "workspace:^"
+        "@hautechai/webui.icon": "workspace:^",
+        "@hautechai/webui.iconbutton": "workspace:^"
     },
     "license": "Apache-2.0"
 }
