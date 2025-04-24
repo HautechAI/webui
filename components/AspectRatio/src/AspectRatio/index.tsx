@@ -1,9 +1,10 @@
 import { SegmentedControl, SegmentedControlProps } from '@hautechai/webui.segmentedcontrol';
 import { ArrowAltRightIcon } from '@hautechai/webui.icon';
+import { styled } from '@hautechai/webui.themeprovider';
+
 import CustomRatio from '../CustomRatio';
 import { RatioBoxContainer, SmallRatioBox } from '../styles';
 import useLogic from './logic';
-import { styled } from '@hautechai/webui.themeprovider';
 
 const Container = styled.div`
     display: flex;
