@@ -3,7 +3,7 @@ import { CustomRatioProps } from '.';
 
 const useLogic = (props: CustomRatioProps) => {
     const orderedRatios = useMemo(() => {
-        return props.options.sort((a, b) => {
+        return [...props.options].sort((a, b) => {
             const [widthA, heightA] = a.split(':').map(Number);
             const [widthB, heightB] = b.split(':').map(Number);
             return widthA / heightA - widthB / heightB;
