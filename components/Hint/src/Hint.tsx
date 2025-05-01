@@ -3,6 +3,7 @@ import { HintIcon } from '@hautechai/webui.icon';
 import { Tooltip } from '@hautechai/webui.tooltip';
 
 const Icon = styled(HintIcon)`
+    display: block;
     color: ${({ theme }) => theme.palette.layout.onSurface.tertiary};
 
     &:hover {

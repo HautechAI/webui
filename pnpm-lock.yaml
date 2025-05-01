@@ -702,6 +702,9 @@ importers:
       '@hautechai/webui.typography':
         specifier: workspace:^
         version: link:../Typography
+      react-tiny-popover:
+        specifier: 8.1.6
+        version: 8.1.6(react-dom@19.0.0)(react@19.0.0)
 
   components/Typography:
     dependencies:
