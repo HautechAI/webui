@@ -27,6 +27,24 @@ export const Small = {
     args: {},
 };
 
+export const SmallLeft = {
+    args: {
+        position: 'left',
+    },
+};
+
+export const SmallRight = {
+    args: {
+        position: 'right',
+    },
+};
+
+export const SmallBottom = {
+    args: {
+        position: 'bottom',
+    },
+};
+
 export const Medium = {
     args: {
         size: 'medium',
