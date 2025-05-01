@@ -21,7 +21,8 @@
         "@hautechai/webui.column": "workspace:^",
         "@hautechai/webui.linkbutton": "workspace:^",
         "@hautechai/webui.themeprovider": "workspace:^",
-        "@hautechai/webui.typography": "workspace:^"
+        "@hautechai/webui.typography": "workspace:^",
+        "react-tiny-popover": "8.1.6"
     },
     "license": "Apache-2.0"
 }

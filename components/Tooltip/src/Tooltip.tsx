@@ -3,50 +3,31 @@ import { css, styled } from '@hautechai/webui.themeprovider';
 import { Typography } from '@hautechai/webui.typography';
 import { LinkButton } from '@hautechai/webui.linkbutton';
 import { Column } from '@hautechai/webui.column';
+import { Popover as TinyPopover } from 'react-tiny-popover';
 
 const TooltipContainer = styled.div`
-    position: relative;
-    display: inline-block;
-    z-index: 101;
-
     cursor: pointer;
 `;
 
 const TooltipContent = styled.div<{
     isMedium?: boolean;
-    isVisible?: boolean;
     position?: 'right' | 'left' | 'top' | 'bottom';
 }>`
-    position: absolute;
-    ${({ theme, position, isVisible }) => {
-        const transformValue = isVisible ? 'scaleY(1)' : 'scaleY(0.95)';
-
-        return position === 'top'
+    ${({ theme, position }) => {
+        return position === 'right'
             ? css`
-                  transform: ${transformValue} translateX(-50%);
-                  bottom: 100%;
-                  left: 50%;
-                  margin-bottom: ${theme.foundation.spacing.m}px;
+                  margin-left: ${theme.foundation.spacing.m}px;
               `
             : position === 'bottom'
             ? css`
-                  transform: ${transformValue} translateX(-50%);
-                  top: 100%;
-                  left: 50%;
                   margin-top: ${theme.foundation.spacing.m}px;
               `
             : position === 'left'
             ? css`
-                  transform: ${transformValue} translateY(-50%);
-                  right: 100%;
-                  top: 50%;
                   margin-right: ${theme.foundation.spacing.m}px;
               `
             : css`
-                  transform: ${transformValue} translateY(-50%);
-                  left: 100%;
-                  top: 50%;
-                  margin-left: ${theme.foundation.spacing.m}px;
+                  margin-bottom: ${theme.foundation.spacing.m}px;
               `;
     }}
 
@@ -64,16 +45,6 @@ const TooltipContent = styled.div<{
     box-shadow: ${({ theme }) => theme.foundation.elevation.two};
 
     cursor: default;
-
-    opacity: ${({ isVisible }) => (isVisible ? 1 : 0)};
-    ${({ theme }) => {
-        const normalDuration = theme.foundation.animation.duration.normal;
-        const timingFunction = theme.foundation.animation.timing.ease;
-
-        return css`
-            transition: opacity ${normalDuration}s ${timingFunction}, transform ${normalDuration}s ${timingFunction};
-        `;
-    }}
 `;
 
 type TooltipBaseProps = {
@@ -123,28 +94,33 @@ export const Tooltip = (props: TooltipProps) => {
     );
     return (
         <TooltipContainer>
-            <div onMouseEnter={showTooltip} onMouseLeave={scheduleHideTooltip}>
-                {props.children}
-            </div>
-
-            <TooltipContent
-                onMouseEnter={cancelHideTooltip}
-                onMouseLeave={scheduleHideTooltip}
-                isMedium={props.size === 'medium'}
-                isVisible={visible}
-                position={props.position ?? 'bottom'}
-            >
-                {props.size === 'medium' ? (
-                    <Column spacing="m" align="start">
-                        {getTypography()}
-                        {props.size === 'medium' && props.buttonLabel && (
-                            <LinkButton size="xsmall" onClick={props.onClick} label={props.buttonLabel} />
+            <TinyPopover
+                content={
+                    <TooltipContent
+                        onMouseEnter={cancelHideTooltip}
+                        onMouseLeave={scheduleHideTooltip}
+                        isMedium={props.size === 'medium'}
+                        position={props.position}
+                    >
+                        {props.size === 'medium' ? (
+                            <Column spacing="m" align="start">
+                                {getTypography()}
+                                {props.size === 'medium' && props.buttonLabel && (
+                                    <LinkButton size="xsmall" onClick={props.onClick} label={props.buttonLabel} />
+                                )}
+                            </Column>
+                        ) : (
+                            getTypography()
                         )}
-                    </Column>
-                ) : (
-                    getTypography()
-                )}
-            </TooltipContent>
+                    </TooltipContent>
+                }
+                isOpen={visible}
+                positions={props.position ? [props.position] : undefined}
+            >
+                <div onMouseEnter={showTooltip} onMouseLeave={scheduleHideTooltip}>
+                    {props.children}
+                </div>
+            </TinyPopover>
         </TooltipContainer>
     );
 };
