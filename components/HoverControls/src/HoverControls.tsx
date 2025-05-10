@@ -1,5 +1,5 @@
 import { Checkbox } from '@hautechai/webui.checkbox';
-import { styled } from '@hautechai/webui.themeprovider';
+import { css, styled } from '@hautechai/webui.themeprovider';
 import React, { PropsWithChildren, useCallback } from 'react';
 
 const StyledHoverControls = styled.div<HoverControlsProps>`
@@ -12,17 +12,23 @@ const ControlsContainer = styled.div`
     padding: 12px;
 `;
 
-const StyledCheckbox = styled(Checkbox)`
+const StyledCheckbox = styled(Checkbox)<{ hoverDisabled?: boolean }>`
     position: absolute;
     display: ${({ checked }) => (checked ? 'block' : 'none')};
-    *:hover > * > & {
-        display: block;
-    }
+    ${({ hoverDisabled }) =>
+        !hoverDisabled
+            ? css`
+                  *:hover > * > & {
+                      display: block;
+                  }
+              `
+            : ''}
 `;
 
 export type HoverControlsProps = PropsWithChildren<{
     selected?: boolean;
     onChangeSelected?: (selected: boolean) => void;
+    hoverDisabled?: boolean;
 }>;
 
 export const HoverControls = (props: HoverControlsProps) => {
@@ -34,7 +40,7 @@ export const HoverControls = (props: HoverControlsProps) => {
     return (
         <StyledHoverControls className="htch-webui-hoverable" onClick={handleClick} {...rest}>
             <ControlsContainer>
-                <StyledCheckbox checked={!!props.selected} readOnly />
+                <StyledCheckbox checked={!!props.selected} readOnly hoverDisabled={props.hoverDisabled} />
             </ControlsContainer>
             {React.Children.map(props.children, (child) => {
                 if (React.isValidElement(child)) {

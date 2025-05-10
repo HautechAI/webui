@@ -35,3 +35,10 @@ export const Selected = {
         selected: true,
     },
 };
+
+export const HoverDisabled = {
+    args: {
+        children: <Tile image={Shirt} />,
+        hoverDisabled: true,
+    },
+};
