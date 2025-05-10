@@ -1,8 +1,9 @@
 import { ButtonBase } from '@hautechai/webui.buttonbase';
-import { css, styled } from '@hautechai/webui.themeprovider';
+import { styled } from '@hautechai/webui.themeprovider';
 import { Typography, TypographyProps } from '@hautechai/webui.typography';
 
 export type ButtonProps = {
+    id?: string;
     variant?: 'filled' | 'outlined';
     hierarchy?: 'primary' | 'secondary';
     size?: 'medium' | 'small';

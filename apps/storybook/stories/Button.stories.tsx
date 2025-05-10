@@ -132,3 +132,10 @@ export const Stretch = {
         ),
     ],
 };
+
+export const WithId = {
+    args: {
+        id: 'test-button',
+        label: 'Button',
+    },
+};
