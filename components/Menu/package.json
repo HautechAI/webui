@@ -1,7 +1,7 @@
 {
     "name": "@hautechai/webui.menu",
     "description": "",
-    "version": "0.3.75",
+    "version": "0.3.76",
     "type": "module",
     "main": "src/index.tsx",
     "publishConfig": {
