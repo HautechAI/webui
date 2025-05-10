@@ -25,7 +25,7 @@ type LockedProps = {
 
 export type FieldProps = LockedProps & {
     label?: string;
-    labelPosition: 'left' | 'right' | 'top';
+    labelPosition?: 'left' | 'right' | 'top';
     error?: string;
     caption?: string;
     children: React.ReactNode;
