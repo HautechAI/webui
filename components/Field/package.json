@@ -1,7 +1,7 @@
 {
     "name": "@hautechai/webui.field",
     "description": "",
-    "version": "0.3.76",
+    "version": "0.3.77",
     "type": "module",
     "main": "src/index.tsx",
     "publishConfig": {
