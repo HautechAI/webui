@@ -28,7 +28,7 @@ export const ImageInputWithSamples = (props: ImageInputWithSamplesProps) => {
                 <Typography variant="H2" color="layout.onSurface.primary" textAlign="center">
                     {labelSamples}
                 </Typography>
-                <Row spacing="ml">
+                <Row wrap justify="center" spacing="ml">
                     {props.samples?.map((sample) => (
                         <ButtonBase key={sample.id} onClick={() => props.onSelectSample?.(sample)}>
                             <Tile image={sample.image}></Tile>
