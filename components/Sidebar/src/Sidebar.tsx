@@ -24,18 +24,22 @@ const StyledContent = styled.div`
     justify-content: space-between;
     flex: 1;
     padding: ${({ theme }) => theme.foundation.spacing.l}px ${({ theme }) => theme.foundation.spacing.l}px;
+    min-height: 0;
 `;
 
 const StyledTopContainer = styled.div`
     display: flex;
     flex-direction: column;
-    gap: ${({ theme }) => theme.foundation.spacing.xxl};
+    gap: ${({ theme }) => theme.foundation.spacing.xxl}px;
+    padding-bottom: ${({ theme }) => theme.foundation.spacing.l}px;
+    overflow-y: auto;
+    flex: 1;
 `;
 
 const StyledBottomContainer = styled.div`
     display: flex;
     flex-direction: column;
-    gap: ${({ theme }) => theme.foundation.spacing.xl};
+    gap: ${({ theme }) => theme.foundation.spacing.xl}px;
 `;
 
 export type SidebarProps = {

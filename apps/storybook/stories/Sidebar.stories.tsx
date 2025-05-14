@@ -2,6 +2,7 @@ import { Sidebar } from '../../../components/Sidebar/src';
 import { Logo } from '../../../components/Logo/src';
 import { User } from '../../../components/User/src';
 import { AppBar } from '../../../components/AppBar/src';
+import { Column } from '../../../components/Column/src';
 
 export default {
     title: 'Surfaces/Sidebar',
@@ -63,6 +64,30 @@ export const WithHeader = {
         header: (
             <>
                 <AppBar hierarchy="low" />
+            </>
+        ),
+    },
+};
+
+export const WithScroll = {
+    args: {
+        header: (
+            <>
+                <AppBar hierarchy="low" />
+            </>
+        ),
+        top: (
+            <Column>
+                {Array(30)
+                    .fill(null)
+                    .map((_, idx) => {
+                        return <Logo key={idx} />;
+                    })}
+            </Column>
+        ),
+        bottom: (
+            <>
+                <User title="John Doe" />
             </>
         ),
     },
