@@ -5,17 +5,18 @@ import { Row } from '@hautechai/webui.row';
 
 export type UserBalanceProps = {
     balance: string;
+    buttonLabel?: string;
     label?: string;
     onTopUpClick?: () => void;
 };
 
 export const UserBalance = (props: UserBalanceProps) => {
-    const { label = 'Balance' } = props;
+    const { label = 'Balance', buttonLabel = 'Top up' } = props;
     return (
         <Panel hierarchy="high">
             <Row spacing="ml" stretch>
                 <DataItem label={label} value={props.balance} size="small" stretch />
-                <Button label="Top up" size="small" onClick={props.onTopUpClick} />
+                <Button label={buttonLabel} size="small" onClick={props.onTopUpClick} />
             </Row>
         </Panel>
     );
