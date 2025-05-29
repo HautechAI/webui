@@ -5,8 +5,8 @@ import { Row } from '@hautechai/webui.row';
 
 export type UserBalanceProps = {
     balance: string;
-    label?: string;
     buttonLabel?: string;
+    label?: string;
     onTopUpClick?: () => void;
 };
 
