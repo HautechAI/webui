@@ -53,5 +53,4 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}
         run: |
-          pnpm run version
-          pnpm run publish
+          pnpm run version && pnpm run publish
