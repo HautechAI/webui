@@ -153,6 +153,7 @@ const MenuContainer = styled.div<{ isOpen?: boolean }>`
     min-width: 100%;
     max-height: 200px;
     overflow-y: scroll;
+    box-sizing: border-box;
 
     margin-top: 4px;
 
