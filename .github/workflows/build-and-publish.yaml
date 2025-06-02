@@ -53,5 +53,6 @@ jobs:
       - name: Up version and publish
         env:
           GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
           pnpm run version && pnpm run publish
