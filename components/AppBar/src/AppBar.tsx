@@ -8,9 +8,8 @@ const Container = styled.div<Required<Pick<AppBarProps, 'hierarchy'>>>`
         ({
             low: theme.palette.layout.surfaceLow, //
             mid: theme.palette.layout.surfaceMid,
-        }[hierarchy])};
+        })[hierarchy]};
     padding: ${({ theme }) => theme.foundation.spacing.l}px ${({ theme }) => theme.foundation.spacing.xl}px;
-
     border-bottom-width: ${({ theme }) => theme.foundation.stroke.thin}px;
     border-bottom-style: solid;
     border-bottom-color: ${({ theme }) => theme.palette.layout.strokes};
