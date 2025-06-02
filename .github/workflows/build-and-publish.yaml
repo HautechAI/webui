@@ -1,0 +1,54 @@
+name: Build and push
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-publish:
+    if: "!contains(toJSON(github.event.commits.*.message), 'chore(release):')"
+    runs-on: [self-hosted, ARM64]
+    name: Build and publish
+    steps:
+      - uses: tibdex/github-app-token@v2
+        id: generate_token
+        with:
+          app_id: ${{ secrets.BOT_APPLICATION_ID }}
+          private_key: ${{ secrets.BOT_PRIVATE_KEY }}
+
+      - name: Checkout
+        uses: actions/checkout@v4.2.2
+        with:
+          fetch-depth: 0
+
+      - name: Setup PNPM
+        uses: pnpm/action-setup@v3
+        with:
+          run_install: false
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4.4.0
+        with:
+          node-version: '22.x'
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+        env:
+          HUSKY: 0
+
+      - name: Prepare repository
+        run: |
+          git config user.email "admin@hautech.ai"
+          git config user.name "Hautech Bot"
+
+      - name: Fetch git tag refs
+        run: git fetch --all --tags
+
+      - name: Up version and publish
+        env:
+          GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}
+        run: |
+          pnpm run version
+          pnpm run publish

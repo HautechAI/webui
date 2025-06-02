@@ -2,7 +2,9 @@
     "name": "@hautechai/webui",
     "private": true,
     "scripts": {
-        "dev": "lerna run storybook"
+        "dev": "lerna run storybook",
+        "version": "pnpm lerna version --no-private --yes",
+        "publish": "pnpm --filter=\\!storybook -r publish --no-git-checks"
     },
     "dependencies": {
         "@storybook/test": "^8.5.5",

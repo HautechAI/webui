@@ -1,5 +1,16 @@
 {
     "$schema": "node_modules/lerna/schemas/lerna-schema.json",
-    "version": "0.3.82",
-    "npmClient": "pnpm"
+    "version": "independent",
+    "npmClient": "pnpm",
+    "command": {
+        "version": {
+            "ignoreChanges": [".github/**/*", "scripts/**/*", "**/*.md"],
+            "message": "chore(release): update packages",
+            "conventionalCommits": true,
+            "changelogPreset": "angular"
+        },
+        "publish": {
+            "ignoreChanges": [".github/**/*", "scripts/**/*", "**/*.md"]
+        }
+    }
 }
