@@ -1,6 +1,6 @@
 import { ButtonBase } from '@hautechai/webui.buttonbase';
 import { Column } from '@hautechai/webui.column';
-import { DownloadIcon, MoreIcon } from '@hautechai/webui.icon';
+import { DownloadIcon, EditIcon } from '@hautechai/webui.icon';
 import { IconButton } from '@hautechai/webui.iconbutton';
 import { Row } from '@hautechai/webui.row';
 import { Tile, TileProps } from '@hautechai/webui.tile';
@@ -15,6 +15,7 @@ export type CardProps = {
     height?: number | string;
     fullWidth?: boolean;
     onDownload?: () => void;
+    onEdit?: () => void;
     onClick?: React.MouseEventHandler<HTMLElement>;
     href?: string;
     tileComponent?: TileProps['component'];
@@ -39,7 +40,7 @@ export const Card = (props: CardProps) => {
                 </Typography>
                 <Column stretch></Column>
                 <Row spacing="s">
-                    <IconButton icon={<MoreIcon size={20} />} size="small" variant="flat" />
+                    <IconButton icon={<EditIcon size={20} />} size="small" variant="flat" onClick={props.onEdit} />
                     <IconButton
                         icon={<DownloadIcon size={20} />}
                         size="small"
