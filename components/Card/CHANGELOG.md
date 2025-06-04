@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.1](https://github.com/HautechAI/webui/compare/@hautechai/webui.card@0.4.0...@hautechai/webui.card@0.4.1) (2025-06-04)
+
+### Reverts
+
+- Revert "feat: add edit button with callback to card component" ([ed4e871](https://github.com/HautechAI/webui/commit/ed4e871bb08787a037f1108a325c06663a40f434))
+
 # 0.4.0 (2025-06-04)
 
 ### Features
