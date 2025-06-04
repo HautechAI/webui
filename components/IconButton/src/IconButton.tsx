@@ -1,7 +1,9 @@
 import { ButtonBase } from '@hautechai/webui.buttonbase';
 import { css, styled } from '@hautechai/webui.themeprovider';
 
-const StyledButton = styled(ButtonBase)<Required<Pick<IconButtonProps, 'variant' | 'size' | 'customBackground'>>>`
+const StyledButton = styled(ButtonBase)<
+    Required<Pick<IconButtonProps, 'variant' | 'size'>> & Pick<IconButtonProps, 'customBackground'>
+>`
     padding: ${({ theme, size }) => (size === 'medium' ? theme.foundation.spacing.ml : theme.foundation.spacing.m)}px;
 
     border-radius: ${({ theme }) => theme.foundation.cornerRadius.m}px;
