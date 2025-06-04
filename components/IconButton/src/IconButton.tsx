@@ -1,7 +1,7 @@
 import { ButtonBase } from '@hautechai/webui.buttonbase';
 import { css, styled } from '@hautechai/webui.themeprovider';
 
-const StyledButton = styled(ButtonBase)<Required<Pick<IconButtonProps, 'variant' | 'size'>>>`
+const StyledButton = styled(ButtonBase)<Required<Pick<IconButtonProps, 'variant' | 'size' | 'customBackground'>>>`
     padding: ${({ theme, size }) => (size === 'medium' ? theme.foundation.spacing.ml : theme.foundation.spacing.m)}px;
 
     border-radius: ${({ theme }) => theme.foundation.cornerRadius.m}px;
@@ -11,8 +11,8 @@ const StyledButton = styled(ButtonBase)<Required<Pick<IconButtonProps, 'variant'
     border-color: ${({ theme }) => theme.palette.layout.strokes};
 
     color: ${({ theme }) => theme.palette.layout.onSurface.primary};
-    background-color: ${({ theme, variant }) =>
-        variant === 'filled' ? theme.palette.layout.surfaceLow : 'transparent'};
+    background-color: ${({ theme, variant, customBackground }) =>
+        customBackground || (variant === 'filled' ? theme.palette.layout.surfaceLow : 'transparent')};
 
     &:hover {
         &:not(:disabled) {
@@ -48,13 +48,14 @@ export type IconButtonProps = {
     icon: React.ReactNode;
     disabled?: boolean;
     onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
+    customBackground?: string;
 };
 
 export const IconButton = (props: IconButtonProps) => {
-    const { variant = 'filled', size = 'medium', icon, ...rest } = props;
+    const { variant = 'filled', size = 'medium', icon, customBackground, ...rest } = props;
 
     return (
-        <StyledButton variant={variant} size={size} {...rest}>
+        <StyledButton variant={variant} size={size} customBackground={customBackground} {...rest}>
             {icon}
         </StyledButton>
     );
