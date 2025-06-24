@@ -6,20 +6,20 @@ const Container = styled.div<Required<Pick<PanelProps, 'hierarchy' | 'size'>> & 
         ({
             small: theme.foundation.spacing.ml,
             medium: theme.foundation.spacing.l,
-        }[size])}px;
+        })[size]}px;
 
     background-color: ${({ theme, hierarchy }) =>
         ({
             low: theme.palette.layout.surfaceLow,
             mid: theme.palette.layout.surfaceMid,
             high: theme.palette.layout.surfaceHigh,
-        }[hierarchy])};
+        })[hierarchy]};
 
     border-radius: ${({ theme, size }) =>
         ({
             small: theme.foundation.cornerRadius.m,
             medium: theme.foundation.cornerRadius.l,
-        }[size])}px;
+        })[size]}px;
 
     border-style: solid;
     border-width: ${({ theme, hierarchy }) =>
@@ -27,16 +27,15 @@ const Container = styled.div<Required<Pick<PanelProps, 'hierarchy' | 'size'>> & 
             low: theme.foundation.stroke.thin,
             mid: 0,
             high: theme.foundation.stroke.thin,
-        }[hierarchy])}px;
+        })[hierarchy]}px;
     border-color: ${({ theme, hierarchy }) =>
         ({
             low: theme.palette.layout.strokes,
             mid: 0,
             high: theme.palette.layout.strokes,
-        }[hierarchy])};
+        })[hierarchy]};
 
-    width: ${({ stretch }) => stretch ? '100%' : 'auto'};
-    height: ${({ stretch }) => stretch ? '100%' : 'auto'};
+    width: ${({ stretch }) => (stretch ? '100%' : 'auto')};
 `;
 
 export type PanelProps = {
@@ -50,10 +49,10 @@ export type PanelProps = {
 export const Panel = (props: PanelProps) => {
     const { hierarchy = 'mid' } = props;
     return (
-        <Container 
-            className={props.className} 
-            hierarchy={hierarchy} 
-            size={props.size ?? 'medium'} 
+        <Container
+            className={props.className}
+            hierarchy={hierarchy}
+            size={props.size ?? 'medium'}
             stretch={props.stretch}
         >
             {props.children}
