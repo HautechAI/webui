@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.1](https://github.com/HautechAI/webui/compare/@hautechai/webui.userbalance@0.4.0...@hautechai/webui.userbalance@0.4.1) (2025-06-24)
+
+**Note:** Version bump only for package @hautechai/webui.userbalance
+
 # 0.4.0 (2025-06-24)
 
 ## 0.3.80 (2025-05-29)
