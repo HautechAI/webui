@@ -1,6 +1,6 @@
 import { styled } from '@hautechai/webui.themeprovider';
 
-const Container = styled.div<Required<Pick<PanelProps, 'hierarchy' | 'size'>>>`
+const Container = styled.div<Required<Pick<PanelProps, 'hierarchy' | 'size'>> & Pick<PanelProps, 'stretch'>>`
     display: flex;
     padding: ${({ theme, size }) =>
         ({
@@ -34,6 +34,9 @@ const Container = styled.div<Required<Pick<PanelProps, 'hierarchy' | 'size'>>>`
             mid: 0,
             high: theme.palette.layout.strokes,
         }[hierarchy])};
+
+    width: ${({ stretch }) => stretch ? '100%' : 'auto'};
+    height: ${({ stretch }) => stretch ? '100%' : 'auto'};
 `;
 
 export type PanelProps = {
@@ -41,12 +44,18 @@ export type PanelProps = {
     children?: React.ReactNode;
     hierarchy?: 'mid' | 'low' | 'high';
     size?: 'small' | 'medium';
+    stretch?: boolean;
 };
 
 export const Panel = (props: PanelProps) => {
     const { hierarchy = 'mid' } = props;
     return (
-        <Container className={props.className} hierarchy={hierarchy} size={props.size ?? 'medium'}>
+        <Container 
+            className={props.className} 
+            hierarchy={hierarchy} 
+            size={props.size ?? 'medium'} 
+            stretch={props.stretch}
+        >
             {props.children}
         </Container>
     );

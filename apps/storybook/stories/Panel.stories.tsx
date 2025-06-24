@@ -46,3 +46,10 @@ export const SmallHigh = {
         children: <DataItem label="Current plan" value="Basic" />,
     },
 };
+
+export const Stretched = {
+    args: {
+        stretch: true,
+        children: <DataItem label="Current plan" value="Basic" />,
+    },
+};
