@@ -1,7 +1,30 @@
-import { SegmentedControl } from '../../../components/SegmentedControl/src';
+import { SegmentedControl, SegmentedControlProps } from '../../../components/SegmentedControl/src';
 import { UploadIcon, HintIcon, ArrowAltRightIcon } from '../../../components/Icon/src';
 import { fn } from '@storybook/test';
 import { Hint } from '../../../components/Hint/src';
+import { Decorator } from '@storybook/react';
+import { ModalProps } from '../../../components/Modal';
+import { useState } from 'react';
+import { Button } from '../../../components/Button';
+
+
+const OnChangeSyncArgs: Decorator<SegmentedControlProps> = (Story, context) => {
+    const [value, setValue] = useState('all');
+    return (
+        <>
+            <Story
+                {...{
+                    ...context,
+                    args: {
+                        ...context.args,
+                        value: value,
+                        onChange: (e, v) => { setValue(v); }
+                    },
+                }}
+            />
+        </>
+    );
+};
 
 export default {
     title: 'Input/SegmentedControl',
@@ -14,6 +37,7 @@ export default {
     args: {
         onChange: fn() as any,
     },
+    decorators: [OnChangeSyncArgs]
 };
 
 export const HIG = {
