@@ -3,15 +3,12 @@ import { UploadIcon, HintIcon, ArrowAltRightIcon } from '../../../components/Ico
 import { fn } from '@storybook/test';
 import { Hint } from '../../../components/Hint/src';
 import { Decorator } from '@storybook/react';
-import { ModalProps } from '../../../components/Modal';
 import { useState } from 'react';
-import { Button } from '../../../components/Button';
 
 
 const OnChangeSyncArgs: Decorator<SegmentedControlProps> = (Story, context) => {
     const [value, setValue] = useState('all');
     return (
-        <>
             <Story
                 {...{
                     ...context,
@@ -22,7 +19,6 @@ const OnChangeSyncArgs: Decorator<SegmentedControlProps> = (Story, context) => {
                     },
                 }}
             />
-        </>
     );
 };
 
