@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React from 'react';
 import { Typography } from '@hautechai/webui.typography';
 import { MaterialContainer, HIGContainer, MaterialRow, HIGRow, WhiteSpace, Icon } from './SegmentedControl.styles';
 import { ThemeType } from '@hautechai/webui.themeprovider';
@@ -20,14 +20,7 @@ export type SegmentedControlProps = {
 };
 
 const SegmentedControl = ({ options, defaultValue, value, onChange, material, whitespace }: SegmentedControlProps) => {
-    const [selected, setSelected] = useState(value ?? defaultValue ?? options[0].value);
-
-    useEffect(() => {
-        if (value !== undefined) setSelected(value);
-    }, [value]);
-
     const handleClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>, value: string) => {
-        setSelected(value);
         onChange?.(e, value);
     };
 
@@ -36,15 +29,15 @@ const SegmentedControl = ({ options, defaultValue, value, onChange, material, wh
 
     return (
         <Container>
-            {options.map(({ label, leadingIcon, trailingIcon, value }) => {
-                const isSelected = selected === value;
+            {options.map(({ label, leadingIcon, trailingIcon, value: optionValue }) => {
+                const isSelected = value === optionValue;
                 const showEmptySpace = !material && (label || !!leadingIcon === !!trailingIcon);
                 return (
                     <Row
                         selected={isSelected}
-                        key={value}
+                        key={optionValue}
                         whitespace={showEmptySpace ? whitespace : undefined}
-                        onClick={(e) => handleClick(e, value)}
+                        onClick={(e) => handleClick(e, optionValue)}
                     >
                         {leadingIcon && <Icon selected={isSelected}>{leadingIcon}</Icon>}
                         {label && <Typography variant={'LabelSmallRegular'}>{label}</Typography>}
