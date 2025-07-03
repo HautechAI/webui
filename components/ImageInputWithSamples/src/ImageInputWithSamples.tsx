@@ -31,7 +31,7 @@ export const ImageInputWithSamples = (props: ImageInputWithSamplesProps) => {
                 <Row wrap justify="center" spacing="ml">
                     {props.samples?.map((sample) => (
                         <ButtonBase key={sample.id} onClick={() => props.onSelectSample?.(sample)}>
-                            <Tile image={sample.image}></Tile>
+                            <Tile src={sample.image}></Tile>
                         </ButtonBase>
                     ))}
                 </Row>

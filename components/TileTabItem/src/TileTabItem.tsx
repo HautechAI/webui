@@ -35,7 +35,7 @@ export const TileTabItem = (props: TileTabItemProps) => {
 
     return (
         <StyledTileTabItem onClick={clickHandler}>
-            <Tile size="small" {...{ icon, image, selected }} />
+            <Tile size="small" {...{ icon, src: image, selected }} />
             <Typography variant="LabelSmallRegular">{props.label}</Typography>
         </StyledTileTabItem>
     );

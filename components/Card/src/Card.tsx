@@ -28,7 +28,7 @@ export const Card = (props: CardProps) => {
                 <Tile
                     width={props.fullWidth ? '100%' : props.width}
                     height={props.height}
-                    image={props.image}
+                    src={props.image}
                     aspectRatio={props.aspectRatio}
                     component={props.tileComponent}
                 />
