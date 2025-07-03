@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.1](https://github.com/HautechAI/webui/compare/@hautechai/webui.imageinputwithsamples@0.4.0...@hautechai/webui.imageinputwithsamples@0.4.1) (2025-07-03)
+
+### Bug Fixes
+
+- components dependent on tile ([388081c](https://github.com/HautechAI/webui/commit/388081cbd0f744e9ab9784b2af1b6161c36e8c18))
+
 # 0.4.0 (2025-07-03)
 
 ## 0.3.78 (2025-05-13)
