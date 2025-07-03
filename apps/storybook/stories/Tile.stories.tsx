@@ -1,6 +1,7 @@
 import { PlaceholderIcon } from '../../../components/Icon/src';
 import { Tile } from '../../../components/Tile/src';
 import Desert from '../../../assets/desert.png';
+import Model from '../../../assets/model.mp4';
 
 export default {
     title: 'Data Display/Tile',
@@ -72,9 +73,21 @@ export const Width100Percent = {
 
 export const WithImgComponent = {
     args: {
-        image: Desert,
+        src: Desert,
         aspectRatio: 3 / 2,
         width: '50%',
         component: 'img',
+    },
+};
+
+export const WithVideoComponent = {
+    args: {
+        src: Model,
+        aspectRatio: 3 / 2,
+        width: '50%',
+        component: 'video',
+        controls: true,
+        autoplay: true,
+        loop: true,
     },
 };
