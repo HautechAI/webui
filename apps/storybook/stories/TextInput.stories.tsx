@@ -59,3 +59,9 @@ export const Disabled = {
         onIconButtonClick: fn() as any,
     },
 };
+
+export const WithCustomClass = {
+    args: {
+        className: 'custom-text-input',
+    },
+};

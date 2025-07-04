@@ -126,6 +126,7 @@ const getIcon = (icon: React.ReactNode) => (
 );
 
 export type TextInputProps = {
+    className?: string;
     placeholder?: string;
     disabled?: boolean;
     leadingIcon?: React.ReactNode;
@@ -153,6 +154,7 @@ export const TextInput = (props: TextInputProps) => {
             <InputContainer disabled={disabled} variation={props.variation ?? 'filled'} hasError={props.hasError}>
                 {props.leadingIcon ? getIcon(props.leadingIcon) : null}
                 <CustomInput
+                    className={props.className}
                     type={props.type}
                     step={props.step}
                     min={0}

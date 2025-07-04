@@ -135,6 +135,7 @@ const getIcon = (icon: React.ReactNode) => (
 );
 
 export type TextAreaProps = {
+    className?: string;
     value?: string;
     placeholder?: string;
     disabled?: boolean;
@@ -173,6 +174,7 @@ export const TextArea = (props: TextAreaProps) => {
                 {props.leadingIcon ? getIcon(props.leadingIcon) : null}
                 <CustomTextArea
                     ref={ref}
+                    className={props.className}
                     minRows={4}
                     value={text}
                     onChange={handleChange}
