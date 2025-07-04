@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.78](https://github.com/HautechAI/webui/compare/@hautechai/webui.textarea@0.3.77...@hautechai/webui.textarea@0.3.78) (2025-07-04)
+
+**Note:** Version bump only for package @hautechai/webui.textarea
+
 ## [0.3.77](https://github.com/HautechAI/webui/compare/@hautechai/webui.textarea@0.3.76...@hautechai/webui.textarea@0.3.77) (2025-06-04)
 
 **Note:** Version bump only for package @hautechai/webui.textarea
