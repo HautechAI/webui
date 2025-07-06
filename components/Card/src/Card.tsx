@@ -10,6 +10,7 @@ import { Fragment } from 'react';
 export type CardProps = {
     label: string;
     image: string;
+    icon?: React.ReactNode;
     aspectRatio?: number;
     width?: number | string;
     height?: number | string;
@@ -29,6 +30,7 @@ export const Card = (props: CardProps) => {
                     width={props.fullWidth ? '100%' : props.width}
                     height={props.height}
                     src={props.image}
+                    icon={props.icon}
                     aspectRatio={props.aspectRatio}
                     component={props.tileComponent}
                 />

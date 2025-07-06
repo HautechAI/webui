@@ -29,6 +29,13 @@ export const WithImage = {
     },
 };
 
+export const WithIconAndImage = {
+    args: {
+        src: Desert,
+        icon: <PlaceholderIcon size={64} />,
+    },
+};
+
 export const Selected = {
     args: {
         src: Desert,

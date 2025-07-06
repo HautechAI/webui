@@ -2,6 +2,7 @@ import { fn } from '@storybook/test';
 
 import { Card } from '../../../components/Card/src';
 import Desert from '../../../assets/desert.png';
+import { PlayIcon } from '../../../components/Icon/src';
 
 export default {
     title: 'Compositions/Card',
@@ -18,6 +19,16 @@ export const Main = {
     args: {
         label: '35 min ago',
         image: Desert,
+        width: 300,
+        aspectRatio: 16 / 9,
+    },
+};
+
+export const WithIcon = {
+    args: {
+        label: '35 min ago',
+        image: Desert,
+        icon: <PlayIcon size={64} color='actions.onTertiary' />,
         width: 300,
         aspectRatio: 16 / 9,
     },
