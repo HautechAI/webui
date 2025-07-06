@@ -205,6 +205,8 @@ export const Tile = (props: TileProps) => {
                 controls={controls}
                 autoPlay={autoplay}
                 loop={loop}
+                muted
+                playsInline
                 {...rest}
             />
         );
