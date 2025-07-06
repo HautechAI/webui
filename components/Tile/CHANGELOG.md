@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.1](https://github.com/HautechAI/webui/compare/@hautechai/webui.tile@0.4.0...@hautechai/webui.tile@0.4.1) (2025-07-06)
+
+**Note:** Version bump only for package @hautechai/webui.tile
+
 # 0.4.0 (2025-07-03)
 
 ## 0.3.75 (2025-04-23)
