@@ -25,13 +25,13 @@ export const WithIcon = {
 
 export const WithImage = {
     args: {
-        image: Desert,
+        src: Desert,
     },
 };
 
 export const Selected = {
     args: {
-        image: Desert,
+        src: Desert,
         selected: true,
     },
 };

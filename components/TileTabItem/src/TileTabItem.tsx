@@ -22,20 +22,22 @@ export type TileTabItemProps = {
     label?: string;
     icon?: React.ReactNode;
     image?: string;
+    video?: string;
     selected?: boolean;
     value: string;
     onClick?: (value: string) => void;
 };
 
 export const TileTabItem = (props: TileTabItemProps) => {
-    const { icon, image, selected } = props;
+    const { icon, image, video, selected } = props;
     const clickHandler = useCallback(() => {
         props.onClick?.(props.value);
     }, [props.onClick, props.value]);
 
+    const videoProps = video ? { src: video, component: 'video', autoPlay: true, loop: true } as const : {};
     return (
         <StyledTileTabItem onClick={clickHandler}>
-            <Tile size="small" {...{ icon, src: image, selected }} />
+            <Tile size="small" {...{ icon, src: image, selected }} {...videoProps} />
             <Typography variant="LabelSmallRegular">{props.label}</Typography>
         </StyledTileTabItem>
     );
