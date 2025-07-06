@@ -60,3 +60,4 @@ export * from './trash';
 export * from './trousers';
 export * from './undo';
 export * from './upload';
+export * from './play';
