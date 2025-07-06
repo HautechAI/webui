@@ -19,16 +19,16 @@ const TooltipContent = styled.div<{
                   margin-left: ${theme.foundation.spacing.m}px;
               `
             : position === 'bottom'
-            ? css`
-                  margin-top: ${theme.foundation.spacing.m}px;
-              `
-            : position === 'left'
-            ? css`
-                  margin-right: ${theme.foundation.spacing.m}px;
-              `
-            : css`
-                  margin-bottom: ${theme.foundation.spacing.m}px;
-              `;
+              ? css`
+                    margin-top: ${theme.foundation.spacing.m}px;
+                `
+              : position === 'left'
+                ? css`
+                      margin-right: ${theme.foundation.spacing.m}px;
+                  `
+                : css`
+                      margin-bottom: ${theme.foundation.spacing.m}px;
+                  `;
     }}
 
     min-width: 100px;
@@ -51,6 +51,8 @@ type TooltipBaseProps = {
     text: string;
     children: React.ReactNode;
     position?: 'right' | 'left' | 'top' | 'bottom';
+    reposition?: boolean;
+    boundaryElement?: HTMLElement;
 };
 
 type TooltipSmallProps = TooltipBaseProps & {
@@ -95,6 +97,8 @@ export const Tooltip = (props: TooltipProps) => {
     return (
         <TooltipContainer>
             <TinyPopover
+                reposition={props.reposition ?? false}
+                boundaryElement={props.boundaryElement}
                 content={
                     <TooltipContent
                         onMouseEnter={cancelHideTooltip}
