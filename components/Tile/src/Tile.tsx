@@ -167,10 +167,13 @@ export type TileProps = {
     controls?: boolean; // for video component
     autoplay?: boolean; // for video component
     loop?: boolean; // for video component
+    muted?: boolean; // for video component
+    playsInline?: boolean; // for video component
 };
 
 export const Tile = (props: TileProps) => {
-    const { icon, size, aspectRatio, src, component, alt, controls, autoplay, loop, ...rest } = props;
+    const { icon, size, aspectRatio, src, component, alt, controls, autoplay, loop, muted, playsInline, ...rest } =
+        props;
     const { width, height } = props;
 
     if (size && (width || height || aspectRatio)) {
@@ -205,8 +208,8 @@ export const Tile = (props: TileProps) => {
                 controls={controls}
                 autoPlay={autoplay}
                 loop={loop}
-                muted
-                playsInline
+                muted={muted ?? true}
+                playsInline={playsInline ?? true}
                 {...rest}
             />
         );
