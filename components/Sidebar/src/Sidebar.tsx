@@ -7,9 +7,21 @@ const StyledContainer = styled.div<SidebarProps>`
     background-color: ${({ theme, hierarchy }) =>
         hierarchy === 'mid' ? theme.palette.layout.surfaceMid : theme.palette.layout.surfaceLow};
 
-    border-right-width: ${({ theme }) => theme.foundation.stroke.thin}px;
-    border-right-style: solid;
-    border-right-color: ${({ theme }) => theme.palette.layout.strokes};
+    ${({ side, theme }) =>
+        side === 'right' &&
+        css`
+            border-left-width: ${theme.foundation.stroke.thin}px;
+            border-left-style: solid;
+            border-left-color: ${theme.palette.layout.strokes};
+        `}
+
+    ${({ side, theme }) =>
+        side === 'left' &&
+        css`
+            border-right-width: ${theme.foundation.stroke.thin}px;
+            border-right-style: solid;
+            border-right-color: ${theme.palette.layout.strokes};
+        `}
 
     ${({ stretch }) =>
         stretch &&
@@ -48,11 +60,12 @@ export type SidebarProps = {
     bottom?: React.ReactNode;
     hierarchy?: 'mid' | 'low';
     stretch?: boolean;
+    side?: 'left' | 'right';
 };
 export const Sidebar = (props: SidebarProps) => {
-    const { hierarchy = 'mid' } = props;
+    const { hierarchy = 'mid', side = 'left' } = props;
     return (
-        <StyledContainer hierarchy={hierarchy} stretch={props.stretch}>
+        <StyledContainer hierarchy={hierarchy} stretch={props.stretch} side={side}>
             {props.header}
             <StyledContent>
                 <StyledTopContainer>{props.top}</StyledTopContainer>

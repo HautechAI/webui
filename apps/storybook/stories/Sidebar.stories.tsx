@@ -12,7 +12,7 @@ export default {
     },
     decorators: [
         (Story: React.FC) => (
-            <div style={{ height: '100vh', display: 'flex', justifyContent: 'flex-start' }}>
+            <div style={{ height: '100vh', display: 'flex', justifyContent: 'center' }}>
                 <Story />
             </div>
         ),
@@ -91,4 +91,19 @@ export const WithScroll = {
             </>
         ),
     },
+};
+
+export const Right = {
+    args: {
+        side: 'right',
+        top: <>Top</>,
+        bottom: <>Bottom</>,
+    },
+    decorators: [
+        (Story: React.FC) => (
+            <div style={{ height: '100vh', display: 'flex', justifyContent: 'flex-end' }}>
+                <Story />
+            </div>
+        ),
+    ],
 };
