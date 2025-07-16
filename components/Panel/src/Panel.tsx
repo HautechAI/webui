@@ -29,8 +29,13 @@ const Container = styled.div<Required<Pick<PanelProps, 'hierarchy' | 'size'>> & 
             high: theme.foundation.stroke.thin,
         })[hierarchy];
         
-        return 2;
+        return 0;
     }}px;
+    
+    box-shadow: ${({ theme, hierarchy, highlighted }) => {
+        if (highlighted) return `0 0 0 2px ${theme.palette.layout.onSurface.primary}`;
+        return `0 0 0 0px clear`
+    }};
     
     border-color: ${({ theme, hierarchy, highlighted }) => {
         if (!highlighted) return ({
