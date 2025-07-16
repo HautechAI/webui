@@ -1,6 +1,6 @@
 import { styled } from '@hautechai/webui.themeprovider';
 
-const Container = styled.div<Required<Pick<PanelProps, 'hierarchy' | 'size'>> & Pick<PanelProps, 'stretch'>>`
+const Container = styled.div<Required<Pick<PanelProps, 'hierarchy' | 'size'>> & Pick<PanelProps, 'stretch' | 'highlighted'>>`
     display: flex;
     padding: ${({ theme, size }) =>
         ({
@@ -22,19 +22,25 @@ const Container = styled.div<Required<Pick<PanelProps, 'hierarchy' | 'size'>> & 
         })[size]}px;
 
     border-style: solid;
-    border-width: ${({ theme, hierarchy }) =>
-        ({
+    border-width: ${({ theme, hierarchy, highlighted }) => {
+        if (!highlighted) return ({
             low: theme.foundation.stroke.thin,
             mid: 0,
             high: theme.foundation.stroke.thin,
-        })[hierarchy]}px;
-    border-color: ${({ theme, hierarchy }) =>
-        ({
+        })[hierarchy];
+        
+        return 2;
+    }}px;
+    
+    border-color: ${({ theme, hierarchy, highlighted }) => {
+        if (!highlighted) return ({
             low: theme.palette.layout.strokes,
             mid: 0,
             high: theme.palette.layout.strokes,
-        })[hierarchy]};
-
+        })[hierarchy]
+        
+        return theme.palette.layout.onSurface.primary;
+    }};
     width: ${({ stretch }) => (stretch ? '100%' : 'auto')};
 `;
 
@@ -44,6 +50,7 @@ export type PanelProps = {
     hierarchy?: 'mid' | 'low' | 'high';
     size?: 'small' | 'medium';
     stretch?: boolean;
+    highlighted?: boolean;
 };
 
 export const Panel = (props: PanelProps) => {
@@ -54,6 +61,7 @@ export const Panel = (props: PanelProps) => {
             hierarchy={hierarchy}
             size={props.size ?? 'medium'}
             stretch={props.stretch}
+            highlighted={props.highlighted}
         >
             {props.children}
         </Container>
