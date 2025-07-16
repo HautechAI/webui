@@ -1,7 +1,7 @@
 {
     "name": "@hautechai/webui.panel",
     "description": "",
-    "version": "0.4.1",
+    "version": "0.5.0",
     "type": "module",
     "main": "src/index.tsx",
     "publishConfig": {
