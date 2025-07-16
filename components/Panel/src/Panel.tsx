@@ -23,13 +23,11 @@ const Container = styled.div<Required<Pick<PanelProps, 'hierarchy' | 'size'>> & 
 
     border-style: solid;
     border-width: ${({ theme, hierarchy, highlighted }) => {
-        if (!highlighted) return ({
+        return ({
             low: theme.foundation.stroke.thin,
             mid: 0,
             high: theme.foundation.stroke.thin,
         })[hierarchy];
-        
-        return 0;
     }}px;
     
     box-shadow: ${({ theme, hierarchy, highlighted }) => {
