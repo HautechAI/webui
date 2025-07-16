@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.2](https://github.com/HautechAI/webui/compare/@hautechai/webui.panel@0.5.1...@hautechai/webui.panel@0.5.2) (2025-07-16)
+
+### Bug Fixes
+
+- fix highlighted [#2](https://github.com/HautechAI/webui/issues/2) ([7b168c8](https://github.com/HautechAI/webui/commit/7b168c83740d0c550404415a2b24c4c4f0157543))
+
 ## [0.5.1](https://github.com/HautechAI/webui/compare/@hautechai/webui.panel@0.5.0...@hautechai/webui.panel@0.5.1) (2025-07-16)
 
 ### Bug Fixes
