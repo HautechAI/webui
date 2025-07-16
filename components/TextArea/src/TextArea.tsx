@@ -150,17 +150,6 @@ export type TextAreaProps = {
 
 export const TextArea = (props: TextAreaProps) => {
     const ref = useRef<HTMLTextAreaElement>(null);
-    const [text, setText] = useState(props.value || '');
-
-    const handleChange = useCallback(
-        (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-            setText(e.target.value);
-            if (props.onChange) {
-                props.onChange(e);
-            }
-        },
-        [props.onChange],
-    );
 
     const handleClick = useCallback(() => {
         ref.current?.focus();
@@ -176,8 +165,8 @@ export const TextArea = (props: TextAreaProps) => {
                     ref={ref}
                     className={props.className}
                     minRows={4}
-                    value={text}
-                    onChange={handleChange}
+                    value={props.value}
+                    onChange={props.onChange}
                     disabled={disabled}
                     placeholder={props.placeholder}
                 />
