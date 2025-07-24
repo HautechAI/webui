@@ -6,7 +6,9 @@ const BaseComponent = (props: Pick<ColumnProps, 'className' | 'children'>) => {
     return <div {...{ className, children }} />;
 };
 
-const Container = styled(BaseComponent)<Pick<ColumnProps, 'align' | 'spacing' | 'stretch'>>`
+const Container = styled(BaseComponent)<
+    Pick<ColumnProps, 'align' | 'spacing' | 'stretch' | 'overflow' | 'overflowX' | 'overflowY'>
+>`
     display: flex;
     flex-direction: column;
     gap: ${({ theme, spacing }) => (spacing ? theme.foundation.spacing[spacing] : 0)}px;
@@ -20,6 +22,25 @@ const Container = styled(BaseComponent)<Pick<ColumnProps, 'align' | 'spacing' | 
         css`
             flex: 1;
         `}
+
+     ${({ overflow }) =>
+        overflow
+            ? css`
+                  overflow: ${overflow};
+              `
+            : ''}
+    ${({ overflowX }) =>
+        overflowX
+            ? css`
+                  overflow-x: ${overflowX};
+              `
+            : ''}
+    ${({ overflowY }) =>
+        overflowY
+            ? css`
+                  overflow-y: ${overflowY};
+              `
+            : ''};
 `;
 
 type Align = 'start' | 'center' | 'end' | 'stretch';
@@ -29,6 +50,9 @@ export type ColumnProps = PropsWithChildren<{
     spacing?: keyof ThemeType['foundation']['spacing'];
     align?: Align;
     stretch?: boolean;
+    overflow?: 'hidden' | 'visible' | 'scroll' | 'auto';
+    overflowX?: 'hidden' | 'visible' | 'scroll' | 'auto';
+    overflowY?: 'hidden' | 'visible' | 'scroll' | 'auto';
 }>;
 
 export const Column = (props: ColumnProps) => {
