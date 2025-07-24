@@ -64,3 +64,11 @@ export const WithCustomClass = {
         className: 'custom-textarea',
     },
 };
+
+export const WithMinMaxRows = {
+    args: {
+        minRows: 3,
+        maxRows: 6,
+        placeholder: 'Type here...',
+    },
+};

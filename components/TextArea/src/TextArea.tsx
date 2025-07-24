@@ -144,6 +144,8 @@ export type TextAreaProps = {
     trailingIcon?: React.ReactNode;
     hasError?: boolean;
     variation?: 'filled' | 'outlined';
+    minRows?: number;
+    maxRows?: number;
 } & Pick<Partial<IconButtonProps>, 'icon'> & {
         onIconButtonClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
     };
@@ -155,7 +157,7 @@ export const TextArea = (props: TextAreaProps) => {
         ref.current?.focus();
     }, []);
 
-    const { disabled, icon } = props;
+    const { disabled, icon, minRows = 4, maxRows } = props;
 
     return (
         <Container onClick={handleClick} disabled={disabled}>
@@ -164,7 +166,8 @@ export const TextArea = (props: TextAreaProps) => {
                 <CustomTextArea
                     ref={ref}
                     className={props.className}
-                    minRows={4}
+                    minRows={minRows}
+                    maxRows={maxRows}
                     value={props.value}
                     onChange={props.onChange}
                     disabled={disabled}
