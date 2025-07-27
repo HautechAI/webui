@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.87](https://github.com/HautechAI/webui/compare/@hautechai/webui.dropdown@0.3.86...@hautechai/webui.dropdown@0.3.87) (2025-07-27)
+
+**Note:** Version bump only for package @hautechai/webui.dropdown
+
 ## [0.3.86](https://github.com/HautechAI/webui/compare/@hautechai/webui.dropdown@0.3.85...@hautechai/webui.dropdown@0.3.86) (2025-07-27)
 
 **Note:** Version bump only for package @hautechai/webui.dropdown

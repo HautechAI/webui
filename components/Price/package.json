@@ -1,7 +1,7 @@
 {
     "name": "@hautechai/webui.price",
     "description": "",
-    "version": "0.3.77",
+    "version": "0.3.78",
     "type": "module",
     "main": "src/index.tsx",
     "publishConfig": {

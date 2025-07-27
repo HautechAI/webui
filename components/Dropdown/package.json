@@ -1,7 +1,7 @@
 {
     "name": "@hautechai/webui.dropdown",
     "description": "",
-    "version": "0.3.86",
+    "version": "0.3.87",
     "type": "module",
     "main": "src/index.tsx",
     "publishConfig": {
