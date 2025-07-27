@@ -5,16 +5,20 @@
     "type": "module",
     "main": "src/index.tsx",
     "publishConfig": {
-        "main": "dist/index.js",
+        "main": "dist/index.cjs",
+        "module": "dist/index.js",
         "typings": "dist/index.d.ts",
+        "exports": {
+            "import": "./dist/index.js",
+            "require": "./dist/index.cjs"
+        },
         "access": "public"
     },
     "files": [
-        "dist/**/*.js",
-        "dist/**/*.d.ts"
+        "dist"
     ],
     "scripts": {
-        "prepack": "tsc"
+        "prepack": "tsup"
     },
     "author": "HautechAI",
     "dependencies": {
