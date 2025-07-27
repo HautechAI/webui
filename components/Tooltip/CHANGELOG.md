@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.80](https://github.com/HautechAI/webui/compare/@hautechai/webui.tooltip@0.3.79...@hautechai/webui.tooltip@0.3.80) (2025-07-27)
+
+**Note:** Version bump only for package @hautechai/webui.tooltip
+
 ## [0.3.79](https://github.com/HautechAI/webui/compare/@hautechai/webui.tooltip@0.3.78...@hautechai/webui.tooltip@0.3.79) (2025-07-27)
 
 **Note:** Version bump only for package @hautechai/webui.tooltip
