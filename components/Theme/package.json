@@ -1,31 +1,31 @@
 {
-  "name": "@hautechai/webui.theme",
-  "description": "",
-  "version": "0.3.75",
-  "type": "module",
-  "main": "src/index.tsx",
-  "publishConfig": {
-    "main": "dist/index.js",
-    "typings": "dist/index.d.ts",
-    "access": "public"
-  },
-  "files": [
-    "dist/**/*.js",
-    "dist/**/*.d.ts",
-    "fonts/**/*"
-  ],
-  "scripts": {
-    "prepack": "tsc"
-  },
-  "author": "HautechAI",
-  "dependencies": {
-    "@hautechai/webui.themeprovider": "workspace:^",
-    "lodash-es": "^4.17.21"
-  },
-  "devDependencies": {
-    "@types/lodash": "^4.17.15",
-    "@types/lodash-es": "^4.17.12",
-    "type-fest": "^4.34.1"
-  },
-  "license": "Apache-2.0"
+    "name": "@hautechai/webui.theme",
+    "description": "",
+    "version": "0.3.76",
+    "type": "module",
+    "main": "src/index.tsx",
+    "publishConfig": {
+        "main": "dist/index.js",
+        "typings": "dist/index.d.ts",
+        "access": "public"
+    },
+    "files": [
+        "dist/**/*.js",
+        "dist/**/*.d.ts",
+        "fonts/**/*"
+    ],
+    "scripts": {
+        "prepack": "tsc"
+    },
+    "author": "HautechAI",
+    "dependencies": {
+        "@hautechai/webui.themeprovider": "workspace:^",
+        "lodash-es": "^4.17.21"
+    },
+    "devDependencies": {
+        "@types/lodash": "^4.17.15",
+        "@types/lodash-es": "^4.17.12",
+        "type-fest": "^4.34.1"
+    },
+    "license": "Apache-2.0"
 }
