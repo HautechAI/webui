@@ -1,7 +1,7 @@
 {
     "name": "@hautechai/webui.tiletabitem",
     "description": "",
-    "version": "0.3.80",
+    "version": "0.3.81",
     "type": "module",
     "main": "src/index.tsx",
     "sideEffects": false,

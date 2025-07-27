@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.10](https://github.com/HautechAI/webui/compare/@hautechai/webui.card@0.4.9...@hautechai/webui.card@0.4.10) (2025-07-27)
+
+**Note:** Version bump only for package @hautechai/webui.card
+
 ## [0.4.9](https://github.com/HautechAI/webui/compare/@hautechai/webui.card@0.4.8...@hautechai/webui.card@0.4.9) (2025-07-24)
 
 **Note:** Version bump only for package @hautechai/webui.card
