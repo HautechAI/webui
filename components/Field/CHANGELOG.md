@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.83](https://github.com/HautechAI/webui/compare/@hautechai/webui.field@0.3.82...@hautechai/webui.field@0.3.83) (2025-07-27)
+
+**Note:** Version bump only for package @hautechai/webui.field
+
 ## [0.3.82](https://github.com/HautechAI/webui/compare/@hautechai/webui.field@0.3.81...@hautechai/webui.field@0.3.82) (2025-07-27)
 
 **Note:** Version bump only for package @hautechai/webui.field
