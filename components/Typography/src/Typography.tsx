@@ -1,5 +1,5 @@
 import { css, styled, ThemeType } from '@hautechai/webui.themeprovider';
-import { get } from 'lodash';
+import { get } from 'lodash-es';
 import { Paths } from 'type-fest';
 
 type TextAlign = 'left' | 'right' | 'center' | 'inherit';
