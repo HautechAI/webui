@@ -25,5 +25,8 @@
     "dependencies": {
         "@hautechai/webui.fileinput": "workspace:^"
     },
+    "peerDependencies": {
+        "react": "^19.0.0"
+    },
     "license": "Apache-2.0"
 }

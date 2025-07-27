@@ -25,5 +25,8 @@
         "@hautechai/webui.themeprovider": "workspace:^",
         "react-tiny-popover": "8.1.6"
     },
+    "peerDependencies": {
+        "react": "^19.0.0"
+    },
     "license": "Apache-2.0"
 }

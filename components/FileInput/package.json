@@ -29,5 +29,8 @@
         "@hautechai/webui.typography": "workspace:^",
         "react-dropzone": "^14.3.8"
     },
+    "peerDependencies": {
+        "react": "^19.0.0"
+    },
     "license": "Apache-2.0"
 }

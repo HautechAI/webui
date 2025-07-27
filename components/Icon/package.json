@@ -24,11 +24,14 @@
     "author": "HautechAI",
     "dependencies": {
         "@hautechai/webui.themeprovider": "workspace:^",
-        "lodash": "^4.17.21"
+        "lodash-es": "^4.17.21"
     },
     "devDependencies": {
-        "@types/lodash": "^4.17.15",
+        "@types/lodash-es": "^4.17.12",
         "type-fest": "^4.34.1"
+    },
+    "peerDependencies": {
+        "react": "^19.0.0"
     },
     "license": "Apache-2.0"
 }

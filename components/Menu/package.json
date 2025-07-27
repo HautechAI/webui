@@ -26,5 +26,8 @@
         "@hautechai/webui.menuitem": "workspace:^",
         "@hautechai/webui.popover": "workspace:^"
     },
+    "peerDependencies": {
+        "react": "^19.0.0"
+    },
     "license": "Apache-2.0"
 }

@@ -20,6 +20,9 @@
     "scripts": {
         "prepack": "tsup"
     },
+    "peerDependencies": {
+        "react": "^19.0.0"
+    },
     "author": "HautechAI",
     "license": "Apache-2.0"
 }

@@ -3,7 +3,7 @@ import type { SVGProps } from 'react';
 import { type ThemeType, useTheme } from '@hautechai/webui.themeprovider';
 import { Paths } from 'type-fest';
 
-import get from 'lodash/get';
+import get from 'lodash-es/get';
 const SvgSmall = (
     props: SVGProps<SVGSVGElement> & {
         size?: number;
