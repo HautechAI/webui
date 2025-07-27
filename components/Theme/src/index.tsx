@@ -1,6 +1,6 @@
 import { ThemeType } from '@hautechai/webui.themeprovider';
 import { PartialDeep } from 'type-fest';
-import { merge } from 'lodash';
+import { merge } from 'lodash-es';
 
 export const Theme: ThemeType = {
     foundation: {
