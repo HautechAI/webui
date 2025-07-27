@@ -76,12 +76,18 @@ importers:
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
         version: link:../ThemeProvider
+      react:
+        specifier: ^19.0.0
+        version: 19.0.0
 
   components/AppBarMobile:
     dependencies:
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
         version: link:../ThemeProvider
+      react:
+        specifier: ^19.0.0
+        version: 19.0.0
 
   components/AspectRatio:
     dependencies:
@@ -118,6 +124,9 @@ importers:
       '@hautechai/webui.typography':
         specifier: workspace:^
         version: link:../Typography
+      react:
+        specifier: ^19.0.0
+        version: 19.0.0
 
   components/Avatar:
     dependencies:
@@ -127,6 +136,9 @@ importers:
       '@hautechai/webui.typography':
         specifier: workspace:^
         version: link:../Typography
+      react:
+        specifier: ^19.0.0
+        version: 19.0.0
 
   components/Badge:
     dependencies:
@@ -136,18 +148,27 @@ importers:
       '@hautechai/webui.typography':
         specifier: workspace:^
         version: link:../Typography
+      react:
+        specifier: ^19.0.0
+        version: 19.0.0
 
   components/BottomSheet:
     dependencies:
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
         version: link:../ThemeProvider
+      react:
+        specifier: ^19.0.0
+        version: 19.0.0
 
   components/Box:
     dependencies:
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
         version: link:../ThemeProvider
+      react:
+        specifier: ^19.0.0
+        version: 19.0.0
 
   components/Button:
     dependencies:
@@ -160,12 +181,18 @@ importers:
       '@hautechai/webui.typography':
         specifier: workspace:^
         version: link:../Typography
+      react:
+        specifier: ^19.0.0
+        version: 19.0.0
 
   components/ButtonBase:
     dependencies:
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
         version: link:../ThemeProvider
+      react:
+        specifier: ^19.0.0
+        version: 19.0.0
 
   components/Card:
     dependencies:
@@ -190,6 +217,9 @@ importers:
       '@hautechai/webui.typography':
         specifier: workspace:^
         version: link:../Typography
+      react:
+        specifier: ^19.0.0
+        version: 19.0.0
 
   components/Checkbox:
     dependencies:
@@ -199,6 +229,9 @@ importers:
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
         version: link:../ThemeProvider
+      react:
+        specifier: ^19.0.0
+        version: 19.0.0
 
   components/Chip:
     dependencies:
@@ -208,6 +241,9 @@ importers:
       '@hautechai/webui.typography':
         specifier: workspace:^
         version: link:../Typography
+      react:
+        specifier: ^19.0.0
+        version: 19.0.0
       react-tiny-popover:
         specifier: 8.1.6
         version: 8.1.6(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
@@ -217,6 +253,9 @@ importers:
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
         version: link:../ThemeProvider
+      react:
+        specifier: ^19.0.0
+        version: 19.0.0
 
   components/ContextMenu:
     dependencies:
@@ -244,6 +283,9 @@ importers:
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
         version: link:../ThemeProvider
+      react:
+        specifier: ^19.0.0
+        version: 19.0.0
 
   components/Counter:
     dependencies:
@@ -262,6 +304,9 @@ importers:
       '@hautechai/webui.typography':
         specifier: workspace:^
         version: link:../Typography
+      react:
+        specifier: ^19.0.0
+        version: 19.0.0
 
   components/DataItem:
     dependencies:
@@ -280,12 +325,18 @@ importers:
       '@hautechai/webui.typography':
         specifier: workspace:^
         version: link:../Typography
+      react:
+        specifier: ^19.0.0
+        version: 19.0.0
 
   components/Divider:
     dependencies:
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
         version: link:../ThemeProvider
+      react:
+        specifier: ^19.0.0
+        version: 19.0.0
 
   components/Dropdown:
     dependencies:
@@ -301,6 +352,9 @@ importers:
       '@hautechai/webui.typography':
         specifier: workspace:^
         version: link:../Typography
+      react:
+        specifier: ^19.0.0
+        version: 19.0.0
 
   components/Field:
     dependencies:
@@ -319,6 +373,9 @@ importers:
       '@hautechai/webui.typography':
         specifier: workspace:^
         version: link:../Typography
+      react:
+        specifier: ^19.0.0
+        version: 19.0.0
 
   components/FileInput:
     dependencies:
@@ -334,6 +391,9 @@ importers:
       '@hautechai/webui.typography':
         specifier: workspace:^
         version: link:../Typography
+      react:
+        specifier: ^19.0.0
+        version: 19.0.0
       react-dropzone:
         specifier: ^14.3.8
         version: 14.3.8(react@19.0.0)
@@ -355,12 +415,18 @@ importers:
       '@hautechai/webui.typography':
         specifier: workspace:^
         version: link:../Typography
+      react:
+        specifier: ^19.0.0
+        version: 19.0.0
 
   components/FullScreen:
     dependencies:
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
         version: link:../ThemeProvider
+      react:
+        specifier: ^19.0.0
+        version: 19.0.0
 
   components/Hint:
     dependencies:
@@ -373,6 +439,9 @@ importers:
       '@hautechai/webui.tooltip':
         specifier: workspace:^
         version: link:../Tooltip
+      react:
+        specifier: ^19.0.0
+        version: 19.0.0
 
   components/HoverControls:
     dependencies:
@@ -382,6 +451,9 @@ importers:
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
         version: link:../ThemeProvider
+      react:
+        specifier: ^19.0.0
+        version: 19.0.0
 
   components/Icon:
     dependencies:
@@ -391,6 +463,9 @@ importers:
       lodash-es:
         specifier: ^4.17.21
         version: 4.17.21
+      react:
+        specifier: ^19.0.0
+        version: 19.0.0
     devDependencies:
       '@types/lodash-es':
         specifier: ^4.17.12
@@ -407,12 +482,18 @@ importers:
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
         version: link:../ThemeProvider
+      react:
+        specifier: ^19.0.0
+        version: 19.0.0
 
   components/ImageInput:
     dependencies:
       '@hautechai/webui.fileinput':
         specifier: workspace:^
         version: link:../FileInput
+      react:
+        specifier: ^19.0.0
+        version: 19.0.0
 
   components/ImageInputWithSamples:
     dependencies:
@@ -434,6 +515,9 @@ importers:
       '@hautechai/webui.typography':
         specifier: workspace:^
         version: link:../Typography
+      react:
+        specifier: ^19.0.0
+        version: 19.0.0
 
   components/LinkButton:
     dependencies:
@@ -446,14 +530,24 @@ importers:
       '@hautechai/webui.typography':
         specifier: workspace:^
         version: link:../Typography
+      react:
+        specifier: ^19.0.0
+        version: 19.0.0
 
-  components/Logo: {}
+  components/Logo:
+    dependencies:
+      react:
+        specifier: ^19.0.0
+        version: 19.0.0
 
   components/Masonry:
     dependencies:
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
         version: link:../ThemeProvider
+      react:
+        specifier: ^19.0.0
+        version: 19.0.0
       react-responsive-masonry:
         specifier: ^2.7.1
         version: 2.7.1
@@ -473,6 +567,9 @@ importers:
       '@hautechai/webui.popover':
         specifier: workspace:^
         version: link:../Popover
+      react:
+        specifier: ^19.0.0
+        version: 19.0.0
 
   components/MenuItem:
     dependencies:
@@ -485,12 +582,18 @@ importers:
       '@hautechai/webui.typography':
         specifier: workspace:^
         version: link:../Typography
+      react:
+        specifier: ^19.0.0
+        version: 19.0.0
 
   components/Modal:
     dependencies:
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
         version: link:../ThemeProvider
+      react:
+        specifier: ^19.0.0
+        version: 19.0.0
 
   components/OperationItem:
     dependencies:
@@ -512,6 +615,9 @@ importers:
       '@hautechai/webui.typography':
         specifier: workspace:^
         version: link:../Typography
+      react:
+        specifier: ^19.0.0
+        version: 19.0.0
 
   components/Pagination:
     dependencies:
@@ -530,18 +636,27 @@ importers:
       '@hautechai/webui.typography':
         specifier: workspace:^
         version: link:../Typography
+      react:
+        specifier: ^19.0.0
+        version: 19.0.0
 
   components/Panel:
     dependencies:
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
         version: link:../ThemeProvider
+      react:
+        specifier: ^19.0.0
+        version: 19.0.0
 
   components/Popover:
     dependencies:
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
         version: link:../ThemeProvider
+      react:
+        specifier: ^19.0.0
+        version: 19.0.0
       react-tiny-popover:
         specifier: 8.1.6
         version: 8.1.6(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
@@ -554,6 +669,9 @@ importers:
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
         version: link:../ThemeProvider
+      react:
+        specifier: ^19.0.0
+        version: 19.0.0
 
   components/Price:
     dependencies:
@@ -563,18 +681,27 @@ importers:
       '@hautechai/webui.typography':
         specifier: workspace:^
         version: link:../Typography
+      react:
+        specifier: ^19.0.0
+        version: 19.0.0
 
   components/Progress:
     dependencies:
       '@lottiefiles/dotlottie-react':
         specifier: ^0.13.2
         version: 0.13.2(react@19.0.0)
+      react:
+        specifier: ^19.0.0
+        version: 19.0.0
 
   components/Row:
     dependencies:
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
         version: link:../ThemeProvider
+      react:
+        specifier: ^19.0.0
+        version: 19.0.0
 
   components/SegmentedControl:
     dependencies:
@@ -584,30 +711,45 @@ importers:
       '@hautechai/webui.typography':
         specifier: workspace:^
         version: link:../Typography
+      react:
+        specifier: ^19.0.0
+        version: 19.0.0
 
   components/Sidebar:
     dependencies:
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
         version: link:../ThemeProvider
+      react:
+        specifier: ^19.0.0
+        version: 19.0.0
 
   components/Slider:
     dependencies:
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
         version: link:../ThemeProvider
+      react:
+        specifier: ^19.0.0
+        version: 19.0.0
 
   components/Switch:
     dependencies:
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
         version: link:../ThemeProvider
+      react:
+        specifier: ^19.0.0
+        version: 19.0.0
 
   components/Table:
     dependencies:
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
         version: link:../ThemeProvider
+      react:
+        specifier: ^19.0.0
+        version: 19.0.0
 
   components/TextArea:
     dependencies:
@@ -617,6 +759,9 @@ importers:
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
         version: link:../ThemeProvider
+      react:
+        specifier: ^19.0.0
+        version: 19.0.0
       react-textarea-autosize:
         specifier: 8.5.8
         version: 8.5.8(@types/react@19.0.8)(react@19.0.0)
@@ -632,6 +777,9 @@ importers:
       '@hautechai/webui.typography':
         specifier: workspace:^
         version: link:../Typography
+      react:
+        specifier: ^19.0.0
+        version: 19.0.0
 
   components/TextInput:
     dependencies:
@@ -641,6 +789,9 @@ importers:
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
         version: link:../ThemeProvider
+      react:
+        specifier: ^19.0.0
+        version: 19.0.0
 
   components/Theme:
     dependencies:
@@ -650,6 +801,9 @@ importers:
       lodash-es:
         specifier: ^4.17.21
         version: 4.17.21
+      react:
+        specifier: ^19.0.0
+        version: 19.0.0
     devDependencies:
       '@types/lodash':
         specifier: ^4.17.15
@@ -678,12 +832,18 @@ importers:
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
         version: link:../ThemeProvider
+      react:
+        specifier: ^19.0.0
+        version: 19.0.0
 
   components/TileTabGroup:
     dependencies:
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
         version: link:../ThemeProvider
+      react:
+        specifier: ^19.0.0
+        version: 19.0.0
 
   components/TileTabItem:
     dependencies:
@@ -699,6 +859,9 @@ importers:
       '@hautechai/webui.typography':
         specifier: workspace:^
         version: link:../Typography
+      react:
+        specifier: ^19.0.0
+        version: 19.0.0
 
   components/Tooltip:
     dependencies:
@@ -714,6 +877,9 @@ importers:
       '@hautechai/webui.typography':
         specifier: workspace:^
         version: link:../Typography
+      react:
+        specifier: ^19.0.0
+        version: 19.0.0
       react-tiny-popover:
         specifier: 8.1.6
         version: 8.1.6(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
@@ -726,6 +892,9 @@ importers:
       lodash-es:
         specifier: ^4.17.21
         version: 4.17.21
+      react:
+        specifier: ^19.0.0
+        version: 19.0.0
     devDependencies:
       '@types/lodash-es':
         specifier: ^4.17.12
@@ -745,6 +914,9 @@ importers:
       '@hautechai/webui.typography':
         specifier: workspace:^
         version: link:../Typography
+      react:
+        specifier: ^19.0.0
+        version: 19.0.0
 
   components/UserBalance:
     dependencies:
@@ -760,6 +932,9 @@ importers:
       '@hautechai/webui.row':
         specifier: workspace:^
         version: link:../Row
+      react:
+        specifier: ^19.0.0
+        version: 19.0.0
 
 packages:
 
