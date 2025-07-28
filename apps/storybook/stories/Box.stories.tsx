@@ -1,3 +1,4 @@
+import { fn } from '@storybook/test';
 import { Box } from '../../../components/Box/src';
 import { Button } from '../../../components/Button/src';
 import { Column } from '../../../components/Column/src';
@@ -113,5 +114,13 @@ export const Width50Percent = {
         children: 'content',
         width: '50%',
         style: { border: 'dashed blue 1px' },
+    },
+};
+
+export const Ref = {
+    args: {
+        ref: (el: HTMLDivElement | null) => {
+            el && (el.innerHTML = 'test');
+        },
     },
 };

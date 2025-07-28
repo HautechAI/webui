@@ -1,5 +1,5 @@
 import { css, styled, ThemeType } from '@hautechai/webui.themeprovider';
-import { PropsWithChildren } from 'react';
+import { forwardRef, PropsWithChildren } from 'react';
 
 const sizeToCss = (size: number | string) => {
     if (typeof size === 'string') {
@@ -8,10 +8,12 @@ const sizeToCss = (size: number | string) => {
     return `${size}px`;
 };
 
-const BaseComponent = (props: Pick<BoxProps, 'className' | 'children' | 'style' | 'id'>) => {
-    const { className, children, style, id } = props;
-    return <div {...{ className, children, style, id }} />;
-};
+const BaseComponent = forwardRef(
+    (props: Pick<BoxProps, 'className' | 'children' | 'style' | 'id'>, ref: React.ForwardedRef<HTMLDivElement>) => {
+        const { className, children, style, id } = props;
+        return <div {...{ ref }} {...{ className, children, style, id }} />;
+    },
+);
 
 const StyledBox = styled(BaseComponent)<Omit<BoxProps, 'icon'>>`
     display: ${({ display }) => display ?? 'flex'};
@@ -157,6 +159,6 @@ export type BoxProps = PropsWithChildren<{
     shrink?: number;
 }>;
 
-export const Box = (props: BoxProps) => {
-    return <StyledBox {...props} />;
-};
+export const Box = forwardRef((props: BoxProps, ref: React.ForwardedRef<HTMLDivElement>) => {
+    return <StyledBox {...props} ref={ref} />;
+});
