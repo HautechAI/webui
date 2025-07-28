@@ -14,6 +14,7 @@ const Container = styled.div<Omit<FullScreenProps, 'children'>>`
 export type FullScreenProps = {
     children: React.ReactNode;
     zIndex?: number;
+    className?: string;
 };
 
 export const FullScreen = (props: FullScreenProps) => {
