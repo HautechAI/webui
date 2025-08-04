@@ -25,7 +25,7 @@ export default {
     },
     decorators: [
         (Story: any) => (
-            <Box width={132}>
+            <Box width={200}>
                 <Story />
             </Box>
         ),
@@ -96,4 +96,21 @@ export const FlatError = {
         hasError: true,
         type: 'flat',
     },
+};
+
+export const Short = {
+    args: {
+        options: [
+            { label: '%', value: '%' },
+            { label: 'px', value: 'px' },
+        ],
+        value: 'px',
+    },
+    decorators: [
+        (Story: any) => (
+            <div style={{ display: 'flex', flexDirection: 'row', gap: '8px' }}>
+                <Story />
+            </div>
+        ),
+    ],
 };

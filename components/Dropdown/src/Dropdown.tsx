@@ -10,7 +10,6 @@ const Container = styled.div<{ disabled?: boolean }>`
     flex-direction: column;
     flex: 1 0 0;
     gap: ${({ theme }) => theme.foundation.spacing.m}px;
-    min-width: 132px;
 
     ${({ theme, disabled }) =>
         disabled &&
