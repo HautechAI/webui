@@ -2,10 +2,10 @@ import { styled } from '@hautechai/webui.themeprovider';
 
 import React, { PropsWithChildren } from 'react';
 
-const StyledTileTabGroup = styled.div<Pick<TileTabGroupProps, 'wrap'>>`
+const StyledTileTabGroup = styled.div<{ $wrap?: boolean }>`
     display: flex;
     flex-direction: row;
-    flex-wrap: ${({ wrap }) => (wrap ? 'wrap' : 'nowrap')};
+    flex-wrap: ${({ $wrap }) => ($wrap ? 'wrap' : 'nowrap')};
     gap: ${({ theme }) => theme.foundation.spacing.ml}px;
 `;
 
@@ -17,7 +17,7 @@ export type TileTabGroupProps = PropsWithChildren<{
 
 export const TileTabGroup = (props: TileTabGroupProps) => {
     return (
-        <StyledTileTabGroup wrap={props.wrap}>
+        <StyledTileTabGroup $wrap={props.wrap}>
             {React.Children.map(props.children, (child) => {
                 if (React.isValidElement(child)) {
                     const value = (child.props as any)['value'] as string;
