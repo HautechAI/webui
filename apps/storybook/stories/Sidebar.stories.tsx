@@ -1,4 +1,4 @@
-import { Sidebar } from '../../../components/Sidebar/src';
+import { Sidebar, SidebarSection } from '../../../components/Sidebar/src';
 import { Logo } from '../../../components/Logo/src';
 import { User } from '../../../components/User/src';
 import { AppBar } from '../../../components/AppBar/src';
@@ -21,89 +21,84 @@ export default {
     argTypes: {},
 };
 
-export const Main = {
-    args: {
-        top: <>Top</>,
-        bottom: <>Bottom</>,
-    },
-};
+export const Main = (args: any) => (
+    <Sidebar
+        {...args} //
+        header={<SidebarSection>Top</SidebarSection>}
+        footer={<SidebarSection>Bottom</SidebarSection>}
+    />
+);
 
-export const WithSomeComponents = {
-    args: {
-        top: (
-            <>
+export const WithSomeComponents = (args: any) => (
+    <Sidebar
+        {...args} //
+        header={
+            <SidebarSection>
                 <Logo />
-            </>
-        ),
-        bottom: (
-            <>
+            </SidebarSection>
+        }
+        footer={
+            <SidebarSection>
                 <User title="John Doe" />
-            </>
-        ),
-    },
-};
+            </SidebarSection>
+        }
+    />
+);
 
-export const HierarchyLow = {
-    args: {
-        hierarchy: 'low',
-        top: (
-            <>
+export const HierarchyLow = (args: any) => (
+    <Sidebar
+        {...args} //
+        hierarchy="low"
+        header={
+            <SidebarSection>
                 <Logo />
-            </>
-        ),
-        bottom: (
-            <>
+            </SidebarSection>
+        }
+        footer={
+            <SidebarSection>
                 <User title="John Doe" />
-            </>
-        ),
-    },
-};
+            </SidebarSection>
+        }
+    />
+);
 
-export const WithHeader = {
-    args: {
-        header: (
-            <>
-                <AppBar hierarchy="low" />
-            </>
-        ),
-    },
-};
+export const WithHeader = (args: any) => <Sidebar {...args} header={<AppBar hierarchy="low" />} />;
 
-export const WithScroll = {
-    args: {
-        header: (
-            <>
-                <AppBar hierarchy="low" />
-            </>
-        ),
-        top: (
-            <Column>
-                {Array(30)
-                    .fill(null)
-                    .map((_, idx) => {
-                        return <Logo key={idx} />;
-                    })}
-            </Column>
-        ),
-        bottom: (
-            <>
+export const WithScroll = (args: any) => (
+    <Sidebar
+        {...args}
+        header={<AppBar hierarchy="low" />}
+        content={
+            <SidebarSection>
+                <Column>
+                    {Array(30)
+                        .fill(null)
+                        .map((_, idx) => {
+                            return <Logo key={idx} />;
+                        })}
+                </Column>
+            </SidebarSection>
+        }
+        footer={
+            <SidebarSection>
                 <User title="John Doe" />
-            </>
-        ),
-    },
-};
+            </SidebarSection>
+        }
+    />
+);
 
-export const Right = {
-    args: {
-        side: 'right',
-        top: <>Top</>,
-        bottom: <>Bottom</>,
-    },
-    decorators: [
-        (Story: React.FC) => (
-            <div style={{ height: '100vh', display: 'flex', justifyContent: 'flex-end' }}>
-                <Story />
-            </div>
-        ),
-    ],
-};
+export const Right = (args: any) => (
+    <Sidebar
+        {...args}
+        side="right"
+        header={<SidebarSection>Top</SidebarSection>}
+        footer={<SidebarSection>Bottom</SidebarSection>}
+    />
+);
+Right.decorators = [
+    (Story: React.FC) => (
+        <div style={{ height: '100vh', display: 'flex', justifyContent: 'flex-end' }}>
+            <Story />
+        </div>
+    ),
+];

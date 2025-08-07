@@ -30,34 +30,21 @@ const StyledContainer = styled.div<SidebarProps>`
         `}
 `;
 
-const StyledContent = styled.div`
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    flex: 1;
-    padding: ${({ theme }) => theme.foundation.spacing.l}px ${({ theme }) => theme.foundation.spacing.l}px;
-    min-height: 0;
-`;
-
-const StyledTopContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    gap: ${({ theme }) => theme.foundation.spacing.xxl}px;
-    padding-bottom: ${({ theme }) => theme.foundation.spacing.l}px;
+const SidebarContent = styled.div`
     overflow-y: auto;
     flex: 1;
 `;
 
-const StyledBottomContainer = styled.div`
+export const SidebarSection = styled.div`
     display: flex;
     flex-direction: column;
-    gap: ${({ theme }) => theme.foundation.spacing.xl}px;
+    padding: ${({ theme }) => theme.foundation.spacing.l}px ${({ theme }) => theme.foundation.spacing.l}px;
 `;
 
 export type SidebarProps = {
     header?: React.ReactNode;
-    top?: React.ReactNode;
-    bottom?: React.ReactNode;
+    content?: React.ReactNode;
+    footer?: React.ReactNode;
     hierarchy?: 'mid' | 'low';
     stretch?: boolean;
     side?: 'left' | 'right';
@@ -67,10 +54,8 @@ export const Sidebar = (props: SidebarProps) => {
     return (
         <StyledContainer hierarchy={hierarchy} stretch={props.stretch} side={side}>
             {props.header}
-            <StyledContent>
-                <StyledTopContainer>{props.top}</StyledTopContainer>
-                <StyledBottomContainer>{props.bottom}</StyledBottomContainer>
-            </StyledContent>
+            <SidebarContent>{props.content}</SidebarContent>
+            {props.footer}
         </StyledContainer>
     );
 };
