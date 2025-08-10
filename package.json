@@ -17,9 +17,9 @@
         "@babel/preset-react": "^7.27.1",
         "@babel/preset-typescript": "^7.27.1",
         "@linaria/esbuild": "^5.0.4",
-        "@linaria/vite": "^5.0.4",
         "@types/node": "^22.13.4",
         "@types/react": "^19.0.8",
+        "@wyw-in-js/vite": "^0.7.0",
         "lerna": "^8.1.9",
         "prettier": "^3.5.3",
         "tsup": "^8.5.0"

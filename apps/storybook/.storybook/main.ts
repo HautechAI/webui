@@ -1,5 +1,5 @@
 import { StorybookConfig } from '@storybook/react-vite';
-import linaria from '@linaria/vite';
+import linaria from '@wyw-in-js/vite';
 
 const config: StorybookConfig = {
     stories: ['../stories/*.stories.@(js|jsx|mjs|ts|tsx)'],
@@ -9,18 +9,18 @@ const config: StorybookConfig = {
         options: {},
     },
     viteFinal: async (config) => {
-        // Ensure plugins array exists
-        config.plugins = config.plugins || [];
-        
-        // Add Linaria plugin at the beginning to ensure it processes files first
-        config.plugins.unshift(
-            linaria({
-                sourceMap: true,
-                babelOptions: {
-                    presets: [
-                        '@linaria/babel-preset',
-                        ['@babel/preset-typescript', { 
-                            allowNamespaces: true,
+        return {
+            ...config,
+            plugins: [
+                linaria({
+                    include: ['**/*.{ts,tsx}'],
+                    babelOptions: {
+                        presets: ['@babel/preset-typescript', '@babel/preset-react'],
+                    },
+                }),
+                ...(config.plugins ?? []),
+            ],
+        };
                             allowDeclareFields: true,
                             isTSX: true,
                             allExtensions: true,
