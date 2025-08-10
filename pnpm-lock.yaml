@@ -40,8 +40,8 @@ importers:
         specifier: ^19.0.8
         version: 19.0.8
       '@wyw-in-js/vite':
-        specifier: ^0.7.0
-        version: 0.7.0(typescript@5.7.3)(vite@6.1.0(@types/node@22.13.4)(yaml@2.7.0))
+        specifier: ^0.6.0
+        version: 0.6.0(typescript@5.7.3)(vite@6.1.0(@types/node@22.13.4)(yaml@2.7.0))
       lerna:
         specifier: ^8.1.9
         version: 8.1.9(babel-plugin-macros@3.1.0)(encoding@0.1.13)
@@ -2614,24 +2614,16 @@ packages:
     resolution: {integrity: sha512-5YAZMUmF+S2HaqheKfew6ybbYBMnF10PjIgI7ieyuFxCohyqJNF4xdo6oHftv2z5Z4vCQ0OZHtDOQyDImBYwmg==}
     engines: {node: '>=16.0.0'}
 
-  '@wyw-in-js/processor-utils@0.7.0':
-    resolution: {integrity: sha512-mQokCsSa1KcCnPoyCNaQ4fBkI3/owsqUiu0rpaNKx6Hu4co0GE62fvOTQrPWoto+7JJMdg+WP1jm6PPovoTXOA==}
-    engines: {node: '>=16.0.0'}
-
   '@wyw-in-js/shared@0.6.0':
     resolution: {integrity: sha512-BozBos29AuMWOvjjKf+bYYN+Vku0Nar6+y5oxrJXIZzUEKiWTVnIxO256vi8cUBGfo/DH44o+qZTkkdSN2pPXw==}
     engines: {node: '>=16.0.0'}
 
-  '@wyw-in-js/shared@0.7.0':
-    resolution: {integrity: sha512-gDgtGMkYDZAdjOcXMIDF1ncqRAx0IvkGmCteoCNSQNa+qmoJDs20wXMbpRa3Zs/wo2Mr409IX0EWRI541wBrKA==}
+  '@wyw-in-js/transform@0.6.0':
+    resolution: {integrity: sha512-/Rxw8e3KcmSjnqWs/6flmpcNTa4jLw8NViIyNwqem498AfSWXrPnYf3RyjWed9zDVL72q7Xjei6TcRqMupl3Eg==}
     engines: {node: '>=16.0.0'}
 
-  '@wyw-in-js/transform@0.7.0':
-    resolution: {integrity: sha512-HqsHTS2HjueB3/6ELWDkmWFstWD92Yw62fsGeUtS6tj+GQkLjqRjvShLwt941cxBLnBfWQz6t1fn3yjgpclucA==}
-    engines: {node: '>=16.0.0'}
-
-  '@wyw-in-js/vite@0.7.0':
-    resolution: {integrity: sha512-HZ9qFvLJZW71GMRdx26OiISbT20BjnompFznoPtOk6U+AqWfu2Ovqmr+QGROqR6JqLmGwG2n49ZJa8wee060kw==}
+  '@wyw-in-js/vite@0.6.0':
+    resolution: {integrity: sha512-nGeH/dFrjecHRJfxd5/71cJu4V2YWakUmnEoAUpS0iTnVVC4GWjKqt1dLtsJvtKZIm2OeNoTzzdFrP4bxyXYxQ==}
     engines: {node: '>=16.0.0'}
     peerDependencies:
       vite: '>=3.2.7'
@@ -7272,22 +7264,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@wyw-in-js/processor-utils@0.7.0':
-    dependencies:
-      '@babel/generator': 7.28.0
-      '@wyw-in-js/shared': 0.7.0
-    transitivePeerDependencies:
-      - supports-color
-
   '@wyw-in-js/shared@0.6.0':
-    dependencies:
-      debug: 4.4.0
-      find-up: 5.0.0
-      minimatch: 9.0.5
-    transitivePeerDependencies:
-      - supports-color
-
-  '@wyw-in-js/shared@0.7.0':
     dependencies:
       debug: 4.4.1
       find-up: 5.0.0
@@ -7295,7 +7272,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@wyw-in-js/transform@0.7.0(typescript@5.7.3)':
+  '@wyw-in-js/transform@0.6.0(typescript@5.7.3)':
     dependencies:
       '@babel/core': 7.26.8
       '@babel/generator': 7.28.0
@@ -7304,8 +7281,8 @@ snapshots:
       '@babel/template': 7.27.2
       '@babel/traverse': 7.28.0
       '@babel/types': 7.28.2
-      '@wyw-in-js/processor-utils': 0.7.0
-      '@wyw-in-js/shared': 0.7.0
+      '@wyw-in-js/processor-utils': 0.6.0
+      '@wyw-in-js/shared': 0.6.0
       babel-merge: 3.0.0(@babel/core@7.26.8)
       cosmiconfig: 8.3.6(typescript@5.7.3)
       happy-dom: 15.11.7
@@ -7316,10 +7293,10 @@ snapshots:
       - supports-color
       - typescript
 
-  '@wyw-in-js/vite@0.7.0(typescript@5.7.3)(vite@6.1.0(@types/node@22.13.4)(yaml@2.7.0))':
+  '@wyw-in-js/vite@0.6.0(typescript@5.7.3)(vite@6.1.0(@types/node@22.13.4)(yaml@2.7.0))':
     dependencies:
-      '@wyw-in-js/shared': 0.7.0
-      '@wyw-in-js/transform': 0.7.0(typescript@5.7.3)
+      '@wyw-in-js/shared': 0.6.0
+      '@wyw-in-js/transform': 0.6.0(typescript@5.7.3)
       vite: 6.1.0(@types/node@22.13.4)(yaml@2.7.0)
     transitivePeerDependencies:
       - supports-color
