@@ -1,6 +1,5 @@
 import { StorybookConfig } from '@storybook/react-vite';
-import { mergeConfig } from 'vite';
-import viteConfig from '../vite.config';
+import linaria from '@linaria/vite';
 
 const config: StorybookConfig = {
     stories: ['../stories/*.stories.@(js|jsx|mjs|ts|tsx)'],
@@ -9,9 +8,32 @@ const config: StorybookConfig = {
         name: '@storybook/react-vite',
         options: {},
     },
-    viteFinal: async (config, { configType }) => {
-        // Merge with our custom Vite config that includes Linaria
-        return mergeConfig(config, viteConfig);
+    viteFinal: async (config) => {
+        // Ensure plugins array exists
+        config.plugins = config.plugins || [];
+        
+        // Add Linaria plugin at the beginning to ensure it processes files first
+        config.plugins.unshift(
+            linaria({
+                sourceMap: true,
+                babelOptions: {
+                    presets: [
+                        '@linaria/babel-preset',
+                        ['@babel/preset-typescript', { 
+                            allowNamespaces: true,
+                            allowDeclareFields: true,
+                            isTSX: true,
+                            allExtensions: true,
+                        }],
+                        ['@babel/preset-react', { 
+                            runtime: 'automatic' 
+                        }],
+                    ],
+                },
+            })
+        );
+        
+        return config;
     },
 };
 
