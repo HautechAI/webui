@@ -1,18 +1,18 @@
 import { describe, it, expect } from 'vitest';
 import { render } from '@testing-library/react';
 import React from 'react';
-import { Divider } from '../src/Divider';
+import { Badge } from '../src/Badge';
 import { ThemeProvider } from '../../ThemeProvider/src';
 import { testTheme } from '../../test-theme';
 
-describe('Divider', () => {
+describe('Badge', () => {
   it('should render without crashing', () => {
     expect(() => {
       render(
         React.createElement(
           ThemeProvider,
           { theme: testTheme },
-          React.createElement(Divider, {})
+          React.createElement(Badge, { color: 'success', label: 'Test Badge' })
         )
       );
     }).not.toThrow();
