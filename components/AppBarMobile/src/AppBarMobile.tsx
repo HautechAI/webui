@@ -1,4 +1,4 @@
-import { styled } from '@hautechai/webui.themeprovider';
+import { styled } from '@linaria/react';
 
 const Container = styled.div<Required<Pick<AppBarMobileProps, 'hierarchy'>>>`
     display: flex;

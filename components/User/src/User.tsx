@@ -1,5 +1,5 @@
 import { Avatar } from '@hautechai/webui.avatar';
-import { styled } from '@hautechai/webui.themeprovider';
+import { styled } from '@linaria/react';
 import { Typography } from '@hautechai/webui.typography';
 
 const Container = styled.div`

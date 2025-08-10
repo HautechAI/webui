@@ -1,4 +1,4 @@
-import { styled } from '@hautechai/webui.themeprovider';
+import { styled } from '@linaria/react';
 import { maxPxSize } from './CustomRatio';
 
 export const OptionLabel = styled.div`

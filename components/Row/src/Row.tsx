@@ -1,4 +1,6 @@
-import { css, styled, ThemeType } from '@hautechai/webui.themeprovider';
+import { css } from '@linaria/core';
+import { styled } from '@linaria/react';
+import { ThemeType } from '@hautechai/webui.themeprovider';
 
 const BaseComponent = (props: Pick<RowProps, 'className' | 'children'>) => {
     const { className, children } = props;

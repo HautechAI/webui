@@ -1,7 +1,9 @@
 import { ArrowAltDownIcon, ArrowAltUpIcon } from '@hautechai/webui.icon';
 import { IconButton } from '@hautechai/webui.iconbutton';
 import { Progress } from '@hautechai/webui.progress';
-import { css, styled } from '@hautechai/webui.themeprovider';
+import { css } from '@linaria/core';
+import { styled } from '@linaria/react';
+import { themeVars } from '@hautechai/webui.themeprovider';
 import { Typography } from '@hautechai/webui.typography';
 
 const Container = styled.div<Pick<FloatingPanelProps, 'width'>>`

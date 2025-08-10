@@ -21,19 +21,6 @@ const config: StorybookConfig = {
                 ...(config.plugins ?? []),
             ],
         };
-                            allowDeclareFields: true,
-                            isTSX: true,
-                            allExtensions: true,
-                        }],
-                        ['@babel/preset-react', { 
-                            runtime: 'automatic' 
-                        }],
-                    ],
-                },
-            })
-        );
-        
-        return config;
     },
 };
 

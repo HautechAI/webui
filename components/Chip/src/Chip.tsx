@@ -1,4 +1,6 @@
-import { css, styled } from '@hautechai/webui.themeprovider';
+import { css } from '@linaria/core';
+import { styled } from '@linaria/react';
+import { themeVars } from '@hautechai/webui.themeprovider';
 import { Typography } from '@hautechai/webui.typography';
 import { Popover as TinyPopover } from 'react-tiny-popover';
 import React, { ReactNode, useCallback, useEffect, useRef, useState } from 'react';

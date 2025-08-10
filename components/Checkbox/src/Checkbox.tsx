@@ -1,5 +1,5 @@
 import { CheckIcon } from '@hautechai/webui.icon';
-import { styled } from '@hautechai/webui.themeprovider';
+import { styled } from '@linaria/react';
 import { PropsWithChildren } from 'react';
 
 const StyledCheckboxContainer = styled.label<Pick<CheckboxProps, 'checked'>>`

@@ -1,4 +1,4 @@
-import { styled } from '@hautechai/webui.themeprovider';
+import { styled } from '@linaria/react';
 import { HintIcon } from '@hautechai/webui.icon';
 import { Tooltip } from '@hautechai/webui.tooltip';
 

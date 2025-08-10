@@ -1,5 +1,5 @@
 import { Row } from '@hautechai/webui.row';
-import { styled } from '@hautechai/webui.themeprovider';
+import { styled } from '@linaria/react';
 import { Typography } from '@hautechai/webui.typography';
 import { OperationItemProps } from './OperationItem.types';
 

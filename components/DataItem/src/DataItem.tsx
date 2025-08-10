@@ -1,5 +1,7 @@
 import React from 'react';
-import { css, styled } from '@hautechai/webui.themeprovider';
+import { css } from '@linaria/core';
+import { styled } from '@linaria/react';
+import { themeVars } from '@hautechai/webui.themeprovider';
 import { Typography, TypographyProps } from '@hautechai/webui.typography';
 import { Avatar } from '@hautechai/webui.avatar';
 import { Row } from '@hautechai/webui.row';

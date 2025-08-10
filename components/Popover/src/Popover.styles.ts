@@ -1,4 +1,4 @@
-import { styled } from '@hautechai/webui.themeprovider';
+import { styled } from '@linaria/react';
 
 export default {
     Close: styled('div')`

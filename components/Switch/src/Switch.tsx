@@ -1,4 +1,6 @@
-import { css, styled } from '@hautechai/webui.themeprovider';
+import { css } from '@linaria/core';
+import { styled } from '@linaria/react';
+import { themeVars } from '@hautechai/webui.themeprovider';
 import { useState } from 'react';
 
 const SwitchContainer = styled.label<{ disabled?: boolean }>`

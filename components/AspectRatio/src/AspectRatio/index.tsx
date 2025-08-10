@@ -1,6 +1,6 @@
 import { SegmentedControl, SegmentedControlProps } from '@hautechai/webui.segmentedcontrol';
 import { ArrowAltRightIcon } from '@hautechai/webui.icon';
-import { styled } from '@hautechai/webui.themeprovider';
+import { styled } from '@linaria/react';
 
 import CustomRatio from '../CustomRatio';
 import { RatioBoxContainer, SmallRatioBox } from '../styles';

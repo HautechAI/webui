@@ -1,4 +1,6 @@
-import { styled, css, themeVars } from '@hautechai/webui.themeprovider';
+import { css } from '@linaria/core';
+import { styled } from '@linaria/react';
+import { themeVars } from '@hautechai/webui.themeprovider';
 import { forwardRef, PropsWithChildren } from 'react';
 
 const sizeToCss = (size: number | string) => {
