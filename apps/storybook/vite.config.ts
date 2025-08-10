@@ -1,22 +1,12 @@
 import { defineConfig } from 'vite';
-import linaria from '@linaria/vite';
+import linaria from '@wyw-in-js/vite';
 
 export default defineConfig({
     plugins: [
         linaria({
-            sourceMap: true,
-            // Explicitly configure Babel options for Linaria
+            include: ['**/*.{ts,tsx}'],
             babelOptions: {
-                presets: [
-                    '@linaria/babel-preset',
-                    ['@babel/preset-typescript', { 
-                        allowNamespaces: true,
-                        allowDeclareFields: true,
-                    }],
-                    ['@babel/preset-react', { 
-                        runtime: 'automatic' 
-                    }],
-                ],
+                presets: ['@babel/preset-typescript', '@babel/preset-react'],
             },
         }),
     ],
