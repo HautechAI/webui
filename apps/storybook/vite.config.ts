@@ -8,6 +8,7 @@ export default defineConfig({
             // Explicitly configure Babel options for Linaria
             babelOptions: {
                 presets: [
+                    '@linaria/babel-preset',
                     ['@babel/preset-typescript', { 
                         allowNamespaces: true,
                         allowDeclareFields: true,
