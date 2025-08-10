@@ -4,69 +4,116 @@ A comprehensive React component library built with TypeScript, providing reusabl
 
 ## Components
 
-The library includes the following components:
+The library includes the following components organized by category:
+
+### Layout
 
 | Component | Description |
 |-----------|-------------|
-| **AppBar** | Top navigation bar with configurable left, center, and right content areas |
-| **AppBarMobile** | Mobile-optimized version of the app bar with responsive behavior |
-| **AspectRatio** | Container that maintains a specific aspect ratio for its content |
-| **Avatar** | User profile image or initials display component |
-| **Badge** | Small notification indicator to highlight status or count |
-| **BottomSheet** | Slide-up modal panel for mobile-first interfaces |
-| **Box** | Flexible layout container with configurable dimensions and styling |
-| **Button** | Primary action button with variants, icons, and different hierarchies |
-| **ButtonBase** | Base button component providing common button functionality |
-| **Card** | Content container with image, label, and action buttons |
-| **Checkbox** | Input control for boolean selection with custom styling |
-| **Chip** | Compact element for tags, filters, or selection indicators |
-| **Column** | Vertical layout container for stacking components |
-| **ContextMenu** | Right-click or long-press activated menu with actions |
-| **Counter** | Numeric display with increment/decrement controls |
-| **DataItem** | Structured display for key-value data pairs |
-| **Divider** | Visual separator line between content sections |
-| **Dropdown** | Select input with customizable options and styling |
-| **Field** | Form field wrapper with label, error, and validation states |
-| **FileInput** | File upload control with drag-and-drop support |
-| **FloatingPanel** | Draggable overlay panel that floats above content |
-| **FullScreen** | Component wrapper that enables fullscreen mode |
-| **Hint** | Tooltip-like component for providing contextual help |
-| **HoverControls** | Action buttons that appear on hover interactions |
-| **Icon** | Scalable icon component with various icon options |
-| **IconButton** | Button component optimized for displaying icons |
-| **ImageInput** | Specialized input for image upload and preview |
-| **ImageInputWithSamples** | Image input with predefined sample options |
-| **LinkButton** | Button styled as a hyperlink with navigation capabilities |
-| **Logo** | Brand logo display component with sizing options |
-| **Masonry** | Grid layout that arranges items in a masonry-style layout |
-| **Menu** | Dropdown menu container for navigation or actions |
-| **MenuItem** | Individual item within a menu component |
-| **Modal** | Overlay dialog for focused user interactions |
-| **OperationItem** | Component for displaying operation status and details |
-| **Pagination** | Navigation control for paginated content |
-| **Panel** | Collapsible content container with header and body |
-| **Popover** | Floating content container positioned relative to trigger |
-| **Previews** | Component for displaying content previews or thumbnails |
-| **Price** | Formatted display for pricing information |
-| **Progress** | Visual indicator for task or loading progress |
-| **Row** | Horizontal layout container for arranging components |
-| **SegmentedControl** | Multi-option selector with segmented button appearance |
-| **Sidebar** | Navigation panel typically positioned on page side |
-| **Slider** | Range input control for selecting numeric values |
-| **Switch** | Toggle control for boolean on/off states |
-| **Table** | Data table component with sorting and selection |
-| **TextArea** | Multi-line text input with resizing capabilities |
-| **TextButton** | Button component optimized for text-only labels |
-| **TextInput** | Single-line text input with validation and styling |
-| **Theme** | Theme configuration and styling definitions |
-| **ThemeProvider** | Context provider for theme management across components |
-| **Tile** | Content tile with image background and overlay content |
-| **TileTabGroup** | Tab container using tile-based visual style |
-| **TileTabItem** | Individual tab item within a tile tab group |
-| **Tooltip** | Contextual popup with information or help text |
-| **Typography** | Text rendering component with various styles and variants |
-| **User** | User profile display with avatar and information |
-| **UserBalance** | Specialized component for displaying user account balance |
+| [**Box**](components/Box/README.md) | Flexible layout container with configurable dimensions and styling |
+| [**Column**](components/Column/README.md) | Vertical layout container for stacking components |
+| [**Masonry**](components/Masonry/README.md) | Grid layout that arranges items in a masonry-style layout |
+| [**Row**](components/Row/README.md) | Horizontal layout container for arranging components |
+
+### Input
+
+| Component | Description |
+|-----------|-------------|
+| [**Button**](components/Button/README.md) | Primary action button with variants, icons, and different hierarchies |
+| [**ButtonBase**](components/ButtonBase/README.md) | Base button component providing common button functionality |
+| [**Checkbox**](components/Checkbox/README.md) | Input control for boolean selection with custom styling |
+| [**Counter**](components/Counter/README.md) | Numeric display with increment/decrement controls |
+| [**Dropdown**](components/Dropdown/README.md) | Select input with customizable options and styling |
+| [**Field**](components/Field/README.md) | Form field wrapper with label, error, and validation states |
+| [**FileInput**](components/FileInput/README.md) | File upload control with drag-and-drop support |
+| [**IconButton**](components/IconButton/README.md) | Button component optimized for displaying icons |
+| [**ImageInput**](components/ImageInput/README.md) | Specialized input for image upload and preview |
+| [**LinkButton**](components/LinkButton/README.md) | Button styled as a hyperlink with navigation capabilities |
+| [**SegmentedControl**](components/SegmentedControl/README.md) | Multi-option selector with segmented button appearance |
+| [**Slider**](components/Slider/README.md) | Range input control for selecting numeric values |
+| [**Switch**](components/Switch/README.md) | Toggle control for boolean on/off states |
+| [**TextArea**](components/TextArea/README.md) | Multi-line text input with resizing capabilities |
+| [**TextButton**](components/TextButton/README.md) | Button component optimized for text-only labels |
+| [**TextInput**](components/TextInput/README.md) | Single-line text input with validation and styling |
+
+### Data Display
+
+| Component | Description |
+|-----------|-------------|
+| [**Avatar**](components/Avatar/README.md) | User profile image or initials display component |
+| [**Badge**](components/Badge/README.md) | Small notification indicator to highlight status or count |
+| [**Chip**](components/Chip/README.md) | Compact element for tags, filters, or selection indicators |
+| [**DataItem**](components/DataItem/README.md) | Structured display for key-value data pairs |
+| [**Divider**](components/Divider/README.md) | Visual separator line between content sections |
+| [**Hint**](components/Hint/README.md) | Tooltip-like component for providing contextual help |
+| [**Logo**](components/Logo/README.md) | Brand logo display component with sizing options |
+| [**Menu**](components/Menu/README.md) | Dropdown menu container for navigation or actions |
+| [**MenuItem**](components/MenuItem/README.md) | Individual item within a menu component |
+| [**Modal**](components/Modal/README.md) | Overlay dialog for focused user interactions |
+| [**Panel**](components/Panel/README.md) | Collapsible content container with header and body |
+| [**Previews**](components/Previews/README.md) | Component for displaying content previews or thumbnails |
+| [**Price**](components/Price/README.md) | Formatted display for pricing information |
+| [**Progress**](components/Progress/README.md) | Visual indicator for task or loading progress |
+| [**Table**](components/Table/README.md) | Data table component with sorting and selection |
+| [**Tile**](components/Tile/README.md) | Content tile with image background and overlay content |
+| [**Tooltip**](components/Tooltip/README.md) | Contextual popup with information or help text |
+| [**Typography**](components/Typography/README.md) | Text rendering component with various styles and variants |
+| [**User**](components/User/README.md) | User profile display with avatar and information |
+
+### Navigation
+
+| Component | Description |
+|-----------|-------------|
+| [**ContextMenu**](components/ContextMenu/README.md) | Right-click or long-press activated menu with actions |
+| [**Pagination**](components/Pagination/README.md) | Navigation control for paginated content |
+
+### Surfaces
+
+| Component | Description |
+|-----------|-------------|
+| [**AppBar**](components/AppBar/README.md) | Top navigation bar with configurable left, center, and right content areas |
+| [**AppBarMobile**](components/AppBarMobile/README.md) | Mobile-optimized version of the app bar with responsive behavior |
+| [**BottomSheet**](components/BottomSheet/README.md) | Slide-up modal panel for mobile-first interfaces |
+| [**FloatingPanel**](components/FloatingPanel/README.md) | Draggable overlay panel that floats above content |
+| [**FullScreen**](components/FullScreen/README.md) | Component wrapper that enables fullscreen mode |
+| [**Sidebar**](components/Sidebar/README.md) | Navigation panel typically positioned on page side |
+
+### Compositions
+
+| Component | Description |
+|-----------|-------------|
+| [**AspectRatio**](components/AspectRatio/README.md) | Container that maintains a specific aspect ratio for its content |
+| [**Card**](components/Card/README.md) | Content container with image, label, and action buttons |
+| [**ImageInputWithSamples**](components/ImageInputWithSamples/README.md) | Image input with predefined sample options |
+| [**OperationItem**](components/OperationItem/README.md) | Component for displaying operation status and details |
+| [**UserBalance**](components/UserBalance/README.md) | Specialized component for displaying user account balance |
+
+### Interaction
+
+| Component | Description |
+|-----------|-------------|
+| [**HoverControls**](components/HoverControls/README.md) | Action buttons that appear on hover interactions |
+| [**Popover**](components/Popover/README.md) | Floating content container positioned relative to trigger |
+
+### Tabs
+
+| Component | Description |
+|-----------|-------------|
+| [**TileTabGroup**](components/TileTabGroup/README.md) | Tab container using tile-based visual style |
+| [**TileTabItem**](components/TileTabItem/README.md) | Individual tab item within a tile tab group |
+
+### Icons
+
+| Component | Description |
+|-----------|-------------|
+| [**Icon**](components/Icon/README.md) | Scalable icon component with various icon options |
+
+### System
+
+| Component | Description |
+|-----------|-------------|
+| [**Theme**](components/Theme/README.md) | Theme configuration and styling definitions |
+| [**ThemeProvider**](components/ThemeProvider/README.md) | Context provider for theme management across components |
 
 ## Getting Started
 

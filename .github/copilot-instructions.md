@@ -7,16 +7,18 @@ When making changes to this WebUI component library, always ensure documentation
 ### 1. Root README.md Maintenance
 
 When **adding a new component**:
-- Add an entry to the components table in `/README.md`
-- Include the component name and a clear, concise description of its purpose
-- Maintain alphabetical order in the table
+- Add an entry to the appropriate category section in the components table in `/README.md`
+- Include the component name as a markdown link to `components/[ComponentName]/README.md`
+- Include a clear, concise description of its purpose
+- Maintain alphabetical order within each category section
+- Use the same categories as defined in Storybook: Layout, Input, Data Display, Navigation, Surfaces, Compositions, Interaction, Tabs, Icons, System
 
 When **removing a component**:
-- Remove the corresponding entry from the components table in `/README.md`
+- Remove the corresponding entry from the appropriate category section in the components table in `/README.md`
 - Delete the component's individual README file
 
 When **modifying a component's core purpose**:
-- Update the component description in the root README.md table
+- Update the component description in the appropriate category section of the root README.md table
 - Update the component's individual README.md
 
 ### 2. Individual Component README.md Maintenance
@@ -48,29 +50,35 @@ Each component in `/components/[ComponentName]/` must have a `README.md` file wi
 
 ### 3. Consistency Requirements
 
+**Component Organization:**
+- Components in the root README.md must be organized into categories matching Storybook structure: Layout, Input, Data Display, Navigation, Surfaces, Compositions, Interaction, Tabs, Icons, System
+- Each category should have its own table section with clear header
+- Components within each category should be listed alphabetically
+- Component names must be formatted as markdown links: `[**ComponentName**](components/ComponentName/README.md)`
+
 **Naming Convention:**
 - Component README files must be named exactly `README.md` (uppercase)
 - Use the exact component name as defined in the TypeScript interface
-
-**Description Quality:**
 - Keep component descriptions concise but informative (1-2 sentences)
 - Focus on the component's primary purpose and use cases
 - Avoid technical jargon unless necessary
 - Use consistent terminology across all documentation
 
-**Parameter Documentation:**
+**Description Quality:**
 - List all public props from the component's TypeScript interface
 - Include optional parameters and mark them as optional in the description
 - Describe the expected behavior for each parameter
 - Include default values when relevant
 
-### 4. Automated Checks
+**Parameter Documentation:**
 
+### 4. Automated Checks
 Before committing changes:
 - Verify all component directories have README.md files
-- Ensure the root README.md table includes all existing components
-- Check that component parameter tables match TypeScript prop definitions
-- Confirm all documentation follows the established format
+- Ensure the root README.md table includes all existing components in properly organized category sections
+- Verify component names are formatted as clickable markdown links
+- Check that component parameter tables match TypeScript definitions
+- Confirm all documentation follows the established format and category organization
 
 ### 5. Special Cases
 
@@ -89,12 +97,13 @@ Before committing changes:
 ### 6. Review Checklist
 
 When reviewing documentation changes:
-- [ ] Root README.md table is complete and accurate
+- [ ] Root README.md table is complete and accurate with proper category organization
+- [ ] All component names are formatted as clickable markdown links
 - [ ] All components have individual README.md files
 - [ ] Parameter tables match TypeScript definitions
 - [ ] Descriptions are clear and consistent
 - [ ] No broken links or formatting issues
-- [ ] New components are properly documented
+- [ ] New components are properly documented in the correct category section
 
 ## Tools and Resources
 
