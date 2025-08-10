@@ -1,5 +1,10 @@
 import { createContext, PropsWithChildren, useContext } from 'react';
 
+// Augment the pigment-css theme
+declare module '@pigment-css/react' {
+    interface ThemeArgs extends ThemeType {}
+}
+
 export type ThemeType = {
     foundation: {
         animation: {
