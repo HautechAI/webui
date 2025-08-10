@@ -1,35 +1,45 @@
-import { css, styled } from '@hautechai/webui.themeprovider';
+import { css } from '@hautechai/webui.themeprovider';
 import { ComponentProps, PropsWithChildren } from 'react';
 
-const StyledButton = styled.button<Pick<ButtonBaseProps, 'stretch' | 'disabled'>>`
+const baseButtonStyles = css`
     all: unset;
     cursor: pointer;
+    display: inline-flex;
+    
     &:disabled {
         cursor: default;
     }
+`;
 
-    display: inline-flex;
-
-    ${({ stretch }) =>
-        stretch &&
-        css`
-            flex-grow: 1;
-        `}
+const stretchStyles = css`
+    flex-grow: 1;
 `;
 
 export type ButtonBaseProps = PropsWithChildren<{
     id?: string;
     className?: string;
-    onClick?: ComponentProps<typeof StyledButton>['onClick'];
+    onClick?: React.MouseEventHandler<HTMLButtonElement>;
     disabled?: boolean;
     stretch?: boolean;
 }>;
 
 export const ButtonBase = (props: ButtonBaseProps) => {
+    const { stretch, className, disabled, ...rest } = props;
+    
+    const buttonClassName = [
+        baseButtonStyles,
+        stretch && stretchStyles,
+        className,
+        !disabled ? 'htch-webui-hoverable' : '',
+    ]
+        .filter(Boolean)
+        .join(' ');
+
     return (
-        <StyledButton
-            {...props}
-            className={[props.className, !props.disabled ? 'htch-webui-hoverable' : ''].join(' ')}
+        <button
+            {...rest}
+            className={buttonClassName}
+            disabled={disabled}
         />
     );
 };
