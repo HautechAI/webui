@@ -1,4 +1,5 @@
 import { defineConfig } from 'tsup';
+import linaria from '@linaria/esbuild';
 
 export default defineConfig({
     entry: ['src/index.ts(x)'],
@@ -10,6 +11,8 @@ export default defineConfig({
     dts: true,
     target: 'es2024',
     esbuildPlugins: [
-        // Linaria esbuild plugin will be configured per-component as needed
+        linaria({
+            sourceMap: true,
+        }),
     ],
 });
