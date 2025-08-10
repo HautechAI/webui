@@ -1,5 +1,6 @@
 import React, { ReactNode } from 'react';
-import { css, themeVars } from '@hautechai/webui.themeprovider';
+import { css } from '@linaria/core';
+import { themeVars } from '@hautechai/webui.themeprovider';
 import { Typography } from '@hautechai/webui.typography';
 
 export type AvatarProps = { src?: string; initials?: string; icon?: ReactNode };

@@ -1,5 +1,6 @@
 import { ButtonBase } from '@hautechai/webui.buttonbase';
-import { css, themeVars } from '@hautechai/webui.themeprovider';
+import { css } from '@linaria/core';
+import { themeVars } from '@hautechai/webui.themeprovider';
 
 export type IconButtonProps = {
     variant?: 'filled' | 'outlined' | 'flat';

@@ -1,4 +1,6 @@
-import { css, styled } from '@hautechai/webui.themeprovider';
+import { css } from '@linaria/core';
+import { styled } from '@linaria/react';
+import { themeVars } from '@hautechai/webui.themeprovider';
 import { Menu } from '@hautechai/webui.menu';
 import { Typography } from '@hautechai/webui.typography';
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';

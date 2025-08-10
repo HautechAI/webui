@@ -1,5 +1,7 @@
 import { ButtonBase } from '@hautechai/webui.buttonbase';
-import { styled, css, themeVars } from '@hautechai/webui.themeprovider';
+import { css } from '@linaria/core';
+import { styled } from '@linaria/react';
+import { themeVars } from '@hautechai/webui.themeprovider';
 import { Typography, TypographyProps } from '@hautechai/webui.typography';
 
 export type ButtonProps = {

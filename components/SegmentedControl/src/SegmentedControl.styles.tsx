@@ -1,4 +1,5 @@
-import { styled, ThemeType } from '@hautechai/webui.themeprovider';
+import { styled } from '@linaria/react';
+import { ThemeType } from '@hautechai/webui.themeprovider';
 
 export const MaterialContainer = styled.div`
     display: flex;

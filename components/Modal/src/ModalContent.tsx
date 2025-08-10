@@ -1,4 +1,4 @@
-import { styled } from '@hautechai/webui.themeprovider';
+import { styled } from '@linaria/react';
 import { ComponentProps } from 'react';
 
 export const ModalContentStyled = styled.div`

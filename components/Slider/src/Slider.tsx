@@ -1,4 +1,4 @@
-import { styled } from '@hautechai/webui.themeprovider';
+import { styled } from '@linaria/react';
 import React, { useCallback } from 'react';
 
 const Container = styled.input<{ percentage: number }>`

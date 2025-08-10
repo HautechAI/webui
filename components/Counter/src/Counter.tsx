@@ -1,5 +1,5 @@
 import { useCallback } from 'react';
-import { styled } from '@hautechai/webui.themeprovider';
+import { styled } from '@linaria/react';
 import { IconButton } from '@hautechai/webui.iconbutton';
 import { MinusIcon, PlusIcon } from '@hautechai/webui.icon';
 import { Typography } from '@hautechai/webui.typography';

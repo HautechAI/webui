@@ -1,5 +1,5 @@
 import { ButtonBase } from '@hautechai/webui.buttonbase';
-import { styled } from '@hautechai/webui.themeprovider';
+import { styled } from '@linaria/react';
 import { Tile, TileProps } from '@hautechai/webui.tile';
 
 import { Typography } from '@hautechai/webui.typography';

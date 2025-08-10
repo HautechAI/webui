@@ -1,4 +1,5 @@
-import { css, themeVars } from '@hautechai/webui.themeprovider';
+import { css } from '@linaria/core';
+import { themeVars } from '@hautechai/webui.themeprovider';
 
 export const dividerStyles = css`
     border-bottom-width: ${themeVars.stroke.thin}px;

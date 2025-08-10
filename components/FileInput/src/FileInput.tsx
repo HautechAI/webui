@@ -1,6 +1,7 @@
 import { Button } from '@hautechai/webui.button';
 import { UploadIcon } from '@hautechai/webui.icon';
-import { styled, ThemeType } from '@hautechai/webui.themeprovider';
+import { styled } from '@linaria/react';
+import { ThemeType } from '@hautechai/webui.themeprovider';
 import { Typography, TypographyProps } from '@hautechai/webui.typography';
 import React, { useEffect, useState } from 'react';
 import { useDropzone } from 'react-dropzone';

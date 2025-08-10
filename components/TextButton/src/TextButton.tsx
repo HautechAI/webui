@@ -1,5 +1,5 @@
 import { ButtonBase } from '@hautechai/webui.buttonbase';
-import { styled } from '@hautechai/webui.themeprovider';
+import { styled } from '@linaria/react';
 import { Typography, TypographyProps } from '@hautechai/webui.typography';
 
 const StyledButton = styled(ButtonBase)<Required<Pick<TextButtonProps, 'hierarchy' | 'size'>>>`

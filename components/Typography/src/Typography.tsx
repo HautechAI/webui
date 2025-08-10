@@ -1,4 +1,6 @@
-import { css, styled, themeVars, ThemeType } from '@hautechai/webui.themeprovider';
+import { css } from '@linaria/core';
+import { styled } from '@linaria/react';
+import { themeVars, ThemeType } from '@hautechai/webui.themeprovider';
 import { get } from 'lodash-es';
 import { Paths } from 'type-fest';
 import { useTheme } from '@hautechai/webui.themeprovider';

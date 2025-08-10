@@ -1,4 +1,5 @@
-import { css } from '@hautechai/webui.themeprovider';
+import { css } from '@linaria/core';
+import { themeVars } from '@hautechai/webui.themeprovider';
 import { ComponentProps, PropsWithChildren } from 'react';
 
 const baseButtonStyles = css`
