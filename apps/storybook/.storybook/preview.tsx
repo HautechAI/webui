@@ -3,7 +3,26 @@ import fontItalic from '@hautechai/webui.theme/fonts/inter-italic.woff2';
 
 import { Preview } from '@storybook/react';
 import { Theme } from '@hautechai/webui.theme';
-import { ThemeProvider, Global } from '@hautechai/webui.themeprovider';
+import { ThemeProvider, css } from '@hautechai/webui.themeprovider';
+
+// Global font styles using Linaria
+const globalStyles = css`
+    @font-face {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 100 900;
+        font-display: swap;
+        src: url(${fontNormal}) format('woff2');
+    }
+
+    @font-face {
+        font-family: 'Inter';
+        font-style: italic;
+        font-weight: 100 900;
+        font-display: swap;
+        src: url(${fontItalic}) format('woff2');
+    }
+`;
 
 const preview: Preview = {
     parameters: {
@@ -16,33 +35,11 @@ const preview: Preview = {
     },
     decorators: [
         (Story) => (
-            <>
-                <Global
-                    styles={[
-                        {
-                            '@font-face': {
-                                fontFamily: 'Inter',
-                                fontStyle: 'normal',
-                                fontWeight: '100 900',
-                                fontDisplay: 'swap',
-                                src: `url(${fontNormal}) format('woff2')`,
-                            },
-                        },
-                        {
-                            '@font-face': {
-                                fontFamily: 'Inter',
-                                fontStyle: 'italic',
-                                fontWeight: '100 900',
-                                fontDisplay: 'swap',
-                                src: `url(${fontItalic}) format('woff2')`,
-                            },
-                        },
-                    ]}
-                />
+            <div className={globalStyles}>
                 <ThemeProvider theme={Theme}>
                     <Story />
                 </ThemeProvider>
-            </>
+            </div>
         ),
     ],
 };
