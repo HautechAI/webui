@@ -9,4 +9,7 @@ export default defineConfig({
     clean: true,
     dts: true,
     target: 'es2024',
+    esbuildPlugins: [
+        // Linaria esbuild plugin will be configured per-component as needed
+    ],
 });

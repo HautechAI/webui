@@ -7,11 +7,17 @@
         "publish": "pnpm --filter=\\!storybook -r publish --no-git-checks"
     },
     "dependencies": {
+        "@linaria/core": "^6.3.0",
+        "@linaria/react": "^6.3.0",
         "@storybook/test": "^8.5.5",
         "react": "^19.0.0",
         "typescript": "^5.7.3"
     },
     "devDependencies": {
+        "@babel/preset-react": "^7.27.1",
+        "@babel/preset-typescript": "^7.27.1",
+        "@linaria/esbuild": "^5.0.4",
+        "@linaria/vite": "^5.0.4",
         "@types/node": "^22.13.4",
         "@types/react": "^19.0.8",
         "lerna": "^8.1.9",

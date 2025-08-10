@@ -1,9 +1,5 @@
-import { createContext, PropsWithChildren, useContext } from 'react';
-import { ThemeProvider as EmotionThemeProvider } from '@emotion/react';
-
-declare module '@emotion/react' {
-    export interface Theme extends ThemeType {}
-}
+import { createContext, PropsWithChildren, useContext, useEffect } from 'react';
+import { themeToCssProperties } from './theme-to-css';
 
 export type ThemeType = {
     foundation: {
@@ -82,9 +78,26 @@ export type ThemeType = {
 export const ThemeContext = createContext<ThemeType>({} as ThemeType);
 
 export const ThemeProvider = ({ theme, children }: PropsWithChildren<{ theme: ThemeType }>) => {
+    useEffect(() => {
+        // Inject CSS custom properties into the root element
+        const cssProperties = themeToCssProperties(theme);
+        const rootElement = document.documentElement;
+        
+        Object.entries(cssProperties).forEach(([property, value]) => {
+            rootElement.style.setProperty(property, value);
+        });
+        
+        return () => {
+            // Clean up on unmount
+            Object.keys(cssProperties).forEach((property) => {
+                rootElement.style.removeProperty(property);
+            });
+        };
+    }, [theme]);
+    
     return (
         <ThemeContext.Provider value={theme}>
-            <EmotionThemeProvider theme={theme}>{children}</EmotionThemeProvider>
+            {children}
         </ThemeContext.Provider>
     );
 };
