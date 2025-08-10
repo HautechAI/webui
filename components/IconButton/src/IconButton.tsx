@@ -1,48 +1,5 @@
 import { ButtonBase } from '@hautechai/webui.buttonbase';
-import { css, styled } from '@hautechai/webui.themeprovider';
-
-const StyledButton = styled(ButtonBase)<
-    Required<Pick<IconButtonProps, 'variant' | 'size'>> & Pick<IconButtonProps, 'customBackground'>
->`
-    padding: ${({ theme, size }) => (size === 'medium' ? theme.foundation.spacing.ml : theme.foundation.spacing.m)}px;
-
-    border-radius: ${({ theme }) => theme.foundation.cornerRadius.m}px;
-    border-width: ${({ theme, variant }) =>
-        variant === 'filled' || variant === 'outlined' ? theme.foundation.stroke.thin : 0}px;
-    border-style: solid;
-    border-color: ${({ theme }) => theme.palette.layout.strokes};
-
-    color: ${({ theme }) => theme.palette.layout.onSurface.primary};
-    background-color: ${({ theme, variant, customBackground }) =>
-        customBackground || (variant === 'filled' ? theme.palette.layout.surfaceLow : 'transparent')};
-
-    &:hover {
-        &:not(:disabled) {
-            background-color: ${({ theme }) => theme.palette.layout.surfaceHigh};
-        }
-    }
-
-    &:disabled {
-        ${({ theme, variant }) =>
-            variant === 'filled' &&
-            css`
-                background-color: ${theme.palette.layout.surfaceMid};
-            `}
-        color: ${({ theme }) => theme.palette.layout.onSurface.tertiary};
-        cursor: not-allowed;
-    }
-
-    ${({ theme }) => {
-        const normalDuration = theme.foundation.animation.duration.fast;
-        const timingFunction = theme.foundation.animation.timing.easeOut;
-
-        return `
-        transition: 
-            background-color ${normalDuration}s ${timingFunction},
-            border-color  ${normalDuration}s ${timingFunction};
-        `;
-    }}
-`;
+import { css, themeVars } from '@hautechai/webui.themeprovider';
 
 export type IconButtonProps = {
     variant?: 'filled' | 'outlined' | 'flat';
@@ -53,12 +10,96 @@ export type IconButtonProps = {
     customBackground?: string;
 };
 
+// Base styles
+const buttonBase = css`
+    border-radius: ${themeVars.cornerRadius.m}px;
+    border-style: solid;
+    color: ${themeVars.layout.onSurface.primary};
+    transition: 
+        background-color ${themeVars.animation.duration.fast}s ${themeVars.animation.timing.easeOut},
+        border-color ${themeVars.animation.duration.fast}s ${themeVars.animation.timing.easeOut};
+    
+    &:hover:not(:disabled) {
+        background-color: ${themeVars.layout.surfaceHigh};
+    }
+    
+    &:disabled {
+        color: ${themeVars.layout.onSurface.tertiary};
+        cursor: not-allowed;
+    }
+`;
+
+// Size variants
+const mediumSize = css`
+    padding: ${themeVars.spacing.ml}px;
+`;
+
+const smallSize = css`
+    padding: ${themeVars.spacing.m}px;
+`;
+
+// Variant styles
+const filledVariant = css`
+    border-width: ${themeVars.stroke.thin}px;
+    border-color: ${themeVars.layout.strokes};
+    background-color: ${themeVars.layout.surfaceLow};
+    
+    &:disabled {
+        background-color: ${themeVars.layout.surfaceMid};
+    }
+`;
+
+const outlinedVariant = css`
+    border-width: ${themeVars.stroke.thin}px;
+    border-color: ${themeVars.layout.strokes};
+    background-color: transparent;
+`;
+
+const flatVariant = css`
+    border-width: 0px;
+    background-color: transparent;
+`;
+
+export const iconButtonClasses = {
+    base: buttonBase,
+    sizes: {
+        medium: mediumSize,
+        small: smallSize,
+    },
+    variants: {
+        filled: filledVariant,
+        outlined: outlinedVariant,
+        flat: flatVariant,
+    },
+};
+
 export const IconButton = (props: IconButtonProps) => {
     const { variant = 'filled', size = 'medium', icon, customBackground, ...rest } = props;
 
+    const buttonClassName = [
+        iconButtonClasses.base,
+        iconButtonClasses.sizes[size],
+        iconButtonClasses.variants[variant],
+    ].join(' ');
+
     return (
-        <StyledButton variant={variant} size={size} customBackground={customBackground} {...rest}>
-            {icon}
-        </StyledButton>
+        <ButtonBase 
+            className={buttonClassName}
+            {...rest}
+        >
+            <div 
+                style={customBackground ? { 
+                    backgroundColor: customBackground,
+                    borderRadius: 'inherit',
+                    width: '100%',
+                    height: '100%',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center'
+                } : undefined}
+            >
+                {icon}
+            </div>
+        </ButtonBase>
     );
 };
