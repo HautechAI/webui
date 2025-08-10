@@ -5,6 +5,7 @@
     "description": "",
     "main": "index.js",
     "devDependencies": {
+        "@pigment-css/vite-plugin": "^0.0.30",
         "@storybook/addon-essentials": "^8.5.5",
         "@storybook/addon-interactions": "^8.5.5",
         "@storybook/addon-onboarding": "^8.5.5",

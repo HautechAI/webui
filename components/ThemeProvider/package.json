@@ -22,8 +22,7 @@
     },
     "author": "HautechAI",
     "dependencies": {
-        "@emotion/react": "^11.14.0",
-        "@emotion/styled": "^11.14.0"
+        "@pigment-css/react": "^0.0.30"
     },
     "peerDependencies": {
         "react": "^19.0.0"

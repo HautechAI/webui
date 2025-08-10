@@ -1,5 +1,6 @@
-import styled from '@emotion/styled';
+import { styled, css, globalCss } from '@pigment-css/react';
 
 export * from './ThemeProvider';
-export { css, Global } from '@emotion/react';
-export { styled };
+export { css, styled };
+// Re-export globalCss as Global to maintain compatibility with emotion API
+export { globalCss as Global };
