@@ -6,15 +6,13 @@ import { ThemeProvider } from '../../ThemeProvider/src';
 import { testTheme } from '../../test-theme';
 
 describe('ContextMenu', () => {
-  it('should render without crashing', () => {
-    expect(() => {
-      render(
-        React.createElement(
-          ThemeProvider,
-          { theme: testTheme },
-          React.createElement(ContextMenu, { children: 'Test', items: [{ key: 'test', label: 'Test Item' }] }})
-        )
-      );
-    }).not.toThrow();
-  });
+    it('should render without crashing', () => {
+        expect(() => {
+            render(
+                <ThemeProvider theme={testTheme}>
+                    <ContextMenu items={[{ key: 'test', label: 'Test Item' }]}>Test</ContextMenu>
+                </ThemeProvider>,
+            );
+        }).not.toThrow();
+    });
 });
