@@ -58,34 +58,34 @@ const StyledBox = styled(BaseComponent)<Omit<BoxProps, 'icon'>>`
               `
             : ''}
 
-    ${({ theme, padding }) =>
+    ${({ padding }) =>
         padding
             ? css`
-                  padding: ${theme.foundation.spacing[padding]}px;
+                  padding: ${themeVars.spacing[padding]};
               `
             : ''}
-    ${({ theme, paddingTop }) =>
+    ${({ paddingTop }) =>
         paddingTop
             ? css`
-                  padding-top: ${theme.foundation.spacing[paddingTop]}px;
+                  padding-top: ${themeVars.spacing[paddingTop]};
               `
             : ''}
-    ${({ theme, paddingRight }) =>
+    ${({ paddingRight }) =>
         paddingRight
             ? css`
-                  padding-right: ${theme.foundation.spacing[paddingRight]}px;
+                  padding-right: ${themeVars.spacing[paddingRight]};
               `
             : ''}
-    ${({ theme, paddingBottom }) =>
+    ${({ paddingBottom }) =>
         paddingBottom
             ? css`
-                  padding-bottom: ${theme.foundation.spacing[paddingBottom]}px;
+                  padding-bottom: ${themeVars.spacing[paddingBottom]};
               `
             : ''}
-    ${({ theme, paddingLeft }) =>
+    ${({ paddingLeft }) =>
         paddingLeft
             ? css`
-                  padding-left: ${theme.foundation.spacing[paddingLeft]}px;
+                  padding-left: ${themeVars.spacing[paddingLeft]};
               `
             : ''}
     ${({ overflow }) =>
@@ -146,11 +146,11 @@ export type BoxProps = PropsWithChildren<{
     maxHeight?: number | string;
     minWidth?: number | string;
     minHeight?: number | string;
-    padding?: keyof ThemeType['foundation']['spacing'];
-    paddingTop?: keyof ThemeType['foundation']['spacing'];
-    paddingRight?: keyof ThemeType['foundation']['spacing'];
-    paddingBottom?: keyof ThemeType['foundation']['spacing'];
-    paddingLeft?: keyof ThemeType['foundation']['spacing'];
+    padding?: 'xs' | 's' | 'm' | 'ml' | 'l' | 'xl' | 'xxl' | 'xxxl';
+    paddingTop?: 'xs' | 's' | 'm' | 'ml' | 'l' | 'xl' | 'xxl' | 'xxxl';
+    paddingRight?: 'xs' | 's' | 'm' | 'ml' | 'l' | 'xl' | 'xxl' | 'xxxl';
+    paddingBottom?: 'xs' | 's' | 'm' | 'ml' | 'l' | 'xl' | 'xxl' | 'xxxl';
+    paddingLeft?: 'xs' | 's' | 'm' | 'ml' | 'l' | 'xl' | 'xxl' | 'xxxl';
     overflow?: 'hidden' | 'visible' | 'scroll' | 'auto';
     overflowX?: 'hidden' | 'visible' | 'scroll' | 'auto';
     overflowY?: 'hidden' | 'visible' | 'scroll' | 'auto';

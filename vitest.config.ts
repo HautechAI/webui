@@ -1,4 +1,3 @@
-import linaria from '@wyw-in-js/vite';
 import { defineConfig } from 'vitest/config';
 import path from 'path';
 import fs from 'fs';
@@ -28,12 +27,7 @@ componentDirs.forEach(dir => {
 
 export default defineConfig({
     plugins: [
-        linaria({
-            include: ['**/*.{ts,tsx}'],
-            babelOptions: {
-                presets: ['@babel/preset-typescript', '@babel/preset-react'],
-            },
-        }),
+        // Linaria plugin removed for test environment - using mocks instead
     ],
     resolve: {
         alias: packageAliases

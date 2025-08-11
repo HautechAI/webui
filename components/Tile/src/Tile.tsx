@@ -20,8 +20,8 @@ const StyledTileDiv = styled.div<Omit<TileProps, 'icon'>>`
     align-items: center;
     justify-content: center;
 
-    background-color: ${({ theme }) => theme.palette.layout.surfaceMid};
-    border-radius: 8px;
+    background-color: ${themeVars.layout.surfaceMid};
+    border-radius: ${themeVars.cornerRadius.m};
 
     ${({ width, size }) =>
         (width || size) &&
@@ -44,28 +44,21 @@ const StyledTileDiv = styled.div<Omit<TileProps, 'icon'>>`
     background-size: cover;
     background-position: center;
 
-    border-width: ${({ theme }) => `${theme.foundation.stroke.standard}`}px;
+    border-width: ${themeVars.stroke.standard};
     border-style: solid;
 
     background-origin: border-box;
     box-sizing: border-box;
 
-    ${({ theme }) => {
-        const normalDuration = theme.foundation.animation.duration.fast;
-        const timingFunction = theme.foundation.animation.timing.easeOut;
+    transition: 
+        background-color ${themeVars.animation.duration.fast} ${themeVars.animation.timing.easeOut},
+        outline-color ${themeVars.animation.duration.fast} ${themeVars.animation.timing.easeOut},
+        transform ${themeVars.animation.duration.fast} ${themeVars.animation.timing.easeOut},
+        border-color ${themeVars.animation.duration.fast} ${themeVars.animation.timing.easeOut};
 
-        return `
-        transition: 
-            background-color ${normalDuration}s ${timingFunction},
-            outline-color ${normalDuration}s ${timingFunction},
-            transform ${normalDuration}s ${timingFunction},
-            border-color  ${normalDuration}s ${timingFunction};
-        `;
-    }}
-
-    border-color: ${({ selected, theme }) => (selected ? theme.palette.actions.primary : 'transparent')};
+    border-color: ${({ selected }) => (selected ? themeVars.actions.primary : 'transparent')};
     .htch-webui-hoverable:hover & {
-        border-color: ${({ theme }) => theme.palette.actions.primary};
+        border-color: ${themeVars.actions.primary};
     }
 `;
 
@@ -74,8 +67,8 @@ const StyledTileImg = styled.img<Omit<TileProps, 'icon'>>`
     align-items: center;
     justify-content: center;
 
-    background-color: ${({ theme }) => theme.palette.layout.surfaceMid};
-    border-radius: 8px;
+    background-color: ${themeVars.layout.surfaceMid};
+    border-radius: ${themeVars.cornerRadius.m};
 
     ${({ width, size }) =>
         (width || size) &&
@@ -94,21 +87,21 @@ const StyledTileImg = styled.img<Omit<TileProps, 'icon'>>`
             aspect-ratio: ${aspectRatio};
         `};
 
-    border-width: ${({ theme }) => `${theme.foundation.stroke.standard}`}px;
+    border-width: ${themeVars.stroke.standard};
     border-style: solid;
 
     background-origin: border-box;
     box-sizing: border-box;
 
     transition:
-        background-color 0.3s ease,
-        border-color 0.3s ease,
-        outline-color 0.3s ease,
-        transform 0.3s ease;
+        background-color ${themeVars.animation.duration.fast} ${themeVars.animation.timing.easeOut},
+        border-color ${themeVars.animation.duration.fast} ${themeVars.animation.timing.easeOut},
+        outline-color ${themeVars.animation.duration.fast} ${themeVars.animation.timing.easeOut},
+        transform ${themeVars.animation.duration.fast} ${themeVars.animation.timing.easeOut};
 
-    border-color: ${({ selected, theme }) => (selected ? theme.palette.actions.primary : 'transparent')};
+    border-color: ${({ selected }) => (selected ? themeVars.actions.primary : 'transparent')};
     .htch-webui-hoverable:hover & {
-        border-color: ${({ theme }) => theme.palette.actions.primary};
+        border-color: ${themeVars.actions.primary};
     }
 `;
 
@@ -117,8 +110,8 @@ const StyledTileVideo = styled.video<Omit<TileProps, 'icon'>>`
     align-items: center;
     justify-content: center;
 
-    background-color: ${({ theme }) => theme.palette.layout.surfaceMid};
-    border-radius: 8px;
+    background-color: ${themeVars.layout.surfaceMid};
+    border-radius: ${themeVars.cornerRadius.m};
 
     ${({ width, size }) =>
         (width || size) &&
@@ -137,21 +130,21 @@ const StyledTileVideo = styled.video<Omit<TileProps, 'icon'>>`
             aspect-ratio: ${aspectRatio};
         `};
 
-    border-width: ${({ theme }) => `${theme.foundation.stroke.standard}`}px;
+    border-width: ${themeVars.stroke.standard};
     border-style: solid;
 
     background-origin: border-box;
     box-sizing: border-box;
 
     transition:
-        background-color 0.3s ease,
-        border-color 0.3s ease,
-        outline-color 0.3s ease,
-        transform 0.3s ease;
+        background-color ${themeVars.animation.duration.fast} ${themeVars.animation.timing.easeOut},
+        border-color ${themeVars.animation.duration.fast} ${themeVars.animation.timing.easeOut},
+        outline-color ${themeVars.animation.duration.fast} ${themeVars.animation.timing.easeOut},
+        transform ${themeVars.animation.duration.fast} ${themeVars.animation.timing.easeOut};
 
-    border-color: ${({ selected, theme }) => (selected ? theme.palette.actions.primary : 'transparent')};
+    border-color: ${({ selected }) => (selected ? themeVars.actions.primary : 'transparent')};
     .htch-webui-hoverable:hover & {
-        border-color: ${({ theme }) => theme.palette.actions.primary};
+        border-color: ${themeVars.actions.primary};
     }
 `;
 
