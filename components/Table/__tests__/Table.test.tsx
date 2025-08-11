@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { render } from '@testing-library/react';
 import React from 'react';
-import { Table } from '../src/Table';
+import { Root, Head, HeadCell, Body, Row, Cell } from '../src/Table';
 import { ThemeProvider } from '../../ThemeProvider/src';
 import { testTheme } from '../../test-theme';
 
@@ -10,7 +10,18 @@ describe('Table', () => {
         expect(() => {
             render(
                 <ThemeProvider theme={testTheme}>
-                    <Table columns={[{ key: 'test', label: 'Test' }]} data={[{ test: 'Test Data' }]} />
+                    <Root>
+                        <Head>
+                            <Row>
+                                <HeadCell>Test Header</HeadCell>
+                            </Row>
+                        </Head>
+                        <Body>
+                            <Row>
+                                <Cell>Test Cell</Cell>
+                            </Row>
+                        </Body>
+                    </Root>
                 </ThemeProvider>,
             );
         }).not.toThrow();

@@ -41,6 +41,7 @@ export default defineConfig({
     test: {
         globals: true,
         environment: 'jsdom',
+        setupFiles: ['./vitest.setup.ts'],
         include: ['components/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx,css}'],
     },
     esbuild: {

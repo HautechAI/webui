@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { render } from '@testing-library/react';
 import React from 'react';
-import { SegmentedControl } from '../src/SegmentedControl';
+import SegmentedControl from '../src/SegmentedControl';
 import { ThemeProvider } from '../../ThemeProvider/src';
 import { testTheme } from '../../test-theme';
 
@@ -11,9 +11,9 @@ describe('SegmentedControl', () => {
             render(
                 <ThemeProvider theme={testTheme}>
                     <SegmentedControl 
-                        segments={[{ key: 'test', label: 'Test' }]} 
-                        selectedSegment="test" 
-                        onSegmentChange={() => {}} 
+                        options={[{ value: 'test', label: 'Test' }]} 
+                        value="test" 
+                        onChange={() => {}} 
                     />
                 </ThemeProvider>,
             );
