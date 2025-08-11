@@ -6,15 +6,13 @@ import { ThemeProvider } from '../../ThemeProvider/src';
 import { testTheme } from '../../test-theme';
 
 describe('IconButton', () => {
-  it('should render without crashing', () => {
-    expect(() => {
-      render(
-        React.createElement(
-          ThemeProvider,
-          { theme: testTheme },
-          React.createElement(IconButton, { icon: 'test', onClick: () => {} }})
-        )
-      );
-    }).not.toThrow();
-  });
+    it('should render without crashing', () => {
+        expect(() => {
+            render(
+                <ThemeProvider theme={testTheme}>
+                    <IconButton icon="test" onClick={() => {}} />
+                </ThemeProvider>,
+            );
+        }).not.toThrow();
+    });
 });

@@ -6,15 +6,13 @@ import { ThemeProvider } from '../../ThemeProvider/src';
 import { testTheme } from '../../test-theme';
 
 describe('Previews', () => {
-  it('should render without crashing', () => {
-    expect(() => {
-      render(
-        React.createElement(
-          ThemeProvider,
-          { theme: testTheme },
-          React.createElement(Previews, {})
-        )
-      );
-    }).not.toThrow();
-  });
+    it('should render without crashing', () => {
+        expect(() => {
+            render(
+                <ThemeProvider theme={testTheme}>
+                    <Previews />
+                </ThemeProvider>,
+            );
+        }).not.toThrow();
+    });
 });

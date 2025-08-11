@@ -6,15 +6,13 @@ import { ThemeProvider } from '../../ThemeProvider/src';
 import { testTheme } from '../../test-theme';
 
 describe('Popover', () => {
-  it('should render without crashing', () => {
-    expect(() => {
-      render(
-        React.createElement(
-          ThemeProvider,
-          { theme: testTheme },
-          React.createElement(Popover, { isOpen: true, children: 'Test Popover' }})
-        )
-      );
-    }).not.toThrow();
-  });
+    it('should render without crashing', () => {
+        expect(() => {
+            render(
+                <ThemeProvider theme={testTheme}>
+                    <Popover isOpen={true}>Test Popover</Popover>
+                </ThemeProvider>,
+            );
+        }).not.toThrow();
+    });
 });

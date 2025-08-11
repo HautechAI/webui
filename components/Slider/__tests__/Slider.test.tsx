@@ -6,15 +6,13 @@ import { ThemeProvider } from '../../ThemeProvider/src';
 import { testTheme } from '../../test-theme';
 
 describe('Slider', () => {
-  it('should render without crashing', () => {
-    expect(() => {
-      render(
-        React.createElement(
-          ThemeProvider,
-          { theme: testTheme },
-          React.createElement(Slider, { value: 50, onChange: () => {} }})
-        )
-      );
-    }).not.toThrow();
-  });
+    it('should render without crashing', () => {
+        expect(() => {
+            render(
+                <ThemeProvider theme={testTheme}>
+                    <Slider value={50} onChange={() => {}} />
+                </ThemeProvider>,
+            );
+        }).not.toThrow();
+    });
 });

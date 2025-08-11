@@ -6,15 +6,13 @@ import { ThemeProvider } from '../../ThemeProvider/src';
 import { testTheme } from '../../test-theme';
 
 describe('Table', () => {
-  it('should render without crashing', () => {
-    expect(() => {
-      render(
-        React.createElement(
-          ThemeProvider,
-          { theme: testTheme },
-          React.createElement(Table, { columns: [{ key: 'test', label: 'Test' }], data: [{ test: 'Test Data' }] }})
-        )
-      );
-    }).not.toThrow();
-  });
+    it('should render without crashing', () => {
+        expect(() => {
+            render(
+                <ThemeProvider theme={testTheme}>
+                    <Table columns={[{ key: 'test', label: 'Test' }]} data={[{ test: 'Test Data' }]} />
+                </ThemeProvider>,
+            );
+        }).not.toThrow();
+    });
 });

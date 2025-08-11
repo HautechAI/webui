@@ -6,15 +6,17 @@ import { ThemeProvider } from '../../ThemeProvider/src';
 import { testTheme } from '../../test-theme';
 
 describe('SegmentedControl', () => {
-  it('should render without crashing', () => {
-    expect(() => {
-      render(
-        React.createElement(
-          ThemeProvider,
-          { theme: testTheme },
-          React.createElement(SegmentedControl, { segments: [{ key: 'test', label: 'Test' }], selectedSegment: 'test', onSegmentChange: () => {} }})
-        )
-      );
-    }).not.toThrow();
-  });
+    it('should render without crashing', () => {
+        expect(() => {
+            render(
+                <ThemeProvider theme={testTheme}>
+                    <SegmentedControl 
+                        segments={[{ key: 'test', label: 'Test' }]} 
+                        selectedSegment="test" 
+                        onSegmentChange={() => {}} 
+                    />
+                </ThemeProvider>,
+            );
+        }).not.toThrow();
+    });
 });

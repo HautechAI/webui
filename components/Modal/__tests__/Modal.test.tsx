@@ -6,15 +6,13 @@ import { ThemeProvider } from '../../ThemeProvider/src';
 import { testTheme } from '../../test-theme';
 
 describe('Modal', () => {
-  it('should render without crashing', () => {
-    expect(() => {
-      render(
-        React.createElement(
-          ThemeProvider,
-          { theme: testTheme },
-          React.createElement(Modal, { isOpen: true, onClose: () => {}, children: 'Test Modal' }})
-        )
-      );
-    }).not.toThrow();
-  });
+    it('should render without crashing', () => {
+        expect(() => {
+            render(
+                <ThemeProvider theme={testTheme}>
+                    <Modal isOpen={true} onClose={() => {}}>Test Modal</Modal>
+                </ThemeProvider>,
+            );
+        }).not.toThrow();
+    });
 });
