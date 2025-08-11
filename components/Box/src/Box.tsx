@@ -1,5 +1,6 @@
-import { css, styled, ThemeType } from '@hautechai/webui.themeprovider';
-import { forwardRef, PropsWithChildren } from 'react';
+import { css } from '@linaria/core';
+import { useTheme, ThemeType } from '@hautechai/webui.themeprovider';
+import { forwardRef, PropsWithChildren, useMemo } from 'react';
 
 const sizeToCss = (size: number | string) => {
     if (typeof size === 'string') {
@@ -8,130 +9,8 @@ const sizeToCss = (size: number | string) => {
     return `${size}px`;
 };
 
-const BaseComponent = forwardRef(
-    (props: Pick<BoxProps, 'className' | 'children' | 'style' | 'id'>, ref: React.ForwardedRef<HTMLDivElement>) => {
-        const { className, children, style, id } = props;
-        return <div {...{ ref }} {...{ className, children, style, id }} />;
-    },
-);
-
-const StyledBox = styled(BaseComponent)<Omit<BoxProps, 'icon'>>`
-    display: ${({ display }) => display ?? 'flex'};
-
-    ${({ width }) =>
-        width
-            ? css`
-                  width: ${sizeToCss(width)};
-              `
-            : ''}
-    ${({ height }) =>
-        height
-            ? css`
-                  height: ${sizeToCss(height)};
-              `
-            : ''}
-    ${({ maxWidth }) =>
-        maxWidth
-            ? css`
-                  max-width: ${sizeToCss(maxWidth)};
-              `
-            : ''}
-    ${({ maxHeight }) =>
-        maxHeight
-            ? css`
-                  max-height: ${sizeToCss(maxHeight)};
-              `
-            : ''}
-
-    ${({ minWidth }) =>
-        minWidth
-            ? css`
-                  min-width: ${sizeToCss(minWidth)};
-              `
-            : ''}
-    ${({ minHeight }) =>
-        minHeight
-            ? css`
-                  min-height: ${sizeToCss(minHeight)};
-              `
-            : ''}
-
-    ${({ theme, padding }) =>
-        padding
-            ? css`
-                  padding: ${theme.foundation.spacing[padding]}px;
-              `
-            : ''}
-    ${({ theme, paddingTop }) =>
-        paddingTop
-            ? css`
-                  padding-top: ${theme.foundation.spacing[paddingTop]}px;
-              `
-            : ''}
-    ${({ theme, paddingRight }) =>
-        paddingRight
-            ? css`
-                  padding-right: ${theme.foundation.spacing[paddingRight]}px;
-              `
-            : ''}
-    ${({ theme, paddingBottom }) =>
-        paddingBottom
-            ? css`
-                  padding-bottom: ${theme.foundation.spacing[paddingBottom]}px;
-              `
-            : ''}
-    ${({ theme, paddingLeft }) =>
-        paddingLeft
-            ? css`
-                  padding-left: ${theme.foundation.spacing[paddingLeft]}px;
-              `
-            : ''}
-    ${({ overflow }) =>
-        overflow
-            ? css`
-                  overflow: ${overflow};
-              `
-            : ''}
-    ${({ overflowX }) =>
-        overflowX
-            ? css`
-                  overflow-x: ${overflowX};
-              `
-            : ''}
-    ${({ overflowY }) =>
-        overflowY
-            ? css`
-                  overflow-y: ${overflowY};
-              `
-            : ''};
-
-    ${({ alignItems }) =>
-        alignItems
-            ? css`
-                  align-items: ${alignItems};
-              `
-            : ''}
-
-    ${({ justifyContent }) =>
-        justifyContent
-            ? css`
-                  justify-content: ${justifyContent};
-              `
-            : ''}
-
-    ${({ grow }) =>
-        grow !== undefined
-            ? css`
-                  flex-grow: ${grow};
-              `
-            : ''}
-
-    ${({ shrink }) =>
-        shrink !== undefined
-            ? css`
-                  flex-shrink: ${shrink};
-              `
-            : ''}
+const baseBoxClass = css`
+    display: flex;
 `;
 
 export type BoxProps = PropsWithChildren<{
@@ -159,6 +38,99 @@ export type BoxProps = PropsWithChildren<{
     shrink?: number;
 }>;
 
-export const Box = forwardRef((props: BoxProps, ref: React.ForwardedRef<HTMLDivElement>) => {
-    return <StyledBox {...props} ref={ref} />;
+export const Box = forwardRef<HTMLDivElement, BoxProps>((props, ref) => {
+    const {
+        className,
+        children,
+        style,
+        id,
+        width,
+        height,
+        maxWidth,
+        maxHeight,
+        minWidth,
+        minHeight,
+        padding,
+        paddingTop,
+        paddingRight,
+        paddingBottom,
+        paddingLeft,
+        overflow,
+        overflowX,
+        overflowY,
+        display,
+        alignItems,
+        justifyContent,
+        grow,
+        shrink,
+        ...restProps
+    } = props;
+
+    const theme = useTheme();
+    
+    const inlineStyles = useMemo(() => {
+        const styles: React.CSSProperties = {};
+        
+        if (display !== undefined) styles.display = display;
+        if (width !== undefined) styles.width = sizeToCss(width);
+        if (height !== undefined) styles.height = sizeToCss(height);
+        if (maxWidth !== undefined) styles.maxWidth = sizeToCss(maxWidth);
+        if (maxHeight !== undefined) styles.maxHeight = sizeToCss(maxHeight);
+        if (minWidth !== undefined) styles.minWidth = sizeToCss(minWidth);
+        if (minHeight !== undefined) styles.minHeight = sizeToCss(minHeight);
+        
+        if (padding !== undefined) styles.padding = `${theme.foundation.spacing[padding]}px`;
+        if (paddingTop !== undefined) styles.paddingTop = `${theme.foundation.spacing[paddingTop]}px`;
+        if (paddingRight !== undefined) styles.paddingRight = `${theme.foundation.spacing[paddingRight]}px`;
+        if (paddingBottom !== undefined) styles.paddingBottom = `${theme.foundation.spacing[paddingBottom]}px`;
+        if (paddingLeft !== undefined) styles.paddingLeft = `${theme.foundation.spacing[paddingLeft]}px`;
+        
+        if (overflow !== undefined) styles.overflow = overflow;
+        if (overflowX !== undefined) styles.overflowX = overflowX;
+        if (overflowY !== undefined) styles.overflowY = overflowY;
+        
+        if (alignItems !== undefined) styles.alignItems = alignItems;
+        if (justifyContent !== undefined) styles.justifyContent = justifyContent;
+        
+        if (grow !== undefined) styles.flexGrow = grow;
+        if (shrink !== undefined) styles.flexShrink = shrink;
+        
+        return { ...styles, ...style };
+    }, [
+        theme,
+        display,
+        width,
+        height,
+        maxWidth,
+        maxHeight,
+        minWidth,
+        minHeight,
+        padding,
+        paddingTop,
+        paddingRight,
+        paddingBottom,
+        paddingLeft,
+        overflow,
+        overflowX,
+        overflowY,
+        alignItems,
+        justifyContent,
+        grow,
+        shrink,
+        style,
+    ]);
+
+    const combinedClassName = className ? `${baseBoxClass} ${className}` : baseBoxClass;
+
+    return (
+        <div
+            ref={ref}
+            className={combinedClassName}
+            style={inlineStyles}
+            id={id}
+            {...restProps}
+        >
+            {children}
+        </div>
+    );
 });

@@ -1,9 +1,4 @@
 import { createContext, PropsWithChildren, useContext } from 'react';
-import { ThemeProvider as EmotionThemeProvider } from '@emotion/react';
-
-declare module '@emotion/react' {
-    export interface Theme extends ThemeType {}
-}
 
 export type ThemeType = {
     foundation: {
@@ -84,7 +79,7 @@ export const ThemeContext = createContext<ThemeType>({} as ThemeType);
 export const ThemeProvider = ({ theme, children }: PropsWithChildren<{ theme: ThemeType }>) => {
     return (
         <ThemeContext.Provider value={theme}>
-            <EmotionThemeProvider theme={theme}>{children}</EmotionThemeProvider>
+            {children}
         </ThemeContext.Provider>
     );
 };

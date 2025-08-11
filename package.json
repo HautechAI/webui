@@ -4,7 +4,8 @@
     "scripts": {
         "dev": "lerna run storybook",
         "version": "pnpm lerna version --no-private --yes",
-        "publish": "pnpm --filter=\\!storybook -r publish --no-git-checks"
+        "publish": "pnpm --filter=\\!storybook -r publish --no-git-checks",
+        "test": "jest"
     },
     "dependencies": {
         "@storybook/test": "^8.5.5",
@@ -12,11 +13,24 @@
         "typescript": "^5.7.3"
     },
     "devDependencies": {
+        "@linaria/babel-preset": "^5.0.4",
+        "@linaria/core": "^6.3.0",
+        "@linaria/react": "^6.3.0",
+        "@linaria/vite": "^5.0.4",
+        "@testing-library/jest-dom": "^6.6.4",
+        "@testing-library/react": "^16.3.0",
+        "@types/jest": "^30.0.0",
+        "@types/lodash-es": "^4.17.12",
         "@types/node": "^22.13.4",
         "@types/react": "^19.0.8",
+        "jest": "^30.0.5",
+        "jest-environment-jsdom": "^30.0.5",
         "lerna": "^8.1.9",
+        "lodash-es": "^4.17.21",
         "prettier": "^3.5.3",
-        "tsup": "^8.5.0"
+        "ts-jest": "^29.4.1",
+        "tsup": "^8.5.0",
+        "type-fest": "^4.41.0"
     },
     "license": "Apache-2.0",
     "packageManager": "pnpm@10.11.0+sha512.6540583f41cc5f628eb3d9773ecee802f4f9ef9923cc45b69890fb47991d4b092964694ec3a4f738a420c918a333062c8b925d312f42e4f0c263eb603551f977"
