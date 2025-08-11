@@ -10,7 +10,10 @@ describe('Popover', () => {
         expect(() => {
             render(
                 <ThemeProvider theme={testTheme}>
-                    <Popover isOpen={true}>Test Popover</Popover>
+                    <Popover
+                        content={({ close }) => <div onClick={close}>Content</div>}
+                        trigger={() => <button>Trigger</button>}
+                    />
                 </ThemeProvider>,
             );
         }).not.toThrow();

@@ -10,7 +10,7 @@ describe('Previews', () => {
         expect(() => {
             render(
                 <ThemeProvider theme={testTheme}>
-                    <Previews />
+                    <Previews images={['test1.jpg', 'test2.jpg']} />
                 </ThemeProvider>,
             );
         }).not.toThrow();

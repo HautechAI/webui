@@ -10,7 +10,7 @@ describe('Dropdown', () => {
         expect(() => {
             render(
                 <ThemeProvider theme={testTheme}>
-                    <Dropdown items={[{ key: 'test', label: 'Test Item' }]}>Test</Dropdown>
+                    <Dropdown options={[{ label: 'Test', value: 'test' }]} />
                 </ThemeProvider>,
             );
         }).not.toThrow();
