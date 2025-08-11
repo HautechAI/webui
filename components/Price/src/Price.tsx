@@ -1,10 +1,11 @@
 import { styled } from '@linaria/react';
+import { themeVars } from '@hautechai/webui.themeprovider';
 import { Typography } from '@hautechai/webui.typography';
 
 const Container = styled.div`
     display: flex;
     flex-direction: row;
-    gap: ${({ theme }) => theme.foundation.spacing.s}px;
+    gap: ${themeVars.spacing.s};
     align-items: flex-end;
 `;
 

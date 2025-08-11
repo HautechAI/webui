@@ -1,48 +1,49 @@
 import { styled } from '@linaria/react';
+import { themeVars } from '@hautechai/webui.themeprovider';
 
 const Container = styled.div<Required<Pick<PanelProps, 'hierarchy' | 'size'>> & Pick<PanelProps, 'stretch' | 'highlighted'>>`
     display: flex;
-    padding: ${({ theme, size }) =>
+    padding: ${({ size }) =>
         ({
-            small: theme.foundation.spacing.ml,
-            medium: theme.foundation.spacing.l,
-        })[size]}px;
+            small: themeVars.spacing.ml,
+            medium: themeVars.spacing.l,
+        })[size]};
 
-    background-color: ${({ theme, hierarchy }) =>
+    background-color: ${({ hierarchy }) =>
         ({
-            low: theme.palette.layout.surfaceLow,
-            mid: theme.palette.layout.surfaceMid,
-            high: theme.palette.layout.surfaceHigh,
+            low: themeVars.layout.surfaceLow,
+            mid: themeVars.layout.surfaceMid,
+            high: themeVars.layout.surfaceHigh,
         })[hierarchy]};
 
-    border-radius: ${({ theme, size }) =>
+    border-radius: ${({ size }) =>
         ({
-            small: theme.foundation.cornerRadius.m,
-            medium: theme.foundation.cornerRadius.l,
-        })[size]}px;
+            small: themeVars.cornerRadius.m,
+            medium: themeVars.cornerRadius.l,
+        })[size]};
 
     border-style: solid;
-    border-width: ${({ theme, hierarchy, highlighted }) => {
+    border-width: ${({ hierarchy }) => {
         return ({
-            low: theme.foundation.stroke.thin,
-            mid: 0,
-            high: theme.foundation.stroke.thin,
+            low: themeVars.stroke.thin,
+            mid: '0px',
+            high: themeVars.stroke.thin,
         })[hierarchy];
-    }}px;
+    }};
     
-    box-shadow: ${({ theme, hierarchy, highlighted }) => {
-        if (highlighted) return `0 0 0 2px ${theme.palette.layout.onSurface.primary}`;
+    box-shadow: ${({ highlighted }) => {
+        if (highlighted) return `0 0 0 2px ${themeVars.layout.onSurface.primary}`;
         return `0 0 0 0px clear`
     }};
     
-    border-color: ${({ theme, hierarchy, highlighted }) => {
+    border-color: ${({ hierarchy, highlighted }) => {
         if (!highlighted) return ({
-            low: theme.palette.layout.strokes,
-            mid: 0,
-            high: theme.palette.layout.strokes,
+            low: themeVars.layout.strokes,
+            mid: 'transparent',
+            high: themeVars.layout.strokes,
         })[hierarchy]
         
-        return theme.palette.layout.onSurface.primary;
+        return themeVars.layout.onSurface.primary;
     }};
     width: ${({ stretch }) => (stretch ? '100%' : 'auto')};
 `;

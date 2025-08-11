@@ -1,5 +1,6 @@
 import { useCallback } from 'react';
 import { styled } from '@linaria/react';
+import { themeVars } from '@hautechai/webui.themeprovider';
 import { IconButton } from '@hautechai/webui.iconbutton';
 import { MinusIcon, PlusIcon } from '@hautechai/webui.icon';
 import { Typography } from '@hautechai/webui.typography';
@@ -7,11 +8,11 @@ import { Typography } from '@hautechai/webui.typography';
 const CounterContainer = styled.div`
     display: flex;
     align-items: center;
-    gap: ${({ theme }) => theme.foundation.spacing.m}px;
-    border: ${({ theme }) => theme.foundation.stroke.thin}px solid ${({ theme }) => theme.palette.layout.strokes};
-    border-radius: ${({ theme }) => theme.foundation.cornerRadius.m}px;
+    gap: ${themeVars.spacing.m};
+    border: ${themeVars.stroke.thin} solid ${themeVars.layout.strokes};
+    border-radius: ${themeVars.cornerRadius.m};
     min-width: 120px;
-    color: ${({ theme }) => theme.palette.layout.onSurface.secondary};
+    color: ${themeVars.layout.onSurface.secondary};
     box-sizing: border-box;
 `;
 
@@ -19,7 +20,7 @@ const CounterValue = styled(Typography)`
     width: 32px;
     height: 32px;
     align-content: center;
-    padding: ${({ theme }) => theme.foundation.spacing.xs}px;
+    padding: ${themeVars.spacing.xs};
     text-align: center;
 `;
 

@@ -1,25 +1,25 @@
 import { ButtonBase } from '@hautechai/webui.buttonbase';
 import { styled } from '@linaria/react';
+import { themeVars } from '@hautechai/webui.themeprovider';
 import { Typography, TypographyProps } from '@hautechai/webui.typography';
 
 const StyledButton = styled(ButtonBase)`
     justify-content: center;
     align-items: center;
 
-    gap: ${({ theme }) => theme.foundation.spacing.s}px;
+    gap: ${themeVars.spacing.s};
 
-    color: ${({ theme }) => theme.palette.layout.onSurface.secondary};
+    color: ${themeVars.layout.onSurface.secondary};
 
     :hover {
-        color: ${({ theme }) => theme.palette.layout.onSurface.primary};
+        color: ${themeVars.layout.onSurface.primary};
     }
 
     :disabled {
-        color: ${({ theme }) => theme.palette.layout.onSurface.tertiary};
+        color: ${themeVars.layout.onSurface.tertiary};
     }
 
-    transition: color ${({ theme }) => theme.foundation.animation.duration.fast}s
-        ${({ theme }) => theme.foundation.animation.timing.easeOut};
+    transition: color ${themeVars.animation.duration.fast} ${themeVars.animation.timing.easeOut};
 `;
 
 export type LinkButtonProps = {
