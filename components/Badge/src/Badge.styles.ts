@@ -5,9 +5,9 @@ import { Typography } from '@hautechai/webui.typography';
 
 // Base container styles
 const containerBase = css`
-    border-radius: ${themeVars.cornerRadius.s}px;
-    gap: ${themeVars.spacing.s}px;
-    padding: ${themeVars.spacing.s}px ${themeVars.spacing.m}px;
+    border-radius: ${themeVars.cornerRadius.s};
+    gap: ${themeVars.spacing.s};
+    padding: ${themeVars.spacing.s} ${themeVars.spacing.m};
 `;
 
 // Color variant styles

@@ -1,19 +1,19 @@
 import { ThemeType } from './ThemeProvider';
 
-// Utility to convert nested theme object to CSS custom properties
+// Utility to convert nested theme object to CSS custom properties (no unit mutation)
 const flattenTheme = (obj: any, prefix = '--theme'): Record<string, string> => {
     const result: Record<string, string> = {};
-    
+
     for (const [key, value] of Object.entries(obj)) {
         const cssKey = `${prefix}-${key.replace(/([A-Z])/g, '-$1').toLowerCase()}`;
-        
+
         if (typeof value === 'object' && value !== null) {
             Object.assign(result, flattenTheme(value, cssKey));
         } else {
             result[cssKey] = String(value);
         }
     }
-    
+
     return result;
 };
 
@@ -23,7 +23,10 @@ export const themeToCssProperties = (theme: ThemeType): Record<string, string> =
 
 // Utility to get CSS custom property name from theme path
 export const cssVar = (path: string): string => {
-    const cssPath = path.replace(/\./g, '-').replace(/([A-Z])/g, '-$1').toLowerCase();
+    const cssPath = path
+        .replace(/\./g, '-')
+        .replace(/([A-Z])/g, '-$1')
+        .toLowerCase();
     return `var(--theme-${cssPath})`;
 };
 
@@ -31,34 +34,34 @@ export const cssVar = (path: string): string => {
 export const themeVars = {
     // Foundation
     cornerRadius: {
-        xs: cssVar('foundation.cornerRadius.xs'),
-        s: cssVar('foundation.cornerRadius.s'),
-        m: cssVar('foundation.cornerRadius.m'),
-        l: cssVar('foundation.cornerRadius.l'),
-        xl: cssVar('foundation.cornerRadius.xl'),
-        xxl: cssVar('foundation.cornerRadius.xxl'),
+        xs: `calc(${cssVar('foundation.cornerRadius.xs')} * 1px)`,
+        s: `calc(${cssVar('foundation.cornerRadius.s')} * 1px)`,
+        m: `calc(${cssVar('foundation.cornerRadius.m')} * 1px)`,
+        l: `calc(${cssVar('foundation.cornerRadius.l')} * 1px)`,
+        xl: `calc(${cssVar('foundation.cornerRadius.xl')} * 1px)`,
+        xxl: `calc(${cssVar('foundation.cornerRadius.xxl')} * 1px)`,
     },
     spacing: {
-        xs: cssVar('foundation.spacing.xs'),
-        s: cssVar('foundation.spacing.s'),
-        m: cssVar('foundation.spacing.m'),
-        ml: cssVar('foundation.spacing.ml'),
-        l: cssVar('foundation.spacing.l'),
-        xl: cssVar('foundation.spacing.xl'),
-        xxl: cssVar('foundation.spacing.xxl'),
-        xxxl: cssVar('foundation.spacing.xxxl'),
+        xs: `calc(${cssVar('foundation.spacing.xs')} * 1px)`,
+        s: `calc(${cssVar('foundation.spacing.s')} * 1px)`,
+        m: `calc(${cssVar('foundation.spacing.m')} * 1px)`,
+        ml: `calc(${cssVar('foundation.spacing.ml')} * 1px)`,
+        l: `calc(${cssVar('foundation.spacing.l')} * 1px)`,
+        xl: `calc(${cssVar('foundation.spacing.xl')} * 1px)`,
+        xxl: `calc(${cssVar('foundation.spacing.xxl')} * 1px)`,
+        xxxl: `calc(${cssVar('foundation.spacing.xxxl')} * 1px)`,
     },
     stroke: {
-        thin: cssVar('foundation.stroke.thin'),
-        standard: cssVar('foundation.stroke.standard'),
-        thick: cssVar('foundation.stroke.thick'),
-        xthick: cssVar('foundation.stroke.xthick'),
+        thin: `calc(${cssVar('foundation.stroke.thin')} * 1px)`,
+        standard: `calc(${cssVar('foundation.stroke.standard')} * 1px)`,
+        thick: `calc(${cssVar('foundation.stroke.thick')} * 1px)`,
+        xthick: `calc(${cssVar('foundation.stroke.xthick')} * 1px)`,
     },
     animation: {
         duration: {
-            fast: cssVar('foundation.animation.duration.fast'),
-            normal: cssVar('foundation.animation.duration.normal'),
-            slow: cssVar('foundation.animation.duration.slow'),
+            fast: `calc(${cssVar('foundation.animation.duration.fast')} * 1s)`,
+            normal: `calc(${cssVar('foundation.animation.duration.normal')} * 1s)`,
+            slow: `calc(${cssVar('foundation.animation.duration.slow')} * 1s)`,
         },
         timing: {
             ease: cssVar('foundation.animation.timing.ease'),

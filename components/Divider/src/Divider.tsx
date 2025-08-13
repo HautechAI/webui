@@ -2,7 +2,7 @@ import { css } from '@linaria/core';
 import { themeVars } from '../../ThemeProvider/src';
 
 export const dividerStyles = css`
-    border-bottom-width: ${themeVars.stroke.thin}px;
+    border-bottom-width: ${themeVars.stroke.thin};
     border-bottom-style: solid;
     border-bottom-color: ${themeVars.layout.strokes};
 `;

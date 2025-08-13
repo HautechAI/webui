@@ -21,22 +21,22 @@ export type ButtonProps = {
 const buttonBase = css`
     justify-content: center;
     align-items: center;
-    border-radius: ${themeVars.cornerRadius.m}px;
+    border-radius: ${themeVars.cornerRadius.m};
     border-style: solid;
     transition: 
-        background-color ${themeVars.animation.duration.fast}s ${themeVars.animation.timing.easeOut},
-        border-color ${themeVars.animation.duration.fast}s ${themeVars.animation.timing.easeOut};
+        background-color ${themeVars.animation.duration.fast} ${themeVars.animation.timing.easeOut},
+        border-color ${themeVars.animation.duration.fast} ${themeVars.animation.timing.easeOut};
 `;
 
 // Size-specific styles
 const mediumSize = css`
-    padding: ${themeVars.spacing.ml}px ${themeVars.spacing.xl}px;
-    gap: ${themeVars.spacing.m}px;
+    padding: ${themeVars.spacing.ml} ${themeVars.spacing.xl};
+    gap: ${themeVars.spacing.m};
 `;
 
 const smallSize = css`
-    padding: ${themeVars.spacing.m}px ${themeVars.spacing.l}px;
-    gap: ${themeVars.spacing.s}px;
+    padding: ${themeVars.spacing.m} ${themeVars.spacing.l};
+    gap: ${themeVars.spacing.s};
 `;
 
 // Variant and hierarchy combinations - filled primary
@@ -79,7 +79,7 @@ const filledSecondary = css`
 
 // Variant and hierarchy combinations - outlined primary
 const outlinedPrimary = css`
-    border-width: ${themeVars.stroke.thin}px;
+    border-width: ${themeVars.stroke.thin};
     border-color: ${themeVars.actions.primary};
     background-color: transparent;
     color: ${themeVars.actions.primary};
@@ -99,7 +99,7 @@ const outlinedPrimary = css`
 
 // Variant and hierarchy combinations - outlined secondary
 const outlinedSecondary = css`
-    border-width: ${themeVars.stroke.thin}px;
+    border-width: ${themeVars.stroke.thin};
     border-color: ${themeVars.layout.strokes};
     background-color: transparent;
     color: ${themeVars.layout.onSurface.secondary};

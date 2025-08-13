@@ -13,12 +13,12 @@ export type IconButtonProps = {
 
 // Base styles
 const buttonBase = css`
-    border-radius: ${themeVars.cornerRadius.m}px;
+    border-radius: ${themeVars.cornerRadius.m};
     border-style: solid;
     color: ${themeVars.layout.onSurface.primary};
     transition: 
-        background-color ${themeVars.animation.duration.fast}s ${themeVars.animation.timing.easeOut},
-        border-color ${themeVars.animation.duration.fast}s ${themeVars.animation.timing.easeOut};
+        background-color ${themeVars.animation.duration.fast} ${themeVars.animation.timing.easeOut},
+        border-color ${themeVars.animation.duration.fast} ${themeVars.animation.timing.easeOut};
     
     &:hover:not(:disabled) {
         background-color: ${themeVars.layout.surfaceHigh};
@@ -32,16 +32,16 @@ const buttonBase = css`
 
 // Size variants
 const mediumSize = css`
-    padding: ${themeVars.spacing.ml}px;
+    padding: ${themeVars.spacing.ml};
 `;
 
 const smallSize = css`
-    padding: ${themeVars.spacing.m}px;
+    padding: ${themeVars.spacing.m};
 `;
 
 // Variant styles
 const filledVariant = css`
-    border-width: ${themeVars.stroke.thin}px;
+    border-width: ${themeVars.stroke.thin};
     border-color: ${themeVars.layout.strokes};
     background-color: ${themeVars.layout.surfaceLow};
     
@@ -51,7 +51,7 @@ const filledVariant = css`
 `;
 
 const outlinedVariant = css`
-    border-width: ${themeVars.stroke.thin}px;
+    border-width: ${themeVars.stroke.thin};
     border-color: ${themeVars.layout.strokes};
     background-color: transparent;
 `;
