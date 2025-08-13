@@ -1,7 +1,7 @@
 {
     "name": "@hautechai/webui.themeprovider",
     "description": "",
-    "version": "0.3.77",
+    "version": "1.0.0",
     "type": "module",
     "main": "src/index.tsx",
     "publishConfig": {
