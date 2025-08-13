@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.81](https://github.com/HautechAI/webui/compare/@hautechai/webui.menu@0.3.80...@hautechai/webui.menu@0.3.81) (2025-08-13)
+
+**Note:** Version bump only for package @hautechai/webui.menu
+
 ## [0.3.80](https://github.com/HautechAI/webui/compare/@hautechai/webui.menu@0.3.79...@hautechai/webui.menu@0.3.80) (2025-07-27)
 
 **Note:** Version bump only for package @hautechai/webui.menu

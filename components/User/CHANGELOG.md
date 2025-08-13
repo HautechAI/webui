@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.79](https://github.com/HautechAI/webui/compare/@hautechai/webui.user@0.3.78...@hautechai/webui.user@0.3.79) (2025-08-13)
+
+**Note:** Version bump only for package @hautechai/webui.user
+
 ## [0.3.78](https://github.com/HautechAI/webui/compare/@hautechai/webui.user@0.3.77...@hautechai/webui.user@0.3.78) (2025-07-27)
 
 **Note:** Version bump only for package @hautechai/webui.user

@@ -1,7 +1,7 @@
 {
     "name": "@hautechai/webui.textarea",
     "description": "",
-    "version": "0.3.82",
+    "version": "0.3.83",
     "type": "module",
     "main": "src/index.tsx",
     "publishConfig": {

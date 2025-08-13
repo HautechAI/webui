@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.1](https://github.com/HautechAI/webui/compare/@hautechai/webui.sidebar@0.4.0...@hautechai/webui.sidebar@0.4.1) (2025-08-13)
+
+**Note:** Version bump only for package @hautechai/webui.sidebar
+
 # [0.4.0](https://github.com/HautechAI/webui/compare/@hautechai/webui.sidebar@0.3.84...@hautechai/webui.sidebar@0.4.0) (2025-08-07)
 
 ### Features
