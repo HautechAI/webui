@@ -1,32 +1,32 @@
-import { styled } from '@hautechai/webui.themeprovider';
+import { styled } from '@linaria/react';
+import { themeVars } from '@hautechai/webui.themeprovider';
 
-const Container = styled.div<Required<Pick<AppBarProps, 'hierarchy'>>>`
+const Container = styled.div`
     display: flex;
     flex-direction: row;
     align-items: center;
-    background-color: ${({ theme, hierarchy }) =>
-        ({
-            low: theme.palette.layout.surfaceLow, //
-            mid: theme.palette.layout.surfaceMid,
-        })[hierarchy]};
-    padding: ${({ theme }) => theme.foundation.spacing.l}px ${({ theme }) => theme.foundation.spacing.xl}px;
-    border-bottom-width: ${({ theme }) => theme.foundation.stroke.thin}px;
+    background-color: ${themeVars.layout.surfaceMid};
+    &[data-hierarchy="low"] {
+        background-color: ${themeVars.layout.surfaceLow};
+    }
+    padding: ${themeVars.spacing.l} ${themeVars.spacing.xl};
+    border-bottom-width: ${themeVars.stroke.thin};
     border-bottom-style: solid;
-    border-bottom-color: ${({ theme }) => theme.palette.layout.strokes};
+    border-bottom-color: ${themeVars.layout.strokes};
 `;
 
 const LeftContainer = styled.div`
     display: flex;
     flex-direction: row;
     flex: 1;
-    gap: ${({ theme }) => theme.foundation.spacing.l}px;
+    gap: ${themeVars.spacing.l};
     align-items: center;
 `;
 
 const CenterContainer = styled.div`
     display: flex;
     flex-direction: row;
-    gap: ${({ theme }) => theme.foundation.spacing.l}px;
+    gap: ${themeVars.spacing.l};
     align-items: center;
 `;
 
@@ -35,7 +35,7 @@ const RightContainer = styled.div`
     flex-direction: row;
     flex: 1;
     justify-content: end;
-    gap: ${({ theme }) => theme.foundation.spacing.l}px;
+    gap: ${themeVars.spacing.l};
     align-items: center;
 `;
 
@@ -48,7 +48,7 @@ export type AppBarProps = {
 export const AppBar = (props: AppBarProps) => {
     const { hierarchy = 'mid' } = props;
     return (
-        <Container hierarchy={hierarchy}>
+    <Container data-hierarchy={hierarchy}>
             <LeftContainer>{props.left}</LeftContainer>
             <CenterContainer>{props.center}</CenterContainer>
             <RightContainer>{props.right}</RightContainer>

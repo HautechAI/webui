@@ -1,5 +1,6 @@
 import React, { useMemo } from 'react';
-import { css, styled } from '@hautechai/webui.themeprovider';
+import { styled } from '@linaria/react';
+import { themeVars } from '@hautechai/webui.themeprovider';
 import { Typography } from '@hautechai/webui.typography';
 import { IconButton } from '@hautechai/webui.iconbutton';
 import { Row } from '@hautechai/webui.row';
@@ -9,31 +10,33 @@ const PageLink = styled.a<{ active?: boolean }>`
     text-decoration: none;
 `;
 
-const Number = styled.div<{ isSelected?: boolean; readonly?: boolean }>`
+const Number = styled.div`
     width: 36px;
     height: 36px;
     align-content: center;
-    padding: ${({ theme }) => theme.foundation.spacing.xs}px;
-    border-radius: ${({ theme }) => theme.foundation.cornerRadius.s}px;
+    padding: ${themeVars.spacing.xs};
+    border-radius: ${themeVars.cornerRadius.s};
 
-    cursor: ${({ readonly }) => (readonly ? 'default' : 'pointer')};
+    cursor: pointer;
 
-    color: ${({ theme }) => theme.palette.layout.onSurface.secondary};
+    color: ${themeVars.layout.onSurface.secondary};
 
-    ${({ theme, readonly }) =>
-        !readonly &&
-        css`
-            &:hover {
-                color: ${theme.palette.layout.onSurface.primary};
-                background-color: ${theme.palette.layout.surfaceMid};
-            }
-        `}
+    &:hover {
+        color: ${themeVars.layout.onSurface.primary};
+        background-color: ${themeVars.layout.surfaceMid};
+    }
 
-    ${({ theme, isSelected }) =>
-        isSelected &&
-        css`
-            background-color: ${theme.palette.layout.surfaceHigh};
-        `}
+    &[data-readonly="true"] {
+        cursor: default;
+        &:hover {
+            color: ${themeVars.layout.onSurface.secondary};
+            background-color: transparent;
+        }
+    }
+
+    &[data-selected="true"] {
+        background-color: ${themeVars.layout.surfaceHigh};
+    }
 `;
 
 export type PaginationProps = {
@@ -92,7 +95,8 @@ export const Pagination = ({ totalPages, currentPage, onPageChange, getPageHref 
             />
             {pages.map((page, index) =>
                 typeof page === 'string' ? (
-                    <Number key={index} readonly>
+                    <Number key={index} data-readonly
+                    >
                         <Typography variant="LabelSmallRegular" textAlign="center" color="layout.onSurface.secondary">
                             {page}
                         </Typography>
@@ -103,7 +107,8 @@ export const Pagination = ({ totalPages, currentPage, onPageChange, getPageHref 
                         href={getPageHref ? getPageHref(page) : undefined}
                         onClick={(e) => handleClick(e, page)}
                     >
-                        <Number isSelected={currentPage === page}>
+                        <Number data-selected={currentPage === page}
+                        >
                             <Typography variant="LabelSmallRegular" textAlign="center">
                                 {page}
                             </Typography>

@@ -1,4 +1,5 @@
-import { styled } from '@hautechai/webui.themeprovider';
+import { styled } from '@linaria/react';
+import { themeVars } from '@hautechai/webui.themeprovider';
 
 import React, { PropsWithChildren } from 'react';
 
@@ -6,7 +7,7 @@ const StyledTileTabGroup = styled.div<{ $wrap?: boolean }>`
     display: flex;
     flex-direction: row;
     flex-wrap: ${({ $wrap }) => ($wrap ? 'wrap' : 'nowrap')};
-    gap: ${({ theme }) => theme.foundation.spacing.ml}px;
+    gap: ${themeVars.spacing.ml};
 `;
 
 export type TileTabGroupProps = PropsWithChildren<{

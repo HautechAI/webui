@@ -1,6 +1,8 @@
-import { ButtonBase } from '@hautechai/webui.buttonbase';
-import { styled } from '@hautechai/webui.themeprovider';
-import { Typography, TypographyProps } from '@hautechai/webui.typography';
+import { ButtonBase } from '../../ButtonBase/src';
+import { css } from '@linaria/core';
+import { styled } from '@linaria/react';
+import { themeVars } from '../../ThemeProvider/src';
+import { Typography, TypographyProps } from '../../Typography/src';
 
 export type ButtonProps = {
     id?: string;
@@ -15,119 +17,125 @@ export type ButtonProps = {
     stretch?: boolean;
 };
 
-const StyledButton = styled(ButtonBase)<Required<Pick<ButtonProps, 'variant' | 'hierarchy' | 'size'>>>`
+// Base button styles
+const buttonBase = css`
     justify-content: center;
     align-items: center;
-
-    border-radius: ${({ theme }) => theme.foundation.cornerRadius.m}px;
+    border-radius: ${themeVars.cornerRadius.m};
     border-style: solid;
-    border-width: ${({ theme, variant }) =>
-        ({
-            filled: 0,
-            outlined: theme.foundation.stroke.thin,
-        }[variant])}px;
-
-    border-color: ${({ theme, variant, hierarchy }) =>
-        variant === 'outlined' && hierarchy === 'primary'
-            ? theme.palette.actions.primary
-            : theme.palette.layout.strokes};
-
-    padding: ${({ theme, size }) =>
-            ({
-                medium: theme.foundation.spacing.ml, //
-                small: theme.foundation.spacing.m,
-            }[size])}px
-        ${({ theme, size }) =>
-            ({
-                medium: theme.foundation.spacing.xl, //
-                small: theme.foundation.spacing.l,
-            }[size])}px;
-
-    gap: ${({ theme, size }) =>
-        ({
-            medium: theme.foundation.spacing.m, //
-            small: theme.foundation.spacing.s,
-        }[size])}px;
-
-    background-color: ${({ theme, variant, hierarchy }) =>
-        ({
-            filled: {
-                primary: theme.palette.actions.primary, //
-                secondary: theme.palette.actions.secondary, //
-            },
-            outlined: {
-                primary: 'transparent', //
-                secondary: 'transparent',
-            },
-        }[variant][hierarchy])};
-
-    color: ${({ theme, variant, hierarchy }) =>
-        ({
-            filled: {
-                primary: theme.palette.actions.onPrimary, //
-                secondary: theme.palette.actions.onSecondary,
-            },
-            outlined: {
-                primary: theme.palette.actions.primary, //
-                secondary: theme.palette.layout.onSurface.secondary,
-            },
-        }[variant][hierarchy])};
-
-    :hover,
-    :focus-visible {
-        background-color: ${({ theme, variant, hierarchy }) =>
-            ({
-                filled: {
-                    primary: theme.palette.actions.onSecondary, //
-                    secondary: theme.palette.actions.tertiary,
-                },
-                outlined: {
-                    primary: theme.palette.actions.onPrimary,
-                    secondary: theme.palette.layout.surfaceHigh,
-                },
-            }[variant][hierarchy])};
-
-        color: ${({ theme, variant, hierarchy }) =>
-            ({
-                filled: {
-                    primary: theme.palette.actions.onPrimary, //
-                    secondary: theme.palette.actions.onTertiary,
-                },
-                outlined: {
-                    primary: theme.palette.actions.primary, //
-                    secondary: theme.palette.layout.onSurface.secondary,
-                },
-            }[variant][hierarchy])};
-    }
-
-    :disabled {
-        background-color: ${({ theme, variant, hierarchy }) =>
-            ({
-                filled: {
-                    primary: theme.palette.layout.surfaceMid,
-                    secondary: theme.palette.layout.surfaceMid,
-                },
-                outlined: {
-                    primary: 'transparent',
-                    secondary: 'transparent',
-                },
-            }[variant][hierarchy])};
-        color: ${({ theme }) => theme.palette.layout.onSurface.tertiary};
-        cursor: not-allowed;
-        border-color: ${({ theme }) => theme.palette.layout.strokes};
-    }
-
-    ${({ theme }) => {
-        const normalDuration = theme.foundation.animation.duration.fast;
-        const timingFunction = theme.foundation.animation.timing.easeOut;
-
-        return `
-        transition: 
-            background-color ${normalDuration}s ${timingFunction},
-            border-color  ${normalDuration}s ${timingFunction};
-        `;
-    }}
+    transition: 
+        background-color ${themeVars.animation.duration.fast} ${themeVars.animation.timing.easeOut},
+        border-color ${themeVars.animation.duration.fast} ${themeVars.animation.timing.easeOut};
 `;
+
+// Size-specific styles
+const mediumSize = css`
+    padding: ${themeVars.spacing.ml} ${themeVars.spacing.xl};
+    gap: ${themeVars.spacing.m};
+`;
+
+const smallSize = css`
+    padding: ${themeVars.spacing.m} ${themeVars.spacing.l};
+    gap: ${themeVars.spacing.s};
+`;
+
+// Variant and hierarchy combinations - filled primary
+const filledPrimary = css`
+    border-width: 0px;
+    background-color: ${themeVars.actions.primary};
+    color: ${themeVars.actions.onPrimary};
+    
+    &:hover, &:focus-visible {
+        background-color: ${themeVars.actions.onSecondary};
+        color: ${themeVars.actions.onPrimary};
+    }
+    
+    &:disabled {
+        background-color: ${themeVars.layout.surfaceMid};
+        color: ${themeVars.layout.onSurface.tertiary};
+        cursor: not-allowed;
+        border-color: ${themeVars.layout.strokes};
+    }
+`;
+
+// Variant and hierarchy combinations - filled secondary
+const filledSecondary = css`
+    border-width: 0px;
+    background-color: ${themeVars.actions.secondary};
+    color: ${themeVars.actions.onSecondary};
+    
+    &:hover, &:focus-visible {
+        background-color: ${themeVars.actions.tertiary};
+        color: ${themeVars.actions.onTertiary};
+    }
+    
+    &:disabled {
+        background-color: ${themeVars.layout.surfaceMid};
+        color: ${themeVars.layout.onSurface.tertiary};
+        cursor: not-allowed;
+        border-color: ${themeVars.layout.strokes};
+    }
+`;
+
+// Variant and hierarchy combinations - outlined primary
+const outlinedPrimary = css`
+    border-width: ${themeVars.stroke.thin};
+    border-color: ${themeVars.actions.primary};
+    background-color: transparent;
+    color: ${themeVars.actions.primary};
+    
+    &:hover, &:focus-visible {
+        background-color: ${themeVars.actions.onPrimary};
+        color: ${themeVars.actions.primary};
+    }
+    
+    &:disabled {
+        background-color: transparent;
+        color: ${themeVars.layout.onSurface.tertiary};
+        cursor: not-allowed;
+        border-color: ${themeVars.layout.strokes};
+    }
+`;
+
+// Variant and hierarchy combinations - outlined secondary
+const outlinedSecondary = css`
+    border-width: ${themeVars.stroke.thin};
+    border-color: ${themeVars.layout.strokes};
+    background-color: transparent;
+    color: ${themeVars.layout.onSurface.secondary};
+    
+    &:hover, &:focus-visible {
+        background-color: ${themeVars.layout.surfaceHigh};
+        color: ${themeVars.layout.onSurface.secondary};
+    }
+    
+    &:disabled {
+        background-color: transparent;
+        color: ${themeVars.layout.onSurface.tertiary};
+        cursor: not-allowed;
+        border-color: ${themeVars.layout.strokes};
+    }
+`;
+
+export const buttonClasses = {
+    base: buttonBase,
+    sizes: {
+        medium: mediumSize,
+        small: smallSize,
+    },
+    variants: {
+        filled: {
+            primary: filledPrimary,
+            secondary: filledSecondary,
+        },
+        outlined: {
+            primary: outlinedPrimary,
+            secondary: outlinedSecondary,
+        },
+    },
+};
+
+const StyledButton = styled(ButtonBase)``;
 
 const LabelVariants: Record<Required<ButtonProps>['size'], TypographyProps['variant']> = {
     small: 'LabelSmallRegular',
@@ -146,8 +154,18 @@ export const Button = (props: ButtonProps) => {
         ...rest
     } = props;
 
+    const buttonClassName = [
+        buttonClasses.base,
+        buttonClasses.sizes[size],
+        buttonClasses.variants[variant][hierarchy],
+    ].join(' ');
+
     return (
-        <StyledButton hierarchy={hierarchy} size={size} variant={variant} stretch={stretch} {...rest}>
+        <StyledButton 
+            className={buttonClassName}
+            stretch={stretch} 
+            {...rest}
+        >
             {props.leadingIcon}
             <Typography variant={LabelVariants[size]}>{label}</Typography>
             {props.trailingIcon}

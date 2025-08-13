@@ -1,38 +1,38 @@
 import { ButtonBase } from '@hautechai/webui.buttonbase';
-import { styled } from '@hautechai/webui.themeprovider';
+import { styled } from '@linaria/react';
+import { themeVars } from '@hautechai/webui.themeprovider';
 import { Typography, TypographyProps } from '@hautechai/webui.typography';
 
 const StyledButton = styled(ButtonBase)<Required<Pick<TextButtonProps, 'hierarchy' | 'size'>>>`
     justify-content: center;
     align-items: center;
 
-    gap: ${({ theme, size }) =>
+    gap: ${({ size }) =>
         ({
-            medium: theme.foundation.spacing.m, //
-            small: theme.foundation.spacing.s,
-            xsmall: theme.foundation.spacing.s,
-        }[size])}px;
+            medium: themeVars.spacing.m,
+            small: themeVars.spacing.s,
+            xsmall: themeVars.spacing.s,
+        }[size])};
 
-    color: ${({ theme, hierarchy }) =>
+    color: ${({ hierarchy }) =>
         ({
-            primary: theme.palette.actions.primary, //
-            secondary: theme.palette.layout.onSurface.secondary,
+            primary: themeVars.actions.primary,
+            secondary: themeVars.layout.onSurface.secondary,
         }[hierarchy])};
 
     :hover {
-        color: ${({ theme, hierarchy }) =>
+        color: ${({ hierarchy }) =>
             ({
-                primary: theme.palette.actions.onSecondary, //
-                secondary: theme.palette.layout.onSurface.primary,
+                primary: themeVars.actions.onSecondary,
+                secondary: themeVars.layout.onSurface.primary,
             }[hierarchy])};
     }
 
     :disabled {
-        color: ${({ theme }) => theme.palette.layout.onSurface.tertiary};
+        color: ${themeVars.layout.onSurface.tertiary};
     }
 
-    transition: color ${({ theme }) => theme.foundation.animation.duration.fast}s
-        ${({ theme }) => theme.foundation.animation.timing.easeOut};
+    transition: color ${themeVars.animation.duration.fast} ${themeVars.animation.timing.easeOut};
 `;
 
 export type TextButtonProps = {

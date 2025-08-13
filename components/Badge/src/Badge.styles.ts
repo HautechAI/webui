@@ -1,32 +1,63 @@
-import { styled, ThemeType } from '@hautechai/webui.themeprovider';
+import { css } from '@linaria/core';
+import { styled } from '@linaria/react';
+import { themeVars } from '@hautechai/webui.themeprovider';
 import { Typography } from '@hautechai/webui.typography';
-import { BadgeColor } from './Badge.types';
 
-const getBackgroundColor = (color: BadgeColor, theme: ThemeType) =>
-    ({
-        success: theme.palette.actions.onSuccess,
-        error: theme.palette.actions.onError,
-        info: theme.palette.layout.surfaceMid,
-    }[color]);
+// Base container styles
+const containerBase = css`
+    border-radius: ${themeVars.cornerRadius.s};
+    gap: ${themeVars.spacing.s};
+    padding: ${themeVars.spacing.s} ${themeVars.spacing.m};
+`;
 
-const getTextColor = (color: BadgeColor, theme: ThemeType) =>
-    ({
-        success: theme.palette.actions.success,
-        error: theme.palette.actions.error,
-        info: theme.palette.layout.onSurface.secondary,
-    }[color]);
+// Color variant styles
+const containerSuccess = css`
+    background-color: ${themeVars.actions.onSuccess};
+`;
+
+const containerError = css`
+    background-color: ${themeVars.actions.onError};
+`;
+
+const containerInfo = css`
+    background-color: ${themeVars.layout.surfaceMid};
+`;
+
+// Text base styles
+const textBase = css`
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+`;
+
+// Text color variant styles
+const textSuccess = css`
+    color: ${themeVars.actions.success};
+`;
+
+const textError = css`
+    color: ${themeVars.actions.error};
+`;
+
+const textInfo = css`
+    color: ${themeVars.layout.onSurface.secondary};
+`;
+
+export const containerClasses = {
+    base: containerBase,
+    success: containerSuccess,
+    error: containerError,
+    info: containerInfo,
+};
+
+export const textClasses = {
+    base: textBase,
+    success: textSuccess,
+    error: textError,
+    info: textInfo,
+};
 
 export default {
-    Container: styled('div')<{ badgeColor: BadgeColor }>`
-        background-color: ${({ theme, badgeColor }) => getBackgroundColor(badgeColor, theme)};
-        border-radius: ${({ theme }) => theme.foundation.cornerRadius.s}px;
-        gap: ${({ theme }) => theme.foundation.spacing.s}px;
-        padding: ${({ theme }) => theme.foundation.spacing.s}px ${({ theme }) => theme.foundation.spacing.m}px;
-    `,
-    Text: styled(Typography)<{ badgeColor: BadgeColor }>`
-        color: ${({ theme, badgeColor }) => getTextColor(badgeColor, theme)};
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-    `,
+    Container: styled.div``,
+    Text: styled(Typography)``,
 };

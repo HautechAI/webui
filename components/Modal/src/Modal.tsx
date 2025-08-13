@@ -1,6 +1,7 @@
-import { css, styled } from '@hautechai/webui.themeprovider';
+import { styled } from '@linaria/react';
+import { themeVars } from '@hautechai/webui.themeprovider';
 
-const Container = styled.div<{ open?: boolean }>`
+const Container = styled.div`
     position: fixed;
     left: 0;
     top: 0;
@@ -8,7 +9,10 @@ const Container = styled.div<{ open?: boolean }>`
     height: 100%;
     pointer-events: none;
     z-index: 999;
-    display: ${({ open }) => (open ? 'block' : 'none')};
+    display: none;
+    &[data-open="true"] {
+        display: block;
+    }
 `;
 
 const Backdrop = styled.div`
@@ -21,45 +25,19 @@ const Backdrop = styled.div`
     pointer-events: auto;
 `;
 
-const ContentContainer = styled.div<{
-    customPosition: boolean;
-    contentPosition?: { left?: number; top?: number; right?: number; bottom?: number };
-}>`
+const ContentContainer = styled.div`
     position: absolute;
     width: 100%;
     height: 100%;
     display: flex;
-    justify-content: ${({ customPosition }) => (customPosition ? 'flex-start' : 'center')};
-    align-items: ${({ customPosition }) => (customPosition ? 'flex-start' : 'center')};
+    justify-content: center;
+    align-items: center;
     pointer-events: none;
 
-    ${({ contentPosition }) =>
-        contentPosition?.left
-            ? css`
-                  left: ${contentPosition.left}px;
-              `
-            : ''};
-
-    ${({ contentPosition }) =>
-        contentPosition?.right
-            ? css`
-                  right: ${contentPosition.right}px;
-              `
-            : ''};
-
-    ${({ contentPosition }) =>
-        contentPosition?.bottom
-            ? css`
-                  bottom: ${contentPosition.bottom}px;
-              `
-            : ''};
-
-    ${({ contentPosition }) =>
-        contentPosition?.top
-            ? css`
-                  top: ${contentPosition.top}px;
-              `
-            : ''};
+    &[data-custom-position="true"] {
+        justify-content: flex-start;
+        align-items: flex-start;
+    }
 `;
 
 const Content = styled.div`
@@ -77,9 +55,17 @@ export type ModalProps = {
 export const Modal = (props: ModalProps) => {
     const contentPosition = { top: 0, left: 0, ...props.contentPosition };
     return (
-        <Container open={props.open}>
+        <Container data-open={!!props.open}>
             <Backdrop onClick={props.onClose} style={props.backdropStyle} />
-            <ContentContainer customPosition={!!props.contentPosition} contentPosition={contentPosition}>
+            <ContentContainer
+                data-custom-position={!!props.contentPosition}
+                style={{
+                    left: contentPosition.left,
+                    right: contentPosition.right,
+                    top: contentPosition.top,
+                    bottom: contentPosition.bottom,
+                }}
+            >
                 <Content>{props.children}</Content>
             </ContentContainer>
         </Container>

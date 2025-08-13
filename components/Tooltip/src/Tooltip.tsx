@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react';
-import { css, styled } from '@hautechai/webui.themeprovider';
+import { styled } from '@linaria/react';
+import { themeVars } from '@hautechai/webui.themeprovider';
 import { Typography } from '@hautechai/webui.typography';
 import { LinkButton } from '@hautechai/webui.linkbutton';
 import { Column } from '@hautechai/webui.column';
@@ -9,40 +10,22 @@ const TooltipContainer = styled.div`
     cursor: pointer;
 `;
 
-const TooltipContent = styled.div<{
-    isMedium?: boolean;
-    position?: 'right' | 'left' | 'top' | 'bottom';
-}>`
-    ${({ theme, position }) => {
-        return position === 'right'
-            ? css`
-                  margin-left: ${theme.foundation.spacing.m}px;
-              `
-            : position === 'bottom'
-              ? css`
-                    margin-top: ${theme.foundation.spacing.m}px;
-                `
-              : position === 'left'
-                ? css`
-                      margin-right: ${theme.foundation.spacing.m}px;
-                  `
-                : css`
-                      margin-bottom: ${theme.foundation.spacing.m}px;
-                  `;
-    }}
-
+const TooltipContent = styled.div`
+    /* margin is set inline based on position */
     min-width: 100px;
     width: max-content;
     max-width: 240px;
     box-sizing: border-box;
 
-    padding: ${({ theme, isMedium }) => (isMedium ? theme.foundation.spacing.ml : theme.foundation.spacing.s)}px
-        ${({ theme, isMedium }) => (isMedium ? theme.foundation.spacing.ml : theme.foundation.spacing.m)}px;
+    padding: ${themeVars.spacing.s} ${themeVars.spacing.m};
+    &[data-size='medium'] {
+        padding: ${themeVars.spacing.ml} ${themeVars.spacing.ml};
+    }
 
-    background-color: ${({ theme }) => theme.palette.layout.surfaceLow};
-    border: ${({ theme }) => theme.foundation.stroke.thin}px solid ${({ theme }) => theme.palette.layout.strokes};
-    border-radius: ${({ theme }) => theme.foundation.cornerRadius.s}px;
-    box-shadow: ${({ theme }) => theme.foundation.elevation.two};
+    background-color: ${themeVars.layout.surfaceLow};
+    border: ${themeVars.stroke.thin} solid ${themeVars.layout.strokes};
+    border-radius: ${themeVars.cornerRadius.s};
+    box-shadow: ${themeVars.elevation.two};
 
     cursor: default;
 `;
@@ -103,8 +86,13 @@ export const Tooltip = (props: TooltipProps) => {
                     <TooltipContent
                         onMouseEnter={cancelHideTooltip}
                         onMouseLeave={scheduleHideTooltip}
-                        isMedium={props.size === 'medium'}
-                        position={props.position}
+                        data-size={props.size === 'medium' ? 'medium' : 'small'}
+                        style={{
+                            marginLeft: props.position === 'right' ? themeVars.spacing.m : undefined,
+                            marginTop: props.position === 'bottom' ? themeVars.spacing.m : undefined,
+                            marginRight: props.position === 'left' ? themeVars.spacing.m : undefined,
+                            marginBottom: props.position === 'top' ? themeVars.spacing.m : undefined,
+                        }}
                     >
                         {props.size === 'medium' ? (
                             <Column spacing="m" align="start">

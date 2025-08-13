@@ -1,4 +1,5 @@
-import { styled } from '@hautechai/webui.themeprovider';
+import { styled } from '@linaria/react';
+import { themeVars } from '@hautechai/webui.themeprovider';
 
 export default {
     Close: styled('div')`
@@ -8,14 +9,14 @@ export default {
         }
     `,
     Container: styled('div')`
-        background-color: ${({ theme }) => theme.palette.layout.surfaceLow};
-        border-color: ${({ theme }) => theme.palette.layout.strokes};
-        border-radius: ${({ theme }) => theme.foundation.cornerRadius.m}px;
+        background-color: ${themeVars.layout.surfaceLow};
+        border-color: ${themeVars.layout.strokes};
+        border-radius: ${themeVars.cornerRadius.m};
         border-style: solid;
-        border-width: ${({ theme }) => theme.foundation.stroke.thin}px;
+        border-width: ${themeVars.stroke.thin};
         display: flex;
         flex-direction: column;
-        margin: ${({ theme }) => theme.foundation.spacing.m}px;
-        padding: ${({ theme }) => theme.foundation.spacing.l}px ${({ theme }) => theme.foundation.spacing.s}px;
+        margin: ${themeVars.spacing.m};
+        padding: ${themeVars.spacing.l} ${themeVars.spacing.s};
     `,
 };

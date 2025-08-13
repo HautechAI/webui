@@ -1,130 +1,85 @@
-import { css, styled } from '@hautechai/webui.themeprovider';
+import { styled } from '@linaria/react';
+import { themeVars } from '@hautechai/webui.themeprovider';
 import { Menu } from '@hautechai/webui.menu';
 import { Typography } from '@hautechai/webui.typography';
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { ArrowAltDownIcon } from '@hautechai/webui.icon';
 
-const Container = styled.div<{ disabled?: boolean }>`
+const Container = styled.div`
     position: relative;
     display: flex;
     flex-direction: column;
     flex: 1 0 0;
-    gap: ${({ theme }) => theme.foundation.spacing.m}px;
+    gap: ${themeVars.spacing.m};
+    color: ${themeVars.layout.onSurface.primary};
 
-    ${({ theme, disabled }) =>
-        disabled &&
-        css`
-            color: ${theme.palette.layout.strokes};
-        `}
+    &[data-disabled='true'] {
+        color: ${themeVars.layout.strokes};
+    }
 `;
 
-export const ButtonContainer = styled.div<{
-    disabled?: boolean;
-    type?: 'filled' | 'outlined' | 'flat';
-    hasError?: boolean;
-    isOpen?: boolean;
-}>`
+export const ButtonContainer = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
+    cursor: pointer;
 
-    padding: ${({ theme }) => theme.foundation.spacing.m}px ${({ theme }) => theme.foundation.spacing.ml}px;
+    padding: ${themeVars.spacing.m} ${themeVars.spacing.ml};
 
-    border-radius: ${({ theme }) => theme.foundation.cornerRadius.m}px;
+    border-radius: ${themeVars.cornerRadius.m};
+    transition: background-color ${themeVars.animation.duration.normal} ${themeVars.animation.timing.ease},
+        border-color ${themeVars.animation.duration.normal} ${themeVars.animation.timing.ease},
+        outline-color ${themeVars.animation.duration.normal} ${themeVars.animation.timing.ease},
+        transform ${themeVars.animation.duration.normal} ${themeVars.animation.timing.ease};
 
-    ${({ theme }) => {
-        const normalDuration = theme.foundation.animation.duration.normal;
-        const timingFunction = theme.foundation.animation.timing.ease;
+    border-width: ${themeVars.stroke.thin};
+    border-style: solid;
+    background: transparent;
+    border-color: ${themeVars.layout.strokes};
 
-        return `
-        transition: 
-            background-color ${normalDuration}s ${timingFunction},
-            border-color  ${normalDuration}s ${timingFunction},
-            outline-color  ${normalDuration}s ${timingFunction},
-            transform  ${normalDuration}s ${timingFunction};
-        `;
-    }}
+    &[data-type='filled'] {
+        background: ${themeVars.layout.surfaceLow};
+    }
 
-    ${({ type, theme }) =>
-        type === 'filled' &&
-        css`
-            background: ${theme.palette.layout.surfaceLow};
-            border: ${theme.foundation.stroke.thin}px solid ${theme.palette.layout.strokes};
-        `}
+    &[data-disabled='true'] {
+        cursor: not-allowed;
+    }
 
-    ${({ type }) =>
-        type === 'flat' &&
-        css`
+    &[data-has-error='true'] {
+        outline: ${themeVars.stroke.thin} solid ${themeVars.actions.error};
+        border-color: ${themeVars.actions.error};
+        &[data-type='flat'] {
+            background: ${themeVars.actions.onError};
+            outline: none;
+        }
+    }
+
+    &:hover {
+        background-color: ${themeVars.layout.surfaceHigh};
+        &[data-type='filled'], &[data-type='outlined'] {
             background: transparent;
-        `}
+            border-color: ${themeVars.layout.onSurface.tertiary};
+        }
+    }
 
-  ${({ type, theme }) =>
-        type === 'outlined' &&
-        css`
+    &:active {
+        background-color: ${themeVars.layout.strokes};
+        &[data-type='filled'], &[data-type='outlined'] {
             background: transparent;
-            border: ${theme.foundation.stroke.thin}px solid ${theme.palette.layout.strokes};
-        `}
+            border-color: ${themeVars.layout.onSurface.tertiary};
+            outline: ${themeVars.stroke.thin} solid ${themeVars.layout.onSurface.tertiary};
+        }
+    }
 
-    ${({ type, theme }) =>
-        type !== 'flat' &&
-        css`
-            border-width: ${theme.foundation.stroke.thin}px;
-            border-style: solid;
-            border-color: ${theme.palette.layout.strokes};
-        `}
-
-    ${({ hasError, type, theme }) =>
-        hasError &&
-        css`
-            ${type === 'flat'
-                ? css`
-                      background: ${theme.palette.actions.onError};
-                  `
-                : css`
-                      border: ${theme.foundation.stroke.thin}px solid ${theme.palette.actions.error};
-                      outline: ${theme.foundation.stroke.thin}px solid ${theme.palette.actions.error};
-                  `}
-        `}
-    
-    ${({ disabled, type, theme }) =>
-        !disabled &&
-        css`
-            &:hover {
-                ${type === 'flat'
-                    ? css`
-                          background-color: ${theme.palette.layout.surfaceHigh};
-                      `
-                    : css`
-                          border-color: ${theme.palette.layout.onSurface.tertiary};
-                      `}
-            }
-
-            &:active {
-                ${type === 'flat'
-                    ? css`
-                          background-color: ${theme.palette.layout.strokes};
-                      `
-                    : css`
-                          border-color: ${theme.palette.layout.onSurface.tertiary};
-                          outline: ${theme.foundation.stroke.thin}px solid ${theme.palette.layout.onSurface.tertiary};
-                      `}
-            }
-        `}
-
-    ${({ isOpen, type, theme }) =>
-        isOpen &&
-        css`
-            ${type === 'flat'
-                ? css`
-                      background-color: ${theme.palette.layout.surfaceHigh};
-                  `
-                : css`
-                      border-color: ${theme.palette.actions.primary};
-                      outline: ${theme.foundation.stroke.thin}px solid ${theme.palette.actions.primary};
-                  `}
-        `}
+    &[data-open='true'] {
+        background-color: ${themeVars.layout.surfaceHigh};
+        &[data-type='filled'], &[data-type='outlined'] {
+            background: transparent;
+            border-color: ${themeVars.actions.primary};
+            outline: ${themeVars.stroke.thin} solid ${themeVars.actions.primary};
+        }
+    }
 `;
 
 const Label = styled(Typography)`
@@ -133,19 +88,16 @@ const Label = styled(Typography)`
     text-overflow: ellipsis;
 `;
 
-const RotatingArrow = styled.div<{ isOpen?: boolean }>`
+const RotatingArrow = styled.div`
     width: 20px;
     height: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
-
-    transform: ${({ isOpen }) => (isOpen ? 'rotate(180deg)' : 'rotate(0deg)')};
-    transition: transform ${({ theme }) => theme.foundation.animation.duration.normal}s
-        ${({ theme }) => theme.foundation.animation.timing.customBounce};
+    transition: transform ${themeVars.animation.duration.normal} ${themeVars.animation.timing.customBounce};
 `;
 
-const MenuContainer = styled.div<{ isOpen?: boolean }>`
+const MenuContainer = styled.div`
     position: absolute;
     top: 100%;
     z-index: 1000;
@@ -156,27 +108,25 @@ const MenuContainer = styled.div<{ isOpen?: boolean }>`
 
     margin-top: 4px;
 
-    background: ${({ theme }) => theme.palette.layout.surfaceLow};
-    border: ${({ theme }) => theme.foundation.stroke.thin}px solid ${({ theme }) => theme.palette.layout.strokes};
-    border-radius: ${({ theme }) => theme.foundation.cornerRadius.m}px;
-    box-shadow: ${({ theme }) => theme.foundation.elevation.two};
+    background: ${themeVars.layout.surfaceLow};
+    border: ${themeVars.stroke.thin} solid ${themeVars.layout.strokes};
+    border-radius: ${themeVars.cornerRadius.m};
+    box-shadow: ${themeVars.elevation.two};
 
-    transform: ${({ isOpen }) => (isOpen ? 'scaleY(1)' : 'scaleY(0.95)')};
-    opacity: ${({ isOpen }) => (isOpen ? 1 : 0)};
+    transform: scaleY(0.95);
+    opacity: 0;
     transform-origin: top;
 
-    ${({ theme }) => {
-        const normalDuration = theme.foundation.animation.duration.normal;
-        const timingFunction = theme.foundation.animation.timing.ease;
+    transition: opacity ${themeVars.animation.duration.normal} ${themeVars.animation.timing.ease},
+        transform ${themeVars.animation.duration.normal} ${themeVars.animation.timing.ease};
 
-        return `
-        transition: 
-            opacity  ${normalDuration}s ${timingFunction},
-            transform  ${normalDuration}s ${timingFunction};
-        `;
-    }}
+    pointer-events: none;
 
-    pointer-events: ${({ isOpen }) => (isOpen ? 'auto' : 'none')};
+    &[data-open='true'] {
+        transform: scaleY(1);
+        opacity: 1;
+        pointer-events: auto;
+    }
 `;
 
 export type DropdownProps = {
@@ -226,22 +176,22 @@ export const Dropdown = (props: DropdownProps) => {
     const { disabled } = props;
 
     return (
-        <Container disabled={disabled} ref={ref}>
+        <Container data-disabled={disabled} ref={ref}>
             <ButtonContainer
-                disabled={disabled}
-                type={props.type ?? 'filled'}
-                hasError={props.hasError}
+                data-disabled={disabled}
+                data-type={props.type ?? 'filled'}
+                data-has-error={props.hasError}
                 onClick={handleToggle}
-                isOpen={isOpen}
+                data-open={isOpen}
             >
                 <Label variant="LabelSmallRegular" color={disabled ? 'layout.strokes' : 'layout.onSurface.primary'}>
                     {selectedOption ? selectedOption.label : props.label}
                 </Label>
-                <RotatingArrow isOpen={isOpen}>
+                <RotatingArrow style={{ transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)' }}>
                     <ArrowAltDownIcon color={disabled ? 'layout.strokes' : 'layout.onSurface.secondary'} />
                 </RotatingArrow>
             </ButtonContainer>
-            <MenuContainer isOpen={isOpen}>
+            <MenuContainer data-open={isOpen}>
                 <Menu value={selectedOption?.value} options={props.options} onChange={handleSelect} />
             </MenuContainer>
         </Container>

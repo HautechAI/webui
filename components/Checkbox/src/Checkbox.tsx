@@ -1,5 +1,6 @@
 import { CheckIcon } from '@hautechai/webui.icon';
-import { styled } from '@hautechai/webui.themeprovider';
+import { styled } from '@linaria/react';
+import { themeVars } from '@hautechai/webui.themeprovider';
 import { PropsWithChildren } from 'react';
 
 const StyledCheckboxContainer = styled.label<Pick<CheckboxProps, 'checked'>>`
@@ -32,16 +33,16 @@ const StyledCheckmarkContainer = styled.span`
     align-items: center;
     flex-shrink: 0;
 
-    border-radius: ${({ theme }) => theme.foundation.cornerRadius.s}px;
+    border-radius: ${themeVars.cornerRadius.s};
     border-style: solid;
-    border-width: ${({ theme }) => theme.foundation.stroke.standard}px;
-    border-color: ${({ theme }) => theme.palette.layout.strokes};
+    border-width: ${themeVars.stroke.standard};
+    border-color: ${themeVars.layout.strokes};
 
-    background-color: ${({ theme }) => theme.palette.layout.surfaceLow};
+    background-color: ${themeVars.layout.surfaceLow};
 
     *:checked ~ & {
-        border-color: ${({ theme }) => theme.palette.actions.primary};
-        color: ${({ theme }) => theme.palette.actions.primary};
+        border-color: ${themeVars.actions.primary};
+        color: ${themeVars.actions.primary};
     }
 `;
 

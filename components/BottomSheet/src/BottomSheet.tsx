@@ -1,16 +1,24 @@
-import { styled } from '@hautechai/webui.themeprovider';
+import { styled } from '@linaria/react';
+import { themeVars } from '@hautechai/webui.themeprovider';
 
-const Container = styled.div<Omit<BottomSheetProps, 'children'>>`
+const Container = styled.div`
     position: fixed;
-    display: ${({ open }) => (open ? 'flex' : 'none')};
+    display: none;
     left: 0;
     top: 0;
     right: 0;
     bottom: 0;
-    z-index: ${({ zIndex }) => zIndex ?? 900};
+    z-index: 900;
+
+    &[data-open='true'] {
+        display: flex;
+    }
+    &[data-z] {
+        z-index: var(--bs-z-index);
+    }
 `;
 
-const Backdrop = styled.div<Omit<BottomSheetProps, 'children'>>`
+const Backdrop = styled.div`
     position: absolute;
     left: 0;
     top: 0;
@@ -20,14 +28,12 @@ const Backdrop = styled.div<Omit<BottomSheetProps, 'children'>>`
     pointer-events: auto;
 `;
 
-const ContentContainer = styled.div<Omit<BottomSheetProps, 'children'>>`
+const ContentContainer = styled.div`
     position: absolute;
     left: 0;
     top: 0;
     bottom: 0;
     right: 0;
-    padding: ${({ inset }) => inset?.top ?? 0}px ${({ inset }) => inset?.right ?? 0}px
-        ${({ inset }) => inset?.bottom ?? 0}px ${({ inset }) => inset?.left ?? 0}px;
 
     display: flex;
     align-items: flex-end;
@@ -38,9 +44,8 @@ const Content = styled.div`
     display: flex;
     flex-direction: row;
     flex-grow: 1;
-    background-color: ${({ theme }) => theme.palette.layout.surfaceLow};
-    border-radius: ${({ theme }) => theme.foundation.cornerRadius.l}px
-        ${({ theme }) => theme.foundation.cornerRadius.l}px 0 0;
+    background-color: ${themeVars.layout.surfaceLow};
+    border-radius: ${themeVars.cornerRadius.l} ${themeVars.cornerRadius.l} 0 0;
     max-height: 100%;
     pointer-events: all;
 `;
@@ -61,11 +66,19 @@ export type BottomSheetProps = {
 
 export const BottomSheet = (props: BottomSheetProps) => {
     const { children, ...rest } = props;
+    const styleInsets: React.CSSProperties = {
+        paddingTop: props.inset?.top,
+        paddingRight: props.inset?.right,
+        paddingBottom: props.inset?.bottom,
+        paddingLeft: props.inset?.left,
+        // optional z-index via CSS var
+        ['--bs-z-index' as any]: props.zIndex ? `${props.zIndex}` : undefined,
+    };
     return (
-        <Container {...rest}>
-            <Backdrop {...rest} onClick={props?.onClose} style={props.backdropStyle} />
-            <ContentContainer {...rest}>
-                <Content {...rest}>{props.children}</Content>
+        <Container data-open={props.open} data-z={props.zIndex ? 'true' : undefined}>
+            <Backdrop onClick={props?.onClose} style={props.backdropStyle} />
+            <ContentContainer style={styleInsets}>
+                <Content>{props.children}</Content>
             </ContentContainer>
         </Container>
     );

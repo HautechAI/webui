@@ -1,4 +1,5 @@
-import { css, styled } from '@hautechai/webui.themeprovider';
+import { styled } from '@linaria/react';
+import { themeVars } from '@hautechai/webui.themeprovider';
 import { Typography } from '@hautechai/webui.typography';
 import { Popover as TinyPopover } from 'react-tiny-popover';
 import React, { ReactNode, useCallback, useEffect, useRef, useState } from 'react';
@@ -7,45 +8,44 @@ const Container = styled('div')`
     cursor: default;
     display: flex;
     flex-direction: row;
-    border-color: ${({ theme }) => theme.palette.layout.strokes};
-    border-radius: ${({ theme }) => theme.foundation.cornerRadius.s}px;
+    border-color: ${themeVars.layout.strokes};
+    border-radius: ${themeVars.cornerRadius.s};
     border-style: solid;
-    border-width: ${({ theme }) => theme.foundation.stroke.thin}px;
-    gap: ${({ theme }) => theme.foundation.spacing.s}px;
-    padding: ${({ theme }) => theme.foundation.spacing.s}px;
+    border-width: ${themeVars.stroke.thin};
+    gap: ${themeVars.spacing.s};
+    padding: ${themeVars.spacing.s};
 `;
 
 const PopoverContent = styled('div')<{ withPadding?: boolean }>`
     max-width: 240px;
     box-sizing: border-box;
-    background-color: ${({ theme }) => theme.palette.layout.surfaceLow};
-    border-color: ${({ theme }) => theme.palette.layout.strokes};
-    border-radius: ${({ theme }) => theme.foundation.cornerRadius.m}px;
+    background-color: ${themeVars.layout.surfaceLow};
+    border-color: ${themeVars.layout.strokes};
+    border-radius: ${themeVars.cornerRadius.m};
     border-style: solid;
-    border-width: ${({ theme }) => theme.foundation.stroke.thin}px;
+    border-width: ${themeVars.stroke.thin};
     display: flex;
     flex-direction: column;
-    padding: ${({ theme, withPadding }) =>
-        withPadding ? `${theme.foundation.spacing.s}px ${theme.foundation.spacing.m}px` : `0`};
-    margin: ${({ theme }) => theme.foundation.spacing.m}px 0;
-    box-shadow: ${({ theme }) => theme.foundation.elevation.two};
+    padding: ${({ withPadding }) => (withPadding ? `${themeVars.spacing.s} ${themeVars.spacing.m}` : `0`)};
+    margin: ${themeVars.spacing.m} 0;
+    box-shadow: ${themeVars.elevation.two};
 `;
 
 const Icon = styled('div')`
     align-self: center;
-    border-color: ${({ theme }) => theme.palette.layout.strokes};
-    border-radius: ${({ theme }) => theme.foundation.cornerRadius.s}px;
+    border-color: ${themeVars.layout.strokes};
+    border-radius: ${themeVars.cornerRadius.s};
     border-style: solid;
-    border-width: ${({ theme }) => theme.foundation.stroke.thin}px;
+    border-width: ${themeVars.stroke.thin};
     height: 20px;
     width: 20px;
 `;
 
 const Image = styled('div')<{ src: string }>`
-    border-color: ${({ theme }) => theme.palette.layout.strokes};
-    border-radius: ${({ theme }) => theme.foundation.cornerRadius.xs}px;
+    border-color: ${themeVars.layout.strokes};
+    border-radius: ${themeVars.cornerRadius.xs};
     border-style: solid;
-    border-width: ${({ theme }) => theme.foundation.stroke.thin}px;
+    border-width: ${themeVars.stroke.thin};
     background-image: url(${(props) => props.src});
     background-position: center;
     background-size: cover;
@@ -54,23 +54,18 @@ const Image = styled('div')<{ src: string }>`
 `;
 
 const ImagePreview = styled('div')`
-    border-radius: ${({ theme }) => theme.foundation.cornerRadius.m}px;
+    border-radius: ${themeVars.cornerRadius.m};
     max-width: 160px;
 
     & > img {
         display: block;
-        border-radius: ${({ theme }) => theme.foundation.cornerRadius.m}px;
+        border-radius: ${themeVars.cornerRadius.m};
         width: 100%;
         height: auto;
     }
 `;
 
-const Label = styled(Typography)<{ maxWidth?: number }>`
-    ${({ maxWidth }) =>
-        maxWidth &&
-        css`
-            max-width: ${maxWidth}px;
-        `}
+const Label = styled(Typography)`
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -91,9 +86,9 @@ const ChipContent = React.forwardRef<HTMLDivElement, ChipProps>((props, ref) => 
             </Icon>
         )}
         {props.image && <Image src={props.image} />}
-        <Label variant="LabelSmallRegular" maxWidth={props.maxWidth}>
-            {props.label}
-        </Label>
+        <div style={{ maxWidth: props.maxWidth ? `${props.maxWidth}px` : undefined }}>
+            <Label variant="LabelSmallRegular">{props.label}</Label>
+        </div>
     </Container>
 ));
 

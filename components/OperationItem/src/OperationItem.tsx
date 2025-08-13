@@ -1,33 +1,33 @@
 import { Row } from '@hautechai/webui.row';
-import { styled } from '@hautechai/webui.themeprovider';
+import { styled } from '@linaria/react';
+import { themeVars } from '@hautechai/webui.themeprovider';
 import { Typography } from '@hautechai/webui.typography';
 import { OperationItemProps } from './OperationItem.types';
 
 const Container = styled('div')`
     display: flex;
     flex-direction: column;
-    gap: ${({ theme }) => theme.foundation.spacing.ml}px;
-    padding: ${({ theme }) => theme.foundation.spacing.s}px;
+    gap: ${themeVars.spacing.ml};
+    padding: ${themeVars.spacing.s};
     min-width: 310px;
     flex-grow: 1;
 `;
 
 const UnreadIndicator = styled('div')`
-    background-color: ${({ theme }) => theme.palette.actions.primary};
-    border-radius: ${({ theme }) => theme.foundation.cornerRadius.s}px;
+    background-color: ${themeVars.actions.primary};
+    border-radius: ${themeVars.cornerRadius.s};
     height: 6px;
     width: 6px;
 `;
 
 const TopContainer = styled('div')`
-    gap: ${({ theme }) => theme.foundation.spacing.s}px;
+    gap: ${themeVars.spacing.s};
 `;
 
-const Progress = styled('div')<{ value: number }>`
+const Progress = styled('div')`
     height: 4px;
     border-radius: 4px;
-    background-color: ${({ theme }) => theme.palette.actions.primary};
-    width: ${({ value }) => value * 100}%;
+    background-color: ${themeVars.actions.primary};
 `;
 
 export const OperationItem = (props: OperationItemProps) => {
@@ -53,7 +53,7 @@ export const OperationItem = (props: OperationItemProps) => {
                     {props.chips}
                 </Row>
             )}
-            {props.progress !== undefined && <Progress value={props.progress} />}
+            {props.progress !== undefined && <Progress style={{ width: `${props.progress * 100}%` }} />}
         </Container>
     );
 };

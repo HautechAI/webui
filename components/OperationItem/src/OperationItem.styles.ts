@@ -1,21 +1,21 @@
-import { styled } from '@hautechai/webui.themeprovider';
-import { Typography } from '@hautechai/webui.typography';
+import { styled } from '@linaria/react';
+import { themeVars } from '@hautechai/webui.themeprovider';
 
 export default {
     Container: styled('div')`
         display: flex;
         flex-direction: column;
-        gap: ${({ theme }) => theme.foundation.spacing.ml}px;
-        padding: ${({ theme }) => theme.foundation.spacing.s}px;
+    gap: ${themeVars.spacing.ml};
+    padding: ${themeVars.spacing.s};
         width: 310px;
     `,
     UnreadIndicator: styled('div')`
-        background-color: ${({ theme }) => theme.palette.actions.primary};
-        border-radius: ${({ theme }) => theme.foundation.cornerRadius.s}px;
+    background-color: ${themeVars.actions.primary};
+    border-radius: ${themeVars.cornerRadius.s};
         height: 6px;
         width: 6px;
     `,
     TopContainer: styled('div')`
-        gap: ${({ theme }) => theme.foundation.spacing.s}px;
+    gap: ${themeVars.spacing.s};
     `,
 };

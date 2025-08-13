@@ -1,10 +1,10 @@
 import { BadgeProps } from './Badge.types';
-import S from './Badge.styles';
+import S, { containerClasses, textClasses } from './Badge.styles';
 
 export const Badge = (props: BadgeProps) => {
     return (
-        <S.Container badgeColor={props.color}>
-            <S.Text badgeColor={props.color} variant="LabelSmallRegular">
+        <S.Container className={`${containerClasses.base} ${containerClasses[props.color]}`}>
+            <S.Text className={`${textClasses.base} ${textClasses[props.color]}`} variant="LabelSmallRegular">
                 {props.label}
             </S.Text>
         </S.Container>

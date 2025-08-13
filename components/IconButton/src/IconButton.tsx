@@ -1,48 +1,6 @@
 import { ButtonBase } from '@hautechai/webui.buttonbase';
-import { css, styled } from '@hautechai/webui.themeprovider';
-
-const StyledButton = styled(ButtonBase)<
-    Required<Pick<IconButtonProps, 'variant' | 'size'>> & Pick<IconButtonProps, 'customBackground'>
->`
-    padding: ${({ theme, size }) => (size === 'medium' ? theme.foundation.spacing.ml : theme.foundation.spacing.m)}px;
-
-    border-radius: ${({ theme }) => theme.foundation.cornerRadius.m}px;
-    border-width: ${({ theme, variant }) =>
-        variant === 'filled' || variant === 'outlined' ? theme.foundation.stroke.thin : 0}px;
-    border-style: solid;
-    border-color: ${({ theme }) => theme.palette.layout.strokes};
-
-    color: ${({ theme }) => theme.palette.layout.onSurface.primary};
-    background-color: ${({ theme, variant, customBackground }) =>
-        customBackground || (variant === 'filled' ? theme.palette.layout.surfaceLow : 'transparent')};
-
-    &:hover {
-        &:not(:disabled) {
-            background-color: ${({ theme }) => theme.palette.layout.surfaceHigh};
-        }
-    }
-
-    &:disabled {
-        ${({ theme, variant }) =>
-            variant === 'filled' &&
-            css`
-                background-color: ${theme.palette.layout.surfaceMid};
-            `}
-        color: ${({ theme }) => theme.palette.layout.onSurface.tertiary};
-        cursor: not-allowed;
-    }
-
-    ${({ theme }) => {
-        const normalDuration = theme.foundation.animation.duration.fast;
-        const timingFunction = theme.foundation.animation.timing.easeOut;
-
-        return `
-        transition: 
-            background-color ${normalDuration}s ${timingFunction},
-            border-color  ${normalDuration}s ${timingFunction};
-        `;
-    }}
-`;
+import { css } from '@linaria/core';
+import { themeVars } from '@hautechai/webui.themeprovider';
 
 export type IconButtonProps = {
     variant?: 'filled' | 'outlined' | 'flat';
@@ -53,12 +11,92 @@ export type IconButtonProps = {
     customBackground?: string;
 };
 
+// Base styles
+const buttonBase = css`
+    border-radius: ${themeVars.cornerRadius.m};
+    border-style: solid;
+    color: ${themeVars.layout.onSurface.primary};
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition:
+        background-color ${themeVars.animation.duration.fast} ${themeVars.animation.timing.easeOut},
+        border-color ${themeVars.animation.duration.fast} ${themeVars.animation.timing.easeOut};
+
+    &:hover:not(:disabled) {
+        background-color: var(--icon-button-bg, ${themeVars.layout.surfaceHigh});
+    }
+
+    &:disabled {
+        color: ${themeVars.layout.onSurface.tertiary};
+        cursor: not-allowed;
+    }
+`;
+
+// Size variants
+const mediumSize = css`
+    padding: ${themeVars.spacing.ml};
+`;
+
+const smallSize = css`
+    padding: ${themeVars.spacing.m};
+`;
+
+// Variant styles
+const filledVariant = css`
+    border-width: ${themeVars.stroke.thin};
+    border-color: ${themeVars.layout.strokes};
+    background-color: var(--icon-button-bg, ${themeVars.layout.surfaceLow});
+
+    &:disabled {
+        background-color: var(--icon-button-bg, ${themeVars.layout.surfaceMid});
+    }
+`;
+
+const outlinedVariant = css`
+    border-width: ${themeVars.stroke.thin};
+    border-color: ${themeVars.layout.strokes};
+    background-color: var(--icon-button-bg, transparent);
+`;
+
+const flatVariant = css`
+    border-width: 0px;
+    background-color: var(--icon-button-bg, transparent);
+`;
+
+export const iconButtonClasses = {
+    base: buttonBase,
+    sizes: {
+        medium: mediumSize,
+        small: smallSize,
+    },
+    variants: {
+        filled: filledVariant,
+        outlined: outlinedVariant,
+        flat: flatVariant,
+    },
+};
+
 export const IconButton = (props: IconButtonProps) => {
     const { variant = 'filled', size = 'medium', icon, customBackground, ...rest } = props;
 
+    const buttonClassName = [
+        iconButtonClasses.base,
+        iconButtonClasses.sizes[size],
+        iconButtonClasses.variants[variant],
+    ].join(' ');
+
     return (
-        <StyledButton variant={variant} size={size} customBackground={customBackground} {...rest}>
-            {icon}
-        </StyledButton>
+        <span
+            style={
+                customBackground
+                    ? ({ ['--icon-button-bg' as any]: customBackground } as React.CSSProperties)
+                    : undefined
+            }
+        >
+            <ButtonBase className={buttonClassName} {...rest}>
+                {icon}
+            </ButtonBase>
+        </span>
     );
 };

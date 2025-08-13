@@ -1,11 +1,11 @@
-import { styled } from '@hautechai/webui.themeprovider';
+import { styled } from '@linaria/react';
 import { ComponentProps } from 'react';
+import { themeVars } from '@hautechai/webui.themeprovider';
 
 export const ModalContentStyled = styled.div`
-    padding: ${({ theme }) => theme.foundation.spacing.xxl}px;
-
-    border-radius: ${({ theme }) => theme.foundation.cornerRadius.l}px;
-    background: ${({ theme }) => theme.palette.layout.surfaceLow};
+    padding: ${themeVars.spacing.xxl};
+    border-radius: ${themeVars.cornerRadius.l};
+    background: ${themeVars.layout.surfaceLow};
 `;
 
 export const ModalContent = (props: ComponentProps<typeof ModalContentStyled>) => {

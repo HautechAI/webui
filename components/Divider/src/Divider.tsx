@@ -1,7 +1,13 @@
-import { styled } from '@hautechai/webui.themeprovider';
+import { css } from '@linaria/core';
+import { themeVars } from '../../ThemeProvider/src';
 
-export const Divider = styled.div`
-    border-bottom-width: ${({ theme }) => theme.foundation.stroke.thin}px;
+export const dividerStyles = css`
+    border-bottom-width: ${themeVars.stroke.thin};
     border-bottom-style: solid;
-    border-bottom-color: ${({ theme }) => theme.palette.layout.strokes};
+    border-bottom-color: ${themeVars.layout.strokes};
 `;
+
+export const Divider = (props: { className?: string }) => {
+    const className = [dividerStyles, props.className].filter(Boolean).join(' ');
+    return <div className={className} />;
+};

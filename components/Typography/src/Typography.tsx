@@ -1,136 +1,121 @@
-import { css, styled, ThemeType } from '@hautechai/webui.themeprovider';
+import { css } from '@linaria/core';
+import { styled } from '@linaria/react';
+import { themeVars, ThemeType } from '@hautechai/webui.themeprovider';
 import { get } from 'lodash-es';
 import { Paths } from 'type-fest';
+import { useTheme } from '@hautechai/webui.themeprovider';
 
 type TextAlign = 'left' | 'right' | 'center' | 'inherit';
 
-const BaseComponent = (props: Pick<TypographyProps, 'className' | 'children' | 'component'>) => {
-    const { className, children, component } = props;
+const BaseComponent = (props: Pick<TypographyProps, 'className' | 'children' | 'component'> & { style?: React.CSSProperties }) => {
+    const { className, children, component, style } = props;
     const Component = component ?? 'div';
-    return <Component {...{ className, children }} />;
+    return <Component {...{ className, children, style }} />;
 };
 
-const BaseText = styled(BaseComponent)<Pick<TypographyProps, 'textAlign' | 'noWrap' | 'overflow' | 'color'>>`
+// Base text styles
+const baseTextStyles = css`
     font-family: Inter;
-    color: ${({ theme, color }) => (color ? get(theme.palette, color) : 'currentColor')};
-    text-align: ${({ textAlign }) => textAlign ?? 'inherit'};
+    color: currentColor;
     -webkit-font-smoothing: antialiased;
-
-    ${({ noWrap }) =>
-        noWrap &&
-        css`
-            white-space: nowrap;
-        `}
-
-    ${({ overflow }) =>
-        overflow === 'hidden' &&
-        css`
-            overflow: hidden;
-        `}
-
-    ${({ overflow }) => {
-        return (
-            overflow === 'ellipsis' &&
-            css`
-                overflow: hidden;
-                text-overflow: ellipsis;
-            `
-        );
-    }}
 `;
 
-// Heading
+const noWrapStyles = css`
+    white-space: nowrap;
+`;
 
-const H1 = styled(BaseText)`
+const hiddenOverflowStyles = css`
+    overflow: hidden;
+`;
+
+const ellipsisOverflowStyles = css`
+    overflow: hidden;
+    text-overflow: ellipsis;
+`;
+
+// Typography variant styles
+const h1Styles = css`
     font-size: 18px;
     font-style: normal;
     font-weight: 500;
     line-height: 22px;
 `;
 
-const H2 = styled(BaseText)`
+const h2Styles = css`
     font-size: 16px;
     font-style: normal;
     font-weight: 500;
     line-height: 20px;
 `;
 
-const H3 = styled(BaseText)`
+const h3Styles = css`
     font-size: 14px;
     font-style: normal;
     font-weight: 500;
     line-height: 20px;
 `;
 
-// Label
-
-const LabelMediumButton = styled(BaseText)`
+const labelMediumButtonStyles = css`
     font-size: 16px;
     font-style: normal;
     font-weight: 500;
     line-height: 24px;
 `;
 
-const LabelMediumEmphasized = styled(BaseText)`
+const labelMediumEmphasizedStyles = css`
     font-size: 16px;
     font-style: normal;
     font-weight: 500;
     line-height: 20px;
 `;
 
-const LabelMediumRegular = styled(BaseText)`
+const labelMediumRegularStyles = css`
     font-size: 16px;
     font-style: normal;
     font-weight: 400;
     line-height: 20px;
 `;
 
-const LabelSmallEmphasized = styled(BaseText)`
+const labelSmallEmphasizedStyles = css`
     font-size: 14px;
     font-style: normal;
     font-weight: 500;
     line-height: 20px;
 `;
 
-const LabelSmallRegular = styled(BaseText)`
+const labelSmallRegularStyles = css`
     font-size: 14px;
     font-style: normal;
     font-weight: 400;
     line-height: 20px;
 `;
 
-// Body
-
-const Body = styled(BaseText)`
+const bodyStyles = css`
     font-size: 14px;
     font-style: normal;
     font-weight: 400;
     line-height: 20px;
 `;
 
-// Caption
-
-const CaptionEmphasized = styled(BaseText)`
+const captionEmphasizedStyles = css`
     font-size: 12px;
     font-style: normal;
     font-weight: 500;
     line-height: 16px;
 `;
 
-const CaptionRegular = styled(BaseText)`
+const captionRegularStyles = css`
     font-size: 12px;
     font-style: normal;
     font-weight: 400;
     line-height: 16px;
 `;
 
-// Link
-
-const LinkSmall = styled(BaseText)`
+const linkSmallStyles = css`
     font-size: 14px;
     font-style: normal;
     font-weight: 400;
-    line-height: 20px; /* 142.857% */
+    line-height: 20px;
     text-decoration-line: underline;
     text-decoration-style: solid;
     text-decoration-skip-ink: none;
@@ -139,11 +124,11 @@ const LinkSmall = styled(BaseText)`
     text-underline-position: from-font;
 `;
 
-const LinkExtraSmall = styled(BaseText)`
+const linkExtraSmallStyles = css`
     font-size: 12px;
     font-style: normal;
     font-weight: 400;
-    line-height: 16px; /* 133.333% */
+    line-height: 16px;
     text-decoration-line: underline;
     text-decoration-style: solid;
     text-decoration-skip-ink: none;
@@ -152,25 +137,33 @@ const LinkExtraSmall = styled(BaseText)`
     text-underline-position: from-font;
 `;
 
-const variants = {
-    H1,
-    H2,
-    H3,
-    LabelMediumButton,
-    LabelMediumEmphasized,
-    LabelMediumRegular,
-    LabelSmallEmphasized,
-    LabelSmallRegular,
-    Body,
-    CaptionEmphasized,
-    CaptionRegular,
-    LinkSmall,
-    LinkExtraSmall,
+export const typographyClasses = {
+    base: baseTextStyles,
+    noWrap: noWrapStyles,
+    hiddenOverflow: hiddenOverflowStyles,
+    ellipsisOverflow: ellipsisOverflowStyles,
+    variants: {
+        H1: h1Styles,
+        H2: h2Styles,
+        H3: h3Styles,
+        LabelMediumButton: labelMediumButtonStyles,
+        LabelMediumEmphasized: labelMediumEmphasizedStyles,
+        LabelMediumRegular: labelMediumRegularStyles,
+        LabelSmallEmphasized: labelSmallEmphasizedStyles,
+        LabelSmallRegular: labelSmallRegularStyles,
+        Body: bodyStyles,
+        CaptionEmphasized: captionEmphasizedStyles,
+        CaptionRegular: captionRegularStyles,
+        LinkSmall: linkSmallStyles,
+        LinkExtraSmall: linkExtraSmallStyles,
+    },
 };
+
+const StyledText = styled(BaseComponent)``;
 
 export type TypographyProps = {
     className?: string;
-    variant: keyof typeof variants;
+    variant: keyof typeof typographyClasses.variants;
 
     children: React.ReactNode;
     color?: Paths<ThemeType['palette'], { leavesOnly: true }>;
@@ -181,9 +174,23 @@ export type TypographyProps = {
 };
 
 export const Typography = (props: TypographyProps) => {
-    const { variant, ...rest } = props;
+    const { variant, color, textAlign, noWrap, overflow, ...rest } = props;
+    const theme = useTheme();
 
-    const Variant = variants[props.variant];
+    const classNames = [
+        typographyClasses.base,
+        typographyClasses.variants[variant],
+        noWrap && typographyClasses.noWrap,
+        overflow === 'hidden' && typographyClasses.hiddenOverflow,
+        overflow === 'ellipsis' && typographyClasses.ellipsisOverflow,
+    ]
+        .filter(Boolean)
+        .join(' ');
 
-    return <Variant {...rest} />;
+    const dynamicStyles: React.CSSProperties = {
+        color: color ? get(theme.palette, color) : 'currentColor',
+        textAlign: textAlign ?? 'inherit',
+    };
+
+    return <StyledText className={classNames} style={dynamicStyles} {...rest} />;
 };

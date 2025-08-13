@@ -1,87 +1,85 @@
-import { styled, ThemeType } from '@hautechai/webui.themeprovider';
+import { styled } from '@linaria/react';
+import { themeVars } from '@hautechai/webui.themeprovider';
 
 export const MaterialContainer = styled.div`
     display: flex;
     overflow: hidden;
-    gap: ${({ theme }) => theme.foundation.spacing.xl}px;
-    border-bottom-color: ${({ theme }) => theme.palette.layout.strokes};
+    gap: ${themeVars.spacing.xl};
+    border-bottom-color: ${themeVars.layout.strokes};
     border-bottom-style: solid;
-    border-bottom-width: ${({ theme }) => theme.foundation.stroke.thin}px;
-    padding: 0 ${({ theme }) => theme.foundation.spacing.l}px;
+    border-bottom-width: ${themeVars.stroke.thin};
+    padding: 0 ${themeVars.spacing.l};
 `;
 
 export const HIGContainer = styled.div`
     display: flex;
-    border-color: ${({ theme }) => theme.palette.layout.strokes};
-    border-radius: ${({ theme }) => theme.foundation.cornerRadius.s}px;
+    border-color: ${themeVars.layout.strokes};
+    border-radius: ${themeVars.cornerRadius.s};
     border-style: solid;
-    border-width: ${({ theme }) => theme.foundation.stroke.thin}px;
+    border-width: ${themeVars.stroke.thin};
     overflow: hidden;
-    padding: ${({ theme }) => theme.foundation.spacing.xs}px;
-    gap: ${({ theme }) => theme.foundation.spacing.s}px;
+    padding: ${themeVars.spacing.xs};
+    gap: ${themeVars.spacing.s};
 `;
 
-export const HIGRow = styled.div<{ selected: boolean; whitespace?: keyof ThemeType['foundation']['spacing'] }>`
+export const HIGRow = styled.div`
     flex-direction: row;
     display: flex;
     align-items: center;
-    padding: ${({ theme }) => theme.foundation.spacing.s * 1.5}px
-        ${({ theme, whitespace }) => (whitespace ? theme.foundation.spacing[whitespace] : theme.foundation.spacing.s)}px;
-    background-color: ${({ theme, selected }) => (selected ? theme.palette.layout.surfaceHigh : 'transparent')};
+    padding: calc(${themeVars.spacing.s} * 1.5) ${themeVars.spacing.s};
+    background-color: transparent;
     cursor: pointer;
-    border-radius: ${({ theme }) => theme.foundation.cornerRadius.s}px;
-    gap: ${({ theme }) => theme.foundation.spacing.s}px;
-    color: ${({ theme, selected }) =>
-        selected ? theme.palette.layout.onSurface.primary : theme.palette.layout.onSurface.tertiary};
+    border-radius: ${themeVars.cornerRadius.s};
+    gap: ${themeVars.spacing.s};
+    color: ${themeVars.layout.onSurface.tertiary};
 
-    &:hover {
-        background-color: ${({ theme }) => theme.palette.layout.surfaceMid};
-        color: ${({ theme }) => theme.palette.layout.onSurface.primary};
+    &[data-selected='true'] {
+        background-color: ${themeVars.layout.surfaceHigh};
+        color: ${themeVars.layout.onSurface.primary};
     }
 
-    ${({ theme }) => {
-        const normalDuration = theme.foundation.animation.duration.fast;
-        const timingFunction = theme.foundation.animation.timing.easeOut;
+    &:hover {
+        background-color: ${themeVars.layout.surfaceMid};
+        color: ${themeVars.layout.onSurface.primary};
+    }
 
-        return `
-        transition: 
-            background-color ${normalDuration}s ${timingFunction},
-            color ${normalDuration}s ${timingFunction};
-        `;
-    }}
+    transition: background-color ${themeVars.animation.duration.fast} ${themeVars.animation.timing.easeOut},
+        color ${themeVars.animation.duration.fast} ${themeVars.animation.timing.easeOut};
 `;
 
-export const MaterialRow = styled.div<{ selected: boolean; whitespace?: keyof ThemeType['foundation']['spacing'] }>`
+export const MaterialRow = styled.div`
     flex-direction: row;
     display: flex;
-    padding: ${({ theme }) => theme.foundation.spacing.s}px
-        ${({ theme, whitespace }) => (whitespace ? theme.foundation.spacing[whitespace] : theme.foundation.spacing.s)}px;
-    padding-bottom: ${({ theme }) => theme.foundation.spacing.ml}px;
+    padding: ${themeVars.spacing.s} ${themeVars.spacing.s};
+    padding-bottom: ${themeVars.spacing.ml};
     cursor: pointer;
-    gap: ${({ theme }) => theme.foundation.spacing.s}px;
-    border-bottom-color: ${({ theme, selected }) => (selected ? theme.palette.actions.primary : 'transparent')};
+    gap: ${themeVars.spacing.s};
+    border-bottom-color: transparent;
     border-bottom-style: solid;
-    border-bottom-width: ${({ theme }) => theme.foundation.stroke.thick}px;
-    color: ${({ theme, selected }) =>
-        selected ? theme.palette.layout.onSurface.primary : theme.palette.layout.onSurface.tertiary};
+    border-bottom-width: ${themeVars.stroke.thick};
+    color: ${themeVars.layout.onSurface.tertiary};
 
-    &:hover {
-        color: ${({ theme }) => theme.palette.layout.onSurface.primary};
+    &[data-selected='true'] {
+        border-bottom-color: ${themeVars.actions.primary};
+        color: ${themeVars.layout.onSurface.primary};
     }
 
-    transition: color ${({ theme }) => theme.foundation.animation.duration.fast}s
-        ${({ theme }) => theme.foundation.animation.timing.easeOut};
+    &:hover {
+        color: ${themeVars.layout.onSurface.primary};
+    }
+
+    transition: color ${themeVars.animation.duration.fast} ${themeVars.animation.timing.easeOut};
 `;
 
-export const WhiteSpace = styled.div<{ whitespace?: keyof ThemeType['foundation']['spacing'] }>`
-    height: ${({ theme, whitespace }) =>
-        whitespace ? theme.foundation.spacing[whitespace] : theme.foundation.spacing.l}px;
-    width: ${({ theme, whitespace }) =>
-        whitespace ? theme.foundation.spacing[whitespace] : theme.foundation.spacing.l}px;
+export const WhiteSpace = styled.div`
+    height: ${themeVars.spacing.l};
+    width: ${themeVars.spacing.l};
 `;
 
-export const Icon = styled.div<{ selected: boolean }>`
+export const Icon = styled.div`
     display: flex;
-    color: ${({ theme, selected }) =>
-        selected ? theme.palette.layout.onSurface.primary : theme.palette.layout.onSurface.tertiary};
+    color: ${themeVars.layout.onSurface.tertiary};
+    &[data-selected='true'] {
+        color: ${themeVars.layout.onSurface.primary};
+    }
 `;

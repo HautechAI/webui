@@ -112,3 +112,19 @@ When reviewing documentation changes:
 - Reference Storybook stories in `/apps/storybook/stories/` for usage examples
 
 Remember: Documentation is as important as the code itself. Well-maintained documentation ensures developers can effectively use and contribute to this component library.
+
+## Import Guidelines
+
+### Component Import Rules
+- **Inside components/**/src**: Import other components only by package name:
+  ```typescript
+  import { Button } from '@hautechai/webui.button';
+  import { Typography } from '@hautechai/webui.typography';
+  ```
+- **Inside components/**/**: You can import current Component and Theme by relative path:
+  ```typescript
+  import { MyComponent } from '../src/';
+  import { themeVars } from '../ThemeProvider/src';
+  ```
+
+These rules ensure proper module resolution and maintain clean package boundaries while allowing relative imports for local components and testing.

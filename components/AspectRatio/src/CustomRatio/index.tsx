@@ -35,7 +35,7 @@ const CustomRatio = (props: CustomRatioProps) => {
 
     const renderOption = (option: string, description?: string) => (
         <Ratio
-            selected={selected === option}
+            data-selected={selected === option}
             onClick={() => onClickAspectRatio(option)}
             onMouseEnter={() => setTmpSelected(option)}
             key={option}
@@ -66,11 +66,16 @@ const CustomRatio = (props: CustomRatioProps) => {
         return (
             <Column>
                 <AspectRatioBoxContainer>
-                    <RatioBox {...getBoxSize(selected, maxPxSize)}>
-                        <Typography variant="LabelMediumEmphasized" color="layout.onSurface.primary">
-                            {selected}
-                        </Typography>
-                    </RatioBox>
+                    {(() => {
+                        const sz = getBoxSize(selected, maxPxSize);
+                        return (
+                            <RatioBox style={{ width: sz.width, height: sz.height }}>
+                                <Typography variant="LabelMediumEmphasized" color="layout.onSurface.primary">
+                                    {selected}
+                                </Typography>
+                            </RatioBox>
+                        );
+                    })()}
                 </AspectRatioBoxContainer>
                 <Box paddingTop="xl" paddingBottom="l">
                     <Slider

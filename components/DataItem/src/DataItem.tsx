@@ -1,24 +1,21 @@
 import React from 'react';
-import { css, styled } from '@hautechai/webui.themeprovider';
+import { css } from '@linaria/core';
+import { styled } from '@linaria/react';
+import { themeVars } from '@hautechai/webui.themeprovider';
 import { Typography, TypographyProps } from '@hautechai/webui.typography';
 import { Avatar } from '@hautechai/webui.avatar';
 import { Row } from '@hautechai/webui.row';
 import { Hint, HintProps } from '@hautechai/webui.hint';
 
-const ColumnContainer = styled.div<Pick<DataItemProps, 'size' | 'primary' | 'stretch'>>`
+const ColumnContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-self: center;
-    ${({ stretch }) =>
-        stretch &&
-        css`
-            flex: 1;
-        `}
+    /* dynamic stretch applied via style prop */
 `;
 
-const RowContainer = styled(Row)<Pick<DataItemProps, 'size'>>`
-    padding: ${({ theme, size }) => (size === 'small' ? 0 : theme.foundation.spacing.m)}px 0;
-    gap: ${({ theme }) => theme.foundation.spacing.m}px;
+const RowContainer = styled(Row)`
+    gap: ${themeVars.spacing.m};
 `;
 
 export type DataItemBaseProps = {
@@ -73,7 +70,8 @@ const DataTypographyVariants: Record<
 export const DataItem = (props: DataItemProps) => {
     const { size = 'medium', primary = 'data', stretch } = props;
     return props.direction === 'row' ? (
-        <RowContainer justify="space-between" align="center" stretch={stretch} size={props.size}>
+        <div style={{ padding: `${props.size === 'small' ? '0' : 'var(--spacing-m)'} 0` }}>
+            <RowContainer justify="space-between" align="center" stretch={stretch}>
             <Typography
                 variant="LabelSmallEmphasized"
                 color={primary === 'data' ? 'layout.onSurface.tertiary' : 'layout.onSurface.primary'}
@@ -99,11 +97,12 @@ export const DataItem = (props: DataItemProps) => {
                     return child;
                 })}
             </Row>
-        </RowContainer>
+            </RowContainer>
+        </div>
     ) : (
         <Row spacing="m" stretch={stretch}>
             {props.direction === 'column' && props.leadingIcon && <Avatar icon={props.leadingIcon} />}
-            <ColumnContainer size={size} primary={primary} stretch={stretch}>
+            <ColumnContainer style={{ flex: stretch ? 1 : undefined }}>
                 <Row spacing="xs" align="center">
                     <Typography
                         variant={HeadingTypographyVariants[size][primary]}

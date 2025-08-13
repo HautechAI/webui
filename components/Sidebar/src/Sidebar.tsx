@@ -1,33 +1,29 @@
-import { css, styled } from '@hautechai/webui.themeprovider';
+import { styled } from '@linaria/react';
+import { themeVars } from '@hautechai/webui.themeprovider';
 
-const StyledContainer = styled.div<SidebarProps>`
+const StyledContainer = styled.div`
     display: flex;
     flex-direction: column;
+    background-color: ${themeVars.layout.surfaceMid};
+    &[data-hierarchy="low"] {
+        background-color: ${themeVars.layout.surfaceLow};
+    }
 
-    background-color: ${({ theme, hierarchy }) =>
-        hierarchy === 'mid' ? theme.palette.layout.surfaceMid : theme.palette.layout.surfaceLow};
+    &[data-side="right"] {
+        border-left-width: ${themeVars.stroke.thin};
+        border-left-style: solid;
+        border-left-color: ${themeVars.layout.strokes};
+    }
 
-    ${({ side, theme }) =>
-        side === 'right' &&
-        css`
-            border-left-width: ${theme.foundation.stroke.thin}px;
-            border-left-style: solid;
-            border-left-color: ${theme.palette.layout.strokes};
-        `}
+    &[data-side="left"] {
+        border-right-width: ${themeVars.stroke.thin};
+        border-right-style: solid;
+        border-right-color: ${themeVars.layout.strokes};
+    }
 
-    ${({ side, theme }) =>
-        side === 'left' &&
-        css`
-            border-right-width: ${theme.foundation.stroke.thin}px;
-            border-right-style: solid;
-            border-right-color: ${theme.palette.layout.strokes};
-        `}
-
-    ${({ stretch }) =>
-        stretch &&
-        css`
-            flex-grow: 1;
-        `}
+    &[data-stretch="true"] {
+        flex-grow: 1;
+    }
 `;
 
 const SidebarContent = styled.div`
@@ -38,7 +34,7 @@ const SidebarContent = styled.div`
 export const SidebarSection = styled.div`
     display: flex;
     flex-direction: column;
-    padding: ${({ theme }) => theme.foundation.spacing.l}px ${({ theme }) => theme.foundation.spacing.l}px;
+    padding: ${themeVars.spacing.l} ${themeVars.spacing.l};
 `;
 
 export type SidebarProps = {
@@ -52,7 +48,7 @@ export type SidebarProps = {
 export const Sidebar = (props: SidebarProps) => {
     const { hierarchy = 'mid', side = 'left' } = props;
     return (
-        <StyledContainer hierarchy={hierarchy} stretch={props.stretch} side={side}>
+    <StyledContainer data-hierarchy={hierarchy} data-stretch={!!props.stretch} data-side={side}>
             {props.header}
             <SidebarContent>{props.content}</SidebarContent>
             {props.footer}

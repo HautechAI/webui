@@ -1,27 +1,21 @@
 import { ArrowAltDownIcon, ArrowAltUpIcon } from '@hautechai/webui.icon';
 import { IconButton } from '@hautechai/webui.iconbutton';
 import { Progress } from '@hautechai/webui.progress';
-import { css, styled } from '@hautechai/webui.themeprovider';
+import { styled } from '@linaria/react';
+import { themeVars } from '@hautechai/webui.themeprovider';
 import { Typography } from '@hautechai/webui.typography';
 
-const Container = styled.div<Pick<FloatingPanelProps, 'width'>>`
+const Container = styled.div`
     position: fixed;
-    bottom: ${({ theme }) => theme.foundation.spacing.xl}px;
-    right: ${({ theme }) => theme.foundation.spacing.xl}px;
+    bottom: ${themeVars.spacing.xl};
+    right: ${themeVars.spacing.xl};
 
-    border-radius: ${({ theme }) => theme.foundation.cornerRadius.l}px;
-    border-width: ${({ theme }) => theme.foundation.stroke.thin}px;
+    border-radius: ${themeVars.cornerRadius.l};
+    border-width: ${themeVars.stroke.thin};
     border-style: solid;
-    border-color: ${({ theme }) => theme.palette.layout.strokes};
-    background-color: ${({ theme }) => theme.palette.layout.surfaceLow};
+    border-color: ${themeVars.layout.strokes};
+    background-color: ${themeVars.layout.surfaceLow};
     overflow: hidden;
-
-    ${({ width }) =>
-        width
-            ? css`
-                  width: ${width}px;
-              `
-            : ''};
 
     display: flex;
     flex-direction: column;
@@ -34,10 +28,10 @@ const Container = styled.div<Pick<FloatingPanelProps, 'width'>>`
 const Header = styled.div`
     display: flex;
     flex-direction: row;
-    padding: ${({ theme }) => theme.foundation.spacing.ml}px;
-    color: ${({ theme }) => theme.palette.layout.onSurface.primary};
+    padding: ${themeVars.spacing.ml};
+    color: ${themeVars.layout.onSurface.primary};
     align-items: center;
-    gap: ${({ theme }) => theme.foundation.spacing.s}px;
+    gap: ${themeVars.spacing.s};
 `;
 
 const Label = styled(Typography)`
@@ -45,8 +39,8 @@ const Label = styled(Typography)`
 `;
 
 const ContentContainer = styled.div`
-    padding-top: ${({ theme }) => theme.foundation.spacing.s}px;
-    padding-bottom: ${({ theme }) => theme.foundation.spacing.xl}px;
+    padding-top: ${themeVars.spacing.s};
+    padding-bottom: ${themeVars.spacing.xl};
 `;
 
 export type FloatingPanelProps = {
@@ -60,8 +54,11 @@ export type FloatingPanelProps = {
 };
 
 export const FloatingPanel = (props: FloatingPanelProps) => {
+    const style: React.CSSProperties = {
+        width: props.width ? `${props.width}px` : undefined,
+    };
     return (
-        <Container className={props.className} width={props.width}>
+        <Container className={props.className} style={style}>
             <Header>
                 <IconButton
                     variant="flat"

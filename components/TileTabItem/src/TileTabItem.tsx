@@ -1,20 +1,20 @@
 import { ButtonBase } from '@hautechai/webui.buttonbase';
-import { styled } from '@hautechai/webui.themeprovider';
-import { Tile, TileProps } from '@hautechai/webui.tile';
-
+import { styled } from '@linaria/react';
+import { Tile } from '@hautechai/webui.tile';
+import { themeVars } from '@hautechai/webui.themeprovider';
 import { Typography } from '@hautechai/webui.typography';
 import { useCallback } from 'react';
 
-const StyledTileTabItem = styled(ButtonBase)<Pick<TileTabItemProps, 'selected'>>`
+const StyledTileTabItem = styled(ButtonBase)`
     flex-direction: column;
     align-items: center;
-    gap: ${({ theme }) => theme.foundation.spacing.m}px;
-
-    color: ${({ theme, selected }) =>
-        selected ? theme.palette.actions.primary : theme.palette.layout.onSurface.secondary};
-
+    gap: ${themeVars.spacing.m};
+    color: ${themeVars.layout.onSurface.secondary};
+    &[data-selected="true"] {
+        color: ${themeVars.actions.primary};
+    }
     :hover {
-        color: ${({ theme }) => theme.palette.actions.primary};
+        color: ${themeVars.actions.primary};
     }
 `;
 
@@ -36,7 +36,7 @@ export const TileTabItem = (props: TileTabItemProps) => {
 
     const videoProps = video ? { src: video, component: 'video', autoPlay: true, loop: true } as const : {};
     return (
-        <StyledTileTabItem onClick={clickHandler}>
+        <StyledTileTabItem onClick={clickHandler} data-selected={!!selected}>
             <Tile size="small" {...{ icon, src: image, selected }} {...videoProps} />
             <Typography variant="LabelSmallRegular">{props.label}</Typography>
         </StyledTileTabItem>
