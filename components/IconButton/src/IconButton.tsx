@@ -16,12 +16,15 @@ const buttonBase = css`
     border-radius: ${themeVars.cornerRadius.m};
     border-style: solid;
     color: ${themeVars.layout.onSurface.primary};
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     transition:
         background-color ${themeVars.animation.duration.fast} ${themeVars.animation.timing.easeOut},
         border-color ${themeVars.animation.duration.fast} ${themeVars.animation.timing.easeOut};
 
     &:hover:not(:disabled) {
-        background-color: ${themeVars.layout.surfaceHigh};
+        background-color: var(--icon-button-bg, ${themeVars.layout.surfaceHigh});
     }
 
     &:disabled {
@@ -43,22 +46,22 @@ const smallSize = css`
 const filledVariant = css`
     border-width: ${themeVars.stroke.thin};
     border-color: ${themeVars.layout.strokes};
-    background-color: ${themeVars.layout.surfaceLow};
+    background-color: var(--icon-button-bg, ${themeVars.layout.surfaceLow});
 
     &:disabled {
-        background-color: ${themeVars.layout.surfaceMid};
+        background-color: var(--icon-button-bg, ${themeVars.layout.surfaceMid});
     }
 `;
 
 const outlinedVariant = css`
     border-width: ${themeVars.stroke.thin};
     border-color: ${themeVars.layout.strokes};
-    background-color: transparent;
+    background-color: var(--icon-button-bg, transparent);
 `;
 
 const flatVariant = css`
     border-width: 0px;
-    background-color: transparent;
+    background-color: var(--icon-button-bg, transparent);
 `;
 
 export const iconButtonClasses = {
@@ -84,24 +87,16 @@ export const IconButton = (props: IconButtonProps) => {
     ].join(' ');
 
     return (
-        <ButtonBase
-            className={buttonClassName}
+        <span
             style={
                 customBackground
-                    ? {
-                          backgroundColor: customBackground,
-                          borderRadius: 'inherit',
-                          width: '100%',
-                          height: '100%',
-                          display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                      }
+                    ? ({ ['--icon-button-bg' as any]: customBackground } as React.CSSProperties)
                     : undefined
             }
-            {...rest}
         >
-            {icon}
-        </ButtonBase>
+            <ButtonBase className={buttonClassName} {...rest}>
+                {icon}
+            </ButtonBase>
+        </span>
     );
 };
