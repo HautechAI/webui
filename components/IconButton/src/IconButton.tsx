@@ -16,14 +16,14 @@ const buttonBase = css`
     border-radius: ${themeVars.cornerRadius.m};
     border-style: solid;
     color: ${themeVars.layout.onSurface.primary};
-    transition: 
+    transition:
         background-color ${themeVars.animation.duration.fast} ${themeVars.animation.timing.easeOut},
         border-color ${themeVars.animation.duration.fast} ${themeVars.animation.timing.easeOut};
-    
+
     &:hover:not(:disabled) {
         background-color: ${themeVars.layout.surfaceHigh};
     }
-    
+
     &:disabled {
         color: ${themeVars.layout.onSurface.tertiary};
         cursor: not-allowed;
@@ -44,7 +44,7 @@ const filledVariant = css`
     border-width: ${themeVars.stroke.thin};
     border-color: ${themeVars.layout.strokes};
     background-color: ${themeVars.layout.surfaceLow};
-    
+
     &:disabled {
         background-color: ${themeVars.layout.surfaceMid};
     }
@@ -84,23 +84,24 @@ export const IconButton = (props: IconButtonProps) => {
     ].join(' ');
 
     return (
-        <ButtonBase 
+        <ButtonBase
             className={buttonClassName}
+            style={
+                customBackground
+                    ? {
+                          backgroundColor: customBackground,
+                          borderRadius: 'inherit',
+                          width: '100%',
+                          height: '100%',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                      }
+                    : undefined
+            }
             {...rest}
         >
-            <div 
-                style={customBackground ? { 
-                    backgroundColor: customBackground,
-                    borderRadius: 'inherit',
-                    width: '100%',
-                    height: '100%',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center'
-                } : undefined}
-            >
-                {icon}
-            </div>
+            {icon}
         </ButtonBase>
     );
 };

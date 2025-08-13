@@ -7,7 +7,7 @@ import { CloseIcon } from '@hautechai/webui.icon';
 import { IconButton } from '@hautechai/webui.iconbutton';
 import { BottomSheet } from '@hautechai/webui.bottomsheet';
 import { styled } from '@linaria/react';
-import { ThemeType } from '@hautechai/webui.themeprovider';
+import { themeVars } from '@hautechai/webui.themeprovider';
 
 export type ContextMenuProps = {
     heading?: {
@@ -20,38 +20,37 @@ export type ContextMenuProps = {
     isLeftClick?: boolean;
 };
 
-const Container = styled.div<{
-    isOpen?: boolean;
-    top: number;
-    left: number;
-    spacing?: keyof ThemeType['foundation']['spacing'];
-}>`
+const Container = styled.div`
     display: flex;
     flex-direction: column;
-    gap: ${({ theme, spacing }) => (spacing ? theme.foundation.spacing[spacing] : 0)}px;
+    gap: ${themeVars.spacing.m};
     position: absolute;
     z-index: 1;
-    top: ${({ top }) => top}px;
-    left: ${({ left }) => left}px;
 
-    pointer-events: ${({ isOpen }) => (isOpen ? 'auto' : 'none')};
-    opacity: ${({ isOpen }) => (isOpen ? 1 : 0)};
-    transition: opacity ${({ theme }) => theme.foundation.animation.duration.fast}s
-        ${({ theme }) => theme.foundation.animation.timing.easeOut};
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity ${themeVars.animation.duration.fast} ${themeVars.animation.timing.easeOut};
 
-    border-radius: ${({ theme }) => theme.foundation.cornerRadius.m}px;
-    border: ${({ theme }) => theme.foundation.stroke.thin}px solid ${({ theme }) => theme.palette.layout.strokes};
-    background-color: ${({ theme }) => theme.palette.layout.surfaceLow};
-    padding: ${({ theme }) => theme.foundation.spacing.l}px ${({ theme }) => theme.foundation.spacing.s}px;
+    border-radius: ${themeVars.cornerRadius.m};
+    border-width: ${themeVars.stroke.thin};
+    border-style: solid;
+    border-color: ${themeVars.layout.strokes};
+    background-color: ${themeVars.layout.surfaceLow};
+    padding: ${themeVars.spacing.l} ${themeVars.spacing.s};
     min-width: 200px;
+
+    &[data-open='true'] {
+        pointer-events: auto;
+        opacity: 1;
+    }
 `;
 
 const MobileContainer = styled(Column)`
-    padding: ${({ theme }) => theme.foundation.spacing.l}px ${({ theme }) => theme.foundation.spacing.s}px;
+    padding: ${themeVars.spacing.l} ${themeVars.spacing.s};
 `;
 
 const Heading = styled(Row)`
-    padding: 0 ${({ theme }) => theme.foundation.spacing.ml}px;
+    padding: 0 ${themeVars.spacing.ml};
 `;
 
 export const ContextMenu = ({ menus, heading, children, variation = 'menu', isLeftClick }: ContextMenuProps) => {
@@ -158,7 +157,11 @@ export const ContextMenu = ({ menus, heading, children, variation = 'menu', isLe
                         </MobileContainer>
                     </BottomSheet>
                 ) : (
-                    <Container isOpen={isOpen} top={position.y} left={position.x} spacing="m" ref={menuRef}>
+                    <Container
+                        data-open={isOpen ? 'true' : 'false'}
+                        ref={menuRef}
+                        style={{ top: position.y, left: position.x }}
+                    >
                         {heading && (
                             <>
                                 <Heading spacing="l" align="center">

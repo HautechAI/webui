@@ -17,7 +17,6 @@ const BaseComponent = (props: Pick<TypographyProps, 'className' | 'children' | '
 const baseTextStyles = css`
     font-family: Inter;
     color: currentColor;
-    text-align: inherit;
     -webkit-font-smoothing: antialiased;
 `;
 
@@ -189,7 +188,6 @@ export const Typography = (props: TypographyProps) => {
         .join(' ');
 
     const dynamicStyles: React.CSSProperties = {
-        textAlign: textAlign ?? 'inherit',
         color: color ? get(theme.palette, color) : 'currentColor',
     };
 
