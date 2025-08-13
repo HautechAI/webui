@@ -50,7 +50,7 @@ export const Counter = ({ min, max, step = 1, value = 0, onChange }: CounterProp
                 disabled={value === min}
                 icon={<MinusIcon size={20} />}
             />
-            <CounterValue variant="LabelSmallRegular">{value}</CounterValue>
+            <CounterValue textAlign='center' variant="LabelSmallRegular">{value}</CounterValue>
             <IconButton
                 size="small"
                 variant="flat"

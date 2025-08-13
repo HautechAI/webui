@@ -189,6 +189,7 @@ export const Typography = (props: TypographyProps) => {
 
     const dynamicStyles: React.CSSProperties = {
         color: color ? get(theme.palette, color) : 'currentColor',
+        textAlign: textAlign ?? 'inherit',
     };
 
     return <StyledText className={classNames} style={dynamicStyles} {...rest} />;
