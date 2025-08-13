@@ -1,29 +1,29 @@
 import { styled } from '@linaria/react';
+import { themeVars } from '@hautechai/webui.themeprovider';
 
-const Container = styled.div<Required<Pick<AppBarMobileProps, 'hierarchy'>>>`
+const Container = styled.div`
     display: flex;
     flex-direction: column;
     flex: 1;
     align-items: stretch;
-    gap: ${({ theme }) => theme.foundation.spacing.ml}px;
-    padding: ${({ theme }) => theme.foundation.spacing.l}px;
+    gap: ${themeVars.spacing.ml};
+    padding: ${themeVars.spacing.l};
 
-    background-color: ${({ theme, hierarchy }) =>
-        ({
-            low: theme.palette.layout.surfaceLow,
-            mid: theme.palette.layout.surfaceMid,
-        }[hierarchy])};
+    background-color: ${themeVars.layout.surfaceMid};
+    &[data-hierarchy="low"] {
+        background-color: ${themeVars.layout.surfaceLow};
+    }
 
-    border-bottom-width: ${({ theme }) => theme.foundation.stroke.thin}px;
+    border-bottom-width: ${themeVars.stroke.thin};
     border-bottom-style: solid;
-    border-bottom-color: ${({ theme }) => theme.palette.layout.strokes};
+    border-bottom-color: ${themeVars.layout.strokes};
 `;
 
 const RowContainer = styled.div`
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: ${({ theme }) => theme.foundation.spacing.l}px;
+    gap: ${themeVars.spacing.l};
 `;
 
 export type AppBarMobileProps = {
@@ -35,7 +35,7 @@ export type AppBarMobileProps = {
 export const AppBarMobile = (props: AppBarMobileProps) => {
     const { hierarchy = 'mid' } = props;
     return (
-        <Container hierarchy={hierarchy}>
+    <Container data-hierarchy={hierarchy}>
             <RowContainer>{props.top}</RowContainer>
             <RowContainer>{props.center}</RowContainer>
             <RowContainer>{props.bottom}</RowContainer>

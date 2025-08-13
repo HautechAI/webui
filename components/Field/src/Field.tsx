@@ -1,22 +1,15 @@
 import { Column } from '@hautechai/webui.column';
 import { Row } from '@hautechai/webui.row';
-import { css } from '@linaria/core';
 import { styled } from '@linaria/react';
 import { themeVars } from '@hautechai/webui.themeprovider';
 import { Typography } from '@hautechai/webui.typography';
 import React, { useCallback, useRef } from 'react';
 import { LockIcon } from '@hautechai/webui.icon';
 
-const Container = styled.div<{ disabled?: boolean; noStretch?: boolean }>`
+const Container = styled.div`
     display: flex;
     flex-direction: column;
-    gap: ${({ theme }) => theme.foundation.spacing.s}px;
-    ${({ noStretch }) =>
-        !noStretch &&
-        css`
-            flex: 1;
-        `}
-
+    gap: ${themeVars.spacing.s};
     cursor: default;
 `;
 
@@ -50,7 +43,11 @@ export const Field = (props: FieldProps) => {
     const Main = labelPosition === 'top' ? Column : Row;
 
     return (
-        <Container onClick={handleClick} ref={ref} noStretch={labelPosition === 'right'}>
+        <Container
+            onClick={handleClick}
+            ref={ref}
+            style={{ flex: labelPosition === 'right' ? undefined : 1 }}
+        >
             <Main spacing={labelPosition === 'top' ? 'm' : 'ml'} stretch reverse={labelPosition === 'right'}>
                 <Row spacing="s" align="center">
                     {label && (

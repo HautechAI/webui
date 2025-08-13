@@ -1,78 +1,66 @@
-import { css } from '@linaria/core';
 import { styled } from '@linaria/react';
 import { themeVars } from '@hautechai/webui.themeprovider';
 import { IconButton, IconButtonProps } from '@hautechai/webui.iconbutton';
 import React, { useCallback, useRef } from 'react';
 
-const Container = styled.div<{ disabled?: boolean }>`
+const Container = styled.div`
     display: flex;
-    gap: ${({ theme }) => theme.foundation.spacing.m}px;
+    gap: ${themeVars.spacing.m};
     align-items: center;
     flex: 1;
-
-    ${({ theme, disabled }) =>
-        disabled &&
-        css`
-            cursor: not-allowed;
-            color: ${theme.palette.layout.strokes};
-        `}
+    &[data-disabled="true"] {
+        cursor: not-allowed;
+        color: ${themeVars.layout.strokes};
+    }
 `;
 
-export const InputContainer = styled.div<{ disabled?: boolean; hasError?: boolean; variation: 'filled' | 'outlined' }>`
+export const InputContainer = styled.div<{ variation: 'filled' | 'outlined' }>`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     cursor: text;
 
-    padding: ${({ theme }) => theme.foundation.spacing.m}px ${({ theme }) => theme.foundation.spacing.ml}px;
+    padding: ${themeVars.spacing.m} ${themeVars.spacing.ml};
     flex: 1 0 0;
 
-    border-radius: ${({ theme }) => theme.foundation.cornerRadius.m}px;
-    border-width: ${({ theme }) => theme.foundation.stroke.thin}px;
+    border-radius: ${themeVars.cornerRadius.m};
+    border-width: ${themeVars.stroke.thin};
     border-style: solid;
-    border-color: ${({ theme }) => theme.palette.layout.strokes};
+    border-color: ${themeVars.layout.strokes};
 
-    background: ${({ theme, variation }) => (variation === 'filled' ? theme.palette.layout.surfaceLow : 'transparent')};
+    background: ${({ variation }) => (variation === 'filled' ? themeVars.layout.surfaceLow : 'transparent')};
+    &[data-has-error="true"] {
+        border-color: ${themeVars.actions.error};
+        outline-width: ${themeVars.stroke.thin};
+        outline-style: solid;
+        outline-color: ${themeVars.actions.error};
+    }
 
-    ${({ hasError, theme }) =>
-        hasError &&
-        css`
-            border-color: ${theme.palette.actions.error};
-            outline-width: ${theme.foundation.stroke.thin}px;
-            outline-style: solid;
-            outline-color: ${theme.palette.actions.error};
-        `}
+    &:hover {
+        border-color: ${themeVars.layout.onSurface.tertiary};
+    }
 
-    ${({ disabled, theme }) =>
-        disabled
-            ? css`
-                  cursor: not-allowed;
-              `
-            : css`
-                  &:hover {
-                      border-color: ${theme.palette.layout.onSurface.tertiary};
-                  }
+    &:active {
+        border-color: ${themeVars.layout.onSurface.tertiary};
+        outline-width: ${themeVars.stroke.thin};
+        outline-style: solid;
+        outline-color: ${themeVars.layout.onSurface.tertiary};
+    }
 
-                  &:active {
-                      border-color: ${theme.palette.layout.onSurface.tertiary};
-                      outline-width: ${theme.foundation.stroke.thin}px;
-                      outline-style: solid;
-                      outline-color: ${theme.palette.layout.onSurface.tertiary};
-                  }
+    &:focus-within {
+        border-color: ${themeVars.actions.primary};
+        outline-width: ${themeVars.stroke.thin};
+        outline-style: solid;
+        outline-color: ${themeVars.actions.primary};
+    }
 
-                  &:focus-within {
-                      border-color: ${theme.palette.actions.primary};
-                      outline-width: ${theme.foundation.stroke.thin}px;
-                      outline-style: solid;
-                      outline-color: ${theme.palette.actions.primary};
-                  }
-              `}
+    &[data-disabled="true"] {
+        cursor: not-allowed;
+    }
 
-    transition: border-color ${({ theme }) => theme.foundation.animation.duration.fast}s
-        ${({ theme }) => theme.foundation.animation.timing.easeOut}, outline-color ${({ theme }) =>
-        theme.foundation.animation.duration.fast}s
-        ${({ theme }) => theme.foundation.animation.timing.easeOut};
+    transition: border-color ${themeVars.animation.duration.fast} ${themeVars.animation.timing.easeOut},
+        outline-color ${themeVars.animation.duration.fast} ${themeVars.animation.timing.easeOut};
 `;
 
 export const CustomInput = styled.input`
@@ -84,7 +72,7 @@ export const CustomInput = styled.input`
     font-weight: 400;
     line-height: 20px;
 
-    color: ${({ theme }) => theme.palette.layout.onSurface.primary};
+    color: ${themeVars.layout.onSurface.primary};
     background: transparent;
     border: none;
 
@@ -93,15 +81,15 @@ export const CustomInput = styled.input`
     }
 
     &::placeholder {
-        color: ${({ theme }) => theme.palette.layout.onSurface.secondary};
+        color: ${themeVars.layout.onSurface.secondary};
     }
 
     &:disabled {
         cursor: not-allowed;
-        color: ${({ theme }) => theme.palette.layout.strokes};
+        color: ${themeVars.layout.strokes};
 
         &::placeholder {
-            color: ${({ theme }) => theme.palette.layout.strokes};
+            color: ${themeVars.layout.strokes};
         }
     }
 `;
@@ -152,8 +140,8 @@ export const TextInput = (props: TextInputProps) => {
     const { disabled, icon } = props;
 
     return (
-        <Container onClick={handleClick} disabled={disabled}>
-            <InputContainer disabled={disabled} variation={props.variation ?? 'filled'} hasError={props.hasError}>
+        <Container onClick={handleClick} data-disabled={!!disabled}>
+            <InputContainer data-disabled={!!disabled} variation={props.variation ?? 'filled'} data-has-error={!!props.hasError}>
                 {props.leadingIcon ? getIcon(props.leadingIcon) : null}
                 <CustomInput
                     className={props.className}

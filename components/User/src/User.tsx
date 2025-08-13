@@ -1,11 +1,12 @@
 import { Avatar } from '@hautechai/webui.avatar';
 import { styled } from '@linaria/react';
+import { themeVars } from '@hautechai/webui.themeprovider';
 import { Typography } from '@hautechai/webui.typography';
 
 const Container = styled.div`
     display: flex;
     flex-direction: row;
-    gap: ${({ theme }) => theme.foundation.spacing.m}px;
+    gap: ${themeVars.spacing.m};
     align-items: center;
     flex: 1;
 `;
@@ -13,7 +14,7 @@ const Container = styled.div`
 const UserContainer = styled.div`
     display: flex;
     flex-direction: row;
-    gap: ${({ theme }) => theme.foundation.spacing.ml}px;
+    gap: ${themeVars.spacing.ml};
     align-items: center;
     flex: 1;
 `;
@@ -21,7 +22,7 @@ const UserContainer = styled.div`
 const LabelsContainer = styled.div`
     display: flex;
     flex-direction: column;
-    gap: ${({ theme }) => theme.foundation.spacing.xs}px;
+    gap: ${themeVars.spacing.xs};
 `;
 
 export type UserProps = {

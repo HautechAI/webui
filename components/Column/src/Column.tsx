@@ -1,48 +1,16 @@
-import { css } from '@linaria/core';
 import { styled } from '@linaria/react';
-import { ThemeType } from '@hautechai/webui.themeprovider';
+import { themeVars, ThemeType } from '@hautechai/webui.themeprovider';
 import { PropsWithChildren } from 'react';
 
-const BaseComponent = (props: Pick<ColumnProps, 'className' | 'children'>) => {
-    const { className, children } = props;
-    return <div {...{ className, children }} />;
+const BaseComponent = (props: Pick<ColumnProps, 'className' | 'children'> & { style?: React.CSSProperties }) => {
+    const { className, children, style } = props;
+    return <div {...{ className, children, style }} />;
 };
 
-const Container = styled(BaseComponent)<
-    Pick<ColumnProps, 'align' | 'spacing' | 'stretch' | 'overflow' | 'overflowX' | 'overflowY'>
->`
+const Container = styled(BaseComponent)`
     display: flex;
     flex-direction: column;
-    gap: ${({ theme, spacing }) => (spacing ? theme.foundation.spacing[spacing] : 0)}px;
-    ${({ align }) =>
-        align &&
-        css`
-            align-items: ${align};
-        `}
-    ${({ stretch }) =>
-        stretch &&
-        css`
-            flex: 1;
-        `}
-
-     ${({ overflow }) =>
-        overflow
-            ? css`
-                  overflow: ${overflow};
-              `
-            : ''}
-    ${({ overflowX }) =>
-        overflowX
-            ? css`
-                  overflow-x: ${overflowX};
-              `
-            : ''}
-    ${({ overflowY }) =>
-        overflowY
-            ? css`
-                  overflow-y: ${overflowY};
-              `
-            : ''};
+    gap: 0;
 `;
 
 type Align = 'start' | 'center' | 'end' | 'stretch';
@@ -58,6 +26,18 @@ export type ColumnProps = PropsWithChildren<{
 }>;
 
 export const Column = (props: ColumnProps) => {
-    const { children, ...rest } = props;
-    return <Container {...rest}>{children}</Container>;
+    const { children, spacing, align, stretch, overflow, overflowX, overflowY, ...rest } = props;
+    const style: React.CSSProperties = {
+        gap: spacing ? (themeVars.spacing as any)[spacing] : 0,
+        alignItems: align as any,
+        flex: stretch ? 1 : undefined,
+        overflow,
+        overflowX,
+        overflowY,
+    };
+    return (
+        <Container style={style} {...rest}>
+            {children}
+        </Container>
+    );
 };

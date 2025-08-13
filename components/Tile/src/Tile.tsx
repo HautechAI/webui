@@ -1,4 +1,3 @@
-import { css } from '@linaria/core';
 import { styled } from '@linaria/react';
 import { themeVars } from '@hautechai/webui.themeprovider';
 
@@ -15,32 +14,14 @@ const sizeToUnits = (size?: number | string) => {
     return typeof size === 'number' ? `${size}px` : size;
 };
 
-const StyledTileDiv = styled.div<Omit<TileProps, 'icon'>>`
+const StyledTileDiv = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
 
     background-color: ${themeVars.layout.surfaceMid};
     border-radius: ${themeVars.cornerRadius.m};
-
-    ${({ width, size }) =>
-        (width || size) &&
-        css`
-            width: ${sizeToUnits(width) ?? sizeToUnits(tileSize[size ?? 'medium'])};
-        `};
-    ${({ height, size }) =>
-        (height || size) &&
-        css`
-            height: ${sizeToUnits(height) ?? sizeToUnits(tileSize[size ?? 'medium'])};
-        `};
-
-    ${({ aspectRatio }) =>
-        aspectRatio &&
-        css`
-            aspect-ratio: ${aspectRatio};
-        `};
-
-    background-image: ${({ src }) => (src ? `url(${src})` : 'none')};
+    background-image: var(--tile-bg-image, none);
     background-size: cover;
     background-position: center;
 
@@ -50,42 +31,28 @@ const StyledTileDiv = styled.div<Omit<TileProps, 'icon'>>`
     background-origin: border-box;
     box-sizing: border-box;
 
-    transition: 
+    transition:
         background-color ${themeVars.animation.duration.fast} ${themeVars.animation.timing.easeOut},
         outline-color ${themeVars.animation.duration.fast} ${themeVars.animation.timing.easeOut},
         transform ${themeVars.animation.duration.fast} ${themeVars.animation.timing.easeOut},
         border-color ${themeVars.animation.duration.fast} ${themeVars.animation.timing.easeOut};
 
-    border-color: ${({ selected }) => (selected ? themeVars.actions.primary : 'transparent')};
+    border-color: transparent;
+    &[data-selected="true"] {
+        border-color: ${themeVars.actions.primary};
+    }
     .htch-webui-hoverable:hover & {
         border-color: ${themeVars.actions.primary};
     }
 `;
 
-const StyledTileImg = styled.img<Omit<TileProps, 'icon'>>`
+const StyledTileImg = styled.img`
     display: flex;
     align-items: center;
     justify-content: center;
 
     background-color: ${themeVars.layout.surfaceMid};
     border-radius: ${themeVars.cornerRadius.m};
-
-    ${({ width, size }) =>
-        (width || size) &&
-        css`
-            width: ${sizeToUnits(width) ?? sizeToUnits(tileSize[size ?? 'medium'])};
-        `};
-    ${({ height, size }) =>
-        (height || size) &&
-        css`
-            height: ${sizeToUnits(height) ?? sizeToUnits(tileSize[size ?? 'medium'])};
-        `};
-
-    ${({ aspectRatio }) =>
-        aspectRatio &&
-        css`
-            aspect-ratio: ${aspectRatio};
-        `};
 
     border-width: ${themeVars.stroke.standard};
     border-style: solid;
@@ -99,36 +66,22 @@ const StyledTileImg = styled.img<Omit<TileProps, 'icon'>>`
         outline-color ${themeVars.animation.duration.fast} ${themeVars.animation.timing.easeOut},
         transform ${themeVars.animation.duration.fast} ${themeVars.animation.timing.easeOut};
 
-    border-color: ${({ selected }) => (selected ? themeVars.actions.primary : 'transparent')};
+    border-color: transparent;
+    &[data-selected="true"] {
+        border-color: ${themeVars.actions.primary};
+    }
     .htch-webui-hoverable:hover & {
         border-color: ${themeVars.actions.primary};
     }
 `;
 
-const StyledTileVideo = styled.video<Omit<TileProps, 'icon'>>`
+const StyledTileVideo = styled.video`
     display: flex;
     align-items: center;
     justify-content: center;
 
     background-color: ${themeVars.layout.surfaceMid};
     border-radius: ${themeVars.cornerRadius.m};
-
-    ${({ width, size }) =>
-        (width || size) &&
-        css`
-            width: ${sizeToUnits(width) ?? sizeToUnits(tileSize[size ?? 'medium'])};
-        `};
-    ${({ height, size }) =>
-        (height || size) &&
-        css`
-            height: ${sizeToUnits(height) ?? sizeToUnits(tileSize[size ?? 'medium'])};
-        `};
-
-    ${({ aspectRatio }) =>
-        aspectRatio &&
-        css`
-            aspect-ratio: ${aspectRatio};
-        `};
 
     border-width: ${themeVars.stroke.standard};
     border-style: solid;
@@ -142,7 +95,10 @@ const StyledTileVideo = styled.video<Omit<TileProps, 'icon'>>`
         outline-color ${themeVars.animation.duration.fast} ${themeVars.animation.timing.easeOut},
         transform ${themeVars.animation.duration.fast} ${themeVars.animation.timing.easeOut};
 
-    border-color: ${({ selected }) => (selected ? themeVars.actions.primary : 'transparent')};
+    border-color: transparent;
+    &[data-selected="true"] {
+        border-color: ${themeVars.actions.primary};
+    }
     .htch-webui-hoverable:hover & {
         border-color: ${themeVars.actions.primary};
     }
@@ -181,30 +137,29 @@ export const Tile = (props: TileProps) => {
         throw new Error('icon can not be used with img/video component');
     }
 
+    const styleDims: React.CSSProperties = {
+        width: sizeToUnits(width) ?? (size ? sizeToUnits(tileSize[size]) : undefined),
+        height: sizeToUnits(height) ?? (size ? sizeToUnits(tileSize[size]) : undefined),
+        aspectRatio: aspectRatio ?? (!size && (!width || !height) ? 1 : undefined),
+    } as React.CSSProperties;
+
     if (props.component === 'img') {
         return (
-            <StyledTileImg
-                size={size ?? (!width && !height ? 'medium' : undefined)} // default medium size if no other size or width/height is provided
-                aspectRatio={aspectRatio ?? (!size && (!width || !height) ? 1 : undefined)} // default aspect ratio to 1 if no other aspect ratio or width/height is provided
-                src={src}
-                alt={alt}
-                {...rest}
-            />
+            <StyledTileImg data-selected={!!props.selected} src={src} alt={alt} style={styleDims} {...rest} />
         );
     }
 
     if (props.component === 'video') {
         return (
             <StyledTileVideo
-                size={size ?? (!width && !height ? 'medium' : undefined)} // default medium size if no other size or width/height is provided
-                aspectRatio={aspectRatio ?? (!size && (!width || !height) ? 1 : undefined)} // default aspect ratio to 1 if no other aspect ratio or width/height is provided
+                data-selected={!!props.selected}
                 src={src}
-                alt={alt}
                 controls={controls}
                 autoPlay={autoplay}
                 loop={loop}
                 muted={muted ?? true}
                 playsInline={playsInline ?? true}
+                style={styleDims}
                 {...rest}
             />
         );
@@ -212,9 +167,11 @@ export const Tile = (props: TileProps) => {
 
     return (
         <StyledTileDiv
-            size={size ?? (!width && !height ? 'medium' : undefined)} // default medium size if no other size or width/height is provided
-            aspectRatio={aspectRatio ?? (!size && (!width || !height) ? 1 : undefined)} // default aspect ratio to 1 if no other aspect ratio or width/height is provided
-            src={src}
+            data-selected={!!props.selected}
+            style={{
+                ...styleDims,
+                ['--tile-bg-image' as any]: src ? `url(${src})` : undefined,
+            }}
             {...rest}
         >
             {icon}

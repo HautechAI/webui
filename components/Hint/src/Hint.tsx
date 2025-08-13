@@ -1,17 +1,17 @@
 import { styled } from '@linaria/react';
+import { themeVars } from '@hautechai/webui.themeprovider';
 import { HintIcon } from '@hautechai/webui.icon';
 import { Tooltip } from '@hautechai/webui.tooltip';
 
 const Icon = styled(HintIcon)`
     display: block;
-    color: ${({ theme }) => theme.palette.layout.onSurface.tertiary};
+    color: ${themeVars.layout.onSurface.tertiary};
 
     &:hover {
-        color: ${({ theme }) => theme.palette.layout.onSurface.secondary};
+        color: ${themeVars.layout.onSurface.secondary};
     }
 
-    transition: color ${({ theme }) => theme.foundation.animation.duration.fast}s
-        ${({ theme }) => theme.foundation.animation.timing.easeOut};
+    transition: color ${themeVars.animation.duration.fast} ${themeVars.animation.timing.easeOut};
 `;
 
 export type HintProps = {

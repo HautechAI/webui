@@ -1,51 +1,13 @@
-import { css } from '@linaria/core';
 import { styled } from '@linaria/react';
-import { ThemeType } from '@hautechai/webui.themeprovider';
+import { themeVars, ThemeType } from '@hautechai/webui.themeprovider';
 
-const BaseComponent = (props: Pick<RowProps, 'className' | 'children'>) => {
-    const { className, children } = props;
-    return <div {...{ className, children }} />;
+const BaseComponent = (props: Pick<RowProps, 'className' | 'children'> & { style?: React.CSSProperties }) => {
+    const { className, children, style } = props;
+    return <div {...{ className, children, style }} />;
 };
 
-const Container = styled(BaseComponent)<
-    Pick<RowProps, 'spacing' | 'stretch' | 'align' | 'justify' | 'fullHeight' | 'noOverflow'> & {
-        $wrap?: boolean;
-        reverse?: boolean;
-    }
->`
+const Container = styled(BaseComponent)`
     display: flex;
-    flex-direction: ${({ reverse }) => (reverse ? 'row-reverse' : 'row')};
-    ${({ align }) =>
-        align &&
-        css`
-            align-items: ${align};
-        `}
-    ${({ justify }) =>
-        justify &&
-        css`
-            justify-content: ${justify};
-        `}
-    ${({ $wrap }) =>
-        $wrap &&
-        css`
-            flex-wrap: wrap;
-        `}
-    ${({ stretch }) =>
-        stretch &&
-        css`
-            flex: 1;
-        `}
-    ${({ fullHeight }) =>
-        fullHeight &&
-        css`
-            height: 100%;
-        `}
-    ${({ noOverflow }) =>
-        noOverflow &&
-        css`
-            overflow: hidden;
-        `}
-    gap: ${({ theme, spacing }) => (spacing ? theme.foundation.spacing[spacing] : 0)}px;
 `;
 
 type Align = 'start' | 'center' | 'end' | 'stretch';
@@ -65,10 +27,16 @@ export type RowProps = {
 };
 
 export const Row = (props: RowProps) => {
-    const { children, wrap, ...rest } = props;
-    return (
-        <Container $wrap={wrap} {...rest}>
-            {children}
-        </Container>
-    );
+    const { children, wrap, reverse, spacing, stretch, align, justify, fullHeight, noOverflow, ...rest } = props;
+    const style: React.CSSProperties = {
+        flexDirection: reverse ? 'row-reverse' : 'row',
+        alignItems: align as any,
+        justifyContent: justify as any,
+        flexWrap: wrap ? 'wrap' : undefined,
+        flex: stretch ? 1 : undefined,
+        height: fullHeight ? '100%' : undefined,
+        overflow: noOverflow ? 'hidden' : undefined,
+        gap: spacing ? (themeVars.spacing as any)[spacing] : 0,
+    };
+    return <Container style={style} {...rest}>{children}</Container>;
 };

@@ -1,67 +1,40 @@
 import { Row } from '@hautechai/webui.row';
-import { css } from '@linaria/core';
 import { styled } from '@linaria/react';
 import { themeVars } from '@hautechai/webui.themeprovider';
 import { Typography } from '@hautechai/webui.typography';
 import React from 'react';
 
-export const Container = styled.div<{ type?: 'CTA' | 'main'; size?: 'small' | 'medium'; selected?: boolean }>`
+export const Container = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     cursor: pointer;
 
-    padding: ${({ theme }) => theme.foundation.spacing.m}px ${({ theme }) => theme.foundation.spacing.ml}px;
+    padding: ${themeVars.spacing.m} ${themeVars.spacing.ml};
     flex: 1 0 0;
 
-    border-radius: ${({ theme }) => theme.foundation.cornerRadius.m}px;
+    border-radius: ${themeVars.cornerRadius.m};
     background-color: transparent;
 
-    ${({ theme }) => {
-        const normalDuration = theme.foundation.animation.duration.normal;
-        const timingFunction = theme.foundation.animation.timing.ease;
+    transition: 
+        background-color ${themeVars.animation.duration.normal} ${themeVars.animation.timing.ease},
+        color ${themeVars.animation.duration.normal} ${themeVars.animation.timing.ease};
 
-        return `
-        transition: 
-            background-color  ${normalDuration}s ${timingFunction},
-            color  ${normalDuration}s ${timingFunction};
-        `;
-    }}
-
-    ${({ theme, type, size, selected }) =>
-        type === 'CTA'
-            ? css`
-                  color: ${theme.palette.actions.primary};
-              `
-            : css`
-                  ${selected
-                      ? css`
-                            color: ${theme.palette.layout.onSurface.primary};
-                        `
-                      : css`
-                            ${size === 'medium'
-                                ? css`
-                                      color: ${theme.palette.layout.onSurface.tertiary};
-                                  `
-                                : css`
-                                      color: ${theme.palette.layout.onSurface.secondary};
-
-                                      &:hover {
-                                          color: ${theme.palette.layout.onSurface.primary};
-                                      }
-                                  `}
-                        `}
-              `}
-
-    ${({ selected, theme }) =>
-        selected &&
-        css`
-            background-color: ${theme.palette.layout.surfaceHigh};
-        `}
-
+    color: ${themeVars.layout.onSurface.secondary};
+    &[data-size="medium"] {
+        color: ${themeVars.layout.onSurface.tertiary};
+    }
+    &[data-selected="true"] {
+        color: ${themeVars.layout.onSurface.primary};
+        background-color: ${themeVars.layout.surfaceHigh};
+    }
+    &[data-type="CTA"] {
+        color: ${themeVars.actions.primary};
+    }
     &:hover {
-        background-color: ${({ theme }) => theme.palette.layout.surfaceHigh};
+        background-color: ${themeVars.layout.surfaceHigh};
+        color: ${themeVars.layout.onSurface.primary};
     }
 `;
 
@@ -100,7 +73,7 @@ export const MenuItem = ({
     onClick,
 }: MenuItemProps) => {
     return (
-        <Container selected={isSelected} type={type} size={size} onClick={onClick}>
+        <Container data-selected={!!isSelected} data-type={type} data-size={size} onClick={onClick}>
             <Row spacing="m">
                 {renderIcon(leadingIcon)}
                 <Typography

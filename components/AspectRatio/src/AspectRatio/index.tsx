@@ -42,7 +42,12 @@ export const AspectRatio = (props: AspectRatioProps) => {
                         label: option,
                         leadingIcon: (
                             <RatioBoxContainer>
-                                <SmallRatioBox {...getBoxSize(option, 16)} />
+                                {(() => {
+                                    const sz = getBoxSize(option, 16);
+                                    return (
+                                        <SmallRatioBox style={{ width: sz.width, height: sz.height }} />
+                                    );
+                                })()}
                             </RatioBoxContainer>
                         ),
                     })),

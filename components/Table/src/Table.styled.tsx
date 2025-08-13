@@ -1,4 +1,5 @@
 import { styled } from '@linaria/react';
+import { themeVars } from '@hautechai/webui.themeprovider';
 
 export const Root = styled.table`
     width: 100%;
@@ -7,7 +8,7 @@ export const Root = styled.table`
 
 export const Head = styled.thead``;
 export const HeadCell = styled.th`
-    color: ${({ theme }) => theme.palette.layout.onSurface.tertiary};
+    color: ${themeVars.layout.onSurface.tertiary};
     font-feature-settings: 'liga' off, 'clig' off;
     font-family: Inter;
     font-size: 12px;
@@ -17,8 +18,8 @@ export const HeadCell = styled.th`
     text-transform: uppercase;
     text-align: left;
 
-    padding: ${({ theme }) => theme.foundation.spacing.s}px;
-    padding-bottom: ${({ theme }) => theme.foundation.spacing.ml}px;
+    padding: ${themeVars.spacing.s};
+    padding-bottom: ${themeVars.spacing.ml};
 `;
 
 export const Body = styled.tbody``;
@@ -27,7 +28,7 @@ export const Row = styled.tr``;
 export const Cell = styled.td`
     margin: 0;
 
-    color: ${({ theme }) => theme.palette.layout.onSurface.primary};
+    color: ${themeVars.layout.onSurface.primary};
     font-feature-settings: 'liga' off, 'clig' off;
     font-family: Inter;
     font-size: 14px;
@@ -35,9 +36,9 @@ export const Cell = styled.td`
     font-weight: 400;
     line-height: 20px;
 
-    padding: ${({ theme }) => theme.foundation.spacing.m}px ${({ theme }) => theme.foundation.spacing.s}px;
+    padding: ${themeVars.spacing.m} ${themeVars.spacing.s};
 
-    border-top-width: ${({ theme }) => theme.foundation.stroke.thin}px;
+    border-top-width: ${themeVars.stroke.thin};
     border-top-style: solid;
-    border-top-color: ${({ theme }) => theme.palette.layout.strokes};
+    border-top-color: ${themeVars.layout.strokes};
 `;

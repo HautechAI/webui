@@ -1,50 +1,38 @@
 import { Button } from '@hautechai/webui.button';
 import { UploadIcon } from '@hautechai/webui.icon';
 import { styled } from '@linaria/react';
-import { ThemeType } from '@hautechai/webui.themeprovider';
+import { themeVars } from '@hautechai/webui.themeprovider';
 import { Typography, TypographyProps } from '@hautechai/webui.typography';
 import React, { useEffect, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
 
-type ContainerProps = {
-    isDragActive: boolean;
-    isDragAccept: boolean;
-    isDragReject: boolean;
-};
-
-const getBackgroundColor = ({
-    theme,
-    isDragActive,
-    isDragAccept,
-    isDragReject,
-}: { theme: ThemeType } & ContainerProps) => {
-    if (isDragReject) return theme.palette.actions.onError;
-    if (isDragAccept) return theme.palette.actions.onSuccess;
-    if (isDragActive) return theme.palette.layout.surfaceHigh;
-    return 'transparent';
-};
-
-const getBorderColor = ({ theme, isDragAccept, isDragReject }: { theme: ThemeType } & ContainerProps) => {
-    if (isDragReject) return theme.palette.actions.error;
-    if (isDragAccept) return theme.palette.actions.success;
-    return theme.palette.layout.strokes;
-};
-
-const FileInputContainer = styled.div<ContainerProps & Pick<FileInputProps, 'stretch'>>`
+const FileInputContainer = styled.div<Pick<FileInputProps, 'stretch'>>`
     display: flex;
     width: 320px;
     height: 120px;
-    padding: ${({ theme }) => theme.foundation.spacing.xxxl}px;
+    padding: ${themeVars.spacing.xxxl};
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: ${({ theme }) => theme.foundation.spacing.xl}px;
+    gap: ${themeVars.spacing.xl};
     flex-shrink: 0;
-    background-color: ${getBackgroundColor};
-    border-radius: ${({ theme }) => theme.foundation.cornerRadius.l}px;
-    border-color: ${getBorderColor};
+    background-color: transparent;
+    border-radius: ${themeVars.cornerRadius.l};
+    border-color: ${themeVars.layout.strokes};
     border-style: dashed;
-    border-width: ${({ theme }) => theme.foundation.stroke.thick}px;
+    border-width: ${themeVars.stroke.thick};
+
+    &[data-accept='true'] {
+        background-color: ${themeVars.actions.onSuccess};
+        border-color: ${themeVars.actions.success};
+    }
+    &[data-reject='true'] {
+        background-color: ${themeVars.actions.onError};
+        border-color: ${themeVars.actions.error};
+    }
+    &[data-active='true'] {
+        background-color: ${themeVars.layout.surfaceHigh};
+    }
 `;
 
 const ButtonFileInput = styled.div<Pick<FileInputProps, 'stretch'>>`
@@ -154,9 +142,9 @@ export const FileInput: React.FC<FileInputProps> = (props) => {
         </ButtonFileInput>
     ) : (
         <FileInputContainer
-            isDragReject={isDragReject}
-            isDragAccept={delayedAccept}
-            isDragActive={isDragActive}
+            data-reject={isDragReject}
+            data-accept={delayedAccept}
+            data-active={isDragActive}
             {...getRootProps({})}
         >
             <input {...getInputProps()} />

@@ -1,26 +1,32 @@
 import { styled } from '@linaria/react';
+import { themeVars } from '@hautechai/webui.themeprovider';
 import React, { useCallback } from 'react';
 
-const Container = styled.input<{ percentage: number }>`
-    background: ${({ theme }) => theme.palette.actions.primary};
+const Container = styled.input`
+    background: ${themeVars.actions.primary};
     appearance: none;
     -webkit-appearance: none;
-    border-radius: ${({ theme }) => theme.foundation.cornerRadius.s}px;
+    border-radius: ${themeVars.cornerRadius.s};
     width: 100%;
     height: 8px;
     cursor: pointer;
-    background: ${({ theme, percentage }) =>
-        `linear-gradient(to right, ${theme.palette.actions.primary} 0%, ${theme.palette.actions.primary} ${percentage}%, ${theme.palette.layout.surfaceMid} ${percentage}%, ${theme.palette.layout.surfaceMid} 100%)`};
+    background: linear-gradient(
+        to right,
+        ${themeVars.actions.primary} 0%,
+        ${themeVars.actions.primary} var(--slider-percentage, 0%),
+        ${themeVars.layout.surfaceMid} var(--slider-percentage, 0%),
+        ${themeVars.layout.surfaceMid} 100%
+    );
 
     &::-webkit-slider-thumb {
         appearance: none;
         width: 20px;
         height: 20px;
         border-radius: 50%;
-        border-width: ${({ theme }) => theme.foundation.stroke.thick}px;
+        border-width: ${themeVars.stroke.thick};
         border-style: solid;
-        border-color: ${({ theme }) => theme.palette.layout.surfaceLow};
-        background: ${({ theme }) => theme.palette.actions.primary};
+        border-color: ${themeVars.layout.surfaceLow};
+        background: ${themeVars.actions.primary};
         cursor: pointer;
     }
 `;
@@ -45,7 +51,7 @@ const Slider = ({ min, max, step = 1, value, onChange }: SliderProps) => {
 
     return (
         <Container
-            percentage={percentage}
+            style={{ ['--slider-percentage' as any]: `${percentage}%` }}
             type="range"
             min={min}
             max={max}

@@ -1,4 +1,5 @@
 import { styled } from '@linaria/react';
+import { themeVars } from '@hautechai/webui.themeprovider';
 
 export default {
     Container: styled('div')`
@@ -11,10 +12,10 @@ export default {
         width: 24px;
     `,
     PreviewContainer: styled.div`
-        border-color: ${({ theme }) => theme.palette.layout.surfaceLow};
+        border-color: ${themeVars.layout.surfaceLow};
         border-radius: 50%;
         border-style: solid;
-        border-width: ${({ theme }) => theme.foundation.stroke.standard}px;
+        border-width: ${themeVars.stroke.standard};
         margin-left: -6px;
     `,
 };

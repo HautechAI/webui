@@ -1,91 +1,88 @@
-import { css } from '@linaria/core';
 import { styled } from '@linaria/react';
 import { themeVars } from '@hautechai/webui.themeprovider';
 import { useState } from 'react';
 
-const SwitchContainer = styled.label<{ disabled?: boolean }>`
+const SwitchContainer = styled.label`
     display: flex;
     align-items: center;
-    gap: ${({ theme }) => theme.foundation.spacing.m}px;
-    cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
+    gap: ${themeVars.spacing.m};
+    cursor: pointer;
+    &[data-disabled="true"] {
+        cursor: not-allowed;
+    }
 `;
 
-const SwitchComponent = styled.div<{ checked: boolean; disabled?: boolean }>`
+const SwitchComponent = styled.div`
     position: relative;
     width: 42px;
     height: 24px;
-    background-color: ${({ theme, checked }) =>
-        checked ? theme.palette.actions.primary : theme.palette.actions.onPrimary};
+    background-color: ${themeVars.actions.onPrimary};
+    &[data-checked="true"] {
+        background-color: ${themeVars.actions.primary};
+    }
 
     box-sizing: border-box;
     border-radius: 100px;
-    border: ${({ theme }) => theme.foundation.stroke.standard}px solid
-        ${({ theme, disabled }) => (disabled ? theme.palette.layout.strokes : theme.palette.actions.onSecondary)};
+    border: ${themeVars.stroke.standard} solid ${themeVars.actions.onSecondary};
+    &[data-disabled="true"] {
+        border-color: ${themeVars.layout.strokes};
+    }
 
-    transition: background-color ${({ theme }) => theme.foundation.animation.duration.fast}s
-        ${({ theme }) => theme.foundation.animation.timing.easeOut};
+    transition: background-color ${themeVars.animation.duration.fast} ${themeVars.animation.timing.easeOut};
 
     &::before {
         content: '';
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
-        left: ${({ checked }) => (checked ? '22px' : '6px')};
+        left: 6px;
         width: 2px;
         height: 2px;
 
-        padding: ${({ checked }) => (checked ? '7px' : '5px')};
-        background-color: ${({ theme, checked }) =>
-            checked ? theme.palette.actions.onPrimary : theme.palette.actions.primary};
-        transition: background-color ${({ theme }) => theme.foundation.animation.duration.fast}s
-            ${({ theme }) => theme.foundation.animation.timing.easeOut};
+        padding: 5px;
+        background-color: ${themeVars.actions.primary};
+        transition: background-color ${themeVars.animation.duration.fast} ${themeVars.animation.timing.easeOut};
 
         border-radius: 50%;
 
-        transition: left ${({ theme }) => theme.foundation.animation.duration.fast}s
-            ${({ theme }) => theme.foundation.animation.timing.easeOut};
+        transition: left ${themeVars.animation.duration.fast} ${themeVars.animation.timing.easeOut};
     }
 
-    ${({ disabled, checked, theme }) =>
-        disabled
-            ? css`
-                  background-color: ${theme.palette.layout.surfaceMid};
+    &[data-disabled="true"] {
+        background-color: ${themeVars.layout.surfaceMid};
+        &::before {
+            background-color: ${themeVars.layout.strokes};
+        }
+    }
 
-                  &::before {
-                      background-color: ${theme.palette.layout.strokes};
-                  }
-              `
-            : checked
-            ? css`
-                  &:active {
-                      background-color: ${theme.palette.actions.secondary};
+    &[data-checked="true"] {
+        &:active {
+            background-color: ${themeVars.actions.secondary};
+            &::before {
+                background-color: ${themeVars.actions.tertiary};
+            }
+        }
+        &:hover:not(:active) {
+            background-color: ${themeVars.actions.tertiary};
+        }
+        &::before {
+            left: 22px;
+            padding: 7px;
+            background-color: ${themeVars.actions.onPrimary};
+        }
+    }
 
-                      &::before {
-                          background-color: ${theme.palette.actions.tertiary};
-                      }
-                  }
-
-                  &:hover {
-                      &:not(:active) {
-                          background-color: ${theme.palette.actions.tertiary};
-                      }
-                  }
-              `
-            : css`
-                  &:active {
-                      background-color: ${theme.palette.actions.tertiary};
-
-                      &::before {
-                          background-color: ${theme.palette.actions.secondary};
-                      }
-                  }
-
-                  &:hover {
-                      &:not(:active) {
-                          background-color: ${theme.palette.actions.secondary};
-                      }
-                  }
-              `}
+    &:not([data-checked="true"]) {
+        &:active {
+            background-color: ${themeVars.actions.tertiary};
+            &::before {
+                background-color: ${themeVars.actions.secondary};
+            }
+        }
+        &:hover:not(:active) {
+            background-color: ${themeVars.actions.secondary};
+        }
+    }
 `;
 
 const HiddenCheckbox = styled.input`
@@ -115,14 +112,14 @@ export const Switch = ({ checked: controlledChecked, onChange, disabled }: Switc
     };
 
     return (
-        <SwitchContainer disabled={disabled}>
+        <SwitchContainer data-disabled={!!disabled}>
             <HiddenCheckbox
                 type="checkbox"
                 checked={checked !== undefined ? !!checked : undefined}
                 onChange={!disabled ? handleChange : undefined}
                 disabled={disabled}
             />
-            <SwitchComponent checked={checked ?? false} disabled={disabled} />
+            <SwitchComponent data-checked={checked ?? false} data-disabled={!!disabled} />
         </SwitchContainer>
     );
 };
