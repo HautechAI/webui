@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.1](https://github.com/HautechAI/webui/compare/@hautechai/webui.textbutton@1.0.0...@hautechai/webui.textbutton@1.0.1) (2025-08-14)
+
+### Bug Fixes
+
+- build textbutton ([#67](https://github.com/HautechAI/webui/issues/67)) ([cd9d9c1](https://github.com/HautechAI/webui/commit/cd9d9c1cc01c2550a3f739c91aba7dce3edef42d))
+
 # [1.0.0](https://github.com/HautechAI/webui/compare/@hautechai/webui.textbutton@0.3.79...@hautechai/webui.textbutton@1.0.0) (2025-08-13)
 
 **Note:** Version bump only for package @hautechai/webui.textbutton
