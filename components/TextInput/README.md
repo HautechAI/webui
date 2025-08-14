@@ -17,6 +17,7 @@ Single-line text input component with icon support, validation states, and vario
 | step | number | Optional step value for numeric inputs |
 | hasError | boolean | When true, applies error styling to indicate validation failure |
 | type | 'text' \| 'password' \| 'email' \| 'number' | Required input type specification |
+| size | 'medium' \| 'small' | Optional size variant. 'medium' (default) or 'small' matching Figma specs |
 
 ## Usage Example
 ```tsx
