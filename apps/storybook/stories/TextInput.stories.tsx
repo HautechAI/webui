@@ -65,3 +65,11 @@ export const WithCustomClass = {
         className: 'custom-text-input',
     },
 };
+
+export const Small = {
+    args: {
+        size: 'small',
+        leadingIcon: <PlaceholderIcon />,
+        trailingIcon: <PlaceholderIcon />,
+    },
+};
