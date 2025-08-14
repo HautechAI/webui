@@ -11,7 +11,8 @@ export const Container = styled.div`
     align-items: center;
     cursor: pointer;
 
-    padding: ${themeVars.spacing.m} ${themeVars.spacing.ml};
+    /* Small is the default */
+    padding: ${themeVars.spacing.s} ${themeVars.spacing.m};
     flex: 1 0 0;
 
     border-radius: ${themeVars.cornerRadius.m};
@@ -24,7 +25,9 @@ export const Container = styled.div`
     color: ${themeVars.layout.onSurface.secondary};
     &[data-size="medium"] {
         color: ${themeVars.layout.onSurface.tertiary};
+        padding: ${themeVars.spacing.m} ${themeVars.spacing.ml};
     }
+    &[data-size="small"] { padding: ${themeVars.spacing.s} ${themeVars.spacing.m}; }
     &[data-selected="true"] {
         color: ${themeVars.layout.onSurface.primary};
         background-color: ${themeVars.layout.surfaceHigh};

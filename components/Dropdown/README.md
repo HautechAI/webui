@@ -10,6 +10,8 @@ Select input component with customizable options and styling variants for choosi
 | label | string | Optional label displayed above or within the dropdown |
 | disabled | boolean | When true, disables dropdown interaction and applies disabled styling |
 | type | 'filled' \| 'outlined' \| 'flat' | Optional visual style variant (defaults to standard appearance) |
+| size | 'small' \| 'medium' | Optional size (defaults to 'medium'). Small uses compact paddings and 16px icon |
+| collapsed | boolean | When true, renders only the toggle icon (no label) for ultra-compact UI |
 | value | string | Optional controlled selected value |
 | options | Array<{ label: string; value: string }> | Required array of selectable options with label and value properties |
 | onChange | (value: string) => void | Optional callback function triggered when selection changes |
@@ -20,6 +22,8 @@ Select input component with customizable options and styling variants for choosi
 <Dropdown 
   label="Select Country"
   type="filled"
+  size="small"
+  collapsed={false}
   value={selectedCountry}
   options={[
     { label: "United States", value: "us" },
