@@ -128,3 +128,11 @@ Remember: Documentation is as important as the code itself. Well-maintained docu
   ```
 
 These rules ensure proper module resolution and maintain clean package boundaries while allowing relative imports for local components and testing.
+
+## Package Resolution Guidelines
+
+### Test Environment Setup
+- **Do not add aliases** in test configuration files like `vitest.config.ts` to resolve workspace packages
+- If a package cannot be resolved during testing, it should be added to the appropriate `package.json` dependencies and `pnpm install` should be executed
+- This ensures proper dependency management and avoids masking real module resolution issues
+- Test environments should mirror production module resolution as closely as possible
