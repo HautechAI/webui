@@ -3,9 +3,9 @@ import { themeVars } from '@hautechai/webui.themeprovider';
 import { IconButton, IconButtonProps } from '@hautechai/webui.iconbutton';
 import React, { useCallback, useRef } from 'react';
 
-const Container = styled.div`
+const Container = styled.div<{ size: 'medium' | 'small' }>`
     display: flex;
-    gap: ${themeVars.spacing.m};
+    gap: ${({ size }) => (size === 'small' ? themeVars.spacing.s : themeVars.spacing.m)};
     align-items: center;
     flex: 1;
     &[data-disabled="true"] {
@@ -14,14 +14,14 @@ const Container = styled.div`
     }
 `;
 
-export const InputContainer = styled.div<{ variation: 'filled' | 'outlined' }>`
+export const InputContainer = styled.div<{ variation: 'filled' | 'outlined'; size: 'medium' | 'small' }>`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     cursor: text;
 
-    padding: ${themeVars.spacing.m} ${themeVars.spacing.ml};
+    padding: ${({ size }) => (size === 'small' ? `${themeVars.spacing.s} ${themeVars.spacing.m}` : `${themeVars.spacing.m} ${themeVars.spacing.ml}`)};
     flex: 1 0 0;
 
     border-radius: ${themeVars.cornerRadius.m};
@@ -94,20 +94,20 @@ export const CustomInput = styled.input`
     }
 `;
 
-const InnerIconContainer = styled.div`
-    width: 20px;
-    height: 20px;
+const InnerIconContainer = styled.div<{ size: 'medium' | 'small' }>`
+    width: ${({ size }) => (size === 'small' ? '16px' : '20px')};
+    height: ${({ size }) => (size === 'small' ? '16px' : '20px')};
     display: flex;
     justify-content: center;
     align-items: center;
 `;
 
-const getIcon = (icon: React.ReactNode) => (
-    <InnerIconContainer>
+const getIcon = (icon: React.ReactNode, size: 'medium' | 'small') => (
+    <InnerIconContainer size={size}>
         {React.Children.map(icon, (child) => {
             if (React.isValidElement(child)) {
                 return React.cloneElement(child, {
-                    size: 20,
+                    size: size === 'small' ? 16 : 20,
                 } as any);
             }
             return child;
@@ -127,6 +127,7 @@ export type TextInputProps = {
     hasError?: boolean;
     type: 'text' | 'password' | 'email' | 'number';
     variation?: 'filled' | 'outlined';
+    size?: 'medium' | 'small';
 } & Pick<Partial<IconButtonProps>, 'icon'> & {
         onIconButtonClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
     };
@@ -138,11 +139,12 @@ export const TextInput = (props: TextInputProps) => {
     }, []);
 
     const { disabled, icon } = props;
+    const size = props.size ?? 'medium';
 
     return (
-        <Container onClick={handleClick} data-disabled={!!disabled}>
-            <InputContainer data-disabled={!!disabled} variation={props.variation ?? 'filled'} data-has-error={!!props.hasError}>
-                {props.leadingIcon ? getIcon(props.leadingIcon) : null}
+        <Container onClick={handleClick} data-disabled={!!disabled} size={size}>
+            <InputContainer data-disabled={!!disabled} variation={props.variation ?? 'filled'} data-has-error={!!props.hasError} size={size}>
+                {props.leadingIcon ? getIcon(props.leadingIcon, size) : null}
                 <CustomInput
                     className={props.className}
                     type={props.type}
@@ -154,7 +156,7 @@ export const TextInput = (props: TextInputProps) => {
                     value={props.value}
                     onChange={props.onChange}
                 />
-                {props.trailingIcon ? getIcon(props.trailingIcon) : null}
+                {props.trailingIcon ? getIcon(props.trailingIcon, size) : null}
             </InputContainer>
             {icon && (
                 <IconButton
@@ -163,7 +165,7 @@ export const TextInput = (props: TextInputProps) => {
                     icon={
                         React.isValidElement(icon)
                             ? React.cloneElement(icon, {
-                                  size: 20,
+                                  size: size === 'small' ? 16 : 20,
                               } as any)
                             : icon
                     }
