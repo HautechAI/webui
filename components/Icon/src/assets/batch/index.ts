@@ -1,2 +1,1 @@
-export { default as BatchIcon } from './Small';
-export { default as BatchBoldIcon } from './SmallBold';
+export { default as BatchIcon } from './Batch';
