@@ -2,30 +2,19 @@ import { ButtonBase } from '@hautechai/webui.buttonbase';
 import { styled } from '@linaria/react';
 import { themeVars } from '@hautechai/webui.themeprovider';
 import { Typography, TypographyProps } from '@hautechai/webui.typography';
+import type React from 'react';
+import type { ButtonBaseProps } from '@hautechai/webui.buttonbase';
 
-const StyledButton = styled(ButtonBase)<Required<Pick<TextButtonProps, 'hierarchy' | 'size'>>>`
+const StyledButton = styled(ButtonBase)`
     justify-content: center;
     align-items: center;
 
-    gap: ${({ size }) =>
-        ({
-            medium: themeVars.spacing.m,
-            small: themeVars.spacing.s,
-            xsmall: themeVars.spacing.s,
-        }[size])};
+    gap: var(--tb-gap);
 
-    color: ${({ hierarchy }) =>
-        ({
-            primary: themeVars.actions.primary,
-            secondary: themeVars.layout.onSurface.secondary,
-        }[hierarchy])};
+    color: var(--tb-color);
 
     :hover {
-        color: ${({ hierarchy }) =>
-            ({
-                primary: themeVars.actions.onSecondary,
-                secondary: themeVars.layout.onSurface.primary,
-            }[hierarchy])};
+        color: var(--tb-color-hover);
     }
 
     :disabled {
@@ -54,11 +43,36 @@ const LabelVariants: Record<Required<TextButtonProps>['size'], TypographyProps['
 export const TextButton = (props: TextButtonProps) => {
     const { hierarchy = 'primary', size = 'medium', leadingIcon, trailingIcon, label, ...rest } = props;
 
+    const gapBySize = {
+        medium: themeVars.spacing.m,
+        small: themeVars.spacing.s,
+        xsmall: themeVars.spacing.s,
+    } as const;
+
+    const colorByHierarchy = {
+        primary: themeVars.actions.primary,
+        secondary: themeVars.layout.onSurface.secondary,
+    } as const;
+
+    const hoverColorByHierarchy = {
+        primary: themeVars.actions.onSecondary,
+        secondary: themeVars.layout.onSurface.primary,
+    } as const;
+
+    const styleVars: React.CSSProperties = {
+        ...(rest as any).style,
+        ['--tb-gap' as any]: gapBySize[size],
+        ['--tb-color' as any]: colorByHierarchy[hierarchy],
+        ['--tb-color-hover' as any]: hoverColorByHierarchy[hierarchy],
+    };
+
     return (
-        <StyledButton hierarchy={hierarchy} size={size} {...rest}>
-            {leadingIcon}
-            <Typography variant={LabelVariants[size]}>{label}</Typography>
-            {trailingIcon}
-        </StyledButton>
+        <span style={styleVars}>
+            <StyledButton {...(rest as Omit<ButtonBaseProps, 'children'>)}>
+                {leadingIcon}
+                <Typography variant={LabelVariants[size]}>{label}</Typography>
+                {trailingIcon}
+            </StyledButton>
+        </span>
     );
 };
