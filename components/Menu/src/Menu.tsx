@@ -9,22 +9,28 @@ export type MenuProps = {
     onChange?: (value: string) => void;
     trigger?: () => React.ReactNode;
     contentPositions?: PopoverProps['contentPositions'];
+    size?: 'small' | 'medium';
 };
 
 export const Menu = (props: MenuProps) => {
     const popoverRef = useRef<PopoverRef>(null);
+    const size = props.size ?? 'small';
 
     const renderMenuList = () => (
         <Column spacing="s">
-            {props.options.map((opt) => (
-                <MenuItem
-                    key={opt.value ?? opt.label}
-                    type="main"
-                    {...opt}
-                    isSelected={props.value ? opt.value === props.value : opt.isSelected}
-                    onClick={() => (props.onChange && opt.value ? props.onChange?.(opt.value) : opt.onClick?.())}
-                />
-            ))}
+            {props.options.map((opt) => {
+                const key = opt.value ?? opt.label;
+                const isSelected = props.value ? opt.value === props.value : opt.isSelected;
+                const onClick = () => (props.onChange && opt.value ? props.onChange?.(opt.value) : opt.onClick?.());
+
+                if (opt.type === 'CTA') {
+                    const { type: _ignored, ...rest } = opt as Extract<typeof opt, { type: 'CTA' }>;
+                    return <MenuItem key={key} type="CTA" {...(rest as any)} isSelected={isSelected} onClick={onClick} />;
+                }
+
+                const { type: _ignored2, ...rest2 } = opt as Extract<typeof opt, { type?: 'main' }>;
+                return <MenuItem key={key} type="main" size={size} {...(rest2 as any)} isSelected={isSelected} onClick={onClick} />;
+            })}
         </Column>
     );
 

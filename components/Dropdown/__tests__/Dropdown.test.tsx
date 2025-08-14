@@ -15,4 +15,14 @@ describe('Dropdown', () => {
             );
         }).not.toThrow();
     });
+
+    it('should render small and collapsed without crashing', () => {
+        expect(() => {
+            render(
+                <ThemeProvider theme={testTheme}>
+                    <Dropdown size="small" collapsed options={[{ label: 'Test', value: 'test' }]} />
+                </ThemeProvider>,
+            );
+        }).not.toThrow();
+    });
 });

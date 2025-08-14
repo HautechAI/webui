@@ -25,7 +25,7 @@ export default {
     },
     decorators: [
         (Story: any) => (
-            <Box width={200}>
+            <Box width={200} alignItems="flex-start" display="flex">
                 <Story />
             </Box>
         ),
@@ -113,4 +113,41 @@ export const Short = {
             </div>
         ),
     ],
+};
+
+// New size and collapsed variants
+export const Small = {
+    args: {
+        size: 'small',
+        label: 'Label',
+    },
+};
+
+export const SmallOutlined = {
+    args: {
+        size: 'small',
+        type: 'outlined',
+        label: 'Label',
+    },
+};
+
+export const SmallFlat = {
+    args: {
+        size: 'small',
+        type: 'flat',
+        label: 'Label',
+    },
+};
+
+export const Collapsed = {
+    args: {
+        collapsed: true,
+    },
+};
+
+export const CollapsedSmall = {
+    args: {
+        size: 'small',
+        collapsed: true,
+    },
 };

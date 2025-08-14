@@ -16,6 +16,13 @@ const Container = styled.div`
     &[data-disabled='true'] {
         color: ${themeVars.layout.strokes};
     }
+
+    /* Do not expand in collapsed mode */
+    &[data-collapsed='true'] {
+        flex: 0 0 auto;
+        width: fit-content;
+        align-self: flex-start;
+    }
 `;
 
 export const ButtonContainer = styled.div`
@@ -26,6 +33,7 @@ export const ButtonContainer = styled.div`
     cursor: pointer;
 
     padding: ${themeVars.spacing.m} ${themeVars.spacing.ml};
+    gap: ${themeVars.spacing.m};
 
     border-radius: ${themeVars.cornerRadius.m};
     transition: background-color ${themeVars.animation.duration.normal} ${themeVars.animation.timing.ease},
@@ -40,6 +48,18 @@ export const ButtonContainer = styled.div`
 
     &[data-type='filled'] {
         background: ${themeVars.layout.surfaceLow};
+    }
+
+    /* Size variants */
+    &[data-size='small'] {
+        padding: ${themeVars.spacing.s} ${themeVars.spacing.m};
+        gap: ${themeVars.spacing.s};
+    }
+
+    /* Collapsed state shows only the icon */
+    &[data-collapsed='true'] {
+        padding: ${themeVars.spacing.s};
+        justify-content: center;
     }
 
     &[data-disabled='true'] {
@@ -95,6 +115,11 @@ const RotatingArrow = styled.div`
     justify-content: center;
     align-items: center;
     transition: transform ${themeVars.animation.duration.normal} ${themeVars.animation.timing.customBounce};
+
+    &[data-size='small'] {
+        width: 16px;
+        height: 16px;
+    }
 `;
 
 const MenuContainer = styled.div`
@@ -133,6 +158,8 @@ export type DropdownProps = {
     label?: string;
     disabled?: boolean;
     type?: 'filled' | 'outlined' | 'flat';
+    size?: 'small' | 'medium';
+    collapsed?: boolean;
     value?: string;
     options: Array<{ label: string; value: string }>;
     onChange?: (value: string) => void;
@@ -174,25 +201,41 @@ export const Dropdown = (props: DropdownProps) => {
     }, [isOpen]);
 
     const { disabled } = props;
+    const size = props.size ?? 'medium';
+    const collapsed = !!props.collapsed;
+
 
     return (
-        <Container data-disabled={disabled} ref={ref}>
+        <Container data-disabled={disabled} data-collapsed={collapsed} ref={ref}>
             <ButtonContainer
                 data-disabled={disabled}
                 data-type={props.type ?? 'filled'}
                 data-has-error={props.hasError}
                 onClick={handleToggle}
                 data-open={isOpen}
+                data-size={size}
+                data-collapsed={collapsed}
             >
-                <Label variant="LabelSmallRegular" color={disabled ? 'layout.strokes' : 'layout.onSurface.primary'}>
-                    {selectedOption ? selectedOption.label : props.label}
-                </Label>
-                <RotatingArrow style={{ transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)' }}>
-                    <ArrowAltDownIcon color={disabled ? 'layout.strokes' : 'layout.onSurface.secondary'} />
+                {!collapsed && (
+                    <Label
+                        variant={size === 'medium' ? 'LabelMediumRegular' : 'LabelSmallRegular'}
+                        color={disabled ? 'layout.strokes' : 'layout.onSurface.primary'}
+                    >
+                        {selectedOption ? selectedOption.label : props.label}
+                    </Label>
+                )}
+                <RotatingArrow
+                    data-size={size}
+                    style={{ transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)' }}
+                >
+                    <ArrowAltDownIcon
+                        size={size === 'medium' ? 20 : 16}
+                        color={disabled ? 'layout.strokes' : 'layout.onSurface.secondary'}
+                    />
                 </RotatingArrow>
             </ButtonContainer>
             <MenuContainer data-open={isOpen}>
-                <Menu value={selectedOption?.value} options={props.options} onChange={handleSelect} />
+                <Menu size={size} value={selectedOption?.value} options={props.options} onChange={handleSelect} />
             </MenuContainer>
         </Container>
     );
