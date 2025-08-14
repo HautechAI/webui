@@ -12,7 +12,9 @@ export default defineConfig({
     target: 'es2024',
     esbuildPlugins: [
         linaria({
-            sourceMap: true,
+            babelOptions: {
+                presets: ['@babel/preset-typescript', '@babel/preset-react'],
+            },
         }),
     ],
 });
