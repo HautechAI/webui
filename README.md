@@ -24,6 +24,7 @@ The library includes the following components organized by category:
 | [**Checkbox**](components/Checkbox/README.md) | Input control for boolean selection with custom styling |
 | [**Counter**](components/Counter/README.md) | Numeric display with increment/decrement controls |
 | [**Dropdown**](components/Dropdown/README.md) | Select input with customizable options and styling |
+| [**EditableText**](components/EditableText/README.md) | Text display that switches to input mode on double-click for inline editing |
 | [**Field**](components/Field/README.md) | Form field wrapper with label, error, and validation states |
 | [**FileInput**](components/FileInput/README.md) | File upload control with drag-and-drop support |
 | [**IconButton**](components/IconButton/README.md) | Button component optimized for displaying icons |
