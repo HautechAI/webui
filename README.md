@@ -38,6 +38,7 @@ The library includes the following components organized by category:
 | [**TextInput**](components/TextInput/README.md) | Single-line text input with validation and styling |
 | [**ToggleIconButton**](components/ToggleIconButton/README.md) | Toggle button component optimized for displaying icons with different color schemes |
 | [**ToolButton**](components/ToolButton/README.md) | Icon button component with selected state functionality for toolbar interfaces |
+| [**VisualEditorInput**](components/VisualEditorInput/README.md) | Visual editor input component with keyframe support, unit controls, and port connectivity |
 
 ### Data Display
 
