@@ -65,3 +65,4 @@ export * from './trousers';
 export * from './undo';
 export * from './upload';
 export * from './play';
+export * from './stop';
