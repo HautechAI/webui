@@ -56,6 +56,7 @@ The library includes the following components organized by category:
 | [**Modal**](components/Modal/README.md) | Overlay dialog for focused user interactions |
 | [**Panel**](components/Panel/README.md) | Collapsible content container with header and body |
 | [**Previews**](components/Previews/README.md) | Component for displaying content previews or thumbnails |
+| [**PropertyBlock**](components/PropertyBlock/README.md) | Flexible container for displaying property information with optional remove/add functionality |
 | [**Price**](components/Price/README.md) | Formatted display for pricing information |
 | [**Progress**](components/Progress/README.md) | Visual indicator for task or loading progress |
 | [**Table**](components/Table/README.md) | Data table component with sorting and selection |
