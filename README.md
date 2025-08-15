@@ -35,6 +35,7 @@ The library includes the following components organized by category:
 | [**TextArea**](components/TextArea/README.md) | Multi-line text input with resizing capabilities |
 | [**TextButton**](components/TextButton/README.md) | Button component optimized for text-only labels |
 | [**TextInput**](components/TextInput/README.md) | Single-line text input with validation and styling |
+| [**ToolButton**](components/ToolButton/README.md) | Icon button component with selected state functionality for toolbar interfaces |
 
 ### Data Display
 
