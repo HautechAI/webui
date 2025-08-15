@@ -21,7 +21,7 @@ export interface TimelineTrackProps {
     className?: string;
 }
 
-// Container styles - always 100% width
+// Container styles - track container with hover and selected states
 const Container = styled.div`
     width: 100%;
     height: 100%;
@@ -30,12 +30,21 @@ const Container = styled.div`
     justify-content: flex-start;
     align-items: center;
     display: inline-flex;
+    background: transparent;
+    
+    &:hover {
+        background: ${themeVars.layout.surfaceMid};
+    }
+    
+    &[data-selected="true"] {
+        background: ${themeVars.layout.surfaceMid};
+    }
 `;
 
-// Track styles with hover and selected states
+// Track styles - track bar with different colors for default, hover, and selected states
 const Track = styled.div`
     height: 20px;
-    background: transparent;
+    background: ${themeVars.layout.surfaceMid};
     border-radius: 4px;
     overflow: hidden;
     justify-content: space-between;
@@ -43,16 +52,16 @@ const Track = styled.div`
     display: flex;
     cursor: move;
     
-    &:hover {
-        background: ${themeVars.layout.surfaceMid};
+    ${Container}:hover & {
+        background: ${themeVars.layout.strokes};
         
         .resize-handler {
             display: inline-flex;
         }
     }
     
-    &[data-selected="true"] {
-        background: ${themeVars.layout.surfaceMid};
+    ${Container}[data-selected="true"] & {
+        background: ${themeVars.actions.tertiary};
         
         .resize-handler {
             display: inline-flex;
@@ -101,10 +110,10 @@ export const TimelineTrack = forwardRef<HTMLDivElement, TimelineTrackProps>((pro
         <Container 
             ref={ref}
             className={className}
+            data-selected={selected}
         >
             <Track 
                 ref={bodyRef}
-                data-selected={selected}
                 style={{ 
                     width: trackWidth,
                     marginLeft: trackLeft,
