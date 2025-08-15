@@ -93,6 +93,7 @@ The library includes the following components organized by category:
 | Component | Description |
 |-----------|-------------|
 | [**HoverControls**](components/HoverControls/README.md) | Action buttons that appear on hover interactions |
+| [**KeyframeToggle**](components/KeyframeToggle/README.md) | Toggle button component for keyframe interactions in timeline interfaces |
 | [**Popover**](components/Popover/README.md) | Floating content container positioned relative to trigger |
 
 ### Tabs
