@@ -22,24 +22,18 @@ export default {
         selected: {
             control: { type: 'boolean' },
         },
-        hovered: {
-            control: { type: 'boolean' },
-        },
     },
     args: {
         start: 1,
         duration: 3,
         scale: 50, // 50px per second
         selected: false,
-        hovered: false,
     },
     decorators: [
         (Story: any) => (
             <div style={{ 
                 width: '800px', 
-                height: '60px',
                 border: '1px dashed #ccc',
-                background: '#f9f9f9',
                 borderRadius: '4px',
             }}>
                 <Story />
@@ -81,9 +75,7 @@ export const Hovered = {
             />
         );
     },
-    args: {
-        hovered: true,
-    },
+    args: {},
 };
 
 export const Selected = {
@@ -134,14 +126,12 @@ export const AllStates = {
                     <div style={{ 
                         height: '36px',
                         border: '1px dashed #ccc',
-                        background: '#f9f9f9',
                         borderRadius: '4px',
                     }}>
                         <TimelineTrack
                             {...args}
                             {...refs1}
                             selected={false}
-                            hovered={false}
                         />
                     </div>
                 </div>
@@ -155,14 +145,12 @@ export const AllStates = {
                     <div style={{ 
                         height: '36px',
                         border: '1px dashed #ccc',
-                        background: '#f9f9f9',
                         borderRadius: '4px',
                     }}>
                         <TimelineTrack
                             {...args}
                             {...refs2}
                             selected={false}
-                            hovered={true}
                         />
                     </div>
                 </div>
@@ -176,14 +164,12 @@ export const AllStates = {
                     <div style={{ 
                         height: '36px',
                         border: '1px dashed #ccc',
-                        background: '#f9f9f9',
                         borderRadius: '4px',
                     }}>
                         <TimelineTrack
                             {...args}
                             {...refs3}
                             selected={true}
-                            hovered={false}
                         />
                     </div>
                 </div>

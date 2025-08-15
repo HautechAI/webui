@@ -36,7 +36,7 @@ const Container = styled.div`
 // Track styles with hover and selected states
 const Track = styled.div<{ $selected?: boolean }>`
     height: 20px;
-    background: var(--layout-surface-mid, #EFEFEF);
+    background: transparent;
     border-radius: 4px;
     overflow: hidden;
     justify-content: space-between;
@@ -53,7 +53,7 @@ const Track = styled.div<{ $selected?: boolean }>`
     }
     
     ${({ $selected }) => $selected ? `
-        background: var(--actions-tertiary, #9CBCC4);
+        background: var(--actions-primary, #007AFF);
         
         .resize-handler {
             display: inline-flex;
