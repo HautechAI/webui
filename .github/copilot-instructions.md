@@ -111,6 +111,18 @@ When reviewing documentation changes:
 - Use the existing README files as templates for consistency
 - Reference Storybook stories in `/apps/storybook/stories/` for usage examples
 
+## Icon Creation (Figma MCP)
+
+When creating or updating icon components using Figma MCP (Dev Mode):
+
+- Implement icons from the current Figma selection.
+- Icons may expose parameters; map them to component props.
+- Ignore any size parameter entirely (icons in this project have dynamic sizes).
+- If there is a `Type` parameter with values `Outlined`/`Bold`, convert it to a `style` prop: `'outlined' | 'bold'`, with `outlined` as the default.
+- Keep all other parameters as-is (names and types) and expose them as props without default values.
+- Follow existing documentation rules: update the Icon component’s README parameters to include `style` and any other mapped props (omit size).
+- Follow import/package rules in “Import Guidelines”.
+
 Remember: Documentation is as important as the code itself. Well-maintained documentation ensures developers can effectively use and contribute to this component library.
 
 ## Import Guidelines

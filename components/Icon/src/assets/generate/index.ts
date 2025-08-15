@@ -1,2 +1,1 @@
-export { default as GenerateIcon } from './Small';
-export { default as GenerateBoldIcon } from './SmallBold';
+export { default as GenerateIcon } from './Generate';
