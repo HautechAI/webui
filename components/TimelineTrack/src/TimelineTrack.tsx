@@ -53,7 +53,7 @@ const Track = styled.div`
     }
     
     &[data-selected="true"] {
-        background: var(--actions-primary, #007AFF);
+        background: var(--actions-tertiary, #9CBCC4);
         
         .resize-handler {
             display: inline-flex;

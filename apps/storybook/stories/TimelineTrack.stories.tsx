@@ -60,24 +60,6 @@ export const Default = {
     args: {},
 };
 
-export const Hovered = {
-    render: (args: any) => {
-        const startHandlerRef = useRef<HTMLDivElement>(null);
-        const endHandlerRef = useRef<HTMLDivElement>(null);
-        const bodyRef = useRef<HTMLDivElement>(null);
-
-        return (
-            <TimelineTrack
-                {...args}
-                startHandlerRef={startHandlerRef}
-                endHandlerRef={endHandlerRef}
-                bodyRef={bodyRef}
-            />
-        );
-    },
-    args: {},
-};
-
 export const Selected = {
     render: (args: any) => {
         const startHandlerRef = useRef<HTMLDivElement>(null);
