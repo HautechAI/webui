@@ -1,3 +1,4 @@
+import { Box } from '../../../components/Box/src';
 import { PropertyBlock } from '../../../components/PropertyBlock/src';
 
 export default {
@@ -8,6 +9,13 @@ export default {
     },
     tags: ['autodocs'],
     argTypes: {},
+    decorators: [
+        (Story: any) => (
+            <Box width={300}>
+                <Story />
+            </Box>
+        ),
+    ],
 };
 
 export const Default = {
