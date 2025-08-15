@@ -26,12 +26,12 @@ export interface LayerTreeItemParentProps {
 
 const Container = styled.div<{ selected: boolean }>`
     width: 100%;
-    height: auto;
+    height: 36px;
     justify-content: flex-start;
     align-items: center;
     display: inline-flex;
-    background: ${props => props.selected ? themeVars.layout.surfaceHigh : 'transparent'};
-    
+    background: ${(props) => (props.selected ? themeVars.layout.surfaceHigh : 'transparent')};
+
     &:hover {
         background: ${themeVars.layout.surfaceHigh};
     }
@@ -49,7 +49,7 @@ const ArrowContainer = styled.div<{ expanded: boolean }>`
     height: 16px;
     position: relative;
     transition: transform ${themeVars.animation.duration.normal} ${themeVars.animation.timing.easeOut};
-    transform: ${props => props.expanded ? 'rotate(90deg)' : 'rotate(0deg)'};
+    transform: ${(props) => (props.expanded ? 'rotate(90deg)' : 'rotate(0deg)')};
     display: flex;
     align-items: center;
     justify-content: center;
@@ -66,19 +66,22 @@ const Content = styled.div`
     gap: 4px;
     display: flex;
     cursor: pointer;
+    overflow: hidden;
 `;
 
 const IconContainer = styled.div<{ selected: boolean }>`
+    flex-shrink: 0;
     width: 20px;
     height: 20px;
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: ${props => props.selected ? themeVars.layout.onSurface.primary : themeVars.layout.onSurface.secondary};
+    color: ${(props) => (props.selected ? themeVars.layout.onSurface.primary : themeVars.layout.onSurface.secondary)};
 `;
 
 const LabelContainer = styled.div`
+    width: calc(100% - 24px);
     flex: 1 1 0;
     justify-content: flex-start;
     align-items: center;
@@ -86,17 +89,17 @@ const LabelContainer = styled.div`
 `;
 
 export const LayerTreeItemParent = (props: LayerTreeItemParentProps) => {
-    const { 
-        icon, 
-        label, 
-        selected = false, 
-        expanded = false, 
+    const {
+        icon,
+        label,
+        selected = false,
+        expanded = false,
         editable = false,
-        onExpandToggle, 
-        onClick, 
-        onChange 
+        onExpandToggle,
+        onClick,
+        onChange,
     } = props;
-    
+
     const [isEditing, setIsEditing] = useState(false);
     const [currentLabel, setCurrentLabel] = useState(label);
 
@@ -127,22 +130,17 @@ export const LayerTreeItemParent = (props: LayerTreeItemParentProps) => {
             <ExpandButton>
                 <IconButton
                     variant="flat"
-                    size="small"
+                    size="xsmall"
                     icon={
                         <ArrowContainer expanded={expanded}>
-                            <ArrowAltRightIcon 
-                                size={16}
-                                color="layout.onSurface.secondary"
-                            />
+                            <ArrowAltRightIcon size={16} color="layout.onSurface.secondary" />
                         </ArrowContainer>
                     }
                     onClick={onExpandToggle}
                 />
             </ExpandButton>
             <Content onClick={isEditing ? undefined : onClick}>
-                <IconContainer selected={selected}>
-                    {icon}
-                </IconContainer>
+                <IconContainer selected={selected}>{icon}</IconContainer>
                 <LabelContainer>
                     <EditableText
                         text={currentLabel}
