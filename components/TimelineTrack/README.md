@@ -10,8 +10,7 @@ Visual timeline track component for representing when elements are visible in a 
 | start | number | Start time in seconds for the track position |
 | duration | number | Duration in seconds for the track length |
 | scale | number | Scale in pixels per second for positioning calculations |
-| selected | boolean | Optional. Whether the track is in selected state |
-| hovered | boolean | Optional. Whether the track is in hovered state |
+| selected | boolean | Optional. Whether the track is in selected state (shows resize handlers) |
 | startHandlerRef | React.Ref<HTMLDivElement> | Optional. Ref for the start resize handler |
 | endHandlerRef | React.Ref<HTMLDivElement> | Optional. Ref for the end resize handler |
 | bodyRef | React.Ref<HTMLDivElement> | Optional. Ref for the body (draggable area) |

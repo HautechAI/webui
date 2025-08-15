@@ -1,4 +1,4 @@
-import { css } from '@linaria/core';
+import { styled } from '@linaria/react';
 import { themeVars } from '@hautechai/webui.themeprovider';
 import React, { forwardRef } from 'react';
 
@@ -11,8 +11,6 @@ export interface TimelineTrackProps {
     scale: number;
     /** Whether the track is selected */
     selected?: boolean;
-    /** Whether the track is hovered */
-    hovered?: boolean;
     /** Ref for the start resize handler */
     startHandlerRef?: React.Ref<HTMLDivElement>;
     /** Ref for the end resize handler */
@@ -24,7 +22,7 @@ export interface TimelineTrackProps {
 }
 
 // Container styles - always 100% width
-const containerStyles = css`
+const Container = styled.div`
     width: 100%;
     height: 100%;
     padding: 8px;
@@ -35,8 +33,8 @@ const containerStyles = css`
     display: inline-flex;
 `;
 
-// Track base styles
-const trackBaseStyles = css`
+// Track styles with hover and selected states
+const Track = styled.div<{ $selected?: boolean }>`
     height: 20px;
     background: var(--layout-surface-mid, #EFEFEF);
     border-radius: 4px;
@@ -44,48 +42,42 @@ const trackBaseStyles = css`
     justify-content: space-between;
     align-items: center;
     display: flex;
-`;
-
-// Track state variations
-const trackDefaultStyles = css`
-    ${trackBaseStyles}
-    background: var(--layout-surface-mid, #EFEFEF);
-`;
-
-const trackHoveredStyles = css`
-    ${trackBaseStyles}
-    background: var(--layout-strokes, #BDBDBD);
-`;
-
-const trackSelectedStyles = css`
-    ${trackBaseStyles}
-    background: var(--actions-tertiary, #9CBCC4);
+    cursor: move;
+    
+    &:hover {
+        background: var(--layout-strokes, #BDBDBD);
+        
+        .resize-handler {
+            display: inline-flex;
+        }
+    }
+    
+    ${({ $selected }) => $selected ? `
+        background: var(--actions-tertiary, #9CBCC4);
+        
+        .resize-handler {
+            display: inline-flex;
+        }
+    ` : ''}
 `;
 
 // Resize handler styles
-const resizeHandlerStyles = css`
+const ResizeHandler = styled.div`
     width: 12px;
     align-self: stretch;
     overflow: hidden;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    display: inline-flex;
+    display: none;
     cursor: col-resize;
 `;
 
-const resizeLineStyles = css`
+const ResizeLine = styled.div`
     width: 2px;
     height: 12px;
     background: var(--layout-surface-low, #FCFCFC);
     border-radius: 16px;
-`;
-
-// Body area styles (between handlers)
-const bodyStyles = css`
-    flex: 1 1 0;
-    height: 100%;
-    cursor: move;
 `;
 
 export const TimelineTrack = forwardRef<HTMLDivElement, TimelineTrackProps>((props, ref) => {
@@ -94,7 +86,6 @@ export const TimelineTrack = forwardRef<HTMLDivElement, TimelineTrackProps>((pro
         duration,
         scale,
         selected = false,
-        hovered = false,
         startHandlerRef,
         endHandlerRef,
         bodyRef,
@@ -105,39 +96,27 @@ export const TimelineTrack = forwardRef<HTMLDivElement, TimelineTrackProps>((pro
     const trackWidth = duration * scale;
     const trackLeft = start * scale;
 
-    // Determine track style based on state
-    const showHandlers = selected || hovered;
-    const trackStyle = selected 
-        ? trackSelectedStyles 
-        : hovered 
-            ? trackHoveredStyles 
-            : trackDefaultStyles;
-
     return (
-        <div 
+        <Container 
             ref={ref}
-            className={`${containerStyles} ${className || ''}`.trim()}
+            className={className}
         >
-            <div 
-                className={trackStyle}
+            <Track 
+                ref={bodyRef}
+                $selected={selected}
                 style={{ 
                     width: trackWidth,
                     marginLeft: trackLeft,
                 }}
             >
-                {showHandlers && (
-                    <>
-                        <div ref={startHandlerRef} className={resizeHandlerStyles}>
-                            <div className={resizeLineStyles} />
-                        </div>
-                        <div ref={bodyRef} className={bodyStyles} />
-                        <div ref={endHandlerRef} className={resizeHandlerStyles}>
-                            <div className={resizeLineStyles} />
-                        </div>
-                    </>
-                )}
-            </div>
-        </div>
+                <ResizeHandler ref={startHandlerRef} className="resize-handler">
+                    <ResizeLine />
+                </ResizeHandler>
+                <ResizeHandler ref={endHandlerRef} className="resize-handler">
+                    <ResizeLine />
+                </ResizeHandler>
+            </Track>
+        </Container>
     );
 });
 

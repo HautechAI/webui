@@ -125,6 +125,45 @@ When creating or updating icon components using Figma MCP (Dev Mode):
 
 Remember: Documentation is as important as the code itself. Well-maintained documentation ensures developers can effectively use and contribute to this component library.
 
+## Styling Guidelines
+
+### CSS-in-JS with Linaria
+
+This project uses `@linaria/react` for component styling. Follow these guidelines:
+
+**Use `styled` components instead of `css` + className:**
+- ✅ **Correct**: `import { styled } from '@linaria/react';`
+- ❌ **Incorrect**: `import { css } from '@linaria/core';`
+
+**Component styling pattern:**
+```typescript
+import { styled } from '@linaria/react';
+import { themeVars } from '@hautechai/webui.themeprovider';
+
+const StyledComponent = styled.div<{ $propName?: boolean }>`
+    // Base styles
+    display: flex;
+    background: ${themeVars.colors.surface};
+    
+    // Conditional styles using props
+    ${({ $propName }) => $propName ? `
+        background: ${themeVars.colors.primary};
+    ` : ''}
+    
+    // Hover and other pseudo-selectors
+    &:hover {
+        background: ${themeVars.colors.hover};
+    }
+`;
+```
+
+**Key principles:**
+- Use `styled` components for all styling needs
+- Prefix boolean props with `$` (e.g., `$selected`, `$disabled`) to avoid passing them to DOM
+- Handle interactive states (hover, focus, active) via CSS pseudo-selectors, not JavaScript props
+- Use theme variables from `@hautechai/webui.themeprovider` for consistent theming
+- Avoid conditional rendering of elements for visual states - render elements and control visibility/appearance with CSS
+
 ## Import Guidelines
 
 ### Component Import Rules

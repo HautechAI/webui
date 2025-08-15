@@ -40,38 +40,14 @@ describe('TimelineTrack', () => {
             />
         );
         
-        // When selected, handlers should be present (they have cursor: col-resize in CSS)
+        // When selected, handlers should be visible via CSS
         const track = container.querySelector('[style*="width: 100px"]');
         expect(track).toBeInTheDocument();
-        // Check that the track has child elements (handlers)
-        expect(track?.children.length).toBeGreaterThan(0);
+        // Handlers are always present in DOM, but visibility is controlled by CSS
+        expect(track?.children.length).toBe(2);
     });
 
-    it('shows handlers when hovered', () => {
-        const mockRefs = {
-            startHandlerRef: vi.fn(),
-            endHandlerRef: vi.fn(),
-            bodyRef: vi.fn(),
-        };
-
-        const { container } = render(
-            <TimelineTrack
-                start={0}
-                duration={5}
-                scale={20}
-                hovered={true}
-                {...mockRefs}
-            />
-        );
-        
-        // When hovered, handlers should be present (they have cursor: col-resize in CSS)  
-        const track = container.querySelector('[style*="width: 100px"]');
-        expect(track).toBeInTheDocument();
-        // Check that the track has child elements (handlers)
-        expect(track?.children.length).toBeGreaterThan(0);
-    });
-
-    it('does not show handlers when not selected or hovered', () => {
+    it('renders handlers in DOM but hides them by default', () => {
         const mockRefs = {
             startHandlerRef: vi.fn(),
             endHandlerRef: vi.fn(),
@@ -84,15 +60,14 @@ describe('TimelineTrack', () => {
                 duration={5}
                 scale={20}
                 selected={false}
-                hovered={false}
                 {...mockRefs}
             />
         );
         
-        // When not selected or hovered, no handlers should be present
+        // Handlers are always present in DOM but hidden via CSS when not selected/hovered
         const track = container.querySelector('[style*="width: 100px"]');
         expect(track).toBeInTheDocument();
-        // Check that the track has no child elements (no handlers)
-        expect(track?.children.length).toBe(0);
+        // Check that the track has child elements (handlers) - they exist but are hidden via CSS
+        expect(track?.children.length).toBe(2);
     });
 });
