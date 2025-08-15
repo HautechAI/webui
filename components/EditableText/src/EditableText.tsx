@@ -138,8 +138,14 @@ export const EditableText = (props: EditableTextProps) => {
     }
 
     return (
-        <div onDoubleClick={handleDoubleClick} style={{ cursor: 'pointer', display: 'inline-block' }}>
-            <Typography variant={getTypographyVariant(textStyle) as any}>{text}</Typography>
+        <div onDoubleClick={handleDoubleClick} style={{ cursor: 'pointer', display: 'inline-block', width: '100%' }}>
+            <Typography 
+                variant={getTypographyVariant(textStyle) as any}
+                noWrap={true}
+                overflow="ellipsis"
+            >
+                {text}
+            </Typography>
         </div>
     );
 };
