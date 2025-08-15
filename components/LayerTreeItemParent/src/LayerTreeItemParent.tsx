@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { styled } from '@linaria/react';
 import { IconButton } from '@hautechai/webui.iconbutton';
 import { EditableText } from '@hautechai/webui.editabletext';
@@ -14,10 +14,14 @@ export interface LayerTreeItemParentProps {
     selected?: boolean;
     /** Whether the item is in expanded state */
     expanded?: boolean;
+    /** Whether the text label is editable */
+    editable?: boolean;
     /** Click handler for the expand/collapse button */
     onExpandToggle?: () => void;
     /** Click handler for the item itself */
     onClick?: () => void;
+    /** Handler for when the label text changes */
+    onChange?: (value: string) => void;
 }
 
 const Container = styled.div<{ selected: boolean }>`
@@ -82,7 +86,41 @@ const LabelContainer = styled.div`
 `;
 
 export const LayerTreeItemParent = (props: LayerTreeItemParentProps) => {
-    const { icon, label, selected = false, expanded = false, onExpandToggle, onClick } = props;
+    const { 
+        icon, 
+        label, 
+        selected = false, 
+        expanded = false, 
+        editable = false,
+        onExpandToggle, 
+        onClick, 
+        onChange 
+    } = props;
+    
+    const [isEditing, setIsEditing] = useState(false);
+    const [currentLabel, setCurrentLabel] = useState(label);
+
+    const handleStartEditing = () => {
+        if (editable) {
+            setIsEditing(true);
+        }
+    };
+
+    const handleFinishEditing = () => {
+        setIsEditing(false);
+        if (onChange && currentLabel !== label) {
+            onChange(currentLabel);
+        }
+    };
+
+    const handleTextChange = (value: string) => {
+        setCurrentLabel(value);
+    };
+
+    // Update internal state when label prop changes
+    React.useEffect(() => {
+        setCurrentLabel(label);
+    }, [label]);
 
     return (
         <Container selected={selected}>
@@ -101,15 +139,18 @@ export const LayerTreeItemParent = (props: LayerTreeItemParentProps) => {
                     onClick={onExpandToggle}
                 />
             </ExpandButton>
-            <Content onClick={onClick}>
+            <Content onClick={isEditing ? undefined : onClick}>
                 <IconContainer selected={selected}>
                     {icon}
                 </IconContainer>
                 <LabelContainer>
                     <EditableText
-                        text={label}
-                        mode="view"
+                        text={currentLabel}
+                        mode={isEditing ? 'edit' : 'view'}
                         textStyle={selected ? 'medium-emphasized' : 'medium-regular'}
+                        onStartEditing={handleStartEditing}
+                        onChange={handleTextChange}
+                        onFinishEditing={handleFinishEditing}
                     />
                 </LabelContainer>
             </Content>

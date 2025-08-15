@@ -13,7 +13,8 @@ export default {
     argTypes: {},
     args: { 
         onExpandToggle: fn() as any,
-        onClick: fn() as any 
+        onClick: fn() as any,
+        onChange: fn() as any 
     },
 };
 
@@ -59,5 +60,25 @@ export const LongLabel = {
         label: 'This is a very long layer name that should demonstrate text wrapping or truncation behavior',
         selected: false,
         expanded: false,
+    },
+};
+
+export const Editable = {
+    args: {
+        icon: <FolderIcon size={14} />,
+        label: 'Editable Layer',
+        selected: false,
+        expanded: false,
+        editable: true,
+    },
+};
+
+export const EditableSelected = {
+    args: {
+        icon: <FolderIcon size={14} />,
+        label: 'Editable Selected Layer',
+        selected: true,
+        expanded: false,
+        editable: true,
     },
 };
