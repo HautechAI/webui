@@ -1,6 +1,7 @@
 import { ButtonBase } from '../../ButtonBase/src';
 import { css } from '@linaria/core';
 import { themeVars } from '../../ThemeProvider/src';
+import { Theme } from '../../Theme/src';
 import React from 'react';
 
 export type ToolButtonProps = {
@@ -10,12 +11,12 @@ export type ToolButtonProps = {
     onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
 };
 
-// Base styles following the Figma pseudo-code structure
+// Base styles using theme variables only
 const buttonBase = css`
-    width: ${themeVars.spacing.xxl}px;
-    height: ${themeVars.spacing.xxl}px;
-    padding: 4px;
-    border-radius: 8px;
+    width: ${themeVars.spacing.xxl};
+    height: ${themeVars.spacing.xxl};
+    padding: ${themeVars.spacing.s};
+    border-radius: ${themeVars.cornerRadius.m};
     border: none;
     justify-content: center;
     align-items: center;
@@ -47,10 +48,10 @@ const selectedState = css`
     }
 `;
 
-// Icon container - fixed 24x24px as per Figma pseudo-code
+// Icon container using theme variables
 const iconContainer = css`
-    width: 24px;
-    height: 24px;
+    width: ${themeVars.spacing.xl};
+    height: ${themeVars.spacing.xl};
     justify-content: center;
     align-items: center;
     display: flex;
@@ -61,13 +62,13 @@ const iconContainer = css`
     }
 `;
 
-// Helper function to inject size into icon
+// Helper function to inject size into icon using theme values
 const getIcon = (icon: React.ReactNode) => (
     <div className={iconContainer}>
         {React.Children.map(icon, (child) => {
             if (React.isValidElement(child)) {
                 return React.cloneElement(child, {
-                    size: 24,
+                    size: Theme.foundation.spacing.xl, // Using theme value for icon size
                 } as any);
             }
             return child;
