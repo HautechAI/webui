@@ -239,7 +239,7 @@ export const VisualEditorInput = (props: VisualEditorInputProps) => {
                         onClick={props.onTogglePort}
                     />
                     <Dropdown
-                        size="small"
+                        size="xsmall"
                         collapsed={true}
                         value={props.units}
                         options={unitsOptions}

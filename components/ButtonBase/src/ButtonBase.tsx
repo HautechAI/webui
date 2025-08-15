@@ -22,10 +22,11 @@ export type ButtonBaseProps = PropsWithChildren<{
     onClick?: React.MouseEventHandler<HTMLButtonElement>;
     disabled?: boolean;
     stretch?: boolean;
+    style?: React.CSSProperties;
 }>;
 
 export const ButtonBase = (props: ButtonBaseProps) => {
-    const { stretch, className, disabled, ...rest } = props;
+    const { stretch, className, disabled, style, ...rest } = props;
     
     const buttonClassName = [
         baseButtonStyles,
@@ -41,6 +42,7 @@ export const ButtonBase = (props: ButtonBaseProps) => {
             {...rest}
             className={buttonClassName}
             disabled={disabled}
+            style={style}
         />
     );
 };

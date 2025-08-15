@@ -5,7 +5,7 @@ import { PlaceholderIcon } from '../../../components/Icon/src';
 import { VisualEditorInput } from '../../../components/VisualEditorInput/src';
 
 export default {
-    title: 'Input/VisualEditorInput',
+    title: 'Visual Editor/VisualEditorInput',
     component: VisualEditorInput,
     parameters: {
         layout: 'centered',
