@@ -34,7 +34,7 @@ const Container = styled.div`
 `;
 
 // Track styles with hover and selected states
-const Track = styled.div<{ $selected?: boolean }>`
+const Track = styled.div`
     height: 20px;
     background: transparent;
     border-radius: 4px;
@@ -52,13 +52,13 @@ const Track = styled.div<{ $selected?: boolean }>`
         }
     }
     
-    ${({ $selected }) => $selected ? `
+    &[data-selected="true"] {
         background: var(--actions-primary, #007AFF);
         
         .resize-handler {
             display: inline-flex;
         }
-    ` : ''}
+    }
 `;
 
 // Resize handler styles
@@ -103,7 +103,7 @@ export const TimelineTrack = forwardRef<HTMLDivElement, TimelineTrackProps>((pro
         >
             <Track 
                 ref={bodyRef}
-                $selected={selected}
+                data-selected={selected}
                 style={{ 
                     width: trackWidth,
                     marginLeft: trackLeft,
