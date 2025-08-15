@@ -5,7 +5,7 @@ import { FolderIcon } from '../../../components/Icon/src';
 import { Box } from '../../../components/Box/src';
 
 export default {
-    title: 'Compositions/LayerTreeItemParent',
+    title: 'Visual Editor/LayerTreeItemParent',
     component: LayerTreeItemParent,
     parameters: {
         layout: 'centered',

@@ -15,8 +15,8 @@ const baseButton = css`
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 20px;
-    height: 20px;
+    width: 16px;
+    height: 16px;
     border: none;
     background: transparent;
     cursor: pointer;
@@ -79,7 +79,7 @@ export const KeyframeToggle = (props: KeyframeToggleProps) => {
             {...rest}
         >
             <DiamondIcon 
-                size={20}
+                size={16}
                 style={iconStyle}
                 color="currentColor"
             />
