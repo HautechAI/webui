@@ -24,6 +24,7 @@ The library includes the following components organized by category:
 | [**Checkbox**](components/Checkbox/README.md) | Input control for boolean selection with custom styling |
 | [**Counter**](components/Counter/README.md) | Numeric display with increment/decrement controls |
 | [**Dropdown**](components/Dropdown/README.md) | Select input with customizable options and styling |
+| [**EditableText**](components/EditableText/README.md) | Text display that switches to input mode on double-click for inline editing |
 | [**Field**](components/Field/README.md) | Form field wrapper with label, error, and validation states |
 | [**FileInput**](components/FileInput/README.md) | File upload control with drag-and-drop support |
 | [**IconButton**](components/IconButton/README.md) | Button component optimized for displaying icons |
@@ -35,6 +36,7 @@ The library includes the following components organized by category:
 | [**TextArea**](components/TextArea/README.md) | Multi-line text input with resizing capabilities |
 | [**TextButton**](components/TextButton/README.md) | Button component optimized for text-only labels |
 | [**TextInput**](components/TextInput/README.md) | Single-line text input with validation and styling |
+| [**ToolButton**](components/ToolButton/README.md) | Icon button component with selected state functionality for toolbar interfaces |
 
 ### Data Display
 
