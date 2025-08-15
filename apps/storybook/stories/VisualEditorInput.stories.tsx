@@ -111,20 +111,22 @@ export const Interactive = {
             const [value, setValue] = useState('100');
             const [units, setUnits] = useState('px');
             const [isPort, setIsPort] = useState(false);
-            const [keyframesState, setKeyframesState] = useState<'noKeyframes' | 'hasKeyframes' | 'isKeyframe'>('noKeyframes');
-            
+            const [keyframesState, setKeyframesState] = useState<'noKeyframes' | 'hasKeyframes' | 'isKeyframe'>(
+                'noKeyframes',
+            );
+
             const availableUnits = ['px', '%', 'em', 'rem', 'vh', 'vw'];
-            
+
             const handleToggleKeyframe = () => {
-                setKeyframesState(prev => {
+                setKeyframesState((prev) => {
                     if (prev === 'noKeyframes') return 'hasKeyframes';
                     if (prev === 'hasKeyframes') return 'isKeyframe';
                     return 'noKeyframes';
                 });
             };
-            
+
             return (
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', alignItems: 'center' }}>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', flex: 1 }}>
                     <VisualEditorInput
                         value={value}
                         units={units}
@@ -133,12 +135,12 @@ export const Interactive = {
                         keyframesState={keyframesState}
                         onChange={setValue}
                         onToggleKeyframe={handleToggleKeyframe}
-                        onTogglePort={() => setIsPort(prev => !prev)}
+                        onTogglePort={() => setIsPort((prev) => !prev)}
                         onChangeUnits={setUnits}
                         leadingIcon={<PlaceholderIcon />}
                         placeholder="Enter value"
                     />
-                    
+
                     <div style={{ fontSize: '14px', textAlign: 'center', color: '#666' }}>
                         <div>Value: {value}</div>
                         <div>Units: {units}</div>
@@ -148,7 +150,7 @@ export const Interactive = {
                 </div>
             );
         };
-        
+
         return <InteractiveComponent />;
     },
     args: {},
@@ -160,47 +162,17 @@ export const AllStates = {
             <div>
                 <h3 style={{ marginBottom: '16px', fontSize: '16px' }}>Normal States</h3>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-                    <VisualEditorInput
-                        {...args}
-                        value="100"
-                        units="px"
-                        keyframesState="noKeyframes"
-                        isPort={false}
-                    />
-                    <VisualEditorInput
-                        {...args}
-                        value="150"
-                        units="%"
-                        keyframesState="hasKeyframes"
-                        isPort={false}
-                    />
-                    <VisualEditorInput
-                        {...args}
-                        value="200"
-                        units="em"
-                        keyframesState="isKeyframe"
-                        isPort={false}
-                    />
+                    <VisualEditorInput {...args} value="100" units="px" keyframesState="noKeyframes" isPort={false} />
+                    <VisualEditorInput {...args} value="150" units="%" keyframesState="hasKeyframes" isPort={false} />
+                    <VisualEditorInput {...args} value="200" units="em" keyframesState="isKeyframe" isPort={false} />
                 </div>
             </div>
-            
+
             <div>
                 <h3 style={{ marginBottom: '16px', fontSize: '16px' }}>Port States</h3>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-                    <VisualEditorInput
-                        {...args}
-                        value="300"
-                        units="vh"
-                        keyframesState="noKeyframes"
-                        isPort={true}
-                    />
-                    <VisualEditorInput
-                        {...args}
-                        value="50"
-                        units="vw"
-                        keyframesState="hasKeyframes"
-                        isPort={true}
-                    />
+                    <VisualEditorInput {...args} value="300" units="vh" keyframesState="noKeyframes" isPort={true} />
+                    <VisualEditorInput {...args} value="50" units="vw" keyframesState="hasKeyframes" isPort={true} />
                 </div>
             </div>
         </div>

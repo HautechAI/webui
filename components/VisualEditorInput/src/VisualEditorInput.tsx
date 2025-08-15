@@ -18,7 +18,7 @@ const Container = styled.div<{ size: 'medium' | 'small' }>`
     }
 `;
 
-const InputContainer = styled.div<{ variation: 'filled' | 'outlined'; size: 'medium' | 'small' }>`
+const InputBox = styled.div<{ variation: 'filled' | 'outlined'; size: 'medium' | 'small' }>`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -161,28 +161,41 @@ const KeyframeContainer = styled.div`
     align-items: center;
 `;
 
+const InputContainer = styled.div`
+    flex: 1;
+`;
+
 export const VisualEditorInput = (props: VisualEditorInputProps) => {
     const ref = useRef<HTMLInputElement>(null);
     const [isHovered, setIsHovered] = useState(false);
-    
+
     const handleClick = useCallback(() => {
         if (!props.disabled && !props.isPort) {
             ref.current?.focus();
         }
     }, [props.disabled, props.isPort]);
 
-    const handleInputChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-        props.onChange?.(e.target.value);
-    }, [props.onChange]);
+    const handleInputChange = useCallback(
+        (e: React.ChangeEvent<HTMLInputElement>) => {
+            props.onChange?.(e.target.value);
+        },
+        [props.onChange],
+    );
 
-    const handleUnitsChange = useCallback((newUnits: string) => {
-        props.onChangeUnits?.(newUnits);
-    }, [props.onChangeUnits]);
+    const handleUnitsChange = useCallback(
+        (newUnits: string) => {
+            props.onChangeUnits?.(newUnits);
+        },
+        [props.onChangeUnits],
+    );
 
-    const handleKeyframeClick = useCallback((e: React.MouseEvent<HTMLButtonElement>) => {
-        e.stopPropagation(); // Prevent triggering input focus
-        props.onToggleKeyframe?.();
-    }, [props.onToggleKeyframe]);
+    const handleKeyframeClick = useCallback(
+        (e: React.MouseEvent<HTMLButtonElement>) => {
+            e.stopPropagation(); // Prevent triggering input focus
+            props.onToggleKeyframe?.();
+        },
+        [props.onToggleKeyframe],
+    );
 
     const handleKeyframeMouseEnter = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
         e.stopPropagation(); // Prevent triggering input hover
@@ -194,10 +207,10 @@ export const VisualEditorInput = (props: VisualEditorInputProps) => {
     const { disabled, isPort, leadingIcon, keyframesState } = props;
     const size = props.size ?? 'small'; // Default to small as mentioned in requirements
     const isInputDisabled = disabled || isPort;
-    
-    const unitsOptions = props.availableUnits.map(unit => ({
+
+    const unitsOptions = props.availableUnits.map((unit) => ({
         label: unit,
-        value: unit
+        value: unit,
     }));
 
     const renderTrailingControls = () => {
@@ -223,6 +236,7 @@ export const VisualEditorInput = (props: VisualEditorInputProps) => {
                         variant="flat"
                         size="xsmall"
                         icon={<WorkflowIcon size={16} />}
+                        onClick={props.onTogglePort}
                     />
                     <Dropdown
                         size="small"
@@ -238,7 +252,7 @@ export const VisualEditorInput = (props: VisualEditorInputProps) => {
         // Default: show units label
         return (
             <UnitsContainer>
-                <Typography variant="captionRegular" color="layout.onSurface.tertiary">
+                <Typography variant="CaptionRegular" color="layout.onSurface.tertiary">
                     {props.units}
                 </Typography>
             </UnitsContainer>
@@ -246,40 +260,35 @@ export const VisualEditorInput = (props: VisualEditorInputProps) => {
     };
 
     return (
-        <Container 
-            onClick={handleClick} 
-            data-disabled={!!isInputDisabled} 
+        <Container
+            onClick={handleClick}
+            data-disabled={!!isInputDisabled}
             size={size}
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
         >
-            <InputContainer
+            <InputBox
                 data-disabled={!!isInputDisabled}
                 variation={props.variation ?? 'filled'}
                 data-has-error={!!props.hasError}
                 size={size}
             >
                 {leadingIcon ? getIcon(leadingIcon, size) : null}
-                <CustomInput
-                    className={props.className}
-                    type="text"
-                    disabled={isInputDisabled}
-                    ref={ref}
-                    placeholder={props.placeholder}
-                    value={props.value}
-                    onChange={handleInputChange}
-                />
+                <InputContainer>
+                    <CustomInput
+                        className={props.className}
+                        type="text"
+                        disabled={isInputDisabled}
+                        ref={ref}
+                        placeholder={props.placeholder}
+                        value={props.value}
+                        onChange={handleInputChange}
+                    />
+                </InputContainer>
                 {renderTrailingControls()}
-            </InputContainer>
-            <KeyframeContainer
-                onMouseEnter={handleKeyframeMouseEnter}
-                onMouseLeave={handleKeyframeMouseLeave}
-            >
-                <KeyframeToggle
-                    state={keyframesState}
-                    onClick={handleKeyframeClick}
-                    disabled={isInputDisabled}
-                />
+            </InputBox>
+            <KeyframeContainer onMouseEnter={handleKeyframeMouseEnter} onMouseLeave={handleKeyframeMouseLeave}>
+                <KeyframeToggle state={keyframesState} onClick={handleKeyframeClick} disabled={isInputDisabled} />
             </KeyframeContainer>
         </Container>
     );
