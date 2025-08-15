@@ -18,6 +18,7 @@ export type EditableTextProps = {
 
 // Styled input that matches TextInput small size
 const EditInput = styled.input`
+    box-sizing: border-box;
     width: 100%;
     font-family: Inter;
     font-size: 14px;
@@ -45,7 +46,6 @@ const EditInput = styled.input`
 
 const InputContainer = styled.div`
     display: inline-block;
-    min-width: 100px;
 `;
 
 // Map textStyle to Typography variants
@@ -77,16 +77,22 @@ export const EditableText = (props: EditableTextProps) => {
     }, [mode, onStartEditing]);
 
     // Handle input changes
-    const handleInputChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-        onChange?.(e.target.value);
-    }, [onChange]);
+    const handleInputChange = useCallback(
+        (e: React.ChangeEvent<HTMLInputElement>) => {
+            onChange?.(e.target.value);
+        },
+        [onChange],
+    );
 
     // Handle key press (Enter to finish editing)
-    const handleKeyDown = useCallback((e: React.KeyboardEvent<HTMLInputElement>) => {
-        if (e.key === 'Enter') {
-            onFinishEditing?.();
-        }
-    }, [onFinishEditing]);
+    const handleKeyDown = useCallback(
+        (e: React.KeyboardEvent<HTMLInputElement>) => {
+            if (e.key === 'Enter') {
+                onFinishEditing?.();
+            }
+        },
+        [onFinishEditing],
+    );
 
     // Handle click outside to finish editing
     useEffect(() => {
@@ -132,15 +138,8 @@ export const EditableText = (props: EditableTextProps) => {
     }
 
     return (
-        <div
-            onDoubleClick={handleDoubleClick}
-            style={{ cursor: 'pointer', display: 'inline-block' }}
-        >
-            <Typography
-                variant={getTypographyVariant(textStyle) as any}
-            >
-                {text}
-            </Typography>
+        <div onDoubleClick={handleDoubleClick} style={{ cursor: 'pointer', display: 'inline-block' }}>
+            <Typography variant={getTypographyVariant(textStyle) as any}>{text}</Typography>
         </div>
     );
 };

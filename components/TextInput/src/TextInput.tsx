@@ -8,7 +8,7 @@ const Container = styled.div<{ size: 'medium' | 'small' }>`
     gap: ${({ size }) => (size === 'small' ? themeVars.spacing.s : themeVars.spacing.m)};
     align-items: center;
     flex: 1;
-    &[data-disabled="true"] {
+    &[data-disabled='true'] {
         cursor: not-allowed;
         color: ${themeVars.layout.strokes};
     }
@@ -21,7 +21,10 @@ export const InputContainer = styled.div<{ variation: 'filled' | 'outlined'; siz
     align-items: center;
     cursor: text;
 
-    padding: ${({ size }) => (size === 'small' ? `${themeVars.spacing.s} ${themeVars.spacing.m}` : `${themeVars.spacing.m} ${themeVars.spacing.ml}`)};
+    padding: ${({ size }) =>
+        size === 'small'
+            ? `${themeVars.spacing.s} ${themeVars.spacing.m}`
+            : `${themeVars.spacing.m} ${themeVars.spacing.ml}`};
     flex: 1 0 0;
 
     border-radius: ${themeVars.cornerRadius.m};
@@ -30,7 +33,7 @@ export const InputContainer = styled.div<{ variation: 'filled' | 'outlined'; siz
     border-color: ${themeVars.layout.strokes};
 
     background: ${({ variation }) => (variation === 'filled' ? themeVars.layout.surfaceLow : 'transparent')};
-    &[data-has-error="true"] {
+    &[data-has-error='true'] {
         border-color: ${themeVars.actions.error};
         outline-width: ${themeVars.stroke.thin};
         outline-style: solid;
@@ -55,15 +58,17 @@ export const InputContainer = styled.div<{ variation: 'filled' | 'outlined'; siz
         outline-color: ${themeVars.actions.primary};
     }
 
-    &[data-disabled="true"] {
+    &[data-disabled='true'] {
         cursor: not-allowed;
     }
 
-    transition: border-color ${themeVars.animation.duration.fast} ${themeVars.animation.timing.easeOut},
+    transition:
+        border-color ${themeVars.animation.duration.fast} ${themeVars.animation.timing.easeOut},
         outline-color ${themeVars.animation.duration.fast} ${themeVars.animation.timing.easeOut};
 `;
 
 export const CustomInput = styled.input`
+    box-sizing: border-box;
     width: 100%;
 
     font-family: Inter;
@@ -143,7 +148,12 @@ export const TextInput = (props: TextInputProps) => {
 
     return (
         <Container onClick={handleClick} data-disabled={!!disabled} size={size}>
-            <InputContainer data-disabled={!!disabled} variation={props.variation ?? 'filled'} data-has-error={!!props.hasError} size={size}>
+            <InputContainer
+                data-disabled={!!disabled}
+                variation={props.variation ?? 'filled'}
+                data-has-error={!!props.hasError}
+                size={size}
+            >
                 {props.leadingIcon ? getIcon(props.leadingIcon, size) : null}
                 <CustomInput
                     className={props.className}
