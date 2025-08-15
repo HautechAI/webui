@@ -25,20 +25,20 @@ export default {
 
 export const Main = {
     args: {
-        children: <Tile image={Shirt} />,
+        children: <Tile width={200} src={Shirt} />,
     },
 };
 
 export const Selected = {
     args: {
-        children: <Tile image={Shirt} />,
+        children: <Tile width={200} src={Shirt} />,
         selected: true,
     },
 };
 
 export const HoverDisabled = {
     args: {
-        children: <Tile image={Shirt} />,
+        children: <Tile width={200} src={Shirt} />,
         hoverDisabled: true,
     },
 };

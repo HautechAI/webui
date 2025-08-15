@@ -1,10 +1,8 @@
 import { Checkbox } from '@hautechai/webui.checkbox';
-import { css } from '@linaria/core';
 import { styled } from '@linaria/react';
-import { themeVars } from '@hautechai/webui.themeprovider';
 import React, { PropsWithChildren, useCallback } from 'react';
 
-const StyledHoverControls = styled.div<HoverControlsProps>`
+const StyledHoverControls = styled.div`
     cursor: pointer;
     position: relative;
 `;
@@ -14,17 +12,17 @@ const ControlsContainer = styled.div`
     padding: 12px;
 `;
 
-const StyledCheckbox = styled(Checkbox)<{ hoverDisabled?: boolean }>`
+const CheckboxWrapper = styled.div`
     position: absolute;
-    display: ${({ checked }) => (checked ? 'block' : 'none')};
-    ${({ hoverDisabled }) =>
-        !hoverDisabled
-            ? css`
-                  *:hover > * > & {
-                      display: block;
-                  }
-              `
-            : ''}
+    display: none;
+
+    &[data-selected='true'] {
+        display: block;
+    }
+
+    .htch-webui-hoverable:hover &:not([data-hover-disabled='true']) {
+        display: block;
+    }
 `;
 
 export type HoverControlsProps = PropsWithChildren<{
@@ -34,20 +32,22 @@ export type HoverControlsProps = PropsWithChildren<{
 }>;
 
 export const HoverControls = (props: HoverControlsProps) => {
-    const { children, onChangeSelected, ...rest } = props;
+    const { children, onChangeSelected, selected, hoverDisabled } = props;
     const handleClick = useCallback(() => {
-        onChangeSelected?.(!props.selected);
-    }, [onChangeSelected, props.selected]);
+        onChangeSelected?.(!selected);
+    }, [onChangeSelected, selected]);
 
     return (
-        <StyledHoverControls className="htch-webui-hoverable" onClick={handleClick} {...rest}>
+        <StyledHoverControls className="htch-webui-hoverable" onClick={handleClick}>
             <ControlsContainer>
-                <StyledCheckbox checked={!!props.selected} readOnly hoverDisabled={props.hoverDisabled} />
+                <CheckboxWrapper data-selected={!!selected} data-hover-disabled={!!hoverDisabled}>
+                    <Checkbox checked={!!selected} readOnly />
+                </CheckboxWrapper>
             </ControlsContainer>
-            {React.Children.map(props.children, (child) => {
+            {React.Children.map(children, (child) => {
                 if (React.isValidElement(child)) {
                     return React.cloneElement(child, {
-                        selected: props.selected,
+                        selected,
                     } as any);
                 }
                 return child;
