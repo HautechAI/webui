@@ -1,7 +1,7 @@
 {
     "name": "@hautechai/webui.layertreeitemparent",
     "description": "",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "type": "module",
     "main": "src/index.tsx",
     "publishConfig": {
@@ -22,9 +22,9 @@
     },
     "author": "HautechAI",
     "dependencies": {
-        "@hautechai/webui.iconbutton": "workspace:^",
         "@hautechai/webui.editabletext": "workspace:^",
         "@hautechai/webui.icon": "workspace:^",
+        "@hautechai/webui.iconbutton": "workspace:^",
         "@hautechai/webui.themeprovider": "workspace:^"
     },
     "peerDependencies": {

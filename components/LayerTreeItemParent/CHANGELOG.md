@@ -1,17 +1,27 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## 1.0.1 (2025-08-15)
+
+**Note:** Version bump only for package @hautechai/webui.layertreeitemparent
+
 # LayerTreeItemParent
 
 ## [1.0.0] - 2025-01-15
 
 ### Added
+
 - Initial release of LayerTreeItemParent component
 - Component provides expandable/collapsible header functionality for layer tree items
 - Features include:
-  - Button with arrow indicating collapsed/expanded state
-  - Arrow rotates 90 degrees clockwise when expanded
-  - Icon prop for custom icon display
-  - Label prop for text display
-  - Selected state styling with theme-appropriate colors
-  - Interactive expand/collapse and click handlers
+    - Button with arrow indicating collapsed/expanded state
+    - Arrow rotates 90 degrees clockwise when expanded
+    - Icon prop for custom icon display
+    - Label prop for text display
+    - Selected state styling with theme-appropriate colors
+    - Interactive expand/collapse and click handlers
 - Built using existing IconButton, Typography, and ArrowAltRightIcon components
 - Follows Figma design specifications for layer tree components
 - Includes comprehensive test coverage
