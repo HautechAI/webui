@@ -26,7 +26,6 @@ const Container = styled.div`
     width: 100%;
     height: 100%;
     padding: 8px;
-    background: var(--layout-surface-mid, #EFEFEF);
     overflow: hidden;
     justify-content: flex-start;
     align-items: center;
@@ -93,7 +92,9 @@ export const TimelineTrack = forwardRef<HTMLDivElement, TimelineTrackProps>((pro
     } = props;
 
     // Calculate track width and position based on start, duration, and scale
-    const trackWidth = duration * scale;
+    // Account for container padding (8px on each side = 16px total)
+    const containerPadding = 16; // 8px left + 8px right
+    const trackWidth = Math.max(0, duration * scale);
     const trackLeft = start * scale;
 
     return (
