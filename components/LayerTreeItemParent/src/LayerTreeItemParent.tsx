@@ -1,7 +1,7 @@
 import React from 'react';
 import { styled } from '@linaria/react';
 import { IconButton } from '@hautechai/webui.iconbutton';
-import { Typography } from '@hautechai/webui.typography';
+import { EditableText } from '@hautechai/webui.editabletext';
 import { ArrowAltRightIcon } from '@hautechai/webui.icon';
 import { themeVars } from '@hautechai/webui.themeprovider';
 
@@ -81,11 +81,6 @@ const LabelContainer = styled.div`
     display: flex;
 `;
 
-const StyledTypography = styled(Typography)<{ selected: boolean }>`
-    color: ${props => props.selected ? themeVars.layout.onSurface.primary : themeVars.layout.onSurface.secondary};
-    font-weight: ${props => props.selected ? 500 : 400};
-`;
-
 export const LayerTreeItemParent = (props: LayerTreeItemParentProps) => {
     const { icon, label, selected = false, expanded = false, onExpandToggle, onClick } = props;
 
@@ -111,12 +106,11 @@ export const LayerTreeItemParent = (props: LayerTreeItemParentProps) => {
                     {icon}
                 </IconContainer>
                 <LabelContainer>
-                    <StyledTypography
-                        variant="Body"
-                        selected={selected}
-                    >
-                        {label}
-                    </StyledTypography>
+                    <EditableText
+                        text={label}
+                        mode="view"
+                        textStyle={selected ? 'medium-emphasized' : 'medium-regular'}
+                    />
                 </LabelContainer>
             </Content>
         </Container>

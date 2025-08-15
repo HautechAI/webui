@@ -596,6 +596,9 @@ importers:
 
   components/LayerTreeItemParent:
     dependencies:
+      '@hautechai/webui.editabletext':
+        specifier: workspace:^
+        version: link:../EditableText
       '@hautechai/webui.icon':
         specifier: workspace:^
         version: link:../Icon
@@ -605,9 +608,6 @@ importers:
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
         version: link:../ThemeProvider
-      '@hautechai/webui.typography':
-        specifier: workspace:^
-        version: link:../Typography
       react:
         specifier: ^19.0.0
         version: 19.0.0

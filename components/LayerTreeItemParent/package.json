@@ -23,7 +23,7 @@
     "author": "HautechAI",
     "dependencies": {
         "@hautechai/webui.iconbutton": "workspace:^",
-        "@hautechai/webui.typography": "workspace:^",
+        "@hautechai/webui.editabletext": "workspace:^",
         "@hautechai/webui.icon": "workspace:^",
         "@hautechai/webui.themeprovider": "workspace:^"
     },
