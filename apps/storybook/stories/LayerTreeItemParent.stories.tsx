@@ -2,6 +2,7 @@ import { fn } from '@storybook/test';
 
 import { LayerTreeItemParent } from '../../../components/LayerTreeItemParent/src';
 import { FolderIcon } from '../../../components/Icon/src';
+import { Box } from '../../../components/Box/src';
 
 export default {
     title: 'Compositions/LayerTreeItemParent',
@@ -16,6 +17,13 @@ export default {
         onClick: fn() as any,
         onChange: fn() as any 
     },
+    decorators: [
+        (Story: any) => (
+            <Box width={200}>
+                <Story />
+            </Box>
+        ),
+    ],
 };
 
 export const Default = {
