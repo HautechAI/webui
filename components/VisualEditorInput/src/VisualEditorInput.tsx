@@ -156,6 +156,11 @@ export type VisualEditorInputProps = {
     size?: 'medium' | 'small';
 };
 
+const KeyframeContainer = styled.div`
+    display: flex;
+    align-items: center;
+`;
+
 export const VisualEditorInput = (props: VisualEditorInputProps) => {
     const ref = useRef<HTMLInputElement>(null);
     const [isHovered, setIsHovered] = useState(false);
@@ -174,6 +179,18 @@ export const VisualEditorInput = (props: VisualEditorInputProps) => {
         props.onChangeUnits?.(newUnits);
     }, [props.onChangeUnits]);
 
+    const handleKeyframeClick = useCallback((e: React.MouseEvent<HTMLButtonElement>) => {
+        e.stopPropagation(); // Prevent triggering input focus
+        props.onToggleKeyframe?.();
+    }, [props.onToggleKeyframe]);
+
+    const handleKeyframeMouseEnter = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
+        e.stopPropagation(); // Prevent triggering input hover
+    }, []);
+
+    const handleKeyframeMouseLeave = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
+        e.stopPropagation(); // Prevent triggering input hover leave
+    }, []);
     const { disabled, isPort, leadingIcon, keyframesState } = props;
     const size = props.size ?? 'small'; // Default to small as mentioned in requirements
     const isInputDisabled = disabled || isPort;
@@ -190,7 +207,7 @@ export const VisualEditorInput = (props: VisualEditorInputProps) => {
                 <UnitsContainer>
                     <ToggleIconButton
                         variant="flat"
-                        size="small"
+                        size="xsmall"
                         icon={<UnlinkIcon size={16} />}
                         onClick={props.onTogglePort}
                     />
@@ -204,7 +221,7 @@ export const VisualEditorInput = (props: VisualEditorInputProps) => {
                 <TrailingContainer>
                     <ToggleIconButton
                         variant="flat"
-                        size="small"
+                        size="xsmall"
                         icon={<WorkflowIcon size={16} />}
                     />
                     <Dropdown
@@ -254,11 +271,16 @@ export const VisualEditorInput = (props: VisualEditorInputProps) => {
                 />
                 {renderTrailingControls()}
             </InputContainer>
-            <KeyframeToggle
-                state={keyframesState}
-                onClick={props.onToggleKeyframe}
-                disabled={isInputDisabled}
-            />
+            <KeyframeContainer
+                onMouseEnter={handleKeyframeMouseEnter}
+                onMouseLeave={handleKeyframeMouseLeave}
+            >
+                <KeyframeToggle
+                    state={keyframesState}
+                    onClick={handleKeyframeClick}
+                    disabled={isInputDisabled}
+                />
+            </KeyframeContainer>
         </Container>
     );
 };
