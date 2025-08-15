@@ -12,8 +12,8 @@ export type ToolButtonProps = {
 
 // Base styles following the Figma pseudo-code structure
 const buttonBase = css`
-    width: 100%;
-    height: 100%;
+    width: ${themeVars.spacing.xxl}px;
+    height: ${themeVars.spacing.xxl}px;
     padding: 4px;
     border-radius: 8px;
     border: none;
