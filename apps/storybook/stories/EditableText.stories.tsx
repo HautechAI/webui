@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { EditableText } from '../../../components/EditableText/src';
+import { Box } from '../../../components/Box/src';
 
 export default {
     title: 'Input/EditableText',
@@ -18,6 +19,13 @@ export default {
             options: ['view', 'edit'],
         },
     },
+    decorators: [
+        (Story: any) => (
+            <Box width={200}>
+                <Story />
+            </Box>
+        ),
+    ],
 };
 
 // Stateful story that demonstrates the full functionality
