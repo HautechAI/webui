@@ -44,7 +44,7 @@ const Track = styled.div`
     cursor: move;
     
     &:hover {
-        background: var(--layout-strokes, #BDBDBD);
+        background: ${themeVars.layout.surfaceMid};
         
         .resize-handler {
             display: inline-flex;
@@ -52,7 +52,7 @@ const Track = styled.div`
     }
     
     &[data-selected="true"] {
-        background: var(--actions-tertiary, #9CBCC4);
+        background: ${themeVars.layout.surfaceMid};
         
         .resize-handler {
             display: inline-flex;
