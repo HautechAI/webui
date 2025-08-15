@@ -1,10 +1,9 @@
 {
-    "name": "@hautechai/webui.imageinputwithsamples",
+    "name": "@hautechai/webui.toggleiconbutton",
     "description": "",
-    "version": "1.0.4",
+    "version": "1.0.1",
     "type": "module",
     "main": "src/index.tsx",
-    "sideEffects": false,
     "publishConfig": {
         "main": "dist/index.cjs",
         "module": "dist/index.js",
@@ -24,11 +23,7 @@
     "author": "HautechAI",
     "dependencies": {
         "@hautechai/webui.buttonbase": "workspace:^",
-        "@hautechai/webui.column": "workspace:^",
-        "@hautechai/webui.imageinput": "workspace:^",
-        "@hautechai/webui.row": "workspace:^",
-        "@hautechai/webui.tile": "workspace:^",
-        "@hautechai/webui.typography": "workspace:^"
+        "@hautechai/webui.themeprovider": "workspace:^"
     },
     "peerDependencies": {
         "react": "^19.0.0"

@@ -956,6 +956,18 @@ importers:
         specifier: ^19.0.0
         version: 19.0.0
 
+  components/ToggleIconButton:
+    dependencies:
+      '@hautechai/webui.buttonbase':
+        specifier: workspace:^
+        version: link:../ButtonBase
+      '@hautechai/webui.themeprovider':
+        specifier: workspace:^
+        version: link:../ThemeProvider
+      react:
+        specifier: ^19.0.0
+        version: 19.0.0
+
   components/ToolButton:
     dependencies:
       '@hautechai/webui.buttonbase':
