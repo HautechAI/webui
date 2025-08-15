@@ -8,7 +8,7 @@ Button component optimized for displaying icons with customizable variants, size
 | Parameter | Type | Description |
 |-----------|------|-------------|
 | variant | 'filled' \| 'outlined' \| 'flat' | Optional visual style variant (defaults to 'filled') |
-| size | 'medium' \| 'small' | Optional size variant controlling button dimensions (defaults to 'medium') |
+| size | 'medium' \| 'small' \| 'xsmall' | Optional size variant controlling button dimensions (defaults to 'medium') |
 | icon | React.ReactNode | Required icon component to be displayed |
 | disabled | boolean | When true, disables button interaction and applies disabled styling |
 | onClick | (e: React.MouseEvent<HTMLButtonElement>) => void | Optional click event handler function |
@@ -18,7 +18,7 @@ Button component optimized for displaying icons with customizable variants, size
 ```tsx
 <IconButton 
   variant="outlined"
-  size="small"
+  size="xsmall"
   icon={<PlusIcon />}
   onClick={handleAddItem}
 />

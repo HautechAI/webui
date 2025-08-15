@@ -171,14 +171,8 @@ export const TextInput = (props: TextInputProps) => {
             {icon && (
                 <IconButton
                     variant="flat"
-                    size="small"
-                    icon={
-                        React.isValidElement(icon)
-                            ? React.cloneElement(icon, {
-                                  size: size === 'small' ? 16 : 20,
-                              } as any)
-                            : icon
-                    }
+                    size={size === 'small' ? 'xsmall' : 'small'}
+                    icon={icon}
                     disabled={disabled}
                     onClick={props.onIconButtonClick}
                 />
