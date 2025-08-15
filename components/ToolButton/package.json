@@ -1,0 +1,32 @@
+{
+    "name": "@hautechai/webui.toolbutton",
+    "description": "ToolButton component with selected state",
+    "version": "1.0.1",
+    "type": "module",
+    "main": "src/index.tsx",
+    "publishConfig": {
+        "main": "dist/index.cjs",
+        "module": "dist/index.js",
+        "typings": "dist/index.d.ts",
+        "exports": {
+            "import": "./dist/index.js",
+            "require": "./dist/index.cjs"
+        },
+        "access": "public"
+    },
+    "files": [
+        "dist"
+    ],
+    "scripts": {
+        "prepack": "tsup"
+    },
+    "author": "HautechAI",
+    "dependencies": {
+        "@hautechai/webui.buttonbase": "workspace:^",
+        "@hautechai/webui.themeprovider": "workspace:^"
+    },
+    "peerDependencies": {
+        "react": "^19.0.0"
+    },
+    "license": "Apache-2.0"
+}
