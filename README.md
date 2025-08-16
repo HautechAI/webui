@@ -54,6 +54,7 @@ The library includes the following components organized by category:
 | [**Menu**](components/Menu/README.md) | Dropdown menu container for navigation or actions |
 | [**MenuItem**](components/MenuItem/README.md) | Individual item within a menu component |
 | [**Modal**](components/Modal/README.md) | Overlay dialog for focused user interactions |
+| [**NodeGroup**](components/NodeGroup/README.md) | Collapsible container with header for organizing related node items |
 | [**Panel**](components/Panel/README.md) | Collapsible content container with header and body |
 | [**Previews**](components/Previews/README.md) | Component for displaying content previews or thumbnails |
 | [**PropertyBlock**](components/PropertyBlock/README.md) | Flexible container for displaying property information with optional remove/add functionality |
