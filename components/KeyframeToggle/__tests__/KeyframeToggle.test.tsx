@@ -33,6 +33,23 @@ describe('KeyframeToggle', () => {
         }
     });
 
+    it('should not call onClick when disabled', () => {
+        const handleClick = vi.fn();
+        const { container } = render(
+            <ThemeProvider theme={testTheme}>
+                <KeyframeToggle state="noKeyframes" onClick={handleClick} disabled />
+            </ThemeProvider>,
+        );
+
+        const button = container.querySelector('button');
+        expect(button).not.toBeNull();
+        if (button) {
+            expect(button).toHaveProperty('disabled', true);
+            fireEvent.click(button);
+            expect(handleClick).not.toHaveBeenCalled();
+        }
+    });
+
     it('should render with different states', () => {
         const states: Array<'noKeyframes' | 'hasKeyframes' | 'isKeyframe'> = [
             'noKeyframes',

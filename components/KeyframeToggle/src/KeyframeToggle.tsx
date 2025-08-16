@@ -8,6 +8,7 @@ export type KeyframeToggleState = 'noKeyframes' | 'hasKeyframes' | 'isKeyframe';
 export type KeyframeToggleProps = {
     onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
     state: KeyframeToggleState;
+    disabled?: boolean;
 };
 
 // Base styles for the toggle button
@@ -62,7 +63,7 @@ const stateStyles = {
 };
 
 export const KeyframeToggle = (props: KeyframeToggleProps) => {
-    const { state, onClick, ...rest } = props;
+    const { state, onClick, disabled, ...rest } = props;
     
     // Determine icon style based on state
     const iconStyle = state === 'isKeyframe' ? 'bold' : 'outlined';
@@ -76,6 +77,7 @@ export const KeyframeToggle = (props: KeyframeToggleProps) => {
         <button 
             className={buttonClassName}
             onClick={onClick}
+            disabled={disabled}
             {...rest}
         >
             <DiamondIcon 

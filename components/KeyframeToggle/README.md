@@ -9,6 +9,7 @@ Toggle button component for keyframe interactions in timeline interfaces. Displa
 |-----------|------|-------------|
 | onClick | (e: React.MouseEvent<HTMLButtonElement>) => void | Optional click event handler function |
 | state | 'noKeyframes' \| 'hasKeyframes' \| 'isKeyframe' | Required state determining the visual appearance and icon style |
+| disabled | boolean | Optional flag to disable interactions and apply disabled styles |
 
 ## Usage Example
 ```tsx
