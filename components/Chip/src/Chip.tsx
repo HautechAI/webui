@@ -84,7 +84,7 @@ const ChipContent = React.forwardRef<HTMLDivElement, ChipProps>((props, ref) => 
                 })}
             </Icon>
         )}
-    {props.image && <Image style={{ backgroundImage: `url(${props.image})` }} />}
+        {props.image && <Image style={{ backgroundImage: `url(${props.image})` }} />}
         <div style={{ maxWidth: props.maxWidth ? `${props.maxWidth}px` : undefined }}>
             <Label variant="LabelSmallRegular">{props.label}</Label>
         </div>

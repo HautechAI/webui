@@ -43,11 +43,7 @@ export const Field = (props: FieldProps) => {
     const Main = labelPosition === 'top' ? Column : Row;
 
     return (
-        <Container
-            onClick={handleClick}
-            ref={ref}
-            style={{ flex: labelPosition === 'right' ? undefined : 1 }}
-        >
+        <Container onClick={handleClick} ref={ref} style={{ flex: labelPosition === 'right' ? undefined : 1 }}>
             <Main spacing={labelPosition === 'top' ? 'm' : 'ml'} stretch reverse={labelPosition === 'right'}>
                 <Row spacing="s" align="center">
                     {label && (

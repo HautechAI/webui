@@ -99,9 +99,10 @@ export const IconButton = (props: IconButtonProps) => {
         xsmall: 16,
     };
 
-    const iconWithSize = React.isValidElement(icon) && typeof icon.type !== 'string'
-        ? React.cloneElement(icon as React.ReactElement<any>, { size: iconSizes[size] })
-        : icon;
+    const iconWithSize =
+        React.isValidElement(icon) && typeof icon.type !== 'string'
+            ? React.cloneElement(icon as React.ReactElement<any>, { size: iconSizes[size] })
+            : icon;
 
     return (
         <ButtonBase

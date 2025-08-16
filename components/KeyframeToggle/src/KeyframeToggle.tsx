@@ -22,8 +22,7 @@ const baseButton = css`
     background: transparent;
     cursor: pointer;
     padding: 0;
-    transition: 
-        color ${themeVars.animation.duration.fast} ${themeVars.animation.timing.easeOut};
+    transition: color ${themeVars.animation.duration.fast} ${themeVars.animation.timing.easeOut};
 
     &:disabled {
         cursor: not-allowed;
@@ -64,27 +63,15 @@ const stateStyles = {
 
 export const KeyframeToggle = (props: KeyframeToggleProps) => {
     const { state, onClick, disabled, ...rest } = props;
-    
+
     // Determine icon style based on state
     const iconStyle = state === 'isKeyframe' ? 'bold' : 'outlined';
-    
-    const buttonClassName = [
-        baseButton,
-        stateStyles[state],
-    ].join(' ');
+
+    const buttonClassName = [baseButton, stateStyles[state]].join(' ');
 
     return (
-        <button 
-            className={buttonClassName}
-            onClick={onClick}
-            disabled={disabled}
-            {...rest}
-        >
-            <DiamondIcon 
-                size={16}
-                style={iconStyle}
-                color="currentColor"
-            />
+        <button className={buttonClassName} onClick={onClick} disabled={disabled} {...rest}>
+            <DiamondIcon size={16} style={iconStyle} color="currentColor" />
         </button>
     );
 };

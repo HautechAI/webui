@@ -68,7 +68,7 @@ export const MediumRegular = {
 export const MediumEmphasized = {
     args: {
         text: 'Medium emphasized text',
-        mode: 'view', 
+        mode: 'view',
         textStyle: 'medium-emphasized',
     },
 };

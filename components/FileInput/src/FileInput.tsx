@@ -86,7 +86,7 @@ export const FileInput: React.FC<FileInputProps> = (props) => {
         }
     };
 
-    const { getRootProps, getInputProps, isDragActive, isDragReject, isDragAccept, fileRejections } = useDropzone({
+    const { getRootProps, getInputProps, isDragActive, isDragReject, isDragAccept, fileRejections: _fileRejections } = useDropzone({
         onDrop,
         accept: { 'image/*': [] },
         maxFiles: props.maxFiles,

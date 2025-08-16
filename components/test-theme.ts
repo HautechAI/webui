@@ -1,4 +1,4 @@
-import { ThemeType } from '../ThemeProvider/src';
+import { ThemeType } from './ThemeProvider/src/ThemeProvider';
 
 export const testTheme: ThemeType = {
   foundation: {

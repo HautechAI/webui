@@ -28,7 +28,7 @@ export const WithIcon = {
     args: {
         label: '35 min ago',
         image: Desert,
-        icon: <PlayIcon size={64} color='actions.onTertiary' />,
+        icon: <PlayIcon size={64} color="actions.onTertiary" />,
         width: 300,
         aspectRatio: 16 / 9,
     },

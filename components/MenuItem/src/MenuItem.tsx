@@ -18,21 +18,23 @@ export const Container = styled.div`
     border-radius: ${themeVars.cornerRadius.m};
     background-color: transparent;
 
-    transition: 
+    transition:
         background-color ${themeVars.animation.duration.normal} ${themeVars.animation.timing.ease},
         color ${themeVars.animation.duration.normal} ${themeVars.animation.timing.ease};
 
     color: ${themeVars.layout.onSurface.secondary};
-    &[data-size="medium"] {
+    &[data-size='medium'] {
         color: ${themeVars.layout.onSurface.tertiary};
         padding: ${themeVars.spacing.m} ${themeVars.spacing.ml};
     }
-    &[data-size="small"] { padding: ${themeVars.spacing.s} ${themeVars.spacing.m}; }
-    &[data-selected="true"] {
+    &[data-size='small'] {
+        padding: ${themeVars.spacing.s} ${themeVars.spacing.m};
+    }
+    &[data-selected='true'] {
         color: ${themeVars.layout.onSurface.primary};
         background-color: ${themeVars.layout.surfaceHigh};
     }
-    &[data-type="CTA"] {
+    &[data-type='CTA'] {
         color: ${themeVars.actions.primary};
     }
     &:hover {
@@ -84,8 +86,8 @@ export const MenuItem = ({
                         type === 'CTA'
                             ? 'LabelMediumEmphasized'
                             : size === 'medium'
-                            ? 'LabelMediumRegular'
-                            : 'LabelSmallRegular'
+                              ? 'LabelMediumRegular'
+                              : 'LabelSmallRegular'
                     }
                 >
                     {label}

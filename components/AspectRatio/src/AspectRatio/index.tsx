@@ -1,4 +1,4 @@
-import { SegmentedControl, SegmentedControlProps } from '@hautechai/webui.segmentedcontrol';
+import { SegmentedControl } from '@hautechai/webui.segmentedcontrol';
 import { ArrowAltRightIcon } from '@hautechai/webui.icon';
 import { styled } from '@linaria/react';
 

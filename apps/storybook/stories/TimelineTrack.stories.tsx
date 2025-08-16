@@ -30,11 +30,13 @@ export default {
     },
     decorators: [
         (Story: any) => (
-            <div style={{ 
-                width: '800px', 
-                border: '1px dashed #ccc',
-                borderRadius: '4px',
-            }}>
+            <div
+                style={{
+                    width: '800px',
+                    border: '1px dashed #ccc',
+                    borderRadius: '4px',
+                }}
+            >
                 <Story />
             </div>
         ),
@@ -78,4 +80,3 @@ export const Selected = {
         selected: true,
     },
 };
-

@@ -12,10 +12,10 @@ export default {
     },
     tags: ['autodocs'],
     argTypes: {},
-    args: { 
+    args: {
         onExpandToggle: fn() as any,
         onClick: fn() as any,
-        onChange: fn() as any 
+        onChange: fn() as any,
     },
     decorators: [
         (Story: any) => (

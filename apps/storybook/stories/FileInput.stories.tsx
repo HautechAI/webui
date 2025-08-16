@@ -31,7 +31,7 @@ export const VariantButtonStretch = {
     },
     decorators: [
         (Story: any) => (
-            <div style={{ width: '300px', display: 'flex', flexDirection:'column', justifyContent:'stretch' }}>
+            <div style={{ width: '300px', display: 'flex', flexDirection: 'column', justifyContent: 'stretch' }}>
                 <Story />
             </div>
         ),
