@@ -1,7 +1,7 @@
 {
     "name": "@hautechai/webui.imageinput",
     "description": "",
-    "version": "1.0.5",
+    "version": "2.0.0",
     "type": "module",
     "main": "src/index.tsx",
     "sideEffects": false,
@@ -26,9 +26,9 @@
         "@hautechai/webui.fileinput": "workspace:^"
     },
     "peerDependencies": {
-        "react": "^19.0.0",
         "@linaria/core": "^6.3.0",
-        "@linaria/react": "^6.3.0"
+        "@linaria/react": "^6.3.0",
+        "react": "^19.0.0"
     },
     "license": "Apache-2.0"
 }
