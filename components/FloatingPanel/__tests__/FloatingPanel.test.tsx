@@ -10,7 +10,7 @@ describe('FloatingPanel', () => {
         expect(() => {
             render(
                 <ThemeProvider theme={testTheme}>
-                    <FloatingPanel />
+                    <FloatingPanel title="Test Panel" />
                 </ThemeProvider>,
             );
         }).not.toThrow();

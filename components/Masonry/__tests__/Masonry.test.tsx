@@ -21,7 +21,7 @@ describe('Masonry', () => {
         expect(() => {
             render(
                 <ThemeProvider theme={testTheme}>
-                    <Masonry />
+                    <Masonry><div>Test Child</div></Masonry>
                 </ThemeProvider>,
             );
         }).not.toThrow();

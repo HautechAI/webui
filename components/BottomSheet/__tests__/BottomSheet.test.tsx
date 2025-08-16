@@ -10,7 +10,7 @@ describe('BottomSheet', () => {
         expect(() => {
             render(
                 <ThemeProvider theme={testTheme}>
-                    <BottomSheet isOpen={true} onClose={() => {}}>Test Bottom Sheet</BottomSheet>
+                    <BottomSheet open={true} onClose={() => {}}>Test Bottom Sheet</BottomSheet>
                 </ThemeProvider>,
             );
         }).not.toThrow();

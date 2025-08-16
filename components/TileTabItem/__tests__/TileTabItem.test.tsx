@@ -10,7 +10,7 @@ describe('TileTabItem', () => {
         expect(() => {
             render(
                 <ThemeProvider theme={testTheme}>
-                    <TileTabItem />
+                    <TileTabItem value="test" />
                 </ThemeProvider>,
             );
         }).not.toThrow();

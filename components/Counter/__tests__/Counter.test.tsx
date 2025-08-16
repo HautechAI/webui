@@ -10,7 +10,7 @@ describe('Counter', () => {
         expect(() => {
             render(
                 <ThemeProvider theme={testTheme}>
-                    <Counter value={0} />
+                    <Counter value={0} onChange={() => {}} />
                 </ThemeProvider>,
             );
         }).not.toThrow();
