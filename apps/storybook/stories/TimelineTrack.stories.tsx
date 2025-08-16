@@ -1,4 +1,3 @@
-import { fn } from '@storybook/test';
 import { useRef } from 'react';
 import { TimelineTrack } from '../../../components/TimelineTrack/src';
 
@@ -43,7 +42,7 @@ export default {
 };
 
 export const Default = {
-    render: (args: any) => {
+    render: function DefaultRender(args: any) {
         const startHandlerRef = useRef<HTMLDivElement>(null);
         const endHandlerRef = useRef<HTMLDivElement>(null);
         const bodyRef = useRef<HTMLDivElement>(null);
@@ -61,7 +60,7 @@ export const Default = {
 };
 
 export const Selected = {
-    render: (args: any) => {
+    render: function SelectedRender(args: any) {
         const startHandlerRef = useRef<HTMLDivElement>(null);
         const endHandlerRef = useRef<HTMLDivElement>(null);
         const bodyRef = useRef<HTMLDivElement>(null);

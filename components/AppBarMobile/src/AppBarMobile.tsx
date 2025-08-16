@@ -10,7 +10,7 @@ const Container = styled.div`
     padding: ${themeVars.spacing.l};
 
     background-color: ${themeVars.layout.surfaceMid};
-    &[data-hierarchy="low"] {
+    &[data-hierarchy='low'] {
         background-color: ${themeVars.layout.surfaceLow};
     }
 
@@ -35,7 +35,7 @@ export type AppBarMobileProps = {
 export const AppBarMobile = (props: AppBarMobileProps) => {
     const { hierarchy = 'mid' } = props;
     return (
-    <Container data-hierarchy={hierarchy}>
+        <Container data-hierarchy={hierarchy}>
             <RowContainer>{props.top}</RowContainer>
             <RowContainer>{props.center}</RowContainer>
             <RowContainer>{props.bottom}</RowContainer>

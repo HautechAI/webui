@@ -66,7 +66,7 @@ export const Checkbox = (props: CheckboxProps) => {
             <StyledInput
                 type="checkbox"
                 checked={checked !== undefined ? !!checked : undefined}
-                onChange={(e) => props?.onChange?.(e.target.checked)}
+                onChange={(e) => onChange?.(e.target.checked)}
                 readOnly={props.readOnly}
             />
             <StyledCheckmarkContainer onClick={(e) => e.stopPropagation()}>

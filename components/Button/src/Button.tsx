@@ -166,9 +166,9 @@ export const Button = (props: ButtonProps) => {
 
     return (
         <StyledButton className={buttonClassName} stretch={stretch} {...rest}>
-            {props.leadingIcon}
+            {leadingIcon}
             <Typography variant={LabelVariants[size]}>{label}</Typography>
-            {props.trailingIcon}
+            {trailingIcon}
         </StyledButton>
     );
 };

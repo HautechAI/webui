@@ -1,8 +1,6 @@
-import { fn } from '@storybook/test';
 import { Box } from '../../../components/Box/src';
 import { Button } from '../../../components/Button/src';
 import { Column } from '../../../components/Column/src';
-import { Tile } from '../../../components/Tile/src';
 
 export default {
     title: 'Layout/Box',

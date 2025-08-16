@@ -1,6 +1,6 @@
 import { fn } from '@storybook/test';
 import { BackgroundIcon, ModelIcon, PoseIcon } from '../../../components/Icon/src';
-import { TileTabGroup, TileTabGroupProps } from '../../../components/TileTabGroup/src';
+import { TileTabGroup } from '../../../components/TileTabGroup/src';
 import { TileTabItem } from '../../../components/TileTabItem/src';
 import { useState } from 'react';
 
@@ -45,7 +45,7 @@ export const NoWrap = {
         ],
     },
     decorators: [
-        (Story: React.FC<any>, { args }: any) => {
+        (Story: React.FC<any>, { args: _args }: any) => {
             return (
                 <div style={{ width: '300px', border: 'dashed black 1px' }}>
                     <Story />
@@ -65,7 +65,7 @@ export const Wrap = {
         ],
     },
     decorators: [
-        (Story: React.FC<any>, { args }: any) => {
+        (Story: React.FC<any>, { args: _args }: any) => {
             return (
                 <div style={{ width: '300px', border: 'dashed black 1px' }}>
                     <Story />

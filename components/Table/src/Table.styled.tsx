@@ -9,7 +9,9 @@ export const Root = styled.table`
 export const Head = styled.thead``;
 export const HeadCell = styled.th`
     color: ${themeVars.layout.onSurface.tertiary};
-    font-feature-settings: 'liga' off, 'clig' off;
+    font-feature-settings:
+        'liga' off,
+        'clig' off;
     font-family: Inter;
     font-size: 12px;
     font-style: normal;
@@ -29,7 +31,9 @@ export const Cell = styled.td`
     margin: 0;
 
     color: ${themeVars.layout.onSurface.primary};
-    font-feature-settings: 'liga' off, 'clig' off;
+    font-feature-settings:
+        'liga' off,
+        'clig' off;
     font-family: Inter;
     font-size: 14px;
     font-style: normal;

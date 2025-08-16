@@ -29,10 +29,7 @@ export const Avatar = (props: AvatarProps) => {
     return (
         <div className={avatarContainerStyles}>
             {props.src ? (
-                <div 
-                    className={avatarImageStyles}
-                    style={{ backgroundImage: `url(${props.src})` }}
-                />
+                <div className={avatarImageStyles} style={{ backgroundImage: `url(${props.src})` }} />
             ) : (
                 React.Children.map(props.icon, (child) => {
                     if (React.isValidElement(child)) {

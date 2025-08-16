@@ -1,5 +1,3 @@
-import avatar from '../../../assets/Avatar.png';
-
 import { PlaceholderIcon } from '../../../components/Icon/src';
 import { Box } from '../../../components/Box/src';
 import { DataItem } from '../../../components/DataItem/src/DataItem';

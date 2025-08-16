@@ -1,12 +1,11 @@
 import { css } from '@linaria/core';
-import { themeVars } from '@hautechai/webui.themeprovider';
 import { PropsWithChildren } from 'react';
 
 const baseButtonStyles = css`
     all: unset;
     cursor: pointer;
     display: inline-flex;
-    
+
     &:disabled {
         cursor: default;
     }
@@ -27,7 +26,7 @@ export type ButtonBaseProps = PropsWithChildren<{
 
 export const ButtonBase = (props: ButtonBaseProps) => {
     const { stretch, className, disabled, style, ...rest } = props;
-    
+
     const buttonClassName = [
         baseButtonStyles,
         stretch && stretchStyles,
@@ -37,12 +36,5 @@ export const ButtonBase = (props: ButtonBaseProps) => {
         .filter(Boolean)
         .join(' ');
 
-    return (
-        <button
-            {...rest}
-            className={buttonClassName}
-            disabled={disabled}
-            style={style}
-        />
-    );
+    return <button {...rest} className={buttonClassName} disabled={disabled} style={style} />;
 };

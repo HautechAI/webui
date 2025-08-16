@@ -38,7 +38,7 @@ const StyledTileDiv = styled.div`
         border-color ${themeVars.animation.duration.fast} ${themeVars.animation.timing.easeOut};
 
     border-color: transparent;
-    &[data-selected="true"] {
+    &[data-selected='true'] {
         border-color: ${themeVars.actions.primary};
     }
     .htch-webui-hoverable:hover & {
@@ -67,7 +67,7 @@ const StyledTileImg = styled.img`
         transform ${themeVars.animation.duration.fast} ${themeVars.animation.timing.easeOut};
 
     border-color: transparent;
-    &[data-selected="true"] {
+    &[data-selected='true'] {
         border-color: ${themeVars.actions.primary};
     }
     .htch-webui-hoverable:hover & {
@@ -96,7 +96,7 @@ const StyledTileVideo = styled.video`
         transform ${themeVars.animation.duration.fast} ${themeVars.animation.timing.easeOut};
 
     border-color: transparent;
-    &[data-selected="true"] {
+    &[data-selected='true'] {
         border-color: ${themeVars.actions.primary};
     }
     .htch-webui-hoverable:hover & {
@@ -133,7 +133,7 @@ export const Tile = (props: TileProps) => {
     if (aspectRatio && width && height) {
         throw new Error('aspectRatio can be used only with one of width/height');
     }
-    if ((props.component === 'img' || props.component === 'video') && icon) {
+    if ((component === 'img' || component === 'video') && icon) {
         throw new Error('icon can not be used with img/video component');
     }
 
@@ -143,13 +143,11 @@ export const Tile = (props: TileProps) => {
         aspectRatio: aspectRatio ?? (!size && (!width || !height) ? 1 : undefined),
     } as React.CSSProperties;
 
-    if (props.component === 'img') {
-        return (
-            <StyledTileImg data-selected={!!props.selected} src={src} alt={alt} style={styleDims} {...rest} />
-        );
+    if (component === 'img') {
+        return <StyledTileImg data-selected={!!props.selected} src={src} alt={alt} style={styleDims} {...rest} />;
     }
 
-    if (props.component === 'video') {
+    if (component === 'video') {
         return (
             <StyledTileVideo
                 data-selected={!!props.selected}

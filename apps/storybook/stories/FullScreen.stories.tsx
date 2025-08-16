@@ -1,9 +1,4 @@
-import { Decorator } from '@storybook/react';
-import { useState } from 'react';
-
 import { FullScreen } from '../../../components/FullScreen/src';
-import { FullScreenProps } from '../../../components/FullScreen/src';
-import { Logo } from '../../../components/Logo/src';
 import { fn } from '@storybook/test';
 
 export default {

@@ -38,5 +38,9 @@ export const Row = (props: RowProps) => {
         overflow: noOverflow ? 'hidden' : undefined,
         gap: spacing ? (themeVars.spacing as any)[spacing] : 0,
     };
-    return <Container style={style} {...rest}>{children}</Container>;
+    return (
+        <Container style={style} {...rest}>
+            {children}
+        </Container>
+    );
 };

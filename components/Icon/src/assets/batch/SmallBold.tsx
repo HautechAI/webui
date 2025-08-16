@@ -1,9 +1,8 @@
 import * as React from 'react';
 import type { SVGProps } from 'react';
 import { type ThemeType } from '@hautechai/webui.themeprovider';
-import { Paths } from 'type-fest';
+import { type Paths } from 'type-fest';
 
-import { get } from 'lodash-es';
 import { resolveIconColor } from '../../color';
 const SvgSmall = (
     props: SVGProps<SVGSVGElement> & {
@@ -16,7 +15,6 @@ const SvgSmall = (
             xmlns="http://www.w3.org/2000/svg"
             style={{ width: props.size ?? '24px', height: props.size ?? '24px' }}
             viewBox={`0 0 ${props.size ?? 24} ${props.size ?? 24}`}
-            
             fill="none"
             {...props}
         >
