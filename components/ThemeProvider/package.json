@@ -21,12 +21,11 @@
         "prepack": "tsup"
     },
     "author": "HautechAI",
-    "dependencies": {
+    "dependencies": {},
+    "peerDependencies": {
+        "react": "^19.0.0",
         "@linaria/core": "^6.3.0",
         "@linaria/react": "^6.3.0"
-    },
-    "peerDependencies": {
-        "react": "^19.0.0"
     },
     "license": "Apache-2.0"
 }

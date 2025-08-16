@@ -26,6 +26,8 @@
         "@lottiefiles/dotlottie-react": "^0.13.2"
     },
     "peerDependencies": {
-        "react": "^19.0.0"
+        "react": "^19.0.0",
+        "@linaria/core": "^6.3.0",
+        "@linaria/react": "^6.3.0"
     }
 }
