@@ -140,26 +140,35 @@ This project uses `@linaria/react` for component styling. Follow these guideline
 import { styled } from '@linaria/react';
 import { themeVars } from '@hautechai/webui.themeprovider';
 
-const StyledComponent = styled.div<{ $propName?: boolean }>`
+const StyledComponent = styled.div`
     // Base styles
     display: flex;
     background: ${themeVars.colors.surface};
     
-    // Conditional styles using props
-    ${({ $propName }) => $propName ? `
+    // Conditional styles using data attributes (preferred)
+    &[data-selected="true"] {
         background: ${themeVars.colors.primary};
-    ` : ''}
+    }
+    
+    &[data-variant="outline"] {
+        border: 1px solid ${themeVars.colors.border};
+        background: transparent;
+    }
     
     // Hover and other pseudo-selectors
     &:hover {
         background: ${themeVars.colors.hover};
     }
 `;
+
+// Usage in component:
+// <StyledComponent data-selected={selected} data-variant={variant} />
 ```
 
 **Key principles:**
 - Use `styled` components for all styling needs
-- Prefix boolean props with `$` (e.g., `$selected`, `$disabled`) to avoid passing them to DOM
+- **Prefer data attributes over styled component props** for conditional styling (e.g., `data-selected`, `data-variant`)
+- Use CSS attribute selectors like `&[data-selected="true"]` instead of prop-based conditional styles
 - Handle interactive states (hover, focus, active) via CSS pseudo-selectors, not JavaScript props
 - Use theme variables from `@hautechai/webui.themeprovider` for consistent theming
 - Avoid conditional rendering of elements for visual states - render elements and control visibility/appearance with CSS
