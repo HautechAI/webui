@@ -92,10 +92,10 @@ importers:
     dependencies:
       '@hautechai/webui.theme':
         specifier: workspace:^
-        version: link:../../components/Theme
+        version: link:../../components/Theme/dist
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
-        version: link:../../components/ThemeProvider
+        version: link:../../components/ThemeProvider/dist
     devDependencies:
       '@storybook/addon-essentials':
         specifier: ^8.5.5
@@ -129,142 +129,86 @@ importers:
     dependencies:
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
-        version: link:../ThemeProvider
-      '@linaria/core':
-        specifier: ^6.3.0
-        version: 6.3.0
-      '@linaria/react':
-        specifier: ^6.3.0
-        version: 6.3.0(react@19.0.0)
-      react:
-        specifier: ^19.0.0
-        version: 19.0.0
+        version: link:../ThemeProvider/dist
+    publishDirectory: dist
 
   components/AppBarMobile:
     dependencies:
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
-        version: link:../ThemeProvider
-      '@linaria/core':
-        specifier: ^6.3.0
-        version: 6.3.0
-      '@linaria/react':
-        specifier: ^6.3.0
-        version: 6.3.0(react@19.0.0)
-      react:
-        specifier: ^19.0.0
-        version: 19.0.0
+        version: link:../ThemeProvider/dist
+    publishDirectory: dist
 
   components/AspectRatio:
     dependencies:
       '@hautechai/webui.box':
         specifier: workspace:^
-        version: link:../Box
+        version: link:../Box/dist
       '@hautechai/webui.checkbox':
         specifier: workspace:^
-        version: link:../Checkbox
+        version: link:../Checkbox/dist
       '@hautechai/webui.column':
         specifier: workspace:^
-        version: link:../Column
+        version: link:../Column/dist
       '@hautechai/webui.divider':
         specifier: workspace:^
-        version: link:../Divider
+        version: link:../Divider/dist
       '@hautechai/webui.icon':
         specifier: workspace:^
-        version: link:../Icon
+        version: link:../Icon/dist
       '@hautechai/webui.modal':
         specifier: workspace:^
-        version: link:../Modal
+        version: link:../Modal/dist
       '@hautechai/webui.row':
         specifier: workspace:^
-        version: link:../Row
+        version: link:../Row/dist
       '@hautechai/webui.segmentedcontrol':
         specifier: workspace:^
-        version: link:../SegmentedControl
+        version: link:../SegmentedControl/dist
       '@hautechai/webui.slider':
         specifier: workspace:^
-        version: link:../Slider
+        version: link:../Slider/dist
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
-        version: link:../ThemeProvider
+        version: link:../ThemeProvider/dist
       '@hautechai/webui.typography':
         specifier: workspace:^
         version: link:../Typography/dist
-      '@linaria/core':
-        specifier: ^6.3.0
-        version: 6.3.0
-      '@linaria/react':
-        specifier: ^6.3.0
-        version: 6.3.0(react@19.0.0)
-      react:
-        specifier: ^19.0.0
-        version: 19.0.0
+    publishDirectory: dist
 
   components/Avatar:
     dependencies:
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
-        version: link:../ThemeProvider
+        version: link:../ThemeProvider/dist
       '@hautechai/webui.typography':
         specifier: workspace:^
         version: link:../Typography/dist
-      '@linaria/core':
-        specifier: ^6.3.0
-        version: 6.3.0
-      '@linaria/react':
-        specifier: ^6.3.0
-        version: 6.3.0(react@19.0.0)
-      react:
-        specifier: ^19.0.0
-        version: 19.0.0
+    publishDirectory: dist
 
   components/Badge:
     dependencies:
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
-        version: link:../ThemeProvider
+        version: link:../ThemeProvider/dist
       '@hautechai/webui.typography':
         specifier: workspace:^
         version: link:../Typography/dist
-      '@linaria/core':
-        specifier: ^6.3.0
-        version: 6.3.0
-      '@linaria/react':
-        specifier: ^6.3.0
-        version: 6.3.0(react@19.0.0)
-      react:
-        specifier: ^19.0.0
-        version: 19.0.0
+    publishDirectory: dist
 
   components/BottomSheet:
     dependencies:
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
-        version: link:../ThemeProvider
-      '@linaria/core':
-        specifier: ^6.3.0
-        version: 6.3.0
-      '@linaria/react':
-        specifier: ^6.3.0
-        version: 6.3.0(react@19.0.0)
-      react:
-        specifier: ^19.0.0
-        version: 19.0.0
+        version: link:../ThemeProvider/dist
+    publishDirectory: dist
 
   components/Box:
     dependencies:
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
-        version: link:../ThemeProvider
-      '@linaria/core':
-        specifier: ^6.3.0
-        version: 6.3.0
-      '@linaria/react':
-        specifier: ^6.3.0
-        version: 6.3.0(react@19.0.0)
-      react:
-        specifier: ^19.0.0
-        version: 19.0.0
+        version: link:../ThemeProvider/dist
+    publishDirectory: dist
 
   components/Button:
     dependencies:
@@ -273,7 +217,7 @@ importers:
         version: link:../ButtonBase/dist
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
-        version: link:../ThemeProvider
+        version: link:../ThemeProvider/dist
       '@hautechai/webui.typography':
         specifier: workspace:^
         version: link:../Typography/dist
@@ -283,7 +227,7 @@ importers:
     dependencies:
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
-        version: link:../ThemeProvider
+        version: link:../ThemeProvider/dist
     publishDirectory: dist
 
   components/Card:
@@ -293,259 +237,171 @@ importers:
         version: link:../ButtonBase/dist
       '@hautechai/webui.column':
         specifier: workspace:^
-        version: link:../Column
+        version: link:../Column/dist
       '@hautechai/webui.icon':
         specifier: workspace:^
-        version: link:../Icon
+        version: link:../Icon/dist
       '@hautechai/webui.iconbutton':
         specifier: workspace:^
-        version: link:../IconButton
+        version: link:../IconButton/dist
       '@hautechai/webui.row':
         specifier: workspace:^
-        version: link:../Row
+        version: link:../Row/dist
       '@hautechai/webui.tile':
         specifier: workspace:^
-        version: link:../Tile
+        version: link:../Tile/dist
       '@hautechai/webui.typography':
         specifier: workspace:^
         version: link:../Typography/dist
-      '@linaria/core':
-        specifier: ^6.3.0
-        version: 6.3.0
-      '@linaria/react':
-        specifier: ^6.3.0
-        version: 6.3.0(react@19.0.0)
-      react:
-        specifier: ^19.0.0
-        version: 19.0.0
+    publishDirectory: dist
 
   components/Checkbox:
     dependencies:
       '@hautechai/webui.icon':
         specifier: workspace:^
-        version: link:../Icon
+        version: link:../Icon/dist
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
-        version: link:../ThemeProvider
-      '@linaria/core':
-        specifier: ^6.3.0
-        version: 6.3.0
-      '@linaria/react':
-        specifier: ^6.3.0
-        version: 6.3.0(react@19.0.0)
-      react:
-        specifier: ^19.0.0
-        version: 19.0.0
+        version: link:../ThemeProvider/dist
+    publishDirectory: dist
 
   components/Chip:
     dependencies:
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
-        version: link:../ThemeProvider
+        version: link:../ThemeProvider/dist
       '@hautechai/webui.typography':
         specifier: workspace:^
         version: link:../Typography/dist
-      '@linaria/core':
-        specifier: ^6.3.0
-        version: 6.3.0
-      '@linaria/react':
-        specifier: ^6.3.0
-        version: 6.3.0(react@19.0.0)
-      react:
-        specifier: ^19.0.0
-        version: 19.0.0
       react-tiny-popover:
         specifier: 8.1.6
         version: 8.1.6(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+    publishDirectory: dist
 
   components/Column:
     dependencies:
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
-        version: link:../ThemeProvider
-      '@linaria/core':
-        specifier: ^6.3.0
-        version: 6.3.0
-      '@linaria/react':
-        specifier: ^6.3.0
-        version: 6.3.0(react@19.0.0)
-      react:
-        specifier: ^19.0.0
-        version: 19.0.0
+        version: link:../ThemeProvider/dist
+    publishDirectory: dist
 
   components/ContextMenu:
     dependencies:
       '@hautechai/webui.badge':
         specifier: workspace:^
-        version: link:../Badge
+        version: link:../Badge/dist
       '@hautechai/webui.bottomsheet':
         specifier: workspace:^
-        version: link:../BottomSheet
+        version: link:../BottomSheet/dist
       '@hautechai/webui.column':
         specifier: workspace:^
-        version: link:../Column
+        version: link:../Column/dist
       '@hautechai/webui.divider':
         specifier: workspace:^
-        version: link:../Divider
+        version: link:../Divider/dist
       '@hautechai/webui.icon':
         specifier: workspace:^
-        version: link:../Icon
+        version: link:../Icon/dist
       '@hautechai/webui.iconbutton':
         specifier: workspace:^
-        version: link:../IconButton
+        version: link:../IconButton/dist
       '@hautechai/webui.row':
         specifier: workspace:^
-        version: link:../Row
+        version: link:../Row/dist
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
-        version: link:../ThemeProvider
-      '@linaria/core':
-        specifier: ^6.3.0
-        version: 6.3.0
-      '@linaria/react':
-        specifier: ^6.3.0
-        version: 6.3.0(react@19.0.0)
-      react:
-        specifier: ^19.0.0
-        version: 19.0.0
+        version: link:../ThemeProvider/dist
+    publishDirectory: dist
 
   components/Counter:
     dependencies:
       '@hautechai/webui.icon':
         specifier: workspace:^
-        version: link:../Icon
+        version: link:../Icon/dist
       '@hautechai/webui.iconbutton':
         specifier: workspace:^
-        version: link:../IconButton
+        version: link:../IconButton/dist
       '@hautechai/webui.row':
         specifier: workspace:^
-        version: link:../Row
+        version: link:../Row/dist
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
-        version: link:../ThemeProvider
+        version: link:../ThemeProvider/dist
       '@hautechai/webui.typography':
         specifier: workspace:^
         version: link:../Typography/dist
-      '@linaria/core':
-        specifier: ^6.3.0
-        version: 6.3.0
-      '@linaria/react':
-        specifier: ^6.3.0
-        version: 6.3.0(react@19.0.0)
-      react:
-        specifier: ^19.0.0
-        version: 19.0.0
+    publishDirectory: dist
 
   components/DataItem:
     dependencies:
       '@hautechai/webui.avatar':
         specifier: workspace:^
-        version: link:../Avatar
+        version: link:../Avatar/dist
       '@hautechai/webui.hint':
         specifier: workspace:^
-        version: link:../Hint
+        version: link:../Hint/dist
       '@hautechai/webui.row':
         specifier: workspace:^
-        version: link:../Row
+        version: link:../Row/dist
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
-        version: link:../ThemeProvider
+        version: link:../ThemeProvider/dist
       '@hautechai/webui.typography':
         specifier: workspace:^
         version: link:../Typography/dist
-      '@linaria/core':
-        specifier: ^6.3.0
-        version: 6.3.0
-      '@linaria/react':
-        specifier: ^6.3.0
-        version: 6.3.0(react@19.0.0)
-      react:
-        specifier: ^19.0.0
-        version: 19.0.0
+    publishDirectory: dist
 
   components/Divider:
     dependencies:
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
-        version: link:../ThemeProvider
-      '@linaria/core':
-        specifier: ^6.3.0
-        version: 6.3.0
-      '@linaria/react':
-        specifier: ^6.3.0
-        version: 6.3.0(react@19.0.0)
-      react:
-        specifier: ^19.0.0
-        version: 19.0.0
+        version: link:../ThemeProvider/dist
+    publishDirectory: dist
 
   components/Dropdown:
     dependencies:
       '@hautechai/webui.icon':
         specifier: workspace:^
-        version: link:../Icon
+        version: link:../Icon/dist
       '@hautechai/webui.menu':
         specifier: workspace:^
-        version: link:../Menu
+        version: link:../Menu/dist
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
-        version: link:../ThemeProvider
+        version: link:../ThemeProvider/dist
       '@hautechai/webui.typography':
         specifier: workspace:^
         version: link:../Typography/dist
-      '@linaria/core':
-        specifier: ^6.3.0
-        version: 6.3.0
-      '@linaria/react':
-        specifier: ^6.3.0
-        version: 6.3.0(react@19.0.0)
-      react:
-        specifier: ^19.0.0
-        version: 19.0.0
+    publishDirectory: dist
 
   components/EditableText:
     dependencies:
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
-        version: link:../ThemeProvider
+        version: link:../ThemeProvider/dist
       '@hautechai/webui.typography':
         specifier: workspace:^
         version: link:../Typography/dist
-      '@linaria/core':
-        specifier: ^6.3.0
-        version: 6.3.0
-      '@linaria/react':
-        specifier: ^6.3.0
-        version: 6.3.0(react@19.0.0)
-      react:
-        specifier: ^19.0.0
-        version: 19.0.0
+    publishDirectory: dist
 
   components/Field:
     dependencies:
       '@hautechai/webui.column':
         specifier: workspace:^
-        version: link:../Column
+        version: link:../Column/dist
       '@hautechai/webui.icon':
         specifier: workspace:^
-        version: link:../Icon
+        version: link:../Icon/dist
       '@hautechai/webui.row':
         specifier: workspace:^
-        version: link:../Row
+        version: link:../Row/dist
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
-        version: link:../ThemeProvider
+        version: link:../ThemeProvider/dist
       '@hautechai/webui.typography':
         specifier: workspace:^
         version: link:../Typography/dist
-      '@linaria/core':
-        specifier: ^6.3.0
-        version: 6.3.0
-      '@linaria/react':
-        specifier: ^6.3.0
-        version: 6.3.0(react@19.0.0)
-      react:
-        specifier: ^19.0.0
-        version: 19.0.0
+    publishDirectory: dist
 
   components/FileInput:
     dependencies:
@@ -554,124 +410,75 @@ importers:
         version: link:../Button/dist
       '@hautechai/webui.icon':
         specifier: workspace:^
-        version: link:../Icon
+        version: link:../Icon/dist
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
-        version: link:../ThemeProvider
+        version: link:../ThemeProvider/dist
       '@hautechai/webui.typography':
         specifier: workspace:^
         version: link:../Typography/dist
-      '@linaria/core':
-        specifier: ^6.3.0
-        version: 6.3.0
-      '@linaria/react':
-        specifier: ^6.3.0
-        version: 6.3.0(react@19.0.0)
-      react:
-        specifier: ^19.0.0
-        version: 19.0.0
       react-dropzone:
         specifier: ^14.3.8
         version: 14.3.8(react@19.0.0)
+    publishDirectory: dist
 
   components/FloatingPanel:
     dependencies:
       '@hautechai/webui.icon':
         specifier: workspace:^
-        version: link:../Icon
+        version: link:../Icon/dist
       '@hautechai/webui.iconbutton':
         specifier: workspace:^
-        version: link:../IconButton
+        version: link:../IconButton/dist
       '@hautechai/webui.progress':
         specifier: workspace:^
-        version: link:../Progress
+        version: link:../Progress/dist
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
-        version: link:../ThemeProvider
+        version: link:../ThemeProvider/dist
       '@hautechai/webui.typography':
         specifier: workspace:^
         version: link:../Typography/dist
-      '@linaria/core':
-        specifier: ^6.3.0
-        version: 6.3.0
-      '@linaria/react':
-        specifier: ^6.3.0
-        version: 6.3.0(react@19.0.0)
-      react:
-        specifier: ^19.0.0
-        version: 19.0.0
+    publishDirectory: dist
 
   components/FullScreen:
     dependencies:
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
-        version: link:../ThemeProvider
-      '@linaria/core':
-        specifier: ^6.3.0
-        version: 6.3.0
-      '@linaria/react':
-        specifier: ^6.3.0
-        version: 6.3.0(react@19.0.0)
-      react:
-        specifier: ^19.0.0
-        version: 19.0.0
+        version: link:../ThemeProvider/dist
+    publishDirectory: dist
 
   components/Hint:
     dependencies:
       '@hautechai/webui.icon':
         specifier: workspace:^
-        version: link:../Icon
+        version: link:../Icon/dist
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
-        version: link:../ThemeProvider
+        version: link:../ThemeProvider/dist
       '@hautechai/webui.tooltip':
         specifier: workspace:^
-        version: link:../Tooltip
-      '@linaria/core':
-        specifier: ^6.3.0
-        version: 6.3.0
-      '@linaria/react':
-        specifier: ^6.3.0
-        version: 6.3.0(react@19.0.0)
-      react:
-        specifier: ^19.0.0
-        version: 19.0.0
+        version: link:../Tooltip/dist
+    publishDirectory: dist
 
   components/HoverControls:
     dependencies:
       '@hautechai/webui.checkbox':
         specifier: workspace:^
-        version: link:../Checkbox
+        version: link:../Checkbox/dist
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
-        version: link:../ThemeProvider
-      '@linaria/core':
-        specifier: ^6.3.0
-        version: 6.3.0
-      '@linaria/react':
-        specifier: ^6.3.0
-        version: 6.3.0(react@19.0.0)
-      react:
-        specifier: ^19.0.0
-        version: 19.0.0
+        version: link:../ThemeProvider/dist
+    publishDirectory: dist
 
   components/Icon:
     dependencies:
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
-        version: link:../ThemeProvider
-      '@linaria/core':
-        specifier: ^6.3.0
-        version: 6.3.0
-      '@linaria/react':
-        specifier: ^6.3.0
-        version: 6.3.0(react@19.0.0)
+        version: link:../ThemeProvider/dist
       lodash-es:
         specifier: ^4.17.21
         version: 4.17.21
-      react:
-        specifier: ^19.0.0
-        version: 19.0.0
     devDependencies:
       '@types/lodash-es':
         specifier: ^4.17.12
@@ -679,6 +486,7 @@ importers:
       type-fest:
         specifier: ^4.34.1
         version: 4.41.0
+    publishDirectory: dist
 
   components/IconButton:
     dependencies:
@@ -687,31 +495,15 @@ importers:
         version: link:../ButtonBase/dist
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
-        version: link:../ThemeProvider
-      '@linaria/core':
-        specifier: ^6.3.0
-        version: 6.3.0
-      '@linaria/react':
-        specifier: ^6.3.0
-        version: 6.3.0(react@19.0.0)
-      react:
-        specifier: ^19.0.0
-        version: 19.0.0
+        version: link:../ThemeProvider/dist
+    publishDirectory: dist
 
   components/ImageInput:
     dependencies:
       '@hautechai/webui.fileinput':
         specifier: workspace:^
-        version: link:../FileInput
-      '@linaria/core':
-        specifier: ^6.3.0
-        version: 6.3.0
-      '@linaria/react':
-        specifier: ^6.3.0
-        version: 6.3.0(react@19.0.0)
-      react:
-        specifier: ^19.0.0
-        version: 19.0.0
+        version: link:../FileInput/dist
+    publishDirectory: dist
 
   components/ImageInputWithSamples:
     dependencies:
@@ -720,70 +512,46 @@ importers:
         version: link:../ButtonBase/dist
       '@hautechai/webui.column':
         specifier: workspace:^
-        version: link:../Column
+        version: link:../Column/dist
       '@hautechai/webui.imageinput':
         specifier: workspace:^
-        version: link:../ImageInput
+        version: link:../ImageInput/dist
       '@hautechai/webui.row':
         specifier: workspace:^
-        version: link:../Row
+        version: link:../Row/dist
       '@hautechai/webui.tile':
         specifier: workspace:^
-        version: link:../Tile
+        version: link:../Tile/dist
       '@hautechai/webui.typography':
         specifier: workspace:^
         version: link:../Typography/dist
-      '@linaria/core':
-        specifier: ^6.3.0
-        version: 6.3.0
-      '@linaria/react':
-        specifier: ^6.3.0
-        version: 6.3.0(react@19.0.0)
-      react:
-        specifier: ^19.0.0
-        version: 19.0.0
+    publishDirectory: dist
 
   components/KeyframeToggle:
     dependencies:
       '@hautechai/webui.icon':
         specifier: workspace:^
-        version: link:../Icon
+        version: link:../Icon/dist
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
-        version: link:../ThemeProvider
-      '@linaria/core':
-        specifier: ^6.3.0
-        version: 6.3.0
-      '@linaria/react':
-        specifier: ^6.3.0
-        version: 6.3.0(react@19.0.0)
-      react:
-        specifier: ^19.0.0
-        version: 19.0.0
+        version: link:../ThemeProvider/dist
+    publishDirectory: dist
 
   components/LayerTreeItemParent:
     dependencies:
       '@hautechai/webui.editabletext':
         specifier: workspace:^
-        version: link:../EditableText
+        version: link:../EditableText/dist
       '@hautechai/webui.icon':
         specifier: workspace:^
-        version: link:../Icon
+        version: link:../Icon/dist
       '@hautechai/webui.iconbutton':
         specifier: workspace:^
-        version: link:../IconButton
+        version: link:../IconButton/dist
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
-        version: link:../ThemeProvider
-      '@linaria/core':
-        specifier: ^6.3.0
-        version: 6.3.0
-      '@linaria/react':
-        specifier: ^6.3.0
-        version: 6.3.0(react@19.0.0)
-      react:
-        specifier: ^19.0.0
-        version: 19.0.0
+        version: link:../ThemeProvider/dist
+    publishDirectory: dist
 
   components/LinkButton:
     dependencies:
@@ -792,46 +560,20 @@ importers:
         version: link:../ButtonBase/dist
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
-        version: link:../ThemeProvider
+        version: link:../ThemeProvider/dist
       '@hautechai/webui.typography':
         specifier: workspace:^
         version: link:../Typography/dist
-      '@linaria/core':
-        specifier: ^6.3.0
-        version: 6.3.0
-      '@linaria/react':
-        specifier: ^6.3.0
-        version: 6.3.0(react@19.0.0)
-      react:
-        specifier: ^19.0.0
-        version: 19.0.0
+    publishDirectory: dist
 
   components/Logo:
-    dependencies:
-      '@linaria/core':
-        specifier: ^6.3.0
-        version: 6.3.0
-      '@linaria/react':
-        specifier: ^6.3.0
-        version: 6.3.0(react@19.0.0)
-      react:
-        specifier: ^19.0.0
-        version: 19.0.0
+    publishDirectory: dist
 
   components/Masonry:
     dependencies:
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
-        version: link:../ThemeProvider
-      '@linaria/core':
-        specifier: ^6.3.0
-        version: 6.3.0
-      '@linaria/react':
-        specifier: ^6.3.0
-        version: 6.3.0(react@19.0.0)
-      react:
-        specifier: ^19.0.0
-        version: 19.0.0
+        version: link:../ThemeProvider/dist
       react-responsive-masonry:
         specifier: ^2.7.1
         version: 2.7.1
@@ -839,342 +581,199 @@ importers:
       '@types/react-responsive-masonry':
         specifier: ^2.6.0
         version: 2.6.0
+    publishDirectory: dist
 
   components/Menu:
     dependencies:
       '@hautechai/webui.column':
         specifier: workspace:^
-        version: link:../Column
+        version: link:../Column/dist
       '@hautechai/webui.menuitem':
         specifier: workspace:^
-        version: link:../MenuItem
+        version: link:../MenuItem/dist
       '@hautechai/webui.popover':
         specifier: workspace:^
-        version: link:../Popover
-      '@linaria/core':
-        specifier: ^6.3.0
-        version: 6.3.0
-      '@linaria/react':
-        specifier: ^6.3.0
-        version: 6.3.0(react@19.0.0)
-      react:
-        specifier: ^19.0.0
-        version: 19.0.0
+        version: link:../Popover/dist
+    publishDirectory: dist
 
   components/MenuItem:
     dependencies:
       '@hautechai/webui.row':
         specifier: workspace:^
-        version: link:../Row
+        version: link:../Row/dist
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
-        version: link:../ThemeProvider
+        version: link:../ThemeProvider/dist
       '@hautechai/webui.typography':
         specifier: workspace:^
         version: link:../Typography/dist
-      '@linaria/core':
-        specifier: ^6.3.0
-        version: 6.3.0
-      '@linaria/react':
-        specifier: ^6.3.0
-        version: 6.3.0(react@19.0.0)
-      react:
-        specifier: ^19.0.0
-        version: 19.0.0
+    publishDirectory: dist
 
   components/Modal:
     dependencies:
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
-        version: link:../ThemeProvider
-      '@linaria/core':
-        specifier: ^6.3.0
-        version: 6.3.0
-      '@linaria/react':
-        specifier: ^6.3.0
-        version: 6.3.0(react@19.0.0)
-      react:
-        specifier: ^19.0.0
-        version: 19.0.0
+        version: link:../ThemeProvider/dist
+    publishDirectory: dist
 
   components/OperationItem:
     dependencies:
       '@hautechai/webui.badge':
         specifier: workspace:^
-        version: link:../Badge
+        version: link:../Badge/dist
       '@hautechai/webui.chip':
         specifier: workspace:^
-        version: link:../Chip
+        version: link:../Chip/dist
       '@hautechai/webui.previews':
         specifier: workspace:^
-        version: link:../Previews
+        version: link:../Previews/dist
       '@hautechai/webui.row':
         specifier: workspace:^
-        version: link:../Row
+        version: link:../Row/dist
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
-        version: link:../ThemeProvider
+        version: link:../ThemeProvider/dist
       '@hautechai/webui.typography':
         specifier: workspace:^
         version: link:../Typography/dist
-      '@linaria/core':
-        specifier: ^6.3.0
-        version: 6.3.0
-      '@linaria/react':
-        specifier: ^6.3.0
-        version: 6.3.0(react@19.0.0)
-      react:
-        specifier: ^19.0.0
-        version: 19.0.0
+    publishDirectory: dist
 
   components/Pagination:
     dependencies:
       '@hautechai/webui.icon':
         specifier: workspace:^
-        version: link:../Icon
+        version: link:../Icon/dist
       '@hautechai/webui.iconbutton':
         specifier: workspace:^
-        version: link:../IconButton
+        version: link:../IconButton/dist
       '@hautechai/webui.row':
         specifier: workspace:^
-        version: link:../Row
+        version: link:../Row/dist
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
-        version: link:../ThemeProvider
+        version: link:../ThemeProvider/dist
       '@hautechai/webui.typography':
         specifier: workspace:^
         version: link:../Typography/dist
-      '@linaria/core':
-        specifier: ^6.3.0
-        version: 6.3.0
-      '@linaria/react':
-        specifier: ^6.3.0
-        version: 6.3.0(react@19.0.0)
-      react:
-        specifier: ^19.0.0
-        version: 19.0.0
+    publishDirectory: dist
 
   components/Panel:
     dependencies:
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
-        version: link:../ThemeProvider
-      '@linaria/core':
-        specifier: ^6.3.0
-        version: 6.3.0
-      '@linaria/react':
-        specifier: ^6.3.0
-        version: 6.3.0(react@19.0.0)
-      react:
-        specifier: ^19.0.0
-        version: 19.0.0
+        version: link:../ThemeProvider/dist
+    publishDirectory: dist
 
   components/Popover:
     dependencies:
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
-        version: link:../ThemeProvider
-      '@linaria/core':
-        specifier: ^6.3.0
-        version: 6.3.0
-      '@linaria/react':
-        specifier: ^6.3.0
-        version: 6.3.0(react@19.0.0)
-      react:
-        specifier: ^19.0.0
-        version: 19.0.0
+        version: link:../ThemeProvider/dist
       react-tiny-popover:
         specifier: 8.1.6
         version: 8.1.6(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+    publishDirectory: dist
 
   components/Previews:
     dependencies:
       '@hautechai/webui.row':
         specifier: workspace:^
-        version: link:../Row
+        version: link:../Row/dist
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
-        version: link:../ThemeProvider
-      '@linaria/core':
-        specifier: ^6.3.0
-        version: 6.3.0
-      '@linaria/react':
-        specifier: ^6.3.0
-        version: 6.3.0(react@19.0.0)
-      react:
-        specifier: ^19.0.0
-        version: 19.0.0
+        version: link:../ThemeProvider/dist
+    publishDirectory: dist
 
   components/Price:
     dependencies:
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
-        version: link:../ThemeProvider
+        version: link:../ThemeProvider/dist
       '@hautechai/webui.typography':
         specifier: workspace:^
         version: link:../Typography/dist
-      '@linaria/core':
-        specifier: ^6.3.0
-        version: 6.3.0
-      '@linaria/react':
-        specifier: ^6.3.0
-        version: 6.3.0(react@19.0.0)
-      react:
-        specifier: ^19.0.0
-        version: 19.0.0
+    publishDirectory: dist
 
   components/Progress:
     dependencies:
-      '@linaria/core':
-        specifier: ^6.3.0
-        version: 6.3.0
-      '@linaria/react':
-        specifier: ^6.3.0
-        version: 6.3.0(react@19.0.0)
       '@lottiefiles/dotlottie-react':
         specifier: ^0.13.2
         version: 0.13.2(react@19.0.0)
-      react:
-        specifier: ^19.0.0
-        version: 19.0.0
+    publishDirectory: dist
 
   components/PropertyBlock:
     dependencies:
       '@hautechai/webui.icon':
         specifier: workspace:^
-        version: link:../Icon
+        version: link:../Icon/dist
       '@hautechai/webui.iconbutton':
         specifier: workspace:^
-        version: link:../IconButton
+        version: link:../IconButton/dist
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
-        version: link:../ThemeProvider
+        version: link:../ThemeProvider/dist
       '@hautechai/webui.typography':
         specifier: workspace:^
         version: link:../Typography/dist
-      '@linaria/core':
-        specifier: ^6.3.0
-        version: 6.3.0
-      '@linaria/react':
-        specifier: ^6.3.0
-        version: 6.3.0(react@19.0.0)
-      react:
-        specifier: ^19.0.0
-        version: 19.0.0
+    publishDirectory: dist
 
   components/Row:
     dependencies:
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
-        version: link:../ThemeProvider
-      '@linaria/core':
-        specifier: ^6.3.0
-        version: 6.3.0
-      '@linaria/react':
-        specifier: ^6.3.0
-        version: 6.3.0(react@19.0.0)
-      react:
-        specifier: ^19.0.0
-        version: 19.0.0
+        version: link:../ThemeProvider/dist
+    publishDirectory: dist
 
   components/SegmentedControl:
     dependencies:
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
-        version: link:../ThemeProvider
+        version: link:../ThemeProvider/dist
       '@hautechai/webui.typography':
         specifier: workspace:^
         version: link:../Typography/dist
-      '@linaria/core':
-        specifier: ^6.3.0
-        version: 6.3.0
-      '@linaria/react':
-        specifier: ^6.3.0
-        version: 6.3.0(react@19.0.0)
-      react:
-        specifier: ^19.0.0
-        version: 19.0.0
+    publishDirectory: dist
 
   components/Sidebar:
     dependencies:
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
-        version: link:../ThemeProvider
-      '@linaria/core':
-        specifier: ^6.3.0
-        version: 6.3.0
-      '@linaria/react':
-        specifier: ^6.3.0
-        version: 6.3.0(react@19.0.0)
-      react:
-        specifier: ^19.0.0
-        version: 19.0.0
+        version: link:../ThemeProvider/dist
+    publishDirectory: dist
 
   components/Slider:
     dependencies:
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
-        version: link:../ThemeProvider
-      '@linaria/core':
-        specifier: ^6.3.0
-        version: 6.3.0
-      '@linaria/react':
-        specifier: ^6.3.0
-        version: 6.3.0(react@19.0.0)
-      react:
-        specifier: ^19.0.0
-        version: 19.0.0
+        version: link:../ThemeProvider/dist
+    publishDirectory: dist
 
   components/Switch:
     dependencies:
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
-        version: link:../ThemeProvider
-      '@linaria/core':
-        specifier: ^6.3.0
-        version: 6.3.0
-      '@linaria/react':
-        specifier: ^6.3.0
-        version: 6.3.0(react@19.0.0)
-      react:
-        specifier: ^19.0.0
-        version: 19.0.0
+        version: link:../ThemeProvider/dist
+    publishDirectory: dist
 
   components/Table:
     dependencies:
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
-        version: link:../ThemeProvider
-      '@linaria/core':
-        specifier: ^6.3.0
-        version: 6.3.0
-      '@linaria/react':
-        specifier: ^6.3.0
-        version: 6.3.0(react@19.0.0)
-      react:
-        specifier: ^19.0.0
-        version: 19.0.0
+        version: link:../ThemeProvider/dist
+    publishDirectory: dist
 
   components/TextArea:
     dependencies:
       '@hautechai/webui.iconbutton':
         specifier: workspace:^
-        version: link:../IconButton
+        version: link:../IconButton/dist
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
-        version: link:../ThemeProvider
-      '@linaria/core':
-        specifier: ^6.3.0
-        version: 6.3.0
-      '@linaria/react':
-        specifier: ^6.3.0
-        version: 6.3.0(react@19.0.0)
-      react:
-        specifier: ^19.0.0
-        version: 19.0.0
+        version: link:../ThemeProvider/dist
       react-textarea-autosize:
         specifier: 8.5.8
         version: 8.5.8(@types/react@19.0.8)(react@19.0.0)
+    publishDirectory: dist
 
   components/TextButton:
     dependencies:
@@ -1183,55 +782,30 @@ importers:
         version: link:../ButtonBase/dist
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
-        version: link:../ThemeProvider
+        version: link:../ThemeProvider/dist
       '@hautechai/webui.typography':
         specifier: workspace:^
         version: link:../Typography/dist
-      '@linaria/core':
-        specifier: ^6.3.0
-        version: 6.3.0
-      '@linaria/react':
-        specifier: ^6.3.0
-        version: 6.3.0(react@19.0.0)
-      react:
-        specifier: ^19.0.0
-        version: 19.0.0
+    publishDirectory: dist
 
   components/TextInput:
     dependencies:
       '@hautechai/webui.iconbutton':
         specifier: workspace:^
-        version: link:../IconButton
+        version: link:../IconButton/dist
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
-        version: link:../ThemeProvider
-      '@linaria/core':
-        specifier: ^6.3.0
-        version: 6.3.0
-      '@linaria/react':
-        specifier: ^6.3.0
-        version: 6.3.0(react@19.0.0)
-      react:
-        specifier: ^19.0.0
-        version: 19.0.0
+        version: link:../ThemeProvider/dist
+    publishDirectory: dist
 
   components/Theme:
     dependencies:
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
-        version: link:../ThemeProvider
-      '@linaria/core':
-        specifier: ^6.3.0
-        version: 6.3.0
-      '@linaria/react':
-        specifier: ^6.3.0
-        version: 6.3.0(react@19.0.0)
+        version: link:../ThemeProvider/dist
       lodash-es:
         specifier: ^4.17.21
         version: 4.17.21
-      react:
-        specifier: ^19.0.0
-        version: 19.0.0
     devDependencies:
       '@types/lodash':
         specifier: ^4.17.15
@@ -1242,48 +816,24 @@ importers:
       type-fest:
         specifier: ^4.34.1
         version: 4.41.0
+    publishDirectory: dist
 
   components/ThemeProvider:
-    dependencies:
-      '@linaria/core':
-        specifier: ^6.3.0
-        version: 6.3.0
-      '@linaria/react':
-        specifier: ^6.3.0
-        version: 6.3.0(react@19.0.0)
-      react:
-        specifier: ^19.0.0
-        version: 19.0.0
+    publishDirectory: dist
 
   components/Tile:
     dependencies:
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
-        version: link:../ThemeProvider
-      '@linaria/core':
-        specifier: ^6.3.0
-        version: 6.3.0
-      '@linaria/react':
-        specifier: ^6.3.0
-        version: 6.3.0(react@19.0.0)
-      react:
-        specifier: ^19.0.0
-        version: 19.0.0
+        version: link:../ThemeProvider/dist
+    publishDirectory: dist
 
   components/TileTabGroup:
     dependencies:
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
-        version: link:../ThemeProvider
-      '@linaria/core':
-        specifier: ^6.3.0
-        version: 6.3.0
-      '@linaria/react':
-        specifier: ^6.3.0
-        version: 6.3.0(react@19.0.0)
-      react:
-        specifier: ^19.0.0
-        version: 19.0.0
+        version: link:../ThemeProvider/dist
+    publishDirectory: dist
 
   components/TileTabItem:
     dependencies:
@@ -1292,19 +842,20 @@ importers:
         version: link:../ButtonBase/dist
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
-        version: link:../ThemeProvider
+        version: link:../ThemeProvider/dist
       '@hautechai/webui.tile':
         specifier: workspace:^
-        version: link:../Tile
+        version: link:../Tile/dist
       '@hautechai/webui.typography':
         specifier: workspace:^
         version: link:../Typography/dist
-      '@linaria/core':
-        specifier: ^6.3.0
-        version: 6.3.0
-      '@linaria/react':
-        specifier: ^6.3.0
-        version: 6.3.0(react@19.0.0)
+    publishDirectory: dist
+
+  components/TimelineTrack:
+    dependencies:
+      '@hautechai/webui.themeprovider':
+        specifier: workspace:^
+        version: link:../ThemeProvider/dist
       react:
         specifier: ^19.0.0
         version: 19.0.0
@@ -1316,16 +867,8 @@ importers:
         version: link:../ButtonBase/dist
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
-        version: link:../ThemeProvider
-      '@linaria/core':
-        specifier: ^6.3.0
-        version: 6.3.0
-      '@linaria/react':
-        specifier: ^6.3.0
-        version: 6.3.0(react@19.0.0)
-      react:
-        specifier: ^19.0.0
-        version: 19.0.0
+        version: link:../ThemeProvider/dist
+    publishDirectory: dist
 
   components/ToolButton:
     dependencies:
@@ -1334,49 +877,33 @@ importers:
         version: link:../ButtonBase/dist
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
-        version: link:../ThemeProvider
-      '@linaria/core':
-        specifier: ^6.3.0
-        version: 6.3.0
-      '@linaria/react':
-        specifier: ^6.3.0
-        version: 6.3.0(react@19.0.0)
-      react:
-        specifier: ^19.0.0
-        version: 19.0.0
+        version: link:../ThemeProvider/dist
+    publishDirectory: dist
 
   components/Tooltip:
     dependencies:
       '@hautechai/webui.column':
         specifier: workspace:^
-        version: link:../Column
+        version: link:../Column/dist
       '@hautechai/webui.linkbutton':
         specifier: workspace:^
-        version: link:../LinkButton
+        version: link:../LinkButton/dist
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
-        version: link:../ThemeProvider
+        version: link:../ThemeProvider/dist
       '@hautechai/webui.typography':
         specifier: workspace:^
         version: link:../Typography/dist
-      '@linaria/core':
-        specifier: ^6.3.0
-        version: 6.3.0
-      '@linaria/react':
-        specifier: ^6.3.0
-        version: 6.3.0(react@19.0.0)
-      react:
-        specifier: ^19.0.0
-        version: 19.0.0
       react-tiny-popover:
         specifier: 8.1.6
         version: 8.1.6(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+    publishDirectory: dist
 
   components/Typography:
     dependencies:
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
-        version: link:../ThemeProvider
+        version: link:../ThemeProvider/dist
       lodash-es:
         specifier: ^4.17.21
         version: 4.17.21
@@ -1386,22 +913,14 @@ importers:
     dependencies:
       '@hautechai/webui.avatar':
         specifier: workspace:^
-        version: link:../Avatar
+        version: link:../Avatar/dist
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
-        version: link:../ThemeProvider
+        version: link:../ThemeProvider/dist
       '@hautechai/webui.typography':
         specifier: workspace:^
         version: link:../Typography/dist
-      '@linaria/core':
-        specifier: ^6.3.0
-        version: 6.3.0
-      '@linaria/react':
-        specifier: ^6.3.0
-        version: 6.3.0(react@19.0.0)
-      react:
-        specifier: ^19.0.0
-        version: 19.0.0
+    publishDirectory: dist
 
   components/UserBalance:
     dependencies:
@@ -1410,55 +929,39 @@ importers:
         version: link:../Button/dist
       '@hautechai/webui.dataitem':
         specifier: workspace:^
-        version: link:../DataItem
+        version: link:../DataItem/dist
       '@hautechai/webui.panel':
         specifier: workspace:^
-        version: link:../Panel
+        version: link:../Panel/dist
       '@hautechai/webui.row':
         specifier: workspace:^
-        version: link:../Row
-      '@linaria/core':
-        specifier: ^6.3.0
-        version: 6.3.0
-      '@linaria/react':
-        specifier: ^6.3.0
-        version: 6.3.0(react@19.0.0)
-      react:
-        specifier: ^19.0.0
-        version: 19.0.0
+        version: link:../Row/dist
+    publishDirectory: dist
 
   components/VisualEditorInput:
     dependencies:
       '@hautechai/webui.dropdown':
         specifier: workspace:^
-        version: link:../Dropdown
+        version: link:../Dropdown/dist
       '@hautechai/webui.icon':
         specifier: workspace:^
-        version: link:../Icon
+        version: link:../Icon/dist
       '@hautechai/webui.keyframetoggle':
         specifier: workspace:^
-        version: link:../KeyframeToggle
+        version: link:../KeyframeToggle/dist
       '@hautechai/webui.textinput':
         specifier: workspace:^
-        version: link:../TextInput
+        version: link:../TextInput/dist
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
-        version: link:../ThemeProvider
+        version: link:../ThemeProvider/dist
       '@hautechai/webui.toggleiconbutton':
         specifier: workspace:^
-        version: link:../ToggleIconButton
+        version: link:../ToggleIconButton/dist
       '@hautechai/webui.typography':
         specifier: workspace:^
         version: link:../Typography/dist
-      '@linaria/core':
-        specifier: ^6.3.0
-        version: 6.3.0
-      '@linaria/react':
-        specifier: ^6.3.0
-        version: 6.3.0(react@19.0.0)
-      react:
-        specifier: ^19.0.0
-        version: 19.0.0
+    publishDirectory: dist
 
 packages:
 

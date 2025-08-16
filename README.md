@@ -115,6 +115,12 @@ The library includes the following components organized by category:
 |-----------|-------------|
 | [**Icon**](components/Icon/README.md) | Scalable icon component with various icon options |
 
+### VisualEditor
+
+| Component | Description |
+|-----------|-------------|
+| [**TimelineTrack**](components/TimelineTrack/README.md) | Visual timeline track component for representing when elements are visible in a composition, with draggable and resizable functionality |
+
 ### System
 
 | Component | Description |
