@@ -6,21 +6,45 @@ import path from 'node:path';
 import * as fs from 'fs';
 
 function cssAutoImport(options = {}) {
-    const {
-        specifier = './index.css', // or 'your-lib/index.css' for bare specifier
-    } = options;
+    const { specifier = './index.css' } = options;
 
     return {
         name: 'css-auto-import',
         setup(build) {
-            const line = `import "${specifier}";`;
+            // Ensure metafile is available so we can inspect outputs
+            build.initialOptions.metafile = true;
 
-            // Preserve any existing JS banner and append our import.
-            const prev = (build.initialOptions.banner && build.initialOptions.banner.js) || '';
-            build.initialOptions.banner = {
-                ...(build.initialOptions.banner || {}),
-                js: prev ? `${prev}\n${line}` : line,
-            };
+            build.onEnd((result) => {
+                try {
+                    const cwd = process.cwd();
+                    const outDir = build.initialOptions.outdir || path.dirname(build.initialOptions.outfile || 'dist');
+
+                    // Only inject if the CSS file exists in output directory
+                    const cssRel = specifier.startsWith('./') ? specifier.slice(2) : specifier;
+                    const cssPath = path.resolve(cwd, outDir, cssRel);
+                    if (!fs.existsSync(cssPath)) return;
+
+                    const outputs = result?.metafile?.outputs || {};
+                    const entryJsFiles = Object.keys(outputs).filter(
+                        (outPath) => outPath.endsWith('.js') && outputs[outPath].entryPoint,
+                    );
+
+                    if (entryJsFiles.length === 0) return;
+
+                    const importLine = `import "${specifier}";`;
+
+                    for (const outPath of entryJsFiles) {
+                        const abs = path.resolve(cwd, outPath);
+                        if (!fs.existsSync(abs)) continue;
+                        const content = fs.readFileSync(abs, 'utf8');
+                        // Avoid duplicate injection
+                        if (content.includes(importLine)) continue;
+                        fs.writeFileSync(abs, `${importLine}\n${content}`);
+                    }
+                } catch (e) {
+                    // Swallow errors to avoid failing the build; optionally log if needed
+                }
+            });
         },
     };
 }

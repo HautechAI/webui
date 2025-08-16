@@ -6,6 +6,7 @@
     "main": "src/index.tsx",
     "publishConfig": {
         "directory": "dist",
+        "access": "public",
         "linkDirectory": false
     },
     "scripts": {
