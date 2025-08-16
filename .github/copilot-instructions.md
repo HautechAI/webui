@@ -143,6 +143,54 @@ When creating or updating icon components using Figma MCP (Dev Mode):
 
 Remember: Documentation is as important as the code itself. Well-maintained documentation ensures developers can effectively use and contribute to this component library.
 
+## Styling Guidelines
+
+### CSS-in-JS with Linaria
+
+This project uses `@linaria/react` for component styling. Follow these guidelines:
+
+**Use `styled` components instead of `css` + className:**
+- ✅ **Correct**: `import { styled } from '@linaria/react';`
+- ❌ **Incorrect**: `import { css } from '@linaria/core';`
+
+**Component styling pattern:**
+```typescript
+import { styled } from '@linaria/react';
+import { themeVars } from '@hautechai/webui.themeprovider';
+
+const StyledComponent = styled.div`
+    // Base styles
+    display: flex;
+    background: ${themeVars.colors.surface};
+    
+    // Conditional styles using data attributes (preferred)
+    &[data-selected="true"] {
+        background: ${themeVars.colors.primary};
+    }
+    
+    &[data-variant="outline"] {
+        border: 1px solid ${themeVars.colors.border};
+        background: transparent;
+    }
+    
+    // Hover and other pseudo-selectors
+    &:hover {
+        background: ${themeVars.colors.hover};
+    }
+`;
+
+// Usage in component:
+// <StyledComponent data-selected={selected} data-variant={variant} />
+```
+
+**Key principles:**
+- Use `styled` components for all styling needs
+- **Prefer data attributes over styled component props** for conditional styling (e.g., `data-selected`, `data-variant`)
+- Use CSS attribute selectors like `&[data-selected="true"]` instead of prop-based conditional styles
+- Handle interactive states (hover, focus, active) via CSS pseudo-selectors, not JavaScript props
+- Use theme variables from `@hautechai/webui.themeprovider` for consistent theming
+- Avoid conditional rendering of elements for visual states - render elements and control visibility/appearance with CSS
+
 ## Import Guidelines
 
 ### Component Import Rules
