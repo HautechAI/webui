@@ -1,63 +1,37 @@
-import * as React from 'react';
+import { type ThemeType } from '@hautechai/webui.themeprovider';
 import type { SVGProps } from 'react';
-import { type ThemeType, useTheme } from '@hautechai/webui.themeprovider';
 import { Paths } from 'type-fest';
+import { resolveIconColor } from '../../color';
 
-import { get } from 'lodash-es';
 const SvgSmall = (
     props: SVGProps<SVGSVGElement> & {
         size?: number;
         color?: Paths<ThemeType['palette'], { leavesOnly: true }> | 'currentColor' | `#${string}` | `rgba(${string})`;
     },
 ) => {
-    const theme = useTheme();
     return (
         <svg
             xmlns="http://www.w3.org/2000/svg"
-            width={props.size ?? 24}
+            style={{ width: props.size ?? '24px', height: props.size ?? '24px' }}
             viewBox="0 0 20 20"
-            height={props.size ?? 24}
+            
             fill="none"
             {...props}
         >
             <path
-                fill={
-                    get(
-                        theme.palette,
-                        props.color as keyof ThemeType['palette'],
-                        props.color ?? 'currentColor',
-                    ) as string
-                }
+                fill={resolveIconColor(props.color)}
                 d="M2.38596 13.7C2 14.0659 2 14.655 2 15.8334C2 17.0125 2 17.6017 2.38596 17.9667C2.77105 18.3334 3.39035 18.3334 4.63158 18.3334C5.87281 18.3334 6.49298 18.3334 6.87719 17.9667C7.26316 17.6009 7.26316 17.0125 7.26316 15.8334C7.26316 14.6542 7.26316 14.065 6.87719 13.7C6.49211 13.3334 5.87281 13.3334 4.63158 13.3334C3.39035 13.3334 2.77018 13.3334 2.38596 13.7Z"
             />
             <path
-                fill={
-                    get(
-                        theme.palette,
-                        props.color as keyof ThemeType['palette'],
-                        props.color ?? 'currentColor',
-                    ) as string
-                }
+                fill={resolveIconColor(props.color)}
                 d="M12.5263 5.83335C12.5263 7.01252 12.5263 7.60169 12.9123 7.96669C13.2974 8.33335 13.9175 8.33335 15.1579 8.33335C16.3982 8.33335 17.0184 8.33335 17.4035 7.96669C17.7895 7.60085 17.7895 7.01252 17.7895 5.83335C17.7895 4.65419 17.7895 4.06502 17.4035 3.70002C17.0184 3.33335 16.3991 3.33335 15.1579 3.33335C13.9167 3.33335 13.2965 3.33335 12.9123 3.70002C12.5263 4.06585 12.5263 4.65502 12.5263 5.83335Z"
             />
             <path
-                fill={
-                    get(
-                        theme.palette,
-                        props.color as keyof ThemeType['palette'],
-                        props.color ?? 'currentColor',
-                    ) as string
-                }
+                fill={resolveIconColor(props.color)}
                 d="M2.38596 2.03335C2 2.39919 2 2.98835 2 4.16669C2 5.34585 2 5.93502 2.38596 6.30002C2.77105 6.66669 3.39035 6.66669 4.63158 6.66669C5.87281 6.66669 6.49298 6.66669 6.87719 6.30002C7.26316 5.93419 7.26316 5.34585 7.26316 4.16669C7.26316 2.98752 7.26316 2.39835 6.87719 2.03335C6.49211 1.66669 5.87281 1.66669 4.63158 1.66669C3.39035 1.66669 2.77018 1.66669 2.38596 2.03335Z"
             />
             <path
-                stroke={
-                    get(
-                        theme.palette,
-                        props.color as keyof ThemeType['palette'],
-                        props.color ?? 'currentColor',
-                    ) as string
-                }
+                stroke={resolveIconColor(props.color)}
                 strokeWidth="1.2"
                 strokeLinecap="round"
                 strokeLinejoin="round"

@@ -1,4 +1,4 @@
-import { createContext, PropsWithChildren, useContext, useEffect } from 'react';
+import { PropsWithChildren, useEffect } from 'react';
 import { themeToCssProperties } from './theme-to-css';
 
 export type ThemeType = {
@@ -75,18 +75,16 @@ export type ThemeType = {
     };
 };
 
-export const ThemeContext = createContext<ThemeType>({} as ThemeType);
-
 export const ThemeProvider = ({ theme, children }: PropsWithChildren<{ theme: ThemeType }>) => {
     useEffect(() => {
         // Inject CSS custom properties into the root element
         const cssProperties = themeToCssProperties(theme);
         const rootElement = document.documentElement;
-        
+
         Object.entries(cssProperties).forEach(([property, value]) => {
             rootElement.style.setProperty(property, value);
         });
-        
+
         return () => {
             // Clean up on unmount
             Object.keys(cssProperties).forEach((property) => {
@@ -94,14 +92,6 @@ export const ThemeProvider = ({ theme, children }: PropsWithChildren<{ theme: Th
             });
         };
     }, [theme]);
-    
-    return (
-        <ThemeContext.Provider value={theme}>
-            {children}
-        </ThemeContext.Provider>
-    );
-};
 
-export const useTheme = () => {
-    return useContext(ThemeContext);
+    return <>{children}</>;
 };

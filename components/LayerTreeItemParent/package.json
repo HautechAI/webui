@@ -5,20 +5,11 @@
     "type": "module",
     "main": "src/index.tsx",
     "publishConfig": {
-        "main": "dist/index.cjs",
-        "module": "dist/index.js",
-        "typings": "dist/index.d.ts",
-        "exports": {
-            "import": "./dist/index.js",
-            "require": "./dist/index.cjs"
-        },
-        "access": "public"
+        "directory": "dist",
+        "linkDirectory": false
     },
-    "files": [
-        "dist"
-    ],
     "scripts": {
-        "prepack": "tsup"
+        "prepack": "node ../../scripts/build-component.mjs"
     },
     "author": "HautechAI",
     "dependencies": {
@@ -26,11 +17,6 @@
         "@hautechai/webui.icon": "workspace:^",
         "@hautechai/webui.iconbutton": "workspace:^",
         "@hautechai/webui.themeprovider": "workspace:^"
-    },
-    "peerDependencies": {
-        "@linaria/core": "^6.3.0",
-        "@linaria/react": "^6.3.0",
-        "react": "^19.0.0"
     },
     "license": "Apache-2.0"
 }

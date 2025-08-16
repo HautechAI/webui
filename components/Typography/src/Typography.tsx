@@ -3,11 +3,12 @@ import { styled } from '@linaria/react';
 import { themeVars, ThemeType } from '@hautechai/webui.themeprovider';
 import { get } from 'lodash-es';
 import { Paths } from 'type-fest';
-import { useTheme } from '@hautechai/webui.themeprovider';
 
 type TextAlign = 'left' | 'right' | 'center' | 'inherit';
 
-const BaseComponent = (props: Pick<TypographyProps, 'className' | 'children' | 'component'> & { style?: React.CSSProperties }) => {
+const BaseComponent = (
+    props: Pick<TypographyProps, 'className' | 'children' | 'component'> & { style?: React.CSSProperties },
+) => {
     const { className, children, component, style } = props;
     const Component = component ?? 'div';
     return <Component {...{ className, children, style }} />;
@@ -175,7 +176,6 @@ export type TypographyProps = {
 
 export const Typography = (props: TypographyProps) => {
     const { variant, color, textAlign, noWrap, overflow, ...rest } = props;
-    const theme = useTheme();
 
     const classNames = [
         typographyClasses.base,
@@ -188,7 +188,7 @@ export const Typography = (props: TypographyProps) => {
         .join(' ');
 
     const dynamicStyles: React.CSSProperties = {
-        color: color ? get(theme.palette, color) : 'currentColor',
+        color: color ? get(themeVars, color) : 'currentColor',
         textAlign: textAlign ?? 'inherit',
     };
 

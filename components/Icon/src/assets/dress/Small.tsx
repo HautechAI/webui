@@ -1,33 +1,22 @@
-import * as React from 'react';
 import type { SVGProps } from 'react';
-import { type ThemeType, useTheme } from '@hautechai/webui.themeprovider';
-import { Paths } from 'type-fest';
-
-import { get } from 'lodash-es';
+import { resolveIconColor, type IconColorProp } from '../../color';
 const SvgSmall = (
     props: SVGProps<SVGSVGElement> & {
         size?: number;
-        color?: Paths<ThemeType['palette'], { leavesOnly: true }> | 'currentColor' | `#${string}` | `rgba(${string})`;
+        color?: IconColorProp;
     },
 ) => {
-    const theme = useTheme();
     return (
         <svg
             xmlns="http://www.w3.org/2000/svg"
-            width={props.size ?? 24}
+            style={{ width: props.size ?? '24px', height: props.size ?? '24px' }}
             viewBox="0 0 20 20"
-            height={props.size ?? 24}
+            
             fill="none"
             {...props}
         >
             <path
-                stroke={
-                    get(
-                        theme.palette,
-                        props.color as keyof ThemeType['palette'],
-                        props.color ?? 'currentColor',
-                    ) as string
-                }
+                stroke={resolveIconColor(props.color)}
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 strokeWidth={1.1}

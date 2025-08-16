@@ -1,33 +1,23 @@
 import * as React from 'react';
 import type { SVGProps } from 'react';
-import { type ThemeType, useTheme } from '@hautechai/webui.themeprovider';
-import { Paths } from 'type-fest';
-
-import { get } from 'lodash-es';
+import { resolveIconColor, type IconColorProp } from '../../color';
 const SvgSmall = (
     props: SVGProps<SVGSVGElement> & {
         size?: number;
-        color?: Paths<ThemeType['palette'], { leavesOnly: true }> | 'currentColor' | `#${string}` | `rgba(${string})`;
+    color?: IconColorProp;
     },
 ) => {
-    const theme = useTheme();
     return (
         <svg
             xmlns="http://www.w3.org/2000/svg"
-            width={props.size ?? 24}
+            style={{ width: props.size ?? '24px', height: props.size ?? '24px' }}
             viewBox="0 0 20 20"
-            height={props.size ?? 24}
+            
             fill="none"
             {...props}
         >
             <path
-                fill={
-                    get(
-                        theme.palette,
-                        props.color as keyof ThemeType['palette'],
-                        props.color ?? 'currentColor',
-                    ) as string
-                }
+        fill={resolveIconColor(props.color)}
                 fillRule="evenodd"
                 d="M10 2c-.527 0-1.005.151-1.526.403-.501.244-1.082.605-1.806 1.054l-1.538.955c-.685.426-1.235.766-1.657 1.09-.439.335-.775.677-1.018 1.122-.243.442-.352.914-.404 1.472C2 8.636 2 9.296 2 10.124v1.2c0 1.418 0 2.536.114 3.41.116.897.362 1.621.915 2.194.556.575 1.263.832 2.14.954.848.118 1.933.118 3.3.118h3.063c1.366 0 2.45 0 3.3-.118.875-.122 1.583-.38 2.14-.954.552-.573.798-1.297.915-2.194.113-.874.113-1.992.113-3.41v-1.2c0-.828 0-1.488-.05-2.028-.053-.559-.162-1.03-.405-1.472-.243-.445-.58-.786-1.018-1.122-.422-.324-.972-.664-1.657-1.09l-1.538-.955c-.724-.45-1.305-.81-1.807-1.054C11.006 2.15 10.528 2 10 2M7.232 4.422c.755-.47 1.287-.798 1.731-1.015.433-.21.74-.29 1.037-.29.298 0 .604.08 1.037.29.445.216.976.546 1.731 1.015l1.489.923c.715.444 1.217.756 1.592 1.043.364.28.573.51.717.771.144.263.228.57.272 1.04.045.483.046 1.091.046 1.953v1.132c0 1.466-.002 2.512-.105 3.306-.1.78-.292 1.232-.61 1.562-.316.327-.746.521-1.491.625-.764.105-1.77.107-3.19.107H8.512c-1.42 0-2.426-.002-3.19-.107-.745-.105-1.175-.298-1.49-.626-.32-.329-.51-.781-.61-1.56-.105-.795-.106-1.84-.106-3.307v-1.132c0-.862 0-1.47.046-1.952.044-.47.128-.778.272-1.04.144-.263.353-.492.717-.772.375-.287.877-.599 1.592-1.043z"
                 clipRule="evenodd"

@@ -48,7 +48,7 @@ export type ModalProps = {
     open?: boolean;
     onClose?: () => void;
     children: React.ReactNode;
-    contentPosition?: { left?: number; top?: number; right?: number; bottom?: number };
+    contentPosition?: { left?: number | string; top?: number | string; right?: number | string; bottom?: number | string };
     backdropStyle?: React.CSSProperties;
 };
 

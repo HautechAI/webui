@@ -1,5 +1,5 @@
-import { useTheme } from '@hautechai/webui.themeprovider';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { themeVars } from '@hautechai/webui.themeprovider';
 import { AspectRatioProps } from '.';
 
 export const getBoxSize = (aspectRatio: string, maxPxSize: number) => {
@@ -14,7 +14,7 @@ const useLogic = (props: AspectRatioProps) => {
 
     const ref = useRef<HTMLDivElement>(null);
     const [modalSelected, setModalSelected] = useState<string>(props.value ?? props.defaultOptions[0]);
-    const [modalPosition, setModalPosition] = useState({ left: 0, top: 0 });
+    const [modalPosition, setModalPosition] = useState<{ left: number | string; top: number | string }>({ left: 0, top: 0 });
 
     useEffect(() => {
         if (props.value) {
@@ -40,17 +40,17 @@ const useLogic = (props: AspectRatioProps) => {
         return [props.defaultOptions[0], selected, props.defaultOptions[2]];
     }, [props.defaultOptions, selected]);
 
-    const theme = useTheme();
 
     useEffect(() => {
         const rect = ref.current?.getBoundingClientRect();
         if (rect) {
             setModalPosition({
-                left: rect.right + theme.foundation.spacing.l,
-                top: rect.top - 420, // todo check how modal position can be dynamic according to screen size and position of the element
+                // Use CSS calc with themeVars for spacing
+                left: `calc(${rect.right}px + ${themeVars.spacing.l})`,
+                top: `calc(${rect.top}px - 420px)`, // todo: make dynamic according to screen size and element position
             });
         }
-    }, [theme, ref]);
+    }, [ref]);
 
     const onTabChange = useCallback(
         (event: React.MouseEvent<HTMLDivElement, MouseEvent>, value: string) => {
