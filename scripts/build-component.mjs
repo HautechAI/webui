@@ -61,7 +61,7 @@ const { name, description, version, type, author, dependencies, license } = JSON
     fs.readFileSync(path.resolve(componentDir, 'package.json'), 'utf8'),
 );
 
-if (dependencies['@hautechai/webui.themeprovider']) {
+if (dependencies?.['@hautechai/webui.themeprovider']) {
     delete dependencies['@hautechai/webui.themeprovider'];
 }
 

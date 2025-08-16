@@ -5,7 +5,8 @@
     "type": "module",
     "main": "src/index.tsx",
     "publishConfig": {
-        "directory": "dist"
+        "directory": "dist",
+        "linkDirectory": false
     },
     "scripts": {
         "prepack": "node ../../scripts/build-component.mjs"

@@ -92,10 +92,10 @@ importers:
     dependencies:
       '@hautechai/webui.theme':
         specifier: workspace:^
-        version: link:../../components/Theme/dist
+        version: link:../../components/Theme
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
-        version: link:../../components/ThemeProvider/dist
+        version: link:../../components/ThemeProvider
     devDependencies:
       '@storybook/addon-essentials':
         specifier: ^8.5.5
@@ -129,150 +129,150 @@ importers:
     dependencies:
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
-        version: link:../ThemeProvider/dist
+        version: link:../ThemeProvider
     publishDirectory: dist
 
   components/AppBarMobile:
     dependencies:
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
-        version: link:../ThemeProvider/dist
+        version: link:../ThemeProvider
     publishDirectory: dist
 
   components/AspectRatio:
     dependencies:
       '@hautechai/webui.box':
         specifier: workspace:^
-        version: link:../Box/dist
+        version: link:../Box
       '@hautechai/webui.checkbox':
         specifier: workspace:^
-        version: link:../Checkbox/dist
+        version: link:../Checkbox
       '@hautechai/webui.column':
         specifier: workspace:^
-        version: link:../Column/dist
+        version: link:../Column
       '@hautechai/webui.divider':
         specifier: workspace:^
-        version: link:../Divider/dist
+        version: link:../Divider
       '@hautechai/webui.icon':
         specifier: workspace:^
-        version: link:../Icon/dist
+        version: link:../Icon
       '@hautechai/webui.modal':
         specifier: workspace:^
-        version: link:../Modal/dist
+        version: link:../Modal
       '@hautechai/webui.row':
         specifier: workspace:^
-        version: link:../Row/dist
+        version: link:../Row
       '@hautechai/webui.segmentedcontrol':
         specifier: workspace:^
-        version: link:../SegmentedControl/dist
+        version: link:../SegmentedControl
       '@hautechai/webui.slider':
         specifier: workspace:^
-        version: link:../Slider/dist
+        version: link:../Slider
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
-        version: link:../ThemeProvider/dist
+        version: link:../ThemeProvider
       '@hautechai/webui.typography':
         specifier: workspace:^
-        version: link:../Typography/dist
+        version: link:../Typography
     publishDirectory: dist
 
   components/Avatar:
     dependencies:
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
-        version: link:../ThemeProvider/dist
+        version: link:../ThemeProvider
       '@hautechai/webui.typography':
         specifier: workspace:^
-        version: link:../Typography/dist
+        version: link:../Typography
     publishDirectory: dist
 
   components/Badge:
     dependencies:
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
-        version: link:../ThemeProvider/dist
+        version: link:../ThemeProvider
       '@hautechai/webui.typography':
         specifier: workspace:^
-        version: link:../Typography/dist
+        version: link:../Typography
     publishDirectory: dist
 
   components/BottomSheet:
     dependencies:
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
-        version: link:../ThemeProvider/dist
+        version: link:../ThemeProvider
     publishDirectory: dist
 
   components/Box:
     dependencies:
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
-        version: link:../ThemeProvider/dist
+        version: link:../ThemeProvider
     publishDirectory: dist
 
   components/Button:
     dependencies:
       '@hautechai/webui.buttonbase':
         specifier: workspace:^
-        version: link:../ButtonBase/dist
+        version: link:../ButtonBase
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
-        version: link:../ThemeProvider/dist
+        version: link:../ThemeProvider
       '@hautechai/webui.typography':
         specifier: workspace:^
-        version: link:../Typography/dist
+        version: link:../Typography
     publishDirectory: dist
 
   components/ButtonBase:
     dependencies:
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
-        version: link:../ThemeProvider/dist
+        version: link:../ThemeProvider
     publishDirectory: dist
 
   components/Card:
     dependencies:
       '@hautechai/webui.buttonbase':
         specifier: workspace:^
-        version: link:../ButtonBase/dist
+        version: link:../ButtonBase
       '@hautechai/webui.column':
         specifier: workspace:^
-        version: link:../Column/dist
+        version: link:../Column
       '@hautechai/webui.icon':
         specifier: workspace:^
-        version: link:../Icon/dist
+        version: link:../Icon
       '@hautechai/webui.iconbutton':
         specifier: workspace:^
-        version: link:../IconButton/dist
+        version: link:../IconButton
       '@hautechai/webui.row':
         specifier: workspace:^
-        version: link:../Row/dist
+        version: link:../Row
       '@hautechai/webui.tile':
         specifier: workspace:^
-        version: link:../Tile/dist
+        version: link:../Tile
       '@hautechai/webui.typography':
         specifier: workspace:^
-        version: link:../Typography/dist
+        version: link:../Typography
     publishDirectory: dist
 
   components/Checkbox:
     dependencies:
       '@hautechai/webui.icon':
         specifier: workspace:^
-        version: link:../Icon/dist
+        version: link:../Icon
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
-        version: link:../ThemeProvider/dist
+        version: link:../ThemeProvider
     publishDirectory: dist
 
   components/Chip:
     dependencies:
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
-        version: link:../ThemeProvider/dist
+        version: link:../ThemeProvider
       '@hautechai/webui.typography':
         specifier: workspace:^
-        version: link:../Typography/dist
+        version: link:../Typography
       react-tiny-popover:
         specifier: 8.1.6
         version: 8.1.6(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
@@ -282,141 +282,141 @@ importers:
     dependencies:
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
-        version: link:../ThemeProvider/dist
+        version: link:../ThemeProvider
     publishDirectory: dist
 
   components/ContextMenu:
     dependencies:
       '@hautechai/webui.badge':
         specifier: workspace:^
-        version: link:../Badge/dist
+        version: link:../Badge
       '@hautechai/webui.bottomsheet':
         specifier: workspace:^
-        version: link:../BottomSheet/dist
+        version: link:../BottomSheet
       '@hautechai/webui.column':
         specifier: workspace:^
-        version: link:../Column/dist
+        version: link:../Column
       '@hautechai/webui.divider':
         specifier: workspace:^
-        version: link:../Divider/dist
+        version: link:../Divider
       '@hautechai/webui.icon':
         specifier: workspace:^
-        version: link:../Icon/dist
+        version: link:../Icon
       '@hautechai/webui.iconbutton':
         specifier: workspace:^
-        version: link:../IconButton/dist
+        version: link:../IconButton
       '@hautechai/webui.row':
         specifier: workspace:^
-        version: link:../Row/dist
+        version: link:../Row
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
-        version: link:../ThemeProvider/dist
+        version: link:../ThemeProvider
     publishDirectory: dist
 
   components/Counter:
     dependencies:
       '@hautechai/webui.icon':
         specifier: workspace:^
-        version: link:../Icon/dist
+        version: link:../Icon
       '@hautechai/webui.iconbutton':
         specifier: workspace:^
-        version: link:../IconButton/dist
+        version: link:../IconButton
       '@hautechai/webui.row':
         specifier: workspace:^
-        version: link:../Row/dist
+        version: link:../Row
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
-        version: link:../ThemeProvider/dist
+        version: link:../ThemeProvider
       '@hautechai/webui.typography':
         specifier: workspace:^
-        version: link:../Typography/dist
+        version: link:../Typography
     publishDirectory: dist
 
   components/DataItem:
     dependencies:
       '@hautechai/webui.avatar':
         specifier: workspace:^
-        version: link:../Avatar/dist
+        version: link:../Avatar
       '@hautechai/webui.hint':
         specifier: workspace:^
-        version: link:../Hint/dist
+        version: link:../Hint
       '@hautechai/webui.row':
         specifier: workspace:^
-        version: link:../Row/dist
+        version: link:../Row
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
-        version: link:../ThemeProvider/dist
+        version: link:../ThemeProvider
       '@hautechai/webui.typography':
         specifier: workspace:^
-        version: link:../Typography/dist
+        version: link:../Typography
     publishDirectory: dist
 
   components/Divider:
     dependencies:
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
-        version: link:../ThemeProvider/dist
+        version: link:../ThemeProvider
     publishDirectory: dist
 
   components/Dropdown:
     dependencies:
       '@hautechai/webui.icon':
         specifier: workspace:^
-        version: link:../Icon/dist
+        version: link:../Icon
       '@hautechai/webui.menu':
         specifier: workspace:^
-        version: link:../Menu/dist
+        version: link:../Menu
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
-        version: link:../ThemeProvider/dist
+        version: link:../ThemeProvider
       '@hautechai/webui.typography':
         specifier: workspace:^
-        version: link:../Typography/dist
+        version: link:../Typography
     publishDirectory: dist
 
   components/EditableText:
     dependencies:
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
-        version: link:../ThemeProvider/dist
+        version: link:../ThemeProvider
       '@hautechai/webui.typography':
         specifier: workspace:^
-        version: link:../Typography/dist
+        version: link:../Typography
     publishDirectory: dist
 
   components/Field:
     dependencies:
       '@hautechai/webui.column':
         specifier: workspace:^
-        version: link:../Column/dist
+        version: link:../Column
       '@hautechai/webui.icon':
         specifier: workspace:^
-        version: link:../Icon/dist
+        version: link:../Icon
       '@hautechai/webui.row':
         specifier: workspace:^
-        version: link:../Row/dist
+        version: link:../Row
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
-        version: link:../ThemeProvider/dist
+        version: link:../ThemeProvider
       '@hautechai/webui.typography':
         specifier: workspace:^
-        version: link:../Typography/dist
+        version: link:../Typography
     publishDirectory: dist
 
   components/FileInput:
     dependencies:
       '@hautechai/webui.button':
         specifier: workspace:^
-        version: link:../Button/dist
+        version: link:../Button
       '@hautechai/webui.icon':
         specifier: workspace:^
-        version: link:../Icon/dist
+        version: link:../Icon
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
-        version: link:../ThemeProvider/dist
+        version: link:../ThemeProvider
       '@hautechai/webui.typography':
         specifier: workspace:^
-        version: link:../Typography/dist
+        version: link:../Typography
       react-dropzone:
         specifier: ^14.3.8
         version: 14.3.8(react@19.0.0)
@@ -426,56 +426,56 @@ importers:
     dependencies:
       '@hautechai/webui.icon':
         specifier: workspace:^
-        version: link:../Icon/dist
+        version: link:../Icon
       '@hautechai/webui.iconbutton':
         specifier: workspace:^
-        version: link:../IconButton/dist
+        version: link:../IconButton
       '@hautechai/webui.progress':
         specifier: workspace:^
-        version: link:../Progress/dist
+        version: link:../Progress
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
-        version: link:../ThemeProvider/dist
+        version: link:../ThemeProvider
       '@hautechai/webui.typography':
         specifier: workspace:^
-        version: link:../Typography/dist
+        version: link:../Typography
     publishDirectory: dist
 
   components/FullScreen:
     dependencies:
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
-        version: link:../ThemeProvider/dist
+        version: link:../ThemeProvider
     publishDirectory: dist
 
   components/Hint:
     dependencies:
       '@hautechai/webui.icon':
         specifier: workspace:^
-        version: link:../Icon/dist
+        version: link:../Icon
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
-        version: link:../ThemeProvider/dist
+        version: link:../ThemeProvider
       '@hautechai/webui.tooltip':
         specifier: workspace:^
-        version: link:../Tooltip/dist
+        version: link:../Tooltip
     publishDirectory: dist
 
   components/HoverControls:
     dependencies:
       '@hautechai/webui.checkbox':
         specifier: workspace:^
-        version: link:../Checkbox/dist
+        version: link:../Checkbox
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
-        version: link:../ThemeProvider/dist
+        version: link:../ThemeProvider
     publishDirectory: dist
 
   components/Icon:
     dependencies:
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
-        version: link:../ThemeProvider/dist
+        version: link:../ThemeProvider
       lodash-es:
         specifier: ^4.17.21
         version: 4.17.21
@@ -492,78 +492,78 @@ importers:
     dependencies:
       '@hautechai/webui.buttonbase':
         specifier: workspace:^
-        version: link:../ButtonBase/dist
+        version: link:../ButtonBase
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
-        version: link:../ThemeProvider/dist
+        version: link:../ThemeProvider
     publishDirectory: dist
 
   components/ImageInput:
     dependencies:
       '@hautechai/webui.fileinput':
         specifier: workspace:^
-        version: link:../FileInput/dist
+        version: link:../FileInput
     publishDirectory: dist
 
   components/ImageInputWithSamples:
     dependencies:
       '@hautechai/webui.buttonbase':
         specifier: workspace:^
-        version: link:../ButtonBase/dist
+        version: link:../ButtonBase
       '@hautechai/webui.column':
         specifier: workspace:^
-        version: link:../Column/dist
+        version: link:../Column
       '@hautechai/webui.imageinput':
         specifier: workspace:^
-        version: link:../ImageInput/dist
+        version: link:../ImageInput
       '@hautechai/webui.row':
         specifier: workspace:^
-        version: link:../Row/dist
+        version: link:../Row
       '@hautechai/webui.tile':
         specifier: workspace:^
-        version: link:../Tile/dist
+        version: link:../Tile
       '@hautechai/webui.typography':
         specifier: workspace:^
-        version: link:../Typography/dist
+        version: link:../Typography
     publishDirectory: dist
 
   components/KeyframeToggle:
     dependencies:
       '@hautechai/webui.icon':
         specifier: workspace:^
-        version: link:../Icon/dist
+        version: link:../Icon
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
-        version: link:../ThemeProvider/dist
+        version: link:../ThemeProvider
     publishDirectory: dist
 
   components/LayerTreeItemParent:
     dependencies:
       '@hautechai/webui.editabletext':
         specifier: workspace:^
-        version: link:../EditableText/dist
+        version: link:../EditableText
       '@hautechai/webui.icon':
         specifier: workspace:^
-        version: link:../Icon/dist
+        version: link:../Icon
       '@hautechai/webui.iconbutton':
         specifier: workspace:^
-        version: link:../IconButton/dist
+        version: link:../IconButton
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
-        version: link:../ThemeProvider/dist
+        version: link:../ThemeProvider
     publishDirectory: dist
 
   components/LinkButton:
     dependencies:
       '@hautechai/webui.buttonbase':
         specifier: workspace:^
-        version: link:../ButtonBase/dist
+        version: link:../ButtonBase
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
-        version: link:../ThemeProvider/dist
+        version: link:../ThemeProvider
       '@hautechai/webui.typography':
         specifier: workspace:^
-        version: link:../Typography/dist
+        version: link:../Typography
     publishDirectory: dist
 
   components/Logo:
@@ -573,7 +573,7 @@ importers:
     dependencies:
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
-        version: link:../ThemeProvider/dist
+        version: link:../ThemeProvider
       react-responsive-masonry:
         specifier: ^2.7.1
         version: 2.7.1
@@ -587,88 +587,88 @@ importers:
     dependencies:
       '@hautechai/webui.column':
         specifier: workspace:^
-        version: link:../Column/dist
+        version: link:../Column
       '@hautechai/webui.menuitem':
         specifier: workspace:^
-        version: link:../MenuItem/dist
+        version: link:../MenuItem
       '@hautechai/webui.popover':
         specifier: workspace:^
-        version: link:../Popover/dist
+        version: link:../Popover
     publishDirectory: dist
 
   components/MenuItem:
     dependencies:
       '@hautechai/webui.row':
         specifier: workspace:^
-        version: link:../Row/dist
+        version: link:../Row
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
-        version: link:../ThemeProvider/dist
+        version: link:../ThemeProvider
       '@hautechai/webui.typography':
         specifier: workspace:^
-        version: link:../Typography/dist
+        version: link:../Typography
     publishDirectory: dist
 
   components/Modal:
     dependencies:
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
-        version: link:../ThemeProvider/dist
+        version: link:../ThemeProvider
     publishDirectory: dist
 
   components/OperationItem:
     dependencies:
       '@hautechai/webui.badge':
         specifier: workspace:^
-        version: link:../Badge/dist
+        version: link:../Badge
       '@hautechai/webui.chip':
         specifier: workspace:^
-        version: link:../Chip/dist
+        version: link:../Chip
       '@hautechai/webui.previews':
         specifier: workspace:^
-        version: link:../Previews/dist
+        version: link:../Previews
       '@hautechai/webui.row':
         specifier: workspace:^
-        version: link:../Row/dist
+        version: link:../Row
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
-        version: link:../ThemeProvider/dist
+        version: link:../ThemeProvider
       '@hautechai/webui.typography':
         specifier: workspace:^
-        version: link:../Typography/dist
+        version: link:../Typography
     publishDirectory: dist
 
   components/Pagination:
     dependencies:
       '@hautechai/webui.icon':
         specifier: workspace:^
-        version: link:../Icon/dist
+        version: link:../Icon
       '@hautechai/webui.iconbutton':
         specifier: workspace:^
-        version: link:../IconButton/dist
+        version: link:../IconButton
       '@hautechai/webui.row':
         specifier: workspace:^
-        version: link:../Row/dist
+        version: link:../Row
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
-        version: link:../ThemeProvider/dist
+        version: link:../ThemeProvider
       '@hautechai/webui.typography':
         specifier: workspace:^
-        version: link:../Typography/dist
+        version: link:../Typography
     publishDirectory: dist
 
   components/Panel:
     dependencies:
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
-        version: link:../ThemeProvider/dist
+        version: link:../ThemeProvider
     publishDirectory: dist
 
   components/Popover:
     dependencies:
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
-        version: link:../ThemeProvider/dist
+        version: link:../ThemeProvider
       react-tiny-popover:
         specifier: 8.1.6
         version: 8.1.6(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
@@ -678,20 +678,20 @@ importers:
     dependencies:
       '@hautechai/webui.row':
         specifier: workspace:^
-        version: link:../Row/dist
+        version: link:../Row
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
-        version: link:../ThemeProvider/dist
+        version: link:../ThemeProvider
     publishDirectory: dist
 
   components/Price:
     dependencies:
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
-        version: link:../ThemeProvider/dist
+        version: link:../ThemeProvider
       '@hautechai/webui.typography':
         specifier: workspace:^
-        version: link:../Typography/dist
+        version: link:../Typography
     publishDirectory: dist
 
   components/Progress:
@@ -705,71 +705,71 @@ importers:
     dependencies:
       '@hautechai/webui.icon':
         specifier: workspace:^
-        version: link:../Icon/dist
+        version: link:../Icon
       '@hautechai/webui.iconbutton':
         specifier: workspace:^
-        version: link:../IconButton/dist
+        version: link:../IconButton
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
-        version: link:../ThemeProvider/dist
+        version: link:../ThemeProvider
       '@hautechai/webui.typography':
         specifier: workspace:^
-        version: link:../Typography/dist
+        version: link:../Typography
     publishDirectory: dist
 
   components/Row:
     dependencies:
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
-        version: link:../ThemeProvider/dist
+        version: link:../ThemeProvider
     publishDirectory: dist
 
   components/SegmentedControl:
     dependencies:
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
-        version: link:../ThemeProvider/dist
+        version: link:../ThemeProvider
       '@hautechai/webui.typography':
         specifier: workspace:^
-        version: link:../Typography/dist
+        version: link:../Typography
     publishDirectory: dist
 
   components/Sidebar:
     dependencies:
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
-        version: link:../ThemeProvider/dist
+        version: link:../ThemeProvider
     publishDirectory: dist
 
   components/Slider:
     dependencies:
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
-        version: link:../ThemeProvider/dist
+        version: link:../ThemeProvider
     publishDirectory: dist
 
   components/Switch:
     dependencies:
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
-        version: link:../ThemeProvider/dist
+        version: link:../ThemeProvider
     publishDirectory: dist
 
   components/Table:
     dependencies:
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
-        version: link:../ThemeProvider/dist
+        version: link:../ThemeProvider
     publishDirectory: dist
 
   components/TextArea:
     dependencies:
       '@hautechai/webui.iconbutton':
         specifier: workspace:^
-        version: link:../IconButton/dist
+        version: link:../IconButton
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
-        version: link:../ThemeProvider/dist
+        version: link:../ThemeProvider
       react-textarea-autosize:
         specifier: 8.5.8
         version: 8.5.8(@types/react@19.0.8)(react@19.0.0)
@@ -779,30 +779,30 @@ importers:
     dependencies:
       '@hautechai/webui.buttonbase':
         specifier: workspace:^
-        version: link:../ButtonBase/dist
+        version: link:../ButtonBase
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
-        version: link:../ThemeProvider/dist
+        version: link:../ThemeProvider
       '@hautechai/webui.typography':
         specifier: workspace:^
-        version: link:../Typography/dist
+        version: link:../Typography
     publishDirectory: dist
 
   components/TextInput:
     dependencies:
       '@hautechai/webui.iconbutton':
         specifier: workspace:^
-        version: link:../IconButton/dist
+        version: link:../IconButton
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
-        version: link:../ThemeProvider/dist
+        version: link:../ThemeProvider
     publishDirectory: dist
 
   components/Theme:
     dependencies:
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
-        version: link:../ThemeProvider/dist
+        version: link:../ThemeProvider
       lodash-es:
         specifier: ^4.17.21
         version: 4.17.21
@@ -825,37 +825,37 @@ importers:
     dependencies:
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
-        version: link:../ThemeProvider/dist
+        version: link:../ThemeProvider
     publishDirectory: dist
 
   components/TileTabGroup:
     dependencies:
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
-        version: link:../ThemeProvider/dist
+        version: link:../ThemeProvider
     publishDirectory: dist
 
   components/TileTabItem:
     dependencies:
       '@hautechai/webui.buttonbase':
         specifier: workspace:^
-        version: link:../ButtonBase/dist
+        version: link:../ButtonBase
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
-        version: link:../ThemeProvider/dist
+        version: link:../ThemeProvider
       '@hautechai/webui.tile':
         specifier: workspace:^
-        version: link:../Tile/dist
+        version: link:../Tile
       '@hautechai/webui.typography':
         specifier: workspace:^
-        version: link:../Typography/dist
+        version: link:../Typography
     publishDirectory: dist
 
   components/TimelineTrack:
     dependencies:
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
-        version: link:../ThemeProvider/dist
+        version: link:../ThemeProvider
       react:
         specifier: ^19.0.0
         version: 19.0.0
@@ -864,36 +864,36 @@ importers:
     dependencies:
       '@hautechai/webui.buttonbase':
         specifier: workspace:^
-        version: link:../ButtonBase/dist
+        version: link:../ButtonBase
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
-        version: link:../ThemeProvider/dist
+        version: link:../ThemeProvider
     publishDirectory: dist
 
   components/ToolButton:
     dependencies:
       '@hautechai/webui.buttonbase':
         specifier: workspace:^
-        version: link:../ButtonBase/dist
+        version: link:../ButtonBase
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
-        version: link:../ThemeProvider/dist
+        version: link:../ThemeProvider
     publishDirectory: dist
 
   components/Tooltip:
     dependencies:
       '@hautechai/webui.column':
         specifier: workspace:^
-        version: link:../Column/dist
+        version: link:../Column
       '@hautechai/webui.linkbutton':
         specifier: workspace:^
-        version: link:../LinkButton/dist
+        version: link:../LinkButton
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
-        version: link:../ThemeProvider/dist
+        version: link:../ThemeProvider
       '@hautechai/webui.typography':
         specifier: workspace:^
-        version: link:../Typography/dist
+        version: link:../Typography
       react-tiny-popover:
         specifier: 8.1.6
         version: 8.1.6(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
@@ -903,7 +903,7 @@ importers:
     dependencies:
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
-        version: link:../ThemeProvider/dist
+        version: link:../ThemeProvider
       lodash-es:
         specifier: ^4.17.21
         version: 4.17.21
@@ -913,54 +913,54 @@ importers:
     dependencies:
       '@hautechai/webui.avatar':
         specifier: workspace:^
-        version: link:../Avatar/dist
+        version: link:../Avatar
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
-        version: link:../ThemeProvider/dist
+        version: link:../ThemeProvider
       '@hautechai/webui.typography':
         specifier: workspace:^
-        version: link:../Typography/dist
+        version: link:../Typography
     publishDirectory: dist
 
   components/UserBalance:
     dependencies:
       '@hautechai/webui.button':
         specifier: workspace:^
-        version: link:../Button/dist
+        version: link:../Button
       '@hautechai/webui.dataitem':
         specifier: workspace:^
-        version: link:../DataItem/dist
+        version: link:../DataItem
       '@hautechai/webui.panel':
         specifier: workspace:^
-        version: link:../Panel/dist
+        version: link:../Panel
       '@hautechai/webui.row':
         specifier: workspace:^
-        version: link:../Row/dist
+        version: link:../Row
     publishDirectory: dist
 
   components/VisualEditorInput:
     dependencies:
       '@hautechai/webui.dropdown':
         specifier: workspace:^
-        version: link:../Dropdown/dist
+        version: link:../Dropdown
       '@hautechai/webui.icon':
         specifier: workspace:^
-        version: link:../Icon/dist
+        version: link:../Icon
       '@hautechai/webui.keyframetoggle':
         specifier: workspace:^
-        version: link:../KeyframeToggle/dist
+        version: link:../KeyframeToggle
       '@hautechai/webui.textinput':
         specifier: workspace:^
-        version: link:../TextInput/dist
+        version: link:../TextInput
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
-        version: link:../ThemeProvider/dist
+        version: link:../ThemeProvider
       '@hautechai/webui.toggleiconbutton':
         specifier: workspace:^
-        version: link:../ToggleIconButton/dist
+        version: link:../ToggleIconButton
       '@hautechai/webui.typography':
         specifier: workspace:^
-        version: link:../Typography/dist
+        version: link:../Typography
     publishDirectory: dist
 
 packages:
