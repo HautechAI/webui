@@ -1,7 +1,6 @@
-import { ButtonBase } from '../../ButtonBase/src';
+import { ButtonBase } from '@hautechai/webui.buttonbase';
 import { css } from '@linaria/core';
-import { themeVars } from '../../ThemeProvider/src';
-import { Theme } from '../../Theme/src';
+import { themeVars } from '@hautechai/webui.themeprovider';
 import React from 'react';
 
 export type ToolButtonProps = {
@@ -33,7 +32,7 @@ const buttonBase = css`
 // Default state (not selected, not hovered)
 const defaultState = css`
     background-color: transparent;
-    
+
     &:hover:not(:disabled) {
         background-color: ${themeVars.layout.surfaceMid};
     }
@@ -42,7 +41,7 @@ const defaultState = css`
 // Selected state
 const selectedState = css`
     background-color: ${themeVars.actions.secondary};
-    
+
     &:hover:not(:disabled) {
         background-color: ${themeVars.actions.secondary};
     }
@@ -55,7 +54,7 @@ const iconContainer = css`
     justify-content: center;
     align-items: center;
     display: flex;
-    
+
     /* Apply color to icon children */
     * {
         color: var(--tool-button-icon-color, ${themeVars.layout.onSurface.secondary});
@@ -68,7 +67,7 @@ const getIcon = (icon: React.ReactNode) => (
         {React.Children.map(icon, (child) => {
             if (React.isValidElement(child)) {
                 return React.cloneElement(child, {
-                    size: Theme.foundation.spacing.xl, // Using theme value for icon size
+                    size: themeVars.spacing.xl, // Using theme value for icon size
                 } as any);
             }
             return child;
@@ -79,15 +78,10 @@ const getIcon = (icon: React.ReactNode) => (
 export const ToolButton = (props: ToolButtonProps) => {
     const { selected = false, icon, ...rest } = props;
 
-    const buttonClassName = [
-        buttonBase,
-        selected ? selectedState : defaultState,
-    ].join(' ');
+    const buttonClassName = [buttonBase, selected ? selectedState : defaultState].join(' ');
 
     // Set CSS custom property for icon color based on selected state
-    const iconColorVar = selected 
-        ? themeVars.actions.onSecondary 
-        : themeVars.layout.onSurface.secondary;
+    const iconColorVar = selected ? themeVars.actions.onSecondary : themeVars.layout.onSurface.secondary;
 
     return (
         <span style={{ ['--tool-button-icon-color' as any]: iconColorVar }}>

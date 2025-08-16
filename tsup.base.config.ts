@@ -1,5 +1,4 @@
 import { defineConfig } from 'tsup';
-import linaria from '@linaria/esbuild';
 
 export default defineConfig({
     entry: ['src/index.ts(x)'],
@@ -10,11 +9,5 @@ export default defineConfig({
     clean: true,
     dts: true,
     target: 'es2024',
-    esbuildPlugins: [
-        linaria({
-            babelOptions: {
-                presets: ['@babel/preset-typescript', '@babel/preset-react'],
-            },
-        }),
-    ],
+    external: ['@linaria/core', '@linaria/react', 'react'],
 });
