@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0](https://github.com/HautechAI/webui/compare/@hautechai/webui.slider@1.0.0...@hautechai/webui.slider@2.0.0) (2025-08-16)
+
+**Note:** Version bump only for package @hautechai/webui.slider
+
+
+
+
+
 # [1.0.0](https://github.com/HautechAI/webui/compare/@hautechai/webui.slider@0.3.78...@hautechai/webui.slider@1.0.0) (2025-08-13)
 
 **Note:** Version bump only for package @hautechai/webui.slider

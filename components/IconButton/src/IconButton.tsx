@@ -1,10 +1,11 @@
 import { ButtonBase } from '@hautechai/webui.buttonbase';
 import { css } from '@linaria/core';
 import { themeVars } from '@hautechai/webui.themeprovider';
+import React from 'react';
 
 export type IconButtonProps = {
     variant?: 'filled' | 'outlined' | 'flat';
-    size?: 'medium' | 'small';
+    size?: 'medium' | 'small' | 'xsmall';
     icon: React.ReactNode;
     disabled?: boolean;
     onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
@@ -42,6 +43,11 @@ const smallSize = css`
     padding: ${themeVars.spacing.m};
 `;
 
+const xsmallSize = css`
+    padding: ${themeVars.spacing.xs};
+    border-radius: ${themeVars.cornerRadius.s};
+`;
+
 // Variant styles
 const filledVariant = css`
     border-width: ${themeVars.stroke.thin};
@@ -69,6 +75,7 @@ export const iconButtonClasses = {
     sizes: {
         medium: mediumSize,
         small: smallSize,
+        xsmall: xsmallSize,
     },
     variants: {
         filled: filledVariant,
@@ -86,17 +93,27 @@ export const IconButton = (props: IconButtonProps) => {
         iconButtonClasses.variants[variant],
     ].join(' ');
 
+    const iconSizes: Record<NonNullable<IconButtonProps['size']>, number> = {
+        medium: 24,
+        small: 20,
+        xsmall: 16,
+    };
+
+    const iconWithSize = React.isValidElement(icon) && typeof icon.type !== 'string'
+        ? React.cloneElement(icon as React.ReactElement<any>, { size: iconSizes[size] })
+        : icon;
+
     return (
-        <span
+        <ButtonBase
+            className={buttonClassName}
             style={
                 customBackground
                     ? ({ ['--icon-button-bg' as any]: customBackground } as React.CSSProperties)
                     : undefined
             }
+            {...rest}
         >
-            <ButtonBase className={buttonClassName} {...rest}>
-                {icon}
-            </ButtonBase>
-        </span>
+            {iconWithSize}
+        </ButtonBase>
     );
 };

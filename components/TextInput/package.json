@@ -1,7 +1,7 @@
 {
     "name": "@hautechai/webui.textinput",
     "description": "",
-    "version": "1.0.2",
+    "version": "2.0.0",
     "type": "module",
     "main": "src/index.tsx",
     "publishConfig": {
@@ -26,6 +26,8 @@
         "@hautechai/webui.themeprovider": "workspace:^"
     },
     "peerDependencies": {
+        "@linaria/core": "^6.3.0",
+        "@linaria/react": "^6.3.0",
         "react": "^19.0.0"
     },
     "license": "Apache-2.0"

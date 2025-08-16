@@ -1,8 +1,8 @@
-import { ButtonBase } from '../../ButtonBase/src';
+import { ButtonBase } from '@hautechai/webui.buttonbase';
 import { css } from '@linaria/core';
 import { styled } from '@linaria/react';
-import { themeVars } from '../../ThemeProvider/src';
-import { Typography, TypographyProps } from '../../Typography/src';
+import { themeVars } from '@hautechai/webui.themeprovider';
+import { Typography, TypographyProps } from '@hautechai/webui.typography';
 
 export type ButtonProps = {
     id?: string;
@@ -23,7 +23,7 @@ const buttonBase = css`
     align-items: center;
     border-radius: ${themeVars.cornerRadius.m};
     border-style: solid;
-    transition: 
+    transition:
         background-color ${themeVars.animation.duration.fast} ${themeVars.animation.timing.easeOut},
         border-color ${themeVars.animation.duration.fast} ${themeVars.animation.timing.easeOut};
 `;
@@ -44,12 +44,13 @@ const filledPrimary = css`
     border-width: 0px;
     background-color: ${themeVars.actions.primary};
     color: ${themeVars.actions.onPrimary};
-    
-    &:hover, &:focus-visible {
+
+    &:hover,
+    &:focus-visible {
         background-color: ${themeVars.actions.onSecondary};
         color: ${themeVars.actions.onPrimary};
     }
-    
+
     &:disabled {
         background-color: ${themeVars.layout.surfaceMid};
         color: ${themeVars.layout.onSurface.tertiary};
@@ -63,12 +64,13 @@ const filledSecondary = css`
     border-width: 0px;
     background-color: ${themeVars.actions.secondary};
     color: ${themeVars.actions.onSecondary};
-    
-    &:hover, &:focus-visible {
+
+    &:hover,
+    &:focus-visible {
         background-color: ${themeVars.actions.tertiary};
         color: ${themeVars.actions.onTertiary};
     }
-    
+
     &:disabled {
         background-color: ${themeVars.layout.surfaceMid};
         color: ${themeVars.layout.onSurface.tertiary};
@@ -83,12 +85,13 @@ const outlinedPrimary = css`
     border-color: ${themeVars.actions.primary};
     background-color: transparent;
     color: ${themeVars.actions.primary};
-    
-    &:hover, &:focus-visible {
+
+    &:hover,
+    &:focus-visible {
         background-color: ${themeVars.actions.onPrimary};
         color: ${themeVars.actions.primary};
     }
-    
+
     &:disabled {
         background-color: transparent;
         color: ${themeVars.layout.onSurface.tertiary};
@@ -103,12 +106,13 @@ const outlinedSecondary = css`
     border-color: ${themeVars.layout.strokes};
     background-color: transparent;
     color: ${themeVars.layout.onSurface.secondary};
-    
-    &:hover, &:focus-visible {
+
+    &:hover,
+    &:focus-visible {
         background-color: ${themeVars.layout.surfaceHigh};
         color: ${themeVars.layout.onSurface.secondary};
     }
-    
+
     &:disabled {
         background-color: transparent;
         color: ${themeVars.layout.onSurface.tertiary};
@@ -161,11 +165,7 @@ export const Button = (props: ButtonProps) => {
     ].join(' ');
 
     return (
-        <StyledButton 
-            className={buttonClassName}
-            stretch={stretch} 
-            {...rest}
-        >
+        <StyledButton className={buttonClassName} stretch={stretch} {...rest}>
             {props.leadingIcon}
             <Typography variant={LabelVariants[size]}>{label}</Typography>
             {props.trailingIcon}

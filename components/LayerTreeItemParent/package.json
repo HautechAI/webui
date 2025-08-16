@@ -1,0 +1,36 @@
+{
+    "name": "@hautechai/webui.layertreeitemparent",
+    "description": "",
+    "version": "2.0.0",
+    "type": "module",
+    "main": "src/index.tsx",
+    "publishConfig": {
+        "main": "dist/index.cjs",
+        "module": "dist/index.js",
+        "typings": "dist/index.d.ts",
+        "exports": {
+            "import": "./dist/index.js",
+            "require": "./dist/index.cjs"
+        },
+        "access": "public"
+    },
+    "files": [
+        "dist"
+    ],
+    "scripts": {
+        "prepack": "tsup"
+    },
+    "author": "HautechAI",
+    "dependencies": {
+        "@hautechai/webui.editabletext": "workspace:^",
+        "@hautechai/webui.icon": "workspace:^",
+        "@hautechai/webui.iconbutton": "workspace:^",
+        "@hautechai/webui.themeprovider": "workspace:^"
+    },
+    "peerDependencies": {
+        "@linaria/core": "^6.3.0",
+        "@linaria/react": "^6.3.0",
+        "react": "^19.0.0"
+    },
+    "license": "Apache-2.0"
+}

@@ -1,7 +1,7 @@
 {
     "name": "@hautechai/webui.textarea",
     "description": "",
-    "version": "1.0.1",
+    "version": "2.0.0",
     "type": "module",
     "main": "src/index.tsx",
     "publishConfig": {
@@ -27,6 +27,8 @@
         "react-textarea-autosize": "8.5.8"
     },
     "peerDependencies": {
+        "@linaria/core": "^6.3.0",
+        "@linaria/react": "^6.3.0",
         "react": "^19.0.0"
     },
     "license": "Apache-2.0"

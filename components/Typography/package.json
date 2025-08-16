@@ -1,7 +1,7 @@
 {
     "name": "@hautechai/webui.typography",
     "description": "",
-    "version": "1.0.0",
+    "version": "2.0.0",
     "type": "module",
     "main": "src/index.tsx",
     "publishConfig": {
@@ -31,6 +31,8 @@
         "type-fest": "^4.34.1"
     },
     "peerDependencies": {
+        "@linaria/core": "^6.3.0",
+        "@linaria/react": "^6.3.0",
         "react": "^19.0.0"
     }
 }

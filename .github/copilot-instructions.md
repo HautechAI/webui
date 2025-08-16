@@ -123,6 +123,24 @@ When creating or updating icon components using Figma MCP (Dev Mode):
 - Follow existing documentation rules: update the Icon component’s README parameters to include `style` and any other mapped props (omit size).
 - Follow import/package rules in “Import Guidelines”.
 
+## Theme Value Guidelines
+
+### Use Only Theme Values
+- **Never use hardcoded values** for dimensions, colors, animations, or other design tokens
+- **Always use theme variables** from `themeVars` imported from ThemeProvider
+- If a required value doesn't exist in the theme, request additional clarification before proceeding
+- This ensures consistent design across all components and allows for theme customization
+
+### Common Theme Value Mappings
+- **Spacing**: Use `themeVars.spacing.{xs|s|m|ml|l|xl|xxl|xxxl}` for dimensions, padding, margins
+- **Corner Radius**: Use `themeVars.cornerRadius.{xs|s|m|l|xl|xxl}` for border-radius values
+- **Colors**: Use `themeVars.layout.*` or `themeVars.actions.*` for all color values
+- **Animations**: Use `themeVars.animation.duration.*` and `themeVars.animation.timing.*`
+
+### Exception Handling
+- If a commonly used value (like opacity: 0.5 for disabled states) doesn't exist in theme, request clarification
+- Document any exceptions and their rationale clearly
+
 Remember: Documentation is as important as the code itself. Well-maintained documentation ensures developers can effectively use and contribute to this component library.
 
 ## Styling Guidelines

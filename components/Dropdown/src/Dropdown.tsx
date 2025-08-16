@@ -56,10 +56,21 @@ export const ButtonContainer = styled.div`
         gap: ${themeVars.spacing.s};
     }
 
+    &[data-size='xsmall'] {
+        padding: ${themeVars.spacing.s} ${themeVars.spacing.m};
+        gap: ${themeVars.spacing.s};
+    }
+
     /* Collapsed state shows only the icon */
     &[data-collapsed='true'] {
         padding: ${themeVars.spacing.s};
         justify-content: center;
+    }
+
+    /* For xsmall collapsed, use tighter padding */
+    &[data-size='xsmall'][data-collapsed='true'] {
+        padding: ${themeVars.spacing.xs};
+        border-radius: ${themeVars.cornerRadius.s};
     }
 
     &[data-disabled='true'] {
@@ -120,6 +131,11 @@ const RotatingArrow = styled.div`
         width: 16px;
         height: 16px;
     }
+
+    &[data-size='xsmall'] {
+        width: 16px;
+        height: 16px;
+    }
 `;
 
 const MenuContainer = styled.div`
@@ -158,7 +174,7 @@ export type DropdownProps = {
     label?: string;
     disabled?: boolean;
     type?: 'filled' | 'outlined' | 'flat';
-    size?: 'small' | 'medium';
+    size?: 'xsmall' | 'small' | 'medium';
     collapsed?: boolean;
     value?: string;
     options: Array<{ label: string; value: string }>;
@@ -235,7 +251,12 @@ export const Dropdown = (props: DropdownProps) => {
                 </RotatingArrow>
             </ButtonContainer>
             <MenuContainer data-open={isOpen}>
-                <Menu size={size} value={selectedOption?.value} options={props.options} onChange={handleSelect} />
+                <Menu
+                    size={size === 'xsmall' ? 'small' : size}
+                    value={selectedOption?.value}
+                    options={props.options}
+                    onChange={handleSelect}
+                />
             </MenuContainer>
         </Container>
     );
