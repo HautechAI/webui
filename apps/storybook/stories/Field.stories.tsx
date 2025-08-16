@@ -9,6 +9,7 @@ import { Switch } from '../../../components/Switch/src';
 import { Dropdown } from '../../../components/Dropdown/src';
 import { SegmentedControl } from '../../../components/SegmentedControl/src';
 import { Counter } from '../../../components/Counter/src';
+import { ToolButton } from '../../../components/ToolButton/src';
 
 export default {
     title: 'Input/Field',
@@ -222,5 +223,48 @@ export const WithAreaLocked = {
                 onChange={fn() as any}
             />
         ),
+    },
+};
+
+export const WithActionButton = {
+    args: {
+        label: 'Username',
+        caption: 'Enter your username',
+        actionButton: <ToolButton icon={<PlaceholderIcon />} onClick={fn() as any} />,
+        children: <TextInput type="text" placeholder="Enter username" variation="filled" onChange={fn() as any} />,
+    },
+};
+
+export const WithActionButtonAndLocked = {
+    args: {
+        label: 'Password',
+        caption: 'Enter your password',
+        locked: true,
+        onLockedClick: fn() as any,
+        actionButton: <ToolButton icon={<PlaceholderIcon />} onClick={fn() as any} />,
+        children: <TextInput type="password" placeholder="Enter password" variation="filled" onChange={fn() as any} />,
+    },
+};
+
+export const WithCustomActionButton = {
+    args: {
+        label: 'Email',
+        caption: 'Enter your email address',
+        actionButton: (
+            <button 
+                onClick={fn() as any}
+                style={{ 
+                    background: 'none', 
+                    border: 'none', 
+                    cursor: 'pointer', 
+                    fontSize: '14px',
+                    color: '#666',
+                    padding: '2px 4px'
+                }}
+            >
+                👁️
+            </button>
+        ),
+        children: <TextInput type="email" placeholder="Enter email" variation="filled" onChange={fn() as any} />,
     },
 };
