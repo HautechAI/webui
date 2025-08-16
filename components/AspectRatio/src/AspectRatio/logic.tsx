@@ -1,4 +1,3 @@
-import { useTheme } from '@hautechai/webui.themeprovider';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { AspectRatioProps } from '.';
 
@@ -40,7 +39,6 @@ const useLogic = (props: AspectRatioProps) => {
         return [props.defaultOptions[0], selected, props.defaultOptions[2]];
     }, [props.defaultOptions, selected]);
 
-    const theme = useTheme();
 
     useEffect(() => {
         const rect = ref.current?.getBoundingClientRect();
