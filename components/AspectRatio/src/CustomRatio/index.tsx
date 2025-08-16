@@ -19,7 +19,7 @@ export type CustomRatioProps = {
     onChange: (value: string) => void;
     options: string[];
     sizeForRatio: (aspectRatio: string) => { width: number; height: number };
-    position?: { left: number; top: number };
+    position?: { left: number | string; top: number | string };
 };
 
 const CustomRatio = (props: CustomRatioProps) => {
