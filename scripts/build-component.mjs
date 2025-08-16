@@ -28,7 +28,6 @@ function cssAutoImport(options = {}) {
 const componentDir = process.cwd();
 
 // bundle sources
-const themeProviderEntry = path.resolve(componentDir, '../ThemeProvider/src/index.tsx');
 await esbuild.build({
     entryPoints: ['src/index.tsx'],
     bundle: true,
@@ -39,7 +38,8 @@ await esbuild.build({
     jsx: 'automatic',
     jsxImportSource: 'react',
     alias: {
-        '@hautechai/webui.themeprovider': themeProviderEntry,
+        '@hautechai/webui.themeprovider': path.resolve(componentDir, '../ThemeProvider/src/index.tsx'),
+        react: path.resolve(componentDir, '../../node_modules/react'),
     },
     plugins: [
         linaria({
