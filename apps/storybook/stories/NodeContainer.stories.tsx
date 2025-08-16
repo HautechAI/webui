@@ -17,32 +17,24 @@ export default {
     argTypes: {},
 };
 
-export const Empty = {
-    args: {
-        children: <div>Empty container</div>,
-    },
-};
-
-export const WithHeader = {
-    args: {
-        children: (
-            <NodeHeader 
-                label="Node Name" 
-            />
-        ),
-    },
-};
-
-export const WithContent = {
+export const HeaderAndFooter = {
     args: {
         children: (
             <>
                 <NodeHeader label="Node Name" />
-                <NodeContent>
-                    <Typography variant="Body" color="layout.onSurface.secondary">
-                        Content placeholder
-                    </Typography>
-                </NodeContent>
+                <NodeFooter
+                    inputPorts={
+                        <>
+                            <NodePort type="input" label="Input 1" />
+                            <NodePort type="input" label="Input 2" />
+                        </>
+                    }
+                    outputPorts={
+                        <>
+                            <NodePort type="output" label="Output 1" />
+                        </>
+                    }
+                />
             </>
         ),
     },
@@ -54,7 +46,7 @@ export const FullNode = {
             <>
                 <NodeHeader 
                     label="Node Name"
-                    badge={<Badge label="Success" variant="success" />}
+                    badge={<Badge label="Success" color="success" />}
                 />
                 <NodeContent>
                     <Typography variant="Body" color="layout.onSurface.secondary">

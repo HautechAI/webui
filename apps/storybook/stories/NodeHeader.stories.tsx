@@ -37,7 +37,7 @@ export const WithIcon = {
 export const WithBadge = {
     args: {
         label: 'Node Name',
-        badge: <Badge label="Failed" variant="error" />,
+        badge: <Badge label="Failed" color="error" />,
     },
 };
 
@@ -45,6 +45,6 @@ export const Complete = {
     args: {
         label: 'Node Name',
         icon: <PlaceholderIcon />,
-        badge: <Badge label="Success" variant="success" />,
+        badge: <Badge label="Success" color="success" />,
     },
 };

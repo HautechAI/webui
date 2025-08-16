@@ -2,6 +2,7 @@ import React from 'react';
 import { styled } from '@linaria/react';
 import { themeVars } from '@hautechai/webui.themeprovider';
 import { Typography } from '@hautechai/webui.typography';
+import { Divider } from '@hautechai/webui.divider';
 
 export interface NodeHeaderProps {
     icon?: React.ReactNode;
@@ -49,16 +50,19 @@ const BadgeContainer = styled.div`
 
 export const NodeHeader: React.FC<NodeHeaderProps> = ({ icon, label, badge }) => {
     return (
-        <Container>
-            <IconWrapper>
-                {icon && <IconContainer>{icon}</IconContainer>}
-                <LabelContainer>
-                    <Typography variant="LabelMediumEmphasized" color="layout.onSurface.primary">
-                        {label}
-                    </Typography>
-                </LabelContainer>
-            </IconWrapper>
-            {badge && <BadgeContainer>{badge}</BadgeContainer>}
-        </Container>
+        <>
+            <Container>
+                <IconWrapper>
+                    {icon && <IconContainer>{icon}</IconContainer>}
+                    <LabelContainer>
+                        <Typography variant="LabelMediumEmphasized" color="layout.onSurface.primary">
+                            {label}
+                        </Typography>
+                    </LabelContainer>
+                </IconWrapper>
+                {badge && <BadgeContainer>{badge}</BadgeContainer>}
+            </Container>
+            <Divider />
+        </>
     );
 };

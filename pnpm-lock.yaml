@@ -625,6 +625,9 @@ importers:
 
   components/NodeContent:
     dependencies:
+      '@hautechai/webui.divider':
+        specifier: workspace:^
+        version: link:../Divider
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
         version: link:../ThemeProvider
@@ -639,6 +642,9 @@ importers:
 
   components/NodeHeader:
     dependencies:
+      '@hautechai/webui.divider':
+        specifier: workspace:^
+        version: link:../Divider
       '@hautechai/webui.themeprovider':
         specifier: workspace:^
         version: link:../ThemeProvider
