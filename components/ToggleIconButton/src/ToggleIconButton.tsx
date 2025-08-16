@@ -49,14 +49,14 @@ const xsmallSize = css`
 // Filled variant
 const filledVariant = css`
     border-width: ${themeVars.stroke.thin};
-    
+
     /* Default state */
     background-color: ${themeVars.layout.surfaceLow};
     border-color: ${themeVars.layout.strokes};
     color: ${themeVars.layout.onSurface.secondary};
-    
+
     /* Checked default state - flip background with pressed */
-    &[data-checked="true"] {
+    &[data-checked='true'] {
         background-color: ${themeVars.layout.surfaceHigh};
     }
 
@@ -71,9 +71,9 @@ const filledVariant = css`
         border-color: ${themeVars.layout.onSurface.primary};
         color: ${themeVars.layout.onSurface.primary};
     }
-    
+
     /* Checked pressed state - flip with default */
-    &[data-checked="true"]:active:not(:disabled) {
+    &[data-checked='true']:active:not(:disabled) {
         background-color: ${themeVars.layout.surfaceLow};
     }
 
@@ -93,14 +93,14 @@ const filledVariant = css`
 // Outlined variant
 const outlinedVariant = css`
     border-width: ${themeVars.stroke.thin};
-    
+
     /* Default state - transparent background */
     background-color: transparent;
     border-color: ${themeVars.layout.strokes};
     color: ${themeVars.layout.onSurface.secondary};
-    
+
     /* Checked default state - flip background with pressed */
-    &[data-checked="true"] {
+    &[data-checked='true'] {
         background-color: ${themeVars.layout.surfaceHigh};
     }
 
@@ -115,9 +115,9 @@ const outlinedVariant = css`
         border-color: ${themeVars.layout.onSurface.primary};
         color: ${themeVars.layout.onSurface.primary};
     }
-    
+
     /* Checked pressed state - flip with default */
-    &[data-checked="true"]:active:not(:disabled) {
+    &[data-checked='true']:active:not(:disabled) {
         background-color: transparent;
     }
 
@@ -140,9 +140,9 @@ const flatVariant = css`
     border-width: 0px;
     background-color: transparent;
     color: ${themeVars.layout.onSurface.secondary};
-    
+
     /* Checked default state - flip background with pressed */
-    &[data-checked="true"] {
+    &[data-checked='true'] {
         background-color: ${themeVars.layout.surfaceHigh};
     }
 
@@ -155,9 +155,9 @@ const flatVariant = css`
         background-color: ${themeVars.layout.surfaceHigh};
         color: ${themeVars.layout.onSurface.primary};
     }
-    
+
     /* Checked pressed state - flip with default */
-    &[data-checked="true"]:active:not(:disabled) {
+    &[data-checked='true']:active:not(:disabled) {
         background-color: transparent;
     }
 
@@ -180,9 +180,9 @@ const primaryVariant = css`
     border-width: 0px;
     background-color: ${themeVars.actions.secondary};
     color: ${themeVars.actions.onSecondary};
-    
+
     /* Checked default state - flip background with pressed */
-    &[data-checked="true"] {
+    &[data-checked='true'] {
         background-color: ${themeVars.actions.primary};
         color: ${themeVars.actions.onPrimary};
     }
@@ -196,9 +196,9 @@ const primaryVariant = css`
         background-color: ${themeVars.actions.primary};
         color: ${themeVars.actions.onPrimary};
     }
-    
+
     /* Checked pressed state - flip with default */
-    &[data-checked="true"]:active:not(:disabled) {
+    &[data-checked='true']:active:not(:disabled) {
         background-color: ${themeVars.actions.secondary};
         color: ${themeVars.actions.onSecondary};
     }
@@ -239,11 +239,7 @@ export const ToggleIconButton = (props: ToggleIconButtonProps) => {
     ].join(' ');
 
     return (
-        <ButtonBase 
-            className={buttonClassName} 
-            data-checked={checked}
-            {...rest}
-        >
+        <ButtonBase className={buttonClassName} data-checked={checked} {...rest}>
             {icon}
         </ButtonBase>
     );

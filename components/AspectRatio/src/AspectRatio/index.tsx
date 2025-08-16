@@ -44,9 +44,7 @@ export const AspectRatio = (props: AspectRatioProps) => {
                             <RatioBoxContainer>
                                 {(() => {
                                     const sz = getBoxSize(option, 16);
-                                    return (
-                                        <SmallRatioBox style={{ width: sz.width, height: sz.height }} />
-                                    );
+                                    return <SmallRatioBox style={{ width: sz.width, height: sz.height }} />;
                                 })()}
                             </RatioBoxContainer>
                         ),

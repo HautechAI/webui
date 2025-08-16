@@ -1,3 +1,5 @@
+/// <reference types="@testing-library/jest-dom" />
+
 declare module '*.woff2' {
     const src: string;
     export default src;

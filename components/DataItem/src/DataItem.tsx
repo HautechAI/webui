@@ -72,31 +72,31 @@ export const DataItem = (props: DataItemProps) => {
     return props.direction === 'row' ? (
         <div style={{ padding: `${props.size === 'small' ? '0' : 'var(--spacing-m)'} 0` }}>
             <RowContainer justify="space-between" align="center" stretch={stretch}>
-            <Typography
-                variant="LabelSmallEmphasized"
-                color={primary === 'data' ? 'layout.onSurface.tertiary' : 'layout.onSurface.primary'}
-            >
-                {props.label}
-            </Typography>
-            <Row spacing="ml" align="center" noOverflow>
                 <Typography
-                    variant="LabelSmallRegular"
-                    color={primary === 'data' ? 'layout.onSurface.primary' : 'layout.onSurface.tertiary'}
-                    noWrap
-                    overflow="ellipsis"
+                    variant="LabelSmallEmphasized"
+                    color={primary === 'data' ? 'layout.onSurface.tertiary' : 'layout.onSurface.primary'}
                 >
-                    {props.value}
+                    {props.label}
                 </Typography>
+                <Row spacing="ml" align="center" noOverflow>
+                    <Typography
+                        variant="LabelSmallRegular"
+                        color={primary === 'data' ? 'layout.onSurface.primary' : 'layout.onSurface.tertiary'}
+                        noWrap
+                        overflow="ellipsis"
+                    >
+                        {props.value}
+                    </Typography>
 
-                {React.Children.map(props.trailingIcon, (child) => {
-                    if (React.isValidElement(child)) {
-                        return React.cloneElement(child, {
-                            size: 20,
-                        } as any);
-                    }
-                    return child;
-                })}
-            </Row>
+                    {React.Children.map(props.trailingIcon, (child) => {
+                        if (React.isValidElement(child)) {
+                            return React.cloneElement(child, {
+                                size: 20,
+                            } as any);
+                        }
+                        return child;
+                    })}
+                </Row>
             </RowContainer>
         </div>
     ) : (
