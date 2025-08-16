@@ -3,13 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.1.0](https://github.com/HautechAI/webui/compare/@hautechai/webui.themeprovider@1.0.0...@hautechai/webui.themeprovider@2.1.0) (2025-08-16)
+
+### Features
+
+- do not transpile linaria ([1a6fbf6](https://github.com/HautechAI/webui/commit/1a6fbf6353a0e5028040006b5045170cf83f1ba0))
+
 # [2.0.0](https://github.com/HautechAI/webui/compare/@hautechai/webui.themeprovider@1.0.0...@hautechai/webui.themeprovider@2.0.0) (2025-08-16)
 
 **Note:** Version bump only for package @hautechai/webui.themeprovider
-
-
-
-
 
 # [1.0.0](https://github.com/HautechAI/webui/compare/@hautechai/webui.themeprovider@0.3.77...@hautechai/webui.themeprovider@1.0.0) (2025-08-13)
 
