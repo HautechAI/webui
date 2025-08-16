@@ -41,12 +41,11 @@ const Icon = styled('div')`
     width: 20px;
 `;
 
-const Image = styled('div')<{ src: string }>`
+const Image = styled('div')`
     border-color: ${themeVars.layout.strokes};
     border-radius: ${themeVars.cornerRadius.xs};
     border-style: solid;
     border-width: ${themeVars.stroke.thin};
-    background-image: url(${(props) => props.src});
     background-position: center;
     background-size: cover;
     height: 20px;
@@ -85,7 +84,7 @@ const ChipContent = React.forwardRef<HTMLDivElement, ChipProps>((props, ref) => 
                 })}
             </Icon>
         )}
-        {props.image && <Image src={props.image} />}
+    {props.image && <Image style={{ backgroundImage: `url(${props.image})` }} />}
         <div style={{ maxWidth: props.maxWidth ? `${props.maxWidth}px` : undefined }}>
             <Label variant="LabelSmallRegular">{props.label}</Label>
         </div>

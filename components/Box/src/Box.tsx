@@ -1,4 +1,3 @@
-import { styled } from '@linaria/react';
 import { themeVars } from '@hautechai/webui.themeprovider';
 import { forwardRef, PropsWithChildren } from 'react';
 
@@ -8,17 +7,6 @@ const sizeToCss = (size: number | string) => {
     }
     return `${size}px`;
 };
-
-const BaseComponent = forwardRef(
-    (props: Pick<BoxProps, 'className' | 'children' | 'style' | 'id'>, ref: React.ForwardedRef<HTMLDivElement>) => {
-        const { className, children, style, id } = props;
-        return <div {...{ ref }} {...{ className, children, style, id }} />;
-    },
-);
-
-const StyledBox = styled(BaseComponent)`
-    display: flex;
-`;
 
 export type BoxProps = PropsWithChildren<{
     className?: string;
@@ -93,5 +81,5 @@ export const Box = forwardRef((props: BoxProps, ref: React.ForwardedRef<HTMLDivE
         ...style,
     };
 
-    return <StyledBox {...rest} ref={ref} style={styleInline} />;
+    return <div {...rest} ref={ref} style={styleInline} />;
 });
