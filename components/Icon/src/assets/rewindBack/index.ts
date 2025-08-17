@@ -1,0 +1,1 @@
+export { default as RewindBackIcon } from './RewindBack';

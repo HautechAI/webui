@@ -2,7 +2,7 @@ import * as React from 'react';
 import type { SVGProps } from 'react';
 import { resolveIconColor, type IconColorProp } from '../../color';
 
-const SvgSmall = (
+const SvgSmallBold = (
     props: SVGProps<SVGSVGElement> & {
         size?: number;
         color?: IconColorProp;
@@ -18,12 +18,10 @@ const SvgSmall = (
         >
             <path
                 fill={resolveIconColor(props.color)}
-                fillRule="evenodd"
-                clipRule="evenodd"
-                d="M6.50028 3.33423C5.31986 2.69266 3.90425 3.53965 3.90425 4.81459V15.1853C3.90425 16.461 5.31986 17.3072 6.50028 16.6657L16.0359 11.4803C17.2268 10.8328 17.2268 9.1671 16.0359 8.52033L6.50028 3.33423ZM2.78784 4.81459C2.78784 2.65247 5.14496 1.32617 7.03393 2.35402L16.5696 7.53938C18.5374 8.60964 18.5374 11.3903 16.5696 12.4605L7.03393 17.6459C5.14496 18.673 2.78784 17.3482 2.78784 15.1853V4.81459Z"
+                d="M1.66666 14.645V5.35503C1.66666 3.81669 2.99999 2.84253 4.08582 3.59003L9.16666 7.30669V5.93586C9.16666 4.58919 10.3892 3.73753 11.3842 4.39169L17.565 8.45586C18.5892 9.12836 18.5892 10.8717 17.565 11.5442L11.3842 15.6084C10.3892 16.2625 9.16666 15.4109 9.16666 14.0642V12.6934L4.08582 16.41C3.00082 17.1575 1.66666 16.185 1.66666 14.645Z"
             />
         </svg>
     );
 };
 
-export default SvgSmall;
+export default SvgSmallBold;
