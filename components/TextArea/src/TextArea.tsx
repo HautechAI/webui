@@ -1,7 +1,7 @@
 import { IconButton, IconButtonProps } from '@hautechai/webui.iconbutton';
-import { styled } from '@linaria/react';
 import { themeVars } from '@hautechai/webui.themeprovider';
-import React, { ChangeEventHandler, useCallback, useRef, useState } from 'react';
+import { styled } from '@linaria/react';
+import React, { ChangeEventHandler, useCallback, useRef } from 'react';
 import TextareaAutosize from 'react-textarea-autosize';
 
 const Container = styled.div`

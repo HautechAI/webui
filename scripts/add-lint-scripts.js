@@ -16,16 +16,25 @@ const LINT_SCRIPTS = {
     'lint:tsc': 'tsc --noEmit',
     'lint:prettier': 'prettier --check src',
     'lint:prettier:fix': 'prettier --write src',
-    'lint': 'pnpm lint:eslint && pnpm lint:tsc && pnpm lint:prettier',
+    lint: 'pnpm lint:eslint && pnpm lint:tsc && pnpm lint:prettier',
     'lint:fix': 'pnpm lint:eslint:fix && pnpm lint:prettier:fix',
 };
 
 function isDir(p) {
-    try { return fs.statSync(p).isDirectory(); } catch { return false; }
+    try {
+        return fs.statSync(p).isDirectory();
+    } catch {
+        return false;
+    }
 }
 
 function exists(p) {
-    try { fs.accessSync(p); return true; } catch { return false; }
+    try {
+        fs.accessSync(p);
+        return true;
+    } catch {
+        return false;
+    }
 }
 
 function updatePackageJson(pkgPath) {
@@ -34,11 +43,10 @@ function updatePackageJson(pkgPath) {
     try {
         data = JSON.parse(src);
     } catch (e) {
-        console.error(`✖ Skipping invalid JSON: ${pkgPath}`);
+        console.error(`✖ Skipping invalid JSON: ${pkgPath}`, e);
         return false;
     }
 
-    const beforeScripts = JSON.stringify(data.scripts || {});
     if (!data.scripts) data.scripts = {};
 
     let changed = false;

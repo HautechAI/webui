@@ -1,6 +1,7 @@
+import { fn } from '@storybook/test';
 import { ContextMenu } from '../../../components/ContextMenu/src';
 import { DataItem } from '../../../components/DataItem/src';
-import { UploadIcon, MoreIcon } from '../../../components/Icon/src';
+import { MoreIcon, UploadIcon } from '../../../components/Icon/src';
 import { Menu } from '../../../components/Menu/src';
 
 export default {
@@ -19,32 +20,28 @@ const menus = [
             {
                 label: 'Option 1',
                 leadingIcon: <UploadIcon />,
-                onClick: () => console.log('clicked'),
+                onClick: () => fn(),
                 size: 'medium',
             },
-            { label: 'Any text', onClick: () => console.log('clicked'), size: 'medium' },
+            { label: 'Any text', onClick: fn(), size: 'medium' },
         ]}
     />,
     <Menu
         options={[
             {
                 label: 'Option 2',
-                onClick: () => console.log('clicked'),
+                onClick: () => fn(),
                 size: 'small',
             },
             {
                 label: 'Any text very very long text',
                 trailingIcon: <UploadIcon />,
-                onClick: () => console.log('clicked'),
+                onClick: () => fn(),
                 size: 'small',
             },
         ]}
     />,
-    <Menu
-        options={[
-            { label: 'Delete', trailingIcon: <MoreIcon />, onClick: () => console.log('clicked'), size: 'medium' },
-        ]}
-    />,
+    <Menu options={[{ label: 'Delete', trailingIcon: <MoreIcon />, onClick: () => fn(), size: 'medium' }]} />,
 ];
 
 export const Default = {

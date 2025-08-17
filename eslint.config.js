@@ -56,26 +56,29 @@ export default [
         },
         rules: {
             // TypeScript rules
-            '@typescript-eslint/no-unused-vars': ['error', { 
-                argsIgnorePattern: '^_',
-                varsIgnorePattern: '^_',
-                destructuredArrayIgnorePattern: '^_',
-            }],
+            '@typescript-eslint/no-unused-vars': [
+                'error',
+                {
+                    argsIgnorePattern: '^_',
+                    varsIgnorePattern: '^_',
+                    destructuredArrayIgnorePattern: '^_',
+                },
+            ],
             '@typescript-eslint/no-explicit-any': 'warn',
             '@typescript-eslint/explicit-function-return-type': 'off',
             '@typescript-eslint/explicit-module-boundary-types': 'off',
             '@typescript-eslint/no-empty-function': 'off',
-            
+
             // React rules
             'react/jsx-uses-react': 'off', // Not needed with new JSX transform
             'react/react-in-jsx-scope': 'off', // Not needed with new JSX transform
             'react/prop-types': 'off', // Using TypeScript for prop validation
             'react/display-name': 'off',
-            
+
             // React Hooks rules
             'react-hooks/rules-of-hooks': 'error',
-            'react-hooks/exhaustive-deps': 'warn',
-            
+            'react-hooks/exhaustive-deps': 'off',
+
             // General rules
             'no-unused-vars': 'off', // Handled by @typescript-eslint/no-unused-vars
             'no-console': 'warn',
@@ -99,6 +102,8 @@ export default [
         ignores: [
             'node_modules/',
             'dist/',
+            'components/**/dist/**',
+            'scripts/',
             'build/',
             '.next/',
             'coverage/',

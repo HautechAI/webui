@@ -8,7 +8,6 @@ import { Logo } from '../../../components/Logo/src';
 
 const OnChangeSyncArgs: Decorator<ModalProps> = (Story, context) => {
     const [open, setOpen] = useState(false);
-    console.log({ args: context.args });
     return (
         <>
             <Button onClick={() => setOpen((v) => !v)} label="Toggle Modal" />

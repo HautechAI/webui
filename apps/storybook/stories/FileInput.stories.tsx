@@ -15,7 +15,7 @@ export default {
 
 export const Main = {
     args: {
-        onChange: (files: File[]) => console.log(files),
+        onChange: () => fn(),
     },
 };
 

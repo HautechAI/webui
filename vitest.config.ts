@@ -1,7 +1,5 @@
 import linaria from '@wyw-in-js/vite';
 import { defineConfig } from 'vitest/config';
-import path from 'path';
-import fs from 'fs';
 
 export default defineConfig({
     plugins: [

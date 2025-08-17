@@ -40,7 +40,14 @@ export const WithIconButton = {
         avatar,
         title: 'John Doe',
         subtitle: '4 min ago',
-        actions: <IconButton size="small" variant="flat" icon={<MoreIcon />} onClick={fn() as (e: React.MouseEvent<HTMLButtonElement>) => void} />,
+        actions: (
+            <IconButton
+                size="small"
+                variant="flat"
+                icon={<MoreIcon />}
+                onClick={fn() as (e: React.MouseEvent<HTMLButtonElement>) => void}
+            />
+        ),
     },
 };
 
@@ -62,10 +69,10 @@ export const WithMenu = {
                             {
                                 label: 'Option 1',
                                 leadingIcon: <UploadIcon />,
-                                onClick: () => console.log('clicked'),
+                                onClick: () => fn(),
                                 size: 'small',
                             },
-                            { label: 'Any text', onClick: () => console.log('clicked'), size: 'small' },
+                            { label: 'Any text', onClick: () => fn(), size: 'small' },
                         ]}
                     />,
                 ]}

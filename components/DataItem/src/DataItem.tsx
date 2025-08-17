@@ -1,11 +1,10 @@
-import React from 'react';
-import { css } from '@linaria/core';
-import { styled } from '@linaria/react';
+import { Avatar } from '@hautechai/webui.avatar';
+import { Hint, HintProps } from '@hautechai/webui.hint';
+import { Row } from '@hautechai/webui.row';
 import { themeVars } from '@hautechai/webui.themeprovider';
 import { Typography, TypographyProps } from '@hautechai/webui.typography';
-import { Avatar } from '@hautechai/webui.avatar';
-import { Row } from '@hautechai/webui.row';
-import { Hint, HintProps } from '@hautechai/webui.hint';
+import { styled } from '@linaria/react';
+import React from 'react';
 
 const ColumnContainer = styled.div`
     display: flex;

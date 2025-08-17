@@ -3,6 +3,7 @@ import { PlaceholderIcon } from '../../../components/Icon/src';
 import { Box } from '../../../components/Box/src';
 import { DataItem } from '../../../components/DataItem/src/DataItem';
 import { IconButton } from '../../../components/IconButton/src';
+import { fn } from '@storybook/test';
 
 export default {
     title: 'Data Display/DataItem',
@@ -46,7 +47,7 @@ export const ColumnWithHint = {
             hint: 'Here hides the hint',
             position: 'right',
             buttonLabel: 'Link',
-            onClick: () => console.log('link'),
+            onClick: () => fn(),
         },
     },
 };
