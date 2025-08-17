@@ -10,13 +10,44 @@ This component provides a collection of icon components. Each specific icon has 
 | Parameter | Type | Description |
 |-----------|------|-------------|
 | size | number | Optional size dimension for the icon (typically in pixels) |
+| color | IconColorProp | Optional color for the icon (theme path, currentColor, hex, or rgba) |
+| style | 'outlined' \| 'bold' | Optional style variant for supported icons (defaults to 'outlined') |
 
 Individual icon components may have additional specific properties.
 
+## Style Variants
+
+Some icons support both `outlined` and `bold` style variants:
+
+- **GenerateIcon** - Supports `outlined` (default) and `bold` styles
+- **SettingsIcon** - Supports `outlined` (default) and `bold` styles  
+- **PlayIcon** - Supports `outlined` (default) and `bold` styles
+- **PauseIcon** - Supports `outlined` (default) and `bold` styles
+- **SkipToStartIcon** - Supports `outlined` (default) and `bold` styles
+- **SkipToEndIcon** - Supports `outlined` (default) and `bold` styles
+- **RewindBackIcon** - Supports `outlined` (default) and `bold` styles
+- **RewindForwardIcon** - Supports `outlined` (default) and `bold` styles
+- **StopIcon** - Supports `outlined` (default) and `bold` styles
+
 ## Usage Example
 ```tsx
-import { HomeIcon, UserIcon } from '@hautechai/webui.icon';
+import { 
+  SearchIcon, 
+  PlayIcon, 
+  PauseIcon, 
+  SettingsIcon,
+  PlaySquareIcon 
+} from '@hautechai/webui.icon';
 
-<HomeIcon size={24} />
-<UserIcon size={20} />
+// Basic usage
+<SearchIcon size={24} />
+<RepeatIcon size={20} />
+
+// Using style variants
+<PlayIcon size={24} style="outlined" />
+<PlayIcon size={24} style="bold" />
+<SettingsIcon size={20} style="bold" />
+
+// Renamed icon
+<PlaySquareIcon size={24} />
 ```

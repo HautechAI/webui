@@ -1,12 +1,11 @@
-import { type ThemeType } from '@hautechai/webui.themeprovider';
+import * as React from 'react';
 import type { SVGProps } from 'react';
-import { Paths } from 'type-fest';
+import { resolveIconColor, type IconColorProp } from '../../color';
 
-import { resolveIconColor } from '../../color';
 const SvgSmall = (
     props: SVGProps<SVGSVGElement> & {
         size?: number;
-        color?: Paths<ThemeType['palette'], { leavesOnly: true }> | 'currentColor' | `#${string}` | `rgba(${string})`;
+        color?: IconColorProp;
     },
 ) => {
     return (
