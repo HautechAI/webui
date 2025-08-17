@@ -39,6 +39,23 @@ const Container = styled.div`
     &[data-selected="true"] {
         background: ${themeVars.layout.surfaceMid};
     }
+
+    /* State-driven styling for children using data attributes */
+    &:hover [data-part="track"] {
+        background: ${themeVars.layout.strokes};
+    }
+
+    &:hover [data-part="resize-handler"] {
+        display: inline-flex;
+    }
+
+    &[data-selected="true"] [data-part="track"] {
+        background: ${themeVars.actions.tertiary};
+    }
+
+    &[data-selected="true"] [data-part="resize-handler"] {
+        display: inline-flex;
+    }
 `;
 
 // Track styles - track bar with different colors for default, hover, and selected states
@@ -51,22 +68,7 @@ const Track = styled.div`
     align-items: center;
     display: flex;
     cursor: move;
-    
-    ${Container}:hover & {
-        background: ${themeVars.layout.strokes};
-        
-        .resize-handler {
-            display: inline-flex;
-        }
-    }
-    
-    ${Container}[data-selected="true"] & {
-        background: ${themeVars.actions.tertiary};
-        
-        .resize-handler {
-            display: inline-flex;
-        }
-    }
+    /* Interactive states are controlled by parent via data attributes */
 `;
 
 // Resize handler styles
@@ -118,11 +120,12 @@ export const TimelineTrack = forwardRef<HTMLDivElement, TimelineTrackProps>((pro
                     width: trackWidth,
                     marginLeft: trackLeft,
                 }}
+                data-part="track"
             >
-                <ResizeHandler ref={startHandlerRef} className="resize-handler">
+                <ResizeHandler ref={startHandlerRef} data-part="resize-handler">
                     <ResizeLine />
                 </ResizeHandler>
-                <ResizeHandler ref={endHandlerRef} className="resize-handler">
+                <ResizeHandler ref={endHandlerRef} data-part="resize-handler">
                     <ResizeLine />
                 </ResizeHandler>
             </Track>

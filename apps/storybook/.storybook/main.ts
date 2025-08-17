@@ -8,20 +8,6 @@ const config: StorybookConfig = {
         name: '@storybook/react-vite',
         options: {},
     },
-    viteFinal: async (config) => {
-        return {
-            ...config,
-            plugins: [
-                linaria({
-                    include: ['**/*.{ts,tsx}'],
-                    babelOptions: {
-                        presets: ['@babel/preset-typescript', '@babel/preset-react'],
-                    },
-                }),
-                ...(config.plugins ?? []),
-            ],
-        };
-    },
 };
 
 export default config;

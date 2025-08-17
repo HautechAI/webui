@@ -1,6 +1,7 @@
 import { styled } from '@hautechai/webui.themeprovider';
 import { themeVars } from '@hautechai/webui.themeprovider';
-import { maxPxSize } from './CustomRatio';
+
+export const maxPxSize = 320;
 
 export const OptionLabel = styled.div`
     padding-left: ${themeVars.spacing.ml};
