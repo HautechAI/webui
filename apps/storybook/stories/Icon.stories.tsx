@@ -1,4 +1,6 @@
 import * as Icons from '../../../components/Icon';
+import type { SVGProps } from 'react';
+import type { IconColorProp } from '../../../components/Icon/src/color';
 
 export default {
     title: 'Icons/All Icons',
@@ -12,12 +14,19 @@ export default {
     tags: ['autodocs'],
 };
 
+// Base icon props interface
+type IconProps = SVGProps<SVGSVGElement> & { 
+    size?: number; 
+    color?: IconColorProp;
+    style?: 'outlined' | 'bold';
+};
+
 const AllIcons = () => {
-    const items: { key: string; name: string; Comp: React.ComponentType<Record<string, any>>; props?: Record<string, unknown> }[] = [];
+    const items: { key: string; name: string; Comp: React.ComponentType<IconProps>; props?: Partial<IconProps> }[] = [];
     for (const [name, Comp] of Object.entries(Icons)) {
         if (typeof Comp !== 'function') continue;
         items.push({ key: `${name}-default`, name, Comp, props: {} });
-        if ((Comp as React.ComponentType<Record<string, any>> & { hasStyleVariant?: boolean }).hasStyleVariant) {
+        if ((Comp as React.ComponentType<IconProps> & { hasStyleVariant?: boolean }).hasStyleVariant) {
             items.push({ key: `${name}-style-bold`, name: `${name} (style=bold)`, Comp, props: { style: 'bold' } });
         }
     }

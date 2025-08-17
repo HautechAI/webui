@@ -1,6 +1,6 @@
 import React from 'react';
 import { useRef } from 'react';
-import { TimelineTrack } from '../../../components/TimelineTrack/src';
+import { TimelineTrack, type TimelineTrackProps } from '../../../components/TimelineTrack/src';
 
 export default {
     title: 'VisualEditor/Timeline/TimelineTrack',
@@ -45,7 +45,7 @@ export default {
 };
 
 export const Default = {
-    render: function DefaultRender(args: any) {
+    render: function DefaultRender(args: TimelineTrackProps) {
         const startHandlerRef = useRef<HTMLDivElement>(null);
         const endHandlerRef = useRef<HTMLDivElement>(null);
         const bodyRef = useRef<HTMLDivElement>(null);
@@ -63,7 +63,7 @@ export const Default = {
 };
 
 export const Selected = {
-    render: function SelectedRender(args: any) {
+    render: function SelectedRender(args: TimelineTrackProps) {
         const startHandlerRef = useRef<HTMLDivElement>(null);
         const endHandlerRef = useRef<HTMLDivElement>(null);
         const bodyRef = useRef<HTMLDivElement>(null);

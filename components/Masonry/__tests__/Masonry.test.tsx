@@ -6,7 +6,7 @@ import { testTheme } from '../../test-theme';
 
 // Mock react-responsive-masonry for this test
 vi.mock('react-responsive-masonry', () => ({
-    default: ({ children, ...props }: any) => 
+    default: ({ children, ...props }: { children: React.ReactNode; style?: React.CSSProperties }) => 
         React.createElement('div', { 
             ...props, 
             'data-testid': 'masonry',

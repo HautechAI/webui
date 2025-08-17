@@ -17,7 +17,7 @@ describe('TextInput', () => {
     });
 
     it('should clone icons with correct size for medium (default)', () => {
-        const TestIcon = ({ size, ...rest }: any) => <div data-testid={rest['data-testid']} data-size={size} />;
+        const TestIcon = ({ size, ...rest }: { size?: number } & Record<string, unknown>) => <div data-testid={rest['data-testid']} data-size={size} />;
 
         render(
             <ThemeProvider theme={testTheme}>
@@ -38,7 +38,7 @@ describe('TextInput', () => {
     });
 
     it('should clone icons with correct size for small', () => {
-        const TestIcon = ({ size, ...rest }: any) => <div data-testid={rest['data-testid']} data-size={size} />;
+        const TestIcon = ({ size, ...rest }: { size?: number } & Record<string, unknown>) => <div data-testid={rest['data-testid']} data-size={size} />;
 
         render(
             <ThemeProvider theme={testTheme}>

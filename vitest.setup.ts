@@ -6,7 +6,7 @@ global.IntersectionObserver = class IntersectionObserver {
   observe() {}
   unobserve() {}
   disconnect() {}
-} as any;
+} as typeof IntersectionObserver;
 
 // Mock ResizeObserver for components that use it
 global.ResizeObserver = class ResizeObserver {
@@ -14,4 +14,4 @@ global.ResizeObserver = class ResizeObserver {
   observe() {}
   unobserve() {}
   disconnect() {}
-} as any;
+} as typeof ResizeObserver;

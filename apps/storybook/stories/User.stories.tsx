@@ -40,7 +40,7 @@ export const WithIconButton = {
         avatar,
         title: 'John Doe',
         subtitle: '4 min ago',
-        actions: <IconButton size="small" variant="flat" icon={<MoreIcon />} onClick={fn() as any} />,
+        actions: <IconButton size="small" variant="flat" icon={<MoreIcon />} onClick={fn() as (e: React.MouseEvent<HTMLButtonElement>) => void} />,
     },
 };
 
