@@ -57,10 +57,10 @@ export const Field = (props: FieldProps) => {
                 </Row>
                 <Row stretch spacing="s" align="center">
                     {React.Children.map(children, (child) => {
-                        if (React.isValidElement(child)) {
+                        if (React.isValidElement<{ hasError: boolean }>(child)) {
                             return React.cloneElement(child, {
                                 hasError: !!error,
-                            } as unknown);
+                            });
                         }
                         return child;
                     })}

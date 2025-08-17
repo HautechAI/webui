@@ -87,10 +87,10 @@ export const DataItem = (props: DataItemProps) => {
                     </Typography>
 
                     {React.Children.map(props.trailingIcon, (child) => {
-                        if (React.isValidElement(child)) {
+                        if (React.isValidElement<{ size: number }>(child)) {
                             return React.cloneElement(child, {
                                 size: 20,
-                            } as unknown);
+                            });
                         }
                         return child;
                     })}

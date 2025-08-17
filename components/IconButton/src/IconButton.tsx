@@ -75,10 +75,9 @@ export const IconButton = (props: IconButtonProps) => {
         xsmall: 16,
     };
 
-    const iconWithSize =
-        React.isValidElement(icon) && typeof icon.type !== 'string'
-            ? React.cloneElement(icon as React.ReactElement<unknown>, { size: iconSizes[size] })
-            : icon;
+    const iconWithSize = React.isValidElement<{ size: number }>(icon)
+        ? React.cloneElement(icon, { size: iconSizes[size] })
+        : icon;
 
     return (
         <StyledButton

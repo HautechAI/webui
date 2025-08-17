@@ -115,6 +115,16 @@ The library includes the following components organized by category:
 | ------------------------------------- | ------------------------------------------------- |
 | [**Icon**](components/Icon/README.md) | Scalable icon component with various icon options |
 
+### Node
+
+| Component | Description |
+|-----------|-------------|
+| [**NodeContainer**](components/NodeContainer/README.md) | Container component that provides the basic structure and styling for Node components in the node-based interface |
+| [**NodeContent**](components/NodeContent/README.md) | Content area component that provides proper padding and styling for node content |
+| [**NodeFooter**](components/NodeFooter/README.md) | Footer component for nodes that displays input and output ports |
+| [**NodeHeader**](components/NodeHeader/README.md) | Header component for nodes that displays an icon, label, and badge |
+| [**NodePort**](components/NodePort/README.md) | Port component for input and output connections on nodes |
+
 ### VisualEditor
 
 | Component                                               | Description                                                                                                                             |

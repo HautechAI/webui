@@ -1,12 +1,8 @@
 import type { Paths } from 'type-fest';
-import { cssVar, type ThemeType } from '@hautechai/webui.themeprovider';
+import { cssVar, type ThemeType, type IconColorProp } from '@hautechai/webui.themeprovider';
 
 // Shared color prop type for all icons
-export type IconColorProp =
-    | Paths<ThemeType['palette'], { leavesOnly: true }>
-    | 'currentColor'
-    | `#${string}`
-    | `rgba(${string})`;
+export { IconColorProp };
 
 /**
  * Resolve a color variable or value for icon fills/strokes.

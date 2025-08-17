@@ -45,10 +45,10 @@ export const HoverControls = (props: HoverControlsProps) => {
                 </CheckboxWrapper>
             </ControlsContainer>
             {React.Children.map(children, (child) => {
-                if (React.isValidElement(child)) {
+                if (React.isValidElement<{ selected: boolean }>(child)) {
                     return React.cloneElement(child, {
                         selected,
-                    } as unknown);
+                    });
                 }
                 return child;
             })}
