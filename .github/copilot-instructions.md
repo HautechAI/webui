@@ -12,6 +12,8 @@ When **adding a new component**:
 - Include a clear, concise description of its purpose
 - Maintain alphabetical order within each category section
 - Use the same categories as defined in Storybook: Layout, Input, Data Display, Navigation, Surfaces, Compositions, Interaction, Tabs, Icons, System
+- **Create comprehensive tests** in `components/[ComponentName]/__tests__/` covering component functionality, props, and edge cases
+- **Create Storybook stories** in `apps/storybook/stories/[ComponentName].stories.tsx` demonstrating all component states and variations
 
 When **removing a component**:
 - Remove the corresponding entry from the appropriate category section in the components table in `/README.md`
@@ -104,12 +106,33 @@ When reviewing documentation changes:
 - [ ] Descriptions are clear and consistent
 - [ ] No broken links or formatting issues
 - [ ] New components are properly documented in the correct category section
+- [ ] New components include comprehensive test coverage
+- [ ] New components include Storybook stories demonstrating all states and variations
 
 ## Tools and Resources
 
 - Component TypeScript files are located in `/components/[ComponentName]/src/`
 - Use the existing README files as templates for consistency
 - Reference Storybook stories in `/apps/storybook/stories/` for usage examples
+
+## Component Development Requirements
+
+### Testing Requirements
+Every new component **must** include comprehensive test coverage:
+- Create tests in `components/[ComponentName]/__tests__/` directory
+- Cover all component functionality, props, and edge cases
+- Test user interactions and event handlers
+- Include accessibility testing where applicable
+- Follow existing test patterns in the codebase
+
+### Storybook Requirements  
+Every new component **must** include Storybook stories:
+- Create stories in `apps/storybook/stories/[ComponentName].stories.tsx`
+- Demonstrate all component states and variations
+- Include examples with different prop combinations
+- Show interactive features and edge cases (long text, etc.)
+- Use consistent story naming and organization patterns
+- Follow the existing story structure with proper categories
 
 ## Icon Creation (Figma MCP)
 
