@@ -31,9 +31,9 @@ export const Column = (props: ColumnProps) => {
         gap: spacing ? themeVars.spacing[spacing] : 0,
         alignItems: align,
         flex: stretch ? 1 : undefined,
-        overflow,
-        overflowX,
-        overflowY,
+        ...(overflow ? { overflow } : {}),
+        ...(overflowX ? { overflowX } : {}),
+        ...(overflowY ? { overflowY } : {}),
     };
     return (
         <Container style={style} {...rest}>

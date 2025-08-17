@@ -115,10 +115,10 @@ const OuterIconContainer = styled.div`
 const getIcon = (icon: React.ReactNode) => (
     <InnerIconContainer>
         {React.Children.map(icon, (child) => {
-            if (React.isValidElement(child)) {
+            if (React.isValidElement<{ size: number }>(child)) {
                 return React.cloneElement(child, {
                     size: 20,
-                } as unknown);
+                });
             }
             return child;
         })}
@@ -176,10 +176,10 @@ export const TextArea = (props: TextAreaProps) => {
                         variant="flat"
                         size="small"
                         icon={
-                            React.isValidElement(icon)
+                            React.isValidElement<{ size: number }>(icon)
                                 ? React.cloneElement(icon, {
                                       size: 20,
-                                  } as unknown)
+                                  })
                                 : icon
                         }
                         disabled={disabled}

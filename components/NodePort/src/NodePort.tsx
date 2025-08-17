@@ -1,5 +1,5 @@
 import React from 'react';
-import { styled } from '@linaria/react';
+import { styled } from '@hautechai/webui.themeprovider';
 import { themeVars } from '@hautechai/webui.themeprovider';
 import { Typography } from '@hautechai/webui.typography';
 
@@ -14,12 +14,12 @@ const Container = styled.div`
     display: flex;
     align-items: center;
 
-    &[data-type="input"] {
+    &[data-type='input'] {
         justify-content: flex-start;
         padding-left: ${themeVars.spacing.xl};
     }
 
-    &[data-type="output"] {
+    &[data-type='output'] {
         justify-content: flex-end;
         padding-right: ${themeVars.spacing.xl};
     }
@@ -33,11 +33,11 @@ const PortHandle = styled.div`
     border: ${themeVars.stroke.thin} solid ${themeVars.layout.surfaceLow};
     position: absolute;
 
-    &[data-type="input"] {
+    &[data-type='input'] {
         left: -6px;
     }
 
-    &[data-type="output"] {
+    &[data-type='output'] {
         right: -6px;
     }
 `;

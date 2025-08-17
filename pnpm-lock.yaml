@@ -645,6 +645,9 @@ importers:
 
   components/NodeHeader:
     dependencies:
+      '@hautechai/webui.column':
+        specifier: workspace:^
+        version: link:../Column
       '@hautechai/webui.divider':
         specifier: workspace:^
         version: link:../Divider
