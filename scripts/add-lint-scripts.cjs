@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 /*
-Adds linting scripts to every package.json under components/* and apps/*
+Adds TypeScript linting scripts to every package.json under components/* and apps/*
+ESLint and Prettier are now handled at the root level for better performance.
 Idempotent: re-writes values if present. Preserves other fields and key order.
 */
 const fs = require('fs');
@@ -11,13 +12,8 @@ const COMPONENTS_DIR = path.join(ROOT, 'components');
 const APPS_DIR = path.join(ROOT, 'apps');
 
 const LINT_SCRIPTS = {
-    'lint:eslint': 'eslint src --ext .ts,.tsx',
-    'lint:eslint:fix': 'eslint src --ext .ts,.tsx --fix',
     'lint:tsc': 'tsc --noEmit',
-    'lint:prettier': 'prettier --check src',
-    'lint:prettier:fix': 'prettier --write src',
-    lint: 'pnpm lint:eslint && pnpm lint:tsc && pnpm lint:prettier',
-    'lint:fix': 'pnpm lint:eslint:fix && pnpm lint:prettier:fix',
+    lint: 'pnpm lint:tsc',
 };
 
 function isDir(p) {
@@ -50,6 +46,17 @@ function updatePackageJson(pkgPath) {
     if (!data.scripts) data.scripts = {};
 
     let changed = false;
+
+    // Remove old eslint and prettier scripts that are now handled at root level
+    const scriptsToRemove = ['lint:eslint', 'lint:eslint:fix', 'lint:prettier', 'lint:prettier:fix', 'lint:fix'];
+    for (const scriptName of scriptsToRemove) {
+        if (data.scripts[scriptName]) {
+            delete data.scripts[scriptName];
+            changed = true;
+        }
+    }
+
+    // Add/update tsc-only scripts
     for (const [k, v] of Object.entries(LINT_SCRIPTS)) {
         if (data.scripts[k] !== v) {
             data.scripts[k] = v;

@@ -18,13 +18,8 @@
     "scripts": {
         "storybook": "storybook dev -p 6006 --no-open",
         "build-storybook": "storybook build",
-        "lint:eslint": "eslint stories --ext .ts,.tsx",
-        "lint:eslint:fix": "eslint stories --ext .ts,.tsx --fix",
         "lint:tsc": "tsc --noEmit",
-        "lint:prettier": "prettier --check stories",
-        "lint:prettier:fix": "prettier --write stories",
-        "lint": "pnpm lint:eslint && pnpm lint:tsc && pnpm lint:prettier",
-        "lint:fix": "pnpm lint:eslint:fix && pnpm lint:prettier:fix"
+        "lint": "pnpm lint:tsc"
     },
     "dependencies": {
         "@hautechai/webui.theme": "workspace:^",
