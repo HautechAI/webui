@@ -53,7 +53,7 @@ const ArrowContainer = styled.div<{ collapsed: boolean }>`
     justify-content: center;
     color: ${themeVars.layout.onSurface.secondary};
     transform: ${props => props.collapsed ? 'rotate(0deg)' : 'rotate(-90deg)'};
-    transition: transform ${themeVars.animation.duration.fast}ms ${themeVars.animation.timing.easeOut};
+    transition: transform ${themeVars.animation.duration.fast} ${themeVars.animation.timing.easeOut};
 `;
 
 export const NodeGroupHeader = (props: NodeGroupHeaderProps) => {

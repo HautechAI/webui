@@ -32,8 +32,8 @@ const ContentContainer = styled.div<{ collapsed: boolean }>`
     max-height: ${props => props.collapsed ? '0px' : '1000px'};
     opacity: ${props => props.collapsed ? 0 : 1};
     transition: 
-        max-height ${themeVars.animation.duration.normal}ms ${themeVars.animation.timing.easeOut},
-        opacity ${themeVars.animation.duration.fast}ms ${themeVars.animation.timing.easeOut};
+        max-height ${themeVars.animation.duration.normal} ${themeVars.animation.timing.easeOut},
+        opacity ${themeVars.animation.duration.fast} ${themeVars.animation.timing.easeOut};
 `;
 
 export const NodeGroup = (props: NodeGroupProps) => {
