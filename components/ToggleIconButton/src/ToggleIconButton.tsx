@@ -1,5 +1,5 @@
 import { ButtonBase } from '@hautechai/webui.buttonbase';
-import { css } from '@linaria/core';
+import { styled } from '@hautechai/webui.themeprovider';
 import { themeVars } from '@hautechai/webui.themeprovider';
 
 export type ToggleIconButtonProps = {
@@ -11,8 +11,7 @@ export type ToggleIconButtonProps = {
     onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
 };
 
-// Base styles
-const buttonBase = css`
+const StyledButton = styled(ButtonBase)`
     border-style: solid;
     display: inline-flex;
     align-items: center;
@@ -25,226 +24,163 @@ const buttonBase = css`
     &:disabled {
         cursor: not-allowed;
     }
-`;
 
-// Size variants with specific dimensions
-const mediumSize = css`
-    width: 48px;
-    height: 48px;
-    border-radius: ${themeVars.cornerRadius.m};
-`;
-
-const smallSize = css`
-    width: 36px;
-    height: 36px;
-    border-radius: ${themeVars.cornerRadius.m};
-`;
-
-const xsmallSize = css`
-    width: 20px;
-    height: 20px;
-    border-radius: ${themeVars.cornerRadius.s};
-`;
-
-// Filled variant
-const filledVariant = css`
-    border-width: ${themeVars.stroke.thin};
-    
-    /* Default state */
-    background-color: ${themeVars.layout.surfaceLow};
-    border-color: ${themeVars.layout.strokes};
-    color: ${themeVars.layout.onSurface.secondary};
-    
-    /* Checked default state - flip background with pressed */
-    &[data-checked="true"] {
-        background-color: ${themeVars.layout.surfaceHigh};
+    /* Sizes */
+    &[data-size='medium'] {
+        width: 48px;
+        height: 48px;
+        border-radius: ${themeVars.cornerRadius.m};
+    }
+    &[data-size='small'] {
+        width: 36px;
+        height: 36px;
+        border-radius: ${themeVars.cornerRadius.m};
+    }
+    &[data-size='xsmall'] {
+        width: 20px;
+        height: 20px;
+        border-radius: ${themeVars.cornerRadius.s};
     }
 
-    &:hover:not(:disabled) {
+    /* Variants */
+    &[data-variant='filled'] {
+        border-width: ${themeVars.stroke.thin};
+        background-color: ${themeVars.layout.surfaceLow};
+        border-color: ${themeVars.layout.strokes};
+        color: ${themeVars.layout.onSurface.secondary};
+    }
+    &[data-variant='filled'][data-checked='true'] {
+        background-color: ${themeVars.layout.surfaceHigh};
+    }
+    &[data-variant='filled']:hover:not(:disabled) {
         background-color: ${themeVars.layout.surfaceMid};
         border-color: ${themeVars.layout.strokes};
         color: ${themeVars.layout.onSurface.primary};
     }
-
-    &:active:not(:disabled) {
+    &[data-variant='filled']:active:not(:disabled) {
         background-color: ${themeVars.layout.surfaceHigh};
         border-color: ${themeVars.layout.onSurface.primary};
         color: ${themeVars.layout.onSurface.primary};
     }
-    
-    /* Checked pressed state - flip with default */
-    &[data-checked="true"]:active:not(:disabled) {
+    &[data-variant='filled'][data-checked='true']:active:not(:disabled) {
         background-color: ${themeVars.layout.surfaceLow};
     }
-
-    &:focus-visible:not(:disabled) {
+    &[data-variant='filled']:focus-visible:not(:disabled) {
         background-color: ${themeVars.layout.surfaceLow};
         border-color: ${themeVars.layout.onSurface.primary};
         color: ${themeVars.layout.onSurface.secondary};
     }
-
-    &:disabled {
+    &[data-variant='filled']:disabled {
         background-color: ${themeVars.layout.surfaceMid};
         border-color: ${themeVars.layout.strokes};
         color: ${themeVars.layout.onSurface.tertiary};
     }
-`;
 
-// Outlined variant
-const outlinedVariant = css`
-    border-width: ${themeVars.stroke.thin};
-    
-    /* Default state - transparent background */
-    background-color: transparent;
-    border-color: ${themeVars.layout.strokes};
-    color: ${themeVars.layout.onSurface.secondary};
-    
-    /* Checked default state - flip background with pressed */
-    &[data-checked="true"] {
+    &[data-variant='outlined'] {
+        border-width: ${themeVars.stroke.thin};
+        background-color: transparent;
+        border-color: ${themeVars.layout.strokes};
+        color: ${themeVars.layout.onSurface.secondary};
+    }
+    &[data-variant='outlined'][data-checked='true'] {
         background-color: ${themeVars.layout.surfaceHigh};
     }
-
-    &:hover:not(:disabled) {
+    &[data-variant='outlined']:hover:not(:disabled) {
         background-color: ${themeVars.layout.surfaceMid};
         border-color: ${themeVars.layout.strokes};
         color: ${themeVars.layout.onSurface.primary};
     }
-
-    &:active:not(:disabled) {
+    &[data-variant='outlined']:active:not(:disabled) {
         background-color: ${themeVars.layout.surfaceHigh};
         border-color: ${themeVars.layout.onSurface.primary};
         color: ${themeVars.layout.onSurface.primary};
     }
-    
-    /* Checked pressed state - flip with default */
-    &[data-checked="true"]:active:not(:disabled) {
+    &[data-variant='outlined'][data-checked='true']:active:not(:disabled) {
         background-color: transparent;
     }
-
-    &:focus-visible:not(:disabled) {
+    &[data-variant='outlined']:focus-visible:not(:disabled) {
         background-color: transparent;
         border-color: ${themeVars.layout.onSurface.primary};
         color: ${themeVars.layout.onSurface.secondary};
     }
-
-    &:disabled {
+    &[data-variant='outlined']:disabled {
         background-color: ${themeVars.layout.surfaceMid};
         border-color: ${themeVars.layout.strokes};
         color: ${themeVars.layout.onSurface.tertiary};
     }
-`;
 
-// Flat variant
-const flatVariant = css`
-    /* Default state - no border */
-    border-width: 0px;
-    background-color: transparent;
-    color: ${themeVars.layout.onSurface.secondary};
-    
-    /* Checked default state - flip background with pressed */
-    &[data-checked="true"] {
+    &[data-variant='flat'] {
+        border-width: 0px;
+        background-color: transparent;
+        color: ${themeVars.layout.onSurface.secondary};
+    }
+    &[data-variant='flat'][data-checked='true'] {
         background-color: ${themeVars.layout.surfaceHigh};
     }
-
-    &:hover:not(:disabled) {
+    &[data-variant='flat']:hover:not(:disabled) {
         background-color: ${themeVars.layout.surfaceMid};
         color: ${themeVars.layout.onSurface.primary};
     }
-
-    &:active:not(:disabled) {
+    &[data-variant='flat']:active:not(:disabled) {
         background-color: ${themeVars.layout.surfaceHigh};
         color: ${themeVars.layout.onSurface.primary};
     }
-    
-    /* Checked pressed state - flip with default */
-    &[data-checked="true"]:active:not(:disabled) {
+    &[data-variant='flat'][data-checked='true']:active:not(:disabled) {
         background-color: transparent;
     }
-
-    &:focus-visible:not(:disabled) {
+    &[data-variant='flat']:focus-visible:not(:disabled) {
         border-width: ${themeVars.stroke.thin};
         border-color: ${themeVars.layout.onSurface.primary};
         background-color: transparent;
         color: ${themeVars.layout.onSurface.secondary};
     }
-
-    &:disabled {
+    &[data-variant='flat']:disabled {
         background-color: ${themeVars.layout.surfaceMid};
         color: ${themeVars.layout.onSurface.tertiary};
     }
-`;
 
-// Primary variant
-const primaryVariant = css`
-    /* Default state - no border */
-    border-width: 0px;
-    background-color: ${themeVars.actions.secondary};
-    color: ${themeVars.actions.onSecondary};
-    
-    /* Checked default state - flip background with pressed */
-    &[data-checked="true"] {
+    &[data-variant='primary'] {
+        border-width: 0px;
+        background-color: ${themeVars.actions.secondary};
+        color: ${themeVars.actions.onSecondary};
+    }
+    &[data-variant='primary'][data-checked='true'] {
         background-color: ${themeVars.actions.primary};
         color: ${themeVars.actions.onPrimary};
     }
-
-    &:hover:not(:disabled) {
+    &[data-variant='primary']:hover:not(:disabled) {
         background-color: ${themeVars.actions.tertiary};
         color: ${themeVars.actions.onTertiary};
     }
-
-    &:active:not(:disabled) {
+    &[data-variant='primary']:active:not(:disabled) {
         background-color: ${themeVars.actions.primary};
         color: ${themeVars.actions.onPrimary};
     }
-    
-    /* Checked pressed state - flip with default */
-    &[data-checked="true"]:active:not(:disabled) {
+    &[data-variant='primary'][data-checked='true']:active:not(:disabled) {
         background-color: ${themeVars.actions.secondary};
         color: ${themeVars.actions.onSecondary};
     }
-
-    &:focus-visible:not(:disabled) {
+    &[data-variant='primary']:focus-visible:not(:disabled) {
         background-color: ${themeVars.actions.secondary};
         color: ${themeVars.actions.onSecondary};
     }
-
-    &:disabled {
+    &[data-variant='primary']:disabled {
         background-color: ${themeVars.layout.surfaceMid};
         color: ${themeVars.layout.onSurface.tertiary};
     }
 `;
-
-export const toggleIconButtonClasses = {
-    base: buttonBase,
-    sizes: {
-        medium: mediumSize,
-        small: smallSize,
-        xsmall: xsmallSize,
-    },
-    variants: {
-        filled: filledVariant,
-        outlined: outlinedVariant,
-        flat: flatVariant,
-        primary: primaryVariant,
-    },
-};
 
 export const ToggleIconButton = (props: ToggleIconButtonProps) => {
     const { variant = 'filled', size = 'medium', icon, checked = false, ...rest } = props;
 
-    const buttonClassName = [
-        toggleIconButtonClasses.base,
-        toggleIconButtonClasses.sizes[size],
-        toggleIconButtonClasses.variants[variant],
-    ].join(' ');
-
     return (
-        <ButtonBase 
-            className={buttonClassName} 
+        <StyledButton
+            data-variant={variant}
+            data-size={size}
             data-checked={checked}
             {...rest}
         >
             {icon}
-        </ButtonBase>
+        </StyledButton>
     );
 };

@@ -1,6 +1,5 @@
 import { ButtonBase } from '@hautechai/webui.buttonbase';
-import { css } from '@linaria/core';
-import { styled } from '@linaria/react';
+import { styled } from '@hautechai/webui.themeprovider';
 import { themeVars } from '@hautechai/webui.themeprovider';
 import { Typography, TypographyProps } from '@hautechai/webui.typography';
 
@@ -17,8 +16,7 @@ export type ButtonProps = {
     stretch?: boolean;
 };
 
-// Base button styles
-const buttonBase = css`
+const StyledButton = styled(ButtonBase)`
     justify-content: center;
     align-items: center;
     border-radius: ${themeVars.cornerRadius.m};
@@ -26,120 +24,87 @@ const buttonBase = css`
     transition:
         background-color ${themeVars.animation.duration.fast} ${themeVars.animation.timing.easeOut},
         border-color ${themeVars.animation.duration.fast} ${themeVars.animation.timing.easeOut};
-`;
 
-// Size-specific styles
-const mediumSize = css`
-    padding: ${themeVars.spacing.ml} ${themeVars.spacing.xl};
-    gap: ${themeVars.spacing.m};
-`;
+    /* Sizes */
+    &[data-size='medium'] {
+        padding: ${themeVars.spacing.ml} ${themeVars.spacing.xl};
+        gap: ${themeVars.spacing.m};
+    }
 
-const smallSize = css`
-    padding: ${themeVars.spacing.m} ${themeVars.spacing.l};
-    gap: ${themeVars.spacing.s};
-`;
+    &[data-size='small'] {
+        padding: ${themeVars.spacing.m} ${themeVars.spacing.l};
+        gap: ${themeVars.spacing.s};
+    }
 
-// Variant and hierarchy combinations - filled primary
-const filledPrimary = css`
-    border-width: 0px;
-    background-color: ${themeVars.actions.primary};
-    color: ${themeVars.actions.onPrimary};
+    /* Filled + Primary */
+    &[data-variant='filled'][data-hierarchy='primary'] {
+        border-width: 0px;
+        background-color: ${themeVars.actions.primary};
+        color: ${themeVars.actions.onPrimary};
+    }
 
-    &:hover,
-    &:focus-visible {
+    &[data-variant='filled'][data-hierarchy='primary']:hover,
+    &[data-variant='filled'][data-hierarchy='primary']:focus-visible {
         background-color: ${themeVars.actions.onSecondary};
         color: ${themeVars.actions.onPrimary};
     }
 
-    &:disabled {
-        background-color: ${themeVars.layout.surfaceMid};
-        color: ${themeVars.layout.onSurface.tertiary};
-        cursor: not-allowed;
-        border-color: ${themeVars.layout.strokes};
+    /* Filled + Secondary */
+    &[data-variant='filled'][data-hierarchy='secondary'] {
+        border-width: 0px;
+        background-color: ${themeVars.actions.secondary};
+        color: ${themeVars.actions.onSecondary};
     }
-`;
 
-// Variant and hierarchy combinations - filled secondary
-const filledSecondary = css`
-    border-width: 0px;
-    background-color: ${themeVars.actions.secondary};
-    color: ${themeVars.actions.onSecondary};
-
-    &:hover,
-    &:focus-visible {
+    &[data-variant='filled'][data-hierarchy='secondary']:hover,
+    &[data-variant='filled'][data-hierarchy='secondary']:focus-visible {
         background-color: ${themeVars.actions.tertiary};
         color: ${themeVars.actions.onTertiary};
     }
 
-    &:disabled {
+    /* Outlined + Primary */
+    &[data-variant='outlined'][data-hierarchy='primary'] {
+        border-width: ${themeVars.stroke.thin};
+        border-color: ${themeVars.actions.primary};
+        background-color: transparent;
+        color: ${themeVars.actions.primary};
+    }
+
+    &[data-variant='outlined'][data-hierarchy='primary']:hover,
+    &[data-variant='outlined'][data-hierarchy='primary']:focus-visible {
+        background-color: ${themeVars.actions.onPrimary};
+        color: ${themeVars.actions.primary};
+    }
+
+    /* Outlined + Secondary */
+    &[data-variant='outlined'][data-hierarchy='secondary'] {
+        border-width: ${themeVars.stroke.thin};
+        border-color: ${themeVars.layout.strokes};
+        background-color: transparent;
+        color: ${themeVars.layout.onSurface.secondary};
+    }
+
+    &[data-variant='outlined'][data-hierarchy='secondary']:hover,
+    &[data-variant='outlined'][data-hierarchy='secondary']:focus-visible {
+        background-color: ${themeVars.layout.surfaceHigh};
+        color: ${themeVars.layout.onSurface.secondary};
+    }
+
+    /* Disabled states */
+    &[data-variant='filled']:disabled {
         background-color: ${themeVars.layout.surfaceMid};
         color: ${themeVars.layout.onSurface.tertiary};
         cursor: not-allowed;
         border-color: ${themeVars.layout.strokes};
     }
-`;
 
-// Variant and hierarchy combinations - outlined primary
-const outlinedPrimary = css`
-    border-width: ${themeVars.stroke.thin};
-    border-color: ${themeVars.actions.primary};
-    background-color: transparent;
-    color: ${themeVars.actions.primary};
-
-    &:hover,
-    &:focus-visible {
-        background-color: ${themeVars.actions.onPrimary};
-        color: ${themeVars.actions.primary};
-    }
-
-    &:disabled {
+    &[data-variant='outlined']:disabled {
         background-color: transparent;
         color: ${themeVars.layout.onSurface.tertiary};
         cursor: not-allowed;
         border-color: ${themeVars.layout.strokes};
     }
 `;
-
-// Variant and hierarchy combinations - outlined secondary
-const outlinedSecondary = css`
-    border-width: ${themeVars.stroke.thin};
-    border-color: ${themeVars.layout.strokes};
-    background-color: transparent;
-    color: ${themeVars.layout.onSurface.secondary};
-
-    &:hover,
-    &:focus-visible {
-        background-color: ${themeVars.layout.surfaceHigh};
-        color: ${themeVars.layout.onSurface.secondary};
-    }
-
-    &:disabled {
-        background-color: transparent;
-        color: ${themeVars.layout.onSurface.tertiary};
-        cursor: not-allowed;
-        border-color: ${themeVars.layout.strokes};
-    }
-`;
-
-export const buttonClasses = {
-    base: buttonBase,
-    sizes: {
-        medium: mediumSize,
-        small: smallSize,
-    },
-    variants: {
-        filled: {
-            primary: filledPrimary,
-            secondary: filledSecondary,
-        },
-        outlined: {
-            primary: outlinedPrimary,
-            secondary: outlinedSecondary,
-        },
-    },
-};
-
-const StyledButton = styled(ButtonBase)``;
 
 const LabelVariants: Record<Required<ButtonProps>['size'], TypographyProps['variant']> = {
     small: 'LabelSmallRegular',
@@ -158,17 +123,11 @@ export const Button = (props: ButtonProps) => {
         ...rest
     } = props;
 
-    const buttonClassName = [
-        buttonClasses.base,
-        buttonClasses.sizes[size],
-        buttonClasses.variants[variant][hierarchy],
-    ].join(' ');
-
     return (
-        <StyledButton className={buttonClassName} stretch={stretch} {...rest}>
-            {props.leadingIcon}
+        <StyledButton data-variant={variant} data-hierarchy={hierarchy} data-size={size} stretch={stretch} {...rest}>
+            {leadingIcon}
             <Typography variant={LabelVariants[size]}>{label}</Typography>
-            {props.trailingIcon}
+            {trailingIcon}
         </StyledButton>
     );
 };

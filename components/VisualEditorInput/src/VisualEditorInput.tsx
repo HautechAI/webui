@@ -1,4 +1,4 @@
-import { styled } from '@linaria/react';
+import { styled } from '@hautechai/webui.themeprovider';
 import { themeVars } from '@hautechai/webui.themeprovider';
 import { KeyframeToggle, type KeyframeToggleState } from '@hautechai/webui.keyframetoggle';
 import { ToggleIconButton } from '@hautechai/webui.toggleiconbutton';

@@ -1,63 +1,23 @@
-import { css } from '@linaria/core';
-import { styled } from '@linaria/react';
+import { styled } from '@hautechai/webui.themeprovider';
 import { themeVars } from '@hautechai/webui.themeprovider';
 import { Typography } from '@hautechai/webui.typography';
 
-// Base container styles
-const containerBase = css`
+const Container = styled('div')`
     border-radius: ${themeVars.cornerRadius.s};
     gap: ${themeVars.spacing.s};
     padding: ${themeVars.spacing.s} ${themeVars.spacing.m};
+
+    &[data-color='success'] {
+        background-color: ${themeVars.actions.onSuccess};
+    }
+    &[data-color='error'] {
+        background-color: ${themeVars.actions.onError};
+    }
+    &[data-color='info'] {
+        background-color: ${themeVars.layout.surfaceMid};
+    }
 `;
-
-// Color variant styles
-const containerSuccess = css`
-    background-color: ${themeVars.actions.onSuccess};
-`;
-
-const containerError = css`
-    background-color: ${themeVars.actions.onError};
-`;
-
-const containerInfo = css`
-    background-color: ${themeVars.layout.surfaceMid};
-`;
-
-// Text base styles
-const textBase = css`
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-`;
-
-// Text color variant styles
-const textSuccess = css`
-    color: ${themeVars.actions.success};
-`;
-
-const textError = css`
-    color: ${themeVars.actions.error};
-`;
-
-const textInfo = css`
-    color: ${themeVars.layout.onSurface.secondary};
-`;
-
-export const containerClasses = {
-    base: containerBase,
-    success: containerSuccess,
-    error: containerError,
-    info: containerInfo,
-};
-
-export const textClasses = {
-    base: textBase,
-    success: textSuccess,
-    error: textError,
-    info: textInfo,
-};
 
 export default {
-    Container: styled.div``,
-    Text: styled(Typography)``,
+    Container,
 };
