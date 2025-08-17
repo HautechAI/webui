@@ -11,10 +11,7 @@ describe('LayerTreeItemParent', () => {
         expect(() => {
             render(
                 <ThemeProvider theme={testTheme}>
-                    <LayerTreeItemParent 
-                        icon={<FolderIcon data-testid="test-icon" />}
-                        label="Test Label"
-                    />
+                    <LayerTreeItemParent icon={<FolderIcon data-testid="test-icon" />} label="Test Label" />
                 </ThemeProvider>,
             );
         }).not.toThrow();
@@ -23,10 +20,7 @@ describe('LayerTreeItemParent', () => {
     it('should render with provided icon and label', () => {
         const { getByText, getByTestId } = render(
             <ThemeProvider theme={testTheme}>
-                <LayerTreeItemParent 
-                    icon={<FolderIcon data-testid="test-icon" />}
-                    label="Test Label"
-                />
+                <LayerTreeItemParent icon={<FolderIcon data-testid="test-icon" />} label="Test Label" />
             </ThemeProvider>,
         );
 
@@ -38,11 +32,7 @@ describe('LayerTreeItemParent', () => {
         const mockOnExpandToggle = vi.fn();
         const { container } = render(
             <ThemeProvider theme={testTheme}>
-                <LayerTreeItemParent 
-                    icon={<FolderIcon />}
-                    label="Test Label"
-                    onExpandToggle={mockOnExpandToggle}
-                />
+                <LayerTreeItemParent icon={<FolderIcon />} label="Test Label" onExpandToggle={mockOnExpandToggle} />
             </ThemeProvider>,
         );
 
@@ -57,11 +47,7 @@ describe('LayerTreeItemParent', () => {
         const mockOnClick = vi.fn();
         const { getByText } = render(
             <ThemeProvider theme={testTheme}>
-                <LayerTreeItemParent 
-                    icon={<FolderIcon />}
-                    label="Test Label"
-                    onClick={mockOnClick}
-                />
+                <LayerTreeItemParent icon={<FolderIcon />} label="Test Label" onClick={mockOnClick} />
             </ThemeProvider>,
         );
 
@@ -72,17 +58,13 @@ describe('LayerTreeItemParent', () => {
     it('should enter edit mode when text is double-clicked and editable is true', () => {
         const { getByText, container } = render(
             <ThemeProvider theme={testTheme}>
-                <LayerTreeItemParent 
-                    icon={<FolderIcon />}
-                    label="Test Label"
-                    editable={true}
-                />
+                <LayerTreeItemParent icon={<FolderIcon />} label="Test Label" editable={true} />
             </ThemeProvider>,
         );
 
         const textElement = getByText('Test Label');
         fireEvent.doubleClick(textElement);
-        
+
         // Should have an input element when in edit mode
         const input = container.querySelector('input');
         expect(input).toBeInTheDocument();
@@ -92,17 +74,13 @@ describe('LayerTreeItemParent', () => {
     it('should not enter edit mode when editable is false', () => {
         const { getByText, container } = render(
             <ThemeProvider theme={testTheme}>
-                <LayerTreeItemParent 
-                    icon={<FolderIcon />}
-                    label="Test Label"
-                    editable={false}
-                />
+                <LayerTreeItemParent icon={<FolderIcon />} label="Test Label" editable={false} />
             </ThemeProvider>,
         );
 
         const textElement = getByText('Test Label');
         fireEvent.doubleClick(textElement);
-        
+
         // Should not have an input element when not editable
         const input = container.querySelector('input');
         expect(input).not.toBeInTheDocument();
@@ -112,27 +90,22 @@ describe('LayerTreeItemParent', () => {
         const mockOnChange = vi.fn();
         const { getByText, container } = render(
             <ThemeProvider theme={testTheme}>
-                <LayerTreeItemParent 
-                    icon={<FolderIcon />}
-                    label="Test Label"
-                    editable={true}
-                    onChange={mockOnChange}
-                />
+                <LayerTreeItemParent icon={<FolderIcon />} label="Test Label" editable={true} onChange={mockOnChange} />
             </ThemeProvider>,
         );
 
         // Start editing
         const textElement = getByText('Test Label');
         fireEvent.doubleClick(textElement);
-        
+
         // Change the text
         const input = container.querySelector('input');
         if (input) {
             fireEvent.change(input, { target: { value: 'New Label' } });
-            
+
             // Finish editing by pressing Enter
             fireEvent.keyDown(input, { key: 'Enter' });
-            
+
             expect(mockOnChange).toHaveBeenCalledWith('New Label');
         }
     });
@@ -141,19 +114,14 @@ describe('LayerTreeItemParent', () => {
         const mockOnClick = vi.fn();
         const { getByText, container } = render(
             <ThemeProvider theme={testTheme}>
-                <LayerTreeItemParent 
-                    icon={<FolderIcon />}
-                    label="Test Label"
-                    editable={true}
-                    onClick={mockOnClick}
-                />
+                <LayerTreeItemParent icon={<FolderIcon />} label="Test Label" editable={true} onClick={mockOnClick} />
             </ThemeProvider>,
         );
 
         // Start editing
         const textElement = getByText('Test Label');
         fireEvent.doubleClick(textElement);
-        
+
         // Click on the content area while editing
         const content = container.querySelector('input')?.closest('div');
         if (content) {

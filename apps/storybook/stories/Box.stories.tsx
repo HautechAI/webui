@@ -1,8 +1,7 @@
-import { fn } from '@storybook/test';
+import React from 'react';
 import { Box } from '../../../components/Box/src';
 import { Button } from '../../../components/Button/src';
 import { Column } from '../../../components/Column/src';
-import { Tile } from '../../../components/Tile/src';
 
 export default {
     title: 'Layout/Box',
@@ -13,7 +12,7 @@ export default {
     tags: ['autodocs'],
     argTypes: {},
     decorators: [
-        (Story: any) => (
+        (Story: React.ComponentType) => (
             <div style={{ border: 'dashed red 1px' }}>
                 <Story />
             </div>

@@ -10,11 +10,7 @@ describe('SegmentedControl', () => {
         expect(() => {
             render(
                 <ThemeProvider theme={testTheme}>
-                    <SegmentedControl 
-                        options={[{ value: 'test', label: 'Test' }]} 
-                        value="test" 
-                        onChange={() => {}} 
-                    />
+                    <SegmentedControl options={[{ value: 'test', label: 'Test' }]} value="test" onChange={() => {}} />
                 </ThemeProvider>,
             );
         }).not.toThrow();

@@ -48,7 +48,7 @@ export const HoverControls = (props: HoverControlsProps) => {
                 if (React.isValidElement(child)) {
                     return React.cloneElement(child, {
                         selected,
-                    } as any);
+                    } as unknown);
                 }
                 return child;
             })}

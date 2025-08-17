@@ -26,7 +26,7 @@ const Number = styled.div`
         background-color: ${themeVars.layout.surfaceMid};
     }
 
-    &[data-readonly="true"] {
+    &[data-readonly='true'] {
         cursor: default;
         &:hover {
             color: ${themeVars.layout.onSurface.secondary};
@@ -34,7 +34,7 @@ const Number = styled.div`
         }
     }
 
-    &[data-selected="true"] {
+    &[data-selected='true'] {
         background-color: ${themeVars.layout.surfaceHigh};
     }
 `;
@@ -95,8 +95,7 @@ export const Pagination = ({ totalPages, currentPage, onPageChange, getPageHref 
             />
             {pages.map((page, index) =>
                 typeof page === 'string' ? (
-                    <Number key={index} data-readonly
-                    >
+                    <Number key={index} data-readonly>
                         <Typography variant="LabelSmallRegular" textAlign="center" color="layout.onSurface.secondary">
                             {page}
                         </Typography>
@@ -107,8 +106,7 @@ export const Pagination = ({ totalPages, currentPage, onPageChange, getPageHref 
                         href={getPageHref ? getPageHref(page) : undefined}
                         onClick={(e) => handleClick(e, page)}
                     >
-                        <Number data-selected={currentPage === page}
-                        >
+                        <Number data-selected={currentPage === page}>
                             <Typography variant="LabelSmallRegular" textAlign="center">
                                 {page}
                             </Typography>

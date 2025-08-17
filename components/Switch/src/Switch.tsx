@@ -7,7 +7,7 @@ const SwitchContainer = styled.label`
     align-items: center;
     gap: ${themeVars.spacing.m};
     cursor: pointer;
-    &[data-disabled="true"] {
+    &[data-disabled='true'] {
         cursor: not-allowed;
     }
 `;
@@ -17,14 +17,14 @@ const SwitchComponent = styled.div`
     width: 42px;
     height: 24px;
     background-color: ${themeVars.actions.onPrimary};
-    &[data-checked="true"] {
+    &[data-checked='true'] {
         background-color: ${themeVars.actions.primary};
     }
 
     box-sizing: border-box;
     border-radius: 100px;
     border: ${themeVars.stroke.standard} solid ${themeVars.actions.onSecondary};
-    &[data-disabled="true"] {
+    &[data-disabled='true'] {
         border-color: ${themeVars.layout.strokes};
     }
 
@@ -48,14 +48,14 @@ const SwitchComponent = styled.div`
         transition: left ${themeVars.animation.duration.fast} ${themeVars.animation.timing.easeOut};
     }
 
-    &[data-disabled="true"] {
+    &[data-disabled='true'] {
         background-color: ${themeVars.layout.surfaceMid};
         &::before {
             background-color: ${themeVars.layout.strokes};
         }
     }
 
-    &[data-checked="true"] {
+    &[data-checked='true'] {
         &:active {
             background-color: ${themeVars.actions.secondary};
             &::before {
@@ -72,7 +72,7 @@ const SwitchComponent = styled.div`
         }
     }
 
-    &:not([data-checked="true"]) {
+    &:not([data-checked='true']) {
         &:active {
             background-color: ${themeVars.actions.tertiary};
             &::before {

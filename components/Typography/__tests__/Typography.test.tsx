@@ -10,7 +10,7 @@ describe('Typography', () => {
         expect(() => {
             render(
                 <ThemeProvider theme={testTheme}>
-                    <Typography>Test Text</Typography>
+                    <Typography variant="LabelSmallRegular">Test Text</Typography>
                 </ThemeProvider>,
             );
         }).not.toThrow();

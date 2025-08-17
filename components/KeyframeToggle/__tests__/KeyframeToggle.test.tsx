@@ -26,7 +26,7 @@ describe('KeyframeToggle', () => {
 
         const button = container.querySelector('button');
         expect(button).not.toBeNull();
-        
+
         if (button) {
             fireEvent.click(button);
             expect(handleClick).toHaveBeenCalledTimes(1);
@@ -53,11 +53,11 @@ describe('KeyframeToggle', () => {
     it('should render with different states', () => {
         const states: Array<'noKeyframes' | 'hasKeyframes' | 'isKeyframe'> = [
             'noKeyframes',
-            'hasKeyframes', 
-            'isKeyframe'
+            'hasKeyframes',
+            'isKeyframe',
         ];
 
-        states.forEach(state => {
+        states.forEach((state) => {
             expect(() => {
                 render(
                     <ThemeProvider theme={testTheme}>

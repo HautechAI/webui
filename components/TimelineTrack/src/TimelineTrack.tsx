@@ -31,29 +31,29 @@ const Container = styled.div`
     align-items: center;
     display: inline-flex;
     background: transparent;
-    
+
     &:hover {
         background: ${themeVars.layout.surfaceMid};
     }
-    
-    &[data-selected="true"] {
+
+    &[data-selected='true'] {
         background: ${themeVars.layout.surfaceMid};
     }
 
     /* State-driven styling for children using data attributes */
-    &:hover [data-part="track"] {
+    &:hover [data-part='track'] {
         background: ${themeVars.layout.strokes};
     }
 
-    &:hover [data-part="resize-handler"] {
+    &:hover [data-part='resize-handler'] {
         display: inline-flex;
     }
 
-    &[data-selected="true"] [data-part="track"] {
+    &[data-selected='true'] [data-part='track'] {
         background: ${themeVars.actions.tertiary};
     }
 
-    &[data-selected="true"] [data-part="resize-handler"] {
+    &[data-selected='true'] [data-part='resize-handler'] {
         display: inline-flex;
     }
 `;
@@ -86,37 +86,24 @@ const ResizeHandler = styled.div`
 const ResizeLine = styled.div`
     width: 2px;
     height: 12px;
-    background: var(--layout-surface-low, #FCFCFC);
+    background: var(--layout-surface-low, #fcfcfc);
     border-radius: 16px;
 `;
 
 export const TimelineTrack = forwardRef<HTMLDivElement, TimelineTrackProps>((props, ref) => {
-    const {
-        start,
-        duration,
-        scale,
-        selected = false,
-        startHandlerRef,
-        endHandlerRef,
-        bodyRef,
-        className,
-    } = props;
+    const { start, duration, scale, selected = false, startHandlerRef, endHandlerRef, bodyRef, className } = props;
 
     // Calculate track width and position based on start, duration, and scale
     // Account for container padding (8px on each side = 16px total)
-    const containerPadding = 16; // 8px left + 8px right
+    const _containerPadding = 16; // 8px left + 8px right
     const trackWidth = Math.max(0, duration * scale);
     const trackLeft = start * scale;
 
     return (
-        <Container 
-            ref={ref}
-            className={className}
-            data-selected={selected}
-        >
-            <Track 
+        <Container ref={ref} className={className} data-selected={selected}>
+            <Track
                 ref={bodyRef}
-                style={{ 
+                style={{
                     width: trackWidth,
                     marginLeft: trackLeft,
                 }}

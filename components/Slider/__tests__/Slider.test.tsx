@@ -10,7 +10,7 @@ describe('Slider', () => {
         expect(() => {
             render(
                 <ThemeProvider theme={testTheme}>
-                    <Slider value={50} onChange={() => {}} />
+                    <Slider value={50} min={0} max={100} onChange={() => {}} />
                 </ThemeProvider>,
             );
         }).not.toThrow();

@@ -61,20 +61,14 @@ export const PropertyBlock = (props: PropertyBlockProps) => {
         <Container className={className}>
             <PropertyHeader>
                 <Label>
-                    <Typography 
-                        variant="LabelSmallEmphasized" 
+                    <Typography
+                        variant="LabelSmallEmphasized"
                         color={removed ? 'layout.onSurface.secondary' : 'layout.onSurface.primary'}
                     >
                         Property
                     </Typography>
                 </Label>
-                {removable && (
-                    <IconButton
-                        variant="flat"
-                        size="xsmall"
-                        icon={removed ? <PlusIcon /> : <MinusIcon />}
-                    />
-                )}
+                {removable && <IconButton variant="flat" size="xsmall" icon={removed ? <PlusIcon /> : <MinusIcon />} />}
             </PropertyHeader>
             {!removed && (
                 <Content>

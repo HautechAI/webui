@@ -5,14 +5,9 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 # [2.0.0](https://github.com/HautechAI/webui/compare/storybook@1.0.0...storybook@2.0.0) (2025-08-16)
 
-
 ### Features
 
-* Add small & collapsed dropdown ([#61](https://github.com/HautechAI/webui/issues/61)) ([590c8be](https://github.com/HautechAI/webui/commit/590c8be42597e87d79a22d8d01e178e139556f6f))
-
-
-
-
+- Add small & collapsed dropdown ([#61](https://github.com/HautechAI/webui/issues/61)) ([590c8be](https://github.com/HautechAI/webui/commit/590c8be42597e87d79a22d8d01e178e139556f6f))
 
 # 1.0.0 (2025-08-13)
 

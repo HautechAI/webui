@@ -1,3 +1,4 @@
+import React from 'react';
 import { fn } from '@storybook/test';
 
 import { Card } from '../../../components/Card/src';
@@ -12,7 +13,7 @@ export default {
     },
     tags: ['autodocs'],
     argTypes: {},
-    args: { onDownload: fn() as any },
+    args: { onDownload: fn() as () => void },
 };
 
 export const Main = {
@@ -28,7 +29,7 @@ export const WithIcon = {
     args: {
         label: '35 min ago',
         image: Desert,
-        icon: <PlayIcon size={64} color='actions.onTertiary' />,
+        icon: <PlayIcon size={64} color="actions.onTertiary" />,
         width: 300,
         aspectRatio: 16 / 9,
     },
@@ -40,7 +41,7 @@ export const Clickable = {
         image: Desert,
         width: 300,
         aspectRatio: 16 / 9,
-        onClick: fn() as any,
+        onClick: fn() as React.MouseEventHandler<HTMLButtonElement>,
     },
 };
 
@@ -70,10 +71,10 @@ export const FullWidth = {
         image: Desert,
         fullWidth: '100%',
         aspectRatio: 16 / 9,
-        onClick: fn() as any,
+        onClick: fn() as React.MouseEventHandler<HTMLButtonElement>,
     },
     decorators: [
-        (Story: any) => (
+        (Story: React.ComponentType) => (
             <div style={{ width: '350px' }}>
                 <Story />
             </div>

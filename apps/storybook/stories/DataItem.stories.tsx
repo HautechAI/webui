@@ -1,9 +1,9 @@
-import avatar from '../../../assets/Avatar.png';
-
+import React from 'react';
 import { PlaceholderIcon } from '../../../components/Icon/src';
 import { Box } from '../../../components/Box/src';
 import { DataItem } from '../../../components/DataItem/src/DataItem';
 import { IconButton } from '../../../components/IconButton/src';
+import { fn } from '@storybook/test';
 
 export default {
     title: 'Data Display/DataItem',
@@ -13,7 +13,7 @@ export default {
     },
     tags: ['autodocs'],
     decorators: [
-        (Story: any) => (
+        (Story: React.ComponentType) => (
             <Box width={300}>
                 <Story />
             </Box>
@@ -47,7 +47,7 @@ export const ColumnWithHint = {
             hint: 'Here hides the hint',
             position: 'right',
             buttonLabel: 'Link',
-            onClick: () => console.log('link'),
+            onClick: () => fn(),
         },
     },
 };
@@ -116,7 +116,7 @@ export const RowWithLongText = {
         trailingIcon: <IconButton size="small" variant="flat" icon={<PlaceholderIcon />} />,
     },
     decorators: [
-        (Story: any) => (
+        (Story: React.ComponentType) => (
             <div style={{ width: '300px', overflow: 'hidden' }}>
                 <Story />
             </div>

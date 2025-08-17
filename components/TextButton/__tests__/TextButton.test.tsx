@@ -10,7 +10,7 @@ describe('TextButton', () => {
         expect(() => {
             render(
                 <ThemeProvider theme={testTheme}>
-                    <TextButton>Test Button</TextButton>
+                    <TextButton label="Test Button" />
                 </ThemeProvider>,
             );
         }).not.toThrow();

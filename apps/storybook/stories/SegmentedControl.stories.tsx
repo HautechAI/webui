@@ -5,20 +5,21 @@ import { Hint } from '../../../components/Hint/src';
 import { Decorator } from '@storybook/react';
 import { useState } from 'react';
 
-
 const OnChangeSyncArgs: Decorator<SegmentedControlProps> = (Story, context) => {
     const [value, setValue] = useState('all');
     return (
-            <Story
-                {...{
-                    ...context,
-                    args: {
-                        ...context.args,
-                        value: value,
-                        onChange: (e, v) => { setValue(v); }
+        <Story
+            {...{
+                ...context,
+                args: {
+                    ...context.args,
+                    value: value,
+                    onChange: (e, v) => {
+                        setValue(v);
                     },
-                }}
-            />
+                },
+            }}
+        />
     );
 };
 
@@ -31,9 +32,9 @@ export default {
     tags: ['autodocs'],
     argTypes: {},
     args: {
-        onChange: fn() as any,
+        onChange: fn() as (e: React.ChangeEvent<HTMLInputElement>) => void,
     },
-    decorators: [OnChangeSyncArgs]
+    decorators: [OnChangeSyncArgs],
 };
 
 export const HIG = {

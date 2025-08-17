@@ -1,3 +1,4 @@
+import React from 'react';
 import { fn } from '@storybook/test';
 
 import { LayerTreeItemParent } from '../../../components/LayerTreeItemParent/src';
@@ -12,13 +13,13 @@ export default {
     },
     tags: ['autodocs'],
     argTypes: {},
-    args: { 
-        onExpandToggle: fn() as any,
-        onClick: fn() as any,
-        onChange: fn() as any 
+    args: {
+        onExpandToggle: fn() as () => void,
+        onClick: fn() as React.MouseEventHandler<HTMLButtonElement>,
+        onChange: fn() as (e: React.ChangeEvent<HTMLInputElement>) => void,
     },
     decorators: [
-        (Story: any) => (
+        (Story: React.ComponentType) => (
             <Box width={200}>
                 <Story />
             </Box>

@@ -9,7 +9,14 @@
         "linkDirectory": false
     },
     "scripts": {
-        "prepack": "node ../../scripts/build-component.mjs"
+        "prepack": "node ../../scripts/build-component.mjs",
+        "lint:eslint": "eslint src --ext .ts,.tsx",
+        "lint:eslint:fix": "eslint src --ext .ts,.tsx --fix",
+        "lint:tsc": "tsc --noEmit",
+        "lint:prettier": "prettier --check src",
+        "lint:prettier:fix": "prettier --write src",
+        "lint": "pnpm lint:eslint && pnpm lint:tsc && pnpm lint:prettier",
+        "lint:fix": "pnpm lint:eslint:fix && pnpm lint:prettier:fix"
     },
     "author": "HautechAI",
     "license": "Apache-2.0"

@@ -1,14 +1,14 @@
 import { ThemeType } from './ThemeProvider';
 
 // Utility to convert nested theme object to CSS custom properties (no unit mutation)
-const flattenTheme = (obj: any, prefix = '--theme'): Record<string, string> => {
+const flattenTheme = (obj: Record<string, unknown>, prefix = '--theme'): Record<string, string> => {
     const result: Record<string, string> = {};
 
     for (const [key, value] of Object.entries(obj)) {
         const cssKey = `${prefix}-${key.replace(/([A-Z])/g, '-$1').toLowerCase()}`;
 
         if (typeof value === 'object' && value !== null) {
-            Object.assign(result, flattenTheme(value, cssKey));
+            Object.assign(result, flattenTheme(value as Record<string, unknown>, cssKey));
         } else {
             result[cssKey] = String(value);
         }

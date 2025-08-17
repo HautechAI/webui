@@ -1,14 +1,14 @@
 import { IconButton, IconButtonProps } from '@hautechai/webui.iconbutton';
 import { styled } from '@hautechai/webui.themeprovider';
 import { themeVars } from '@hautechai/webui.themeprovider';
-import React, { ChangeEventHandler, useCallback, useRef, useState } from 'react';
+import React, { ChangeEventHandler, useCallback, useRef } from 'react';
 import TextareaAutosize from 'react-textarea-autosize';
 
 const Container = styled.div`
     display: flex;
     gap: ${themeVars.spacing.m};
     flex: 1;
-    &[data-disabled="true"] {
+    &[data-disabled='true'] {
         cursor: not-allowed;
         color: ${themeVars.layout.strokes};
     }
@@ -30,7 +30,7 @@ export const InputContainer = styled.div<{ variation: 'filled' | 'outlined' }>`
     border-color: ${themeVars.layout.strokes};
 
     background: ${({ variation }) => (variation === 'filled' ? themeVars.layout.surfaceLow : 'transparent')};
-    &[data-has-error="true"] {
+    &[data-has-error='true'] {
         border-color: ${themeVars.actions.error};
         outline-width: ${themeVars.stroke.thin};
         outline-style: solid;
@@ -55,11 +55,12 @@ export const InputContainer = styled.div<{ variation: 'filled' | 'outlined' }>`
         outline-color: ${themeVars.actions.primary};
     }
 
-    &[data-disabled="true"] {
+    &[data-disabled='true'] {
         cursor: not-allowed;
     }
 
-    transition: border-color ${themeVars.animation.duration.fast} ${themeVars.animation.timing.easeOut},
+    transition:
+        border-color ${themeVars.animation.duration.fast} ${themeVars.animation.timing.easeOut},
         outline-color ${themeVars.animation.duration.fast} ${themeVars.animation.timing.easeOut};
 `;
 
@@ -117,7 +118,7 @@ const getIcon = (icon: React.ReactNode) => (
             if (React.isValidElement(child)) {
                 return React.cloneElement(child, {
                     size: 20,
-                } as any);
+                } as unknown);
             }
             return child;
         })}
@@ -178,7 +179,7 @@ export const TextArea = (props: TextAreaProps) => {
                             React.isValidElement(icon)
                                 ? React.cloneElement(icon, {
                                       size: 20,
-                                  } as any)
+                                  } as unknown)
                                 : icon
                         }
                         disabled={disabled}
