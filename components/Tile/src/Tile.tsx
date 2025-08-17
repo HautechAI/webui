@@ -168,7 +168,7 @@ export const Tile = (props: TileProps) => {
             data-selected={!!props.selected}
             style={{
                 ...styleDims,
-                ['--tile-bg-image' as any]: src ? `url(${src})` : undefined,
+                ['--tile-bg-image' as string]: src ? `url(${src})` : undefined,
             }}
             {...rest}
         >

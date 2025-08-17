@@ -113,7 +113,7 @@ const getIcon = (icon: React.ReactNode, size: 'medium' | 'small') => (
             if (React.isValidElement(child)) {
                 return React.cloneElement(child, {
                     size: size === 'small' ? 16 : 20,
-                } as any);
+                } as unknown);
             }
             return child;
         })}

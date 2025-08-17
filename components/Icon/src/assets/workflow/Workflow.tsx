@@ -1,12 +1,13 @@
 import * as React from 'react';
 import type { SVGProps } from 'react';
+import { type IconColorProp } from '../../color';
 import Small from './Small';
 import SmallBold from './SmallBold';
 
 // style prop controls visual style; outlined is default.
 export type WorkflowIconStyle = 'outlined' | 'bold';
 
-export type WorkflowIconProps = Omit<SVGProps<SVGSVGElement> & { size?: number; color?: any }, 'style'> & {
+export type WorkflowIconProps = Omit<SVGProps<SVGSVGElement> & { size?: number; color?: IconColorProp }, 'style'> & {
     style?: WorkflowIconStyle;
 };
 

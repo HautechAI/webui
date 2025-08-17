@@ -63,7 +63,7 @@ const renderIcon = (icon?: React.ReactNode, color?: string) =>
     icon ? (
         <>
             {React.Children.map(icon, (child) =>
-                React.isValidElement(child) ? React.cloneElement(child, { size: 20, color } as any) : child,
+                React.isValidElement(child) ? React.cloneElement(child, { size: 20, color } as Partial<{ size: number; color: string }>) : child,
             )}
         </>
     ) : null;

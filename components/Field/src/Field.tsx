@@ -58,7 +58,7 @@ export const Field = (props: FieldProps) => {
                         if (React.isValidElement(child)) {
                             return React.cloneElement(child, {
                                 hasError: !!error,
-                            } as any);
+                            } as unknown);
                         }
                         return child;
                     })}

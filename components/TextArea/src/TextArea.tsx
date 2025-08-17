@@ -118,7 +118,7 @@ const getIcon = (icon: React.ReactNode) => (
             if (React.isValidElement(child)) {
                 return React.cloneElement(child, {
                     size: 20,
-                } as any);
+                } as unknown);
             }
             return child;
         })}
@@ -179,7 +179,7 @@ export const TextArea = (props: TextAreaProps) => {
                             React.isValidElement(icon)
                                 ? React.cloneElement(icon, {
                                       size: 20,
-                                  } as any)
+                                  } as unknown)
                                 : icon
                         }
                         disabled={disabled}

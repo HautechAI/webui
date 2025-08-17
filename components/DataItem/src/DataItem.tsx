@@ -92,7 +92,7 @@ export const DataItem = (props: DataItemProps) => {
                         if (React.isValidElement(child)) {
                             return React.cloneElement(child, {
                                 size: 20,
-                            } as any);
+                            } as unknown);
                         }
                         return child;
                     })}

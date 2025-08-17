@@ -78,7 +78,7 @@ const ChipContent = React.forwardRef<HTMLDivElement, ChipProps>((props, ref) => 
                     if (React.isValidElement(child)) {
                         return React.cloneElement(child, {
                             size: 20,
-                        } as any);
+                        } as unknown);
                     }
                     return child;
                 })}

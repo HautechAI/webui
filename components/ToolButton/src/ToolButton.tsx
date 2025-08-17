@@ -68,7 +68,7 @@ const getIcon = (icon: React.ReactNode) => (
             if (React.isValidElement(child)) {
                 return React.cloneElement(child, {
                     size: themeVars.spacing.xl, // Using theme value for icon size
-                } as any);
+                } as unknown);
             }
             return child;
         })}
@@ -84,7 +84,7 @@ export const ToolButton = (props: ToolButtonProps) => {
     const iconColorVar = selected ? themeVars.actions.onSecondary : themeVars.layout.onSurface.secondary;
 
     return (
-        <span style={{ ['--tool-button-icon-color' as any]: iconColorVar }}>
+        <span style={{ ['--tool-button-icon-color' as string]: iconColorVar }}>
             <ButtonBase className={buttonClassName} {...rest}>
                 {getIcon(icon)}
             </ButtonBase>

@@ -101,7 +101,7 @@ export const IconButton = (props: IconButtonProps) => {
 
     const iconWithSize =
         React.isValidElement(icon) && typeof icon.type !== 'string'
-            ? React.cloneElement(icon as React.ReactElement<any>, { size: iconSizes[size] })
+            ? React.cloneElement(icon as React.ReactElement<unknown>, { size: iconSizes[size] })
             : icon;
 
     return (
@@ -109,7 +109,7 @@ export const IconButton = (props: IconButtonProps) => {
             className={buttonClassName}
             style={
                 customBackground
-                    ? ({ ['--icon-button-bg' as any]: customBackground } as React.CSSProperties)
+                    ? ({ ['--icon-button-bg' as string]: customBackground } as React.CSSProperties)
                     : undefined
             }
             {...rest}

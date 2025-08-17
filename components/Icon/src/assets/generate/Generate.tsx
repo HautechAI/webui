@@ -1,10 +1,11 @@
 import * as React from 'react';
 import type { SVGProps } from 'react';
+import { type IconColorProp } from '../../color';
 import Small from './Small';
 import SmallBold from './SmallBold';
 
 export type GenerateIconStyle = 'outlined' | 'bold';
-export type GenerateIconProps = Omit<SVGProps<SVGSVGElement> & { size?: number; color?: any }, 'style'> & {
+export type GenerateIconProps = Omit<SVGProps<SVGSVGElement> & { size?: number; color?: IconColorProp }, 'style'> & {
     style?: GenerateIconStyle;
 };
 
