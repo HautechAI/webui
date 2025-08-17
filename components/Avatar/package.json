@@ -6,7 +6,8 @@
     "main": "src/index.tsx",
     "publishConfig": {
         "directory": "dist",
-        "linkDirectory": false
+        "linkDirectory": false,
+        "access": "public"
     },
     "scripts": {
         "prepack": "node ../../scripts/build-component.mjs",
