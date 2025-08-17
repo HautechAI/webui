@@ -1,3 +1,4 @@
+import React from 'react';
 import { fn } from '@storybook/test';
 
 import { UserBalance } from '../../../components/UserBalance/src';
@@ -11,7 +12,7 @@ export default {
     tags: ['autodocs'],
     args: { onTopUpClick: fn() as any },
     decorators: [
-        (Story: any) => (
+        (Story: React.ComponentType<any>) => (
             <div style={{ width: '300px' }}>
                 <Story />
             </div>

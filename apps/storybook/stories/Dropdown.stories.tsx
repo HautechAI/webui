@@ -1,3 +1,4 @@
+import React from 'react';
 import { fn } from '@storybook/test';
 import { Box } from '../../../components/Box/src';
 import { Dropdown } from '../../../components/Dropdown/src';
@@ -24,7 +25,7 @@ export default {
         ],
     },
     decorators: [
-        (Story: any) => (
+        (Story: React.ComponentType<any>) => (
             <Box width={200} alignItems="flex-start" display="flex">
                 <Story />
             </Box>
@@ -107,7 +108,7 @@ export const Short = {
         value: 'px',
     },
     decorators: [
-        (Story: any) => (
+        (Story: React.ComponentType<any>) => (
             <div style={{ display: 'flex', flexDirection: 'row', gap: '8px' }}>
                 <Story />
             </div>

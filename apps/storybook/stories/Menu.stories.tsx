@@ -1,3 +1,4 @@
+import React from 'react';
 import { fn } from '@storybook/test';
 
 import { PlaceholderIcon } from '../../../components/Icon/src';
@@ -36,7 +37,7 @@ export default {
         ],
     },
     decorators: [
-        (Story: any) => (
+        (Story: React.ComponentType<any>) => (
             <Box width={150}>
                 <Story />
             </Box>

@@ -1,3 +1,4 @@
+import React from 'react';
 import { useState } from 'react';
 import { EditableText } from '../../../components/EditableText/src';
 import { Box } from '../../../components/Box/src';
@@ -20,7 +21,7 @@ export default {
         },
     },
     decorators: [
-        (Story: any) => (
+        (Story: React.ComponentType<any>) => (
             <Box width={200}>
                 <Story />
             </Box>

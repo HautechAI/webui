@@ -15,7 +15,7 @@ export default {
         onSelect: fn() as any,
     },
     decorators: [
-        (Story: React.FC<any>, { args }: any) => {
+        (Story: React.ComponentType<any>, { args }: any) => {
             const [selected, setSelected] = useState('');
             return (
                 <>
@@ -45,7 +45,7 @@ export const NoWrap = {
         ],
     },
     decorators: [
-        (Story: React.FC<any>, { args: _args }: any) => {
+        (Story: React.ComponentType<any>, { args: _args }: any) => {
             return (
                 <div style={{ width: '300px', border: 'dashed black 1px' }}>
                     <Story />
@@ -65,7 +65,7 @@ export const Wrap = {
         ],
     },
     decorators: [
-        (Story: React.FC<any>, { args: _args }: any) => {
+        (Story: React.ComponentType<any>, { args: _args }: any) => {
             return (
                 <div style={{ width: '300px', border: 'dashed black 1px' }}>
                     <Story />

@@ -1,3 +1,4 @@
+import React from 'react';
 import { Typography } from '../../../components/Typography/src';
 
 const TEXT =
@@ -119,7 +120,7 @@ export const OverflowHidden = {
         noWrap: true,
     },
     decorators: [
-        (Story: any) => (
+        (Story: React.ComponentType<any>) => (
             <div style={{ width: '300px' }}>
                 <Story />
             </div>
@@ -135,7 +136,7 @@ export const OverflowEllipsis = {
         noWrap: true,
     },
     decorators: [
-        (Story: any) => (
+        (Story: React.ComponentType<any>) => (
             <div style={{ width: '300px' }}>
                 <Story />
             </div>
@@ -150,7 +151,7 @@ export const SpanComponent = {
         component: 'span',
     },
     decorators: [
-        (Story: any) => (
+        (Story: React.ComponentType<any>) => (
             <div style={{ width: '300px' }}>
                 <Story />
             </div>

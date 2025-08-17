@@ -1,3 +1,4 @@
+import React from 'react';
 import { Box } from '../../../components/Box/src';
 import { PropertyBlock } from '../../../components/PropertyBlock/src';
 
@@ -10,7 +11,7 @@ export default {
     tags: ['autodocs'],
     argTypes: {},
     decorators: [
-        (Story: any) => (
+        (Story: React.ComponentType<any>) => (
             <Box width={300}>
                 <Story />
             </Box>

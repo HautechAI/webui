@@ -1,3 +1,4 @@
+import React from 'react';
 import { useRef } from 'react';
 import { TimelineTrack } from '../../../components/TimelineTrack/src';
 
@@ -29,7 +30,7 @@ export default {
         selected: false,
     },
     decorators: [
-        (Story: any) => (
+        (Story: React.ComponentType<any>) => (
             <div
                 style={{
                     width: '800px',

@@ -46,7 +46,7 @@ export default {
         onChangeUnits: fn() as any,
     },
     decorators: [
-        (Story: any) => (
+        (Story: React.ComponentType) => (
             <Box width={300}>
                 <Story />
             </Box>

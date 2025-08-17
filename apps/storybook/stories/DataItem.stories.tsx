@@ -1,3 +1,4 @@
+import React from 'react';
 import { PlaceholderIcon } from '../../../components/Icon/src';
 import { Box } from '../../../components/Box/src';
 import { DataItem } from '../../../components/DataItem/src/DataItem';
@@ -11,7 +12,7 @@ export default {
     },
     tags: ['autodocs'],
     decorators: [
-        (Story: any) => (
+        (Story: React.ComponentType<any>) => (
             <Box width={300}>
                 <Story />
             </Box>
@@ -114,7 +115,7 @@ export const RowWithLongText = {
         trailingIcon: <IconButton size="small" variant="flat" icon={<PlaceholderIcon />} />,
     },
     decorators: [
-        (Story: any) => (
+        (Story: React.ComponentType<any>) => (
             <div style={{ width: '300px', overflow: 'hidden' }}>
                 <Story />
             </div>

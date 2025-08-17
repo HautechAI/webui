@@ -1,3 +1,4 @@
+import React from 'react';
 import { fn } from '@storybook/test';
 
 import { Button } from '../../../components/Button/src';
@@ -125,7 +126,7 @@ export const Stretch = {
         stretch: true,
     },
     decorators: [
-        (Story: any) => (
+        (Story: React.ComponentType<any>) => (
             <div style={{ display: 'flex', width: '400px' }}>
                 <Story />
             </div>

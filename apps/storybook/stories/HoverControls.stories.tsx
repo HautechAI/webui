@@ -12,7 +12,7 @@ export default {
     tags: ['autodocs'],
     args: {},
     decorators: [
-        (Story: React.FC<any>, { args }: any) => {
+        (Story: React.ComponentType<any>, { args }: any) => {
             const [selected, setSelected] = useState(false);
             return (
                 <>

@@ -1,3 +1,4 @@
+import React from 'react';
 import { fn } from '@storybook/test';
 
 import { FileInput } from '../../../components/FileInput/src';
@@ -30,7 +31,7 @@ export const VariantButtonStretch = {
         stretch: true,
     },
     decorators: [
-        (Story: any) => (
+        (Story: React.ComponentType<any>) => (
             <div style={{ width: '300px', display: 'flex', flexDirection: 'column', justifyContent: 'stretch' }}>
                 <Story />
             </div>

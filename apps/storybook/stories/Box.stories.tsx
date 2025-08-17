@@ -1,3 +1,4 @@
+import React from 'react';
 import { Box } from '../../../components/Box/src';
 import { Button } from '../../../components/Button/src';
 import { Column } from '../../../components/Column/src';
@@ -11,7 +12,7 @@ export default {
     tags: ['autodocs'],
     argTypes: {},
     decorators: [
-        (Story: any) => (
+        (Story: React.ComponentType<any>) => (
             <div style={{ border: 'dashed red 1px' }}>
                 <Story />
             </div>

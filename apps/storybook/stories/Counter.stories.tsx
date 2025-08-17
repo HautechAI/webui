@@ -1,3 +1,4 @@
+import React from 'react';
 import { fn } from '@storybook/test';
 import { Box } from '../../../components/Box/src';
 import { Counter } from '../../../components/Counter/src';
@@ -18,7 +19,7 @@ export default {
         max: 5,
     },
     decorators: [
-        (Story: any) => (
+        (Story: React.ComponentType<any>) => (
             <Box width={200}>
                 <Story />
             </Box>

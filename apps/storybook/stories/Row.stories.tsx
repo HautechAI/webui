@@ -1,3 +1,4 @@
+import React from 'react';
 import { Button } from '../../../components/Button/src';
 import { Row } from '../../../components/Row/src';
 import { IconButton } from '../../../components/IconButton/src';
@@ -5,7 +6,7 @@ import { BurgerIcon } from '../../../components/Icon/src';
 
 export default {
     title: 'Layout/Row',
-    component: Row as any,
+    component: Row as unknown,
     parameters: {
         layout: 'centered',
     },
@@ -54,7 +55,7 @@ export const Wrap = {
         ),
     },
     decorators: [
-        (Story: any) => (
+        (Story: React.ComponentType) => (
             <div style={{ width: '200px' }}>
                 <Story />
             </div>
@@ -99,7 +100,7 @@ export const NoOverflow = {
         ),
     },
     decorators: [
-        (Story: any) => (
+        (Story: React.ComponentType) => (
             <div
                 style={{
                     display: 'flex',

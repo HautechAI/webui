@@ -1,3 +1,4 @@
+import React from 'react';
 import { fn } from '@storybook/test';
 
 import { Card } from '../../../components/Card/src';
@@ -73,7 +74,7 @@ export const FullWidth = {
         onClick: fn() as any,
     },
     decorators: [
-        (Story: any) => (
+        (Story: React.ComponentType<any>) => (
             <div style={{ width: '350px' }}>
                 <Story />
             </div>

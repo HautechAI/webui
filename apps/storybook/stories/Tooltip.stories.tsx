@@ -1,3 +1,4 @@
+import React from 'react';
 import { fn } from '@storybook/test';
 
 import { Box } from '../../../components/Box/src';
@@ -15,7 +16,7 @@ export default {
         children: <div>This is a hoverable item</div>,
     },
     decorators: [
-        (Story: any) => (
+        (Story: React.ComponentType<any>) => (
             <Box width={150}>
                 <Story />
             </Box>

@@ -1,3 +1,4 @@
+import React from 'react';
 import { fn } from '@storybook/test';
 
 import { LayerTreeItemParent } from '../../../components/LayerTreeItemParent/src';
@@ -18,7 +19,7 @@ export default {
         onChange: fn() as any,
     },
     decorators: [
-        (Story: any) => (
+        (Story: React.ComponentType<any>) => (
             <Box width={200}>
                 <Story />
             </Box>
