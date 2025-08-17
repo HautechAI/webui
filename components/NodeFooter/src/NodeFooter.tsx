@@ -25,7 +25,7 @@ const OutputPorts = styled.div`
     flex: 1;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: flex-end;
 `;
 
 export const NodeFooter: React.FC<NodeFooterProps> = ({ inputPorts, outputPorts }) => {
