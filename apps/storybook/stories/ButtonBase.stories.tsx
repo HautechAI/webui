@@ -12,7 +12,7 @@ export default {
     argTypes: {
         backgroundColor: { control: 'color' },
     },
-    args: { onClick: fn() as any },
+    args: { onClick: fn() as React.MouseEventHandler<HTMLButtonElement> },
 };
 
 export const Main = {

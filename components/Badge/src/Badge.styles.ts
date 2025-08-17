@@ -1,6 +1,5 @@
 import { styled } from '@hautechai/webui.themeprovider';
 import { themeVars } from '@hautechai/webui.themeprovider';
-import { Typography } from '@hautechai/webui.typography';
 
 const Container = styled('div')`
     border-radius: ${themeVars.cornerRadius.s};

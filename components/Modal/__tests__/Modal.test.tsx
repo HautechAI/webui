@@ -10,7 +10,9 @@ describe('Modal', () => {
         expect(() => {
             render(
                 <ThemeProvider theme={testTheme}>
-                    <Modal isOpen={true} onClose={() => {}}>Test Modal</Modal>
+                    <Modal open={true} onClose={() => {}}>
+                        Test Modal
+                    </Modal>
                 </ThemeProvider>,
             );
         }).not.toThrow();

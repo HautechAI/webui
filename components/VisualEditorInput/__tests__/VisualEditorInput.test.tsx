@@ -5,9 +5,7 @@ import { ThemeProvider } from '../../ThemeProvider/src';
 import { testTheme } from '../../test-theme';
 
 const TestWrapper = ({ children }: { children: React.ReactNode }) => (
-    <ThemeProvider theme={testTheme}>
-        {children}
-    </ThemeProvider>
+    <ThemeProvider theme={testTheme}>{children}</ThemeProvider>
 );
 
 describe('VisualEditorInput', () => {
@@ -23,7 +21,7 @@ describe('VisualEditorInput', () => {
         const { container } = render(
             <TestWrapper>
                 <VisualEditorInput {...props} />
-            </TestWrapper>
+            </TestWrapper>,
         );
 
         expect(container.firstChild).toBeTruthy();
@@ -41,7 +39,7 @@ describe('VisualEditorInput', () => {
         const { container } = render(
             <TestWrapper>
                 <VisualEditorInput {...props} />
-            </TestWrapper>
+            </TestWrapper>,
         );
 
         expect(container.firstChild).toBeTruthy();
@@ -59,7 +57,7 @@ describe('VisualEditorInput', () => {
         const { container } = render(
             <TestWrapper>
                 <VisualEditorInput {...props} />
-            </TestWrapper>
+            </TestWrapper>,
         );
 
         expect(container.firstChild).toBeTruthy();

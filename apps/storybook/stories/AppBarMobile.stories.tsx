@@ -1,3 +1,4 @@
+import React from 'react';
 import { fn } from '@storybook/test';
 import { AppBarMobile } from '../../../components/AppBarMobile/src';
 import { Box } from '../../../components/Box/src';
@@ -22,7 +23,7 @@ export default {
         bottom: <>Bottom</>,
     },
     decorators: [
-        (Story: any) => (
+        (Story: React.ComponentType) => (
             <Box width={300}>
                 <Story />
             </Box>

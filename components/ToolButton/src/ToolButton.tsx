@@ -62,7 +62,7 @@ const getIcon = (icon: React.ReactNode) => (
             if (React.isValidElement(child)) {
                 return React.cloneElement(child, {
                     size: themeVars.spacing.xl, // Using theme value for icon size
-                } as any);
+                } as unknown);
             }
             return child;
         })}

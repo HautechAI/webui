@@ -1,3 +1,4 @@
+import React from 'react';
 import { PlaceholderIcon } from '../../../components/Icon/src';
 import { Tile } from '../../../components/Tile/src';
 import Desert from '../../../assets/desert.png';
@@ -70,7 +71,7 @@ export const Width100Percent = {
         aspectRatio: 3 / 2,
     },
     decorators: [
-        (Story: any) => (
+        (Story: React.ComponentType) => (
             <div style={{ width: '300px', border: 'dashed red 1px' }}>
                 <Story />
             </div>

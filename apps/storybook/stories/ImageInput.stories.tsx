@@ -9,7 +9,7 @@ export default {
         layout: 'centered',
     },
     tags: ['autodocs'],
-    args: { onChange: fn() as any },
+    args: { onChange: fn() as (e: React.ChangeEvent<HTMLInputElement>) => void },
 };
 
 export const Main = {

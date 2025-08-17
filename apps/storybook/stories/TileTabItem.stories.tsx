@@ -19,7 +19,7 @@ export const Main = {
         icon: <PlaceholderIcon size={20} />,
         label: 'Label',
         value: 'tab1',
-        onClick: fn() as any,
+        onClick: fn() as React.MouseEventHandler<HTMLButtonElement>,
     },
 };
 
@@ -28,7 +28,7 @@ export const WithImage = {
         image: Desert,
         label: 'Label',
         value: 'tab1',
-        onClick: fn() as any,
+        onClick: fn() as React.MouseEventHandler<HTMLButtonElement>,
     },
 };
 
@@ -37,6 +37,6 @@ export const WithVideo = {
         video: Model,
         label: 'Label',
         value: 'tab1',
-        onClick: fn() as any,
+        onClick: fn() as React.MouseEventHandler<HTMLButtonElement>,
     },
 };

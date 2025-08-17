@@ -1,17 +1,18 @@
 # Icon
 
 ## Purpose
+
 Scalable icon component providing various icon options with consistent sizing and styling.
 
 ## Parameters
 
 This component provides a collection of icon components. Each specific icon has its own props for size and styling customization. Common parameters include:
 
-| Parameter | Type | Description |
-|-----------|------|-------------|
-| size | number | Optional size dimension for the icon (typically in pixels) |
-| color | IconColorProp | Optional color for the icon (theme path, currentColor, hex, or rgba) |
-| style | 'outlined' \| 'bold' | Optional style variant for supported icons (defaults to 'outlined') |
+| Parameter | Type                 | Description                                                          |
+| --------- | -------------------- | -------------------------------------------------------------------- |
+| size      | number               | Optional size dimension for the icon (typically in pixels)           |
+| color     | IconColorProp        | Optional color for the icon (theme path, currentColor, hex, or rgba) |
+| style     | 'outlined' \| 'bold' | Optional style variant for supported icons (defaults to 'outlined')  |
 
 Individual icon components may have additional specific properties.
 
@@ -20,7 +21,7 @@ Individual icon components may have additional specific properties.
 Some icons support both `outlined` and `bold` style variants:
 
 - **GenerateIcon** - Supports `outlined` (default) and `bold` styles
-- **SettingsIcon** - Supports `outlined` (default) and `bold` styles  
+- **SettingsIcon** - Supports `outlined` (default) and `bold` styles
 - **PlayIcon** - Supports `outlined` (default) and `bold` styles
 - **PauseIcon** - Supports `outlined` (default) and `bold` styles
 - **SkipToStartIcon** - Supports `outlined` (default) and `bold` styles
@@ -30,13 +31,14 @@ Some icons support both `outlined` and `bold` style variants:
 - **StopIcon** - Supports `outlined` (default) and `bold` styles
 
 ## Usage Example
+
 ```tsx
-import { 
-  SearchIcon, 
-  PlayIcon, 
-  PauseIcon, 
+import {
+  SearchIcon,
+  PlayIcon,
+  PauseIcon,
   SettingsIcon,
-  PlaySquareIcon 
+  PlaySquareIcon
 } from '@hautechai/webui.icon';
 
 // Basic usage

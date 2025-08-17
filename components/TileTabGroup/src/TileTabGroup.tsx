@@ -21,11 +21,11 @@ export const TileTabGroup = (props: TileTabGroupProps) => {
         <StyledTileTabGroup $wrap={props.wrap}>
             {React.Children.map(props.children, (child) => {
                 if (React.isValidElement(child)) {
-                    const value = (child.props as any)['value'] as string;
+                    const value = (child.props as { value?: string })['value'] as string;
                     return React.cloneElement(child, {
                         onClick: () => props?.onSelect?.(value),
                         selected: value === props.selected,
-                    } as any);
+                    } as Partial<{ onClick: () => void; selected: boolean }>);
                 }
                 return child;
             })}

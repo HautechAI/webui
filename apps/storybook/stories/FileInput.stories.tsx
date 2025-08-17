@@ -1,3 +1,4 @@
+import React from 'react';
 import { fn } from '@storybook/test';
 
 import { FileInput } from '../../../components/FileInput/src';
@@ -9,12 +10,12 @@ export default {
         layout: 'centered',
     },
     tags: ['autodocs'],
-    args: { onChange: fn() as any },
+    args: { onChange: fn() as (e: React.ChangeEvent<HTMLInputElement>) => void },
 };
 
 export const Main = {
     args: {
-        onChange: (files: File[]) => console.log(files),
+        onChange: () => fn(),
     },
 };
 
@@ -30,8 +31,8 @@ export const VariantButtonStretch = {
         stretch: true,
     },
     decorators: [
-        (Story: any) => (
-            <div style={{ width: '300px', display: 'flex', flexDirection:'column', justifyContent:'stretch' }}>
+        (Story: React.ComponentType) => (
+            <div style={{ width: '300px', display: 'flex', flexDirection: 'column', justifyContent: 'stretch' }}>
                 <Story />
             </div>
         ),
