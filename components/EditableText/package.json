@@ -1,7 +1,7 @@
 {
     "name": "@hautechai/webui.editabletext",
     "description": "EditableText component that switches between text display and input editing modes",
-    "version": "2.1.5",
+    "version": "2.1.6",
     "type": "module",
     "main": "src/index.tsx",
     "publishConfig": {
