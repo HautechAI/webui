@@ -1,5 +1,5 @@
 import { styled } from '@hautechai/webui.themeprovider';
-import { themeVars } from '@hautechai/webui.themeprovider';
+import { themeVars, type IconColorProp, cssVar } from '@hautechai/webui.themeprovider';
 
 type TileSize = 'medium' | 'small' | 'xlarge';
 
@@ -9,17 +9,34 @@ const tileSize = {
     xlarge: 200,
 };
 
+/**
+ * Resolve a color variable or value for tile background.
+ * - If `color` is a palette path, returns the value from theme.palette
+ * - If `color` is a literal (hex/rgba/currentColor), returns it as-is
+ * - If `color` is undefined, falls back to the default theme surface color
+ */
+const resolveTileColor = (color?: IconColorProp): string => {
+    if (!color) return themeVars.layout.surfaceMid;
+
+    // Literal colors and currentColor pass through
+    if (color === 'currentColor') return color;
+    if (typeof color === 'string' && (color.startsWith('#') || color.startsWith('rgba('))) return color;
+
+    // Otherwise treat as a theme palette path
+    return cssVar(`palette.${String(color)}`);
+};
+
 const sizeToUnits = (size?: number | string) => {
     if (!size) return undefined;
     return typeof size === 'number' ? `${size}px` : size;
 };
 
-const StyledTileDiv = styled.div`
+const StyledTileDiv = styled.div<{ $color?: IconColorProp }>`
     display: flex;
     align-items: center;
     justify-content: center;
 
-    background-color: ${themeVars.layout.surfaceMid};
+    background-color: ${({ $color }) => resolveTileColor($color)};
     border-radius: ${themeVars.cornerRadius.m};
     background-image: var(--tile-bg-image, none);
     background-size: cover;
@@ -46,12 +63,12 @@ const StyledTileDiv = styled.div`
     }
 `;
 
-const StyledTileImg = styled.img`
+const StyledTileImg = styled.img<{ $color?: IconColorProp }>`
     display: flex;
     align-items: center;
     justify-content: center;
 
-    background-color: ${themeVars.layout.surfaceMid};
+    background-color: ${({ $color }) => resolveTileColor($color)};
     border-radius: ${themeVars.cornerRadius.m};
 
     border-width: ${themeVars.stroke.standard};
@@ -75,12 +92,12 @@ const StyledTileImg = styled.img`
     }
 `;
 
-const StyledTileVideo = styled.video`
+const StyledTileVideo = styled.video<{ $color?: IconColorProp }>`
     display: flex;
     align-items: center;
     justify-content: center;
 
-    background-color: ${themeVars.layout.surfaceMid};
+    background-color: ${({ $color }) => resolveTileColor($color)};
     border-radius: ${themeVars.cornerRadius.m};
 
     border-width: ${themeVars.stroke.standard};
@@ -120,11 +137,25 @@ export type TileProps = {
     loop?: boolean; // for video component
     muted?: boolean; // for video component
     playsInline?: boolean; // for video component
+    color?: IconColorProp;
 };
 
 export const Tile = (props: TileProps) => {
-    const { icon, size, aspectRatio, src, component, alt, controls, autoplay, loop, muted, playsInline, ...rest } =
-        props;
+    const {
+        icon,
+        size,
+        aspectRatio,
+        src,
+        component,
+        alt,
+        controls,
+        autoplay,
+        loop,
+        muted,
+        playsInline,
+        color,
+        ...rest
+    } = props;
     const { width, height } = props;
 
     if (size && (width || height || aspectRatio)) {
@@ -144,7 +175,16 @@ export const Tile = (props: TileProps) => {
     } as React.CSSProperties;
 
     if (component === 'img') {
-        return <StyledTileImg data-selected={!!props.selected} src={src} alt={alt} style={styleDims} {...rest} />;
+        return (
+            <StyledTileImg
+                data-selected={!!props.selected}
+                src={src}
+                alt={alt}
+                style={styleDims}
+                $color={color}
+                {...rest}
+            />
+        );
     }
 
     if (component === 'video') {
@@ -158,6 +198,7 @@ export const Tile = (props: TileProps) => {
                 muted={muted ?? true}
                 playsInline={playsInline ?? true}
                 style={styleDims}
+                $color={color}
                 {...rest}
             />
         );
@@ -170,6 +211,7 @@ export const Tile = (props: TileProps) => {
                 ...styleDims,
                 ['--tile-bg-image' as string]: src ? `url(${src})` : undefined,
             }}
+            $color={color}
             {...rest}
         >
             {icon}
