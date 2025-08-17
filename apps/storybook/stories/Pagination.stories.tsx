@@ -1,5 +1,5 @@
 import { fn } from '@storybook/test';
-import { Pagination } from '../../../components/Pagination/src';
+import { Pagination, type PaginationProps } from '../../../components/Pagination/src';
 import { useState } from 'react';
 
 export default {
@@ -12,10 +12,10 @@ export default {
     args: {
         totalPages: 16,
         currentPage: 1,
-        onPageChange: fn() as any,
+        onPageChange: fn() as (page: number) => void,
     },
     decorators: [
-        (Story: React.FC<any>, { args }: any) => {
+        (Story: React.ComponentType, { args }: { args: PaginationProps }) => {
             const [value, setValue] = useState(1);
             return <Story args={{ ...args, currentPage: value, onPageChange: setValue }} />;
         },

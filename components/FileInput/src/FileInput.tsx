@@ -1,6 +1,6 @@
 import { Button } from '@hautechai/webui.button';
 import { UploadIcon } from '@hautechai/webui.icon';
-import { styled } from '@linaria/react';
+import { styled } from '@hautechai/webui.themeprovider';
 import { themeVars } from '@hautechai/webui.themeprovider';
 import { Typography, TypographyProps } from '@hautechai/webui.typography';
 import React, { useEffect, useState } from 'react';
@@ -86,7 +86,14 @@ export const FileInput: React.FC<FileInputProps> = (props) => {
         }
     };
 
-    const { getRootProps, getInputProps, isDragActive, isDragReject, isDragAccept, fileRejections } = useDropzone({
+    const {
+        getRootProps,
+        getInputProps,
+        isDragActive,
+        isDragReject,
+        isDragAccept,
+        fileRejections: _fileRejections,
+    } = useDropzone({
         onDrop,
         accept: { 'image/*': [] },
         maxFiles: props.maxFiles,

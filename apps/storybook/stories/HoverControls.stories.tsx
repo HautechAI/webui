@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import Shirt from '../../../assets/shirt.png';
-import { HoverControls } from '../../../components/HoverControls/src';
+import { HoverControls, type HoverControlsProps } from '../../../components/HoverControls/src';
 import { Tile } from '../../../components/Tile/src';
 
 export default {
@@ -12,7 +12,7 @@ export default {
     tags: ['autodocs'],
     args: {},
     decorators: [
-        (Story: React.FC<any>, { args }: any) => {
+        (Story: React.ComponentType, { args }: { args: HoverControlsProps }) => {
             const [selected, setSelected] = useState(false);
             return (
                 <>

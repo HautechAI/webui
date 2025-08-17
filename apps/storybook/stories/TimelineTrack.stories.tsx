@@ -1,6 +1,6 @@
-import { fn } from '@storybook/test';
+import React from 'react';
 import { useRef } from 'react';
-import { TimelineTrack } from '../../../components/TimelineTrack/src';
+import { TimelineTrack, type TimelineTrackProps } from '../../../components/TimelineTrack/src';
 
 export default {
     title: 'VisualEditor/Timeline/TimelineTrack',
@@ -30,12 +30,14 @@ export default {
         selected: false,
     },
     decorators: [
-        (Story: any) => (
-            <div style={{ 
-                width: '800px', 
-                border: '1px dashed #ccc',
-                borderRadius: '4px',
-            }}>
+        (Story: React.ComponentType) => (
+            <div
+                style={{
+                    width: '800px',
+                    border: '1px dashed #ccc',
+                    borderRadius: '4px',
+                }}
+            >
                 <Story />
             </div>
         ),
@@ -43,7 +45,7 @@ export default {
 };
 
 export const Default = {
-    render: (args: any) => {
+    render: function DefaultRender(args: TimelineTrackProps) {
         const startHandlerRef = useRef<HTMLDivElement>(null);
         const endHandlerRef = useRef<HTMLDivElement>(null);
         const bodyRef = useRef<HTMLDivElement>(null);
@@ -61,7 +63,7 @@ export const Default = {
 };
 
 export const Selected = {
-    render: (args: any) => {
+    render: function SelectedRender(args: TimelineTrackProps) {
         const startHandlerRef = useRef<HTMLDivElement>(null);
         const endHandlerRef = useRef<HTMLDivElement>(null);
         const bodyRef = useRef<HTMLDivElement>(null);
@@ -79,4 +81,3 @@ export const Selected = {
         selected: true,
     },
 };
-

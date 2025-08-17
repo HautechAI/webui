@@ -1,6 +1,6 @@
-import { SegmentedControl, SegmentedControlProps } from '@hautechai/webui.segmentedcontrol';
 import { ArrowAltRightIcon } from '@hautechai/webui.icon';
-import { styled } from '@linaria/react';
+import { SegmentedControl } from '@hautechai/webui.segmentedcontrol';
+import { styled } from '@hautechai/webui.themeprovider';
 
 import CustomRatio from '../CustomRatio';
 import { RatioBoxContainer, SmallRatioBox } from '../styles';
@@ -44,9 +44,7 @@ export const AspectRatio = (props: AspectRatioProps) => {
                             <RatioBoxContainer>
                                 {(() => {
                                     const sz = getBoxSize(option, 16);
-                                    return (
-                                        <SmallRatioBox style={{ width: sz.width, height: sz.height }} />
-                                    );
+                                    return <SmallRatioBox style={{ width: sz.width, height: sz.height }} />;
                                 })()}
                             </RatioBoxContainer>
                         ),

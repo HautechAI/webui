@@ -1,5 +1,5 @@
 import { ButtonBase } from '@hautechai/webui.buttonbase';
-import { styled } from '@linaria/react';
+import { styled } from '@hautechai/webui.themeprovider';
 import { Tile } from '@hautechai/webui.tile';
 import { themeVars } from '@hautechai/webui.themeprovider';
 import { Typography } from '@hautechai/webui.typography';
@@ -10,7 +10,7 @@ const StyledTileTabItem = styled(ButtonBase)`
     align-items: center;
     gap: ${themeVars.spacing.m};
     color: ${themeVars.layout.onSurface.secondary};
-    &[data-selected="true"] {
+    &[data-selected='true'] {
         color: ${themeVars.actions.primary};
     }
     :hover {
@@ -34,7 +34,7 @@ export const TileTabItem = (props: TileTabItemProps) => {
         props.onClick?.(props.value);
     }, [props.onClick, props.value]);
 
-    const videoProps = video ? { src: video, component: 'video', autoPlay: true, loop: true } as const : {};
+    const videoProps = video ? ({ src: video, component: 'video', autoPlay: true, loop: true } as const) : {};
     return (
         <StyledTileTabItem onClick={clickHandler} data-selected={!!selected}>
             <Tile size="small" {...{ icon, src: image, selected }} {...videoProps} />

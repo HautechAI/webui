@@ -1,6 +1,7 @@
 # Theme
 
 ## Purpose
+
 Theme configuration object containing all design system values including colors, spacing, typography, and styling constants.
 
 ## Parameters
@@ -13,6 +14,7 @@ This component exports a theme object with design system values and does not acc
 - Component-specific styling tokens
 
 ## Usage Example
+
 ```tsx
 import { Theme } from '@hautechai/webui.theme';
 

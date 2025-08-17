@@ -1,7 +1,7 @@
 {
     "name": "@hautechai/webui.checkbox",
     "description": "",
-    "version": "2.1.1",
+    "version": "2.1.3",
     "type": "module",
     "main": "src/index.tsx",
     "sideEffects": false,
@@ -10,7 +10,14 @@
         "linkDirectory": false
     },
     "scripts": {
-        "prepack": "node ../../scripts/build-component.mjs"
+        "prepack": "node ../../scripts/build-component.mjs",
+        "lint:eslint": "eslint src --ext .ts,.tsx",
+        "lint:eslint:fix": "eslint src --ext .ts,.tsx --fix",
+        "lint:tsc": "tsc --noEmit",
+        "lint:prettier": "prettier --check src",
+        "lint:prettier:fix": "prettier --write src",
+        "lint": "pnpm lint:eslint && pnpm lint:tsc && pnpm lint:prettier",
+        "lint:fix": "pnpm lint:eslint:fix && pnpm lint:prettier:fix"
     },
     "author": "HautechAI",
     "dependencies": {

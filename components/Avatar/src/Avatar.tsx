@@ -1,11 +1,11 @@
 import React, { ReactNode } from 'react';
-import { css } from '@linaria/core';
+import { styled } from '@hautechai/webui.themeprovider';
 import { themeVars } from '@hautechai/webui.themeprovider';
 import { Typography } from '@hautechai/webui.typography';
 
 export type AvatarProps = { src?: string; initials?: string; icon?: ReactNode };
 
-const avatarContainerStyles = css`
+const Container = styled('div')`
     display: flex;
     align-items: center;
     justify-content: center;
@@ -17,7 +17,7 @@ const avatarContainerStyles = css`
     text-overflow: ellipsis;
 `;
 
-const avatarImageStyles = css`
+const Image = styled.div`
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -27,22 +27,19 @@ const avatarImageStyles = css`
 
 export const Avatar = (props: AvatarProps) => {
     return (
-        <div className={avatarContainerStyles}>
+        <Container>
             {props.src ? (
-                <div 
-                    className={avatarImageStyles}
-                    style={{ backgroundImage: `url(${props.src})` }}
-                />
+                <Image style={{ backgroundImage: `url(${props.src})` }} />
             ) : (
                 React.Children.map(props.icon, (child) => {
                     if (React.isValidElement(child)) {
                         return React.cloneElement(child, {
                             size: 20,
-                        } as any);
+                        } as Partial<{ size: number }>);
                     }
                     return child;
                 }) || <Typography variant="H1">{props.initials}</Typography>
             )}
-        </div>
+        </Container>
     );
 };

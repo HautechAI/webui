@@ -1,4 +1,4 @@
-import { styled } from '@linaria/react';
+import { styled } from '@hautechai/webui.themeprovider';
 import { themeVars } from '@hautechai/webui.themeprovider';
 
 export const MaterialContainer = styled.div`
@@ -43,7 +43,8 @@ export const HIGRow = styled.div`
         color: ${themeVars.layout.onSurface.primary};
     }
 
-    transition: background-color ${themeVars.animation.duration.fast} ${themeVars.animation.timing.easeOut},
+    transition:
+        background-color ${themeVars.animation.duration.fast} ${themeVars.animation.timing.easeOut},
         color ${themeVars.animation.duration.fast} ${themeVars.animation.timing.easeOut};
 `;
 

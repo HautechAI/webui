@@ -1,5 +1,5 @@
 import { Checkbox } from '@hautechai/webui.checkbox';
-import { styled } from '@linaria/react';
+import { styled } from '@hautechai/webui.themeprovider';
 import React, { PropsWithChildren, useCallback } from 'react';
 
 const StyledHoverControls = styled.div`
@@ -48,7 +48,7 @@ export const HoverControls = (props: HoverControlsProps) => {
                 if (React.isValidElement(child)) {
                     return React.cloneElement(child, {
                         selected,
-                    } as any);
+                    } as unknown);
                 }
                 return child;
             })}

@@ -1,5 +1,5 @@
 import { Row } from '@hautechai/webui.row';
-import { styled } from '@linaria/react';
+import { styled } from '@hautechai/webui.themeprovider';
 import { themeVars } from '@hautechai/webui.themeprovider';
 import { Typography } from '@hautechai/webui.typography';
 import React from 'react';
@@ -18,21 +18,23 @@ export const Container = styled.div`
     border-radius: ${themeVars.cornerRadius.m};
     background-color: transparent;
 
-    transition: 
+    transition:
         background-color ${themeVars.animation.duration.normal} ${themeVars.animation.timing.ease},
         color ${themeVars.animation.duration.normal} ${themeVars.animation.timing.ease};
 
     color: ${themeVars.layout.onSurface.secondary};
-    &[data-size="medium"] {
+    &[data-size='medium'] {
         color: ${themeVars.layout.onSurface.tertiary};
         padding: ${themeVars.spacing.m} ${themeVars.spacing.ml};
     }
-    &[data-size="small"] { padding: ${themeVars.spacing.s} ${themeVars.spacing.m}; }
-    &[data-selected="true"] {
+    &[data-size='small'] {
+        padding: ${themeVars.spacing.s} ${themeVars.spacing.m};
+    }
+    &[data-selected='true'] {
         color: ${themeVars.layout.onSurface.primary};
         background-color: ${themeVars.layout.surfaceHigh};
     }
-    &[data-type="CTA"] {
+    &[data-type='CTA'] {
         color: ${themeVars.actions.primary};
     }
     &:hover {
@@ -61,7 +63,9 @@ const renderIcon = (icon?: React.ReactNode, color?: string) =>
     icon ? (
         <>
             {React.Children.map(icon, (child) =>
-                React.isValidElement(child) ? React.cloneElement(child, { size: 20, color } as any) : child,
+                React.isValidElement(child)
+                    ? React.cloneElement(child, { size: 20, color } as Partial<{ size: number; color: string }>)
+                    : child,
             )}
         </>
     ) : null;
@@ -84,8 +88,8 @@ export const MenuItem = ({
                         type === 'CTA'
                             ? 'LabelMediumEmphasized'
                             : size === 'medium'
-                            ? 'LabelMediumRegular'
-                            : 'LabelSmallRegular'
+                              ? 'LabelMediumRegular'
+                              : 'LabelSmallRegular'
                     }
                 >
                     {label}

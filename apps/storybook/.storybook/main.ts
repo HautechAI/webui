@@ -1,5 +1,4 @@
 import { StorybookConfig } from '@storybook/react-vite';
-import linaria from '@wyw-in-js/vite';
 
 const config: StorybookConfig = {
     stories: ['../stories/*.stories.@(js|jsx|mjs|ts|tsx)'],
@@ -7,20 +6,6 @@ const config: StorybookConfig = {
     framework: {
         name: '@storybook/react-vite',
         options: {},
-    },
-    viteFinal: async (config) => {
-        return {
-            ...config,
-            plugins: [
-                linaria({
-                    include: ['**/*.{ts,tsx}'],
-                    babelOptions: {
-                        presets: ['@babel/preset-typescript', '@babel/preset-react'],
-                    },
-                }),
-                ...(config.plugins ?? []),
-            ],
-        };
     },
 };
 

@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.5](https://github.com/HautechAI/webui/compare/@hautechai/webui.theme@2.1.4...@hautechai/webui.theme@2.1.5) (2025-08-17)
+
+**Note:** Version bump only for package @hautechai/webui.theme
+
+## [2.1.4](https://github.com/HautechAI/webui/compare/@hautechai/webui.theme@2.1.3...@hautechai/webui.theme@2.1.4) (2025-08-17)
+
+**Note:** Version bump only for package @hautechai/webui.theme
+
 ## [2.1.3](https://github.com/HautechAI/webui/compare/@hautechai/webui.theme@2.1.1...@hautechai/webui.theme@2.1.3) (2025-08-16)
 
 **Note:** Version bump only for package @hautechai/webui.theme

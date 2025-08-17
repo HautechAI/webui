@@ -1,4 +1,4 @@
-import { styled } from '@linaria/react';
+import { styled } from '@hautechai/webui.themeprovider';
 import { themeVars } from '@hautechai/webui.themeprovider';
 import { IconButton, IconButtonProps } from '@hautechai/webui.iconbutton';
 import React, { useCallback, useRef } from 'react';
@@ -113,7 +113,7 @@ const getIcon = (icon: React.ReactNode, size: 'medium' | 'small') => (
             if (React.isValidElement(child)) {
                 return React.cloneElement(child, {
                     size: size === 'small' ? 16 : 20,
-                } as any);
+                } as unknown);
             }
             return child;
         })}

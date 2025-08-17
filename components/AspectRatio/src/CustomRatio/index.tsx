@@ -1,16 +1,22 @@
 import { Box } from '@hautechai/webui.box';
 import { Column } from '@hautechai/webui.column';
 import { Divider } from '@hautechai/webui.divider';
+import { Modal } from '@hautechai/webui.modal';
 import { Row } from '@hautechai/webui.row';
 import { Slider } from '@hautechai/webui.slider';
 import { Typography } from '@hautechai/webui.typography';
-import { Modal } from '@hautechai/webui.modal';
 
 import { getBoxSize } from '../AspectRatio/logic';
-import { AspectRatioBoxContainer, ModalContentContainer, OptionLabel, Ratio, RatioBox, Sizes } from '../styles';
+import {
+    AspectRatioBoxContainer,
+    maxPxSize,
+    ModalContentContainer,
+    OptionLabel,
+    Ratio,
+    RatioBox,
+    Sizes,
+} from '../styles';
 import useLogic from './logic';
-
-export const maxPxSize = 320;
 
 export type CustomRatioProps = {
     open?: boolean;

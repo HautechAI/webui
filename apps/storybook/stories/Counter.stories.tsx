@@ -1,3 +1,4 @@
+import React from 'react';
 import { fn } from '@storybook/test';
 import { Box } from '../../../components/Box/src';
 import { Counter } from '../../../components/Counter/src';
@@ -13,12 +14,12 @@ export default {
         backgroundColor: { control: 'color' },
     },
     args: {
-        onChange: fn() as any,
+        onChange: fn() as (e: React.ChangeEvent<HTMLInputElement>) => void,
         min: 0,
         max: 5,
     },
     decorators: [
-        (Story: any) => (
+        (Story: React.ComponentType) => (
             <Box width={200}>
                 <Story />
             </Box>

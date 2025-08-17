@@ -1,4 +1,4 @@
-import { styled } from '@linaria/react';
+import { styled } from '@hautechai/webui.themeprovider';
 import { themeVars } from '@hautechai/webui.themeprovider';
 
 const Container = styled.div`
@@ -6,7 +6,7 @@ const Container = styled.div`
     flex-direction: row;
     align-items: center;
     background-color: ${themeVars.layout.surfaceMid};
-    &[data-hierarchy="low"] {
+    &[data-hierarchy='low'] {
         background-color: ${themeVars.layout.surfaceLow};
     }
     padding: ${themeVars.spacing.l} ${themeVars.spacing.xl};
@@ -48,7 +48,7 @@ export type AppBarProps = {
 export const AppBar = (props: AppBarProps) => {
     const { hierarchy = 'mid' } = props;
     return (
-    <Container data-hierarchy={hierarchy}>
+        <Container data-hierarchy={hierarchy}>
             <LeftContainer>{props.left}</LeftContainer>
             <CenterContainer>{props.center}</CenterContainer>
             <RightContainer>{props.right}</RightContainer>

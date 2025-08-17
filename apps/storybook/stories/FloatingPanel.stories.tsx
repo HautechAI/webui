@@ -1,3 +1,4 @@
+import React from 'react';
 import { Badge } from '../../../components/Badge/src';
 import { Box } from '../../../components/Box/src';
 import { FloatingPanel } from '../../../components/FloatingPanel/src';
@@ -5,14 +6,14 @@ import { OperationItem } from '../../../components/OperationItem/src';
 
 export default {
     title: 'Surfaces/FloatingPanel',
-    component: FloatingPanel as any,
+    component: FloatingPanel as unknown,
     parameters: {
         layout: 'centered',
     },
     tags: ['autodocs'],
     argTypes: {},
     decorators: [
-        (Story: any) => (
+        (Story: React.ComponentType) => (
             <div style={{ width: '500px', height: '500px', border: 'dashed red 1px' }}>
                 <Story />
             </div>

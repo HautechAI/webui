@@ -1,4 +1,4 @@
-import { styled } from '@linaria/react';
+import { styled } from '@hautechai/webui.themeprovider';
 import { themeVars } from '@hautechai/webui.themeprovider';
 
 const Container = styled.div`
@@ -65,14 +65,14 @@ export type BottomSheetProps = {
 };
 
 export const BottomSheet = (props: BottomSheetProps) => {
-    const { children, ...rest } = props;
-    const styleInsets: React.CSSProperties = {
+    const { children: _children, ..._rest } = props;
+    const styleInsets: React.CSSProperties & Record<string, string | number | undefined> = {
         paddingTop: props.inset?.top,
         paddingRight: props.inset?.right,
         paddingBottom: props.inset?.bottom,
         paddingLeft: props.inset?.left,
         // optional z-index via CSS var
-        ['--bs-z-index' as any]: props.zIndex ? `${props.zIndex}` : undefined,
+        '--bs-z-index': props.zIndex ? `${props.zIndex}` : undefined,
     };
     return (
         <Container data-open={props.open} data-z={props.zIndex ? 'true' : undefined}>

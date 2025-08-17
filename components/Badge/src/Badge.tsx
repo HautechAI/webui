@@ -1,12 +1,19 @@
 import { BadgeProps } from './Badge.types';
-import S, { containerClasses, textClasses } from './Badge.styles';
+import S from './Badge.styles';
+import { Typography } from '@hautechai/webui.typography';
 
 export const Badge = (props: BadgeProps) => {
+    const textColor =
+        props.color === 'success'
+            ? 'actions.success'
+            : props.color === 'error'
+              ? 'actions.error'
+              : 'layout.onSurface.secondary';
     return (
-        <S.Container className={`${containerClasses.base} ${containerClasses[props.color]}`}>
-            <S.Text className={`${textClasses.base} ${textClasses[props.color]}`} variant="LabelSmallRegular">
+        <S.Container data-color={props.color}>
+            <Typography color={textColor} variant="LabelSmallRegular">
                 {props.label}
-            </S.Text>
+            </Typography>
         </S.Container>
     );
 };

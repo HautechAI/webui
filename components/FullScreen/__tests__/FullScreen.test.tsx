@@ -10,7 +10,7 @@ describe('FullScreen', () => {
         expect(() => {
             render(
                 <ThemeProvider theme={testTheme}>
-                    <FullScreen />
+                    <FullScreen>Test Content</FullScreen>
                 </ThemeProvider>,
             );
         }).not.toThrow();

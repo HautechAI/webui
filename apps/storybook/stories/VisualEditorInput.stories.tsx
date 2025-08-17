@@ -2,7 +2,7 @@ import { fn } from '@storybook/test';
 import React, { useState } from 'react';
 import { Box } from '../../../components/Box/src';
 import { PlaceholderIcon } from '../../../components/Icon/src';
-import { VisualEditorInput } from '../../../components/VisualEditorInput/src';
+import { VisualEditorInput, type VisualEditorInputProps } from '../../../components/VisualEditorInput/src';
 
 export default {
     title: 'Visual Editor/VisualEditorInput',
@@ -40,13 +40,13 @@ export default {
         variation: 'filled',
         size: 'small',
         placeholder: 'Enter value',
-        onChange: fn() as any,
-        onToggleKeyframe: fn() as any,
-        onTogglePort: fn() as any,
-        onChangeUnits: fn() as any,
+        onChange: fn() as (value: string) => void,
+        onToggleKeyframe: fn() as () => void,
+        onTogglePort: fn() as () => void,
+        onChangeUnits: fn() as (units: string) => void,
     },
     decorators: [
-        (Story: any) => (
+        (Story: React.ComponentType) => (
             <Box width={300}>
                 <Story />
             </Box>
@@ -157,7 +157,7 @@ export const Interactive = {
 };
 
 export const AllStates = {
-    render: (args: any) => (
+    render: (args: VisualEditorInputProps) => (
         <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
             <div>
                 <h3 style={{ marginBottom: '16px', fontSize: '16px' }}>Normal States</h3>
@@ -180,9 +180,9 @@ export const AllStates = {
     args: {
         availableUnits: ['px', '%', 'em', 'rem', 'vh', 'vw'],
         leadingIcon: <PlaceholderIcon />,
-        onChange: fn() as any,
-        onToggleKeyframe: fn() as any,
-        onTogglePort: fn() as any,
-        onChangeUnits: fn() as any,
+        onChange: fn() as (value: string) => void,
+        onToggleKeyframe: fn() as () => void,
+        onTogglePort: fn() as () => void,
+        onChangeUnits: fn() as (units: string) => void,
     },
 };

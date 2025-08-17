@@ -1,6 +1,6 @@
 import { Column } from '@hautechai/webui.column';
 import { Row } from '@hautechai/webui.row';
-import { styled } from '@linaria/react';
+import { styled } from '@hautechai/webui.themeprovider';
 import { themeVars } from '@hautechai/webui.themeprovider';
 import { Typography } from '@hautechai/webui.typography';
 import React, { useCallback, useRef } from 'react';
@@ -23,11 +23,12 @@ export type FieldProps = LockedProps & {
     labelPosition?: 'left' | 'right' | 'top';
     error?: string;
     caption?: string;
+    actionButton?: React.ReactNode;
     children: React.ReactNode;
 };
 
 export const Field = (props: FieldProps) => {
-    const { label, labelPosition = 'top', error, caption, locked, onLockedClick, children } = props;
+    const { label, labelPosition = 'top', error, caption, locked, onLockedClick, actionButton, children } = props;
     const ref = useRef<HTMLDivElement>(null);
 
     const handleClick = useCallback(
@@ -43,11 +44,7 @@ export const Field = (props: FieldProps) => {
     const Main = labelPosition === 'top' ? Column : Row;
 
     return (
-        <Container
-            onClick={handleClick}
-            ref={ref}
-            style={{ flex: labelPosition === 'right' ? undefined : 1 }}
-        >
+        <Container onClick={handleClick} ref={ref} style={{ flex: labelPosition === 'right' ? undefined : 1 }}>
             <Main spacing={labelPosition === 'top' ? 'm' : 'ml'} stretch reverse={labelPosition === 'right'}>
                 <Row spacing="s" align="center">
                     {label && (
@@ -55,6 +52,7 @@ export const Field = (props: FieldProps) => {
                             {label}
                         </Typography>
                     )}
+                    {actionButton}
                     {locked && <LockIcon size={16} color="layout.onSurface.secondary" />}
                 </Row>
                 <Row stretch spacing="s" align="center">
@@ -62,7 +60,7 @@ export const Field = (props: FieldProps) => {
                         if (React.isValidElement(child)) {
                             return React.cloneElement(child, {
                                 hasError: !!error,
-                            } as any);
+                            } as unknown);
                         }
                         return child;
                     })}

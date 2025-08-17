@@ -14,7 +14,10 @@ const useLogic = (props: AspectRatioProps) => {
 
     const ref = useRef<HTMLDivElement>(null);
     const [modalSelected, setModalSelected] = useState<string>(props.value ?? props.defaultOptions[0]);
-    const [modalPosition, setModalPosition] = useState<{ left: number | string; top: number | string }>({ left: 0, top: 0 });
+    const [modalPosition, setModalPosition] = useState<{ left: number | string; top: number | string }>({
+        left: 0,
+        top: 0,
+    });
 
     useEffect(() => {
         if (props.value) {
@@ -39,7 +42,6 @@ const useLogic = (props: AspectRatioProps) => {
         }
         return [props.defaultOptions[0], selected, props.defaultOptions[2]];
     }, [props.defaultOptions, selected]);
-
 
     useEffect(() => {
         const rect = ref.current?.getBoundingClientRect();

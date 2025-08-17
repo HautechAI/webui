@@ -48,7 +48,7 @@ export const WithMenus = {
                             label: 'Option 1',
                             leadingIcon: <UploadIcon />,
                             onClick: () => {
-                                fn() as any;
+                                fn();
                                 close();
                             },
                             size: 'medium',
@@ -56,7 +56,7 @@ export const WithMenus = {
                         {
                             label: 'Any text',
                             onClick: () => {
-                                fn() as any;
+                                fn();
                                 close();
                             },
                             size: 'medium',
@@ -69,7 +69,7 @@ export const WithMenus = {
                         {
                             label: 'Option 2',
                             onClick: () => {
-                                fn() as any;
+                                fn();
                                 close();
                             },
                             size: 'small',
@@ -78,7 +78,7 @@ export const WithMenus = {
                             label: 'Any text very very long text',
                             trailingIcon: <UploadIcon />,
                             onClick: () => {
-                                fn() as any;
+                                fn();
                                 close();
                             },
                             size: 'small',
@@ -92,7 +92,7 @@ export const WithMenus = {
                             label: 'Delete',
                             trailingIcon: <MoreIcon />,
                             onClick: () => {
-                                fn() as any;
+                                fn();
                                 close();
                             },
                             size: 'medium',

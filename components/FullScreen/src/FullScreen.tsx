@@ -1,4 +1,4 @@
-import { styled } from '@linaria/react';
+import { styled } from '@hautechai/webui.themeprovider';
 
 const Container = styled.div<Omit<FullScreenProps, 'children'>>`
     position: fixed;
@@ -18,6 +18,6 @@ export type FullScreenProps = {
 };
 
 export const FullScreen = (props: FullScreenProps) => {
-    const { children, ...rest } = props;
+    const { children: _children, ...rest } = props;
     return <Container {...rest}>{props.children}</Container>;
 };

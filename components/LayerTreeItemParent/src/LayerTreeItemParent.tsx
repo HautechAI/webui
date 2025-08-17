@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { styled } from '@linaria/react';
+import { styled } from '@hautechai/webui.themeprovider';
 import { IconButton } from '@hautechai/webui.iconbutton';
 import { EditableText } from '@hautechai/webui.editabletext';
 import { ArrowAltRightIcon } from '@hautechai/webui.icon';

@@ -1,5 +1,5 @@
 import { DiamondIcon } from '@hautechai/webui.icon';
-import { css } from '@linaria/core';
+import { styled } from '@hautechai/webui.themeprovider';
 import { themeVars } from '@hautechai/webui.themeprovider';
 import React from 'react';
 
@@ -11,8 +11,7 @@ export type KeyframeToggleProps = {
     disabled?: boolean;
 };
 
-// Base styles for the toggle button
-const baseButton = css`
+const StyledButton = styled('button')`
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -22,69 +21,41 @@ const baseButton = css`
     background: transparent;
     cursor: pointer;
     padding: 0;
-    transition: 
-        color ${themeVars.animation.duration.fast} ${themeVars.animation.timing.easeOut};
+    transition: color ${themeVars.animation.duration.fast} ${themeVars.animation.timing.easeOut};
 
     &:disabled {
         cursor: not-allowed;
         opacity: 0.5;
     }
-`;
 
-// State-specific styles
-const noKeyframesStyle = css`
-    color: ${themeVars.layout.onSurface.secondary};
+    /* State variants */
+    &[data-state='noKeyframes'] {
+        color: ${themeVars.layout.onSurface.secondary};
 
-    &:hover:not(:disabled) {
-        color: ${themeVars.layout.onSurface.primary};
+        &:hover:not(:disabled) {
+            color: ${themeVars.layout.onSurface.primary};
+        }
+    }
+
+    &[data-state='hasKeyframes'],
+    &[data-state='isKeyframe'] {
+        color: ${themeVars.actions.primary};
+
+        &:hover:not(:disabled) {
+            color: ${themeVars.actions.onSecondary};
+        }
     }
 `;
-
-const hasKeyframesStyle = css`
-    color: ${themeVars.actions.primary};
-
-    &:hover:not(:disabled) {
-        color: ${themeVars.actions.onSecondary};
-    }
-`;
-
-const isKeyframeStyle = css`
-    color: ${themeVars.actions.primary};
-
-    &:hover:not(:disabled) {
-        color: ${themeVars.actions.onSecondary};
-    }
-`;
-
-const stateStyles = {
-    noKeyframes: noKeyframesStyle,
-    hasKeyframes: hasKeyframesStyle,
-    isKeyframe: isKeyframeStyle,
-};
 
 export const KeyframeToggle = (props: KeyframeToggleProps) => {
     const { state, onClick, disabled, ...rest } = props;
-    
+
     // Determine icon style based on state
     const iconStyle = state === 'isKeyframe' ? 'bold' : 'outlined';
-    
-    const buttonClassName = [
-        baseButton,
-        stateStyles[state],
-    ].join(' ');
 
     return (
-        <button 
-            className={buttonClassName}
-            onClick={onClick}
-            disabled={disabled}
-            {...rest}
-        >
-            <DiamondIcon 
-                size={16}
-                style={iconStyle}
-                color="currentColor"
-            />
-        </button>
+        <StyledButton data-state={state} onClick={onClick} disabled={disabled} {...rest}>
+            <DiamondIcon size={16} style={iconStyle} color="currentColor" />
+        </StyledButton>
     );
 };

@@ -28,7 +28,7 @@ describe('ToggleIconButton', () => {
 
     it('should render with all variants', () => {
         const variants = ['filled', 'outlined', 'flat', 'primary'] as const;
-        variants.forEach(variant => {
+        variants.forEach((variant) => {
             expect(() => {
                 render(
                     <ThemeProvider theme={testTheme}>
@@ -41,7 +41,7 @@ describe('ToggleIconButton', () => {
 
     it('should render with all sizes', () => {
         const sizes = ['medium', 'small', 'xsmall'] as const;
-        sizes.forEach(size => {
+        sizes.forEach((size) => {
             expect(() => {
                 render(
                     <ThemeProvider theme={testTheme}>

@@ -1,5 +1,5 @@
 import { ButtonBase } from '@hautechai/webui.buttonbase';
-import { css } from '@linaria/core';
+import { styled } from '@hautechai/webui.themeprovider';
 import { themeVars } from '@hautechai/webui.themeprovider';
 import React from 'react';
 
@@ -10,8 +10,8 @@ export type ToolButtonProps = {
     onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
 };
 
-// Base styles using theme variables only
-const buttonBase = css`
+// Styled components
+const StyledButton = styled(ButtonBase)`
     width: ${themeVars.spacing.xxl};
     height: ${themeVars.spacing.xxl};
     padding: ${themeVars.spacing.s};
@@ -23,71 +23,58 @@ const buttonBase = css`
     cursor: pointer;
     transition: background-color ${themeVars.animation.duration.fast} ${themeVars.animation.timing.easeOut};
 
+    /* Default state */
+    background-color: transparent;
+    color: ${themeVars.layout.onSurface.secondary};
+
+    &:hover:not(:disabled) {
+        background-color: ${themeVars.layout.surfaceMid};
+    }
+
+    &[data-selected='true'] {
+        background-color: ${themeVars.actions.secondary};
+        color: ${themeVars.actions.onSecondary};
+    }
+
+    &[data-selected='true']:hover:not(:disabled) {
+        background-color: ${themeVars.actions.secondary};
+    }
+
     &:disabled {
         cursor: not-allowed;
         opacity: 0.5;
     }
 `;
 
-// Default state (not selected, not hovered)
-const defaultState = css`
-    background-color: transparent;
-
-    &:hover:not(:disabled) {
-        background-color: ${themeVars.layout.surfaceMid};
-    }
-`;
-
-// Selected state
-const selectedState = css`
-    background-color: ${themeVars.actions.secondary};
-
-    &:hover:not(:disabled) {
-        background-color: ${themeVars.actions.secondary};
-    }
-`;
-
-// Icon container using theme variables
-const iconContainer = css`
+const IconContainer = styled('div')`
     width: ${themeVars.spacing.xl};
     height: ${themeVars.spacing.xl};
     justify-content: center;
     align-items: center;
     display: flex;
-
-    /* Apply color to icon children */
-    * {
-        color: var(--tool-button-icon-color, ${themeVars.layout.onSurface.secondary});
-    }
+    /* children (icons) inherit currentColor */
 `;
 
 // Helper function to inject size into icon using theme values
 const getIcon = (icon: React.ReactNode) => (
-    <div className={iconContainer}>
+    <IconContainer>
         {React.Children.map(icon, (child) => {
             if (React.isValidElement(child)) {
                 return React.cloneElement(child, {
                     size: themeVars.spacing.xl, // Using theme value for icon size
-                } as any);
+                } as unknown);
             }
             return child;
         })}
-    </div>
+    </IconContainer>
 );
 
 export const ToolButton = (props: ToolButtonProps) => {
     const { selected = false, icon, ...rest } = props;
 
-    const buttonClassName = [buttonBase, selected ? selectedState : defaultState].join(' ');
-
-    // Set CSS custom property for icon color based on selected state
-    const iconColorVar = selected ? themeVars.actions.onSecondary : themeVars.layout.onSurface.secondary;
-
     return (
-        <span style={{ ['--tool-button-icon-color' as any]: iconColorVar }}>
-            <ButtonBase className={buttonClassName} {...rest}>
-                {getIcon(icon)}
-            </ButtonBase>
-        </span>
+        <StyledButton data-selected={selected ? 'true' : undefined} {...rest}>
+            {getIcon(icon)}
+        </StyledButton>
     );
 };
