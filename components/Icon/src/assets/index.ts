@@ -63,6 +63,7 @@ export * from './search';
 export * from './settings';
 export * from './skipToEnd';
 export * from './skipToStart';
+export * from './sparkle';
 export * from './star';
 export * from './sun';
 export * from './tShirt';
