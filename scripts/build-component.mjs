@@ -46,7 +46,10 @@ const newPackageJson = {
         './index.css': './index.css',
     },
     sideEffects: ['*.css'],
-    access: 'public',
+    // Ensure scoped packages are published publicly when using dist/package.json
+    publishConfig: {
+        access: 'public',
+    },
 };
 
 fs.writeFileSync(path.resolve(componentDir, 'dist/package.json'), JSON.stringify(newPackageJson, null, 2));
