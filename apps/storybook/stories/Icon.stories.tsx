@@ -13,11 +13,11 @@ export default {
 };
 
 const AllIcons = () => {
-    const items: { key: string; name: string; Comp: any; props?: Record<string, unknown> }[] = [];
+    const items: { key: string; name: string; Comp: React.ComponentType<Record<string, any>>; props?: Record<string, unknown> }[] = [];
     for (const [name, Comp] of Object.entries(Icons)) {
         if (typeof Comp !== 'function') continue;
         items.push({ key: `${name}-default`, name, Comp, props: {} });
-        if ((Comp as any).hasStyleVariant) {
+        if ((Comp as React.ComponentType<Record<string, any>> & { hasStyleVariant?: boolean }).hasStyleVariant) {
             items.push({ key: `${name}-style-bold`, name: `${name} (style=bold)`, Comp, props: { style: 'bold' } });
         }
     }

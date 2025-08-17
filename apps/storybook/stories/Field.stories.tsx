@@ -57,7 +57,7 @@ export const WithSwitch = {
 export const WithCounter = {
     args: {
         label: 'Label',
-        children: <Counter onChange={fn() as any} />,
+        children: <Counter onChange={fn() as (value: number) => void} />,
     },
 };
 
@@ -68,7 +68,7 @@ export const WithDropdown = {
         children: (
             <Dropdown
                 label="Option"
-                onChange={fn() as any}
+                onChange={fn() as (value: string) => void}
                 options={[
                     { label: 'Option1', value: 'op1' },
                     { label: 'Option2 very long option', value: 'op2' },
@@ -102,7 +102,7 @@ export const WithInput = {
     args: {
         label: 'Label',
         caption: 'Helper text',
-        children: <TextInput type="text" placeholder="Any text" variation="filled" onChange={fn() as any} />,
+        children: <TextInput type="text" placeholder="Any text" variation="filled" onChange={fn() as (value: string) => void} />,
     },
 };
 
@@ -117,8 +117,8 @@ export const WithInputWithIcons = {
                 leadingIcon={<PlaceholderIcon />}
                 trailingIcon={<PlaceholderIcon />}
                 icon={<PlaceholderIcon />}
-                onIconButtonClick={fn() as any}
-                onChange={fn() as any}
+                onIconButtonClick={fn() as () => void}
+                onChange={fn() as (value: string) => void}
             />
         ),
     },
@@ -135,8 +135,8 @@ export const WithInputDisabled = {
                 disabled
                 placeholder="Any text"
                 icon={<PlaceholderIcon />}
-                onIconButtonClick={fn() as any}
-                onChange={fn() as any}
+                onIconButtonClick={fn() as () => void}
+                onChange={fn() as (value: string) => void}
             />
         ),
     },
@@ -147,14 +147,14 @@ export const WithInputLocked = {
         label: 'Label',
         caption: 'Helper text',
         locked: true,
-        onLockedClick: fn() as any,
+        onLockedClick: fn() as () => void,
         children: (
             <TextInput
                 type="text"
                 placeholder="Any text"
                 icon={<PlaceholderIcon />}
-                onIconButtonClick={fn() as any}
-                onChange={fn() as any}
+                onIconButtonClick={fn() as () => void}
+                onChange={fn() as (value: string) => void}
             />
         ),
     },
@@ -169,7 +169,7 @@ export const WithArea = {
                 placeholder="Any text"
                 variation="filled"
                 value="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-                onChange={fn() as any}
+                onChange={fn() as (value: string) => void}
             />
         ),
     },
@@ -185,8 +185,8 @@ export const WithAreaWithIcons = {
                 leadingIcon={<PlaceholderIcon />}
                 trailingIcon={<PlaceholderIcon />}
                 icon={<PlaceholderIcon />}
-                onIconButtonClick={fn() as any}
-                onChange={fn() as any}
+                onIconButtonClick={fn() as () => void}
+                onChange={fn() as (value: string) => void}
             />
         ),
     },
@@ -202,8 +202,8 @@ export const WithAreaDisabled = {
                 disabled
                 placeholder="Any text"
                 icon={<PlaceholderIcon />}
-                onIconButtonClick={fn() as any}
-                onChange={fn() as any}
+                onIconButtonClick={fn() as () => void}
+                onChange={fn() as (value: string) => void}
             />
         ),
     },
@@ -214,13 +214,13 @@ export const WithAreaLocked = {
         label: 'Label',
         caption: 'Helper text',
         locked: true,
-        onLockedClick: fn() as any,
+        onLockedClick: fn() as () => void,
         children: (
             <TextArea
                 placeholder="Any text"
                 icon={<PlaceholderIcon />}
-                onIconButtonClick={fn() as any}
-                onChange={fn() as any}
+                onIconButtonClick={fn() as () => void}
+                onChange={fn() as (value: string) => void}
             />
         ),
     },

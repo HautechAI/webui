@@ -14,7 +14,7 @@ export default {
     tags: ['autodocs'],
     argTypes: {},
     args: {
-        onExpandToggle: fn() as any,
+        onExpandToggle: fn() as () => void,
         onClick: fn() as React.MouseEventHandler<HTMLButtonElement>,
         onChange: fn() as (e: React.ChangeEvent<HTMLInputElement>) => void,
     },

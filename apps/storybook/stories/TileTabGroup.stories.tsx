@@ -12,7 +12,7 @@ export default {
     },
     tags: ['autodocs'],
     args: {
-        onSelect: fn() as any,
+        onSelect: fn() as (value: string) => void,
     },
     decorators: [
         (Story: React.ComponentType, { args }: any) => {

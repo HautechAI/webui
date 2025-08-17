@@ -1,6 +1,6 @@
 import { fn } from '@storybook/test';
 
-import { KeyframeToggle } from '../../../components/KeyframeToggle/src';
+import { KeyframeToggle, type KeyframeToggleProps } from '../../../components/KeyframeToggle/src';
 
 export default {
     title: 'Interaction/KeyframeToggle',
@@ -37,7 +37,7 @@ export const IsKeyframe = {
 };
 
 export const AllStates = {
-    render: (args: any) => (
+    render: (args: KeyframeToggleProps) => (
         <div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
             <div style={{ textAlign: 'center' }}>
                 <div style={{ marginBottom: '8px', fontSize: '12px' }}>No Keyframes</div>

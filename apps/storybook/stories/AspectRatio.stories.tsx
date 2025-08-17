@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { AspectRatio } from '../../../components/AspectRatio/src';
+import { AspectRatio, type AspectRatioProps } from '../../../components/AspectRatio/src';
 
 export default {
     title: 'Compositions/Aspect Ratio',
@@ -10,7 +10,7 @@ export default {
     tags: ['autodocs'],
 
     decorators: [
-        (Story: React.ComponentType, { args }: { args: any }) => {
+        (Story: React.ComponentType, { args }: { args: AspectRatioProps }) => {
             const [value, setValue] = useState('1:1');
             return (
                 <div style={{ display: 'flex', width: 'auto', marginTop: '500px' }}>

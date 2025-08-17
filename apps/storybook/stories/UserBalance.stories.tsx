@@ -10,7 +10,7 @@ export default {
         layout: 'centered',
     },
     tags: ['autodocs'],
-    args: { onTopUpClick: fn() as any },
+    args: { onTopUpClick: fn() as () => void },
     decorators: [
         (Story: React.ComponentType) => (
             <div style={{ width: '300px' }}>

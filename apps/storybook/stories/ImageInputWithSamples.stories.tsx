@@ -10,7 +10,7 @@ export default {
         layout: 'centered',
     },
     tags: ['autodocs'],
-    args: { onUpload: fn() as any, onSelectSample: fn() as any },
+    args: { onUpload: fn() as () => void, onSelectSample: fn() as () => void },
 };
 
 export const Main = {
