@@ -10,7 +10,7 @@ describe('Tooltip', () => {
         expect(() => {
             render(
                 <ThemeProvider theme={testTheme}>
-                    <Tooltip content="Tooltip content">Test</Tooltip>
+                    <Tooltip text="Tooltip content">Test</Tooltip>
                 </ThemeProvider>,
             );
         }).not.toThrow();

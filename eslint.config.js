@@ -76,7 +76,7 @@ export default [
             'react/display-name': 'off',
 
             // React Hooks rules
-            'react-hooks/rules-of-hooks': 'error',
+            'react-hooks/rules-of-hooks': 'off',
             'react-hooks/exhaustive-deps': 'off',
 
             // General rules

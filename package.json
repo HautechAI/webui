@@ -14,7 +14,8 @@
         "lint": "pnpm lint:eslint && pnpm lint:prettier && pnpm lint:tsc",
         "lint:fix": "pnpm lint:eslint:fix && pnpm lint:prettier:fix",
         "version": "pnpm lerna version --no-private --yes",
-        "publish": "pnpm --filter=\\!storybook -r publish --no-git-checks"
+        "publish": "pnpm --filter=\\!storybook -r publish --no-git-checks",
+        "prepare": "husky"
     },
     "dependencies": {
         "@lottiefiles/dotlottie-react": "^0.14.4",
@@ -41,6 +42,7 @@
         "eslint-config-prettier": "^10.1.8",
         "eslint-plugin-react": "^7.37.5",
         "eslint-plugin-react-hooks": "^5.2.0",
+        "husky": "^9.1.7",
         "jsdom": "^25.0.1",
         "lerna": "^8.1.9",
         "prettier": "^3.5.3",

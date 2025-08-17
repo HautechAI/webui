@@ -1,10 +1,11 @@
 import * as React from 'react';
 import type { SVGProps } from 'react';
+import type { IconColorProp } from '@hautechai/webui.themeprovider';
 import Small from './Small';
 import SmallBold from './SmallBold';
 
 export type SkipToEndIconStyle = 'outlined' | 'bold';
-export type SkipToEndIconProps = Omit<SVGProps<SVGSVGElement> & { size?: number; color?: any }, 'style'> & {
+export type SkipToEndIconProps = Omit<SVGProps<SVGSVGElement> & { size?: number; color?: IconColorProp }, 'style'> & {
     style?: SkipToEndIconStyle;
 };
 
@@ -14,6 +15,6 @@ const SkipToEndIcon: React.FC<SkipToEndIconProps> = ({ style = 'outlined', ...re
 };
 
 // mark style variants support for docs
-(SkipToEndIcon as any).hasStyleVariant = true;
+(SkipToEndIcon as React.FC<SkipToEndIconProps> & { hasStyleVariant: true }).hasStyleVariant = true;
 
 export default SkipToEndIcon;

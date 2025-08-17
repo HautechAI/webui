@@ -26,9 +26,7 @@ export const WithComplexContent = {
     args: {
         children: (
             <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                <Typography variant="LabelMediumEmphasized">
-                    Configuration
-                </Typography>
+                <Typography variant="LabelMediumEmphasized">Configuration</Typography>
                 <Typography variant="CaptionRegular" color="layout.onSurface.secondary">
                     This is some complex content that might include forms, inputs, or other components
                 </Typography>

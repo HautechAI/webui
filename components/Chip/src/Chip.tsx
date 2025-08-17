@@ -75,10 +75,10 @@ const ChipContent = React.forwardRef<HTMLDivElement, ChipProps>((props, ref) => 
         {props.icon && (
             <Icon>
                 {React.Children.map(props.icon, (child) => {
-                    if (React.isValidElement(child)) {
+                    if (React.isValidElement<{ size: number }>(child)) {
                         return React.cloneElement(child, {
                             size: 20,
-                        } as unknown);
+                        });
                     }
                     return child;
                 })}

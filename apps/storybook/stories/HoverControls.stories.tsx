@@ -11,19 +11,13 @@ export default {
     },
     tags: ['autodocs'],
     args: {},
-    decorators: [
-        (Story: React.ComponentType, { args }: { args: HoverControlsProps }) => {
-            const [selected, setSelected] = useState(false);
-            return (
-                <>
-                    <Story args={{ ...args, selected: selected, onChangeSelected: setSelected }} />
-                </>
-            );
-        },
-    ],
 };
 
 export const Main = {
+    render: (args: HoverControlsProps) => {
+        const [selected, setSelected] = useState(false);
+        return <HoverControls {...args} selected={selected} onChangeSelected={setSelected} />;
+    },
     args: {
         children: <Tile width={200} src={Shirt} />,
     },

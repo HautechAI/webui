@@ -1,31 +1,36 @@
 import React from 'react';
 import { fn } from '@storybook/test';
+import type { Meta, StoryObj } from '@storybook/react';
 
 import { FileInput } from '../../../components/FileInput/src';
 
-export default {
+const meta: Meta<typeof FileInput> = {
     title: 'Input/FileInput',
     component: FileInput,
     parameters: {
         layout: 'centered',
     },
     tags: ['autodocs'],
-    args: { onChange: fn() as (e: React.ChangeEvent<HTMLInputElement>) => void },
+    args: { onChange: fn() as (files: File[]) => void },
 };
 
-export const Main = {
+export default meta;
+
+type Story = StoryObj<typeof FileInput>;
+
+export const Main: Story = {
     args: {
-        onChange: () => fn(),
+        onChange: fn() as (files: File[]) => void,
     },
 };
 
-export const VariantButton = {
+export const VariantButton: Story = {
     args: {
         variant: 'button',
     },
 };
 
-export const VariantButtonStretch = {
+export const VariantButtonStretch: Story = {
     args: {
         variant: 'button',
         stretch: true,

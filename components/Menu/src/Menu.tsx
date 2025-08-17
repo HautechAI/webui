@@ -25,27 +25,12 @@ export const Menu = (props: MenuProps) => {
 
                 if (opt.type === 'CTA') {
                     const { type: _ignored, ...rest } = opt as Extract<typeof opt, { type: 'CTA' }>;
-                    return (
-                        <MenuItem
-                            key={key}
-                            type="CTA"
-                            {...(rest as unknown)}
-                            isSelected={isSelected}
-                            onClick={onClick}
-                        />
-                    );
+                    return <MenuItem key={key} type="CTA" {...rest} isSelected={isSelected} onClick={onClick} />;
                 }
 
                 const { type: _ignored2, ...rest2 } = opt as Extract<typeof opt, { type?: 'main' }>;
                 return (
-                    <MenuItem
-                        key={key}
-                        type="main"
-                        size={size}
-                        {...(rest2 as unknown)}
-                        isSelected={isSelected}
-                        onClick={onClick}
-                    />
+                    <MenuItem key={key} type="main" size={size} {...rest2} isSelected={isSelected} onClick={onClick} />
                 );
             })}
         </Column>

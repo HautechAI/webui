@@ -1,11 +1,12 @@
 import React from 'react';
 import { fn } from '@storybook/test';
+import type { Meta, StoryObj } from '@storybook/react';
 
 import { PlaceholderIcon } from '../../../components/Icon/src';
 import { Box } from '../../../components/Box/src';
 import { Menu } from '../../../components/Menu/src';
 
-export default {
+const meta: Meta<typeof Menu> = {
     title: 'Data Display/Menu',
     component: Menu,
     parameters: {
@@ -18,22 +19,22 @@ export default {
                 label: 'Option1',
                 leadingIcon: <PlaceholderIcon />,
                 trailingIcon: <PlaceholderIcon />,
-                onClick: fn() as React.MouseEventHandler<HTMLButtonElement>,
+                onClick: fn() as () => void,
                 size: 'small',
             },
             {
                 label: 'Option2 very long option',
                 leadingIcon: <PlaceholderIcon />,
-                onClick: fn() as React.MouseEventHandler<HTMLButtonElement>,
+                onClick: fn() as () => void,
                 size: 'small',
             },
             {
                 label: 'Option3 very very long option',
                 trailingIcon: <PlaceholderIcon />,
-                onClick: fn() as React.MouseEventHandler<HTMLButtonElement>,
+                onClick: fn() as () => void,
                 size: 'medium',
             },
-            { label: 'Any text', onClick: fn() as React.MouseEventHandler<HTMLButtonElement>, size: 'medium' },
+            { label: 'Any text', onClick: fn() as () => void, size: 'medium' },
         ],
     },
     decorators: [
@@ -45,11 +46,15 @@ export default {
     ],
 };
 
-export const Uncontrolled = {
+export default meta;
+
+type Story = StoryObj<typeof Menu>;
+
+export const Uncontrolled: Story = {
     args: {},
 };
 
-export const Controlled = {
+export const Controlled: Story = {
     args: {
         options: [
             {
@@ -67,11 +72,11 @@ export const Controlled = {
             },
         ],
         value: 'op2',
-        onChange: fn() as (e: React.ChangeEvent<HTMLInputElement>) => void,
+        onChange: fn() as (value: string) => void,
     },
 };
 
-export const WithSelectedOption = {
+export const WithSelectedOption: Story = {
     args: {
         options: [
             {
@@ -79,18 +84,18 @@ export const WithSelectedOption = {
                 leadingIcon: <PlaceholderIcon />,
                 trailingIcon: <PlaceholderIcon />,
                 isSelected: true,
-                onClick: fn() as React.MouseEventHandler<HTMLButtonElement>,
+                onClick: fn() as () => void,
             },
             {
                 label: 'Option2 very long option',
                 leadingIcon: <PlaceholderIcon />,
-                onClick: fn() as React.MouseEventHandler<HTMLButtonElement>,
+                onClick: fn() as () => void,
             },
         ],
     },
 };
 
-export const Popover = {
+export const Popover: Story = {
     args: {
         trigger: () => <button>Open Popover Menu</button>,
         contentPositions: ['top'],
