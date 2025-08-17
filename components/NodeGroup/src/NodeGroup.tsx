@@ -1,6 +1,7 @@
 import React from 'react';
 import { styled } from '@linaria/react';
 import { NodeGroupHeader } from './NodeGroupHeader';
+import { themeVars } from '@hautechai/webui.themeprovider';
 
 export interface NodeGroupProps {
     /** Text label for the group header */
@@ -26,7 +27,13 @@ const ContentContainer = styled.div<{ collapsed: boolean }>`
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
-    display: ${props => props.collapsed ? 'none' : 'inline-flex'};
+    display: inline-flex;
+    overflow: hidden;
+    max-height: ${props => props.collapsed ? '0px' : '1000px'};
+    opacity: ${props => props.collapsed ? 0 : 1};
+    transition: 
+        max-height ${themeVars.animation.duration.normal}ms ${themeVars.animation.timing.easeOut},
+        opacity ${themeVars.animation.duration.fast}ms ${themeVars.animation.timing.easeOut};
 `;
 
 export const NodeGroup = (props: NodeGroupProps) => {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { styled } from '@linaria/react';
 import { Typography } from '@hautechai/webui.typography';
-import { ArrowAltUpIcon, ArrowAltRightIcon } from '@hautechai/webui.icon';
+import { ArrowAltRightIcon } from '@hautechai/webui.icon';
 import { themeVars } from '@hautechai/webui.themeprovider';
 
 export interface NodeGroupHeaderProps {
@@ -44,7 +44,7 @@ const LabelContainer = styled.div`
     display: flex;
 `;
 
-const ArrowContainer = styled.div`
+const ArrowContainer = styled.div<{ collapsed: boolean }>`
     width: 20px;
     height: 20px;
     position: relative;
@@ -52,6 +52,8 @@ const ArrowContainer = styled.div`
     align-items: center;
     justify-content: center;
     color: ${themeVars.layout.onSurface.secondary};
+    transform: ${props => props.collapsed ? 'rotate(0deg)' : 'rotate(-90deg)'};
+    transition: transform ${themeVars.animation.duration.fast}ms ${themeVars.animation.timing.easeOut};
 `;
 
 export const NodeGroupHeader = (props: NodeGroupHeaderProps) => {
@@ -72,12 +74,8 @@ export const NodeGroupHeader = (props: NodeGroupHeaderProps) => {
                         {label}
                     </Typography>
                 </LabelContainer>
-                <ArrowContainer>
-                    {collapsed ? (
-                        <ArrowAltRightIcon size={12} />
-                    ) : (
-                        <ArrowAltUpIcon size={12} />
-                    )}
+                <ArrowContainer collapsed={collapsed}>
+                    <ArrowAltRightIcon size={12} />
                 </ArrowContainer>
             </HeaderRow>
         </Container>
