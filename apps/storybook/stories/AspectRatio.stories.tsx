@@ -10,7 +10,7 @@ export default {
     tags: ['autodocs'],
 
     decorators: [
-        (Story: React.ComponentType<any>, { args }: any) => {
+        (Story: React.ComponentType, { args }: { args: any }) => {
             const [value, setValue] = useState('1:1');
             return (
                 <div style={{ display: 'flex', width: 'auto', marginTop: '500px' }}>

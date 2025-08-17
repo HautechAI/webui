@@ -15,10 +15,10 @@ export default {
     args: {
         trailingIcon: <PlaceholderIcon />,
         leadingIcon: <PlaceholderIcon />,
-        onClick: fn() as any,
+        onClick: fn() as React.MouseEventHandler<HTMLButtonElement>,
     },
     decorators: [
-        (Story: React.ComponentType<any>) => (
+        (Story: React.ComponentType) => (
             <Box width={150}>
                 <Story />
             </Box>

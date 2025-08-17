@@ -16,7 +16,7 @@ export default {
         children: <div>This is a hoverable item</div>,
     },
     decorators: [
-        (Story: React.ComponentType<any>) => (
+        (Story: React.ComponentType) => (
             <Box width={150}>
                 <Story />
             </Box>
@@ -56,6 +56,6 @@ export const MediumWithLink = {
     args: {
         size: 'medium',
         buttonLabel: 'Label',
-        onClick: fn() as any,
+        onClick: fn() as React.MouseEventHandler<HTMLButtonElement>,
     },
 };

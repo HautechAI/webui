@@ -13,7 +13,7 @@ export default {
     },
     tags: ['autodocs'],
     argTypes: {},
-    args: { onDownload: fn() as any },
+    args: { onDownload: fn() as () => void },
 };
 
 export const Main = {
@@ -41,7 +41,7 @@ export const Clickable = {
         image: Desert,
         width: 300,
         aspectRatio: 16 / 9,
-        onClick: fn() as any,
+        onClick: fn() as React.MouseEventHandler<HTMLButtonElement>,
     },
 };
 
@@ -71,10 +71,10 @@ export const FullWidth = {
         image: Desert,
         fullWidth: '100%',
         aspectRatio: 16 / 9,
-        onClick: fn() as any,
+        onClick: fn() as React.MouseEventHandler<HTMLButtonElement>,
     },
     decorators: [
-        (Story: React.ComponentType<any>) => (
+        (Story: React.ComponentType) => (
             <div style={{ width: '350px' }}>
                 <Story />
             </div>

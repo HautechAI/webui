@@ -9,7 +9,7 @@ export default {
     },
     tags: ['autodocs'],
     args: {
-        onClose: fn() as any,
+        onClose: fn() as () => void,
     },
     argTypes: {},
 };

@@ -11,12 +11,12 @@ export type DiamondIconProps = Omit<SVGProps<SVGSVGElement> & { size?: number; c
     style?: DiamondIconStyle;
 };
 
-const DiamondIcon: React.FC<DiamondIconProps> = ({ style = 'outlined', ...rest }) => {
+const DiamondIcon: React.FC<DiamondIconProps> & { hasStyleVariant: boolean } = ({ style = 'outlined', ...rest }) => {
     if (style === 'bold') return <SmallBold {...rest} />;
     return <Small {...rest} />;
 };
 
 // mark style variants support for docs
-(DiamondIcon as any).hasStyleVariant = true;
+DiamondIcon.hasStyleVariant = true;
 
 export default DiamondIcon;

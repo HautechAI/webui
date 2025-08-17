@@ -14,12 +14,12 @@ export default {
         backgroundColor: { control: 'color' },
     },
     args: {
-        onChange: fn() as any,
+        onChange: fn() as (e: React.ChangeEvent<HTMLInputElement>) => void,
         min: 0,
         max: 5,
     },
     decorators: [
-        (Story: React.ComponentType<any>) => (
+        (Story: React.ComponentType) => (
             <Box width={200}>
                 <Story />
             </Box>

@@ -32,7 +32,7 @@ export default {
         error: 'Error message',
     },
     decorators: [
-        (Story: React.ComponentType<any>) => (
+        (Story: React.ComponentType) => (
             <Box width={300}>
                 <Story />
             </Box>

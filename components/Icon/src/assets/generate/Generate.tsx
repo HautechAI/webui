@@ -9,12 +9,12 @@ export type GenerateIconProps = Omit<SVGProps<SVGSVGElement> & { size?: number; 
     style?: GenerateIconStyle;
 };
 
-const GenerateIcon: React.FC<GenerateIconProps> = ({ style = 'outlined', ...rest }) => {
+const GenerateIcon: React.FC<GenerateIconProps> & { hasStyleVariant: boolean } = ({ style = 'outlined', ...rest }) => {
     if (style === 'bold') return <SmallBold {...rest} />;
     return <Small {...rest} />;
 };
 
 // mark style variants support for docs
-(GenerateIcon as any).hasStyleVariant = true;
+GenerateIcon.hasStyleVariant = true;
 
 export default GenerateIcon;

@@ -30,7 +30,7 @@ export default {
         selected: false,
     },
     decorators: [
-        (Story: React.ComponentType<any>) => (
+        (Story: React.ComponentType) => (
             <div
                 style={{
                     width: '800px',

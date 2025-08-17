@@ -21,7 +21,7 @@ export default {
         },
     },
     decorators: [
-        (Story: React.ComponentType<any>) => (
+        (Story: React.ComponentType) => (
             <Box width={200}>
                 <Story />
             </Box>

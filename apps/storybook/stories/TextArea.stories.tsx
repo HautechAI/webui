@@ -15,12 +15,12 @@ export default {
         backgroundColor: { control: 'color' },
     },
     args: {
-        onChange: fn() as any,
+        onChange: fn() as (e: React.ChangeEvent<HTMLInputElement>) => void,
         placeholder: 'Any text',
         variation: 'filled',
     },
     decorators: [
-        (Story: React.ComponentType<any>) => (
+        (Story: React.ComponentType) => (
             <Box width={300}>
                 <Story />
             </Box>
@@ -42,7 +42,7 @@ export const WithIcons = {
 export const WithIconButton = {
     args: {
         icon: <PlaceholderIcon />,
-        onIconButtonClick: fn() as any,
+        onIconButtonClick: fn() as React.MouseEventHandler<HTMLButtonElement>,
     },
 };
 
@@ -56,7 +56,7 @@ export const Disabled = {
     args: {
         disabled: true,
         icon: <PlaceholderIcon />,
-        onIconButtonClick: fn() as any,
+        onIconButtonClick: fn() as React.MouseEventHandler<HTMLButtonElement>,
     },
 };
 

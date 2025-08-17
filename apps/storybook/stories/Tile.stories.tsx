@@ -71,7 +71,7 @@ export const Width100Percent = {
         aspectRatio: 3 / 2,
     },
     decorators: [
-        (Story: React.ComponentType<any>) => (
+        (Story: React.ComponentType) => (
             <div style={{ width: '300px', border: 'dashed red 1px' }}>
                 <Story />
             </div>

@@ -9,12 +9,12 @@ export type FreeTextIconProps = Omit<SVGProps<SVGSVGElement> & { size?: number; 
     style?: FreeTextIconStyle;
 };
 
-const FreeTextIcon: React.FC<FreeTextIconProps> = ({ style = 'outlined', ...rest }) => {
+const FreeTextIcon: React.FC<FreeTextIconProps> & { hasStyleVariant: boolean } = ({ style = 'outlined', ...rest }) => {
     if (style === 'bold') return <SmallBold {...rest} />;
     return <Small {...rest} />;
 };
 
 // mark style variants support for docs
-(FreeTextIcon as any).hasStyleVariant = true;
+FreeTextIcon.hasStyleVariant = true;
 
 export default FreeTextIcon;

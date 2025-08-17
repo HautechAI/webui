@@ -9,12 +9,12 @@ export type FolderIconProps = Omit<SVGProps<SVGSVGElement> & { size?: number; co
     style?: FolderIconStyle;
 };
 
-const FolderIcon: React.FC<FolderIconProps> = ({ style = 'outlined', ...rest }) => {
+const FolderIcon: React.FC<FolderIconProps> & { hasStyleVariant: boolean } = ({ style = 'outlined', ...rest }) => {
     if (style === 'bold') return <SmallBold {...rest} />;
     return <Small {...rest} />;
 };
 
 // mark style variants support for docs
-(FolderIcon as any).hasStyleVariant = true;
+FolderIcon.hasStyleVariant = true;
 
 export default FolderIcon;

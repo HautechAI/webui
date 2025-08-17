@@ -10,7 +10,7 @@ export default {
         layout: 'centered',
     },
     tags: ['autodocs'],
-    args: { onChange: fn() as any },
+    args: { onChange: fn() as (e: React.ChangeEvent<HTMLInputElement>) => void },
 };
 
 export const Main = {
@@ -31,7 +31,7 @@ export const VariantButtonStretch = {
         stretch: true,
     },
     decorators: [
-        (Story: React.ComponentType<any>) => (
+        (Story: React.ComponentType) => (
             <div style={{ width: '300px', display: 'flex', flexDirection: 'column', justifyContent: 'stretch' }}>
                 <Story />
             </div>

@@ -12,7 +12,7 @@ export default {
     tags: ['autodocs'],
     args: { onTopUpClick: fn() as any },
     decorators: [
-        (Story: React.ComponentType<any>) => (
+        (Story: React.ComponentType) => (
             <div style={{ width: '300px' }}>
                 <Story />
             </div>

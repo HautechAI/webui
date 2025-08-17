@@ -9,11 +9,11 @@ export type StopIconProps = Omit<SVGProps<SVGSVGElement> & { size?: number; colo
     style?: StopIconStyle;
 };
 
-const StopIcon: React.FC<StopIconProps> = ({ style = 'outlined', ...rest }) => {
+const StopIcon: React.FC<StopIconProps> & { hasStyleVariant: boolean } = ({ style = 'outlined', ...rest }) => {
     if (style === 'bold') return <SmallBold {...rest} />;
     return <Small {...rest} />;
 };
 
-(StopIcon as any).hasStyleVariant = true;
+StopIcon.hasStyleVariant = true;
 
 export default StopIcon;

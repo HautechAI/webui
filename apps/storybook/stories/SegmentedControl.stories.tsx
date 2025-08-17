@@ -32,7 +32,7 @@ export default {
     tags: ['autodocs'],
     argTypes: {},
     args: {
-        onChange: fn() as any,
+        onChange: fn() as (e: React.ChangeEvent<HTMLInputElement>) => void,
     },
     decorators: [OnChangeSyncArgs],
 };

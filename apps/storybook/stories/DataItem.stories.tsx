@@ -12,7 +12,7 @@ export default {
     },
     tags: ['autodocs'],
     decorators: [
-        (Story: React.ComponentType<any>) => (
+        (Story: React.ComponentType) => (
             <Box width={300}>
                 <Story />
             </Box>
@@ -115,7 +115,7 @@ export const RowWithLongText = {
         trailingIcon: <IconButton size="small" variant="flat" icon={<PlaceholderIcon />} />,
     },
     decorators: [
-        (Story: React.ComponentType<any>) => (
+        (Story: React.ComponentType) => (
             <div style={{ width: '300px', overflow: 'hidden' }}>
                 <Story />
             </div>

@@ -23,7 +23,7 @@ export default {
         bottom: <>Bottom</>,
     },
     decorators: [
-        (Story: React.ComponentType<any>) => (
+        (Story: React.ComponentType) => (
             <Box width={300}>
                 <Story />
             </Box>

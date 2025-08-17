@@ -9,12 +9,12 @@ export type BatchIconProps = Omit<SVGProps<SVGSVGElement> & { size?: number; col
     style?: BatchIconStyle;
 };
 
-const BatchIcon: React.FC<BatchIconProps> = ({ style = 'outlined', ...rest }) => {
+const BatchIcon: React.FC<BatchIconProps> & { hasStyleVariant: boolean } = ({ style = 'outlined', ...rest }) => {
     if (style === 'bold') return <SmallBold {...rest} />;
     return <Small {...rest} />;
 };
 
 // mark style variants support for docs
-(BatchIcon as any).hasStyleVariant = true;
+BatchIcon.hasStyleVariant = true;
 
 export default BatchIcon;

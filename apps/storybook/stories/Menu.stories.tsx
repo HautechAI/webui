@@ -18,26 +18,26 @@ export default {
                 label: 'Option1',
                 leadingIcon: <PlaceholderIcon />,
                 trailingIcon: <PlaceholderIcon />,
-                onClick: fn() as any,
+                onClick: fn() as React.MouseEventHandler<HTMLButtonElement>,
                 size: 'small',
             },
             {
                 label: 'Option2 very long option',
                 leadingIcon: <PlaceholderIcon />,
-                onClick: fn() as any,
+                onClick: fn() as React.MouseEventHandler<HTMLButtonElement>,
                 size: 'small',
             },
             {
                 label: 'Option3 very very long option',
                 trailingIcon: <PlaceholderIcon />,
-                onClick: fn() as any,
+                onClick: fn() as React.MouseEventHandler<HTMLButtonElement>,
                 size: 'medium',
             },
-            { label: 'Any text', onClick: fn() as any, size: 'medium' },
+            { label: 'Any text', onClick: fn() as React.MouseEventHandler<HTMLButtonElement>, size: 'medium' },
         ],
     },
     decorators: [
-        (Story: React.ComponentType<any>) => (
+        (Story: React.ComponentType) => (
             <Box width={150}>
                 <Story />
             </Box>
@@ -67,7 +67,7 @@ export const Controlled = {
             },
         ],
         value: 'op2',
-        onChange: fn() as any,
+        onChange: fn() as (e: React.ChangeEvent<HTMLInputElement>) => void,
     },
 };
 
@@ -79,9 +79,9 @@ export const WithSelectedOption = {
                 leadingIcon: <PlaceholderIcon />,
                 trailingIcon: <PlaceholderIcon />,
                 isSelected: true,
-                onClick: fn() as any,
+                onClick: fn() as React.MouseEventHandler<HTMLButtonElement>,
             },
-            { label: 'Option2 very long option', leadingIcon: <PlaceholderIcon />, onClick: fn() as any },
+            { label: 'Option2 very long option', leadingIcon: <PlaceholderIcon />, onClick: fn() as React.MouseEventHandler<HTMLButtonElement> },
         ],
     },
 };

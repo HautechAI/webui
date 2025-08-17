@@ -15,7 +15,7 @@ export default {
         onPageChange: fn() as any,
     },
     decorators: [
-        (Story: React.ComponentType<any>, { args }: any) => {
+        (Story: React.ComponentType, { args }: any) => {
             const [value, setValue] = useState(1);
             return <Story args={{ ...args, currentPage: value, onPageChange: setValue }} />;
         },

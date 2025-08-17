@@ -11,7 +11,7 @@ export default {
     tags: ['autodocs'],
     argTypes: {},
     decorators: [
-        (Story: React.ComponentType<any>) => (
+        (Story: React.ComponentType) => (
             <Box width={300}>
                 <Story />
             </Box>

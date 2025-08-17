@@ -14,7 +14,7 @@ export default {
         backgroundColor: { control: 'color' },
     },
     args: {
-        onChange: fn() as any,
+        onChange: fn() as (e: React.ChangeEvent<HTMLInputElement>) => void,
         options: [
             { label: 'Option1', value: 'op1' },
             { label: 'Option2 very long option', value: 'op2' },
@@ -25,7 +25,7 @@ export default {
         ],
     },
     decorators: [
-        (Story: React.ComponentType<any>) => (
+        (Story: React.ComponentType) => (
             <Box width={200} alignItems="flex-start" display="flex">
                 <Story />
             </Box>
@@ -108,7 +108,7 @@ export const Short = {
         value: 'px',
     },
     decorators: [
-        (Story: React.ComponentType<any>) => (
+        (Story: React.ComponentType) => (
             <div style={{ display: 'flex', flexDirection: 'row', gap: '8px' }}>
                 <Story />
             </div>

@@ -120,7 +120,7 @@ export const OverflowHidden = {
         noWrap: true,
     },
     decorators: [
-        (Story: React.ComponentType<any>) => (
+        (Story: React.ComponentType) => (
             <div style={{ width: '300px' }}>
                 <Story />
             </div>
@@ -136,7 +136,7 @@ export const OverflowEllipsis = {
         noWrap: true,
     },
     decorators: [
-        (Story: React.ComponentType<any>) => (
+        (Story: React.ComponentType) => (
             <div style={{ width: '300px' }}>
                 <Story />
             </div>
@@ -151,7 +151,7 @@ export const SpanComponent = {
         component: 'span',
     },
     decorators: [
-        (Story: React.ComponentType<any>) => (
+        (Story: React.ComponentType) => (
             <div style={{ width: '300px' }}>
                 <Story />
             </div>

@@ -15,7 +15,7 @@ export default {
             options: ['noKeyframes', 'hasKeyframes', 'isKeyframe'],
         },
     },
-    args: { onClick: fn() as any },
+    args: { onClick: fn() as React.MouseEventHandler<HTMLButtonElement> },
 };
 
 export const NoKeyframes = {

@@ -9,12 +9,12 @@ export type TShirtIconProps = Omit<SVGProps<SVGSVGElement> & { size?: number; co
     style?: TShirtIconStyle;
 };
 
-const TShirtIcon: React.FC<TShirtIconProps> = ({ style = 'outlined', ...rest }) => {
+const TShirtIcon: React.FC<TShirtIconProps> & { hasStyleVariant: boolean } = ({ style = 'outlined', ...rest }) => {
     if (style === 'bold') return <SmallBold {...rest} />;
     return <Small {...rest} />;
 };
 
 // mark style variants support for docs
-(TShirtIcon as any).hasStyleVariant = true;
+TShirtIcon.hasStyleVariant = true;
 
 export default TShirtIcon;

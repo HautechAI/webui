@@ -15,11 +15,11 @@ export default {
     argTypes: {},
     args: {
         onExpandToggle: fn() as any,
-        onClick: fn() as any,
-        onChange: fn() as any,
+        onClick: fn() as React.MouseEventHandler<HTMLButtonElement>,
+        onChange: fn() as (e: React.ChangeEvent<HTMLInputElement>) => void,
     },
     decorators: [
-        (Story: React.ComponentType<any>) => (
+        (Story: React.ComponentType) => (
             <Box width={200}>
                 <Story />
             </Box>

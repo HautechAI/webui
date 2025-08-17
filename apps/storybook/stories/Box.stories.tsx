@@ -12,7 +12,7 @@ export default {
     tags: ['autodocs'],
     argTypes: {},
     decorators: [
-        (Story: React.ComponentType<any>) => (
+        (Story: React.ComponentType) => (
             <div style={{ border: 'dashed red 1px' }}>
                 <Story />
             </div>

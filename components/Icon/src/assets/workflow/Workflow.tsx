@@ -11,12 +11,12 @@ export type WorkflowIconProps = Omit<SVGProps<SVGSVGElement> & { size?: number; 
     style?: WorkflowIconStyle;
 };
 
-const WorkflowIcon: React.FC<WorkflowIconProps> = ({ style = 'outlined', ...rest }) => {
+const WorkflowIcon: React.FC<WorkflowIconProps> & { hasStyleVariant: boolean } = ({ style = 'outlined', ...rest }) => {
     if (style === 'bold') return <SmallBold {...rest} />;
     return <Small {...rest} />;
 };
 
 // mark style variants support for docs
-(WorkflowIcon as any).hasStyleVariant = true;
+WorkflowIcon.hasStyleVariant = true;
 
 export default WorkflowIcon;
