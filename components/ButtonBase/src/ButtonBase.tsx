@@ -1,7 +1,7 @@
-import { css } from '@linaria/core';
+import { styled } from '@hautechai/webui.themeprovider';
 import { PropsWithChildren } from 'react';
 
-const baseButtonStyles = css`
+const StyledButtonBase = styled('button')`
     all: unset;
     cursor: pointer;
     display: inline-flex;
@@ -9,10 +9,10 @@ const baseButtonStyles = css`
     &:disabled {
         cursor: default;
     }
-`;
 
-const stretchStyles = css`
-    flex-grow: 1;
+    &[data-stretch='true'] {
+        flex-grow: 1;
+    }
 `;
 
 export type ButtonBaseProps = PropsWithChildren<{
@@ -27,14 +27,15 @@ export type ButtonBaseProps = PropsWithChildren<{
 export const ButtonBase = (props: ButtonBaseProps) => {
     const { stretch, className, disabled, style, ...rest } = props;
 
-    const buttonClassName = [
-        baseButtonStyles,
-        stretch && stretchStyles,
-        className,
-        !disabled ? 'htch-webui-hoverable' : '',
-    ]
-        .filter(Boolean)
-        .join(' ');
+    const buttonClassName = [className, !disabled ? 'htch-webui-hoverable' : ''].filter(Boolean).join(' ');
 
-    return <button {...rest} className={buttonClassName} disabled={disabled} style={style} />;
+    return (
+        <StyledButtonBase
+            {...rest}
+            className={buttonClassName}
+            disabled={disabled}
+            data-stretch={stretch ? 'true' : undefined}
+            style={style}
+        />
+    );
 };

@@ -1,4 +1,4 @@
-import { styled } from '@linaria/react';
+import { styled } from '@hautechai/webui.themeprovider';
 
 const Container = styled.div<Omit<FullScreenProps, 'children'>>`
     position: fixed;

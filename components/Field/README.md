@@ -11,6 +11,7 @@ Form field wrapper component providing label, error states, and validation feedb
 | labelPosition | 'left' \| 'right' \| 'top' | Position of the label relative to the field content (defaults to 'top') |
 | error | string | Optional error message displayed when field validation fails |
 | caption | string | Optional help text or caption displayed below the field |
+| actionButton | React.ReactNode | Optional action button or component displayed next to the label |
 | locked | true | Optional flag indicating the field is locked/readonly |
 | onLockedClick | () => void | Optional callback function when locked field is clicked |
 | children | React.ReactNode | Field content (input, textarea, etc.) to be wrapped |

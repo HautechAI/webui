@@ -1,5 +1,5 @@
 import { Checkbox } from '@hautechai/webui.checkbox';
-import { styled } from '@linaria/react';
+import { styled } from '@hautechai/webui.themeprovider';
 import React, { PropsWithChildren, useCallback } from 'react';
 
 const StyledHoverControls = styled.div`

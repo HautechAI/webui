@@ -145,43 +145,7 @@ Remember: Documentation is as important as the code itself. Well-maintained docu
 
 ## Styling Guidelines
 
-### CSS-in-JS with Linaria
-
-This project uses `@linaria/react` for component styling. Follow these guidelines:
-
-**Use `styled` components instead of `css` + className:**
-- ✅ **Correct**: `import { styled } from '@linaria/react';`
-- ❌ **Incorrect**: `import { css } from '@linaria/core';`
-
-**Component styling pattern:**
-```typescript
-import { styled } from '@linaria/react';
-import { themeVars } from '@hautechai/webui.themeprovider';
-
-const StyledComponent = styled.div`
-    // Base styles
-    display: flex;
-    background: ${themeVars.colors.surface};
-    
-    // Conditional styles using data attributes (preferred)
-    &[data-selected="true"] {
-        background: ${themeVars.colors.primary};
-    }
-    
-    &[data-variant="outline"] {
-        border: 1px solid ${themeVars.colors.border};
-        background: transparent;
-    }
-    
-    // Hover and other pseudo-selectors
-    &:hover {
-        background: ${themeVars.colors.hover};
-    }
-`;
-
-// Usage in component:
-// <StyledComponent data-selected={selected} data-variant={variant} />
-```
+### CSS-in-JS with Emotion
 
 **Key principles:**
 - Use `styled` components for all styling needs

@@ -1,15 +1,7 @@
-import linaria from '@wyw-in-js/vite';
 import { defineConfig } from 'vitest/config';
 
 export default defineConfig({
-    plugins: [
-        linaria({
-            include: ['**/*.{ts,tsx}'],
-            babelOptions: {
-                presets: ['@babel/preset-typescript', '@babel/preset-react'],
-            },
-        }),
-    ],
+    plugins: [],
     test: {
         globals: true,
         environment: 'jsdom',

@@ -12,8 +12,6 @@
         "publish": "pnpm --filter=\\!storybook -r publish --no-git-checks"
     },
     "dependencies": {
-        "@linaria/core": "^6.3.0",
-        "@linaria/react": "^6.3.0",
         "@lottiefiles/dotlottie-react": "^0.14.4",
         "@storybook/test": "^8.5.5",
         "lodash-es": "^4.17.21",
@@ -26,8 +24,6 @@
         "typescript": "^5.7.3"
     },
     "devDependencies": {
-        "@babel/preset-react": "^7.27.1",
-        "@babel/preset-typescript": "^7.27.1",
         "@eslint/js": "^9.33.0",
         "@testing-library/jest-dom": "^6.6.4",
         "@testing-library/react": "^16.3.0",
@@ -35,8 +31,6 @@
         "@types/react": "^19.0.8",
         "@typescript-eslint/eslint-plugin": "^8.39.1",
         "@typescript-eslint/parser": "^8.39.1",
-        "@wyw-in-js/esbuild": "^0.7.0",
-        "@wyw-in-js/vite": "^0.6.0",
         "esbuild": "^0.25.9",
         "eslint": "^9.33.0",
         "eslint-config-prettier": "^10.1.8",

@@ -6,7 +6,7 @@ import { Column } from '@hautechai/webui.column';
 import { CloseIcon } from '@hautechai/webui.icon';
 import { IconButton } from '@hautechai/webui.iconbutton';
 import { BottomSheet } from '@hautechai/webui.bottomsheet';
-import { styled } from '@linaria/react';
+import { styled } from '@hautechai/webui.themeprovider';
 import { themeVars } from '@hautechai/webui.themeprovider';
 
 export type ContextMenuProps = {

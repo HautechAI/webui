@@ -1,5 +1,5 @@
 import { ButtonBase } from '@hautechai/webui.buttonbase';
-import { css } from '@linaria/core';
+import { styled } from '@hautechai/webui.themeprovider';
 import { themeVars } from '@hautechai/webui.themeprovider';
 import React from 'react';
 
@@ -12,8 +12,7 @@ export type IconButtonProps = {
     customBackground?: string;
 };
 
-// Base styles
-const buttonBase = css`
+const StyledButton = styled(ButtonBase)`
     border-radius: ${themeVars.cornerRadius.m};
     border-style: solid;
     color: ${themeVars.layout.onSurface.primary};
@@ -32,66 +31,43 @@ const buttonBase = css`
         color: ${themeVars.layout.onSurface.tertiary};
         cursor: not-allowed;
     }
-`;
 
-// Size variants
-const mediumSize = css`
-    padding: ${themeVars.spacing.ml};
-`;
+    /* Sizes */
+    &[data-size='medium'] {
+        padding: ${themeVars.spacing.ml};
+    }
+    &[data-size='small'] {
+        padding: ${themeVars.spacing.m};
+    }
+    &[data-size='xsmall'] {
+        padding: ${themeVars.spacing.xs};
+        border-radius: ${themeVars.cornerRadius.s};
+    }
 
-const smallSize = css`
-    padding: ${themeVars.spacing.m};
-`;
-
-const xsmallSize = css`
-    padding: ${themeVars.spacing.xs};
-    border-radius: ${themeVars.cornerRadius.s};
-`;
-
-// Variant styles
-const filledVariant = css`
-    border-width: ${themeVars.stroke.thin};
-    border-color: ${themeVars.layout.strokes};
-    background-color: var(--icon-button-bg, ${themeVars.layout.surfaceLow});
-
-    &:disabled {
+    /* Variants */
+    &[data-variant='filled'] {
+        border-width: ${themeVars.stroke.thin};
+        border-color: ${themeVars.layout.strokes};
+        background-color: var(--icon-button-bg, ${themeVars.layout.surfaceLow});
+    }
+    &[data-variant='filled']:disabled {
         background-color: var(--icon-button-bg, ${themeVars.layout.surfaceMid});
+    }
+
+    &[data-variant='outlined'] {
+        border-width: ${themeVars.stroke.thin};
+        border-color: ${themeVars.layout.strokes};
+        background-color: var(--icon-button-bg, transparent);
+    }
+
+    &[data-variant='flat'] {
+        border-width: 0px;
+        background-color: var(--icon-button-bg, transparent);
     }
 `;
 
-const outlinedVariant = css`
-    border-width: ${themeVars.stroke.thin};
-    border-color: ${themeVars.layout.strokes};
-    background-color: var(--icon-button-bg, transparent);
-`;
-
-const flatVariant = css`
-    border-width: 0px;
-    background-color: var(--icon-button-bg, transparent);
-`;
-
-export const iconButtonClasses = {
-    base: buttonBase,
-    sizes: {
-        medium: mediumSize,
-        small: smallSize,
-        xsmall: xsmallSize,
-    },
-    variants: {
-        filled: filledVariant,
-        outlined: outlinedVariant,
-        flat: flatVariant,
-    },
-};
-
 export const IconButton = (props: IconButtonProps) => {
     const { variant = 'filled', size = 'medium', icon, customBackground, ...rest } = props;
-
-    const buttonClassName = [
-        iconButtonClasses.base,
-        iconButtonClasses.sizes[size],
-        iconButtonClasses.variants[variant],
-    ].join(' ');
 
     const iconSizes: Record<NonNullable<IconButtonProps['size']>, number> = {
         medium: 24,
@@ -105,8 +81,9 @@ export const IconButton = (props: IconButtonProps) => {
             : icon;
 
     return (
-        <ButtonBase
-            className={buttonClassName}
+        <StyledButton
+            data-variant={variant}
+            data-size={size}
             style={
                 customBackground
                     ? ({ ['--icon-button-bg' as string]: customBackground } as React.CSSProperties)
@@ -115,6 +92,6 @@ export const IconButton = (props: IconButtonProps) => {
             {...rest}
         >
             {iconWithSize}
-        </ButtonBase>
+        </StyledButton>
     );
 };

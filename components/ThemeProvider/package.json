@@ -1,7 +1,7 @@
 {
     "name": "@hautechai/webui.themeprovider",
     "description": "",
-    "version": "2.1.1",
+    "version": "2.1.2",
     "type": "module",
     "main": "src/index.tsx",
     "publishConfig": {
@@ -17,6 +17,10 @@
         "lint:prettier:fix": "prettier --write src",
         "lint": "pnpm lint:eslint && pnpm lint:tsc && pnpm lint:prettier",
         "lint:fix": "pnpm lint:eslint:fix && pnpm lint:prettier:fix"
+    },
+    "dependencies": {
+        "@emotion/react": "^11.14.0",
+        "@emotion/styled": "^11.14.0"
     },
     "author": "HautechAI",
     "license": "Apache-2.0"

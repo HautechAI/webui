@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ChangeEvent } from 'react';
 import { fn } from '@storybook/test';
 import { Box } from '../../../components/Box/src';
 import { PlaceholderIcon } from '../../../components/Icon/src';
@@ -10,6 +10,7 @@ import { Switch } from '../../../components/Switch/src';
 import { Dropdown } from '../../../components/Dropdown/src';
 import { SegmentedControl } from '../../../components/SegmentedControl/src';
 import { Counter } from '../../../components/Counter/src';
+import { ToolButton } from '../../../components/ToolButton/src';
 
 export default {
     title: 'Input/Field',
@@ -102,7 +103,14 @@ export const WithInput = {
     args: {
         label: 'Label',
         caption: 'Helper text',
-        children: <TextInput type="text" placeholder="Any text" variation="filled" onChange={fn() as (value: string) => void} />,
+        children: (
+            <TextInput
+                type="text"
+                placeholder="Any text"
+                variation="filled"
+                onChange={fn() as (e: ChangeEvent<HTMLInputElement>) => void}
+            />
+        ),
     },
 };
 
@@ -118,7 +126,7 @@ export const WithInputWithIcons = {
                 trailingIcon={<PlaceholderIcon />}
                 icon={<PlaceholderIcon />}
                 onIconButtonClick={fn() as () => void}
-                onChange={fn() as (value: string) => void}
+                onChange={fn() as (value: React.ChangeEvent<HTMLInputElement>) => void}
             />
         ),
     },
@@ -136,7 +144,7 @@ export const WithInputDisabled = {
                 placeholder="Any text"
                 icon={<PlaceholderIcon />}
                 onIconButtonClick={fn() as () => void}
-                onChange={fn() as (value: string) => void}
+                onChange={fn() as (value: React.ChangeEvent<HTMLInputElement>) => void}
             />
         ),
     },
@@ -154,7 +162,7 @@ export const WithInputLocked = {
                 placeholder="Any text"
                 icon={<PlaceholderIcon />}
                 onIconButtonClick={fn() as () => void}
-                onChange={fn() as (value: string) => void}
+                onChange={fn() as (value: React.ChangeEvent<HTMLInputElement>) => void}
             />
         ),
     },
@@ -169,7 +177,7 @@ export const WithArea = {
                 placeholder="Any text"
                 variation="filled"
                 value="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-                onChange={fn() as (value: string) => void}
+                onChange={fn() as (value: React.ChangeEvent<HTMLTextAreaElement>) => void}
             />
         ),
     },
@@ -186,7 +194,7 @@ export const WithAreaWithIcons = {
                 trailingIcon={<PlaceholderIcon />}
                 icon={<PlaceholderIcon />}
                 onIconButtonClick={fn() as () => void}
-                onChange={fn() as (value: string) => void}
+                onChange={fn() as (value: React.ChangeEvent<HTMLTextAreaElement>) => void}
             />
         ),
     },
@@ -203,7 +211,7 @@ export const WithAreaDisabled = {
                 placeholder="Any text"
                 icon={<PlaceholderIcon />}
                 onIconButtonClick={fn() as () => void}
-                onChange={fn() as (value: string) => void}
+                onChange={fn() as (value: React.ChangeEvent<HTMLTextAreaElement>) => void}
             />
         ),
     },
@@ -220,8 +228,51 @@ export const WithAreaLocked = {
                 placeholder="Any text"
                 icon={<PlaceholderIcon />}
                 onIconButtonClick={fn() as () => void}
-                onChange={fn() as (value: string) => void}
+                onChange={fn() as (value: React.ChangeEvent<HTMLTextAreaElement>) => void}
             />
         ),
+    },
+};
+
+export const WithActionButton = {
+    args: {
+        label: 'Username',
+        caption: 'Enter your username',
+        actionButton: <ToolButton icon={<PlaceholderIcon />} onClick={fn()} />,
+        children: <TextInput type="text" placeholder="Enter username" variation="filled" onChange={fn()} />,
+    },
+};
+
+export const WithActionButtonAndLocked = {
+    args: {
+        label: 'Password',
+        caption: 'Enter your password',
+        locked: true,
+        onLockedClick: fn(),
+        actionButton: <ToolButton icon={<PlaceholderIcon />} onClick={fn()} />,
+        children: <TextInput type="password" placeholder="Enter password" variation="filled" onChange={fn()} />,
+    },
+};
+
+export const WithCustomActionButton = {
+    args: {
+        label: 'Email',
+        caption: 'Enter your email address',
+        actionButton: (
+            <button
+                onClick={fn()}
+                style={{
+                    background: 'none',
+                    border: 'none',
+                    cursor: 'pointer',
+                    fontSize: '14px',
+                    color: '#666',
+                    padding: '2px 4px',
+                }}
+            >
+                👁️
+            </button>
+        ),
+        children: <TextInput type="email" placeholder="Enter email" variation="filled" onChange={fn()} />,
     },
 };

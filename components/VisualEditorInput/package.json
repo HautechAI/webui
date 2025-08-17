@@ -1,11 +1,12 @@
 {
     "name": "@hautechai/webui.visualeditorinput",
     "description": "Visual editor input component with keyframe support",
-    "version": "2.1.2",
+    "version": "2.1.4",
     "type": "module",
     "main": "src/index.tsx",
     "publishConfig": {
         "directory": "dist",
+        "access": "public",
         "linkDirectory": false
     },
     "scripts": {

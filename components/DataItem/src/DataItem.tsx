@@ -1,9 +1,8 @@
 import { Avatar } from '@hautechai/webui.avatar';
 import { Hint, HintProps } from '@hautechai/webui.hint';
 import { Row } from '@hautechai/webui.row';
-import { themeVars } from '@hautechai/webui.themeprovider';
+import { styled, themeVars } from '@hautechai/webui.themeprovider';
 import { Typography, TypographyProps } from '@hautechai/webui.typography';
-import { styled } from '@linaria/react';
 import React from 'react';
 
 const ColumnContainer = styled.div`

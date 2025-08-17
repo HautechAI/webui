@@ -1,34 +1,12 @@
 import * as esbuild from 'esbuild';
-import linaria from '@wyw-in-js/esbuild';
 import * as tsup from 'tsup';
 
 import path from 'node:path';
 import * as fs from 'fs';
 
-function cssAutoImport(options = {}) {
-    const {
-        specifier = './index.css', // or 'your-lib/index.css' for bare specifier
-    } = options;
-
-    return {
-        name: 'css-auto-import',
-        setup(build) {
-            const line = `import "${specifier}";`;
-
-            // Preserve any existing JS banner and append our import.
-            const prev = (build.initialOptions.banner && build.initialOptions.banner.js) || '';
-            build.initialOptions.banner = {
-                ...(build.initialOptions.banner || {}),
-                js: prev ? `${prev}\n${line}` : line,
-            };
-        },
-    };
-}
-
 const componentDir = process.cwd();
 
 // bundle sources
-const themeProviderEntry = path.resolve(componentDir, '../ThemeProvider/src/index.tsx');
 await esbuild.build({
     entryPoints: ['src/index.tsx'],
     bundle: true,
@@ -38,32 +16,13 @@ await esbuild.build({
     format: 'esm',
     jsx: 'automatic',
     jsxImportSource: 'react',
-    alias: {
-        '@hautechai/webui.themeprovider': themeProviderEntry,
-    },
-    plugins: [
-        linaria({
-            esbuildOptions: {
-                jsx: 'automatic',
-                jsxImportSource: 'react',
-            },
-            babelOptions: {
-                presets: ['@babel/preset-typescript'],
-            },
-        }),
-        // linaria({}),
-        cssAutoImport(),
-    ],
+    plugins: [],
 });
 
 // Create package.json
 const { name, description, version, type, author, dependencies, license } = JSON.parse(
     fs.readFileSync(path.resolve(componentDir, 'package.json'), 'utf8'),
 );
-
-if (dependencies?.['@hautechai/webui.themeprovider']) {
-    delete dependencies['@hautechai/webui.themeprovider'];
-}
 
 const newPackageJson = {
     name,
@@ -74,8 +33,6 @@ const newPackageJson = {
     type,
     dependencies,
     peerDependencies: {
-        '@linaria/core': '^6.3.0',
-        '@linaria/react': '^6.3.0',
         react: '^19.0.0',
     },
     main: './index.js',
@@ -102,3 +59,9 @@ await tsup.build({
     silent: true,
     dts: { only: true },
 });
+
+// Copy readme
+fs.writeFileSync(
+    path.resolve(componentDir, 'dist/README.md'),
+    fs.readFileSync(path.resolve(componentDir, 'README.md'), 'utf8'),
+);
