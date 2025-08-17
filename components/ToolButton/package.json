@@ -1,7 +1,7 @@
 {
     "name": "@hautechai/webui.toolbutton",
     "description": "ToolButton component with selected state",
-    "version": "2.1.3",
+    "version": "2.1.4",
     "type": "module",
     "main": "src/index.tsx",
     "publishConfig": {

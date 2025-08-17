@@ -1,7 +1,7 @@
 {
     "name": "@hautechai/webui.nodeheader",
     "description": "Header component for Node system",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "type": "module",
     "main": "src/index.tsx",
     "publishConfig": {
@@ -13,10 +13,10 @@
     },
     "author": "HautechAI",
     "dependencies": {
-        "@hautechai/webui.themeprovider": "workspace:^",
-        "@hautechai/webui.typography": "workspace:^",
+        "@hautechai/webui.column": "workspace:^",
         "@hautechai/webui.divider": "workspace:^",
-        "@hautechai/webui.column": "workspace:^"
+        "@hautechai/webui.themeprovider": "workspace:^",
+        "@hautechai/webui.typography": "workspace:^"
     },
     "license": "Apache-2.0"
 }
