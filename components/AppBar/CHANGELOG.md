@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.6](https://github.com/HautechAI/webui/compare/@hautechai/webui.appbar@2.1.5...@hautechai/webui.appbar@2.1.6) (2025-08-17)
+
+**Note:** Version bump only for package @hautechai/webui.appbar
+
 ## [2.1.5](https://github.com/HautechAI/webui/compare/@hautechai/webui.appbar@2.1.4...@hautechai/webui.appbar@2.1.5) (2025-08-17)
 
 **Note:** Version bump only for package @hautechai/webui.appbar
