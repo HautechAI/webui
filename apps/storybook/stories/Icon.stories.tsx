@@ -15,8 +15,8 @@ export default {
 };
 
 // Base icon props interface
-type IconProps = SVGProps<SVGSVGElement> & { 
-    size?: number; 
+type IconProps = SVGProps<SVGSVGElement> & {
+    size?: number;
     color?: IconColorProp;
     style?: 'outlined' | 'bold';
 };

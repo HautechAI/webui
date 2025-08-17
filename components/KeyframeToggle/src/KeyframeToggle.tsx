@@ -52,19 +52,10 @@ export const KeyframeToggle = (props: KeyframeToggleProps) => {
 
     // Determine icon style based on state
     const iconStyle = state === 'isKeyframe' ? 'bold' : 'outlined';
-    
+
     return (
-        <StyledButton
-            data-state={state}
-            onClick={onClick}
-            disabled={disabled}
-            {...rest}
-        >
-            <DiamondIcon 
-                size={16}
-                style={iconStyle}
-                color="currentColor"
-            />
+        <StyledButton data-state={state} onClick={onClick} disabled={disabled} {...rest}>
+            <DiamondIcon size={16} style={iconStyle} color="currentColor" />
         </StyledButton>
     );
 };

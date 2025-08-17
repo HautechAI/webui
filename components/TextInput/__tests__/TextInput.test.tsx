@@ -17,7 +17,9 @@ describe('TextInput', () => {
     });
 
     it('should clone icons with correct size for medium (default)', () => {
-        const TestIcon = ({ size, ...rest }: { size?: number } & Record<string, unknown>) => <div data-testid={rest['data-testid']} data-size={size} />;
+        const TestIcon = ({ size, ...rest }: { size?: number } & Record<string, unknown>) => (
+            <div data-testid={rest['data-testid']} data-size={size} />
+        );
 
         render(
             <ThemeProvider theme={testTheme}>
@@ -32,13 +34,15 @@ describe('TextInput', () => {
             </ThemeProvider>,
         );
 
-    expect(screen.getByTestId('leading-icon').getAttribute('data-size')).toBe('20');
-    expect(screen.getByTestId('trailing-icon').getAttribute('data-size')).toBe('20');
-    expect(screen.getByTestId('icon-button-icon').getAttribute('data-size')).toBe('20');
+        expect(screen.getByTestId('leading-icon').getAttribute('data-size')).toBe('20');
+        expect(screen.getByTestId('trailing-icon').getAttribute('data-size')).toBe('20');
+        expect(screen.getByTestId('icon-button-icon').getAttribute('data-size')).toBe('20');
     });
 
     it('should clone icons with correct size for small', () => {
-        const TestIcon = ({ size, ...rest }: { size?: number } & Record<string, unknown>) => <div data-testid={rest['data-testid']} data-size={size} />;
+        const TestIcon = ({ size, ...rest }: { size?: number } & Record<string, unknown>) => (
+            <div data-testid={rest['data-testid']} data-size={size} />
+        );
 
         render(
             <ThemeProvider theme={testTheme}>
@@ -54,8 +58,8 @@ describe('TextInput', () => {
             </ThemeProvider>,
         );
 
-    expect(screen.getByTestId('leading-icon').getAttribute('data-size')).toBe('16');
-    expect(screen.getByTestId('trailing-icon').getAttribute('data-size')).toBe('16');
-    expect(screen.getByTestId('icon-button-icon').getAttribute('data-size')).toBe('16');
+        expect(screen.getByTestId('leading-icon').getAttribute('data-size')).toBe('16');
+        expect(screen.getByTestId('trailing-icon').getAttribute('data-size')).toBe('16');
+        expect(screen.getByTestId('icon-button-icon').getAttribute('data-size')).toBe('16');
     });
 });

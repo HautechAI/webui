@@ -7,6 +7,7 @@ When making changes to this WebUI component library, always ensure documentation
 ### 1. Root README.md Maintenance
 
 When **adding a new component**:
+
 - Add an entry to the appropriate category section in the components table in `/README.md`
 - Include the component name as a markdown link to `components/[ComponentName]/README.md`
 - Include a clear, concise description of its purpose
@@ -14,10 +15,12 @@ When **adding a new component**:
 - Use the same categories as defined in Storybook: Layout, Input, Data Display, Navigation, Surfaces, Compositions, Interaction, Tabs, Icons, System
 
 When **removing a component**:
+
 - Remove the corresponding entry from the appropriate category section in the components table in `/README.md`
 - Delete the component's individual README file
 
 When **modifying a component's core purpose**:
+
 - Update the component description in the appropriate category section of the root README.md table
 - Update the component's individual README.md
 
@@ -29,19 +32,22 @@ Each component in `/components/[ComponentName]/` must have a `README.md` file wi
 # [ComponentName]
 
 ## Purpose
+
 [Brief description of what this component does and when to use it]
 
 ## Parameters
 
-| Parameter | Type | Description |
-|-----------|------|-------------|
+| Parameter   | Type              | Description                                    |
+| ----------- | ----------------- | ---------------------------------------------- |
 | [paramName] | [TypeScript type] | [Clear description of the parameter's purpose] |
 
 ## Usage Example
+
 [Optional: Brief code example showing basic usage]
 ```
 
 **When modifying component props:**
+
 - Always update the Parameters table in the component's README.md
 - Ensure parameter types match the TypeScript definitions exactly
 - Add descriptions for new parameters
@@ -51,12 +57,14 @@ Each component in `/components/[ComponentName]/` must have a `README.md` file wi
 ### 3. Consistency Requirements
 
 **Component Organization:**
+
 - Components in the root README.md must be organized into categories matching Storybook structure: Layout, Input, Data Display, Navigation, Surfaces, Compositions, Interaction, Tabs, Icons, System
 - Each category should have its own table section with clear header
 - Components within each category should be listed alphabetically
 - Component names must be formatted as markdown links: `[**ComponentName**](components/ComponentName/README.md)`
 
 **Naming Convention:**
+
 - Component README files must be named exactly `README.md` (uppercase)
 - Use the exact component name as defined in the TypeScript interface
 - Keep component descriptions concise but informative (1-2 sentences)
@@ -65,6 +73,7 @@ Each component in `/components/[ComponentName]/` must have a `README.md` file wi
 - Use consistent terminology across all documentation
 
 **Description Quality:**
+
 - List all public props from the component's TypeScript interface
 - Include optional parameters and mark them as optional in the description
 - Describe the expected behavior for each parameter
@@ -73,7 +82,9 @@ Each component in `/components/[ComponentName]/` must have a `README.md` file wi
 **Parameter Documentation:**
 
 ### 4. Automated Checks
+
 Before committing changes:
+
 - Verify all component directories have README.md files
 - Ensure the root README.md table includes all existing components in properly organized category sections
 - Verify component names are formatted as clickable markdown links
@@ -83,20 +94,24 @@ Before committing changes:
 ### 5. Special Cases
 
 **Complex Components:**
+
 - For components with many parameters, group related parameters logically
 - Consider adding usage examples for complex parameter combinations
 
 **Deprecated Components:**
+
 - Mark as deprecated in both root README and component README
 - Include migration guidance when applicable
 
 **Theme-related Components:**
+
 - Ensure theme-specific parameters are clearly documented
 - Reference theme structure when relevant
 
 ### 6. Review Checklist
 
 When reviewing documentation changes:
+
 - [ ] Root README.md table is complete and accurate with proper category organization
 - [ ] All component names are formatted as clickable markdown links
 - [ ] All components have individual README.md files
@@ -126,18 +141,21 @@ When creating or updating icon components using Figma MCP (Dev Mode):
 ## Theme Value Guidelines
 
 ### Use Only Theme Values
+
 - **Never use hardcoded values** for dimensions, colors, animations, or other design tokens
 - **Always use theme variables** from `themeVars` imported from ThemeProvider
 - If a required value doesn't exist in the theme, request additional clarification before proceeding
 - This ensures consistent design across all components and allows for theme customization
 
 ### Common Theme Value Mappings
+
 - **Spacing**: Use `themeVars.spacing.{xs|s|m|ml|l|xl|xxl|xxxl}` for dimensions, padding, margins
 - **Corner Radius**: Use `themeVars.cornerRadius.{xs|s|m|l|xl|xxl}` for border-radius values
 - **Colors**: Use `themeVars.layout.*` or `themeVars.actions.*` for all color values
 - **Animations**: Use `themeVars.animation.duration.*` and `themeVars.animation.timing.*`
 
 ### Exception Handling
+
 - If a commonly used value (like opacity: 0.5 for disabled states) doesn't exist in theme, request clarification
 - Document any exceptions and their rationale clearly
 
@@ -148,6 +166,7 @@ Remember: Documentation is as important as the code itself. Well-maintained docu
 ### CSS-in-JS with Emotion
 
 **Key principles:**
+
 - Use `styled` components for all styling needs
 - **Prefer data attributes over styled component props** for conditional styling (e.g., `data-selected`, `data-variant`)
 - Use CSS attribute selectors like `&[data-selected="true"]` instead of prop-based conditional styles
@@ -158,22 +177,24 @@ Remember: Documentation is as important as the code itself. Well-maintained docu
 ## Import Guidelines
 
 ### Component Import Rules
-- **Inside components/**/src**: Import other components only by package name:
-  ```typescript
-  import { Button } from '@hautechai/webui.button';
-  import { Typography } from '@hautechai/webui.typography';
-  ```
-- **Inside components/**/**: You can import current Component and Theme by relative path:
-  ```typescript
-  import { MyComponent } from '../src/';
-  import { themeVars } from '../ThemeProvider/src';
-  ```
+
+- **Inside components/**/src\*\*: Import other components only by package name:
+    ```typescript
+    import { Button } from '@hautechai/webui.button';
+    import { Typography } from '@hautechai/webui.typography';
+    ```
+- **Inside components/**/\*\*: You can import current Component and Theme by relative path:
+    ```typescript
+    import { MyComponent } from '../src/';
+    import { themeVars } from '../ThemeProvider/src';
+    ```
 
 These rules ensure proper module resolution and maintain clean package boundaries while allowing relative imports for local components and testing.
 
 ## Package Resolution Guidelines
 
 ### Test Environment Setup
+
 - **Do not add aliases** in test configuration files like `vitest.config.ts` to resolve workspace packages
 - If a package cannot be resolved during testing, it should be added to the appropriate `package.json` dependencies and `pnpm install` should be executed
 - This ensures proper dependency management and avoids masking real module resolution issues

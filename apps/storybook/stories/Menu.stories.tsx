@@ -81,7 +81,11 @@ export const WithSelectedOption = {
                 isSelected: true,
                 onClick: fn() as React.MouseEventHandler<HTMLButtonElement>,
             },
-            { label: 'Option2 very long option', leadingIcon: <PlaceholderIcon />, onClick: fn() as React.MouseEventHandler<HTMLButtonElement> },
+            {
+                label: 'Option2 very long option',
+                leadingIcon: <PlaceholderIcon />,
+                onClick: fn() as React.MouseEventHandler<HTMLButtonElement>,
+            },
         ],
     },
 };

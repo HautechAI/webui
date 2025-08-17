@@ -22,7 +22,7 @@ describe('PropertyBlock', () => {
                 <PropertyBlock />
             </ThemeProvider>,
         );
-        
+
         expect(screen.getByText('Property')).toBeInTheDocument();
         expect(screen.getByText('Content placeholder')).toBeInTheDocument();
     });
@@ -33,7 +33,7 @@ describe('PropertyBlock', () => {
                 <PropertyBlock>Custom content</PropertyBlock>
             </ThemeProvider>,
         );
-        
+
         expect(screen.getByText('Property')).toBeInTheDocument();
         expect(screen.getByText('Custom content')).toBeInTheDocument();
         expect(screen.queryByText('Content placeholder')).not.toBeInTheDocument();
@@ -45,7 +45,7 @@ describe('PropertyBlock', () => {
                 <PropertyBlock removable />
             </ThemeProvider>,
         );
-        
+
         const buttons = screen.getAllByRole('button');
         expect(buttons).toHaveLength(1);
     });
@@ -56,7 +56,7 @@ describe('PropertyBlock', () => {
                 <PropertyBlock removable={false} />
             </ThemeProvider>,
         );
-        
+
         expect(screen.queryByRole('button')).not.toBeInTheDocument();
     });
 
@@ -68,7 +68,7 @@ describe('PropertyBlock', () => {
                 </PropertyBlock>
             </ThemeProvider>,
         );
-        
+
         expect(screen.getByText('Property')).toBeInTheDocument();
         expect(screen.queryByText('Custom content')).not.toBeInTheDocument();
         expect(screen.queryByText('Content placeholder')).not.toBeInTheDocument();

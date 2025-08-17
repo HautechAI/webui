@@ -10,7 +10,7 @@ describe('AspectRatio', () => {
         expect(() => {
             render(
                 <ThemeProvider theme={testTheme}>
-                    <AspectRatio 
+                    <AspectRatio
                         options={['1:1', '4:3', '16:9', '2:1']}
                         defaultOptions={['1:1', '4:3', '16:9']}
                         sizeForRatio={() => ({ width: 100, height: 100 })}

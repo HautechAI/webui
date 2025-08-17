@@ -15,9 +15,9 @@ describe('Theme', () => {
             const customTheme = createTheme({
                 foundation: {
                     spacing: {
-                        xs: 4
-                    }
-                }
+                        xs: 4,
+                    },
+                },
             });
             expect(customTheme.foundation.spacing.xs).toBe(4);
         }).not.toThrow();

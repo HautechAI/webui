@@ -41,19 +41,19 @@ const Container = styled.div`
     }
 
     /* State-driven styling for children using data attributes */
-    &:hover [data-part="track"] {
+    &:hover [data-part='track'] {
         background: ${themeVars.layout.strokes};
     }
 
-    &:hover [data-part="resize-handler"] {
+    &:hover [data-part='resize-handler'] {
         display: inline-flex;
     }
 
-    &[data-selected="true"] [data-part="track"] {
+    &[data-selected='true'] [data-part='track'] {
         background: ${themeVars.actions.tertiary};
     }
 
-    &[data-selected="true"] [data-part="resize-handler"] {
+    &[data-selected='true'] [data-part='resize-handler'] {
         display: inline-flex;
     }
 `;

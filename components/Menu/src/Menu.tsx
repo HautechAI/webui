@@ -26,7 +26,13 @@ export const Menu = (props: MenuProps) => {
                 if (opt.type === 'CTA') {
                     const { type: _ignored, ...rest } = opt as Extract<typeof opt, { type: 'CTA' }>;
                     return (
-                        <MenuItem key={key} type="CTA" {...(rest as unknown)} isSelected={isSelected} onClick={onClick} />
+                        <MenuItem
+                            key={key}
+                            type="CTA"
+                            {...(rest as unknown)}
+                            isSelected={isSelected}
+                            onClick={onClick}
+                        />
                     );
                 }
 

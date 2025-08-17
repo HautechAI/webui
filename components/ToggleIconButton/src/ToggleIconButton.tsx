@@ -174,12 +174,7 @@ export const ToggleIconButton = (props: ToggleIconButtonProps) => {
     const { variant = 'filled', size = 'medium', icon, checked = false, ...rest } = props;
 
     return (
-        <StyledButton
-            data-variant={variant}
-            data-size={size}
-            data-checked={checked}
-            {...rest}
-        >
+        <StyledButton data-variant={variant} data-size={size} data-checked={checked} {...rest}>
             {icon}
         </StyledButton>
     );
