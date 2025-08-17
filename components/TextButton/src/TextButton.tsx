@@ -32,6 +32,7 @@ export type TextButtonProps = {
     trailingIcon?: React.ReactNode;
     disabled?: boolean;
     onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
+    style?: React.CSSProperties;
 };
 
 const LabelVariants: Record<Required<TextButtonProps>['size'], TypographyProps['variant']> = {
@@ -60,7 +61,7 @@ export const TextButton = (props: TextButtonProps) => {
     } as const;
 
     const styleVars: React.CSSProperties = {
-        ...(rest as unknown).style,
+        ...(typeof rest.style === 'object' ? (rest.style as React.CSSProperties) : undefined),
         ['--tb-gap' as string]: gapBySize[size],
         ['--tb-color' as string]: colorByHierarchy[hierarchy],
         ['--tb-color-hover' as string]: hoverColorByHierarchy[hierarchy],

@@ -10,7 +10,12 @@ describe('OperationItem', () => {
         expect(() => {
             render(
                 <ThemeProvider theme={testTheme}>
-                    <OperationItem title="Test Operation" description="Test Description" />
+                    <OperationItem
+                        title="Test Operation"
+                        date="2025-01-01"
+                        previews={<div />}
+                        badge={<span>New</span>}
+                    />
                 </ThemeProvider>,
             );
         }).not.toThrow();

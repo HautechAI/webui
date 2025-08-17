@@ -1,11 +1,12 @@
 import React from 'react';
+import type { Meta, StoryObj } from '@storybook/react';
 import { PlaceholderIcon } from '../../../components/Icon/src';
 import { Box } from '../../../components/Box/src';
 import { DataItem } from '../../../components/DataItem/src/DataItem';
 import { IconButton } from '../../../components/IconButton/src';
 import { fn } from '@storybook/test';
 
-export default {
+const meta: Meta<typeof DataItem> = {
     title: 'Data Display/DataItem',
     component: DataItem,
     parameters: {
@@ -21,7 +22,11 @@ export default {
     ],
 };
 
-export const Column = {
+export default meta;
+
+type Story = StoryObj<typeof DataItem>;
+
+export const Column: Story = {
     args: {
         label: 'Current plan',
         value: 'Basic',
@@ -29,7 +34,7 @@ export const Column = {
     },
 };
 
-export const ColumnWithLeadingIcon = {
+export const ColumnWithLeadingIcon: Story = {
     args: {
         label: 'Current plan',
         value: 'Basic',
@@ -38,7 +43,7 @@ export const ColumnWithLeadingIcon = {
     },
 };
 
-export const ColumnWithHint = {
+export const ColumnWithHint: Story = {
     args: {
         label: 'Current plan',
         value: 'Basic',
@@ -52,7 +57,7 @@ export const ColumnWithHint = {
     },
 };
 
-export const SmallData = {
+export const SmallData: Story = {
     args: {
         label: 'Current plan',
         value: 'Basic',
@@ -62,7 +67,7 @@ export const SmallData = {
     },
 };
 
-export const MediumHeading = {
+export const MediumHeading: Story = {
     args: {
         label: 'Current plan',
         value: 'Basic',
@@ -72,7 +77,7 @@ export const MediumHeading = {
     },
 };
 
-export const SmallHeading = {
+export const SmallHeading: Story = {
     args: {
         label: 'Current plan',
         value: 'Basic',
@@ -82,7 +87,7 @@ export const SmallHeading = {
     },
 };
 
-export const Row = {
+export const Row: Story = {
     args: {
         label: 'Heading',
         value: 'Data',
@@ -90,7 +95,7 @@ export const Row = {
     },
 };
 
-export const RowWithIcon = {
+export const RowWithIcon: Story = {
     args: {
         label: 'Heading',
         value: 'Data',
@@ -99,7 +104,7 @@ export const RowWithIcon = {
     },
 };
 
-export const RowWithButton = {
+export const RowWithButton: Story = {
     args: {
         label: 'Heading',
         value: 'Data',
@@ -108,7 +113,7 @@ export const RowWithButton = {
     },
 };
 
-export const RowWithLongText = {
+export const RowWithLongText: Story = {
     args: {
         label: 'Heading',
         value: 'lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',

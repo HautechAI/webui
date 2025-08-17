@@ -1,5 +1,4 @@
-import type { Paths } from 'type-fest';
-import { cssVar, type ThemeType, type IconColorProp } from '@hautechai/webui.themeprovider';
+import { cssVar, type IconColorProp } from '@hautechai/webui.themeprovider';
 
 // Shared color prop type for all icons
 export { IconColorProp };

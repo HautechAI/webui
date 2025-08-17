@@ -10,7 +10,7 @@ describe('LinkButton', () => {
         expect(() => {
             render(
                 <ThemeProvider theme={testTheme}>
-                    <LinkButton href="#">Test Link</LinkButton>
+                    <LinkButton label="Test Link" />
                 </ThemeProvider>,
             );
         }).not.toThrow();

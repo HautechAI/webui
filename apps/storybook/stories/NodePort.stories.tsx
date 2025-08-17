@@ -1,4 +1,3 @@
-import React from 'react';
 import { NodePort } from '../../../components/NodePort/src';
 
 export default {

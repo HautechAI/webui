@@ -74,6 +74,9 @@ importers:
             eslint-plugin-react-hooks:
                 specifier: ^5.2.0
                 version: 5.2.0(eslint@9.33.0)
+            husky:
+                specifier: ^9.1.7
+                version: 9.1.7
             jsdom:
                 specifier: ^25.0.1
                 version: 25.0.1
@@ -5391,6 +5394,14 @@ packages:
             }
         engines: { node: '>=10.17.0' }
 
+    husky@9.1.7:
+        resolution:
+            {
+                integrity: sha512-5gs5ytaNjBrh5Ow3zrvdUUY+0VxIuWVL4i9irt6friV+BqdCfmV11CQTWMiBYWHbXhco+J1kHfTOUkePhCDvMA==,
+            }
+        engines: { node: '>=18' }
+        hasBin: true
+
     iconv-lite@0.4.24:
         resolution:
             {
@@ -7803,6 +7814,7 @@ packages:
                 integrity: sha512-2ymg6oRBpebeZi9UUNsgQ89bhx01TcTkmNTGnNO88imTmbSgy4nfujrgVEFKWpMTEGA11EDkTt7mqObTPdigIA==,
             }
         engines: { node: '>= 8' }
+        deprecated: The work that was done in this beta branch won't be included in future versions
 
     spdx-correct@3.2.0:
         resolution:
@@ -11872,6 +11884,8 @@ snapshots:
             - supports-color
 
     human-signals@2.1.0: {}
+
+    husky@9.1.7: {}
 
     iconv-lite@0.4.24:
         dependencies:

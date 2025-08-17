@@ -14,17 +14,14 @@ export default {
         currentPage: 1,
         onPageChange: fn() as (page: number) => void,
     },
-    decorators: [
-        (Story: React.ComponentType, { args }: { args: PaginationProps }) => {
-            const [value, setValue] = useState(1);
-            return <Story args={{ ...args, currentPage: value, onPageChange: setValue }} />;
-        },
-    ],
+    decorators: [],
 };
 
-export const Main = {
-    args: {},
+export const Main = (args: PaginationProps) => {
+    const [value, setValue] = useState(1);
+    return <Pagination {...args} currentPage={value} onPageChange={setValue} />;
 };
+Main.args = {} as Partial<PaginationProps>;
 
 export const WithOne = {
     args: {

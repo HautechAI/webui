@@ -1,5 +1,6 @@
 import React, { ChangeEvent } from 'react';
 import { fn } from '@storybook/test';
+import type { Meta, StoryObj } from '@storybook/react';
 import { Box } from '../../../components/Box/src';
 import { PlaceholderIcon } from '../../../components/Icon/src';
 import { Field } from '../../../components/Field/src';
@@ -12,7 +13,7 @@ import { SegmentedControl } from '../../../components/SegmentedControl/src';
 import { Counter } from '../../../components/Counter/src';
 import { ToolButton } from '../../../components/ToolButton/src';
 
-export default {
+const meta: Meta<typeof Field> = {
     title: 'Input/Field',
     component: Field,
     parameters: {
@@ -20,7 +21,6 @@ export default {
     },
     tags: ['autodocs'],
     argTypes: {
-        backgroundColor: { control: 'color' },
         labelPosition: {
             control: 'radio',
             options: ['top', 'left', 'right'],
@@ -41,28 +41,32 @@ export default {
     ],
 };
 
-export const WithCheckbox = {
+export default meta;
+
+type Story = StoryObj<typeof Field>;
+
+export const WithCheckbox: Story = {
     args: {
         label: 'Label',
         children: <Checkbox />,
     },
 };
 
-export const WithSwitch = {
+export const WithSwitch: Story = {
     args: {
         label: 'Label',
         children: <Switch />,
     },
 };
 
-export const WithCounter = {
+export const WithCounter: Story = {
     args: {
         label: 'Label',
         children: <Counter onChange={fn() as (value: number) => void} />,
     },
 };
 
-export const WithDropdown = {
+export const WithDropdown: Story = {
     args: {
         label: 'Label',
         caption: 'Helper text',
@@ -83,7 +87,7 @@ export const WithDropdown = {
     },
 };
 
-export const WithSegmentedControl = {
+export const WithSegmentedControl: Story = {
     args: {
         label: 'Label',
         caption: 'Helper text',
@@ -99,7 +103,7 @@ export const WithSegmentedControl = {
     },
 };
 
-export const WithInput = {
+export const WithInput: Story = {
     args: {
         label: 'Label',
         caption: 'Helper text',
@@ -114,7 +118,7 @@ export const WithInput = {
     },
 };
 
-export const WithInputWithIcons = {
+export const WithInputWithIcons: Story = {
     args: {
         label: 'Label',
         caption: 'Helper text',
@@ -126,13 +130,13 @@ export const WithInputWithIcons = {
                 trailingIcon={<PlaceholderIcon />}
                 icon={<PlaceholderIcon />}
                 onIconButtonClick={fn() as () => void}
-                onChange={fn() as (value: React.ChangeEvent<HTMLInputElement>) => void}
+                onChange={fn() as (e: React.ChangeEvent<HTMLInputElement>) => void}
             />
         ),
     },
 };
 
-export const WithInputDisabled = {
+export const WithInputDisabled: Story = {
     args: {
         label: 'Label',
         caption: 'Helper text',
@@ -144,13 +148,13 @@ export const WithInputDisabled = {
                 placeholder="Any text"
                 icon={<PlaceholderIcon />}
                 onIconButtonClick={fn() as () => void}
-                onChange={fn() as (value: React.ChangeEvent<HTMLInputElement>) => void}
+                onChange={fn() as (e: React.ChangeEvent<HTMLInputElement>) => void}
             />
         ),
     },
 };
 
-export const WithInputLocked = {
+export const WithInputLocked: Story = {
     args: {
         label: 'Label',
         caption: 'Helper text',
@@ -162,13 +166,13 @@ export const WithInputLocked = {
                 placeholder="Any text"
                 icon={<PlaceholderIcon />}
                 onIconButtonClick={fn() as () => void}
-                onChange={fn() as (value: React.ChangeEvent<HTMLInputElement>) => void}
+                onChange={fn() as (e: React.ChangeEvent<HTMLInputElement>) => void}
             />
         ),
     },
 };
 
-export const WithArea = {
+export const WithArea: Story = {
     args: {
         label: 'Label',
         caption: 'Helper text',
@@ -177,13 +181,13 @@ export const WithArea = {
                 placeholder="Any text"
                 variation="filled"
                 value="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-                onChange={fn() as (value: React.ChangeEvent<HTMLTextAreaElement>) => void}
+                onChange={fn() as (e: React.ChangeEvent<HTMLTextAreaElement>) => void}
             />
         ),
     },
 };
 
-export const WithAreaWithIcons = {
+export const WithAreaWithIcons: Story = {
     args: {
         label: 'Label',
         caption: 'Helper text',
@@ -194,13 +198,13 @@ export const WithAreaWithIcons = {
                 trailingIcon={<PlaceholderIcon />}
                 icon={<PlaceholderIcon />}
                 onIconButtonClick={fn() as () => void}
-                onChange={fn() as (value: React.ChangeEvent<HTMLTextAreaElement>) => void}
+                onChange={fn() as (e: React.ChangeEvent<HTMLTextAreaElement>) => void}
             />
         ),
     },
 };
 
-export const WithAreaDisabled = {
+export const WithAreaDisabled: Story = {
     args: {
         label: 'Label',
         caption: 'Helper text',
@@ -211,13 +215,13 @@ export const WithAreaDisabled = {
                 placeholder="Any text"
                 icon={<PlaceholderIcon />}
                 onIconButtonClick={fn() as () => void}
-                onChange={fn() as (value: React.ChangeEvent<HTMLTextAreaElement>) => void}
+                onChange={fn() as (e: React.ChangeEvent<HTMLTextAreaElement>) => void}
             />
         ),
     },
 };
 
-export const WithAreaLocked = {
+export const WithAreaLocked: Story = {
     args: {
         label: 'Label',
         caption: 'Helper text',
@@ -228,13 +232,13 @@ export const WithAreaLocked = {
                 placeholder="Any text"
                 icon={<PlaceholderIcon />}
                 onIconButtonClick={fn() as () => void}
-                onChange={fn() as (value: React.ChangeEvent<HTMLTextAreaElement>) => void}
+                onChange={fn() as (e: React.ChangeEvent<HTMLTextAreaElement>) => void}
             />
         ),
     },
 };
 
-export const WithActionButton = {
+export const WithActionButton: Story = {
     args: {
         label: 'Username',
         caption: 'Enter your username',
@@ -243,7 +247,7 @@ export const WithActionButton = {
     },
 };
 
-export const WithActionButtonAndLocked = {
+export const WithActionButtonAndLocked: Story = {
     args: {
         label: 'Password',
         caption: 'Enter your password',
@@ -254,7 +258,7 @@ export const WithActionButtonAndLocked = {
     },
 };
 
-export const WithCustomActionButton = {
+export const WithCustomActionButton: Story = {
     args: {
         label: 'Email',
         caption: 'Enter your email address',

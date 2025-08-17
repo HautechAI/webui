@@ -3,12 +3,14 @@ import { NodeHeader } from '../../../components/NodeHeader/src';
 import { Badge } from '../../../components/Badge/src';
 
 const PlaceholderIcon = () => (
-    <div style={{ 
-        width: '16px', 
-        height: '16px', 
-        background: '#656565', 
-        borderRadius: '2px' 
-    }} />
+    <div
+        style={{
+            width: '16px',
+            height: '16px',
+            background: '#656565',
+            borderRadius: '2px',
+        }}
+    />
 );
 
 export default {

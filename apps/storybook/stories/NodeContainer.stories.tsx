@@ -45,10 +45,7 @@ export const FullNode = {
     args: {
         children: (
             <>
-                <NodeHeader 
-                    label="Node Name"
-                    badge={<Badge label="Success" color="success" />}
-                />
+                <NodeHeader label="Node Name" badge={<Badge label="Success" color="success" />} />
                 <NodeContent>
                     <Typography variant="Body" color="layout.onSurface.secondary">
                         Content placeholder
@@ -76,10 +73,7 @@ export const WithIcon = {
     args: {
         children: (
             <>
-                <NodeHeader 
-                    icon={<BulbIcon />}
-                    label="Node with Icon"
-                />
+                <NodeHeader icon={<BulbIcon />} label="Node with Icon" />
                 <NodeFooter
                     inputPorts={
                         <>
@@ -101,10 +95,7 @@ export const WithBadgeOnly = {
     args: {
         children: (
             <>
-                <NodeHeader 
-                    label="Node with Badge"
-                    badge={<Badge label="Error" color="error" />}
-                />
+                <NodeHeader label="Node with Badge" badge={<Badge label="Error" color="error" />} />
                 <NodeFooter
                     inputPorts={
                         <>
@@ -126,7 +117,7 @@ export const WithIconAndBadge = {
     args: {
         children: (
             <>
-                <NodeHeader 
+                <NodeHeader
                     icon={<BulbIcon />}
                     label="Complete Node Header"
                     badge={<Badge label="Info" color="info" />}
@@ -153,7 +144,7 @@ export const LongTitle = {
     args: {
         children: (
             <>
-                <NodeHeader 
+                <NodeHeader
                     icon={<BulbIcon />}
                     label="This is a very long node name that should be truncated with ellipsis"
                     badge={<Badge label="Status" color="info" />}
