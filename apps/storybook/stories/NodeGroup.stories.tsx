@@ -146,3 +146,30 @@ export const NoSubtitles = {
         )
     },
 };
+
+export const HoverAndDragStates = {
+    args: {
+        label: 'Interactive States',
+        collapsed: false,
+        children: (
+            <>
+                <NodeGroupItem 
+                    icon={<PlaceholderIcon />}
+                    title="Normal Item"
+                    subtitle="This item has normal state (hover to see background change)"
+                />
+                <NodeGroupItem 
+                    icon={<PlaceholderIcon />}
+                    title="Dragging Item"
+                    subtitle="This item is in dragging state with reduced opacity"
+                    isDragging={true}
+                />
+                <NodeGroupItem 
+                    icon={<PlaceholderIcon />}
+                    title="Another Normal Item"
+                    subtitle="Hover to see the background change"
+                />
+            </>
+        )
+    },
+};

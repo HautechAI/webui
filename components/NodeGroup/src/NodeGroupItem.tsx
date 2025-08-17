@@ -10,6 +10,8 @@ export interface NodeGroupItemProps {
     title: string;
     /** Optional subtitle text */
     subtitle?: string;
+    /** Whether the item is being dragged */
+    isDragging?: boolean;
 }
 
 const Container = styled.div`
@@ -20,6 +22,17 @@ const Container = styled.div`
     justify-content: flex-start;
     align-items: flex-start;
     display: flex;
+    transition: background-color ${themeVars.animation.duration.fast} ${themeVars.animation.timing.easeOut},
+                opacity ${themeVars.animation.duration.fast} ${themeVars.animation.timing.easeOut};
+
+    &:hover {
+        background-color: ${themeVars.layout.surfaceMid};
+    }
+
+    &[data-dragging="true"] {
+        opacity: 0.30;
+        background-color: ${themeVars.layout.surfaceMid};
+    }
 `;
 
 const ItemRow = styled.div`
@@ -64,10 +77,10 @@ const TitleRow = styled.div`
 `;
 
 export const NodeGroupItem = (props: NodeGroupItemProps) => {
-    const { icon, title, subtitle } = props;
+    const { icon, title, subtitle, isDragging = false } = props;
 
     return (
-        <Container>
+        <Container data-dragging={isDragging}>
             <ItemRow>
                 <IconContainer>{icon}</IconContainer>
                 <ContentColumn>

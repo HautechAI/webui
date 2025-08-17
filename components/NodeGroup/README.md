@@ -32,6 +32,7 @@ Individual item component with icon, title, and optional subtitle.
 | icon | React.ReactNode | Icon to display at the start of the item |
 | title | string | Primary title text |
 | subtitle | string | Optional subtitle text |
+| isDragging | boolean | Whether the item is being dragged (reduces opacity and adds background) |
 
 ## Usage Example
 ```tsx
