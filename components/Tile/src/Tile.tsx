@@ -1,5 +1,5 @@
 import { styled } from '@hautechai/webui.themeprovider';
-import { themeVars, type IconColorProp, cssVar } from '@hautechai/webui.themeprovider';
+import { themeVars, type IconColorProp, resolveColor } from '@hautechai/webui.themeprovider';
 
 type TileSize = 'medium' | 'small' | 'xlarge';
 
@@ -9,34 +9,17 @@ const tileSize = {
     xlarge: 200,
 };
 
-/**
- * Resolve a color variable or value for tile background.
- * - If `color` is a palette path, returns the value from theme.palette
- * - If `color` is a literal (hex/rgba/currentColor), returns it as-is
- * - If `color` is undefined, falls back to the default theme surface color
- */
-const resolveTileColor = (color?: IconColorProp): string => {
-    if (!color) return themeVars.layout.surfaceMid;
-
-    // Literal colors and currentColor pass through
-    if (color === 'currentColor') return color;
-    if (typeof color === 'string' && (color.startsWith('#') || color.startsWith('rgba('))) return color;
-
-    // Otherwise treat as a theme palette path
-    return cssVar(`palette.${String(color)}`);
-};
-
 const sizeToUnits = (size?: number | string) => {
     if (!size) return undefined;
     return typeof size === 'number' ? `${size}px` : size;
 };
 
-const StyledTileDiv = styled.div<{ $color?: IconColorProp }>`
+const StyledTileDiv = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
 
-    background-color: ${({ $color }) => resolveTileColor($color)};
+    background-color: var(--tile-bg-color, ${themeVars.layout.surfaceMid});
     border-radius: ${themeVars.cornerRadius.m};
     background-image: var(--tile-bg-image, none);
     background-size: cover;
@@ -63,12 +46,12 @@ const StyledTileDiv = styled.div<{ $color?: IconColorProp }>`
     }
 `;
 
-const StyledTileImg = styled.img<{ $color?: IconColorProp }>`
+const StyledTileImg = styled.img`
     display: flex;
     align-items: center;
     justify-content: center;
 
-    background-color: ${({ $color }) => resolveTileColor($color)};
+    background-color: var(--tile-bg-color, ${themeVars.layout.surfaceMid});
     border-radius: ${themeVars.cornerRadius.m};
 
     border-width: ${themeVars.stroke.standard};
@@ -92,12 +75,12 @@ const StyledTileImg = styled.img<{ $color?: IconColorProp }>`
     }
 `;
 
-const StyledTileVideo = styled.video<{ $color?: IconColorProp }>`
+const StyledTileVideo = styled.video`
     display: flex;
     align-items: center;
     justify-content: center;
 
-    background-color: ${({ $color }) => resolveTileColor($color)};
+    background-color: var(--tile-bg-color, ${themeVars.layout.surfaceMid});
     border-radius: ${themeVars.cornerRadius.m};
 
     border-width: ${themeVars.stroke.standard};
@@ -172,19 +155,11 @@ export const Tile = (props: TileProps) => {
         width: sizeToUnits(width) ?? (size ? sizeToUnits(tileSize[size]) : undefined),
         height: sizeToUnits(height) ?? (size ? sizeToUnits(tileSize[size]) : undefined),
         aspectRatio: aspectRatio ?? (!size && (!width || !height) ? 1 : undefined),
+        ['--tile-bg-color' as string]: color ? resolveColor(color, themeVars.layout.surfaceMid) : undefined,
     } as React.CSSProperties;
 
     if (component === 'img') {
-        return (
-            <StyledTileImg
-                data-selected={!!props.selected}
-                src={src}
-                alt={alt}
-                style={styleDims}
-                $color={color}
-                {...rest}
-            />
-        );
+        return <StyledTileImg data-selected={!!props.selected} src={src} alt={alt} style={styleDims} {...rest} />;
     }
 
     if (component === 'video') {
@@ -198,7 +173,6 @@ export const Tile = (props: TileProps) => {
                 muted={muted ?? true}
                 playsInline={playsInline ?? true}
                 style={styleDims}
-                $color={color}
                 {...rest}
             />
         );
@@ -211,7 +185,6 @@ export const Tile = (props: TileProps) => {
                 ...styleDims,
                 ['--tile-bg-image' as string]: src ? `url(${src})` : undefined,
             }}
-            $color={color}
             {...rest}
         >
             {icon}
