@@ -38,5 +38,11 @@ jobs:
               env:
                   HUSKY: 0
 
+            - name: Run lint
+              run: pnpm run lint
+
             - name: Run tests
               run: pnpm run test:run
+
+            - name: Run prepack
+              run: pnpm -r prepack
