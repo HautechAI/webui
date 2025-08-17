@@ -22,6 +22,7 @@ const Container = styled.div`
     justify-content: flex-start;
     align-items: flex-start;
     display: flex;
+    cursor: grab;
     transition: background-color ${themeVars.animation.duration.fast} ${themeVars.animation.timing.easeOut},
                 opacity ${themeVars.animation.duration.fast} ${themeVars.animation.timing.easeOut};
 
@@ -32,6 +33,7 @@ const Container = styled.div`
     &[data-dragging="true"] {
         opacity: 0.30;
         background-color: ${themeVars.layout.surfaceMid};
+        cursor: grabbing;
     }
 `;
 
@@ -41,15 +43,6 @@ const ItemRow = styled.div`
     align-items: flex-start;
     gap: ${themeVars.spacing.s};
     display: inline-flex;
-`;
-
-const IconContainer = styled.div`
-    width: 24px;
-    height: 24px;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 `;
 
 const ContentColumn = styled.div`
@@ -68,12 +61,17 @@ const TextContent = styled.div`
     display: inline-flex;
 `;
 
-const TitleRow = styled.div`
-    align-self: stretch;
-    justify-content: flex-start;
+const IconWrapper = styled.div`
+    width: 24px;
+    height: 24px;
+    display: flex;
     align-items: center;
-    gap: ${themeVars.spacing.xs};
-    display: inline-flex;
+    justify-content: center;
+    
+    > * {
+        width: 16px;
+        height: 16px;
+    }
 `;
 
 export const NodeGroupItem = (props: NodeGroupItemProps) => {
@@ -82,17 +80,15 @@ export const NodeGroupItem = (props: NodeGroupItemProps) => {
     return (
         <Container data-dragging={isDragging}>
             <ItemRow>
-                <IconContainer>{icon}</IconContainer>
+                <IconWrapper>{icon}</IconWrapper>
                 <ContentColumn>
                     <TextContent>
-                        <TitleRow>
-                            <Typography 
-                                variant="LabelSmallRegular" 
-                                color="layout.onSurface.primary"
-                            >
-                                {title}
-                            </Typography>
-                        </TitleRow>
+                        <Typography 
+                            variant="LabelSmallRegular" 
+                            color="layout.onSurface.primary"
+                        >
+                            {title}
+                        </Typography>
                         {subtitle && (
                             <Typography 
                                 variant="CaptionRegular" 
