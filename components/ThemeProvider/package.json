@@ -11,6 +11,10 @@
     "scripts": {
         "prepack": "node ../../scripts/build-component.mjs"
     },
+    "dependencies": {
+        "@emotion/react": "^11.14.0",
+        "@emotion/styled": "^11.14.0"
+    },
     "author": "HautechAI",
     "license": "Apache-2.0"
 }
