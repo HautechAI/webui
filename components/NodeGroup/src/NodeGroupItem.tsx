@@ -1,7 +1,6 @@
 import React from 'react';
-import { styled } from '@linaria/react';
+import { styled, themeVars } from '@hautechai/webui.themeprovider';
 import { Typography } from '@hautechai/webui.typography';
-import { themeVars } from '@hautechai/webui.themeprovider';
 
 export interface NodeGroupItemProps {
     /** Icon to display at the start of the item */

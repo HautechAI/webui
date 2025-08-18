@@ -1,8 +1,7 @@
 import React from 'react';
-import { styled } from '@linaria/react';
+import { styled, themeVars } from '@hautechai/webui.themeprovider';
 import { Typography } from '@hautechai/webui.typography';
 import { ArrowAltRightIcon } from '@hautechai/webui.icon';
-import { themeVars } from '@hautechai/webui.themeprovider';
 
 export interface NodeGroupHeaderProps {
     /** Text label to display */
@@ -44,7 +43,7 @@ const LabelContainer = styled.div`
     display: flex;
 `;
 
-const ArrowContainer = styled.div<{ collapsed: boolean }>`
+const ArrowContainer = styled.div<{ $collapsed: boolean }>`
     width: 20px;
     height: 20px;
     position: relative;
@@ -52,7 +51,7 @@ const ArrowContainer = styled.div<{ collapsed: boolean }>`
     align-items: center;
     justify-content: center;
     color: ${themeVars.layout.onSurface.secondary};
-    transform: ${(props) => (props.collapsed ? 'rotate(0deg)' : 'rotate(-90deg)')};
+    transform: ${({ $collapsed }) => ($collapsed ? 'rotate(0deg)' : 'rotate(-90deg)')};
     transition: transform 0.15s ease-out;
 `;
 
@@ -71,7 +70,7 @@ export const NodeGroupHeader = (props: NodeGroupHeaderProps) => {
                         {label}
                     </Typography>
                 </LabelContainer>
-                <ArrowContainer collapsed={collapsed}>
+                <ArrowContainer $collapsed={collapsed}>
                     <ArrowAltRightIcon size={12} />
                 </ArrowContainer>
             </HeaderRow>

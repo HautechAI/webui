@@ -1,3 +1,4 @@
+import type { Meta } from '@storybook/react';
 import React, { useState } from 'react';
 import { fn } from '@storybook/test';
 
@@ -16,7 +17,7 @@ const PlaceholderIcon = () => (
     />
 );
 
-export default {
+const meta: Meta<typeof NodeGroup> = {
     title: 'Data Display/NodeGroup',
     component: NodeGroup,
     parameters: {
@@ -25,16 +26,18 @@ export default {
     tags: ['autodocs'],
     argTypes: {},
     args: {
-        onToggle: fn() as any,
+        onToggle: fn(),
     },
     decorators: [
-        (Story: any) => (
+        (Story) => (
             <Box width={300}>
                 <Story />
             </Box>
         ),
     ],
 };
+
+export default meta;
 
 export const Default = {
     args: {

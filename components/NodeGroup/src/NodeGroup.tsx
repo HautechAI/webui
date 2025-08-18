@@ -1,7 +1,6 @@
 import React from 'react';
-import { styled } from '@linaria/react';
+import { styled } from '@hautechai/webui.themeprovider';
 import { NodeGroupHeader } from './NodeGroupHeader';
-import { themeVars } from '@hautechai/webui.themeprovider';
 
 export interface NodeGroupProps {
     /** Text label for the group header */
@@ -22,15 +21,15 @@ const Container = styled.div`
     display: inline-flex;
 `;
 
-const ContentContainer = styled.div<{ collapsed: boolean }>`
+const ContentContainer = styled.div<{ $collapsed: boolean }>`
     width: 100%;
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
     display: inline-flex;
     overflow: hidden;
-    max-height: ${(props) => (props.collapsed ? '0px' : '1000px')};
-    opacity: ${(props) => (props.collapsed ? 0 : 1)};
+    max-height: ${({ $collapsed }) => ($collapsed ? '0px' : '1000px')};
+    opacity: ${({ $collapsed }) => ($collapsed ? 0 : 1)};
     transition:
         max-height 0.3s ease-out,
         opacity 0.15s ease-out;
@@ -42,7 +41,7 @@ export const NodeGroup = (props: NodeGroupProps) => {
     return (
         <Container>
             <NodeGroupHeader label={label} collapsed={collapsed} onToggle={onToggle} />
-            <ContentContainer collapsed={collapsed} data-collapsed={collapsed}>
+            <ContentContainer $collapsed={collapsed} data-collapsed={collapsed}>
                 {children}
             </ContentContainer>
         </Container>
