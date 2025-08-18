@@ -5,6 +5,8 @@ import React from 'react';
 
 export type DotsLoaderProps = {
     className?: string;
+    /** Animation speed in seconds. Default is 3 seconds. */
+    speed?: number;
 };
 
 const pulseAnimation = keyframes`
@@ -34,45 +36,51 @@ const pulseAnimation = keyframes`
     }
 `;
 
-const Container = styled.div`
+const Container = styled.div<{ speed: number }>`
     width: 36px;
     height: 10px;
     position: relative;
     display: inline-block;
+    --animation-duration: ${({ speed }) => speed}s;
 `;
 
-const Dot = styled.div`
+const Dot = styled.div<{ delay: number }>`
     position: absolute;
     width: 8px;
     height: 8px;
     top: 2px;
     background-color: ${themeVars.actions.secondary};
     border-radius: ${themeVars.cornerRadius.xxl};
-    animation: ${pulseAnimation} 3s ${themeVars.animation.timing.easeInOut} infinite;
+    animation: ${pulseAnimation} var(--animation-duration) ${themeVars.animation.timing.easeInOut} infinite;
+    animation-delay: ${({ delay }) => delay}s;
     transition: all ${themeVars.animation.duration.fast}s ${themeVars.animation.timing.easeOut};
 
     &[data-dot='1'] {
         left: 0px;
-        animation-delay: 0s;
     }
 
     &[data-dot='2'] {
         left: 14px;
-        animation-delay: 1s;
     }
 
     &[data-dot='3'] {
         left: 28px;
-        animation-delay: 2s;
     }
 `;
 
 export const DotsLoader = (props: DotsLoaderProps) => {
+    const { className, speed = 3 } = props;
+
+    // Calculate delays as fractions of the total speed
+    const delay1 = 0;
+    const delay2 = speed / 3;
+    const delay3 = (speed * 2) / 3;
+
     return (
-        <Container className={props.className}>
-            <Dot data-dot="1" />
-            <Dot data-dot="2" />
-            <Dot data-dot="3" />
+        <Container className={className} speed={speed}>
+            <Dot data-dot="1" delay={delay1} />
+            <Dot data-dot="2" delay={delay2} />
+            <Dot data-dot="3" delay={delay3} />
         </Container>
     );
 };

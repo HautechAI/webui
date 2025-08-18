@@ -40,4 +40,47 @@ describe('DotsLoader', () => {
         const loaderContainer = container.firstChild;
         expect(loaderContainer).toHaveClass('custom-class');
     });
+
+    it('should use default speed of 3 seconds when no speed prop is provided', () => {
+        const { container } = render(
+            <ThemeProvider theme={testTheme}>
+                <DotsLoader />
+            </ThemeProvider>,
+        );
+
+        const loaderContainer = container.firstChild as HTMLElement;
+        const computedStyle = window.getComputedStyle(loaderContainer);
+        expect(computedStyle.getPropertyValue('--animation-duration')).toBe('3s');
+    });
+
+    it('should use custom speed when speed prop is provided', () => {
+        const { container } = render(
+            <ThemeProvider theme={testTheme}>
+                <DotsLoader speed={2} />
+            </ThemeProvider>,
+        );
+
+        const loaderContainer = container.firstChild as HTMLElement;
+        const computedStyle = window.getComputedStyle(loaderContainer);
+        expect(computedStyle.getPropertyValue('--animation-duration')).toBe('2s');
+    });
+
+    it('should calculate animation delays correctly based on speed', () => {
+        const { container } = render(
+            <ThemeProvider theme={testTheme}>
+                <DotsLoader speed={6} />
+            </ThemeProvider>,
+        );
+
+        const dots = container.querySelectorAll('[data-dot]');
+
+        // Check the animation-delay styles
+        const dot1Style = window.getComputedStyle(dots[0] as HTMLElement);
+        const dot2Style = window.getComputedStyle(dots[1] as HTMLElement);
+        const dot3Style = window.getComputedStyle(dots[2] as HTMLElement);
+
+        expect(dot1Style.animationDelay).toBe('0s');
+        expect(dot2Style.animationDelay).toBe('2s'); // 6/3 = 2
+        expect(dot3Style.animationDelay).toBe('4s'); // 6*2/3 = 4
+    });
 });
