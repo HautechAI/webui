@@ -6,15 +6,15 @@ Multi-option selector component with segmented button appearance for choosing be
 
 ## Parameters
 
-| Parameter | Type                    | Description                                                 |
-| --------- | ----------------------- | ----------------------------------------------------------- |
-| options   | array                   | Required array of selectable options with labels and values |
-| value     | string                  | Optional controlled selected value                          |
-| onChange  | (value: string) => void | Optional callback function when selection changes           |
-| size      | string                  | Optional size variant controlling appearance and spacing    |
-| disabled  | boolean                 | When true, disables all option selection                    |
-
-May include additional parameters for styling and layout customization.
+| Parameter    | Type                                         | Description                                                 |
+| ------------ | -------------------------------------------- | ----------------------------------------------------------- |
+| options      | Option[]                                     | Required array of selectable options with labels and values |
+| value        | string                                       | Optional controlled selected value                          |
+| defaultValue | string                                       | Optional default selected value                             |
+| onChange     | (event: MouseEvent, value: string) => void  | Optional callback function when selection changes           |
+| material     | boolean                                      | When true, uses material design variant instead of HIG     |
+| whitespace   | keyof ThemeType['foundation']['spacing']    | Optional spacing to add left/right padding to items        |
+| stretch      | boolean                                      | When true, component takes full width with evenly distributed items |
 
 ## Usage Example
 
@@ -26,6 +26,8 @@ May include additional parameters for styling and layout customization.
         { label: 'Cards', value: 'cards' },
     ]}
     value={viewMode}
-    onChange={setViewMode}
+    onChange={(event, value) => setViewMode(value)}
+    stretch={true}
+    whitespace="l"
 />
 ```

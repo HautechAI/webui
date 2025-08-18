@@ -17,6 +17,7 @@ export type SegmentedControlProps = {
     onChange?: (event: React.MouseEvent<HTMLDivElement, MouseEvent>, value: string) => void;
     material?: boolean;
     whitespace?: keyof ThemeType['foundation']['spacing'];
+    stretch?: boolean;
 };
 
 const SegmentedControl = ({
@@ -25,7 +26,8 @@ const SegmentedControl = ({
     value,
     onChange,
     material,
-    whitespace: _whitespace,
+    whitespace,
+    stretch,
 }: SegmentedControlProps) => {
     const handleClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>, value: string) => {
         onChange?.(e, value);
@@ -35,11 +37,17 @@ const SegmentedControl = ({
     const Row = material ? MaterialRow : HIGRow;
 
     return (
-        <Container>
+        <Container data-stretch={stretch}>
             {options.map(({ label, leadingIcon, trailingIcon, value: optionValue }) => {
                 const isSelected = value === optionValue;
                 return (
-                    <Row data-selected={isSelected} key={optionValue} onClick={(e) => handleClick(e, optionValue)}>
+                    <Row 
+                        data-selected={isSelected} 
+                        data-whitespace={whitespace}
+                        data-stretch={stretch}
+                        key={optionValue} 
+                        onClick={(e) => handleClick(e, optionValue)}
+                    >
                         {leadingIcon && <Icon data-selected={isSelected}>{leadingIcon}</Icon>}
                         {label && <Typography variant={'LabelSmallRegular'}>{label}</Typography>}
                         {trailingIcon && <Icon data-selected={isSelected}>{trailingIcon}</Icon>}
