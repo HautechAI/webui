@@ -1,7 +1,7 @@
 {
     "name": "@hautechai/webui.dotsloader",
     "description": "",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "type": "module",
     "main": "src/index.tsx",
     "publishConfig": {
@@ -16,8 +16,8 @@
     },
     "author": "HautechAI",
     "dependencies": {
-        "@hautechai/webui.themeprovider": "workspace:^",
-        "@emotion/react": "^11.14.0"
+        "@emotion/react": "^11.14.0",
+        "@hautechai/webui.themeprovider": "workspace:^"
     },
     "license": "Apache-2.0"
 }
