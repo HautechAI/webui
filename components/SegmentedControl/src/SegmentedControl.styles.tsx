@@ -2,7 +2,7 @@ import { styled } from '@hautechai/webui.themeprovider';
 import { themeVars } from '@hautechai/webui.themeprovider';
 
 export const MaterialContainer = styled.div`
-    display: flex;
+    display: inline-flex;
     overflow: hidden;
     gap: ${themeVars.spacing.xl};
     border-bottom-color: ${themeVars.layout.strokes};
@@ -11,12 +11,12 @@ export const MaterialContainer = styled.div`
     padding: 0 ${themeVars.spacing.l};
 
     &[data-stretch='true'] {
-        flex: 1;
+        display: flex;
     }
 `;
 
 export const HIGContainer = styled.div`
-    display: flex;
+    display: inline-flex;
     border-color: ${themeVars.layout.strokes};
     border-radius: ${themeVars.cornerRadius.s};
     border-style: solid;
@@ -26,7 +26,7 @@ export const HIGContainer = styled.div`
     gap: ${themeVars.spacing.s};
 
     &[data-stretch='true'] {
-        flex: 1;
+        display: flex;
     }
 `;
 
