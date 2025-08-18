@@ -4,6 +4,19 @@
 
 Component for displaying content previews or thumbnails with navigation and selection capabilities.
 
+## Installation
+
+```bash
+# pnpm (recommended)
+pnpm add @hautechai/webui.previews
+
+# npm
+npm install @hautechai/webui.previews
+
+# yarn
+yarn add @hautechai/webui.previews
+```
+
 ## Parameters
 
 | Parameter | Type                | Description                                            |

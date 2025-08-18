@@ -4,6 +4,19 @@
 
 Content container component displaying an image with label and action buttons for showcasing media or content items.
 
+## Installation
+
+```bash
+# pnpm (recommended)
+pnpm add @hautechai/webui.card
+
+# npm
+npm install @hautechai/webui.card
+
+# yarn
+yarn add @hautechai/webui.card
+```
+
 ## Parameters
 
 | Parameter     | Type                                 | Description                                             |

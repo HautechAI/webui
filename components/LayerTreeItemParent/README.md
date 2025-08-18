@@ -4,6 +4,19 @@
 
 Header component for layer tree items with expandable/collapsible functionality, icon, and label. Works as the parent header for LayerTreeFolder components.
 
+## Installation
+
+```bash
+# pnpm (recommended)
+pnpm add @hautechai/webui.layertreeitemparent
+
+# npm
+npm install @hautechai/webui.layertreeitemparent
+
+# yarn
+yarn add @hautechai/webui.layertreeitemparent
+```
+
 ## Parameters
 
 | Parameter      | Type                    | Description                                                                             |

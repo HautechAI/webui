@@ -4,6 +4,19 @@
 
 Content container component with configurable hierarchy, sizing, and visual styling options.
 
+## Installation
+
+```bash
+# pnpm (recommended)
+pnpm add @hautechai/webui.panel
+
+# npm
+npm install @hautechai/webui.panel
+
+# yarn
+yarn add @hautechai/webui.panel
+```
+
 ## Parameters
 
 | Parameter   | Type                     | Description                                                                            |

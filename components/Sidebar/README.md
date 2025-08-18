@@ -4,6 +4,19 @@
 
 Navigation panel component typically positioned on the page side with collapsible sections and navigation items.
 
+## Installation
+
+```bash
+# pnpm (recommended)
+pnpm add @hautechai/webui.sidebar
+
+# npm
+npm install @hautechai/webui.sidebar
+
+# yarn
+yarn add @hautechai/webui.sidebar
+```
+
 ## Parameters
 
 | Parameter | Type              | Description                                              |

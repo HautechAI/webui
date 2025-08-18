@@ -4,6 +4,19 @@
 
 Tooltip-like component for providing contextual help information with flexible positioning and content options.
 
+## Installation
+
+```bash
+# pnpm (recommended)
+pnpm add @hautechai/webui.hint
+
+# npm
+npm install @hautechai/webui.hint
+
+# yarn
+yarn add @hautechai/webui.hint
+```
+
 ## Parameters
 
 | Parameter | Type            | Description                                                     |

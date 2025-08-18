@@ -4,6 +4,19 @@
 
 Button component optimized for displaying icons with customizable variants, sizes, and styling options.
 
+## Installation
+
+```bash
+# pnpm (recommended)
+pnpm add @hautechai/webui.iconbutton
+
+# npm
+npm install @hautechai/webui.iconbutton
+
+# yarn
+yarn add @hautechai/webui.iconbutton
+```
+
 ## Parameters
 
 | Parameter        | Type                                             | Description                                                                |

@@ -4,6 +4,19 @@
 
 Small notification indicator component to highlight status, notifications, or count information with color coding.
 
+## Installation
+
+```bash
+# pnpm (recommended)
+pnpm add @hautechai/webui.badge
+
+# npm
+npm install @hautechai/webui.badge
+
+# yarn
+yarn add @hautechai/webui.badge
+```
+
 ## Parameters
 
 | Parameter | Type                           | Description                                                    |

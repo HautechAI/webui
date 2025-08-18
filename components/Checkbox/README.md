@@ -4,6 +4,19 @@
 
 Input control for boolean selection with visual checkmark indicator and controlled/uncontrolled modes.
 
+## Installation
+
+```bash
+# pnpm (recommended)
+pnpm add @hautechai/webui.checkbox
+
+# npm
+npm install @hautechai/webui.checkbox
+
+# yarn
+yarn add @hautechai/webui.checkbox
+```
+
 ## Parameters
 
 | Parameter | Type                       | Description                                                              |

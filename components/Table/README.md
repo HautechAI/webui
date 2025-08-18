@@ -4,6 +4,19 @@
 
 Data table component with sorting, selection, pagination, and customizable columns for displaying structured data.
 
+## Installation
+
+```bash
+# pnpm (recommended)
+pnpm add @hautechai/webui.table
+
+# npm
+npm install @hautechai/webui.table
+
+# yarn
+yarn add @hautechai/webui.table
+```
+
 ## Parameters
 
 | Parameter  | Type                                        | Description                                                   |

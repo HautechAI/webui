@@ -4,6 +4,19 @@
 
 Navigation control component for paginated content with page numbers and navigation functionality.
 
+## Installation
+
+```bash
+# pnpm (recommended)
+pnpm add @hautechai/webui.pagination
+
+# npm
+npm install @hautechai/webui.pagination
+
+# yarn
+yarn add @hautechai/webui.pagination
+```
+
 ## Parameters
 
 | Parameter    | Type                     | Description                                                      |

@@ -4,6 +4,19 @@
 
 Horizontal layout container component for arranging child components in a row with flexible spacing and alignment options.
 
+## Installation
+
+```bash
+# pnpm (recommended)
+pnpm add @hautechai/webui.row
+
+# npm
+npm install @hautechai/webui.row
+
+# yarn
+yarn add @hautechai/webui.row
+```
+
 ## Parameters
 
 | Parameter  | Type                                     | Description                                                |

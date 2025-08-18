@@ -4,6 +4,19 @@
 
 Header component for nodes that displays an icon, label, and badge. Uses Typography component for consistent text styling.
 
+## Installation
+
+```bash
+# pnpm (recommended)
+pnpm add @hautechai/webui.nodeheader
+
+# npm
+npm install @hautechai/webui.nodeheader
+
+# yarn
+yarn add @hautechai/webui.nodeheader
+```
+
 ## Parameters
 
 | Parameter | Type            | Description                                                         |

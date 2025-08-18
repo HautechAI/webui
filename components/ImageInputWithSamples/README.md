@@ -4,6 +4,19 @@
 
 Enhanced image input component that includes predefined sample images for quick selection alongside upload functionality.
 
+## Installation
+
+```bash
+# pnpm (recommended)
+pnpm add @hautechai/webui.imageinputwithsamples
+
+# npm
+npm install @hautechai/webui.imageinputwithsamples
+
+# yarn
+yarn add @hautechai/webui.imageinputwithsamples
+```
+
 ## Parameters
 
 | Parameter   | Type                    | Description                                             |

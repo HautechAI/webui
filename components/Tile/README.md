@@ -4,6 +4,19 @@
 
 Content tile component with image/video background, overlay content, and flexible sizing options.
 
+## Installation
+
+```bash
+# pnpm (recommended)
+pnpm add @hautechai/webui.tile
+
+# npm
+npm install @hautechai/webui.tile
+
+# yarn
+yarn add @hautechai/webui.tile
+```
+
 ## Parameters
 
 | Parameter   | Type                      | Description                                                   |

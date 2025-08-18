@@ -4,6 +4,19 @@
 
 Component for displaying operation status, progress, and details with actions for ongoing or completed operations.
 
+## Installation
+
+```bash
+# pnpm (recommended)
+pnpm add @hautechai/webui.operationitem
+
+# npm
+npm install @hautechai/webui.operationitem
+
+# yarn
+yarn add @hautechai/webui.operationitem
+```
+
 ## Parameters
 
 | Parameter   | Type            | Description                                       |

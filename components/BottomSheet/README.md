@@ -4,6 +4,19 @@
 
 Slide-up modal panel component optimized for mobile-first interfaces and contextual actions.
 
+## Installation
+
+```bash
+# pnpm (recommended)
+pnpm add @hautechai/webui.bottomsheet
+
+# npm
+npm install @hautechai/webui.bottomsheet
+
+# yarn
+yarn add @hautechai/webui.bottomsheet
+```
+
 ## Parameters
 
 | Parameter     | Type                | Description                                                             |

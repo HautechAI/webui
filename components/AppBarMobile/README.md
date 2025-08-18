@@ -4,6 +4,19 @@
 
 Mobile-optimized version of the app bar with responsive behavior and vertical content sections.
 
+## Installation
+
+```bash
+# pnpm (recommended)
+pnpm add @hautechai/webui.appbarmobile
+
+# npm
+npm install @hautechai/webui.appbarmobile
+
+# yarn
+yarn add @hautechai/webui.appbarmobile
+```
+
 ## Parameters
 
 | Parameter | Type            | Description                                                                       |

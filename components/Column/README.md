@@ -4,6 +4,19 @@
 
 Vertical layout container component for stacking child components with configurable spacing and alignment options.
 
+## Installation
+
+```bash
+# pnpm (recommended)
+pnpm add @hautechai/webui.column
+
+# npm
+npm install @hautechai/webui.column
+
+# yarn
+yarn add @hautechai/webui.column
+```
+
 ## Parameters
 
 | Parameter | Type                                        | Description                                                |
