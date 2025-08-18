@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { styled } from '@hautechai/webui.themeprovider';
 import { themeVars } from '@hautechai/webui.themeprovider';
 import { Typography } from '@hautechai/webui.typography';
@@ -6,6 +6,7 @@ import { Typography } from '@hautechai/webui.typography';
 export interface NodePortProps {
     type: 'input' | 'output';
     label?: string;
+    interactiveHandle?: ReactNode;
 }
 
 const Container = styled.div`
@@ -32,6 +33,9 @@ const PortHandle = styled.div`
     border-radius: ${themeVars.cornerRadius.xxl};
     border: ${themeVars.stroke.thin} solid ${themeVars.layout.surfaceLow};
     position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     &[data-type='input'] {
         left: -6px;
@@ -42,7 +46,7 @@ const PortHandle = styled.div`
     }
 `;
 
-export const NodePort: React.FC<NodePortProps> = ({ type, label }) => {
+export const NodePort: React.FC<NodePortProps> = ({ type, label, interactiveHandle }) => {
     return (
         <Container data-type={type}>
             {label && (
@@ -50,7 +54,7 @@ export const NodePort: React.FC<NodePortProps> = ({ type, label }) => {
                     {label}
                 </Typography>
             )}
-            <PortHandle data-type={type} />
+            <PortHandle data-type={type}>{interactiveHandle}</PortHandle>
         </Container>
     );
 };

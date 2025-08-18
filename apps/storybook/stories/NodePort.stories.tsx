@@ -35,3 +35,24 @@ export const OutputPortWithoutLabel = {
         type: 'output',
     },
 };
+
+export const WithInteractiveHandle = {
+    args: {
+        type: 'input',
+        label: 'Interactive Port',
+        interactiveHandle: (
+            <div
+                style={{
+                    position: 'absolute',
+                    width: '40px',
+                    height: '40px',
+                    backgroundColor: 'transparent',
+                    border: '1px solid red',
+                    cursor: 'pointer',
+                    boxSizing: 'border-box',
+                }}
+                title="Draggable interactive handle"
+            />
+        ),
+    },
+};
