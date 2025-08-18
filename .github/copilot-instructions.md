@@ -161,6 +161,97 @@ When creating or updating icon components using Figma MCP (Dev Mode):
 
 Remember: Documentation is as important as the code itself. Well-maintained documentation ensures developers can effectively use and contribute to this component library.
 
+## Component Change Requirements
+
+### Mandatory Updates for Significant Changes
+
+**Every significant change to a component must include updates to all three areas:**
+
+1. **Tests** - Add or update test cases in `components/[ComponentName]/__tests__/`
+2. **Documentation** - Update the component's `README.md` file
+3. **Storybook** - Add or update stories in `apps/storybook/stories/`
+
+### What Constitutes a "Significant Change"
+
+A significant change includes any of the following:
+
+- **New Feature**: Adding new functionality or behavior to a component
+- **New Prop**: Adding a new parameter/prop to the component interface
+- **Changed Behavior**: Modifying existing functionality or prop behavior
+- **New Variant**: Adding new visual variants, states, or styling options
+- **Breaking Change**: Any change that affects the component's public API
+
+### Test Coverage Guidelines
+
+**When adding new features or props:**
+
+- Add specific test cases that verify the new functionality works correctly
+- Test different prop combinations if the new feature interacts with existing props
+- Include edge cases and error conditions where applicable
+- Follow the existing test pattern:
+    ```typescript
+    import { describe, it, expect } from 'vitest';
+    import { render } from '@testing-library/react';
+    import React from 'react';
+    import { YourComponent } from '../src/YourComponent';
+    import { ThemeProvider } from '../../ThemeProvider/src';
+    import { testTheme } from '../../test-theme';
+    ```
+
+**When modifying existing behavior:**
+
+- Update existing tests to reflect the new behavior
+- Ensure all tests continue to pass
+- Add new tests if the behavior change introduces new scenarios to test
+
+### Storybook Story Guidelines
+
+**When adding new features or props:**
+
+- Create new stories that demonstrate the new functionality
+- Use descriptive story names that clearly indicate what the story demonstrates
+- Include the new props in existing stories where they make sense
+- Follow the existing story pattern with proper categorization (Input, Layout, etc.)
+
+**When adding new variants:**
+
+- Create dedicated stories for each new variant
+- Ensure stories cover all combinations of the new variant with existing options
+- Use clear naming conventions: `[Variant][Size]`, `With[Feature]`, etc.
+
+### Documentation Update Guidelines
+
+**When adding new props:**
+
+- Add the new prop to the Parameters table with correct TypeScript type
+- Include clear description of the prop's purpose and behavior
+- Mark optional props appropriately
+- Include default values when relevant
+
+**When changing existing props:**
+
+- Update the prop description to reflect new behavior
+- Update TypeScript types if they changed
+- Update usage examples if they no longer work
+
+**When adding new features:**
+
+- Update the Purpose section if the component's primary purpose expanded
+- Add new usage examples that demonstrate the new feature
+- Update the description to mention new capabilities
+
+### Validation Checklist
+
+Before submitting component changes:
+
+- [ ] Tests added/updated for new functionality
+- [ ] All tests pass (`pnpm test:run`)
+- [ ] Storybook stories added/updated for new features
+- [ ] Storybook builds without errors (`pnpm dev`)
+- [ ] Component README.md updated with new props/behavior
+- [ ] Root README.md updated if component purpose changed significantly
+- [ ] Changes follow existing patterns and conventions
+
 ## Styling Guidelines
 
 ### CSS-in-JS with Emotion
