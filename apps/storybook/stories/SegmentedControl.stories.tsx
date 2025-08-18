@@ -89,3 +89,138 @@ export const HIGWithWhitespace = {
         whitespace: 'xl',
     },
 };
+
+export const HIGStretched = {
+    args: {
+        options: [
+            { label: 'All', value: 'all' },
+            { label: 'Classic', value: 'classic' },
+            { label: 'Batch', value: 'batch' },
+        ],
+        stretch: true,
+    },
+};
+
+export const HIGStretchedWithWhitespace = {
+    args: {
+        options: [
+            { label: 'All', value: 'all' },
+            { label: 'Classic', value: 'classic' },
+            { label: 'Batch', value: 'batch' },
+        ],
+        stretch: true,
+        whitespace: 'l',
+    },
+};
+
+export const MaterialStretched = {
+    args: {
+        options: [
+            { label: 'All', value: 'all' },
+            { label: 'Classic', value: 'classic' },
+            { label: 'Batch', value: 'batch' },
+        ],
+        material: true,
+        stretch: true,
+    },
+};
+
+export const MaterialWithWhitespace = {
+    args: {
+        options: [
+            { label: 'All', value: 'all' },
+            { label: 'Classic', value: 'classic' },
+            { label: 'Batch', value: 'batch' },
+        ],
+        material: true,
+        whitespace: 'xl',
+    },
+};
+
+export const WhitespaceComparison = {
+    render: () => {
+        const [value1, setValue1] = useState('all');
+        const [value2, setValue2] = useState('all');
+        const [value3, setValue3] = useState('all');
+
+        return (
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', alignItems: 'flex-start' }}>
+                <div>
+                    <h3>No Whitespace</h3>
+                    <SegmentedControl
+                        options={[
+                            { label: 'All', value: 'all' },
+                            { label: 'Classic', value: 'classic' },
+                            { label: 'Batch', value: 'batch' },
+                        ]}
+                        value={value1}
+                        onChange={(e, v) => setValue1(v)}
+                    />
+                </div>
+                <div>
+                    <h3>Medium Whitespace</h3>
+                    <SegmentedControl
+                        options={[
+                            { label: 'All', value: 'all' },
+                            { label: 'Classic', value: 'classic' },
+                            { label: 'Batch', value: 'batch' },
+                        ]}
+                        value={value2}
+                        onChange={(e, v) => setValue2(v)}
+                        whitespace="m"
+                    />
+                </div>
+                <div>
+                    <h3>Extra Large Whitespace</h3>
+                    <SegmentedControl
+                        options={[
+                            { label: 'All', value: 'all' },
+                            { label: 'Classic', value: 'classic' },
+                            { label: 'Batch', value: 'batch' },
+                        ]}
+                        value={value3}
+                        onChange={(e, v) => setValue3(v)}
+                        whitespace="xl"
+                    />
+                </div>
+            </div>
+        );
+    },
+};
+
+export const StretchComparison = {
+    render: () => {
+        const [value1, setValue1] = useState('all');
+        const [value2, setValue2] = useState('all');
+
+        return (
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', width: '500px' }}>
+                <div>
+                    <h3>Normal (content width)</h3>
+                    <SegmentedControl
+                        options={[
+                            { label: 'All', value: 'all' },
+                            { label: 'Classic', value: 'classic' },
+                            { label: 'Batch', value: 'batch' },
+                        ]}
+                        value={value1}
+                        onChange={(e, v) => setValue1(v)}
+                    />
+                </div>
+                <div>
+                    <h3>Stretched (full width)</h3>
+                    <SegmentedControl
+                        options={[
+                            { label: 'All', value: 'all' },
+                            { label: 'Classic', value: 'classic' },
+                            { label: 'Batch', value: 'batch' },
+                        ]}
+                        value={value2}
+                        onChange={(e, v) => setValue2(v)}
+                        stretch={true}
+                    />
+                </div>
+            </div>
+        );
+    },
+};
