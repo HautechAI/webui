@@ -49,6 +49,7 @@ The library includes the following components organized by category:
 | [**Chip**](components/Chip/README.md)                   | Compact element for tags, filters, or selection indicators                                    |
 | [**DataItem**](components/DataItem/README.md)           | Structured display for key-value data pairs                                                   |
 | [**Divider**](components/Divider/README.md)             | Visual separator line between content sections                                                |
+| [**DotsLoader**](components/DotsLoader/README.md)       | Animated loading indicator with three dots that pulse in sequence                             |
 | [**Hint**](components/Hint/README.md)                   | Tooltip-like component for providing contextual help                                          |
 | [**Logo**](components/Logo/README.md)                   | Brand logo display component with sizing options                                              |
 | [**Menu**](components/Menu/README.md)                   | Dropdown menu container for navigation or actions                                             |

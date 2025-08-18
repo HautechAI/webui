@@ -363,6 +363,16 @@ importers:
                 version: link:../ThemeProvider
         publishDirectory: dist
 
+    components/DotsLoader:
+        dependencies:
+            '@emotion/react':
+                specifier: ^11.14.0
+                version: 11.14.0(@types/react@19.0.8)(react@19.0.0)
+            '@hautechai/webui.themeprovider':
+                specifier: workspace:^
+                version: link:../ThemeProvider
+        publishDirectory: dist
+
     components/Dropdown:
         dependencies:
             '@hautechai/webui.icon':
