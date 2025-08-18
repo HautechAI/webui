@@ -19,7 +19,30 @@ yarn add @hautechai/webui.nodeport
 
 ## Parameters
 
-| Parameter | Type                | Description                                                                          |
-| --------- | ------------------- | ------------------------------------------------------------------------------------ |
-| type      | 'input' \| 'output' | Specifies whether this is an input or output port, affecting positioning and styling |
-| label     | string              | Optional label for the port, displayed using Typography component                    |
+| Parameter         | Type                | Description                                                                          |
+| ----------------- | ------------------- | ------------------------------------------------------------------------------------ |
+| type              | 'input' \| 'output' | Specifies whether this is an input or output port, affecting positioning and styling |
+| label             | string              | Optional label for the port, displayed using Typography component                    |
+| interactiveHandle | ReactNode           | Optional interactive element rendered inside the port handle for custom interactions |
+
+## Usage Example
+
+```tsx
+// Basic usage
+<NodePort type="input" label="Input Port" />
+
+// With interactive handle
+<NodePort
+    type="output"
+    label="Output Port"
+    interactiveHandle={
+        <div style={{
+            width: '20px',
+            height: '20px',
+            backgroundColor: 'transparent',
+            border: '1px solid red',
+            cursor: 'pointer'
+        }} />
+    }
+/>
+```
