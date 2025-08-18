@@ -8,7 +8,7 @@ export interface NodeContentProps {
 }
 
 const Container = styled.div`
-    padding: ${themeVars.spacing.ml} ${themeVars.spacing.xl};
+    padding: ${themeVars.spacing.ml} ${themeVars.spacing.l};
     display: flex;
     justify-content: center;
     align-items: center;
