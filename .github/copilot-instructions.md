@@ -161,6 +161,49 @@ When creating or updating icon components using Figma MCP (Dev Mode):
 
 Remember: Documentation is as important as the code itself. Well-maintained documentation ensures developers can effectively use and contribute to this component library.
 
+## Development Workflow & Git Hooks
+
+### Git Hooks Configuration
+
+This repository has Git hooks configured using Husky that automatically run quality checks before commits. **To avoid commit errors**, always ensure your code passes linting and tests before attempting to commit.
+
+### Required Commands Before Committing
+
+Always run these commands before committing changes:
+
+```bash
+pnpm lint      # Run ESLint, Prettier, and TypeScript checks
+pnpm test:run  # Run all tests
+```
+
+### Fixing Common Issues
+
+**Formatting Issues**: Many linting issues (mainly related to code formatting) can be automatically fixed:
+
+```bash
+pnpm lint:fix  # Automatically fix ESLint and Prettier issues
+```
+
+**Other Issues**: All remaining issues should be fixed manually on a case-by-case basis before committing.
+
+### What the Git Hooks Do
+
+The pre-commit hook automatically runs:
+
+1. `pnpm lint` - Validates code style, formatting, and TypeScript compilation
+2. `pnpm test:run` - Ensures all tests pass
+
+If either command fails, the commit will be rejected. Fix all issues before attempting to commit again.
+
+### Recommended Workflow
+
+1. Make your code changes
+2. Run `pnpm lint:fix` to auto-fix formatting issues
+3. Run `pnpm lint` to check for remaining issues
+4. Fix any remaining issues manually
+5. Run `pnpm test:run` to ensure tests pass
+6. Commit your changes (hooks will run automatically)
+
 ## Styling Guidelines
 
 ### CSS-in-JS with Emotion
