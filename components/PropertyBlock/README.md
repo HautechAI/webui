@@ -25,11 +25,16 @@ yarn add @hautechai/webui.propertyblock
 | removable | boolean         | When true, displays a remove/add button (defaults to false)                                                   |
 | removed   | boolean         | When true, hides content and shows add button, when false shows content and remove button (defaults to false) |
 | className | string          | Optional CSS class name for custom styling                                                                    |
+| label     | string          | The text displayed in the property header (defaults to "Property")                                            |
 
 ## Usage Example
 
 ```tsx
 <PropertyBlock removable>
     <div>Custom property content</div>
+</PropertyBlock>
+
+<PropertyBlock label="Custom Property Name">
+    <div>Content for custom property</div>
 </PropertyBlock>
 ```

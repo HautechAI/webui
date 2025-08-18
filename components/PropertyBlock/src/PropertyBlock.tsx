@@ -52,10 +52,11 @@ export type PropertyBlockProps = {
     removable?: boolean;
     removed?: boolean;
     className?: string;
+    label?: string;
 };
 
 export const PropertyBlock = (props: PropertyBlockProps) => {
-    const { children, removable = false, removed = false, className } = props;
+    const { children, removable = false, removed = false, className, label = 'Property' } = props;
 
     return (
         <Container className={className}>
@@ -65,7 +66,7 @@ export const PropertyBlock = (props: PropertyBlockProps) => {
                         variant="LabelSmallEmphasized"
                         color={removed ? 'layout.onSurface.secondary' : 'layout.onSurface.primary'}
                     >
-                        Property
+                        {label}
                     </Typography>
                 </Label>
                 {removable && <IconButton variant="flat" size="xsmall" icon={removed ? <PlusIcon /> : <MinusIcon />} />}

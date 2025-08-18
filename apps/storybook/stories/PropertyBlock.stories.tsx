@@ -49,3 +49,18 @@ export const NotRemovable = {
         children: 'This property block cannot be removed.',
     },
 };
+
+export const CustomLabel = {
+    args: {
+        label: 'Custom Property Name',
+        children: 'This property block has a custom label.',
+    },
+};
+
+export const CustomLabelRemovable = {
+    args: {
+        label: 'Image Settings',
+        removable: true,
+        children: 'A custom labeled property that can be removed.',
+    },
+};
