@@ -37,6 +37,6 @@ export const Bottom = {
 export const WithLink = {
     args: {
         buttonLabel: 'Label',
-        onClick: fn() as any,
+        onClick: fn() as React.MouseEventHandler<HTMLButtonElement>,
     },
 };

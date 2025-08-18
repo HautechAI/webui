@@ -1,7 +1,9 @@
-import { styled } from '@linaria/react';
+import { styled } from '@hautechai/webui.themeprovider';
 import { themeVars } from '@hautechai/webui.themeprovider';
 
-const Container = styled.div<Required<Pick<PanelProps, 'hierarchy' | 'size'>> & Pick<PanelProps, 'stretch' | 'highlighted'>>`
+const Container = styled.div<
+    Required<Pick<PanelProps, 'hierarchy' | 'size'>> & Pick<PanelProps, 'stretch' | 'highlighted'>
+>`
     display: flex;
     padding: ${({ size }) =>
         ({
@@ -24,25 +26,26 @@ const Container = styled.div<Required<Pick<PanelProps, 'hierarchy' | 'size'>> & 
 
     border-style: solid;
     border-width: ${({ hierarchy }) => {
-        return ({
+        return {
             low: themeVars.stroke.thin,
             mid: '0px',
             high: themeVars.stroke.thin,
-        })[hierarchy];
+        }[hierarchy];
     }};
-    
+
     box-shadow: ${({ highlighted }) => {
         if (highlighted) return `0 0 0 2px ${themeVars.layout.onSurface.primary}`;
-        return `0 0 0 0px clear`
+        return `0 0 0 0px clear`;
     }};
-    
+
     border-color: ${({ hierarchy, highlighted }) => {
-        if (!highlighted) return ({
-            low: themeVars.layout.strokes,
-            mid: 'transparent',
-            high: themeVars.layout.strokes,
-        })[hierarchy]
-        
+        if (!highlighted)
+            return {
+                low: themeVars.layout.strokes,
+                mid: 'transparent',
+                high: themeVars.layout.strokes,
+            }[hierarchy];
+
         return themeVars.layout.onSurface.primary;
     }};
     width: ${({ stretch }) => (stretch ? '100%' : 'auto')};

@@ -10,7 +10,7 @@ describe('Hint', () => {
         expect(() => {
             render(
                 <ThemeProvider theme={testTheme}>
-                    <Hint>Test Hint</Hint>
+                    <Hint hint="Test hint text" />
                 </ThemeProvider>,
             );
         }).not.toThrow();

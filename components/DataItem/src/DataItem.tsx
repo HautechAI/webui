@@ -1,11 +1,9 @@
-import React from 'react';
-import { css } from '@linaria/core';
-import { styled } from '@linaria/react';
-import { themeVars } from '@hautechai/webui.themeprovider';
-import { Typography, TypographyProps } from '@hautechai/webui.typography';
 import { Avatar } from '@hautechai/webui.avatar';
-import { Row } from '@hautechai/webui.row';
 import { Hint, HintProps } from '@hautechai/webui.hint';
+import { Row } from '@hautechai/webui.row';
+import { styled, themeVars } from '@hautechai/webui.themeprovider';
+import { Typography, TypographyProps } from '@hautechai/webui.typography';
+import React from 'react';
 
 const ColumnContainer = styled.div`
     display: flex;
@@ -72,31 +70,31 @@ export const DataItem = (props: DataItemProps) => {
     return props.direction === 'row' ? (
         <div style={{ padding: `${props.size === 'small' ? '0' : 'var(--spacing-m)'} 0` }}>
             <RowContainer justify="space-between" align="center" stretch={stretch}>
-            <Typography
-                variant="LabelSmallEmphasized"
-                color={primary === 'data' ? 'layout.onSurface.tertiary' : 'layout.onSurface.primary'}
-            >
-                {props.label}
-            </Typography>
-            <Row spacing="ml" align="center" noOverflow>
                 <Typography
-                    variant="LabelSmallRegular"
-                    color={primary === 'data' ? 'layout.onSurface.primary' : 'layout.onSurface.tertiary'}
-                    noWrap
-                    overflow="ellipsis"
+                    variant="LabelSmallEmphasized"
+                    color={primary === 'data' ? 'layout.onSurface.tertiary' : 'layout.onSurface.primary'}
                 >
-                    {props.value}
+                    {props.label}
                 </Typography>
+                <Row spacing="ml" align="center" noOverflow>
+                    <Typography
+                        variant="LabelSmallRegular"
+                        color={primary === 'data' ? 'layout.onSurface.primary' : 'layout.onSurface.tertiary'}
+                        noWrap
+                        overflow="ellipsis"
+                    >
+                        {props.value}
+                    </Typography>
 
-                {React.Children.map(props.trailingIcon, (child) => {
-                    if (React.isValidElement(child)) {
-                        return React.cloneElement(child, {
-                            size: 20,
-                        } as any);
-                    }
-                    return child;
-                })}
-            </Row>
+                    {React.Children.map(props.trailingIcon, (child) => {
+                        if (React.isValidElement<{ size: number }>(child)) {
+                            return React.cloneElement(child, {
+                                size: 20,
+                            });
+                        }
+                        return child;
+                    })}
+                </Row>
             </RowContainer>
         </div>
     ) : (

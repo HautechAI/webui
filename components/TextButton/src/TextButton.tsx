@@ -1,5 +1,5 @@
 import { ButtonBase } from '@hautechai/webui.buttonbase';
-import { styled } from '@linaria/react';
+import { styled } from '@hautechai/webui.themeprovider';
 import { themeVars } from '@hautechai/webui.themeprovider';
 import { Typography, TypographyProps } from '@hautechai/webui.typography';
 import type React from 'react';
@@ -32,6 +32,7 @@ export type TextButtonProps = {
     trailingIcon?: React.ReactNode;
     disabled?: boolean;
     onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
+    style?: React.CSSProperties;
 };
 
 const LabelVariants: Record<Required<TextButtonProps>['size'], TypographyProps['variant']> = {
@@ -60,10 +61,10 @@ export const TextButton = (props: TextButtonProps) => {
     } as const;
 
     const styleVars: React.CSSProperties = {
-        ...(rest as any).style,
-        ['--tb-gap' as any]: gapBySize[size],
-        ['--tb-color' as any]: colorByHierarchy[hierarchy],
-        ['--tb-color-hover' as any]: hoverColorByHierarchy[hierarchy],
+        ...(typeof rest.style === 'object' ? (rest.style as React.CSSProperties) : undefined),
+        ['--tb-gap' as string]: gapBySize[size],
+        ['--tb-color' as string]: colorByHierarchy[hierarchy],
+        ['--tb-color-hover' as string]: hoverColorByHierarchy[hierarchy],
     };
 
     return (

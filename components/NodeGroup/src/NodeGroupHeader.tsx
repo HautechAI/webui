@@ -52,7 +52,7 @@ const ArrowContainer = styled.div<{ collapsed: boolean }>`
     align-items: center;
     justify-content: center;
     color: ${themeVars.layout.onSurface.secondary};
-    transform: ${props => props.collapsed ? 'rotate(0deg)' : 'rotate(-90deg)'};
+    transform: ${(props) => (props.collapsed ? 'rotate(0deg)' : 'rotate(-90deg)')};
     transition: transform 0.15s ease-out;
 `;
 
@@ -67,10 +67,7 @@ export const NodeGroupHeader = (props: NodeGroupHeaderProps) => {
         <Container onClick={handleClick}>
             <HeaderRow>
                 <LabelContainer>
-                    <Typography 
-                        variant="LabelSmallEmphasized" 
-                        color="layout.onSurface.primary"
-                    >
+                    <Typography variant="LabelSmallEmphasized" color="layout.onSurface.primary">
                         {label}
                     </Typography>
                 </LabelContainer>

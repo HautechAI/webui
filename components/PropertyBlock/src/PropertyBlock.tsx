@@ -1,5 +1,5 @@
 import React from 'react';
-import { styled } from '@linaria/react';
+import { styled } from '@hautechai/webui.themeprovider';
 import { themeVars } from '@hautechai/webui.themeprovider';
 import { Typography } from '@hautechai/webui.typography';
 import { IconButton } from '@hautechai/webui.iconbutton';
@@ -61,20 +61,14 @@ export const PropertyBlock = (props: PropertyBlockProps) => {
         <Container className={className}>
             <PropertyHeader>
                 <Label>
-                    <Typography 
-                        variant="LabelSmallEmphasized" 
+                    <Typography
+                        variant="LabelSmallEmphasized"
                         color={removed ? 'layout.onSurface.secondary' : 'layout.onSurface.primary'}
                     >
                         Property
                     </Typography>
                 </Label>
-                {removable && (
-                    <IconButton
-                        variant="flat"
-                        size="xsmall"
-                        icon={removed ? <PlusIcon /> : <MinusIcon />}
-                    />
-                )}
+                {removable && <IconButton variant="flat" size="xsmall" icon={removed ? <PlusIcon /> : <MinusIcon />} />}
             </PropertyHeader>
             {!removed && (
                 <Content>

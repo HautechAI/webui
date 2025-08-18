@@ -1,4 +1,4 @@
-import { styled } from '@linaria/react';
+import { styled } from '@hautechai/webui.themeprovider';
 import { themeVars, ThemeType } from '@hautechai/webui.themeprovider';
 import { PropsWithChildren } from 'react';
 
@@ -28,12 +28,12 @@ export type ColumnProps = PropsWithChildren<{
 export const Column = (props: ColumnProps) => {
     const { children, spacing, align, stretch, overflow, overflowX, overflowY, ...rest } = props;
     const style: React.CSSProperties = {
-        gap: spacing ? (themeVars.spacing as any)[spacing] : 0,
-        alignItems: align as any,
+        gap: spacing ? themeVars.spacing[spacing] : 0,
+        alignItems: align,
         flex: stretch ? 1 : undefined,
-        overflow,
-        overflowX,
-        overflowY,
+        ...(overflow ? { overflow } : {}),
+        ...(overflowX ? { overflowX } : {}),
+        ...(overflowY ? { overflowY } : {}),
     };
     return (
         <Container style={style} {...rest}>

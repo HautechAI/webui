@@ -10,7 +10,7 @@ describe('Card', () => {
         expect(() => {
             render(
                 <ThemeProvider theme={testTheme}>
-                    <Card />
+                    <Card label="Test Card" image="https://example.com/image.jpg" />
                 </ThemeProvider>,
             );
         }).not.toThrow();

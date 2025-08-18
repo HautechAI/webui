@@ -1,4 +1,4 @@
-import { Sidebar, SidebarSection } from '../../../components/Sidebar/src';
+import { Sidebar, SidebarSection, type SidebarProps } from '../../../components/Sidebar/src';
 import { Logo } from '../../../components/Logo/src';
 import { User } from '../../../components/User/src';
 import { AppBar } from '../../../components/AppBar/src';
@@ -21,7 +21,7 @@ export default {
     argTypes: {},
 };
 
-export const Main = (args: any) => (
+export const Main = (args: SidebarProps) => (
     <Sidebar
         {...args} //
         header={<SidebarSection>Top</SidebarSection>}
@@ -29,7 +29,7 @@ export const Main = (args: any) => (
     />
 );
 
-export const WithSomeComponents = (args: any) => (
+export const WithSomeComponents = (args: SidebarProps) => (
     <Sidebar
         {...args} //
         header={
@@ -45,7 +45,7 @@ export const WithSomeComponents = (args: any) => (
     />
 );
 
-export const HierarchyLow = (args: any) => (
+export const HierarchyLow = (args: SidebarProps) => (
     <Sidebar
         {...args} //
         hierarchy="low"
@@ -62,9 +62,9 @@ export const HierarchyLow = (args: any) => (
     />
 );
 
-export const WithHeader = (args: any) => <Sidebar {...args} header={<AppBar hierarchy="low" />} />;
+export const WithHeader = (args: SidebarProps) => <Sidebar {...args} header={<AppBar hierarchy="low" />} />;
 
-export const WithScroll = (args: any) => (
+export const WithScroll = (args: SidebarProps) => (
     <Sidebar
         {...args}
         header={<AppBar hierarchy="low" />}
@@ -87,7 +87,7 @@ export const WithScroll = (args: any) => (
     />
 );
 
-export const Right = (args: any) => (
+export const Right = (args: SidebarProps) => (
     <Sidebar
         {...args}
         side="right"

@@ -1,4 +1,4 @@
-import { styled } from '@linaria/react';
+import { styled } from '@hautechai/webui.themeprovider';
 import { themeVars } from '@hautechai/webui.themeprovider';
 import { KeyframeToggle, type KeyframeToggleState } from '@hautechai/webui.keyframetoggle';
 import { ToggleIconButton } from '@hautechai/webui.toggleiconbutton';
@@ -127,10 +127,10 @@ const UnitsContainer = styled.div`
 const getIcon = (icon: React.ReactNode, size: 'medium' | 'small') => (
     <InnerIconContainer size={size}>
         {React.Children.map(icon, (child) => {
-            if (React.isValidElement(child)) {
+            if (React.isValidElement<{ size: number }>(child)) {
                 return React.cloneElement(child, {
                     size: size === 'small' ? 16 : 20,
-                } as any);
+                });
             }
             return child;
         })}

@@ -1,5 +1,4 @@
-import { styled } from '@linaria/react';
-import { themeVars } from '@hautechai/webui.themeprovider';
+import { styled } from '@hautechai/webui.themeprovider';
 
 const Container = styled.div`
     position: fixed;
@@ -10,7 +9,7 @@ const Container = styled.div`
     pointer-events: none;
     z-index: 999;
     display: none;
-    &[data-open="true"] {
+    &[data-open='true'] {
         display: block;
     }
 `;
@@ -34,7 +33,7 @@ const ContentContainer = styled.div`
     align-items: center;
     pointer-events: none;
 
-    &[data-custom-position="true"] {
+    &[data-custom-position='true'] {
         justify-content: flex-start;
         align-items: flex-start;
     }
@@ -48,7 +47,12 @@ export type ModalProps = {
     open?: boolean;
     onClose?: () => void;
     children: React.ReactNode;
-    contentPosition?: { left?: number | string; top?: number | string; right?: number | string; bottom?: number | string };
+    contentPosition?: {
+        left?: number | string;
+        top?: number | string;
+        right?: number | string;
+        bottom?: number | string;
+    };
     backdropStyle?: React.CSSProperties;
 };
 

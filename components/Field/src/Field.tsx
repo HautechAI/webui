@@ -1,6 +1,6 @@
 import { Column } from '@hautechai/webui.column';
 import { Row } from '@hautechai/webui.row';
-import { styled } from '@linaria/react';
+import { styled } from '@hautechai/webui.themeprovider';
 import { themeVars } from '@hautechai/webui.themeprovider';
 import { Typography } from '@hautechai/webui.typography';
 import React, { useCallback, useRef } from 'react';
@@ -44,11 +44,7 @@ export const Field = (props: FieldProps) => {
     const Main = labelPosition === 'top' ? Column : Row;
 
     return (
-        <Container
-            onClick={handleClick}
-            ref={ref}
-            style={{ flex: labelPosition === 'right' ? undefined : 1 }}
-        >
+        <Container onClick={handleClick} ref={ref} style={{ flex: labelPosition === 'right' ? undefined : 1 }}>
             <Main spacing={labelPosition === 'top' ? 'm' : 'ml'} stretch reverse={labelPosition === 'right'}>
                 <Row spacing="s" align="center">
                     {label && (
@@ -61,10 +57,10 @@ export const Field = (props: FieldProps) => {
                 </Row>
                 <Row stretch spacing="s" align="center">
                     {React.Children.map(children, (child) => {
-                        if (React.isValidElement(child)) {
+                        if (React.isValidElement<{ hasError: boolean }>(child)) {
                             return React.cloneElement(child, {
                                 hasError: !!error,
-                            } as any);
+                            });
                         }
                         return child;
                     })}

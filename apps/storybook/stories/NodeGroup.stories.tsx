@@ -6,12 +6,14 @@ import { Box } from '../../../components/Box/src';
 
 // Placeholder icon component for the examples
 const PlaceholderIcon = () => (
-    <div style={{ 
-        width: '16px', 
-        height: '16px', 
-        background: '#656565',
-        borderRadius: '2px' 
-    }} />
+    <div
+        style={{
+            width: '16px',
+            height: '16px',
+            background: '#656565',
+            borderRadius: '2px',
+        }}
+    />
 );
 
 export default {
@@ -22,7 +24,7 @@ export default {
     },
     tags: ['autodocs'],
     argTypes: {},
-    args: { 
+    args: {
         onToggle: fn() as any,
     },
     decorators: [
@@ -40,23 +42,23 @@ export const Default = {
         collapsed: false,
         children: (
             <>
-                <NodeGroupItem 
+                <NodeGroupItem
                     icon={<PlaceholderIcon />}
                     title="BoundingBox info"
                     subtitle="Extracts details (position, size) from a bounding box"
                 />
-                <NodeGroupItem 
+                <NodeGroupItem
                     icon={<PlaceholderIcon />}
                     title="Image info"
                     subtitle="Extracts metadata or dimensions from an image"
                 />
-                <NodeGroupItem 
+                <NodeGroupItem
                     icon={<PlaceholderIcon />}
                     title="Video info"
                     subtitle="Extracts duration, resolution, and other metadata from a video"
                 />
             </>
-        )
+        ),
     },
 };
 
@@ -66,45 +68,38 @@ export const Collapsed = {
         collapsed: true,
         children: (
             <>
-                <NodeGroupItem 
+                <NodeGroupItem
                     icon={<PlaceholderIcon />}
                     title="BoundingBox info"
                     subtitle="Extracts details (position, size) from a bounding box"
                 />
-                <NodeGroupItem 
+                <NodeGroupItem
                     icon={<PlaceholderIcon />}
                     title="Image info"
                     subtitle="Extracts metadata or dimensions from an image"
                 />
             </>
-        )
+        ),
     },
 };
 
 export const Interactive = {
     render: () => {
         const [collapsed, setCollapsed] = useState(false);
-        
+
         return (
-            <NodeGroup
-                label="Interactive Group"
-                collapsed={collapsed}
-                onToggle={() => setCollapsed(!collapsed)}
-            >
-                <NodeGroupItem 
+            <NodeGroup label="Interactive Group" collapsed={collapsed} onToggle={() => setCollapsed(!collapsed)}>
+                <NodeGroupItem
                     icon={<PlaceholderIcon />}
                     title="First Item"
                     subtitle="This is the first item in the group"
                 />
-                <NodeGroupItem 
+                <NodeGroupItem
                     icon={<PlaceholderIcon />}
                     title="Second Item"
                     subtitle="This is the second item with a longer description"
                 />
-                <NodeGroupItem 
-                    icon={<PlaceholderIcon />}
-                    title="Third Item"
-                />
+                <NodeGroupItem icon={<PlaceholderIcon />} title="Third Item" />
             </NodeGroup>
         );
     },
@@ -115,12 +110,8 @@ export const SingleItem = {
         label: 'Single Item Group',
         collapsed: false,
         children: (
-            <NodeGroupItem 
-                icon={<PlaceholderIcon />}
-                title="Only Item"
-                subtitle="This group contains only one item"
-            />
-        )
+            <NodeGroupItem icon={<PlaceholderIcon />} title="Only Item" subtitle="This group contains only one item" />
+        ),
     },
 };
 
@@ -130,20 +121,11 @@ export const NoSubtitles = {
         collapsed: false,
         children: (
             <>
-                <NodeGroupItem 
-                    icon={<PlaceholderIcon />}
-                    title="First Item"
-                />
-                <NodeGroupItem 
-                    icon={<PlaceholderIcon />}
-                    title="Second Item"
-                />
-                <NodeGroupItem 
-                    icon={<PlaceholderIcon />}
-                    title="Third Item"
-                />
+                <NodeGroupItem icon={<PlaceholderIcon />} title="First Item" />
+                <NodeGroupItem icon={<PlaceholderIcon />} title="Second Item" />
+                <NodeGroupItem icon={<PlaceholderIcon />} title="Third Item" />
             </>
-        )
+        ),
     },
 };
 
@@ -153,23 +135,23 @@ export const HoverAndDragStates = {
         collapsed: false,
         children: (
             <>
-                <NodeGroupItem 
+                <NodeGroupItem
                     icon={<PlaceholderIcon />}
                     title="Normal Item"
                     subtitle="This item has normal state (hover to see background change)"
                 />
-                <NodeGroupItem 
+                <NodeGroupItem
                     icon={<PlaceholderIcon />}
                     title="Dragging Item"
                     subtitle="This item is in dragging state with reduced opacity"
                     isDragging={true}
                 />
-                <NodeGroupItem 
+                <NodeGroupItem
                     icon={<PlaceholderIcon />}
                     title="Another Normal Item"
                     subtitle="Hover to see the background change"
                 />
             </>
-        )
+        ),
     },
 };

@@ -6,7 +6,7 @@
 
 - Initial release of NodeGroup component set
 - NodeGroup: collapsible container component with header and children
-- NodeGroupHeader: header component with label and toggle functionality  
+- NodeGroupHeader: header component with label and toggle functionality
 - NodeGroupItem: item component with icon, title, and optional subtitle
 - Features include:
     - Collapsible/expandable groups with smooth toggle

@@ -1,4 +1,4 @@
-import { styled } from '@linaria/react';
+import { styled } from '@hautechai/webui.themeprovider';
 import { themeVars } from '@hautechai/webui.themeprovider';
 import React, { useCallback } from 'react';
 
@@ -51,7 +51,7 @@ const Slider = ({ min, max, step = 1, value, onChange }: SliderProps) => {
 
     return (
         <Container
-            style={{ ['--slider-percentage' as any]: `${percentage}%` }}
+            style={{ ['--slider-percentage' as string]: `${percentage}%` }}
             type="range"
             min={min}
             max={max}

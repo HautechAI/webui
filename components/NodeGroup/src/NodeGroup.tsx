@@ -29,9 +29,9 @@ const ContentContainer = styled.div<{ collapsed: boolean }>`
     align-items: flex-start;
     display: inline-flex;
     overflow: hidden;
-    max-height: ${props => props.collapsed ? '0px' : '1000px'};
-    opacity: ${props => props.collapsed ? 0 : 1};
-    transition: 
+    max-height: ${(props) => (props.collapsed ? '0px' : '1000px')};
+    opacity: ${(props) => (props.collapsed ? 0 : 1)};
+    transition:
         max-height 0.3s ease-out,
         opacity 0.15s ease-out;
 `;
@@ -41,11 +41,7 @@ export const NodeGroup = (props: NodeGroupProps) => {
 
     return (
         <Container>
-            <NodeGroupHeader 
-                label={label} 
-                collapsed={collapsed} 
-                onToggle={onToggle} 
-            />
+            <NodeGroupHeader label={label} collapsed={collapsed} onToggle={onToggle} />
             <ContentContainer collapsed={collapsed} data-collapsed={collapsed}>
                 {children}
             </ContentContainer>

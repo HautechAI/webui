@@ -1,4 +1,4 @@
-import { styled } from '@linaria/react';
+import { styled } from '@hautechai/webui.themeprovider';
 import { themeVars, ThemeType } from '@hautechai/webui.themeprovider';
 
 const BaseComponent = (props: Pick<RowProps, 'className' | 'children'> & { style?: React.CSSProperties }) => {
@@ -30,13 +30,17 @@ export const Row = (props: RowProps) => {
     const { children, wrap, reverse, spacing, stretch, align, justify, fullHeight, noOverflow, ...rest } = props;
     const style: React.CSSProperties = {
         flexDirection: reverse ? 'row-reverse' : 'row',
-        alignItems: align as any,
-        justifyContent: justify as any,
+        alignItems: align,
+        justifyContent: justify,
         flexWrap: wrap ? 'wrap' : undefined,
         flex: stretch ? 1 : undefined,
         height: fullHeight ? '100%' : undefined,
         overflow: noOverflow ? 'hidden' : undefined,
-        gap: spacing ? (themeVars.spacing as any)[spacing] : 0,
+        gap: spacing ? themeVars.spacing[spacing] : 0,
     };
-    return <Container style={style} {...rest}>{children}</Container>;
+    return (
+        <Container style={style} {...rest}>
+            {children}
+        </Container>
+    );
 };

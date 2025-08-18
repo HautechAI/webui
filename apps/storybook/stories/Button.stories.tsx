@@ -1,3 +1,4 @@
+import React from 'react';
 import { fn } from '@storybook/test';
 
 import { Button } from '../../../components/Button/src';
@@ -13,7 +14,7 @@ export default {
     argTypes: {
         backgroundColor: { control: 'color' },
     },
-    args: { onClick: fn() as any },
+    args: { onClick: fn() as (e: React.MouseEvent<HTMLButtonElement>) => void },
 };
 
 export const PrimaryMedium = {
@@ -125,7 +126,7 @@ export const Stretch = {
         stretch: true,
     },
     decorators: [
-        (Story: any) => (
+        (Story: React.ComponentType) => (
             <div style={{ display: 'flex', width: '400px' }}>
                 <Story />
             </div>

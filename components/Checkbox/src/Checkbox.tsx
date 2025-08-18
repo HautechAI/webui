@@ -1,5 +1,5 @@
 import { CheckIcon } from '@hautechai/webui.icon';
-import { styled } from '@linaria/react';
+import { styled } from '@hautechai/webui.themeprovider';
 import { themeVars } from '@hautechai/webui.themeprovider';
 import { PropsWithChildren } from 'react';
 
@@ -66,7 +66,7 @@ export const Checkbox = (props: CheckboxProps) => {
             <StyledInput
                 type="checkbox"
                 checked={checked !== undefined ? !!checked : undefined}
-                onChange={(e) => props?.onChange?.(e.target.checked)}
+                onChange={(e) => onChange?.(e.target.checked)}
                 readOnly={props.readOnly}
             />
             <StyledCheckmarkContainer onClick={(e) => e.stopPropagation()}>

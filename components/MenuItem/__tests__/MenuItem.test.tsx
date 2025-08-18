@@ -10,7 +10,7 @@ describe('MenuItem', () => {
         expect(() => {
             render(
                 <ThemeProvider theme={testTheme}>
-                    <MenuItem>Test Item</MenuItem>
+                    <MenuItem label="Test Item" />
                 </ThemeProvider>,
             );
         }).not.toThrow();

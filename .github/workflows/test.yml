@@ -1,42 +1,48 @@
 name: Test
 
 on:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
-  merge_group:
-    types: [checks_requested]
+    push:
+        branches:
+            - main
+    pull_request:
+        branches:
+            - main
+    merge_group:
+        types: [checks_requested]
 
 permissions:
-  contents: read
+    contents: read
 
 jobs:
-  test:
-    runs-on: ubuntu-22.04
-    name: Run Tests
+    test:
+        runs-on: ubuntu-22.04
+        name: Run Tests
 
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4.2.2
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v4.2.2
 
-      - name: Setup PNPM
-        uses: pnpm/action-setup@v4
-        with:
-          run_install: false
+            - name: Setup PNPM
+              uses: pnpm/action-setup@v4
+              with:
+                  run_install: false
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4.4.0
-        with:
-          node-version: '22.x'
-          cache: 'pnpm'
+            - name: Setup Node.js
+              uses: actions/setup-node@v4.4.0
+              with:
+                  node-version: '22.x'
+                  cache: 'pnpm'
 
-      - name: Install dependencies
-        run: pnpm install --frozen-lockfile
-        env:
-          HUSKY: 0
+            - name: Install dependencies
+              run: pnpm install --frozen-lockfile
+              env:
+                  HUSKY: 0
 
-      - name: Run tests
-        run: pnpm run test:run
+            - name: Run lint
+              run: pnpm run lint
+
+            - name: Run tests
+              run: pnpm run test:run
+
+            - name: Run prepack
+              run: pnpm -r prepack

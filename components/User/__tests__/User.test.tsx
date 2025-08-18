@@ -10,7 +10,7 @@ describe('User', () => {
         expect(() => {
             render(
                 <ThemeProvider theme={testTheme}>
-                    <User name="Test User" />
+                    <User title="Test User" />
                 </ThemeProvider>,
             );
         }).not.toThrow();

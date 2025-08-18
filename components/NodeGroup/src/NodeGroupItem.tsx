@@ -23,15 +23,16 @@ const Container = styled.div`
     align-items: flex-start;
     display: flex;
     cursor: grab;
-    transition: background-color ${themeVars.animation.duration.fast} ${themeVars.animation.timing.easeOut},
-                opacity ${themeVars.animation.duration.fast} ${themeVars.animation.timing.easeOut};
+    transition:
+        background-color ${themeVars.animation.duration.fast} ${themeVars.animation.timing.easeOut},
+        opacity ${themeVars.animation.duration.fast} ${themeVars.animation.timing.easeOut};
 
     &:hover {
         background-color: ${themeVars.layout.surfaceMid};
     }
 
-    &[data-dragging="true"] {
-        opacity: 0.30;
+    &[data-dragging='true'] {
+        opacity: 0.3;
         background-color: ${themeVars.layout.surfaceMid};
         cursor: grabbing;
     }
@@ -67,7 +68,7 @@ const IconWrapper = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    
+
     > * {
         width: 16px;
         height: 16px;
@@ -83,17 +84,11 @@ export const NodeGroupItem = (props: NodeGroupItemProps) => {
                 <IconWrapper>{icon}</IconWrapper>
                 <ContentColumn>
                     <TextContent>
-                        <Typography 
-                            variant="LabelSmallRegular" 
-                            color="layout.onSurface.primary"
-                        >
+                        <Typography variant="LabelSmallRegular" color="layout.onSurface.primary">
                             {title}
                         </Typography>
                         {subtitle && (
-                            <Typography 
-                                variant="CaptionRegular" 
-                                color="layout.onSurface.tertiary"
-                            >
+                            <Typography variant="CaptionRegular" color="layout.onSurface.tertiary">
                                 {subtitle}
                             </Typography>
                         )}

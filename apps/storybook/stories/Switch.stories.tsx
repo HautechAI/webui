@@ -1,5 +1,4 @@
 import { Switch } from '../../../components/Switch/src';
-import { SwitchProps } from '../../../components/Switch/src';
 
 export default {
     title: 'Input/Switch',

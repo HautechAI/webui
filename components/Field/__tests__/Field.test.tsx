@@ -32,10 +32,7 @@ describe('Field', () => {
     it('should render label and actionButton together', () => {
         render(
             <ThemeProvider theme={testTheme}>
-                <Field 
-                    label="Test Label" 
-                    actionButton={<button data-testid="action-button">Action</button>}
-                >
+                <Field label="Test Label" actionButton={<button data-testid="action-button">Action</button>}>
                     Test Field Content
                 </Field>
             </ThemeProvider>,
@@ -48,9 +45,7 @@ describe('Field', () => {
     it('should not render actionButton when not provided', () => {
         render(
             <ThemeProvider theme={testTheme}>
-                <Field label="Test Label">
-                    Test Field Content
-                </Field>
+                <Field label="Test Label">Test Field Content</Field>
             </ThemeProvider>,
         );
 

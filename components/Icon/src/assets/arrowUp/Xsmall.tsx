@@ -1,9 +1,8 @@
 import * as React from 'react';
 import type { SVGProps } from 'react';
 import { type ThemeType } from '@hautechai/webui.themeprovider';
-import { Paths } from 'type-fest';
+import { type Paths } from 'type-fest';
 
-import { get } from 'lodash-es';
 import { resolveIconColor } from '../../color';
 const SvgXsmall = (
     props: SVGProps<SVGSVGElement> & {

@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { styled } from '@linaria/react';
+import { styled } from '@hautechai/webui.themeprovider';
 import { themeVars } from '@hautechai/webui.themeprovider';
 import { Typography } from '@hautechai/webui.typography';
 import { LinkButton } from '@hautechai/webui.linkbutton';

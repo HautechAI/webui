@@ -1,5 +1,5 @@
 import { Avatar } from '@hautechai/webui.avatar';
-import { styled } from '@linaria/react';
+import { styled } from '@hautechai/webui.themeprovider';
 import { themeVars } from '@hautechai/webui.themeprovider';
 import { Typography } from '@hautechai/webui.typography';
 
