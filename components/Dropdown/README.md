@@ -4,6 +4,19 @@
 
 Select input component with customizable options and styling variants for choosing from predefined values.
 
+## Installation
+
+```bash
+# pnpm (recommended)
+pnpm add @hautechai/webui.dropdown
+
+# npm
+npm install @hautechai/webui.dropdown
+
+# yarn
+yarn add @hautechai/webui.dropdown
+```
+
 ## Parameters
 
 | Parameter | Type                                    | Description                                                                                                           |

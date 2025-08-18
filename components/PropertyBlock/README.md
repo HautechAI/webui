@@ -4,6 +4,19 @@
 
 A flexible container component for displaying property information with optional remove/add functionality and collapsible content.
 
+## Installation
+
+```bash
+# pnpm (recommended)
+pnpm add @hautechai/webui.propertyblock
+
+# npm
+npm install @hautechai/webui.propertyblock
+
+# yarn
+yarn add @hautechai/webui.propertyblock
+```
+
 ## Parameters
 
 | Parameter | Type            | Description                                                                                                   |

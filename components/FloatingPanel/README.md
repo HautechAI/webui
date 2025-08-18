@@ -4,6 +4,19 @@
 
 Draggable overlay panel component that floats above content with positioning and resize capabilities.
 
+## Installation
+
+```bash
+# pnpm (recommended)
+pnpm add @hautechai/webui.floatingpanel
+
+# npm
+npm install @hautechai/webui.floatingpanel
+
+# yarn
+yarn add @hautechai/webui.floatingpanel
+```
+
 ## Parameters
 
 | Parameter | Type            | Description                                          |

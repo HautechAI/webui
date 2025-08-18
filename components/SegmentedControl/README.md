@@ -4,6 +4,19 @@
 
 Multi-option selector component with segmented button appearance for choosing between related options.
 
+## Installation
+
+```bash
+# pnpm (recommended)
+pnpm add @hautechai/webui.segmentedcontrol
+
+# npm
+npm install @hautechai/webui.segmentedcontrol
+
+# yarn
+yarn add @hautechai/webui.segmentedcontrol
+```
+
 ## Parameters
 
 | Parameter | Type                    | Description                                                 |

@@ -4,6 +4,19 @@
 
 Single-line text input component with icon support, validation states, and various input types.
 
+## Installation
+
+```bash
+# pnpm (recommended)
+pnpm add @hautechai/webui.textinput
+
+# npm
+npm install @hautechai/webui.textinput
+
+# yarn
+yarn add @hautechai/webui.textinput
+```
+
 ## Parameters
 
 | Parameter    | Type                                             | Description                                                               |

@@ -4,6 +4,19 @@
 
 Floating content container component positioned relative to trigger elements with flexible content and positioning.
 
+## Installation
+
+```bash
+# pnpm (recommended)
+pnpm add @hautechai/webui.popover
+
+# npm
+npm install @hautechai/webui.popover
+
+# yarn
+yarn add @hautechai/webui.popover
+```
+
 ## Parameters
 
 | Parameter        | Type                                            | Description                                                                |

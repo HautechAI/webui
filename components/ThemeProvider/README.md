@@ -4,6 +4,19 @@
 
 Context provider component for theme management, supplying theme values to all child components in the component tree.
 
+## Installation
+
+```bash
+# pnpm (recommended)
+pnpm add @hautechai/webui.themeprovider
+
+# npm
+npm install @hautechai/webui.themeprovider
+
+# yarn
+yarn add @hautechai/webui.themeprovider
+```
+
 ## Parameters
 
 | Parameter | Type            | Description                                               |

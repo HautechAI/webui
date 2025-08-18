@@ -4,6 +4,19 @@
 
 Multi-line text input component with resizing capabilities, icon support, and validation states.
 
+## Installation
+
+```bash
+# pnpm (recommended)
+pnpm add @hautechai/webui.textarea
+
+# npm
+npm install @hautechai/webui.textarea
+
+# yarn
+yarn add @hautechai/webui.textarea
+```
+
 ## Parameters
 
 | Parameter    | Type                                    | Description                                                           |

@@ -4,6 +4,19 @@
 
 Theme configuration object containing all design system values including colors, spacing, typography, and styling constants.
 
+## Installation
+
+```bash
+# pnpm (recommended)
+pnpm add @hautechai/webui.theme
+
+# npm
+npm install @hautechai/webui.theme
+
+# yarn
+yarn add @hautechai/webui.theme
+```
+
 ## Parameters
 
 This component exports a theme object with design system values and does not accept props. It provides:

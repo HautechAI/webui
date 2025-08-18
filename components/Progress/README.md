@@ -4,6 +4,19 @@
 
 Visual indicator component displaying animated loading progress with customizable size.
 
+## Installation
+
+```bash
+# pnpm (recommended)
+pnpm add @hautechai/webui.progress
+
+# npm
+npm install @hautechai/webui.progress
+
+# yarn
+yarn add @hautechai/webui.progress
+```
+
 ## Parameters
 
 | Parameter | Type   | Description                                                  |

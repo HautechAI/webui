@@ -4,6 +4,19 @@
 
 Individual tab item component within a TileTabGroup, representing a single content section with tile-based styling.
 
+## Installation
+
+```bash
+# pnpm (recommended)
+pnpm add @hautechai/webui.tiletabitem
+
+# npm
+npm install @hautechai/webui.tiletabitem
+
+# yarn
+yarn add @hautechai/webui.tiletabitem
+```
+
 ## Parameters
 
 | Parameter | Type             | Description                                       |

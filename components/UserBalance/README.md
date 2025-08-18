@@ -4,6 +4,19 @@
 
 Specialized component for displaying user account balance information with formatting and action options.
 
+## Installation
+
+```bash
+# pnpm (recommended)
+pnpm add @hautechai/webui.userbalance
+
+# npm
+npm install @hautechai/webui.userbalance
+
+# yarn
+yarn add @hautechai/webui.userbalance
+```
+
 ## Parameters
 
 | Parameter   | Type             | Description                                             |

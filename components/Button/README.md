@@ -4,6 +4,19 @@
 
 Primary action button component with customizable variants, hierarchies, icons, and styling options for user interactions.
 
+## Installation
+
+```bash
+# pnpm (recommended)
+pnpm add @hautechai/webui.button
+
+# npm
+npm install @hautechai/webui.button
+
+# yarn
+yarn add @hautechai/webui.button
+```
+
 ## Parameters
 
 | Parameter    | Type                                             | Description                                                                |

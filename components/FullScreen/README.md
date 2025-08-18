@@ -4,6 +4,19 @@
 
 Component wrapper that enables fullscreen mode for its child content with toggle functionality.
 
+## Installation
+
+```bash
+# pnpm (recommended)
+pnpm add @hautechai/webui.fullscreen
+
+# npm
+npm install @hautechai/webui.fullscreen
+
+# yarn
+yarn add @hautechai/webui.fullscreen
+```
+
 ## Parameters
 
 | Parameter | Type            | Description                                         |

@@ -4,6 +4,19 @@
 
 Numeric display component with increment/decrement controls for selecting numeric values within optional constraints.
 
+## Installation
+
+```bash
+# pnpm (recommended)
+pnpm add @hautechai/webui.counter
+
+# npm
+npm install @hautechai/webui.counter
+
+# yarn
+yarn add @hautechai/webui.counter
+```
+
 ## Parameters
 
 | Parameter | Type                    | Description                                                     |

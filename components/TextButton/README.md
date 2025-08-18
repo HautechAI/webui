@@ -4,6 +4,19 @@
 
 Text-only button component optimized for minimal visual presence with hierarchy and icon support.
 
+## Installation
+
+```bash
+# pnpm (recommended)
+pnpm add @hautechai/webui.textbutton
+
+# npm
+npm install @hautechai/webui.textbutton
+
+# yarn
+yarn add @hautechai/webui.textbutton
+```
+
 ## Parameters
 
 | Parameter    | Type                                             | Description                                                                     |

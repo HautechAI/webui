@@ -4,6 +4,19 @@
 
 Component for selecting and managing aspect ratios with predefined options and custom ratio calculation.
 
+## Installation
+
+```bash
+# pnpm (recommended)
+pnpm add @hautechai/webui.aspectratio
+
+# npm
+npm install @hautechai/webui.aspectratio
+
+# yarn
+yarn add @hautechai/webui.aspectratio
+```
+
 ## Parameters
 
 | Parameter      | Type                                                       | Description                                                    |

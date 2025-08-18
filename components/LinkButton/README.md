@@ -4,6 +4,19 @@
 
 Button component styled as a hyperlink with minimal visual presence and navigation capabilities.
 
+## Installation
+
+```bash
+# pnpm (recommended)
+pnpm add @hautechai/webui.linkbutton
+
+# npm
+npm install @hautechai/webui.linkbutton
+
+# yarn
+yarn add @hautechai/webui.linkbutton
+```
+
 ## Parameters
 
 | Parameter    | Type                                             | Description                                                                    |
