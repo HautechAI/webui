@@ -1,5 +1,5 @@
 import { styled } from '@hautechai/webui.themeprovider';
-import { themeVars } from '@hautechai/webui.themeprovider';
+import { themeVars, type IconColorProp, resolveColor } from '@hautechai/webui.themeprovider';
 
 type TileSize = 'medium' | 'small' | 'xlarge';
 
@@ -19,7 +19,7 @@ const StyledTileDiv = styled.div`
     align-items: center;
     justify-content: center;
 
-    background-color: ${themeVars.layout.surfaceMid};
+    background-color: var(--tile-bg-color, ${themeVars.layout.surfaceMid});
     border-radius: ${themeVars.cornerRadius.m};
     background-image: var(--tile-bg-image, none);
     background-size: cover;
@@ -51,7 +51,7 @@ const StyledTileImg = styled.img`
     align-items: center;
     justify-content: center;
 
-    background-color: ${themeVars.layout.surfaceMid};
+    background-color: var(--tile-bg-color, ${themeVars.layout.surfaceMid});
     border-radius: ${themeVars.cornerRadius.m};
 
     border-width: ${themeVars.stroke.standard};
@@ -80,7 +80,7 @@ const StyledTileVideo = styled.video`
     align-items: center;
     justify-content: center;
 
-    background-color: ${themeVars.layout.surfaceMid};
+    background-color: var(--tile-bg-color, ${themeVars.layout.surfaceMid});
     border-radius: ${themeVars.cornerRadius.m};
 
     border-width: ${themeVars.stroke.standard};
@@ -120,11 +120,25 @@ export type TileProps = {
     loop?: boolean; // for video component
     muted?: boolean; // for video component
     playsInline?: boolean; // for video component
+    color?: IconColorProp;
 };
 
 export const Tile = (props: TileProps) => {
-    const { icon, size, aspectRatio, src, component, alt, controls, autoplay, loop, muted, playsInline, ...rest } =
-        props;
+    const {
+        icon,
+        size,
+        aspectRatio,
+        src,
+        component,
+        alt,
+        controls,
+        autoplay,
+        loop,
+        muted,
+        playsInline,
+        color,
+        ...rest
+    } = props;
     const { width, height } = props;
 
     if (size && (width || height || aspectRatio)) {
@@ -141,6 +155,7 @@ export const Tile = (props: TileProps) => {
         width: sizeToUnits(width) ?? (size ? sizeToUnits(tileSize[size]) : undefined),
         height: sizeToUnits(height) ?? (size ? sizeToUnits(tileSize[size]) : undefined),
         aspectRatio: aspectRatio ?? (!size && (!width || !height) ? 1 : undefined),
+        ['--tile-bg-color' as string]: color ? resolveColor(color, themeVars.layout.surfaceMid) : undefined,
     } as React.CSSProperties;
 
     if (component === 'img') {

@@ -1,4 +1,11 @@
 import { ThemeType } from './ThemeProvider';
+import { Paths } from 'type-fest';
+
+export type IconColorProp =
+    | Paths<ThemeType['palette'], { leavesOnly: true }>
+    | 'currentColor'
+    | `#${string}`
+    | `rgba(${string})`;
 
 // Utility to convert nested theme object to CSS custom properties (no unit mutation)
 const flattenTheme = (obj: Record<string, unknown>, prefix = '--theme'): Record<string, string> => {
@@ -102,3 +109,22 @@ export const themeVars = {
         onError: cssVar('palette.actions.on-error'),
     },
 };
+
+/**
+ * Resolve a color variable or value for component styling.
+ * This is a shared utility function for consistent color resolution across all components.
+ *
+ * @param color - Color value (theme path, hex, rgba, or currentColor)
+ * @param fallback - Fallback color when color is undefined
+ * @returns Resolved color value as CSS string
+ */
+export function resolveColor(color?: IconColorProp, fallback = 'currentColor'): string {
+    if (!color) return fallback;
+
+    // Literal colors and currentColor pass through
+    if (color === 'currentColor') return color;
+    if (typeof color === 'string' && (color.startsWith('#') || color.startsWith('rgba('))) return color;
+
+    // Otherwise treat as a theme palette path
+    return cssVar(`palette.${String(color)}`);
+}
