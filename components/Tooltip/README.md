@@ -4,6 +4,19 @@
 
 Contextual popup component providing additional information or help text with flexible positioning and sizing options.
 
+## Installation
+
+```bash
+# pnpm (recommended)
+pnpm add @hautechai/webui.tooltip
+
+# npm
+npm install @hautechai/webui.tooltip
+
+# yarn
+yarn add @hautechai/webui.tooltip
+```
+
 ## Parameters
 
 | Parameter       | Type                                   | Description                                                                  |

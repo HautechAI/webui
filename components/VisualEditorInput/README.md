@@ -4,6 +4,19 @@
 
 Visual editor input component with keyframe support, unit controls, and port connectivity. Combines text input functionality with keyframe timeline controls and dynamic trailing elements.
 
+## Installation
+
+```bash
+# pnpm (recommended)
+pnpm add @hautechai/webui.visualeditorinput
+
+# npm
+npm install @hautechai/webui.visualeditorinput
+
+# yarn
+yarn add @hautechai/webui.visualeditorinput
+```
+
 ## Parameters
 
 | Parameter        | Type                                            | Description                                                                        |

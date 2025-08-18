@@ -4,6 +4,19 @@
 
 Right-click or interaction-triggered menu component with contextual actions and flexible presentation options.
 
+## Installation
+
+```bash
+# pnpm (recommended)
+pnpm add @hautechai/webui.contextmenu
+
+# npm
+npm install @hautechai/webui.contextmenu
+
+# yarn
+yarn add @hautechai/webui.contextmenu
+```
+
 ## Parameters
 
 | Parameter   | Type                    | Description                                                                          |

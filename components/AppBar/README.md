@@ -4,6 +4,19 @@
 
 Top navigation bar component with configurable left, center, and right content areas for application headers.
 
+## Installation
+
+```bash
+# pnpm (recommended)
+pnpm add @hautechai/webui.appbar
+
+# npm
+npm install @hautechai/webui.appbar
+
+# yarn
+yarn add @hautechai/webui.appbar
+```
+
 ## Parameters
 
 | Parameter | Type            | Description                                                                                  |

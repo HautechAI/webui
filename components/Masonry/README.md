@@ -4,6 +4,19 @@
 
 Grid layout component that arranges items in a masonry-style layout with dynamic positioning based on content height.
 
+## Installation
+
+```bash
+# pnpm (recommended)
+pnpm add @hautechai/webui.masonry
+
+# npm
+npm install @hautechai/webui.masonry
+
+# yarn
+yarn add @hautechai/webui.masonry
+```
+
 ## Parameters
 
 | Parameter | Type             | Description                                     |

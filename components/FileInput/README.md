@@ -4,6 +4,19 @@
 
 File upload control component with drag-and-drop support, file type validation, and preview capabilities.
 
+## Installation
+
+```bash
+# pnpm (recommended)
+pnpm add @hautechai/webui.fileinput
+
+# npm
+npm install @hautechai/webui.fileinput
+
+# yarn
+yarn add @hautechai/webui.fileinput
+```
+
 ## Parameters
 
 | Parameter   | Type                      | Description                                                     |

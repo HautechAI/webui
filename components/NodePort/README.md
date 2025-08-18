@@ -4,6 +4,19 @@
 
 Port component for input and output connections on nodes. Uses Typography component for consistent label styling and includes visual port handles.
 
+## Installation
+
+```bash
+# pnpm (recommended)
+pnpm add @hautechai/webui.nodeport
+
+# npm
+npm install @hautechai/webui.nodeport
+
+# yarn
+yarn add @hautechai/webui.nodeport
+```
+
 ## Parameters
 
 | Parameter | Type                | Description                                                                          |

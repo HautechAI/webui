@@ -4,6 +4,19 @@
 
 User profile image or initials display component for representing users in interfaces.
 
+## Installation
+
+```bash
+# pnpm (recommended)
+pnpm add @hautechai/webui.avatar
+
+# npm
+npm install @hautechai/webui.avatar
+
+# yarn
+yarn add @hautechai/webui.avatar
+```
+
 ## Parameters
 
 | Parameter | Type      | Description                                                   |

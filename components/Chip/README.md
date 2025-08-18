@@ -4,6 +4,19 @@
 
 Compact element component for displaying tags, filters, or selection indicators with optional icons and popover content.
 
+## Installation
+
+```bash
+# pnpm (recommended)
+pnpm add @hautechai/webui.chip
+
+# npm
+npm install @hautechai/webui.chip
+
+# yarn
+yarn add @hautechai/webui.chip
+```
+
 ## Parameters
 
 | Parameter   | Type      | Description                                                |

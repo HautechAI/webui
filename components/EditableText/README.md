@@ -4,6 +4,19 @@
 
 A component that displays text which can be switched to edit mode by double-clicking. In view mode, it renders as styled typography, and in edit mode, it becomes an input field for text editing.
 
+## Installation
+
+```bash
+# pnpm (recommended)
+pnpm add @hautechai/webui.editabletext
+
+# npm
+npm install @hautechai/webui.editabletext
+
+# yarn
+yarn add @hautechai/webui.editabletext
+```
+
 ## Parameters
 
 | Parameter       | Type                                                                             | Description                                                                                  |

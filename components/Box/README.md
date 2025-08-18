@@ -4,6 +4,19 @@
 
 Flexible layout container component with configurable dimensions, spacing, and styling properties.
 
+## Installation
+
+```bash
+# pnpm (recommended)
+pnpm add @hautechai/webui.box
+
+# npm
+npm install @hautechai/webui.box
+
+# yarn
+yarn add @hautechai/webui.box
+```
+
 ## Parameters
 
 | Parameter      | Type                                                                        | Description                                     |

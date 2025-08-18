@@ -4,6 +4,19 @@
 
 Toggle button component optimized for displaying icons with different color schemes and a checked state for toggle functionality.
 
+## Installation
+
+```bash
+# pnpm (recommended)
+pnpm add @hautechai/webui.toggleiconbutton
+
+# npm
+npm install @hautechai/webui.toggleiconbutton
+
+# yarn
+yarn add @hautechai/webui.toggleiconbutton
+```
+
 ## Parameters
 
 | Parameter | Type                                             | Description                                                               |

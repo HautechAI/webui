@@ -4,6 +4,19 @@
 
 Scalable icon component providing various icon options with consistent sizing and styling.
 
+## Installation
+
+```bash
+# pnpm (recommended)
+pnpm add @hautechai/webui.icon
+
+# npm
+npm install @hautechai/webui.icon
+
+# yarn
+yarn add @hautechai/webui.icon
+```
+
 ## Parameters
 
 This component provides a collection of icon components. Each specific icon has its own props for size and styling customization. Common parameters include:

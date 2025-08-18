@@ -4,6 +4,19 @@
 
 Text rendering component with various predefined styles, variants, and color options for consistent typography.
 
+## Installation
+
+```bash
+# pnpm (recommended)
+pnpm add @hautechai/webui.typography
+
+# npm
+npm install @hautechai/webui.typography
+
+# yarn
+yarn add @hautechai/webui.typography
+```
+
 ## Parameters
 
 | Parameter | Type                                              | Description                                                          |

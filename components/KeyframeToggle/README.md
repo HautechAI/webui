@@ -4,6 +4,19 @@
 
 Toggle button component for keyframe interactions in timeline interfaces. Displays different visual states and styles based on keyframe status.
 
+## Installation
+
+```bash
+# pnpm (recommended)
+pnpm add @hautechai/webui.keyframetoggle
+
+# npm
+npm install @hautechai/webui.keyframetoggle
+
+# yarn
+yarn add @hautechai/webui.keyframetoggle
+```
+
 ## Parameters
 
 | Parameter | Type                                             | Description                                                     |

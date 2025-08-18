@@ -4,6 +4,19 @@
 
 Action buttons or controls that appear when hovering over a target element, providing contextual interactions.
 
+## Installation
+
+```bash
+# pnpm (recommended)
+pnpm add @hautechai/webui.hovercontrols
+
+# npm
+npm install @hautechai/webui.hovercontrols
+
+# yarn
+yarn add @hautechai/webui.hovercontrols
+```
+
 ## Parameters
 
 | Parameter | Type            | Description                                            |

@@ -4,6 +4,19 @@
 
 Specialized input component for image upload and preview with cropping and editing capabilities.
 
+## Installation
+
+```bash
+# pnpm (recommended)
+pnpm add @hautechai/webui.imageinput
+
+# npm
+npm install @hautechai/webui.imageinput
+
+# yarn
+yarn add @hautechai/webui.imageinput
+```
+
 ## Parameters
 
 | Parameter   | Type                    | Description                                                       |

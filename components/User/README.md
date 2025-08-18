@@ -4,6 +4,19 @@
 
 User profile display component showing avatar, title, subtitle, and optional action elements.
 
+## Installation
+
+```bash
+# pnpm (recommended)
+pnpm add @hautechai/webui.user
+
+# npm
+npm install @hautechai/webui.user
+
+# yarn
+yarn add @hautechai/webui.user
+```
+
 ## Parameters
 
 | Parameter | Type            | Description                                                       |

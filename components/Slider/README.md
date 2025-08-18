@@ -4,6 +4,19 @@
 
 Range input control component for selecting numeric values within a specified range with visual feedback.
 
+## Installation
+
+```bash
+# pnpm (recommended)
+pnpm add @hautechai/webui.slider
+
+# npm
+npm install @hautechai/webui.slider
+
+# yarn
+yarn add @hautechai/webui.slider
+```
+
 ## Parameters
 
 | Parameter | Type                    | Description                                            |

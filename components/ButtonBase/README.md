@@ -4,6 +4,19 @@
 
 Base button component providing common button functionality and styling foundation for other button components.
 
+## Installation
+
+```bash
+# pnpm (recommended)
+pnpm add @hautechai/webui.buttonbase
+
+# npm
+npm install @hautechai/webui.buttonbase
+
+# yarn
+yarn add @hautechai/webui.buttonbase
+```
+
 ## Parameters
 
 | Parameter | Type                                           | Description                                                         |

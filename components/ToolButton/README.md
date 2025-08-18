@@ -4,6 +4,19 @@
 
 Icon button component with selected state functionality, designed for toolbar interfaces where users can toggle tool selection.
 
+## Installation
+
+```bash
+# pnpm (recommended)
+pnpm add @hautechai/webui.toolbutton
+
+# npm
+npm install @hautechai/webui.toolbutton
+
+# yarn
+yarn add @hautechai/webui.toolbutton
+```
+
 ## Parameters
 
 | Parameter | Type                                             | Description                                                             |

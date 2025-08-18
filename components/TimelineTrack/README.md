@@ -4,6 +4,19 @@
 
 Visual timeline track component for representing when elements are visible in a composition, with draggable and resizable functionality.
 
+## Installation
+
+```bash
+# pnpm (recommended)
+pnpm add @hautechai/webui.timelinetrack
+
+# npm
+npm install @hautechai/webui.timelinetrack
+
+# yarn
+yarn add @hautechai/webui.timelinetrack
+```
+
 ## Parameters
 
 | Parameter       | Type                      | Description                                                              |

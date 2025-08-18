@@ -4,6 +4,19 @@
 
 Overlay dialog component for focused user interactions with backdrop and positioning controls.
 
+## Installation
+
+```bash
+# pnpm (recommended)
+pnpm add @hautechai/webui.modal
+
+# npm
+npm install @hautechai/webui.modal
+
+# yarn
+yarn add @hautechai/webui.modal
+```
+
 ## Parameters
 
 | Parameter       | Type                | Description                                                             |

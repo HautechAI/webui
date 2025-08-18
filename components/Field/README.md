@@ -4,6 +4,19 @@
 
 Form field wrapper component providing label, error states, and validation feedback for form inputs.
 
+## Installation
+
+```bash
+# pnpm (recommended)
+pnpm add @hautechai/webui.field
+
+# npm
+npm install @hautechai/webui.field
+
+# yarn
+yarn add @hautechai/webui.field
+```
+
 ## Parameters
 
 | Parameter     | Type                       | Description                                                             |

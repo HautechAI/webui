@@ -4,6 +4,19 @@
 
 Dropdown menu container component for navigation or actions with selectable options and popover positioning.
 
+## Installation
+
+```bash
+# pnpm (recommended)
+pnpm add @hautechai/webui.menu
+
+# npm
+npm install @hautechai/webui.menu
+
+# yarn
+yarn add @hautechai/webui.menu
+```
+
 ## Parameters
 
 | Parameter        | Type                                   | Description                                                                |

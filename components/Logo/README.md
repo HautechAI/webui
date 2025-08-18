@@ -4,6 +4,19 @@
 
 Brand logo display component with variant options for different contexts and sizing needs.
 
+## Installation
+
+```bash
+# pnpm (recommended)
+pnpm add @hautechai/webui.logo
+
+# npm
+npm install @hautechai/webui.logo
+
+# yarn
+yarn add @hautechai/webui.logo
+```
+
 ## Parameters
 
 | Parameter | Type             | Description                                                                                  |

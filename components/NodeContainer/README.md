@@ -4,6 +4,19 @@
 
 Container component that provides the basic structure and styling for Node components in the node-based interface.
 
+## Installation
+
+```bash
+# pnpm (recommended)
+pnpm add @hautechai/webui.nodecontainer
+
+# npm
+npm install @hautechai/webui.nodecontainer
+
+# yarn
+yarn add @hautechai/webui.nodecontainer
+```
+
 ## Parameters
 
 | Parameter | Type            | Description                                               |

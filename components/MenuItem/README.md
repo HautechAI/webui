@@ -4,6 +4,19 @@
 
 Individual menu item component with configurable appearance, icons, and interaction states.
 
+## Installation
+
+```bash
+# pnpm (recommended)
+pnpm add @hautechai/webui.menuitem
+
+# npm
+npm install @hautechai/webui.menuitem
+
+# yarn
+yarn add @hautechai/webui.menuitem
+```
+
 ## Parameters
 
 | Parameter    | Type                | Description                                                                                |

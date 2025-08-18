@@ -4,6 +4,19 @@
 
 Structured display component for key-value data pairs with flexible layout options and visual hierarchy.
 
+## Installation
+
+```bash
+# pnpm (recommended)
+pnpm add @hautechai/webui.dataitem
+
+# npm
+npm install @hautechai/webui.dataitem
+
+# yarn
+yarn add @hautechai/webui.dataitem
+```
+
 ## Parameters
 
 | Parameter    | Type                | Description                                                                                          |

@@ -4,6 +4,19 @@
 
 Formatted display component for pricing information with price value and billing period.
 
+## Installation
+
+```bash
+# pnpm (recommended)
+pnpm add @hautechai/webui.price
+
+# npm
+npm install @hautechai/webui.price
+
+# yarn
+yarn add @hautechai/webui.price
+```
+
 ## Parameters
 
 | Parameter | Type   | Description                                                      |

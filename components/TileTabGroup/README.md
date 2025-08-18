@@ -4,6 +4,19 @@
 
 Tab container component using tile-based visual style for organizing content sections with visual tab indicators.
 
+## Installation
+
+```bash
+# pnpm (recommended)
+pnpm add @hautechai/webui.tiletabgroup
+
+# npm
+npm install @hautechai/webui.tiletabgroup
+
+# yarn
+yarn add @hautechai/webui.tiletabgroup
+```
+
 ## Parameters
 
 | Parameter   | Type                              | Description                                            |
