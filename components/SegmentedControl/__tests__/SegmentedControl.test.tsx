@@ -25,12 +25,7 @@ describe('SegmentedControl', () => {
     it('should apply whitespace data attribute when whitespace prop is provided', () => {
         const { container } = render(
             <ThemeProvider theme={testTheme}>
-                <SegmentedControl 
-                    options={mockOptions} 
-                    value="option1" 
-                    onChange={() => {}} 
-                    whitespace="xl"
-                />
+                <SegmentedControl options={mockOptions} value="option1" onChange={() => {}} whitespace="xl" />
             </ThemeProvider>,
         );
 
@@ -41,12 +36,7 @@ describe('SegmentedControl', () => {
     it('should apply stretch data attribute when stretch prop is true', () => {
         const { container } = render(
             <ThemeProvider theme={testTheme}>
-                <SegmentedControl 
-                    options={mockOptions} 
-                    value="option1" 
-                    onChange={() => {}} 
-                    stretch={true}
-                />
+                <SegmentedControl options={mockOptions} value="option1" onChange={() => {}} stretch={true} />
             </ThemeProvider>,
         );
 
@@ -60,10 +50,10 @@ describe('SegmentedControl', () => {
     it('should work with both stretch and whitespace props together', () => {
         const { container } = render(
             <ThemeProvider theme={testTheme}>
-                <SegmentedControl 
-                    options={mockOptions} 
-                    value="option1" 
-                    onChange={() => {}} 
+                <SegmentedControl
+                    options={mockOptions}
+                    value="option1"
+                    onChange={() => {}}
                     stretch={true}
                     whitespace="l"
                 />
@@ -80,10 +70,10 @@ describe('SegmentedControl', () => {
     it('should work with material variant', () => {
         const { container } = render(
             <ThemeProvider theme={testTheme}>
-                <SegmentedControl 
-                    options={mockOptions} 
-                    value="option1" 
-                    onChange={() => {}} 
+                <SegmentedControl
+                    options={mockOptions}
+                    value="option1"
+                    onChange={() => {}}
                     material={true}
                     stretch={true}
                     whitespace="m"

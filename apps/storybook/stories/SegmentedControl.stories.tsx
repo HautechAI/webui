@@ -142,7 +142,7 @@ export const WhitespaceComparison = {
         const [value1, setValue1] = useState('all');
         const [value2, setValue2] = useState('all');
         const [value3, setValue3] = useState('all');
-        
+
         return (
             <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', alignItems: 'flex-start' }}>
                 <div>
@@ -192,7 +192,7 @@ export const StretchComparison = {
     render: () => {
         const [value1, setValue1] = useState('all');
         const [value2, setValue2] = useState('all');
-        
+
         return (
             <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', width: '500px' }}>
                 <div>

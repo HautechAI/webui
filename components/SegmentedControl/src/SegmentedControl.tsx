@@ -41,11 +41,11 @@ const SegmentedControl = ({
             {options.map(({ label, leadingIcon, trailingIcon, value: optionValue }) => {
                 const isSelected = value === optionValue;
                 return (
-                    <Row 
-                        data-selected={isSelected} 
+                    <Row
+                        data-selected={isSelected}
                         data-whitespace={whitespace}
                         data-stretch={stretch}
-                        key={optionValue} 
+                        key={optionValue}
                         onClick={(e) => handleClick(e, optionValue)}
                     >
                         {leadingIcon && <Icon data-selected={isSelected}>{leadingIcon}</Icon>}

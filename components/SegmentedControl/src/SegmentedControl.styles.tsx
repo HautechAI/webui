@@ -9,8 +9,8 @@ export const MaterialContainer = styled.div`
     border-bottom-style: solid;
     border-bottom-width: ${themeVars.stroke.thin};
     padding: 0 ${themeVars.spacing.l};
-    
-    &[data-stretch="true"] {
+
+    &[data-stretch='true'] {
         flex: 1;
     }
 `;
@@ -24,8 +24,8 @@ export const HIGContainer = styled.div`
     overflow: hidden;
     padding: ${themeVars.spacing.xs};
     gap: ${themeVars.spacing.s};
-    
-    &[data-stretch="true"] {
+
+    &[data-stretch='true'] {
         flex: 1;
     }
 `;
@@ -51,47 +51,47 @@ export const HIGRow = styled.div`
         color: ${themeVars.layout.onSurface.primary};
     }
 
-    &[data-stretch="true"] {
+    &[data-stretch='true'] {
         flex: 1;
         justify-content: center;
     }
 
-    &[data-whitespace="xs"] {
+    &[data-whitespace='xs'] {
         padding-left: ${themeVars.spacing.xs};
         padding-right: ${themeVars.spacing.xs};
     }
 
-    &[data-whitespace="s"] {
+    &[data-whitespace='s'] {
         padding-left: ${themeVars.spacing.s};
         padding-right: ${themeVars.spacing.s};
     }
 
-    &[data-whitespace="m"] {
+    &[data-whitespace='m'] {
         padding-left: ${themeVars.spacing.m};
         padding-right: ${themeVars.spacing.m};
     }
 
-    &[data-whitespace="ml"] {
+    &[data-whitespace='ml'] {
         padding-left: ${themeVars.spacing.ml};
         padding-right: ${themeVars.spacing.ml};
     }
 
-    &[data-whitespace="l"] {
+    &[data-whitespace='l'] {
         padding-left: ${themeVars.spacing.l};
         padding-right: ${themeVars.spacing.l};
     }
 
-    &[data-whitespace="xl"] {
+    &[data-whitespace='xl'] {
         padding-left: ${themeVars.spacing.xl};
         padding-right: ${themeVars.spacing.xl};
     }
 
-    &[data-whitespace="xxl"] {
+    &[data-whitespace='xxl'] {
         padding-left: ${themeVars.spacing.xxl};
         padding-right: ${themeVars.spacing.xxl};
     }
 
-    &[data-whitespace="xxxl"] {
+    &[data-whitespace='xxxl'] {
         padding-left: ${themeVars.spacing.xxxl};
         padding-right: ${themeVars.spacing.xxxl};
     }
@@ -122,47 +122,47 @@ export const MaterialRow = styled.div`
         color: ${themeVars.layout.onSurface.primary};
     }
 
-    &[data-stretch="true"] {
+    &[data-stretch='true'] {
         flex: 1;
         justify-content: center;
     }
 
-    &[data-whitespace="xs"] {
+    &[data-whitespace='xs'] {
         padding-left: ${themeVars.spacing.xs};
         padding-right: ${themeVars.spacing.xs};
     }
 
-    &[data-whitespace="s"] {
+    &[data-whitespace='s'] {
         padding-left: ${themeVars.spacing.s};
         padding-right: ${themeVars.spacing.s};
     }
 
-    &[data-whitespace="m"] {
+    &[data-whitespace='m'] {
         padding-left: ${themeVars.spacing.m};
         padding-right: ${themeVars.spacing.m};
     }
 
-    &[data-whitespace="ml"] {
+    &[data-whitespace='ml'] {
         padding-left: ${themeVars.spacing.ml};
         padding-right: ${themeVars.spacing.ml};
     }
 
-    &[data-whitespace="l"] {
+    &[data-whitespace='l'] {
         padding-left: ${themeVars.spacing.l};
         padding-right: ${themeVars.spacing.l};
     }
 
-    &[data-whitespace="xl"] {
+    &[data-whitespace='xl'] {
         padding-left: ${themeVars.spacing.xl};
         padding-right: ${themeVars.spacing.xl};
     }
 
-    &[data-whitespace="xxl"] {
+    &[data-whitespace='xxl'] {
         padding-left: ${themeVars.spacing.xxl};
         padding-right: ${themeVars.spacing.xxl};
     }
 
-    &[data-whitespace="xxxl"] {
+    &[data-whitespace='xxxl'] {
         padding-left: ${themeVars.spacing.xxxl};
         padding-right: ${themeVars.spacing.xxxl};
     }
