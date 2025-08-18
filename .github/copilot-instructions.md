@@ -161,7 +161,6 @@ When creating or updating icon components using Figma MCP (Dev Mode):
 
 Remember: Documentation is as important as the code itself. Well-maintained documentation ensures developers can effectively use and contribute to this component library.
 
-
 ## Development Workflow & Git Hooks
 
 ### Git Hooks Configuration
