@@ -6,14 +6,13 @@ import { IconButton } from '@hautechai/webui.iconbutton';
 import { MinusIcon, PlusIcon } from '@hautechai/webui.icon';
 
 const Container = styled.div`
-    width: 100%;
-    height: 100%;
+    flex: 1;
     padding: ${themeVars.spacing.l};
     border-bottom: ${themeVars.stroke.thin} solid ${themeVars.layout.strokes};
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
-    display: inline-flex;
+    display: flex;
 `;
 
 const PropertyHeader = styled.div`
@@ -34,7 +33,6 @@ const Label = styled.div`
 const Content = styled.div`
     align-self: stretch;
     padding-top: ${themeVars.spacing.ml};
-    overflow: hidden;
     justify-content: flex-start;
     align-items: flex-start;
     display: inline-flex;
