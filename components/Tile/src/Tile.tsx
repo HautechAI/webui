@@ -1,5 +1,5 @@
 import { styled } from '@hautechai/webui.themeprovider';
-import { themeVars } from '@hautechai/webui.themeprovider';
+import { themeVars, type IconColorProp, resolveColor } from '@hautechai/webui.themeprovider';
 
 type TileSize = 'medium' | 'small' | 'xlarge';
 
@@ -19,7 +19,7 @@ const StyledTileDiv = styled.div`
     align-items: center;
     justify-content: center;
 
-    background-color: ${themeVars.layout.surfaceMid};
+    background-color: var(--tile-bg-color, ${themeVars.layout.surfaceMid});
     border-radius: ${themeVars.cornerRadius.m};
     background-image: var(--tile-bg-image, none);
     background-size: cover;
@@ -38,7 +38,7 @@ const StyledTileDiv = styled.div`
         border-color ${themeVars.animation.duration.fast} ${themeVars.animation.timing.easeOut};
 
     border-color: transparent;
-    &[data-selected="true"] {
+    &[data-selected='true'] {
         border-color: ${themeVars.actions.primary};
     }
     .htch-webui-hoverable:hover & {
@@ -51,7 +51,7 @@ const StyledTileImg = styled.img`
     align-items: center;
     justify-content: center;
 
-    background-color: ${themeVars.layout.surfaceMid};
+    background-color: var(--tile-bg-color, ${themeVars.layout.surfaceMid});
     border-radius: ${themeVars.cornerRadius.m};
 
     border-width: ${themeVars.stroke.standard};
@@ -67,7 +67,7 @@ const StyledTileImg = styled.img`
         transform ${themeVars.animation.duration.fast} ${themeVars.animation.timing.easeOut};
 
     border-color: transparent;
-    &[data-selected="true"] {
+    &[data-selected='true'] {
         border-color: ${themeVars.actions.primary};
     }
     .htch-webui-hoverable:hover & {
@@ -80,7 +80,7 @@ const StyledTileVideo = styled.video`
     align-items: center;
     justify-content: center;
 
-    background-color: ${themeVars.layout.surfaceMid};
+    background-color: var(--tile-bg-color, ${themeVars.layout.surfaceMid});
     border-radius: ${themeVars.cornerRadius.m};
 
     border-width: ${themeVars.stroke.standard};
@@ -96,7 +96,7 @@ const StyledTileVideo = styled.video`
         transform ${themeVars.animation.duration.fast} ${themeVars.animation.timing.easeOut};
 
     border-color: transparent;
-    &[data-selected="true"] {
+    &[data-selected='true'] {
         border-color: ${themeVars.actions.primary};
     }
     .htch-webui-hoverable:hover & {
@@ -120,11 +120,25 @@ export type TileProps = {
     loop?: boolean; // for video component
     muted?: boolean; // for video component
     playsInline?: boolean; // for video component
+    color?: IconColorProp;
 };
 
 export const Tile = (props: TileProps) => {
-    const { icon, size, aspectRatio, src, component, alt, controls, autoplay, loop, muted, playsInline, ...rest } =
-        props;
+    const {
+        icon,
+        size,
+        aspectRatio,
+        src,
+        component,
+        alt,
+        controls,
+        autoplay,
+        loop,
+        muted,
+        playsInline,
+        color,
+        ...rest
+    } = props;
     const { width, height } = props;
 
     if (size && (width || height || aspectRatio)) {
@@ -133,7 +147,7 @@ export const Tile = (props: TileProps) => {
     if (aspectRatio && width && height) {
         throw new Error('aspectRatio can be used only with one of width/height');
     }
-    if ((props.component === 'img' || props.component === 'video') && icon) {
+    if ((component === 'img' || component === 'video') && icon) {
         throw new Error('icon can not be used with img/video component');
     }
 
@@ -141,15 +155,14 @@ export const Tile = (props: TileProps) => {
         width: sizeToUnits(width) ?? (size ? sizeToUnits(tileSize[size]) : undefined),
         height: sizeToUnits(height) ?? (size ? sizeToUnits(tileSize[size]) : undefined),
         aspectRatio: aspectRatio ?? (!size && (!width || !height) ? 1 : undefined),
+        ['--tile-bg-color' as string]: color ? resolveColor(color, themeVars.layout.surfaceMid) : undefined,
     } as React.CSSProperties;
 
-    if (props.component === 'img') {
-        return (
-            <StyledTileImg data-selected={!!props.selected} src={src} alt={alt} style={styleDims} {...rest} />
-        );
+    if (component === 'img') {
+        return <StyledTileImg data-selected={!!props.selected} src={src} alt={alt} style={styleDims} {...rest} />;
     }
 
-    if (props.component === 'video') {
+    if (component === 'video') {
         return (
             <StyledTileVideo
                 data-selected={!!props.selected}
@@ -170,7 +183,7 @@ export const Tile = (props: TileProps) => {
             data-selected={!!props.selected}
             style={{
                 ...styleDims,
-                ['--tile-bg-image' as any]: src ? `url(${src})` : undefined,
+                ['--tile-bg-image' as string]: src ? `url(${src})` : undefined,
             }}
             {...rest}
         >

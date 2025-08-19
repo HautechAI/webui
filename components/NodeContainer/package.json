@@ -1,0 +1,20 @@
+{
+    "name": "@hautechai/webui.nodecontainer",
+    "description": "Container component for Node system",
+    "version": "1.0.6",
+    "type": "module",
+    "main": "src/index.tsx",
+    "publishConfig": {
+        "directory": "dist",
+        "linkDirectory": false,
+        "access": "public"
+    },
+    "scripts": {
+        "prepack": "node ../../scripts/build-component.mjs"
+    },
+    "author": "HautechAI",
+    "dependencies": {
+        "@hautechai/webui.themeprovider": "workspace:^"
+    },
+    "license": "Apache-2.0"
+}

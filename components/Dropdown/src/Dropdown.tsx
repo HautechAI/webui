@@ -36,7 +36,8 @@ export const ButtonContainer = styled.div`
     gap: ${themeVars.spacing.m};
 
     border-radius: ${themeVars.cornerRadius.m};
-    transition: background-color ${themeVars.animation.duration.normal} ${themeVars.animation.timing.ease},
+    transition:
+        background-color ${themeVars.animation.duration.normal} ${themeVars.animation.timing.ease},
         border-color ${themeVars.animation.duration.normal} ${themeVars.animation.timing.ease},
         outline-color ${themeVars.animation.duration.normal} ${themeVars.animation.timing.ease},
         transform ${themeVars.animation.duration.normal} ${themeVars.animation.timing.ease};
@@ -88,7 +89,8 @@ export const ButtonContainer = styled.div`
 
     &:hover {
         background-color: ${themeVars.layout.surfaceHigh};
-        &[data-type='filled'], &[data-type='outlined'] {
+        &[data-type='filled'],
+        &[data-type='outlined'] {
             background: transparent;
             border-color: ${themeVars.layout.onSurface.tertiary};
         }
@@ -96,7 +98,8 @@ export const ButtonContainer = styled.div`
 
     &:active {
         background-color: ${themeVars.layout.strokes};
-        &[data-type='filled'], &[data-type='outlined'] {
+        &[data-type='filled'],
+        &[data-type='outlined'] {
             background: transparent;
             border-color: ${themeVars.layout.onSurface.tertiary};
             outline: ${themeVars.stroke.thin} solid ${themeVars.layout.onSurface.tertiary};
@@ -105,7 +108,8 @@ export const ButtonContainer = styled.div`
 
     &[data-open='true'] {
         background-color: ${themeVars.layout.surfaceHigh};
-        &[data-type='filled'], &[data-type='outlined'] {
+        &[data-type='filled'],
+        &[data-type='outlined'] {
             background: transparent;
             border-color: ${themeVars.actions.primary};
             outline: ${themeVars.stroke.thin} solid ${themeVars.actions.primary};
@@ -158,7 +162,8 @@ const MenuContainer = styled.div`
     opacity: 0;
     transform-origin: top;
 
-    transition: opacity ${themeVars.animation.duration.normal} ${themeVars.animation.timing.ease},
+    transition:
+        opacity ${themeVars.animation.duration.normal} ${themeVars.animation.timing.ease},
         transform ${themeVars.animation.duration.normal} ${themeVars.animation.timing.ease};
 
     pointer-events: none;
@@ -220,7 +225,6 @@ export const Dropdown = (props: DropdownProps) => {
     const size = props.size ?? 'medium';
     const collapsed = !!props.collapsed;
 
-
     return (
         <Container data-disabled={disabled} data-collapsed={collapsed} ref={ref}>
             <ButtonContainer
@@ -240,10 +244,7 @@ export const Dropdown = (props: DropdownProps) => {
                         {selectedOption ? selectedOption.label : props.label}
                     </Label>
                 )}
-                <RotatingArrow
-                    data-size={size}
-                    style={{ transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)' }}
-                >
+                <RotatingArrow data-size={size} style={{ transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)' }}>
                     <ArrowAltDownIcon
                         size={size === 'medium' ? 20 : 16}
                         color={disabled ? 'layout.strokes' : 'layout.onSurface.secondary'}

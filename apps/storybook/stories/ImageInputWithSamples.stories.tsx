@@ -2,8 +2,6 @@ import { fn } from '@storybook/test';
 
 import Shirt from '../../../assets/shirt.png';
 import { ImageInputWithSamples } from '../../../components/ImageInputWithSamples/src';
-import { ButtonBase } from '../../../components/ButtonBase/src';
-import { Tile } from '../../../components/Tile/src';
 
 export default {
     title: 'Compositions/Image Input With Samples',
@@ -12,7 +10,7 @@ export default {
         layout: 'centered',
     },
     tags: ['autodocs'],
-    args: { onUpload: fn() as any, onSelectSample: fn() as any },
+    args: { onUpload: fn() as () => void, onSelectSample: fn() as () => void },
 };
 
 export const Main = {

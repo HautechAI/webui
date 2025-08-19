@@ -1,4 +1,4 @@
-import { Decorator, Meta, StoryObj } from '@storybook/react';
+import { Decorator } from '@storybook/react';
 import { useState } from 'react';
 
 import { Button } from '../../../components/Button/src';
@@ -8,7 +8,6 @@ import { Logo } from '../../../components/Logo/src';
 
 const OnChangeSyncArgs: Decorator<ModalProps> = (Story, context) => {
     const [open, setOpen] = useState(false);
-    console.log({ args: context.args });
     return (
         <>
             <Button onClick={() => setOpen((v) => !v)} label="Toggle Modal" />

@@ -13,9 +13,9 @@ export default {
     },
     tags: ['autodocs'],
     argTypes: {},
-    args: { 
+    args: {
         onChange: fn() as any,
-        onSelect: fn() as any 
+        onSelect: fn() as any,
     },
     decorators: [
         (Story: any) => (
@@ -52,7 +52,7 @@ export const WithTextInput = {
     args: {
         label: 'Layer with Input',
         selected: false,
-        input: <TextInput value="100%" placeholder="Value" />,
+        input: <TextInput type="text" value="100%" placeholder="Value" />,
     },
 };
 

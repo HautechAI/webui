@@ -3,7 +3,7 @@ import { DataItem } from '../../../components/DataItem/src';
 
 export default {
     title: 'Data Display/Panel',
-    component: Panel as any,
+    component: Panel as unknown,
     parameters: {
         layout: 'centered',
     },

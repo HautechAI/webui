@@ -1,5 +1,4 @@
 import { StorybookConfig } from '@storybook/react-vite';
-import linaria from '@wyw-in-js/vite';
 
 const config: StorybookConfig = {
     stories: ['../stories/*.stories.@(js|jsx|mjs|ts|tsx)'],

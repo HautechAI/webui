@@ -77,13 +77,7 @@ const InputContainer = styled.div`
 `;
 
 export const LayerTreeItemChild = (props: LayerTreeItemChildProps) => {
-    const {
-        label,
-        selected = false,
-        input,
-        onChange,
-        onSelect,
-    } = props;
+    const { label, selected = false, input, onChange, onSelect } = props;
 
     const [isEditing, setIsEditing] = useState(false);
     const [currentLabel, setCurrentLabel] = useState(label);
@@ -129,11 +123,7 @@ export const LayerTreeItemChild = (props: LayerTreeItemChildProps) => {
                             onFinishEditing={handleFinishEditing}
                         />
                     </EditableTextContainer>
-                    {input && (
-                        <InputContainer>
-                            {input}
-                        </InputContainer>
-                    )}
+                    {input && <InputContainer>{input}</InputContainer>}
                 </NameForm>
             </Content>
         </Container>

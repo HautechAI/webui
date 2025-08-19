@@ -10,7 +10,7 @@ describe('Price', () => {
         expect(() => {
             render(
                 <ThemeProvider theme={testTheme}>
-                    <Price amount={100} currency="USD" />
+                    <Price price="$100" period="USD" />
                 </ThemeProvider>,
             );
         }).not.toThrow();

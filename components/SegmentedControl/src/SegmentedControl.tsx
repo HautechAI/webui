@@ -1,6 +1,6 @@
 import React from 'react';
 import { Typography } from '@hautechai/webui.typography';
-import { MaterialContainer, HIGContainer, MaterialRow, HIGRow, WhiteSpace, Icon } from './SegmentedControl.styles';
+import { MaterialContainer, HIGContainer, MaterialRow, HIGRow, Icon } from './SegmentedControl.styles';
 import { ThemeType } from '@hautechai/webui.themeprovider';
 
 type Option = {
@@ -17,9 +17,18 @@ export type SegmentedControlProps = {
     onChange?: (event: React.MouseEvent<HTMLDivElement, MouseEvent>, value: string) => void;
     material?: boolean;
     whitespace?: keyof ThemeType['foundation']['spacing'];
+    stretch?: boolean;
 };
 
-const SegmentedControl = ({ options, defaultValue, value, onChange, material, whitespace }: SegmentedControlProps) => {
+const SegmentedControl = ({
+    options,
+    defaultValue: _defaultValue,
+    value,
+    onChange,
+    material,
+    whitespace,
+    stretch,
+}: SegmentedControlProps) => {
     const handleClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>, value: string) => {
         onChange?.(e, value);
     };
@@ -28,13 +37,14 @@ const SegmentedControl = ({ options, defaultValue, value, onChange, material, wh
     const Row = material ? MaterialRow : HIGRow;
 
     return (
-        <Container>
+        <Container data-stretch={stretch}>
             {options.map(({ label, leadingIcon, trailingIcon, value: optionValue }) => {
                 const isSelected = value === optionValue;
-                const showEmptySpace = !material && (label || !!leadingIcon === !!trailingIcon);
                 return (
                     <Row
                         data-selected={isSelected}
+                        data-whitespace={whitespace}
+                        data-stretch={stretch}
                         key={optionValue}
                         onClick={(e) => handleClick(e, optionValue)}
                     >

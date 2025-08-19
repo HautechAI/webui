@@ -1,19 +1,19 @@
+import React from 'react';
 import { fn } from '@storybook/test';
+import type { Meta, StoryObj } from '@storybook/react';
 import { Box } from '../../../components/Box/src';
 import { Dropdown } from '../../../components/Dropdown/src';
 
-export default {
+const meta: Meta<typeof Dropdown> = {
     title: 'Input/Dropdown',
     component: Dropdown,
     parameters: {
         layout: 'centered',
     },
     tags: ['autodocs'],
-    argTypes: {
-        backgroundColor: { control: 'color' },
-    },
+    argTypes: {},
     args: {
-        onChange: fn() as any,
+        onChange: fn() as (value: string) => void,
         options: [
             { label: 'Option1', value: 'op1' },
             { label: 'Option2 very long option', value: 'op2' },
@@ -24,7 +24,7 @@ export default {
         ],
     },
     decorators: [
-        (Story: any) => (
+        (Story: React.ComponentType) => (
             <Box width={200} alignItems="flex-start" display="flex">
                 <Story />
             </Box>
@@ -32,57 +32,61 @@ export default {
     ],
 };
 
-export const Filled = {
+export default meta;
+
+type Story = StoryObj<typeof Dropdown>;
+
+export const Filled: Story = {
     args: {},
 };
 
-export const WithLabel = {
+export const WithLabel: Story = {
     args: {
         label: 'Label',
     },
 };
 
-export const Disabled = {
+export const Disabled: Story = {
     args: {
         label: 'Any text',
         disabled: true,
     },
 };
 
-export const Error = {
+export const Error: Story = {
     args: {
         label: 'Label',
         hasError: true,
     },
 };
 
-export const WithSelectedOption = {
+export const WithSelectedOption: Story = {
     args: {
         value: 'op2',
     },
 };
 
-export const Outlined = {
+export const Outlined: Story = {
     args: {
         type: 'outlined',
     },
 };
 
-export const OutlinedWithSelectedOption = {
+export const OutlinedWithSelectedOption: Story = {
     args: {
         value: 'op2',
         type: 'outlined',
     },
 };
 
-export const Flat = {
+export const Flat: Story = {
     args: {
         label: 'Label',
         type: 'flat',
     },
 };
 
-export const FlatDisabled = {
+export const FlatDisabled: Story = {
     args: {
         label: 'Any text',
         disabled: true,
@@ -90,7 +94,7 @@ export const FlatDisabled = {
     },
 };
 
-export const FlatError = {
+export const FlatError: Story = {
     args: {
         label: 'Label',
         hasError: true,
@@ -98,7 +102,7 @@ export const FlatError = {
     },
 };
 
-export const Short = {
+export const Short: Story = {
     args: {
         options: [
             { label: '%', value: '%' },
@@ -107,7 +111,7 @@ export const Short = {
         value: 'px',
     },
     decorators: [
-        (Story: any) => (
+        (Story: React.ComponentType) => (
             <div style={{ display: 'flex', flexDirection: 'row', gap: '8px' }}>
                 <Story />
             </div>
@@ -116,14 +120,14 @@ export const Short = {
 };
 
 // New size and collapsed variants
-export const Small = {
+export const Small: Story = {
     args: {
         size: 'small',
         label: 'Label',
     },
 };
 
-export const SmallOutlined = {
+export const SmallOutlined: Story = {
     args: {
         size: 'small',
         type: 'outlined',
@@ -131,7 +135,7 @@ export const SmallOutlined = {
     },
 };
 
-export const SmallFlat = {
+export const SmallFlat: Story = {
     args: {
         size: 'small',
         type: 'flat',
@@ -139,13 +143,13 @@ export const SmallFlat = {
     },
 };
 
-export const Collapsed = {
+export const Collapsed: Story = {
     args: {
         collapsed: true,
     },
 };
 
-export const CollapsedSmall = {
+export const CollapsedSmall: Story = {
     args: {
         size: 'small',
         collapsed: true,

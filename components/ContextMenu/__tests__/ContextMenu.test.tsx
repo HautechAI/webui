@@ -10,7 +10,7 @@ describe('ContextMenu', () => {
         expect(() => {
             render(
                 <ThemeProvider theme={testTheme}>
-                    <ContextMenu items={[{ key: 'test', label: 'Test Item' }]}>Test</ContextMenu>
+                    <ContextMenu menus={[<div key="test">Test Item</div>]}>Test</ContextMenu>
                 </ThemeProvider>,
             );
         }).not.toThrow();

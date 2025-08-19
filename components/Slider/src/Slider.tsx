@@ -51,7 +51,7 @@ const Slider = ({ min, max, step = 1, value, onChange }: SliderProps) => {
 
     return (
         <Container
-            style={{ ['--slider-percentage' as any]: `${percentage}%` }}
+            style={{ ['--slider-percentage' as string]: `${percentage}%` }}
             type="range"
             min={min}
             max={max}

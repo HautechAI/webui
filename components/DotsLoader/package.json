@@ -1,0 +1,23 @@
+{
+    "name": "@hautechai/webui.dotsloader",
+    "description": "",
+    "version": "1.0.1",
+    "type": "module",
+    "main": "src/index.tsx",
+    "publishConfig": {
+        "directory": "dist",
+        "linkDirectory": false,
+        "access": "public"
+    },
+    "scripts": {
+        "prepack": "node ../../scripts/build-component.mjs",
+        "lint:tsc": "tsc --noEmit",
+        "lint": "pnpm lint:tsc"
+    },
+    "author": "HautechAI",
+    "dependencies": {
+        "@emotion/react": "^11.14.0",
+        "@hautechai/webui.themeprovider": "workspace:^"
+    },
+    "license": "Apache-2.0"
+}

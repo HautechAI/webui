@@ -110,10 +110,10 @@ const InnerIconContainer = styled.div<{ size: 'medium' | 'small' }>`
 const getIcon = (icon: React.ReactNode, size: 'medium' | 'small') => (
     <InnerIconContainer size={size}>
         {React.Children.map(icon, (child) => {
-            if (React.isValidElement(child)) {
+            if (React.isValidElement<{ size: number }>(child)) {
                 return React.cloneElement(child, {
                     size: size === 'small' ? 16 : 20,
-                } as any);
+                });
             }
             return child;
         })}

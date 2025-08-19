@@ -59,10 +59,10 @@ const IconContainer = styled('div')`
 const getIcon = (icon: React.ReactNode) => (
     <IconContainer>
         {React.Children.map(icon, (child) => {
-            if (React.isValidElement(child)) {
+            if (React.isValidElement<{ size: number }>(child)) {
                 return React.cloneElement(child, {
-                    size: themeVars.spacing.xl, // Using theme value for icon size
-                } as any);
+                    size: 24,
+                });
             }
             return child;
         })}

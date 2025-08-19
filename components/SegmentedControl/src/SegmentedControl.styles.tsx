@@ -2,17 +2,21 @@ import { styled } from '@hautechai/webui.themeprovider';
 import { themeVars } from '@hautechai/webui.themeprovider';
 
 export const MaterialContainer = styled.div`
-    display: flex;
+    display: inline-flex;
     overflow: hidden;
     gap: ${themeVars.spacing.xl};
     border-bottom-color: ${themeVars.layout.strokes};
     border-bottom-style: solid;
     border-bottom-width: ${themeVars.stroke.thin};
     padding: 0 ${themeVars.spacing.l};
+
+    &[data-stretch='true'] {
+        display: flex;
+    }
 `;
 
 export const HIGContainer = styled.div`
-    display: flex;
+    display: inline-flex;
     border-color: ${themeVars.layout.strokes};
     border-radius: ${themeVars.cornerRadius.s};
     border-style: solid;
@@ -20,6 +24,10 @@ export const HIGContainer = styled.div`
     overflow: hidden;
     padding: ${themeVars.spacing.xs};
     gap: ${themeVars.spacing.s};
+
+    &[data-stretch='true'] {
+        display: flex;
+    }
 `;
 
 export const HIGRow = styled.div`
@@ -43,7 +51,53 @@ export const HIGRow = styled.div`
         color: ${themeVars.layout.onSurface.primary};
     }
 
-    transition: background-color ${themeVars.animation.duration.fast} ${themeVars.animation.timing.easeOut},
+    &[data-stretch='true'] {
+        flex: 1;
+        justify-content: center;
+    }
+
+    &[data-whitespace='xs'] {
+        padding-left: ${themeVars.spacing.xs};
+        padding-right: ${themeVars.spacing.xs};
+    }
+
+    &[data-whitespace='s'] {
+        padding-left: ${themeVars.spacing.s};
+        padding-right: ${themeVars.spacing.s};
+    }
+
+    &[data-whitespace='m'] {
+        padding-left: ${themeVars.spacing.m};
+        padding-right: ${themeVars.spacing.m};
+    }
+
+    &[data-whitespace='ml'] {
+        padding-left: ${themeVars.spacing.ml};
+        padding-right: ${themeVars.spacing.ml};
+    }
+
+    &[data-whitespace='l'] {
+        padding-left: ${themeVars.spacing.l};
+        padding-right: ${themeVars.spacing.l};
+    }
+
+    &[data-whitespace='xl'] {
+        padding-left: ${themeVars.spacing.xl};
+        padding-right: ${themeVars.spacing.xl};
+    }
+
+    &[data-whitespace='xxl'] {
+        padding-left: ${themeVars.spacing.xxl};
+        padding-right: ${themeVars.spacing.xxl};
+    }
+
+    &[data-whitespace='xxxl'] {
+        padding-left: ${themeVars.spacing.xxxl};
+        padding-right: ${themeVars.spacing.xxxl};
+    }
+
+    transition:
+        background-color ${themeVars.animation.duration.fast} ${themeVars.animation.timing.easeOut},
         color ${themeVars.animation.duration.fast} ${themeVars.animation.timing.easeOut};
 `;
 
@@ -66,6 +120,51 @@ export const MaterialRow = styled.div`
 
     &:hover {
         color: ${themeVars.layout.onSurface.primary};
+    }
+
+    &[data-stretch='true'] {
+        flex: 1;
+        justify-content: center;
+    }
+
+    &[data-whitespace='xs'] {
+        padding-left: ${themeVars.spacing.xs};
+        padding-right: ${themeVars.spacing.xs};
+    }
+
+    &[data-whitespace='s'] {
+        padding-left: ${themeVars.spacing.s};
+        padding-right: ${themeVars.spacing.s};
+    }
+
+    &[data-whitespace='m'] {
+        padding-left: ${themeVars.spacing.m};
+        padding-right: ${themeVars.spacing.m};
+    }
+
+    &[data-whitespace='ml'] {
+        padding-left: ${themeVars.spacing.ml};
+        padding-right: ${themeVars.spacing.ml};
+    }
+
+    &[data-whitespace='l'] {
+        padding-left: ${themeVars.spacing.l};
+        padding-right: ${themeVars.spacing.l};
+    }
+
+    &[data-whitespace='xl'] {
+        padding-left: ${themeVars.spacing.xl};
+        padding-right: ${themeVars.spacing.xl};
+    }
+
+    &[data-whitespace='xxl'] {
+        padding-left: ${themeVars.spacing.xxl};
+        padding-right: ${themeVars.spacing.xxl};
+    }
+
+    &[data-whitespace='xxxl'] {
+        padding-left: ${themeVars.spacing.xxxl};
+        padding-right: ${themeVars.spacing.xxxl};
     }
 
     transition: color ${themeVars.animation.duration.fast} ${themeVars.animation.timing.easeOut};

@@ -10,7 +10,7 @@ describe('ImageInputWithSamples', () => {
         expect(() => {
             render(
                 <ThemeProvider theme={testTheme}>
-                    <ImageInputWithSamples onChange={() => {}} />
+                    <ImageInputWithSamples onUpload={() => {}} samples={[]} />
                 </ThemeProvider>,
             );
         }).not.toThrow();

@@ -3,6 +3,46 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.13](https://github.com/HautechAI/webui/compare/@hautechai/webui.aspectratio@2.1.12...@hautechai/webui.aspectratio@2.1.13) (2025-08-19)
+
+**Note:** Version bump only for package @hautechai/webui.aspectratio
+
+## [2.1.12](https://github.com/HautechAI/webui/compare/@hautechai/webui.aspectratio@2.1.11...@hautechai/webui.aspectratio@2.1.12) (2025-08-18)
+
+**Note:** Version bump only for package @hautechai/webui.aspectratio
+
+## [2.1.11](https://github.com/HautechAI/webui/compare/@hautechai/webui.aspectratio@2.1.10...@hautechai/webui.aspectratio@2.1.11) (2025-08-18)
+
+**Note:** Version bump only for package @hautechai/webui.aspectratio
+
+## [2.1.10](https://github.com/HautechAI/webui/compare/@hautechai/webui.aspectratio@2.1.9...@hautechai/webui.aspectratio@2.1.10) (2025-08-17)
+
+**Note:** Version bump only for package @hautechai/webui.aspectratio
+
+## [2.1.9](https://github.com/HautechAI/webui/compare/@hautechai/webui.aspectratio@2.1.8...@hautechai/webui.aspectratio@2.1.9) (2025-08-17)
+
+**Note:** Version bump only for package @hautechai/webui.aspectratio
+
+## [2.1.8](https://github.com/HautechAI/webui/compare/@hautechai/webui.aspectratio@2.1.7...@hautechai/webui.aspectratio@2.1.8) (2025-08-17)
+
+**Note:** Version bump only for package @hautechai/webui.aspectratio
+
+## [2.1.7](https://github.com/HautechAI/webui/compare/@hautechai/webui.aspectratio@2.1.6...@hautechai/webui.aspectratio@2.1.7) (2025-08-17)
+
+**Note:** Version bump only for package @hautechai/webui.aspectratio
+
+## [2.1.6](https://github.com/HautechAI/webui/compare/@hautechai/webui.aspectratio@2.1.5...@hautechai/webui.aspectratio@2.1.6) (2025-08-17)
+
+**Note:** Version bump only for package @hautechai/webui.aspectratio
+
+## [2.1.5](https://github.com/HautechAI/webui/compare/@hautechai/webui.aspectratio@2.1.4...@hautechai/webui.aspectratio@2.1.5) (2025-08-17)
+
+**Note:** Version bump only for package @hautechai/webui.aspectratio
+
+## [2.1.4](https://github.com/HautechAI/webui/compare/@hautechai/webui.aspectratio@2.1.3...@hautechai/webui.aspectratio@2.1.4) (2025-08-17)
+
+**Note:** Version bump only for package @hautechai/webui.aspectratio
+
 ## [2.1.3](https://github.com/HautechAI/webui/compare/@hautechai/webui.aspectratio@2.1.2...@hautechai/webui.aspectratio@2.1.3) (2025-08-17)
 
 ### Bug Fixes

@@ -1,3 +1,4 @@
+import React from 'react';
 import { fn } from '@storybook/test';
 
 import { PlaceholderIcon } from '../../../components/Icon/src';
@@ -14,10 +15,10 @@ export default {
     args: {
         trailingIcon: <PlaceholderIcon />,
         leadingIcon: <PlaceholderIcon />,
-        onClick: fn() as any,
+        onClick: fn() as React.MouseEventHandler<HTMLButtonElement>,
     },
     decorators: [
-        (Story: any) => (
+        (Story: React.ComponentType) => (
             <Box width={150}>
                 <Story />
             </Box>

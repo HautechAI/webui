@@ -1,5 +1,5 @@
-import { describe, it, expect } from 'vitest';
-import { render, screen } from '@testing-library/react';
+import { describe, it, expect, vi } from 'vitest';
+import { render, screen, fireEvent } from '@testing-library/react';
 import React from 'react';
 import { PropertyBlock } from '../src/PropertyBlock';
 import { ThemeProvider } from '../../ThemeProvider/src';
@@ -22,7 +22,7 @@ describe('PropertyBlock', () => {
                 <PropertyBlock />
             </ThemeProvider>,
         );
-        
+
         expect(screen.getByText('Property')).toBeInTheDocument();
         expect(screen.getByText('Content placeholder')).toBeInTheDocument();
     });
@@ -33,7 +33,7 @@ describe('PropertyBlock', () => {
                 <PropertyBlock>Custom content</PropertyBlock>
             </ThemeProvider>,
         );
-        
+
         expect(screen.getByText('Property')).toBeInTheDocument();
         expect(screen.getByText('Custom content')).toBeInTheDocument();
         expect(screen.queryByText('Content placeholder')).not.toBeInTheDocument();
@@ -45,7 +45,7 @@ describe('PropertyBlock', () => {
                 <PropertyBlock removable />
             </ThemeProvider>,
         );
-        
+
         const buttons = screen.getAllByRole('button');
         expect(buttons).toHaveLength(1);
     });
@@ -56,7 +56,7 @@ describe('PropertyBlock', () => {
                 <PropertyBlock removable={false} />
             </ThemeProvider>,
         );
-        
+
         expect(screen.queryByRole('button')).not.toBeInTheDocument();
     });
 
@@ -68,9 +68,79 @@ describe('PropertyBlock', () => {
                 </PropertyBlock>
             </ThemeProvider>,
         );
-        
+
         expect(screen.getByText('Property')).toBeInTheDocument();
         expect(screen.queryByText('Custom content')).not.toBeInTheDocument();
         expect(screen.queryByText('Content placeholder')).not.toBeInTheDocument();
+    });
+
+    it('should render with custom label when provided', () => {
+        render(
+            <ThemeProvider theme={testTheme}>
+                <PropertyBlock label="Custom Label" />
+            </ThemeProvider>,
+        );
+
+        expect(screen.getByText('Custom Label')).toBeInTheDocument();
+        expect(screen.queryByText('Property')).not.toBeInTheDocument();
+    });
+
+    it('should use default label when not provided', () => {
+        render(
+            <ThemeProvider theme={testTheme}>
+                <PropertyBlock />
+            </ThemeProvider>,
+        );
+
+        expect(screen.getByText('Property')).toBeInTheDocument();
+    });
+
+    it('should render custom label with removed state styling', () => {
+        render(
+            <ThemeProvider theme={testTheme}>
+                <PropertyBlock label="Test Property" removed />
+            </ThemeProvider>,
+        );
+
+        expect(screen.getByText('Test Property')).toBeInTheDocument();
+    });
+
+    it('should call onToggle when remove/add button is clicked', () => {
+        const handleToggle = vi.fn();
+        render(
+            <ThemeProvider theme={testTheme}>
+                <PropertyBlock removable onToggle={handleToggle} />
+            </ThemeProvider>,
+        );
+
+        const button = screen.getByRole('button');
+        fireEvent.click(button);
+
+        expect(handleToggle).toHaveBeenCalledTimes(1);
+    });
+
+    it('should not call onToggle when button is clicked and onToggle is not provided', () => {
+        render(
+            <ThemeProvider theme={testTheme}>
+                <PropertyBlock removable />
+            </ThemeProvider>,
+        );
+
+        const button = screen.getByRole('button');
+        expect(() => fireEvent.click(button)).not.toThrow();
+    });
+
+    it('should call onToggle when button is clicked in removed state', () => {
+        const handleToggle = vi.fn();
+        render(
+            <ThemeProvider theme={testTheme}>
+                <PropertyBlock removable removed onToggle={handleToggle} />
+            </ThemeProvider>,
+        );
+
+        const button = screen.getByRole('button');
+        fireEvent.click(button);
+
+        expect(handleToggle).toHaveBeenCalledTimes(1);
     });
 });

@@ -35,7 +35,7 @@ export const Avatar = (props: AvatarProps) => {
                     if (React.isValidElement(child)) {
                         return React.cloneElement(child, {
                             size: 20,
-                        } as any);
+                        } as Partial<{ size: number }>);
                     }
                     return child;
                 }) || <Typography variant="H1">{props.initials}</Typography>

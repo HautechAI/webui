@@ -1,15 +1,18 @@
 {
     "name": "@hautechai/webui.textbutton",
     "description": "",
-    "version": "2.1.3",
+    "version": "2.1.9",
     "type": "module",
     "main": "src/index.tsx",
     "publishConfig": {
         "directory": "dist",
-        "linkDirectory": false
+        "linkDirectory": false,
+        "access": "public"
     },
     "scripts": {
-        "prepack": "node ../../scripts/build-component.mjs"
+        "prepack": "node ../../scripts/build-component.mjs",
+        "lint:tsc": "tsc --noEmit",
+        "lint": "pnpm lint:tsc"
     },
     "author": "HautechAI",
     "dependencies": {

@@ -11,7 +11,7 @@ export default {
     },
     tags: ['autodocs'],
     argTypes: {},
-    args: { onClick: fn() as any },
+    args: { onClick: fn() as React.MouseEventHandler<HTMLButtonElement> },
 };
 
 export const FilledMedium = {

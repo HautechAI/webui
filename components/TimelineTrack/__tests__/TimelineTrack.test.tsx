@@ -10,15 +10,8 @@ describe('TimelineTrack', () => {
             bodyRef: vi.fn(),
         };
 
-        const { container } = render(
-            <TimelineTrack
-                start={0}
-                duration={5}
-                scale={20}
-                {...mockRefs}
-            />
-        );
-        
+        const { container } = render(<TimelineTrack start={0} duration={5} scale={20} {...mockRefs} />);
+
         // Component should render successfully
         expect(container.firstChild).toBeInTheDocument();
     });
@@ -26,20 +19,12 @@ describe('TimelineTrack', () => {
     it('shows handlers when selected', () => {
         const mockRefs = {
             startHandlerRef: vi.fn(),
-            endHandlerRef: vi.fn(),  
+            endHandlerRef: vi.fn(),
             bodyRef: vi.fn(),
         };
 
-        const { container } = render(
-            <TimelineTrack
-                start={0}
-                duration={5}
-                scale={20}
-                selected={true}
-                {...mockRefs}
-            />
-        );
-        
+        const { container } = render(<TimelineTrack start={0} duration={5} scale={20} selected={true} {...mockRefs} />);
+
         // When selected, handlers should be visible via CSS
         const track = container.querySelector('[style*="width: 100px"]');
         expect(track).toBeInTheDocument();
@@ -55,15 +40,9 @@ describe('TimelineTrack', () => {
         };
 
         const { container } = render(
-            <TimelineTrack
-                start={0}
-                duration={5}
-                scale={20}
-                selected={false}
-                {...mockRefs}
-            />
+            <TimelineTrack start={0} duration={5} scale={20} selected={false} {...mockRefs} />,
         );
-        
+
         // Handlers are always present in DOM but hidden via CSS when not selected/hovered
         const track = container.querySelector('[style*="width: 100px"]');
         expect(track).toBeInTheDocument();

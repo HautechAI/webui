@@ -1,6 +1,6 @@
 import { type ThemeType } from '@hautechai/webui.themeprovider';
 import type { SVGProps } from 'react';
-import { Paths } from 'type-fest';
+import { type Paths } from 'type-fest';
 import { resolveIconColor } from '../../color';
 
 const SvgSmall = (
@@ -14,7 +14,6 @@ const SvgSmall = (
             xmlns="http://www.w3.org/2000/svg"
             style={{ width: props.size ?? '24px', height: props.size ?? '24px' }}
             viewBox="0 0 20 20"
-            
             fill="none"
             {...props}
         >

@@ -1,26 +1,15 @@
-import type { Paths } from 'type-fest';
-import { cssVar, type ThemeType } from '@hautechai/webui.themeprovider';
+import { resolveColor, type IconColorProp } from '@hautechai/webui.themeprovider';
 
 // Shared color prop type for all icons
-export type IconColorProp =
-    | Paths<ThemeType['palette'], { leavesOnly: true }>
-    | 'currentColor'
-    | `#${string}`
-    | `rgba(${string})`;
+export { IconColorProp };
 
 /**
  * Resolve a color variable or value for icon fills/strokes.
- * - If `color` is a palette path, returns the value from theme.palette
- * - If `color` is a literal (hex/rgba/currentColor), returns it as-is
- * - If `color` is undefined, falls back to 'currentColor'
+ * This function delegates to the shared resolveColor utility in ThemeProvider.
+ *
+ * @param color - Color value (theme path, hex, rgba, or currentColor)
+ * @returns Resolved color value, defaults to 'currentColor' for icons
  */
 export function resolveIconColor(color?: IconColorProp): string {
-    if (!color) return 'currentColor';
-
-    // Literal colors and currentColor pass through
-    if (color === 'currentColor') return color;
-    if (typeof color === 'string' && (color.startsWith('#') || color.startsWith('rgba('))) return color;
-
-    // Otherwise treat as a theme palette path
-    return cssVar(`palette.${String(color)}`);
+    return resolveColor(color, 'currentColor');
 }

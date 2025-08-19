@@ -31,10 +31,7 @@ describe('LayerTreeItemChild', () => {
     it('should render with optional input component', () => {
         const { getByTestId } = render(
             <ThemeProvider theme={testTheme}>
-                <LayerTreeItemChild 
-                    label="Test Label" 
-                    input={<MockInput />}
-                />
+                <LayerTreeItemChild label="Test Label" input={<MockInput />} />
             </ThemeProvider>,
         );
 
@@ -45,10 +42,7 @@ describe('LayerTreeItemChild', () => {
         const mockOnSelect = vi.fn();
         const { getByText } = render(
             <ThemeProvider theme={testTheme}>
-                <LayerTreeItemChild 
-                    label="Test Label"
-                    onSelect={mockOnSelect}
-                />
+                <LayerTreeItemChild label="Test Label" onSelect={mockOnSelect} />
             </ThemeProvider>,
         );
 
@@ -65,7 +59,7 @@ describe('LayerTreeItemChild', () => {
 
         const textElement = getByText('Test Label');
         fireEvent.doubleClick(textElement);
-        
+
         // Should have an input element when in edit mode
         const input = container.querySelector('input');
         expect(input).toBeInTheDocument();
@@ -76,25 +70,22 @@ describe('LayerTreeItemChild', () => {
         const mockOnChange = vi.fn();
         const { getByText, container } = render(
             <ThemeProvider theme={testTheme}>
-                <LayerTreeItemChild 
-                    label="Test Label"
-                    onChange={mockOnChange}
-                />
+                <LayerTreeItemChild label="Test Label" onChange={mockOnChange} />
             </ThemeProvider>,
         );
 
         // Start editing
         const textElement = getByText('Test Label');
         fireEvent.doubleClick(textElement);
-        
+
         // Change the text
         const input = container.querySelector('input');
         if (input) {
             fireEvent.change(input, { target: { value: 'New Label' } });
-            
+
             // Finish editing by pressing Enter
             fireEvent.keyDown(input, { key: 'Enter' });
-            
+
             expect(mockOnChange).toHaveBeenCalledWith('New Label');
         }
     });
@@ -103,17 +94,14 @@ describe('LayerTreeItemChild', () => {
         const mockOnSelect = vi.fn();
         const { getByText, container } = render(
             <ThemeProvider theme={testTheme}>
-                <LayerTreeItemChild 
-                    label="Test Label"
-                    onSelect={mockOnSelect}
-                />
+                <LayerTreeItemChild label="Test Label" onSelect={mockOnSelect} />
             </ThemeProvider>,
         );
 
         // Start editing
         const textElement = getByText('Test Label');
         fireEvent.doubleClick(textElement);
-        
+
         // Click on the container while editing
         const containerElement = container.firstChild;
         if (containerElement) {
@@ -125,10 +113,7 @@ describe('LayerTreeItemChild', () => {
     it('should apply selected styling when selected prop is true', () => {
         const { container } = render(
             <ThemeProvider theme={testTheme}>
-                <LayerTreeItemChild 
-                    label="Test Label"
-                    selected={true}
-                />
+                <LayerTreeItemChild label="Test Label" selected={true} />
             </ThemeProvider>,
         );
 
