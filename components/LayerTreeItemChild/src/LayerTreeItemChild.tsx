@@ -42,29 +42,33 @@ const Content = styled.div`
     padding-right: 8px;
     padding-top: 4px;
     padding-bottom: 4px;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
     display: flex;
 `;
 
 const NameForm = styled.div`
+    flex: 1;
     align-self: stretch;
     justify-content: flex-start;
     align-items: center;
     gap: 12px;
     display: inline-flex;
+    min-width: 0; /* Allow shrinking */
 `;
 
 const EditableTextContainer = styled.div`
-    flex: 1 1 0;
+    flex: 1;
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
     display: inline-flex;
+    min-width: 0; /* Allow shrinking to enable text truncation */
+    overflow: hidden; /* Ensure container doesn't overflow */
 `;
 
 const InputContainer = styled.div`
-    flex: 1 1 0;
+    flex-shrink: 0; /* Fixed size, don't shrink */
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
