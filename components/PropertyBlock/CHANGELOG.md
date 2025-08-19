@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.16](https://github.com/HautechAI/webui/compare/@hautechai/webui.propertyblock@2.1.15...@hautechai/webui.propertyblock@2.1.16) (2025-08-19)
+
+### Bug Fixes
+
+- property block width ([9663caf](https://github.com/HautechAI/webui/commit/9663caf5791779672890e8823d73f1908d86a807))
+
 ## [2.1.15](https://github.com/HautechAI/webui/compare/@hautechai/webui.propertyblock@2.1.14...@hautechai/webui.propertyblock@2.1.15) (2025-08-19)
 
 **Note:** Version bump only for package @hautechai/webui.propertyblock
