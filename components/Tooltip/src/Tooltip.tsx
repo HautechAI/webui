@@ -36,6 +36,7 @@ type TooltipBaseProps = {
     position?: 'right' | 'left' | 'top' | 'bottom';
     reposition?: boolean;
     boundaryElement?: HTMLElement;
+    zIndex?: number;
 };
 
 type TooltipSmallProps = TooltipBaseProps & {
@@ -82,6 +83,7 @@ export const Tooltip = (props: TooltipProps) => {
             <TinyPopover
                 reposition={props.reposition ?? false}
                 boundaryElement={props.boundaryElement}
+                containerStyle={{ zIndex: (props.zIndex ?? 1000).toString() }}
                 content={
                     <TooltipContent
                         onMouseEnter={cancelHideTooltip}
