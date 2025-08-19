@@ -9,7 +9,9 @@ export default {
         layout: 'centered',
     },
     tags: ['autodocs'],
-    argTypes: {},
+    argTypes: {
+        onToggle: { action: 'toggled' },
+    },
     decorators: [
         (Story: React.ComponentType) => (
             <Box width={300}>
@@ -33,6 +35,7 @@ export const Removable = {
     args: {
         removable: true,
         children: 'This property block can be removed.',
+        onToggle: () => alert('Toggle button clicked!'),
     },
 };
 
@@ -62,5 +65,15 @@ export const CustomLabelRemovable = {
         label: 'Image Settings',
         removable: true,
         children: 'A custom labeled property that can be removed.',
+        onToggle: () => console.log('Image Settings toggled'),
+    },
+};
+
+export const WithToggleCallback = {
+    args: {
+        label: 'Interactive Property',
+        removable: true,
+        children: 'Click the minus button to see the onToggle callback in action.',
+        onToggle: () => alert('onToggle callback executed!'),
     },
 };
