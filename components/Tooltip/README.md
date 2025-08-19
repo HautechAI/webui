@@ -29,6 +29,7 @@ yarn add @hautechai/webui.tooltip
 | size            | 'small' \| 'medium'                    | Optional size variant affecting padding and appearance                       |
 | buttonLabel     | string                                 | Optional button label (only available when size is 'medium')                 |
 | onClick         | () => void                             | Optional click handler for button (only available when size is 'medium')     |
+| zIndex          | number                                 | Optional z-index for tooltip layering (defaults to 1000)                     |
 
 ## Usage Example
 
