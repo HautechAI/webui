@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.12](https://github.com/HautechAI/webui/compare/@hautechai/webui.contextmenu@2.1.11...@hautechai/webui.contextmenu@2.1.12) (2025-08-19)
+
+**Note:** Version bump only for package @hautechai/webui.contextmenu
+
 ## [2.1.11](https://github.com/HautechAI/webui/compare/@hautechai/webui.contextmenu@2.1.10...@hautechai/webui.contextmenu@2.1.11) (2025-08-18)
 
 **Note:** Version bump only for package @hautechai/webui.contextmenu

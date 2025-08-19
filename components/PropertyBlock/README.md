@@ -26,6 +26,7 @@ yarn add @hautechai/webui.propertyblock
 | removed   | boolean         | When true, hides content and shows add button, when false shows content and remove button (defaults to false) |
 | className | string          | Optional CSS class name for custom styling                                                                    |
 | label     | string          | The text displayed in the property header (defaults to "Property")                                            |
+| onToggle  | () => void      | Optional callback function called when the remove/add button is clicked                                       |
 
 ## Usage Example
 

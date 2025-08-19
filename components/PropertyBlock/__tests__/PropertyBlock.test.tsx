@@ -1,5 +1,5 @@
-import { describe, it, expect } from 'vitest';
-import { render, screen } from '@testing-library/react';
+import { describe, it, expect, vi } from 'vitest';
+import { render, screen, fireEvent } from '@testing-library/react';
 import React from 'react';
 import { PropertyBlock } from '../src/PropertyBlock';
 import { ThemeProvider } from '../../ThemeProvider/src';
@@ -103,5 +103,44 @@ describe('PropertyBlock', () => {
         );
 
         expect(screen.getByText('Test Property')).toBeInTheDocument();
+    });
+
+    it('should call onToggle when remove/add button is clicked', () => {
+        const handleToggle = vi.fn();
+        render(
+            <ThemeProvider theme={testTheme}>
+                <PropertyBlock removable onToggle={handleToggle} />
+            </ThemeProvider>,
+        );
+
+        const button = screen.getByRole('button');
+        fireEvent.click(button);
+
+        expect(handleToggle).toHaveBeenCalledTimes(1);
+    });
+
+    it('should not call onToggle when button is clicked and onToggle is not provided', () => {
+        render(
+            <ThemeProvider theme={testTheme}>
+                <PropertyBlock removable />
+            </ThemeProvider>,
+        );
+
+        const button = screen.getByRole('button');
+        expect(() => fireEvent.click(button)).not.toThrow();
+    });
+
+    it('should call onToggle when button is clicked in removed state', () => {
+        const handleToggle = vi.fn();
+        render(
+            <ThemeProvider theme={testTheme}>
+                <PropertyBlock removable removed onToggle={handleToggle} />
+            </ThemeProvider>,
+        );
+
+        const button = screen.getByRole('button');
+        fireEvent.click(button);
+
+        expect(handleToggle).toHaveBeenCalledTimes(1);
     });
 });

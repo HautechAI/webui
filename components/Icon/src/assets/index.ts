@@ -81,3 +81,5 @@ export * from './workflow';
 export * from './play';
 export * from './playSquare';
 export * from './stop';
+export * from './x';
+export * from './y';
