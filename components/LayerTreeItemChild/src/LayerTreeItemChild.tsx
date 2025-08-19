@@ -18,7 +18,7 @@ export interface LayerTreeItemChildProps {
 
 const Container = styled.div<{ selected: boolean }>`
     width: 100%;
-    height: 28px;
+    height: 36px;
     justify-content: flex-start;
     align-items: center;
     display: inline-flex;
@@ -33,10 +33,12 @@ const Container = styled.div<{ selected: boolean }>`
 const ChildIndent = styled.div`
     width: 32px;
     align-self: stretch;
+    flex-shrink: 0;
 `;
 
 const Content = styled.div`
     flex: 1 1 0;
+    gap: ${themeVars.spacing.m};
     align-self: stretch;
     padding-left: 8px;
     padding-right: 8px;
@@ -45,16 +47,7 @@ const Content = styled.div`
     justify-content: flex-start;
     align-items: center;
     display: flex;
-`;
-
-const NameForm = styled.div`
-    flex: 1;
-    align-self: stretch;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 12px;
-    display: inline-flex;
-    min-width: 0; /* Allow shrinking */
+    overflow: hidden;
 `;
 
 const EditableTextContainer = styled.div`
@@ -112,19 +105,17 @@ export const LayerTreeItemChild = (props: LayerTreeItemChildProps) => {
         <Container selected={selected} onClick={handleContainerClick}>
             <ChildIndent />
             <Content>
-                <NameForm>
-                    <EditableTextContainer>
-                        <EditableText
-                            text={currentLabel}
-                            mode={isEditing ? 'edit' : 'view'}
-                            textStyle={selected ? 'medium-emphasized' : 'medium-regular'}
-                            onStartEditing={handleStartEditing}
-                            onChange={handleTextChange}
-                            onFinishEditing={handleFinishEditing}
-                        />
-                    </EditableTextContainer>
-                    {input && <InputContainer>{input}</InputContainer>}
-                </NameForm>
+                <EditableTextContainer>
+                    <EditableText
+                        text={currentLabel}
+                        mode={isEditing ? 'edit' : 'view'}
+                        textStyle={selected ? 'medium-emphasized' : 'medium-regular'}
+                        onStartEditing={handleStartEditing}
+                        onChange={handleTextChange}
+                        onFinishEditing={handleFinishEditing}
+                    />
+                </EditableTextContainer>
+                {input && <InputContainer>{input}</InputContainer>}
             </Content>
         </Container>
     );
