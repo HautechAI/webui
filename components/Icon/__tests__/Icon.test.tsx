@@ -1,7 +1,18 @@
 import { describe, it, expect } from 'vitest';
 import { render } from '@testing-library/react';
 import React from 'react';
-import { CheckIcon, WorkflowIcon, UnlinkIcon, SparkleIcon, XIcon, YIcon } from '../src/assets';
+import {
+    CheckIcon,
+    WorkflowIcon,
+    UnlinkIcon,
+    SparkleIcon,
+    XIcon,
+    YIcon,
+    WIcon,
+    HIcon,
+    AngleIcon,
+    OptionsIcon,
+} from '../src/assets';
 import { ThemeProvider } from '../../ThemeProvider/src';
 import { testTheme } from '../../test-theme';
 
@@ -81,6 +92,46 @@ describe('Icon', () => {
             render(
                 <ThemeProvider theme={testTheme}>
                     <YIcon />
+                </ThemeProvider>,
+            );
+        }).not.toThrow();
+    });
+
+    it('should render WIcon without crashing', () => {
+        expect(() => {
+            render(
+                <ThemeProvider theme={testTheme}>
+                    <WIcon />
+                </ThemeProvider>,
+            );
+        }).not.toThrow();
+    });
+
+    it('should render HIcon without crashing', () => {
+        expect(() => {
+            render(
+                <ThemeProvider theme={testTheme}>
+                    <HIcon />
+                </ThemeProvider>,
+            );
+        }).not.toThrow();
+    });
+
+    it('should render AngleIcon without crashing', () => {
+        expect(() => {
+            render(
+                <ThemeProvider theme={testTheme}>
+                    <AngleIcon />
+                </ThemeProvider>,
+            );
+        }).not.toThrow();
+    });
+
+    it('should render OptionsIcon without crashing', () => {
+        expect(() => {
+            render(
+                <ThemeProvider theme={testTheme}>
+                    <OptionsIcon />
                 </ThemeProvider>,
             );
         }).not.toThrow();

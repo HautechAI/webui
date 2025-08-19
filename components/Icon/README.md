@@ -52,6 +52,10 @@ import {
   PauseIcon,
   SettingsIcon,
   PlaySquareIcon,
+  WIcon,
+  HIcon,
+  AngleIcon,
+  OptionsIcon
   XIcon,
   YIcon
 } from '@hautechai/webui.icon';
@@ -69,4 +73,10 @@ import {
 
 // Renamed icon
 <PlaySquareIcon size={24} />
+
+// New icons
+<WIcon size={24} />
+<HIcon size={24} />
+<AngleIcon size={24} />
+<OptionsIcon size={24} />
 ```
