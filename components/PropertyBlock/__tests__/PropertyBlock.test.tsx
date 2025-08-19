@@ -73,4 +73,35 @@ describe('PropertyBlock', () => {
         expect(screen.queryByText('Custom content')).not.toBeInTheDocument();
         expect(screen.queryByText('Content placeholder')).not.toBeInTheDocument();
     });
+
+    it('should render with custom label when provided', () => {
+        render(
+            <ThemeProvider theme={testTheme}>
+                <PropertyBlock label="Custom Label" />
+            </ThemeProvider>,
+        );
+
+        expect(screen.getByText('Custom Label')).toBeInTheDocument();
+        expect(screen.queryByText('Property')).not.toBeInTheDocument();
+    });
+
+    it('should use default label when not provided', () => {
+        render(
+            <ThemeProvider theme={testTheme}>
+                <PropertyBlock />
+            </ThemeProvider>,
+        );
+
+        expect(screen.getByText('Property')).toBeInTheDocument();
+    });
+
+    it('should render custom label with removed state styling', () => {
+        render(
+            <ThemeProvider theme={testTheme}>
+                <PropertyBlock label="Test Property" removed />
+            </ThemeProvider>,
+        );
+
+        expect(screen.getByText('Test Property')).toBeInTheDocument();
+    });
 });
