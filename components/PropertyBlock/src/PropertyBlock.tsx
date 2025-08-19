@@ -53,10 +53,11 @@ export type PropertyBlockProps = {
     removed?: boolean;
     className?: string;
     label?: string;
+    onToggle?: () => void;
 };
 
 export const PropertyBlock = (props: PropertyBlockProps) => {
-    const { children, removable = false, removed = false, className, label = 'Property' } = props;
+    const { children, removable = false, removed = false, className, label = 'Property', onToggle } = props;
 
     return (
         <Container className={className}>
@@ -69,7 +70,14 @@ export const PropertyBlock = (props: PropertyBlockProps) => {
                         {label}
                     </Typography>
                 </Label>
-                {removable && <IconButton variant="flat" size="xsmall" icon={removed ? <PlusIcon /> : <MinusIcon />} />}
+                {removable && (
+                    <IconButton
+                        variant="flat"
+                        size="xsmall"
+                        icon={removed ? <PlusIcon /> : <MinusIcon />}
+                        onClick={onToggle}
+                    />
+                )}
             </PropertyHeader>
             {!removed && (
                 <Content>
