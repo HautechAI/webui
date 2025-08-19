@@ -1,3 +1,4 @@
+import React from 'react';
 import { fn } from '@storybook/test';
 
 import { LayerTreeItemChild } from '../../../components/LayerTreeItemChild/src';
@@ -14,11 +15,11 @@ export default {
     tags: ['autodocs'],
     argTypes: {},
     args: {
-        onChange: fn() as any,
-        onSelect: fn() as any,
+        onChange: fn() as (value: string) => void,
+        onSelect: fn() as () => void,
     },
     decorators: [
-        (Story: any) => (
+        (Story: React.ComponentType) => (
             <Box width={200}>
                 <Story />
             </Box>
