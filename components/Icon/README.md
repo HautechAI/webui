@@ -51,12 +51,16 @@ import {
   PlayIcon,
   PauseIcon,
   SettingsIcon,
-  PlaySquareIcon
+  PlaySquareIcon,
+  XIcon,
+  YIcon
 } from '@hautechai/webui.icon';
 
 // Basic usage
 <SearchIcon size={24} />
 <RepeatIcon size={20} />
+<XIcon size={24} />
+<YIcon size={24} />
 
 // Using style variants
 <PlayIcon size={24} style="outlined" />
