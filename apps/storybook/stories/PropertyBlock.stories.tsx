@@ -65,7 +65,7 @@ export const CustomLabelRemovable = {
         label: 'Image Settings',
         removable: true,
         children: 'A custom labeled property that can be removed.',
-        onToggle: () => console.log('Image Settings toggled'),
+        onToggle: () => alert('Image Settings toggled'),
     },
 };
 
