@@ -66,31 +66,19 @@ const StyledTimeLabel = styled(Typography)`
 
 // Helper function to determine appropriate time intervals for numbered graduations
 const getTimeInterval = (totalSeconds: number, numberedGraduationsDistance: number, scale: number): number => {
-    // Calculate how many numbered graduations we can fit
-    const totalWidth = totalSeconds * scale;
-    const maxGraduations = Math.floor(totalWidth / numberedGraduationsDistance);
+    // Available scale division values as specified
+    const scaleIntervals = [0.01, 0.1, 1, 10];
 
-    if (maxGraduations <= 1) return totalSeconds;
-
-    // Calculate ideal time interval
-    const idealInterval = totalSeconds / maxGraduations;
-
-    // Choose from standard intervals: 0.1, 0.2, 0.5, 1, 2, 5, 10, 20, 50, 100, etc.
-    const standardIntervals = [0.1, 0.2, 0.5, 1, 2, 5, 10, 20, 50, 100, 200, 500, 1000];
-
-    // Find the best standard interval that's close to our ideal
-    let bestInterval = standardIntervals[0];
-    let minDiff = Math.abs(idealInterval - bestInterval);
-
-    for (const interval of standardIntervals) {
-        const diff = Math.abs(idealInterval - interval);
-        if (diff < minDiff) {
-            minDiff = diff;
-            bestInterval = interval;
+    // Find the smallest interval where distance between numbered graduations >= numberedGraduationsDistance
+    for (const interval of scaleIntervals) {
+        const distanceBetweenGraduations = interval * scale;
+        if (distanceBetweenGraduations >= numberedGraduationsDistance) {
+            return interval;
         }
     }
 
-    return bestInterval;
+    // Fallback to the largest interval if none satisfy the condition
+    return scaleIntervals[scaleIntervals.length - 1];
 };
 
 // Helper function to format time labels
