@@ -56,7 +56,7 @@ const SVPanel = styled.div`
     user-select: none;
 
     &:focus {
-        box-shadow: 0 0 0 2px ${themeVars.actions.primary};
+        outline: none;
     }
 `;
 
@@ -128,7 +128,7 @@ const SliderTrack = styled.div`
     user-select: none;
 
     &:focus {
-        box-shadow: 0 0 0 2px ${themeVars.actions.primary};
+        outline: none;
     }
 `;
 
