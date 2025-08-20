@@ -18,6 +18,7 @@ import {
     EyeClosedIcon,
     TextIcon,
     ImageIcon,
+    PlayCircleIcon,
 } from '../src/assets';
 import { ThemeProvider } from '../../ThemeProvider/src';
 import { testTheme } from '../../test-theme';
@@ -198,6 +199,36 @@ describe('Icon', () => {
             render(
                 <ThemeProvider theme={testTheme}>
                     <ImageIcon />
+                </ThemeProvider>,
+            );
+        }).not.toThrow();
+    });
+
+    it('should render PlayCircleIcon without crashing', () => {
+        expect(() => {
+            render(
+                <ThemeProvider theme={testTheme}>
+                    <PlayCircleIcon />
+                </ThemeProvider>,
+            );
+        }).not.toThrow();
+    });
+
+    it('should render PlayCircleIcon with outlined style', () => {
+        expect(() => {
+            render(
+                <ThemeProvider theme={testTheme}>
+                    <PlayCircleIcon style="outlined" />
+                </ThemeProvider>,
+            );
+        }).not.toThrow();
+    });
+
+    it('should render PlayCircleIcon with bold style', () => {
+        expect(() => {
+            render(
+                <ThemeProvider theme={testTheme}>
+                    <PlayCircleIcon style="bold" />
                 </ThemeProvider>,
             );
         }).not.toThrow();
