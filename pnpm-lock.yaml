@@ -968,6 +968,16 @@ importers:
                 version: link:../Typography
         publishDirectory: dist
 
+    components/TimelineRuler:
+        dependencies:
+            '@hautechai/webui.themeprovider':
+                specifier: workspace:^
+                version: link:../ThemeProvider
+            '@hautechai/webui.typography':
+                specifier: workspace:^
+                version: link:../Typography
+        publishDirectory: dist
+
     components/TimelineTrack:
         dependencies:
             '@hautechai/webui.icon':
