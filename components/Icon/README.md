@@ -63,7 +63,13 @@ import {
   EyeIcon,
   EyeClosedIcon,
   TextIcon,
-  ImageIcon
+  ImageIcon,
+  AlignTextLeftIcon,
+  AlignTextCenterIcon,
+  AlignTextRightIcon,
+  AlignTopIcon,
+  AlignMiddleIcon,
+  AlignBottomIcon
 } from '@hautechai/webui.icon';
 
 // Basic usage
@@ -79,6 +85,14 @@ import {
 <EyeClosedIcon size={24} />
 <TextIcon size={24} />
 <ImageIcon size={24} />
+
+// Alignment icons
+<AlignTextLeftIcon size={24} />
+<AlignTextCenterIcon size={24} />
+<AlignTextRightIcon size={24} />
+<AlignTopIcon size={24} />
+<AlignMiddleIcon size={24} />
+<AlignBottomIcon size={24} />
 
 // Using style variants
 <PlayIcon size={24} style="outlined" />

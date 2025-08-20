@@ -18,6 +18,12 @@ import {
     EyeClosedIcon,
     TextIcon,
     ImageIcon,
+    AlignTextLeftIcon,
+    AlignTextCenterIcon,
+    AlignTextRightIcon,
+    AlignTopIcon,
+    AlignMiddleIcon,
+    AlignBottomIcon,
 } from '../src/assets';
 import { ThemeProvider } from '../../ThemeProvider/src';
 import { testTheme } from '../../test-theme';
@@ -198,6 +204,66 @@ describe('Icon', () => {
             render(
                 <ThemeProvider theme={testTheme}>
                     <ImageIcon />
+                </ThemeProvider>,
+            );
+        }).not.toThrow();
+    });
+
+    it('should render AlignTextLeftIcon without crashing', () => {
+        expect(() => {
+            render(
+                <ThemeProvider theme={testTheme}>
+                    <AlignTextLeftIcon />
+                </ThemeProvider>,
+            );
+        }).not.toThrow();
+    });
+
+    it('should render AlignTextCenterIcon without crashing', () => {
+        expect(() => {
+            render(
+                <ThemeProvider theme={testTheme}>
+                    <AlignTextCenterIcon />
+                </ThemeProvider>,
+            );
+        }).not.toThrow();
+    });
+
+    it('should render AlignTextRightIcon without crashing', () => {
+        expect(() => {
+            render(
+                <ThemeProvider theme={testTheme}>
+                    <AlignTextRightIcon />
+                </ThemeProvider>,
+            );
+        }).not.toThrow();
+    });
+
+    it('should render AlignTopIcon without crashing', () => {
+        expect(() => {
+            render(
+                <ThemeProvider theme={testTheme}>
+                    <AlignTopIcon />
+                </ThemeProvider>,
+            );
+        }).not.toThrow();
+    });
+
+    it('should render AlignMiddleIcon without crashing', () => {
+        expect(() => {
+            render(
+                <ThemeProvider theme={testTheme}>
+                    <AlignMiddleIcon />
+                </ThemeProvider>,
+            );
+        }).not.toThrow();
+    });
+
+    it('should render AlignBottomIcon without crashing', () => {
+        expect(() => {
+            render(
+                <ThemeProvider theme={testTheme}>
+                    <AlignBottomIcon />
                 </ThemeProvider>,
             );
         }).not.toThrow();
