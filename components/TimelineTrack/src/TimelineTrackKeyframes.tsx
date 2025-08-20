@@ -108,7 +108,9 @@ const KeyframeContainer = styled.div`
 
 export const TimelineTrackKeyframes = forwardRef<HTMLDivElement, TimelineTrackKeyframesProps>((props, ref) => {
     const { scale, selected = false, keyframes, onMove, onClick, className } = props;
-    const [dragging, setDragging] = useState<{ id: string; startX: number; startTime: number } | null>(null);
+    const [dragging, setDragging] = useState<{ id: string; startX: number; startTime: number; offsetX: number } | null>(
+        null,
+    );
     const timelineRef = useRef<HTMLDivElement>(null);
 
     // Handle keyframe click
@@ -130,14 +132,27 @@ export const TimelineTrackKeyframes = forwardRef<HTMLDivElement, TimelineTrackKe
     );
 
     // Handle mouse down on keyframe for dragging
-    const handleMouseDown = useCallback((e: React.MouseEvent, keyframeId: string, currentTime: number) => {
-        e.preventDefault();
-        setDragging({
-            id: keyframeId,
-            startX: e.clientX,
-            startTime: currentTime,
-        });
-    }, []);
+    const handleMouseDown = useCallback(
+        (e: React.MouseEvent, keyframeId: string, currentTime: number) => {
+            e.preventDefault();
+
+            if (!timelineRef.current) return;
+
+            // Calculate the offset between the mouse click position and the keyframe center
+            const rect = timelineRef.current.getBoundingClientRect();
+            const keyframeCenter = currentTime * scale + 8; // Account for container padding
+            const mouseX = e.clientX - rect.left;
+            const offsetX = mouseX - keyframeCenter;
+
+            setDragging({
+                id: keyframeId,
+                startX: e.clientX,
+                startTime: currentTime,
+                offsetX: offsetX, // Store the offset to maintain relative position
+            });
+        },
+        [scale],
+    );
 
     // Handle mouse move during drag
     const handleMouseMove = useCallback(
@@ -146,7 +161,9 @@ export const TimelineTrackKeyframes = forwardRef<HTMLDivElement, TimelineTrackKe
 
             const rect = timelineRef.current.getBoundingClientRect();
             const relativeX = e.clientX - rect.left - 8; // Account for container padding
-            const newTime = Math.max(0, relativeX / scale);
+            // Subtract the initial offset to maintain the relative cursor position
+            const adjustedX = relativeX - dragging.offsetX;
+            const newTime = Math.max(0, adjustedX / scale);
 
             onMove?.({ id: dragging.id, time: newTime });
         },
@@ -181,8 +198,11 @@ export const TimelineTrackKeyframes = forwardRef<HTMLDivElement, TimelineTrackKe
                     if (index === 0) return null; // No line before first keyframe
 
                     const prevKeyframe = sortedKeyframes[index - 1];
-                    const lineStart = prevKeyframe.time * scale;
-                    const lineWidth = (keyframe.time - prevKeyframe.time) * scale;
+                    // Line starts at the right edge of the previous keyframe (center + half width)
+                    const lineStart = prevKeyframe.time * scale + 8; // Add half of keyframe width (16px / 2 = 8px)
+                    // Line ends at the left edge of the current keyframe (center - half width)
+                    const lineEnd = keyframe.time * scale - 8; // Subtract half of keyframe width
+                    const lineWidth = Math.max(0, lineEnd - lineStart); // Ensure positive width
 
                     // Line is selected if the current keyframe is selected
                     const isLineSelected = keyframe.selected;

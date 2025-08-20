@@ -34,14 +34,14 @@ yarn add @hautechai/webui.timelinetrack
 
 ### TimelineTrackKeyframes
 
-| Parameter | Type                                                   | Description                                                          |
-| --------- | ------------------------------------------------------ | -------------------------------------------------------------------- |
-| scale     | number                                                 | Scale in pixels per second for positioning calculations              |
-| selected  | boolean                                                | Optional. Whether the track is in selected state                     |
-| keyframes | Array<{id: string, time: number, selected: boolean}>  | Array of keyframe objects with id, time in seconds, and selection   |
-| onMove    | (params: {id: string, time: number}) => void          | Optional. Called when a keyframe is dragged to a new time position  |
-| onClick   | (params: {id: string}) => void                        | Optional. Called when a keyframe or connection line is clicked       |
-| className | string                                                 | Optional. Additional CSS class for the container                     |
+| Parameter | Type                                                 | Description                                                        |
+| --------- | ---------------------------------------------------- | ------------------------------------------------------------------ |
+| scale     | number                                               | Scale in pixels per second for positioning calculations            |
+| selected  | boolean                                              | Optional. Whether the track is in selected state                   |
+| keyframes | Array<{id: string, time: number, selected: boolean}> | Array of keyframe objects with id, time in seconds, and selection  |
+| onMove    | (params: {id: string, time: number}) => void         | Optional. Called when a keyframe is dragged to a new time position |
+| onClick   | (params: {id: string}) => void                       | Optional. Called when a keyframe or connection line is clicked     |
+| className | string                                               | Optional. Additional CSS class for the container                   |
 
 ## Usage Examples
 
