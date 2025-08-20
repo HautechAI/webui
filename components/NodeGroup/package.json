@@ -1,0 +1,21 @@
+{
+    "name": "@hautechai/webui.nodegroup",
+    "description": "NodeGroup components for collapsible container with items",
+    "version": "1.0.0",
+    "type": "module",
+    "main": "src/index.tsx",
+    "publishConfig": {
+        "directory": "dist",
+        "linkDirectory": false
+    },
+    "scripts": {
+        "prepack": "node ../../scripts/build-component.mjs"
+    },
+    "author": "HautechAI",
+    "dependencies": {
+        "@hautechai/webui.icon": "workspace:^",
+        "@hautechai/webui.themeprovider": "workspace:^",
+        "@hautechai/webui.typography": "workspace:^"
+    },
+    "license": "Apache-2.0"
+}
