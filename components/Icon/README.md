@@ -36,6 +36,7 @@ Some icons support both `outlined` and `bold` style variants:
 - **GenerateIcon** - Supports `outlined` (default) and `bold` styles
 - **SettingsIcon** - Supports `outlined` (default) and `bold` styles
 - **PlayIcon** - Supports `outlined` (default) and `bold` styles
+- **PlayCircleIcon** - Supports `outlined` (default) and `bold` styles
 - **PauseIcon** - Supports `outlined` (default) and `bold` styles
 - **SkipToStartIcon** - Supports `outlined` (default) and `bold` styles
 - **SkipToEndIcon** - Supports `outlined` (default) and `bold` styles
@@ -49,6 +50,7 @@ Some icons support both `outlined` and `bold` style variants:
 import {
   SearchIcon,
   PlayIcon,
+  PlayCircleIcon,
   PauseIcon,
   SettingsIcon,
   PlaySquareIcon,
@@ -83,6 +85,8 @@ import {
 // Using style variants
 <PlayIcon size={24} style="outlined" />
 <PlayIcon size={24} style="bold" />
+<PlayCircleIcon size={24} style="outlined" />
+<PlayCircleIcon size={24} style="bold" />
 <SettingsIcon size={20} style="bold" />
 
 // Renamed icon
