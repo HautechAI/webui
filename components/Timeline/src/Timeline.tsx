@@ -54,14 +54,18 @@ const Container = styled.div<{ height: number }>`
 
 // Empty top-left cell
 const TopLeft = styled.div`
-    background: ${themeVars.layout.surfaceHigh};
+    background: ${themeVars.layout.surfaceMid};
     border-right: 1px solid ${themeVars.layout.strokes};
     border-bottom: 1px solid ${themeVars.layout.strokes};
+    z-index: 20;
+    position: sticky;
+    left: 0;
+    top: 0;
 `;
 
 // Top-right header for ruler (empty for now)
 const TopRight = styled.div`
-    background: ${themeVars.layout.surfaceHigh};
+    background: ${themeVars.layout.surfaceLow};
     border-bottom: 1px solid ${themeVars.layout.strokes};
     position: sticky;
     top: 0;
@@ -70,19 +74,17 @@ const TopRight = styled.div`
 
 // Bottom-left sidebar for track labels
 const BottomLeft = styled.div`
-    background: ${themeVars.layout.surfaceLow};
+    background: ${themeVars.layout.surfaceMid};
     border-right: 1px solid ${themeVars.layout.strokes};
-    overflow-y: hidden;
     overflow-x: hidden;
     position: sticky;
     left: 0;
-    z-index: 1;
+    z-index: 10;
 `;
 
 // Bottom-right main scrollable area
 const BottomRight = styled.div`
     background: ${themeVars.layout.surfaceLow};
-    overflow: hidden;
     position: relative;
 `;
 

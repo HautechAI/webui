@@ -24,7 +24,7 @@ export interface TimelineTrackProps {
 // Container styles - track container with hover and selected states
 const Container = styled.div`
     width: 100%;
-    height: 100%;
+    height: 20px;
     padding: 8px;
     overflow: hidden;
     justify-content: flex-start;
