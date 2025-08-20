@@ -1,5 +1,4 @@
 import { styled } from '@hautechai/webui.themeprovider';
-import { themeVars } from '@hautechai/webui.themeprovider';
 import { TextInput, TextInputProps } from '@hautechai/webui.textinput';
 import { Popover } from '@hautechai/webui.popover';
 import ColorPickerContent, { HSVColor } from '@hautechai/webui.colorpickercontent';
@@ -10,9 +9,9 @@ import { PopoverPosition } from 'react-tiny-popover';
 const ColorSwatch = styled.div<{ color: string; size: 'medium' | 'small' }>`
     width: ${({ size }) => (size === 'small' ? '16px' : '20px')};
     height: ${({ size }) => (size === 'small' ? '16px' : '20px')};
-    border-radius: ${themeVars.cornerRadius.xs};
+    border: none;
+    border-radius: 4px;
     background: ${({ color }) => color};
-    border: 1px solid ${themeVars.layout.strokes};
     box-sizing: border-box;
     position: relative;
 
@@ -20,8 +19,8 @@ const ColorSwatch = styled.div<{ color: string; size: 'medium' | 'small' }>`
     &::before {
         content: '';
         position: absolute;
-        inset: 1px;
-        border-radius: calc(${themeVars.cornerRadius.xs} - 1px);
+        inset: 0;
+        border-radius: 4px;
         background: repeating-conic-gradient(#ccc 0% 25%, transparent 0% 50%) 50% / 8px 8px;
         z-index: -1;
     }
