@@ -1,7 +1,7 @@
 {
     "name": "@hautechai/webui.colorpickercontent",
     "description": "Color picker content component with SV panel, hue/alpha sliders, eyedropper, and format inputs",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "type": "module",
     "main": "src/index.tsx",
     "publishConfig": {
@@ -16,11 +16,11 @@
     },
     "author": "HautechAI",
     "dependencies": {
-        "@hautechai/webui.themeprovider": "workspace:^",
-        "@hautechai/webui.icon": "workspace:^",
         "@hautechai/webui.button": "workspace:^",
         "@hautechai/webui.dropdown": "workspace:^",
+        "@hautechai/webui.icon": "workspace:^",
         "@hautechai/webui.textinput": "workspace:^",
+        "@hautechai/webui.themeprovider": "workspace:^",
         "@hautechai/webui.tooltip": "workspace:^"
     },
     "license": "Apache-2.0"
