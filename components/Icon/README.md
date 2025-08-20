@@ -55,9 +55,15 @@ import {
   WIcon,
   HIcon,
   AngleIcon,
-  OptionsIcon
+  OptionsIcon,
   XIcon,
-  YIcon
+  YIcon,
+  OpacityIcon,
+  ColorPickerIcon,
+  EyeIcon,
+  EyeClosedIcon,
+  TextIcon,
+  ImageIcon
 } from '@hautechai/webui.icon';
 
 // Basic usage
@@ -65,6 +71,14 @@ import {
 <RepeatIcon size={20} />
 <XIcon size={24} />
 <YIcon size={24} />
+
+// New icons
+<OpacityIcon size={24} />
+<ColorPickerIcon size={24} />
+<EyeIcon size={24} />
+<EyeClosedIcon size={24} />
+<TextIcon size={24} />
+<ImageIcon size={24} />
 
 // Using style variants
 <PlayIcon size={24} style="outlined" />
