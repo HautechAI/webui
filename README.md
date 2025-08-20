@@ -133,6 +133,7 @@ The library includes the following components organized by category:
 
 | Component                                               | Description                                                                                                                                                                                                           |
 | ------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [**Timeline**](components/Timeline/README.md)           | Timeline component with 2x2 grid layout for video editing interfaces, combining track visualization with keyframe editing capabilities                                                                                |
 | [**TimelineTrack**](components/TimelineTrack/README.md) | Visual timeline track component for representing when elements are visible in a composition, with draggable and resizable functionality. Includes TimelineTrackKeyframes for keyframe visualization with drag support |
 
 ### System

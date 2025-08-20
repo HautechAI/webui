@@ -968,6 +968,25 @@ importers:
                 version: link:../Typography
         publishDirectory: dist
 
+    components/Timeline:
+        dependencies:
+            '@hautechai/webui.icon':
+                specifier: workspace:^
+                version: link:../Icon
+            '@hautechai/webui.layertreeitemchild':
+                specifier: workspace:^
+                version: link:../LayerTreeItemChild
+            '@hautechai/webui.layertreeitemparent':
+                specifier: workspace:^
+                version: link:../LayerTreeItemParent
+            '@hautechai/webui.themeprovider':
+                specifier: workspace:^
+                version: link:../ThemeProvider
+            '@hautechai/webui.timelinetrack':
+                specifier: workspace:^
+                version: link:../TimelineTrack
+        publishDirectory: dist
+
     components/TimelineTrack:
         dependencies:
             '@hautechai/webui.icon':
