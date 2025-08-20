@@ -49,7 +49,7 @@ const Container = styled.div<{ height: number }>`
     width: 100%;
     border: 1px solid ${themeVars.layout.strokes};
     border-radius: ${themeVars.cornerRadius.s};
-    overflow: hidden;
+    overflow: auto;
 `;
 
 // Empty top-left cell
@@ -72,7 +72,7 @@ const TopRight = styled.div`
 const BottomLeft = styled.div`
     background: ${themeVars.layout.surfaceLow};
     border-right: 1px solid ${themeVars.layout.strokes};
-    overflow-y: auto;
+    overflow-y: hidden;
     overflow-x: hidden;
     position: sticky;
     left: 0;
@@ -82,32 +82,22 @@ const BottomLeft = styled.div`
 // Bottom-right main scrollable area
 const BottomRight = styled.div`
     background: ${themeVars.layout.surfaceLow};
-    overflow: auto;
+    overflow: hidden;
     position: relative;
 `;
 
 // Track row container
 const TrackRow = styled.div`
-    height: 52px; // Match TimelineTrack height including padding
+    height: 36px; // Set to 36px as requested
     display: flex;
     align-items: center;
-    border-bottom: 1px solid ${themeVars.layout.strokes};
-
-    &:last-child {
-        border-bottom: none;
-    }
 `;
 
 // Keyframe row container
 const KeyframeRow = styled.div`
-    height: 52px; // Match TimelineTrackKeyframes height including padding
+    height: 36px; // Set to 36px as requested
     display: flex;
     align-items: center;
-    border-bottom: 1px solid ${themeVars.layout.strokes};
-
-    &:last-child {
-        border-bottom: none;
-    }
 `;
 
 // Timeline content wrapper to ensure proper width

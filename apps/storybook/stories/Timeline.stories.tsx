@@ -1,4 +1,4 @@
-import { Timeline, type TimelineProps } from '../../../components/Timeline/src';
+import { Timeline } from '../../../components/Timeline/src';
 
 export default {
     title: 'VisualEditor/Timeline',
