@@ -223,6 +223,7 @@ export const VisualEditorInput = (props: VisualEditorInputProps) => {
                         size="xsmall"
                         icon={<UnlinkIcon size={16} />}
                         onClick={props.onTogglePort}
+                        disabled={isInputDisabled}
                     />
                 </UnitsContainer>
             );
@@ -237,6 +238,7 @@ export const VisualEditorInput = (props: VisualEditorInputProps) => {
                         size="xsmall"
                         icon={<WorkflowIcon size={16} />}
                         onClick={props.onTogglePort}
+                        disabled={isInputDisabled}
                     />
                     <Dropdown
                         size="xsmall"

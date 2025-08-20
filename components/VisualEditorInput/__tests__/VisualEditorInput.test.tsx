@@ -102,4 +102,80 @@ describe('VisualEditorInput', () => {
             expect(allDropdowns.length).toBe(0);
         }
     });
+
+    it('should disable port toggle buttons when component is disabled', () => {
+        const mockOnTogglePort = vi.fn();
+        const props = {
+            value: '100',
+            units: 'px',
+            availableUnits: ['px', '%', 'em'],
+            isPort: false,
+            keyframesState: 'noKeyframes' as const,
+            disabled: true,
+            onTogglePort: mockOnTogglePort,
+        };
+
+        const { container } = render(
+            <TestWrapper>
+                <VisualEditorInput {...props} />
+            </TestWrapper>,
+        );
+
+        // Find the component container
+        const visualEditorInputContainer = container.querySelector('[data-disabled="true"]');
+        expect(visualEditorInputContainer).toBeTruthy();
+
+        // Trigger hover to show port toggle button (workflow icon)
+        fireEvent.mouseEnter(visualEditorInputContainer!);
+
+        // Look for the workflow icon toggle button
+        const toggleButtons = container.querySelectorAll('button');
+
+        // Find button that should be disabled
+        const portToggleButton = Array.from(toggleButtons).find(
+            (button) => button.getAttribute('data-variant') === 'flat' && button.getAttribute('data-size') === 'xsmall',
+        );
+
+        if (portToggleButton) {
+            expect(portToggleButton.disabled).toBe(true);
+        }
+    });
+
+    it('should disable unlink port toggle button when component is disabled and isPort is true', () => {
+        const mockOnTogglePort = vi.fn();
+        const props = {
+            value: '100',
+            units: 'px',
+            availableUnits: ['px', '%', 'em'],
+            isPort: true,
+            keyframesState: 'noKeyframes' as const,
+            disabled: true,
+            onTogglePort: mockOnTogglePort,
+        };
+
+        const { container } = render(
+            <TestWrapper>
+                <VisualEditorInput {...props} />
+            </TestWrapper>,
+        );
+
+        // Find the component container
+        const visualEditorInputContainer = container.querySelector('[data-disabled="true"]');
+        expect(visualEditorInputContainer).toBeTruthy();
+
+        // Trigger hover to show unlink button
+        fireEvent.mouseEnter(visualEditorInputContainer!);
+
+        // Look for the unlink toggle button
+        const toggleButtons = container.querySelectorAll('button');
+
+        // Find button that should be disabled
+        const unlinkToggleButton = Array.from(toggleButtons).find(
+            (button) => button.getAttribute('data-variant') === 'flat' && button.getAttribute('data-size') === 'xsmall',
+        );
+
+        if (unlinkToggleButton) {
+            expect(unlinkToggleButton.disabled).toBe(true);
+        }
+    });
 });
