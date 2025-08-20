@@ -9,7 +9,7 @@
         "lint:eslint": "eslint . --ext .ts,.tsx",
         "lint:eslint:fix": "eslint . --ext .ts,.tsx --fix",
         "lint:prettier": "prettier --check .",
-        "lint:prettier:fix": "prettier --write .",
+        "lint:prettier:fix": "prettier --write . --log-level warn",
         "lint:tsc": "pnpm -r lint:tsc",
         "lint": "pnpm lint:eslint && pnpm lint:prettier && pnpm lint:tsc",
         "lint:fix": "pnpm lint:eslint:fix && pnpm lint:prettier:fix",

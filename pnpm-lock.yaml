@@ -552,6 +552,16 @@ importers:
                 version: link:../ThemeProvider
         publishDirectory: dist
 
+    components/LayerTreeItemChild:
+        dependencies:
+            '@hautechai/webui.editabletext':
+                specifier: workspace:^
+                version: link:../EditableText
+            '@hautechai/webui.themeprovider':
+                specifier: workspace:^
+                version: link:../ThemeProvider
+        publishDirectory: dist
+
     components/LayerTreeItemParent:
         dependencies:
             '@hautechai/webui.editabletext':
@@ -7824,7 +7834,6 @@ packages:
                 integrity: sha512-2ymg6oRBpebeZi9UUNsgQ89bhx01TcTkmNTGnNO88imTmbSgy4nfujrgVEFKWpMTEGA11EDkTt7mqObTPdigIA==,
             }
         engines: { node: '>= 8' }
-        deprecated: The work that was done in this beta branch won't be included in future versions
 
     spdx-correct@3.2.0:
         resolution:
