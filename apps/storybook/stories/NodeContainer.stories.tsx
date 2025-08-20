@@ -15,7 +15,16 @@ export default {
         layout: 'centered',
     },
     tags: ['autodocs'],
-    argTypes: {},
+    argTypes: {
+        selected: {
+            control: 'boolean',
+            description: 'Whether the node container is in selected state',
+        },
+        width: {
+            control: 'number',
+            description: 'Optional width of the node container in pixels',
+        },
+    },
 };
 
 export const HeaderAndFooter = {
@@ -164,4 +173,82 @@ export const LongTitle = {
             </>
         ),
     },
+};
+
+export const Selected = {
+    args: {
+        selected: true,
+        children: (
+            <>
+                <NodeHeader label="Selected Node" />
+                <NodeFooter
+                    inputPorts={
+                        <>
+                            <NodePort type="input" label="Input 1" />
+                            <NodePort type="input" label="Input 2" />
+                        </>
+                    }
+                    outputPorts={
+                        <>
+                            <NodePort type="output" label="Output 1" />
+                        </>
+                    }
+                />
+            </>
+        ),
+    },
+};
+
+export const SelectedFullNode = {
+    args: {
+        selected: true,
+        children: (
+            <>
+                <NodeHeader
+                    icon={<BulbIcon />}
+                    label="Selected Node with Content"
+                    badge={<Badge label="Active" color="success" />}
+                />
+                <NodeContent>
+                    <Typography variant="Body" color="layout.onSurface.secondary">
+                        This is a selected node with full content
+                    </Typography>
+                </NodeContent>
+                <NodeFooter
+                    inputPorts={
+                        <>
+                            <NodePort type="input" label="Input 1" />
+                            <NodePort type="input" label="Input 2" />
+                        </>
+                    }
+                    outputPorts={
+                        <>
+                            <NodePort type="output" label="Output 1" />
+                        </>
+                    }
+                />
+            </>
+        ),
+    },
+};
+
+export const Comparison = {
+    render: () => (
+        <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
+            <NodeContainer selected={false}>
+                <NodeHeader label="Normal Node" />
+                <NodeFooter
+                    inputPorts={<NodePort type="input" label="Input" />}
+                    outputPorts={<NodePort type="output" label="Output" />}
+                />
+            </NodeContainer>
+            <NodeContainer selected={true}>
+                <NodeHeader label="Selected Node" />
+                <NodeFooter
+                    inputPorts={<NodePort type="input" label="Input" />}
+                    outputPorts={<NodePort type="output" label="Output" />}
+                />
+            </NodeContainer>
+        </div>
+    ),
 };
