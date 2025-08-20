@@ -244,6 +244,7 @@ export const VisualEditorInput = (props: VisualEditorInputProps) => {
                         value={props.units}
                         options={unitsOptions}
                         onChange={handleUnitsChange}
+                        disabled={isInputDisabled}
                     />
                 </TrailingContainer>
             );
