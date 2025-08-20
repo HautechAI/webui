@@ -17,55 +17,56 @@ The library includes the following components organized by category:
 
 ### Input
 
-| Component                                                       | Description                                                                               |
-| --------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
-| [**Button**](components/Button/README.md)                       | Primary action button with variants, icons, and different hierarchies                     |
-| [**ButtonBase**](components/ButtonBase/README.md)               | Base button component providing common button functionality                               |
-| [**Checkbox**](components/Checkbox/README.md)                   | Input control for boolean selection with custom styling                                   |
-| [**Counter**](components/Counter/README.md)                     | Numeric display with increment/decrement controls                                         |
-| [**Dropdown**](components/Dropdown/README.md)                   | Select input with customizable options and styling                                        |
-| [**EditableText**](components/EditableText/README.md)           | Text display that switches to input mode on double-click for inline editing               |
-| [**Field**](components/Field/README.md)                         | Form field wrapper with label, error, and validation states                               |
-| [**FileInput**](components/FileInput/README.md)                 | File upload control with drag-and-drop support                                            |
-| [**IconButton**](components/IconButton/README.md)               | Button component optimized for displaying icons                                           |
-| [**ImageInput**](components/ImageInput/README.md)               | Specialized input for image upload and preview                                            |
-| [**LinkButton**](components/LinkButton/README.md)               | Button styled as a hyperlink with navigation capabilities                                 |
-| [**SegmentedControl**](components/SegmentedControl/README.md)   | Multi-option selector with segmented button appearance                                    |
-| [**Slider**](components/Slider/README.md)                       | Range input control for selecting numeric values                                          |
-| [**Switch**](components/Switch/README.md)                       | Toggle control for boolean on/off states                                                  |
-| [**TextArea**](components/TextArea/README.md)                   | Multi-line text input with resizing capabilities                                          |
-| [**TextButton**](components/TextButton/README.md)               | Button component optimized for text-only labels                                           |
-| [**TextInput**](components/TextInput/README.md)                 | Single-line text input with validation and styling                                        |
-| [**ToggleIconButton**](components/ToggleIconButton/README.md)   | Toggle button component optimized for displaying icons with different color schemes       |
-| [**ToolButton**](components/ToolButton/README.md)               | Icon button component with selected state functionality for toolbar interfaces            |
-| [**VisualEditorInput**](components/VisualEditorInput/README.md) | Visual editor input component with keyframe support, unit controls, and port connectivity |
+| Component                                                         | Description                                                                               |
+| ----------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| [**Button**](components/Button/README.md)                         | Primary action button with variants, icons, and different hierarchies                     |
+| [**ButtonBase**](components/ButtonBase/README.md)                 | Base button component providing common button functionality                               |
+| [**Checkbox**](components/Checkbox/README.md)                     | Input control for boolean selection with custom styling                                   |
+| [**ColorPickerContent**](components/ColorPickerContent/README.md) | Color picker content with SV panel, hue/alpha sliders, eyedropper, and format inputs      |
+| [**Counter**](components/Counter/README.md)                       | Numeric display with increment/decrement controls                                         |
+| [**Dropdown**](components/Dropdown/README.md)                     | Select input with customizable options and styling                                        |
+| [**EditableText**](components/EditableText/README.md)             | Text display that switches to input mode on double-click for inline editing               |
+| [**Field**](components/Field/README.md)                           | Form field wrapper with label, error, and validation states                               |
+| [**FileInput**](components/FileInput/README.md)                   | File upload control with drag-and-drop support                                            |
+| [**IconButton**](components/IconButton/README.md)                 | Button component optimized for displaying icons                                           |
+| [**ImageInput**](components/ImageInput/README.md)                 | Specialized input for image upload and preview                                            |
+| [**LinkButton**](components/LinkButton/README.md)                 | Button styled as a hyperlink with navigation capabilities                                 |
+| [**SegmentedControl**](components/SegmentedControl/README.md)     | Multi-option selector with segmented button appearance                                    |
+| [**Slider**](components/Slider/README.md)                         | Range input control for selecting numeric values                                          |
+| [**Switch**](components/Switch/README.md)                         | Toggle control for boolean on/off states                                                  |
+| [**TextArea**](components/TextArea/README.md)                     | Multi-line text input with resizing capabilities                                          |
+| [**TextButton**](components/TextButton/README.md)                 | Button component optimized for text-only labels                                           |
+| [**TextInput**](components/TextInput/README.md)                   | Single-line text input with validation and styling                                        |
+| [**ToggleIconButton**](components/ToggleIconButton/README.md)     | Toggle button component optimized for displaying icons with different color schemes       |
+| [**ToolButton**](components/ToolButton/README.md)                 | Icon button component with selected state functionality for toolbar interfaces            |
+| [**VisualEditorInput**](components/VisualEditorInput/README.md)   | Visual editor input component with keyframe support, unit controls, and port connectivity |
 
 ### Data Display
 
-| Component                                               | Description                                                                                            |
-| ------------------------------------------------------- | ------------------------------------------------------------------------------------------------------ |
-| [**Avatar**](components/Avatar/README.md)               | User profile image or initials display component                                                       |
-| [**Badge**](components/Badge/README.md)                 | Small notification indicator to highlight status or count                                              |
-| [**Chip**](components/Chip/README.md)                   | Compact element for tags, filters, or selection indicators                                             |
-| [**DataItem**](components/DataItem/README.md)           | Structured display for key-value data pairs                                                            |
-| [**Divider**](components/Divider/README.md)             | Visual separator line between content sections                                                         |
-| [**DotsLoader**](components/DotsLoader/README.md)       | Animated loading indicator with three dots that pulse in sequence                                      |
-| [**Hint**](components/Hint/README.md)                   | Tooltip-like component for providing contextual help                                                   |
-| [**Logo**](components/Logo/README.md)                   | Brand logo display component with sizing options                                                       |
-| [**Menu**](components/Menu/README.md)                   | Dropdown menu container for navigation or actions                                                      |
-| [**MenuItem**](components/MenuItem/README.md)           | Individual item within a menu component                                                                |
-| [**Modal**](components/Modal/README.md)                 | Overlay dialog for focused user interactions                                                           |
-| [**Panel**](components/Panel/README.md)                 | Collapsible content container with header and body                                                     |
-| [**Previews**](components/Previews/README.md)           | Component for displaying content previews or thumbnails                                                |
-| [**PropertyBlock**](components/PropertyBlock/README.md) | Flexible container for displaying property information with optional remove/add functionality          |
-| [**Price**](components/Price/README.md)                 | Formatted display for pricing information                                                              |
-| [**Progress**](components/Progress/README.md)           | Visual indicator for task or loading progress                                                          |
-| [**Table**](components/Table/README.md)                 | Data table component with sorting and selection                                                        |
-| [**Tile**](components/Tile/README.md)                   | Content tile with image background and overlay content                                                 |
-| [**TimelineRuler**](components/TimelineRuler/README.md) | Timeline ruler component that displays graduated time markers with numbered and unnumbered graduations |
-| [**Tooltip**](components/Tooltip/README.md)             | Contextual popup with information or help text                                                         |
-| [**Typography**](components/Typography/README.md)       | Text rendering component with various styles and variants                                              |
-| [**User**](components/User/README.md)                   | User profile display with avatar and information                                                       |
+| Component                                               | Description                                                                                   |
+| ------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| [**Avatar**](components/Avatar/README.md)               | User profile image or initials display component                                              |
+| [**Badge**](components/Badge/README.md)                 | Small notification indicator to highlight status or count                                     |
+| [**Chip**](components/Chip/README.md)                   | Compact element for tags, filters, or selection indicators                                    |
+| [**DataItem**](components/DataItem/README.md)           | Structured display for key-value data pairs                                                   |
+| [**Divider**](components/Divider/README.md)             | Visual separator line between content sections                                                |
+| [**DotsLoader**](components/DotsLoader/README.md)       | Animated loading indicator with three dots that pulse in sequence                             |
+| [**Hint**](components/Hint/README.md)                   | Tooltip-like component for providing contextual help                                          |
+| [**Logo**](components/Logo/README.md)                   | Brand logo display component with sizing options                                              |
+| [**Menu**](components/Menu/README.md)                   | Dropdown menu container for navigation or actions                                             |
+| [**MenuItem**](components/MenuItem/README.md)           | Individual item within a menu component                                                       |
+| [**Modal**](components/Modal/README.md)                 | Overlay dialog for focused user interactions                                                  |
+| [**NodeGroup**](components/NodeGroup/README.md)         | Collapsible container with header for organizing related node items                           |
+| [**Panel**](components/Panel/README.md)                 | Collapsible content container with header and body                                            |
+| [**Previews**](components/Previews/README.md)           | Component for displaying content previews or thumbnails                                       |
+| [**PropertyBlock**](components/PropertyBlock/README.md) | Flexible container for displaying property information with optional remove/add functionality |
+| [**Price**](components/Price/README.md)                 | Formatted display for pricing information                                                     |
+| [**Progress**](components/Progress/README.md)           | Visual indicator for task or loading progress                                                 |
+| [**Table**](components/Table/README.md)                 | Data table component with sorting and selection                                               |
+| [**Tile**](components/Tile/README.md)                   | Content tile with image background and overlay content                                        |
+| [**Tooltip**](components/Tooltip/README.md)             | Contextual popup with information or help text                                                |
+| [**Typography**](components/Typography/README.md)       | Text rendering component with various styles and variants                                     |
+| [**User**](components/User/README.md)                   | User profile display with avatar and information                                              |
 
 ### Navigation
 
@@ -130,9 +131,9 @@ The library includes the following components organized by category:
 
 ### VisualEditor
 
-| Component                                               | Description                                                                                                                             |
-| ------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
-| [**TimelineTrack**](components/TimelineTrack/README.md) | Visual timeline track component for representing when elements are visible in a composition, with draggable and resizable functionality |
+| Component                                               | Description                                                                                                                                                                                                           |
+| ------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [**TimelineTrack**](components/TimelineTrack/README.md) | Visual timeline track component for representing when elements are visible in a composition, with draggable and resizable functionality. Includes TimelineTrackKeyframes for keyframe visualization with drag support |
 
 ### System
 

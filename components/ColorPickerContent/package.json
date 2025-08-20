@@ -1,10 +1,9 @@
 {
-    "name": "@hautechai/webui.timelinetrack",
-    "description": "Timeline track component for visual timeline editing",
-    "version": "2.0.10",
+    "name": "@hautechai/webui.colorpickercontent",
+    "description": "Color picker content component with SV panel, hue/alpha sliders, eyedropper, and format inputs",
+    "version": "1.0.1",
     "type": "module",
     "main": "src/index.tsx",
-    "sideEffects": false,
     "publishConfig": {
         "directory": "dist",
         "linkDirectory": false,
@@ -17,8 +16,12 @@
     },
     "author": "HautechAI",
     "dependencies": {
+        "@hautechai/webui.button": "workspace:^",
+        "@hautechai/webui.dropdown": "workspace:^",
         "@hautechai/webui.icon": "workspace:^",
-        "@hautechai/webui.themeprovider": "workspace:^"
+        "@hautechai/webui.textinput": "workspace:^",
+        "@hautechai/webui.themeprovider": "workspace:^",
+        "@hautechai/webui.tooltip": "workspace:^"
     },
     "license": "Apache-2.0"
 }
