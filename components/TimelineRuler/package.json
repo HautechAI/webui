@@ -1,0 +1,23 @@
+{
+    "name": "@hautechai/webui.timelineruler",
+    "description": "",
+    "version": "1.0.1",
+    "type": "module",
+    "main": "src/index.tsx",
+    "publishConfig": {
+        "directory": "dist",
+        "linkDirectory": false,
+        "access": "public"
+    },
+    "scripts": {
+        "prepack": "node ../../scripts/build-component.mjs",
+        "lint:tsc": "tsc --noEmit",
+        "lint": "pnpm lint:tsc"
+    },
+    "author": "HautechAI",
+    "dependencies": {
+        "@hautechai/webui.themeprovider": "workspace:^",
+        "@hautechai/webui.typography": "workspace:^"
+    },
+    "license": "Apache-2.0"
+}
