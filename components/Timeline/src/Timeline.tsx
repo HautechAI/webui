@@ -5,6 +5,7 @@ import { TimelineTrack, TimelineTrackKeyframes } from '@hautechai/webui.timeline
 import { LayerTreeItemParent } from '@hautechai/webui.layertreeitemparent';
 import { LayerTreeItemChild } from '@hautechai/webui.layertreeitemchild';
 import { FolderIcon } from '@hautechai/webui.icon';
+import { TimelineRuler } from '@hautechai/webui.timelineruler';
 
 export interface TimelineTrackData {
     id: string;
@@ -63,13 +64,20 @@ const TopLeft = styled.div`
     top: 0;
 `;
 
-// Top-right header for ruler (empty for now)
+// Top-right header for ruler
 const TopRight = styled.div`
     background: ${themeVars.layout.surfaceLow};
     border-bottom: 1px solid ${themeVars.layout.strokes};
     position: sticky;
     top: 0;
     z-index: 2;
+    overflow: hidden;
+`;
+
+// Container for the ruler with proper width
+const RulerContainer = styled.div<{ scale: number; maxTime: number }>`
+    width: ${(props) => props.maxTime * props.scale + 100}px;
+    height: 100%;
 `;
 
 // Bottom-left sidebar for track labels
@@ -148,7 +156,11 @@ export const Timeline: React.FC<TimelineProps> = ({
     return (
         <Container height={height}>
             <TopLeft />
-            <TopRight />
+            <TopRight>
+                <RulerContainer scale={scale} maxTime={maxTime}>
+                    <TimelineRuler scale={scale} length={maxTime} numberedGraduationsDistance={40} />
+                </RulerContainer>
+            </TopRight>
 
             <BottomLeft>
                 {tracks.map((track) => (

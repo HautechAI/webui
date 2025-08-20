@@ -982,6 +982,9 @@ importers:
             '@hautechai/webui.themeprovider':
                 specifier: workspace:^
                 version: link:../ThemeProvider
+            '@hautechai/webui.timelineruler':
+                specifier: workspace:^
+                version: link:../TimelineRuler
             '@hautechai/webui.timelinetrack':
                 specifier: workspace:^
                 version: link:../TimelineTrack

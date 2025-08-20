@@ -21,7 +21,8 @@
         "@hautechai/webui.timelinetrack": "workspace:^",
         "@hautechai/webui.layertreeitemparent": "workspace:^",
         "@hautechai/webui.layertreeitemchild": "workspace:^",
-        "@hautechai/webui.icon": "workspace:^"
+        "@hautechai/webui.icon": "workspace:^",
+        "@hautechai/webui.timelineruler": "workspace:^"
     },
     "license": "Apache-2.0"
 }
