@@ -29,6 +29,7 @@ const Container = styled.div`
     display: flex;
     flex-direction: column;
     gap: ${themeVars.spacing.l};
+    box-sizing: border-box;
 `;
 
 // Color palette section with SV panel and controls
@@ -36,13 +37,13 @@ const ColorPalette = styled.div`
     display: flex;
     flex-direction: column;
     gap: ${themeVars.spacing.m};
+    box-sizing: border-box;
 `;
 
 // SV Panel - Saturation/Value 2D picker
 const SVPanel = styled.div`
     position: relative;
-    width: 160px;
-    min-width: 160px;
+    width: 100%;
     height: 160px;
     min-height: 160px;
     border-radius: ${themeVars.cornerRadius.s};
@@ -50,10 +51,12 @@ const SVPanel = styled.div`
     background:
         linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, black 100%),
         linear-gradient(90deg, white 0%, var(--hue-color, #ff0000) 100%);
+    box-sizing: border-box;
+    outline: none;
+    user-select: none;
 
     &:focus {
-        outline: 2px solid ${themeVars.actions.primary};
-        outline-offset: 2px;
+        box-shadow: 0 0 0 2px ${themeVars.actions.primary};
     }
 `;
 
@@ -68,11 +71,7 @@ const SVHandle = styled.div`
     box-shadow: ${themeVars.elevation.one};
     pointer-events: none;
     transform: translate(-50%, -50%);
-
-    &:focus {
-        outline: 2px solid ${themeVars.actions.primary};
-        outline-offset: 2px;
-    }
+    box-sizing: border-box;
 `;
 
 // Controls container for eyedropper and sliders
@@ -80,6 +79,7 @@ const Controls = styled.div`
     display: flex;
     align-items: center;
     gap: ${themeVars.spacing.m};
+    box-sizing: border-box;
 `;
 
 // Eyedropper button
@@ -92,6 +92,7 @@ const EyedropperButton = styled.button`
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    box-sizing: border-box;
 
     &:hover {
         background: ${themeVars.layout.surfaceMid};
@@ -113,6 +114,7 @@ const Sliders = styled.div`
     display: flex;
     flex-direction: column;
     gap: ${themeVars.spacing.m};
+    box-sizing: border-box;
 `;
 
 // Base slider track styling
@@ -121,10 +123,12 @@ const SliderTrack = styled.div`
     height: 16px;
     border-radius: 32px;
     cursor: pointer;
+    box-sizing: border-box;
+    outline: none;
+    user-select: none;
 
     &:focus {
-        outline: 2px solid ${themeVars.actions.primary};
-        outline-offset: 2px;
+        box-shadow: 0 0 0 2px ${themeVars.actions.primary};
     }
 `;
 
@@ -161,11 +165,7 @@ const SliderHandle = styled.div`
     box-shadow: ${themeVars.elevation.one};
     pointer-events: none;
     transform: translate(-50%, 0);
-
-    &:focus {
-        outline: 2px solid ${themeVars.actions.primary};
-        outline-offset: 2px;
-    }
+    box-sizing: border-box;
 `;
 
 // Inputs section
@@ -173,11 +173,13 @@ const InputsSection = styled.div`
     display: flex;
     align-items: center;
     gap: ${themeVars.spacing.l};
+    box-sizing: border-box;
 `;
 
 // Format dropdown container
 const FormatSelect = styled.div`
     width: 80px;
+    box-sizing: border-box;
 `;
 
 // Color inputs container
@@ -185,11 +187,13 @@ const ColorInputs = styled.div`
     flex: 1;
     display: flex;
     gap: ${themeVars.spacing.m};
+    box-sizing: border-box;
 `;
 
 // Alpha input container
 const AlphaInputContainer = styled.div`
     width: 52px;
+    box-sizing: border-box;
 `;
 
 export interface ColorPickerContentProps {
