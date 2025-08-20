@@ -5,6 +5,7 @@ import { themeVars } from '@hautechai/webui.themeprovider';
 export interface NodeContainerProps {
     children: React.ReactNode;
     width?: number;
+    selected?: boolean;
 }
 
 const Container = styled.div<{ width?: number }>`
@@ -15,8 +16,16 @@ const Container = styled.div<{ width?: number }>`
     flex-direction: column;
     position: relative;
     width: ${(props) => (props.width ? `${props.width}px` : 'auto')};
+
+    &[data-selected='true'] {
+        border-color: ${themeVars.actions.primary};
+    }
 `;
 
-export const NodeContainer: React.FC<NodeContainerProps> = ({ children, width }) => {
-    return <Container width={width}>{children}</Container>;
+export const NodeContainer: React.FC<NodeContainerProps> = ({ children, width, selected = false }) => {
+    return (
+        <Container width={width} data-selected={selected}>
+            {children}
+        </Container>
+    );
 };
