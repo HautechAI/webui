@@ -42,29 +42,30 @@ The library includes the following components organized by category:
 
 ### Data Display
 
-| Component                                               | Description                                                                                   |
-| ------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
-| [**Avatar**](components/Avatar/README.md)               | User profile image or initials display component                                              |
-| [**Badge**](components/Badge/README.md)                 | Small notification indicator to highlight status or count                                     |
-| [**Chip**](components/Chip/README.md)                   | Compact element for tags, filters, or selection indicators                                    |
-| [**DataItem**](components/DataItem/README.md)           | Structured display for key-value data pairs                                                   |
-| [**Divider**](components/Divider/README.md)             | Visual separator line between content sections                                                |
-| [**DotsLoader**](components/DotsLoader/README.md)       | Animated loading indicator with three dots that pulse in sequence                             |
-| [**Hint**](components/Hint/README.md)                   | Tooltip-like component for providing contextual help                                          |
-| [**Logo**](components/Logo/README.md)                   | Brand logo display component with sizing options                                              |
-| [**Menu**](components/Menu/README.md)                   | Dropdown menu container for navigation or actions                                             |
-| [**MenuItem**](components/MenuItem/README.md)           | Individual item within a menu component                                                       |
-| [**Modal**](components/Modal/README.md)                 | Overlay dialog for focused user interactions                                                  |
-| [**Panel**](components/Panel/README.md)                 | Collapsible content container with header and body                                            |
-| [**Previews**](components/Previews/README.md)           | Component for displaying content previews or thumbnails                                       |
-| [**PropertyBlock**](components/PropertyBlock/README.md) | Flexible container for displaying property information with optional remove/add functionality |
-| [**Price**](components/Price/README.md)                 | Formatted display for pricing information                                                     |
-| [**Progress**](components/Progress/README.md)           | Visual indicator for task or loading progress                                                 |
-| [**Table**](components/Table/README.md)                 | Data table component with sorting and selection                                               |
-| [**Tile**](components/Tile/README.md)                   | Content tile with image background and overlay content                                        |
-| [**Tooltip**](components/Tooltip/README.md)             | Contextual popup with information or help text                                                |
-| [**Typography**](components/Typography/README.md)       | Text rendering component with various styles and variants                                     |
-| [**User**](components/User/README.md)                   | User profile display with avatar and information                                              |
+| Component                                               | Description                                                                                            |
+| ------------------------------------------------------- | ------------------------------------------------------------------------------------------------------ |
+| [**Avatar**](components/Avatar/README.md)               | User profile image or initials display component                                                       |
+| [**Badge**](components/Badge/README.md)                 | Small notification indicator to highlight status or count                                              |
+| [**Chip**](components/Chip/README.md)                   | Compact element for tags, filters, or selection indicators                                             |
+| [**DataItem**](components/DataItem/README.md)           | Structured display for key-value data pairs                                                            |
+| [**Divider**](components/Divider/README.md)             | Visual separator line between content sections                                                         |
+| [**DotsLoader**](components/DotsLoader/README.md)       | Animated loading indicator with three dots that pulse in sequence                                      |
+| [**Hint**](components/Hint/README.md)                   | Tooltip-like component for providing contextual help                                                   |
+| [**Logo**](components/Logo/README.md)                   | Brand logo display component with sizing options                                                       |
+| [**Menu**](components/Menu/README.md)                   | Dropdown menu container for navigation or actions                                                      |
+| [**MenuItem**](components/MenuItem/README.md)           | Individual item within a menu component                                                                |
+| [**Modal**](components/Modal/README.md)                 | Overlay dialog for focused user interactions                                                           |
+| [**Panel**](components/Panel/README.md)                 | Collapsible content container with header and body                                                     |
+| [**Previews**](components/Previews/README.md)           | Component for displaying content previews or thumbnails                                                |
+| [**PropertyBlock**](components/PropertyBlock/README.md) | Flexible container for displaying property information with optional remove/add functionality          |
+| [**Price**](components/Price/README.md)                 | Formatted display for pricing information                                                              |
+| [**Progress**](components/Progress/README.md)           | Visual indicator for task or loading progress                                                          |
+| [**Table**](components/Table/README.md)                 | Data table component with sorting and selection                                                        |
+| [**Tile**](components/Tile/README.md)                   | Content tile with image background and overlay content                                                 |
+| [**TimelineRuler**](components/TimelineRuler/README.md) | Timeline ruler component that displays graduated time markers with numbered and unnumbered graduations |
+| [**Tooltip**](components/Tooltip/README.md)             | Contextual popup with information or help text                                                         |
+| [**Typography**](components/Typography/README.md)       | Text rendering component with various styles and variants                                              |
+| [**User**](components/User/README.md)                   | User profile display with avatar and information                                                       |
 
 ### Navigation
 
