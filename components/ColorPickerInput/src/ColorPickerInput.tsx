@@ -14,6 +14,7 @@ const ColorSwatch = styled.div<{ color: string; size: 'medium' | 'small' }>`
     background: ${({ color }) => color};
     box-sizing: border-box;
     position: relative;
+    flex-shrink: 0; /* Prevent compression that could cause aspect ratio issues */
 
     /* Checkered background for transparency */
     &::before {
