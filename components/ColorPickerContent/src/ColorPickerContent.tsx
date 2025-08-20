@@ -3,7 +3,7 @@ import { themeVars } from '@hautechai/webui.themeprovider';
 import { Dropdown } from '@hautechai/webui.dropdown';
 import { TextInput } from '@hautechai/webui.textinput';
 import { Tooltip } from '@hautechai/webui.tooltip';
-import { EyeIcon } from '@hautechai/webui.icon';
+import { ColorPickerIcon } from '@hautechai/webui.icon';
 import React, { useState, useCallback, useRef, useEffect, useMemo } from 'react';
 import {
     HSVColor,
@@ -487,12 +487,12 @@ export const ColorPickerContent: React.FC<ColorPickerContentProps> = ({
                 <Controls>
                     {isEyeDropperSupported ? (
                         <EyedropperButton onClick={handleEyedropper} aria-label="Pick color from screen">
-                            <EyeIcon size={20} />
+                            <ColorPickerIcon size={20} />
                         </EyedropperButton>
                     ) : (
                         <Tooltip text="Eyedropper not supported in this browser">
                             <EyedropperButton disabled aria-label="Eyedropper not supported">
-                                <EyeIcon size={20} />
+                                <ColorPickerIcon size={20} />
                             </EyedropperButton>
                         </Tooltip>
                     )}
