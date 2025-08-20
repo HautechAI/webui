@@ -91,6 +91,7 @@ export * from './upload';
 export * from './w';
 export * from './workflow';
 export * from './play';
+export * from './playCircle';
 export * from './playSquare';
 export * from './stop';
 export * from './x';
