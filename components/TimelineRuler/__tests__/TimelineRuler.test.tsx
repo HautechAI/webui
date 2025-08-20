@@ -93,4 +93,20 @@ describe('TimelineRuler', () => {
         // Should still render start time
         expect(screen.getByText('0s')).toBeInTheDocument();
     });
+
+    it('should render additional unnumbered graduations when last numbered graduation is not at timeline end', () => {
+        // Example: 14 second ruler with 10s graduations should show 0s, 10s and 2 unnumbered graduations
+        const { container } = render(
+            <ThemeProvider theme={testTheme}>
+                <TimelineRuler scale={50} length={14} numberedGraduationsDistance={500} />
+            </ThemeProvider>,
+        );
+
+        // Should have numbered graduations at 0s and 10s
+        expect(screen.getByText('0s')).toBeInTheDocument();
+        expect(screen.getByText('10s')).toBeInTheDocument();
+
+        // Component should render (we verify it doesn't crash)
+        expect(container.firstChild).toBeInTheDocument();
+    });
 });

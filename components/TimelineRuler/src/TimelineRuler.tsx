@@ -100,7 +100,7 @@ export const TimelineRuler: React.FC<TimelineRulerProps> = (props) => {
         const timeInterval = getTimeInterval(length, numberedGraduationsDistance, scale);
         const numberedGraduations: number[] = [];
 
-        // Generate numbered graduations
+        // Generate numbered graduations that fit within the length
         let currentTime = 0;
         while (currentTime <= length) {
             numberedGraduations.push(currentTime);
@@ -111,19 +111,30 @@ export const TimelineRuler: React.FC<TimelineRulerProps> = (props) => {
         const sectionWidth = timeInterval * scale;
         const subGraduationWidth = sectionWidth / 5; // 5 divisions per section (4 unnumbered + 1 numbered)
 
+        // Calculate how many additional unnumbered graduations we need after the last numbered graduation
+        const lastNumberedTime = numberedGraduations[numberedGraduations.length - 1];
+        const remainingTime = length - lastNumberedTime;
+        const subGraduationTimeInterval = timeInterval / 5; // Each unnumbered graduation represents this much time
+        const additionalUnnumberedGraduations = Math.floor(remainingTime / subGraduationTimeInterval);
+
+        // Calculate total ruler width (should always be scale * length)
+        const totalWidth = length * scale;
+
         return {
             numberedGraduations,
             timeInterval,
             sectionWidth,
             subGraduationWidth,
+            additionalUnnumberedGraduations,
+            totalWidth,
         };
     }, [scale, length, numberedGraduationsDistance]);
 
-    const { numberedGraduations, subGraduationWidth } = graduationData;
+    const { numberedGraduations, subGraduationWidth, additionalUnnumberedGraduations } = graduationData;
 
     return (
         <StyledRuler>
-            <StyledTimelineRuler>
+            <StyledTimelineRuler style={{ width: `${graduationData.totalWidth}px` }}>
                 {numberedGraduations.map((time, index) => {
                     const isLast = index === numberedGraduations.length - 1;
 
@@ -152,6 +163,22 @@ export const TimelineRuler: React.FC<TimelineRulerProps> = (props) => {
                                     <StyledFrameLine $width={subGraduationWidth}>
                                         <StyledLine />
                                     </StyledFrameLine>
+                                </>
+                            )}
+
+                            {/* Additional unnumbered graduations after the last numbered graduation */}
+                            {isLast && additionalUnnumberedGraduations > 0 && (
+                                <>
+                                    {Array.from({ length: additionalUnnumberedGraduations }).map(
+                                        (_, unnumberedIndex) => (
+                                            <StyledFrameLine
+                                                key={`additional-${unnumberedIndex}`}
+                                                $width={subGraduationWidth}
+                                            >
+                                                <StyledLine />
+                                            </StyledFrameLine>
+                                        ),
+                                    )}
                                 </>
                             )}
                         </StyledRulerSection>

@@ -69,3 +69,11 @@ export const SparseGraduations = {
         numberedGraduationsDistance: 200,
     },
 };
+
+export const PartialGraduations = {
+    args: {
+        scale: 50,
+        length: 14,
+        numberedGraduationsDistance: 500,
+    },
+};
