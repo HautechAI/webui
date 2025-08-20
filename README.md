@@ -17,28 +17,29 @@ The library includes the following components organized by category:
 
 ### Input
 
-| Component                                                       | Description                                                                               |
-| --------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
-| [**Button**](components/Button/README.md)                       | Primary action button with variants, icons, and different hierarchies                     |
-| [**ButtonBase**](components/ButtonBase/README.md)               | Base button component providing common button functionality                               |
-| [**Checkbox**](components/Checkbox/README.md)                   | Input control for boolean selection with custom styling                                   |
-| [**Counter**](components/Counter/README.md)                     | Numeric display with increment/decrement controls                                         |
-| [**Dropdown**](components/Dropdown/README.md)                   | Select input with customizable options and styling                                        |
-| [**EditableText**](components/EditableText/README.md)           | Text display that switches to input mode on double-click for inline editing               |
-| [**Field**](components/Field/README.md)                         | Form field wrapper with label, error, and validation states                               |
-| [**FileInput**](components/FileInput/README.md)                 | File upload control with drag-and-drop support                                            |
-| [**IconButton**](components/IconButton/README.md)               | Button component optimized for displaying icons                                           |
-| [**ImageInput**](components/ImageInput/README.md)               | Specialized input for image upload and preview                                            |
-| [**LinkButton**](components/LinkButton/README.md)               | Button styled as a hyperlink with navigation capabilities                                 |
-| [**SegmentedControl**](components/SegmentedControl/README.md)   | Multi-option selector with segmented button appearance                                    |
-| [**Slider**](components/Slider/README.md)                       | Range input control for selecting numeric values                                          |
-| [**Switch**](components/Switch/README.md)                       | Toggle control for boolean on/off states                                                  |
-| [**TextArea**](components/TextArea/README.md)                   | Multi-line text input with resizing capabilities                                          |
-| [**TextButton**](components/TextButton/README.md)               | Button component optimized for text-only labels                                           |
-| [**TextInput**](components/TextInput/README.md)                 | Single-line text input with validation and styling                                        |
-| [**ToggleIconButton**](components/ToggleIconButton/README.md)   | Toggle button component optimized for displaying icons with different color schemes       |
-| [**ToolButton**](components/ToolButton/README.md)               | Icon button component with selected state functionality for toolbar interfaces            |
-| [**VisualEditorInput**](components/VisualEditorInput/README.md) | Visual editor input component with keyframe support, unit controls, and port connectivity |
+| Component                                                         | Description                                                                               |
+| ----------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| [**Button**](components/Button/README.md)                         | Primary action button with variants, icons, and different hierarchies                     |
+| [**ButtonBase**](components/ButtonBase/README.md)                 | Base button component providing common button functionality                               |
+| [**Checkbox**](components/Checkbox/README.md)                     | Input control for boolean selection with custom styling                                   |
+| [**ColorPickerContent**](components/ColorPickerContent/README.md) | Color picker content with SV panel, hue/alpha sliders, eyedropper, and format inputs      |
+| [**Counter**](components/Counter/README.md)                       | Numeric display with increment/decrement controls                                         |
+| [**Dropdown**](components/Dropdown/README.md)                     | Select input with customizable options and styling                                        |
+| [**EditableText**](components/EditableText/README.md)             | Text display that switches to input mode on double-click for inline editing               |
+| [**Field**](components/Field/README.md)                           | Form field wrapper with label, error, and validation states                               |
+| [**FileInput**](components/FileInput/README.md)                   | File upload control with drag-and-drop support                                            |
+| [**IconButton**](components/IconButton/README.md)                 | Button component optimized for displaying icons                                           |
+| [**ImageInput**](components/ImageInput/README.md)                 | Specialized input for image upload and preview                                            |
+| [**LinkButton**](components/LinkButton/README.md)                 | Button styled as a hyperlink with navigation capabilities                                 |
+| [**SegmentedControl**](components/SegmentedControl/README.md)     | Multi-option selector with segmented button appearance                                    |
+| [**Slider**](components/Slider/README.md)                         | Range input control for selecting numeric values                                          |
+| [**Switch**](components/Switch/README.md)                         | Toggle control for boolean on/off states                                                  |
+| [**TextArea**](components/TextArea/README.md)                     | Multi-line text input with resizing capabilities                                          |
+| [**TextButton**](components/TextButton/README.md)                 | Button component optimized for text-only labels                                           |
+| [**TextInput**](components/TextInput/README.md)                   | Single-line text input with validation and styling                                        |
+| [**ToggleIconButton**](components/ToggleIconButton/README.md)     | Toggle button component optimized for displaying icons with different color schemes       |
+| [**ToolButton**](components/ToolButton/README.md)                 | Icon button component with selected state functionality for toolbar interfaces            |
+| [**VisualEditorInput**](components/VisualEditorInput/README.md)   | Visual editor input component with keyframe support, unit controls, and port connectivity |
 
 ### Data Display
 

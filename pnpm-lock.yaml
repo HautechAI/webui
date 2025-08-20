@@ -283,6 +283,28 @@ importers:
                 version: 8.1.6(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
         publishDirectory: dist
 
+    components/ColorPickerContent:
+        dependencies:
+            '@hautechai/webui.button':
+                specifier: workspace:^
+                version: link:../Button
+            '@hautechai/webui.dropdown':
+                specifier: workspace:^
+                version: link:../Dropdown
+            '@hautechai/webui.icon':
+                specifier: workspace:^
+                version: link:../Icon
+            '@hautechai/webui.textinput':
+                specifier: workspace:^
+                version: link:../TextInput
+            '@hautechai/webui.themeprovider':
+                specifier: workspace:^
+                version: link:../ThemeProvider
+            '@hautechai/webui.tooltip':
+                specifier: workspace:^
+                version: link:../Tooltip
+        publishDirectory: dist
+
     components/Column:
         dependencies:
             '@hautechai/webui.themeprovider':
