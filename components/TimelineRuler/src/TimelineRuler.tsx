@@ -37,13 +37,6 @@ const StyledRulerSection = styled.div`
     display: flex;
 `;
 
-const StyledSecond = styled.div<{ $width: number }>`
-    width: ${(props) => props.$width}px;
-    justify-content: flex-start;
-    align-items: flex-start;
-    display: flex;
-`;
-
 const StyledFrameLine = styled.div<{ $width: number }>`
     width: ${(props) => props.$width}px;
     justify-content: flex-start;
@@ -54,6 +47,12 @@ const StyledFrameLine = styled.div<{ $width: number }>`
 const StyledLine = styled.div`
     width: ${themeVars.stroke.thin};
     height: 12px;
+    background: ${themeVars.layout.onSurface.tertiary};
+`;
+
+const StyledSmallLine = styled.div`
+    width: ${themeVars.stroke.thin};
+    height: 2.4px; /* 1/5 of the regular line height (12px / 5 = 2.4px) */
     background: ${themeVars.layout.onSurface.tertiary};
 `;
 
@@ -130,10 +129,13 @@ export const TimelineRuler: React.FC<TimelineRulerProps> = (props) => {
 
                     return (
                         <StyledRulerSection key={time}>
-                            {/* Numbered graduation with label */}
-                            <StyledSecond $width={24}>
-                                <StyledTimeLabel variant="CaptionRegular">{formatTimeLabel(time)}</StyledTimeLabel>
-                            </StyledSecond>
+                            {/* Numbered graduation with label and small line */}
+                            <StyledFrameLine $width={subGraduationWidth}>
+                                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+                                    <StyledTimeLabel variant="CaptionRegular">{formatTimeLabel(time)}</StyledTimeLabel>
+                                    <StyledSmallLine />
+                                </div>
+                            </StyledFrameLine>
 
                             {/* Unnumbered graduations (only if not the last section) */}
                             {!isLast && (
