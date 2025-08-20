@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.14](https://github.com/HautechAI/webui/compare/@hautechai/webui.floatingpanel@2.1.13...@hautechai/webui.floatingpanel@2.1.14) (2025-08-20)
+
+**Note:** Version bump only for package @hautechai/webui.floatingpanel
+
 ## [2.1.13](https://github.com/HautechAI/webui/compare/@hautechai/webui.floatingpanel@2.1.12...@hautechai/webui.floatingpanel@2.1.13) (2025-08-19)
 
 **Note:** Version bump only for package @hautechai/webui.floatingpanel
