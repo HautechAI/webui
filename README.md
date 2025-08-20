@@ -130,7 +130,7 @@ The library includes the following components organized by category:
 
 | Component                                               | Description                                                                                                                             |
 | ------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
-| [**TimelineTrack**](components/TimelineTrack/README.md) | Visual timeline track component for representing when elements are visible in a composition, with draggable and resizable functionality |
+| [**TimelineTrack**](components/TimelineTrack/README.md) | Visual timeline track component for representing when elements are visible in a composition, with draggable and resizable functionality. Includes TimelineTrackKeyframes for keyframe visualization with drag support |
 
 ### System
 

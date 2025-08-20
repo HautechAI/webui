@@ -17,7 +17,8 @@
     },
     "author": "HautechAI",
     "dependencies": {
-        "@hautechai/webui.themeprovider": "workspace:^"
+        "@hautechai/webui.themeprovider": "workspace:^",
+        "@hautechai/webui.icon": "workspace:^"
     },
     "license": "Apache-2.0"
 }
