@@ -23,6 +23,7 @@ The library includes the following components organized by category:
 | [**ButtonBase**](components/ButtonBase/README.md)                 | Base button component providing common button functionality                               |
 | [**Checkbox**](components/Checkbox/README.md)                     | Input control for boolean selection with custom styling                                   |
 | [**ColorPickerContent**](components/ColorPickerContent/README.md) | Color picker content with SV panel, hue/alpha sliders, eyedropper, and format inputs      |
+| [**ColorPickerInput**](components/ColorPickerInput/README.md)     | Color picker input component based on TextInput with popover color selection              |
 | [**Counter**](components/Counter/README.md)                       | Numeric display with increment/decrement controls                                         |
 | [**Dropdown**](components/Dropdown/README.md)                     | Select input with customizable options and styling                                        |
 | [**EditableText**](components/EditableText/README.md)             | Text display that switches to input mode on double-click for inline editing               |
