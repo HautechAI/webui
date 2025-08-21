@@ -6,9 +6,15 @@ import React, { useState, useCallback, useMemo } from 'react';
 import { PopoverPosition } from 'react-tiny-popover';
 
 // Color swatch component for leadingIcon
-const ColorSwatch = styled.div<{ color: string; size: 'medium' | 'small' }>`
-    width: ${({ size }) => (size === 'small' ? '16px' : '20px')};
-    height: ${({ size }) => (size === 'small' ? '16px' : '20px')};
+const ColorSwatch = styled.div<{ color: string; size: 'medium' | 'small' | number }>`
+    width: ${({ size }) => {
+        if (typeof size === 'number') return `${size}px`;
+        return size === 'small' ? '16px' : '20px';
+    }};
+    height: ${({ size }) => {
+        if (typeof size === 'number') return `${size}px`;
+        return size === 'small' ? '16px' : '20px';
+    }};
     border: none;
     border-radius: 4px;
     background: ${({ color }) => color};
