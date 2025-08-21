@@ -429,6 +429,9 @@ importers:
 
     components/EditableText:
         dependencies:
+            '@hautechai/webui.textinput':
+                specifier: workspace:^
+                version: link:../TextInput
             '@hautechai/webui.themeprovider':
                 specifier: workspace:^
                 version: link:../ThemeProvider

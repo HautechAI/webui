@@ -2,7 +2,7 @@
 
 ## Purpose
 
-A component that displays text which can be switched to edit mode by double-clicking. In view mode, it renders as styled typography, and in edit mode, it becomes an input field for text editing.
+A component that displays text which can be switched to edit mode by double-clicking. In view mode, it renders as styled typography with automatic emphasis based on selected state, and in edit mode, it becomes a TextInput field for text editing.
 
 ## Installation
 
@@ -19,14 +19,15 @@ yarn add @hautechai/webui.editabletext
 
 ## Parameters
 
-| Parameter       | Type                                                                             | Description                                                                                  |
-| --------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
-| text            | string                                                                           | The text content to display or edit                                                          |
-| mode            | 'view' \| 'edit'                                                                 | Controls whether the component is in display or editing mode                                 |
-| textStyle       | 'medium-regular' \| 'medium-emphasized' \| 'small-regular' \| 'small-emphasized' | Typography style applied in view mode (optional, defaults to 'medium-regular')               |
-| onStartEditing  | () => void                                                                       | Callback triggered when double-clicking in view mode (optional)                              |
-| onChange        | (value: string) => void                                                          | Callback triggered when the text content changes in edit mode (optional)                     |
-| onFinishEditing | () => void                                                                       | Callback triggered when clicking outside the input or pressing Enter in edit mode (optional) |
+| Parameter       | Type                    | Description                                                                                  |
+| --------------- | ----------------------- | -------------------------------------------------------------------------------------------- |
+| text            | string                  | The text content to display or edit                                                          |
+| mode            | 'view' \| 'edit'        | Controls whether the component is in display or editing mode                                 |
+| size            | 'medium' \| 'small'     | Typography size variant (optional, defaults to 'medium')                                     |
+| selected        | boolean                 | When true, applies emphasized typography styling (optional, defaults to false)               |
+| onStartEditing  | () => void              | Callback triggered when double-clicking in view mode (optional)                              |
+| onChange        | (value: string) => void | Callback triggered when the text content changes in edit mode (optional)                     |
+| onFinishEditing | () => void              | Callback triggered when clicking outside the input or pressing Enter in edit mode (optional) |
 
 ## Usage Example
 
@@ -37,7 +38,8 @@ const [mode, setMode] = useState<'view' | 'edit'>('view');
 <EditableText
     text={text}
     mode={mode}
-    textStyle="medium-regular"
+    size="medium"
+    selected={false}
     onStartEditing={() => setMode('edit')}
     onChange={setText}
     onFinishEditing={() => setMode('view')}

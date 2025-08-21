@@ -16,6 +16,7 @@
     },
     "author": "HautechAI",
     "dependencies": {
+        "@hautechai/webui.textinput": "workspace:^",
         "@hautechai/webui.themeprovider": "workspace:^",
         "@hautechai/webui.typography": "workspace:^"
     },
