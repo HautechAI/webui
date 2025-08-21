@@ -16,9 +16,8 @@ export interface TimelinePlayheadProps {
 const StyledPlayhead = styled.div<{ $left: number }>`
     width: 2px;
     height: 100%;
-    padding-top: 24px;
     left: ${(props) => props.$left}px;
-    top: 0;
+    top: -24px;
     position: absolute;
     flex-direction: column;
     justify-content: flex-start;
@@ -29,7 +28,6 @@ const StyledPlayhead = styled.div<{ $left: number }>`
 `;
 
 const StyledHead = styled.div<{ $isDragging: boolean }>`
-    padding-top: 24px;
     left: -7px;
     top: 0;
     position: absolute;
@@ -58,7 +56,7 @@ const StyledLine = styled.div<{ $height: number }>`
     background: ${themeVars.actions.primary};
     border-radius: 2px;
     outline: 1px ${themeVars.layout.surfaceLow} solid;
-    flex: 1 1 0;
+    margin-top: 20px;
 `;
 
 export const TimelinePlayhead: React.FC<TimelinePlayheadProps> = ({
@@ -114,7 +112,7 @@ export const TimelinePlayhead: React.FC<TimelinePlayheadProps> = ({
             <StyledHead $isDragging={isDragging} onMouseDown={handleMouseDown}>
                 <StyledShape />
             </StyledHead>
-            <StyledLine $height={timelineHeight - 24} />
+            <StyledLine $height={timelineHeight} />
         </StyledPlayhead>
     );
 };
