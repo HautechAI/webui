@@ -28,6 +28,7 @@ yarn add @hautechai/webui.segmentedcontrol
 | material     | boolean                                    | When true, uses material design variant instead of HIG              |
 | whitespace   | keyof ThemeType['foundation']['spacing']   | Optional spacing to add left/right padding to items                 |
 | stretch      | boolean                                    | When true, component takes full width with evenly distributed items |
+| size         | 'default' \| 'small'                       | Optional size variant - small has 28px total height                 |
 
 ## Usage Example
 

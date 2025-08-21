@@ -87,4 +87,51 @@ describe('SegmentedControl', () => {
         const whitespaceItems = container.querySelectorAll('[data-whitespace="m"]');
         expect(whitespaceItems.length).toBe(3);
     });
+
+    it('should apply size data attribute when size prop is provided', () => {
+        const { container } = render(
+            <ThemeProvider theme={testTheme}>
+                <SegmentedControl options={mockOptions} value="option1" onChange={() => {}} size="small" />
+            </ThemeProvider>,
+        );
+
+        const sizeItems = container.querySelectorAll('[data-size="small"]');
+        expect(sizeItems.length).toBe(3); // Should apply to all options
+    });
+
+    it('should default to default size when no size prop is provided', () => {
+        const { container } = render(
+            <ThemeProvider theme={testTheme}>
+                <SegmentedControl options={mockOptions} value="option1" onChange={() => {}} />
+            </ThemeProvider>,
+        );
+
+        const defaultSizeItems = container.querySelectorAll('[data-size="default"]');
+        expect(defaultSizeItems.length).toBe(3); // Should apply to all options
+    });
+
+    it('should work with size prop combined with other props', () => {
+        const { container } = render(
+            <ThemeProvider theme={testTheme}>
+                <SegmentedControl
+                    options={mockOptions}
+                    value="option1"
+                    onChange={() => {}}
+                    size="small"
+                    stretch={true}
+                    whitespace="m"
+                    material={true}
+                />
+            </ThemeProvider>,
+        );
+
+        const sizeItems = container.querySelectorAll('[data-size="small"]');
+        expect(sizeItems.length).toBe(3);
+
+        const stretchItems = container.querySelectorAll('[data-stretch="true"]');
+        expect(stretchItems.length).toBe(4); // Container + 3 options
+
+        const whitespaceItems = container.querySelectorAll('[data-whitespace="m"]');
+        expect(whitespaceItems.length).toBe(3);
+    });
 });
