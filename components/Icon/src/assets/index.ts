@@ -32,6 +32,7 @@ export * from './bulb';
 export * from './colorPicker';
 export * from './community';
 export * from './copy';
+export * from './cursor';
 export * from './danger';
 export * from './diamond';
 export * from './download';

@@ -14,6 +14,7 @@ import {
     OptionsIcon,
     OpacityIcon,
     ColorPickerIcon,
+    CursorIcon,
     EyeIcon,
     EyeClosedIcon,
     TextIcon,
@@ -165,6 +166,16 @@ describe('Icon', () => {
             render(
                 <ThemeProvider theme={testTheme}>
                     <ColorPickerIcon />
+                </ThemeProvider>,
+            );
+        }).not.toThrow();
+    });
+
+    it('should render CursorIcon without crashing', () => {
+        expect(() => {
+            render(
+                <ThemeProvider theme={testTheme}>
+                    <CursorIcon />
                 </ThemeProvider>,
             );
         }).not.toThrow();
