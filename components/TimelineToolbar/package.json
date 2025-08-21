@@ -1,7 +1,7 @@
 {
     "name": "@hautechai/webui.timelinetoolbar",
     "description": "Timeline toolbar component with playback controls and time display",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "type": "module",
     "main": "src/index.tsx",
     "publishConfig": {
@@ -16,11 +16,11 @@
     },
     "author": "HautechAI",
     "dependencies": {
-        "@hautechai/webui.themeprovider": "workspace:^",
-        "@hautechai/webui.typography": "workspace:^",
         "@hautechai/webui.icon": "workspace:^",
         "@hautechai/webui.iconbutton": "workspace:^",
-        "@hautechai/webui.toggleiconbutton": "workspace:^"
+        "@hautechai/webui.themeprovider": "workspace:^",
+        "@hautechai/webui.toggleiconbutton": "workspace:^",
+        "@hautechai/webui.typography": "workspace:^"
     },
     "license": "Apache-2.0"
 }
