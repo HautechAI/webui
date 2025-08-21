@@ -109,7 +109,7 @@ export const LayerTreeItemChild = (props: LayerTreeItemChildProps) => {
                     <EditableText
                         text={currentLabel}
                         mode={isEditing ? 'edit' : 'view'}
-                        size="medium"
+                        size="small"
                         selected={selected}
                         onStartEditing={handleStartEditing}
                         onChange={handleTextChange}
