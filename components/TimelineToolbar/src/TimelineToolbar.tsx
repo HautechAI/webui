@@ -102,28 +102,33 @@ export const TimelineToolbar: React.FC<TimelineToolbarProps> = ({
                     <IconButton
                         variant="flat"
                         size="small"
-                        icon={<SkipToStartIcon size={16} />}
+                        icon={<SkipToStartIcon size={16} style="bold" />}
                         onClick={onSkipToStart}
                     />
                     <IconButton
                         variant="flat"
                         size="small"
-                        icon={<RewindBackIcon size={16} />}
+                        icon={<RewindBackIcon size={16} style="bold" />}
                         onClick={onRewindBack}
                     />
                     <IconButton
                         variant="flat"
                         size="small"
-                        icon={isPlaying ? <PauseIcon size={16} /> : <PlayIcon size={16} />}
+                        icon={isPlaying ? <PauseIcon size={16} style="bold" /> : <PlayIcon size={16} style="bold" />}
                         onClick={onPlayPause}
                     />
                     <IconButton
                         variant="flat"
                         size="small"
-                        icon={<RewindForwardIcon size={16} />}
+                        icon={<RewindForwardIcon size={16} style="bold" />}
                         onClick={onRewindForward}
                     />
-                    <IconButton variant="flat" size="small" icon={<SkipToEndIcon size={16} />} onClick={onSkipToEnd} />
+                    <IconButton
+                        variant="flat"
+                        size="small"
+                        icon={<SkipToEndIcon size={16} style="bold" />}
+                        onClick={onSkipToEnd}
+                    />
                     <ToggleIconButton
                         variant="flat"
                         size="small"
