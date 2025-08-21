@@ -6,6 +6,7 @@ import { LayerTreeItemParent } from '@hautechai/webui.layertreeitemparent';
 import { LayerTreeItemChild } from '@hautechai/webui.layertreeitemchild';
 import { FolderIcon } from '@hautechai/webui.icon';
 import { TimelineRuler } from '@hautechai/webui.timelineruler';
+import { TimelinePlayhead } from './TimelinePlayhead';
 
 export interface TimelineTrackData {
     id: string;
@@ -31,6 +32,8 @@ export interface TimelineProps {
     scale: number;
     /** Array of track data */
     tracks: TimelineTrackData[];
+    /** Current playhead time position in seconds */
+    currentTime?: number;
     /** Called when a track is selected */
     onSelectTrack?: (trackId: string) => void;
     /** Called when a keyframe is selected */
@@ -39,6 +42,8 @@ export interface TimelineProps {
     _onMoveTrack?: (trackId: string, start: number, duration: number) => void;
     /** Called when a keyframe is moved */
     onMoveKeyframe?: (keyframeId: string, time: number) => void;
+    /** Called when playhead time changes */
+    onTimeChange?: (time: number) => void;
 }
 
 // Main container using CSS Grid
@@ -114,16 +119,19 @@ const KeyframeRow = styled.div`
 const TimelineContent = styled.div<{ scale: number; maxTime: number }>`
     min-width: ${(props) => props.maxTime * props.scale + 100}px;
     height: 100%;
+    position: relative;
 `;
 
 export const Timeline: React.FC<TimelineProps> = ({
     height = 250,
     scale,
     tracks,
+    currentTime = 0,
     onSelectTrack,
     onSelectKeyframe,
     _onMoveTrack,
     onMoveKeyframe,
+    onTimeChange,
 }) => {
     // Calculate maximum time for proper timeline width
     const maxTime = React.useMemo(() => {
@@ -191,7 +199,7 @@ export const Timeline: React.FC<TimelineProps> = ({
             </BottomLeft>
 
             <BottomRight>
-                <TimelineContent scale={scale} maxTime={maxTime}>
+                <TimelineContent scale={scale} maxTime={maxTime} data-timeline-content="true">
                     {tracks.map((track) => (
                         <React.Fragment key={track.id}>
                             {/* Track bar */}
@@ -218,6 +226,14 @@ export const Timeline: React.FC<TimelineProps> = ({
                             ))}
                         </React.Fragment>
                     ))}
+
+                    {/* Playhead */}
+                    <TimelinePlayhead
+                        currentTime={currentTime}
+                        scale={scale}
+                        timelineHeight={height - 24} // Subtract header height
+                        onTimeChange={onTimeChange}
+                    />
                 </TimelineContent>
             </BottomRight>
         </Container>

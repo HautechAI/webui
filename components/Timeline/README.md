@@ -2,18 +2,20 @@
 
 ## Purpose
 
-Timeline component that provides a 2x2 grid layout for video editing interfaces with tracks and keyframes. Combines track visualization with keyframe editing capabilities in a structured timeline layout.
+Timeline component that provides a 2x2 grid layout for video editing interfaces with tracks and keyframes. Features a draggable playhead for time navigation and combines track visualization with keyframe editing capabilities in a structured timeline layout.
 
 ## Parameters
 
-| Parameter        | Type                                       | Description                                                         |
-| ---------------- | ------------------------------------------ | ------------------------------------------------------------------- |
-| height           | number                                     | Optional. Height of the timeline component in pixels (default: 250) |
-| scale            | number                                     | Required. Scale in pixels per second for timeline display           |
-| tracks           | TimelineTrackData[]                        | Required. Array of track data with keyframe properties              |
-| onSelectTrack    | (trackId: string) => void                  | Optional. Called when a track is selected                           |
-| onSelectKeyframe | (keyframeId: string) => void               | Optional. Called when a keyframe is selected                        |
-| onMoveKeyframe   | (keyframeId: string, time: number) => void | Optional. Called when a keyframe is moved                           |
+| Parameter        | Type                                       | Description                                                          |
+| ---------------- | ------------------------------------------ | -------------------------------------------------------------------- |
+| height           | number                                     | Optional. Height of the timeline component in pixels (default: 250)  |
+| scale            | number                                     | Required. Scale in pixels per second for timeline display            |
+| tracks           | TimelineTrackData[]                        | Required. Array of track data with keyframe properties               |
+| currentTime      | number                                     | Optional. Current playhead time position in seconds (default: 0)     |
+| onSelectTrack    | (trackId: string) => void                  | Optional. Called when a track is selected                            |
+| onSelectKeyframe | (keyframeId: string) => void               | Optional. Called when a keyframe is selected                         |
+| onMoveKeyframe   | (keyframeId: string, time: number) => void | Optional. Called when a keyframe is moved                            |
+| onTimeChange     | (time: number) => void                     | Optional. Called when playhead time changes through user interaction |
 
 ### TimelineTrackData Interface
 
@@ -74,8 +76,19 @@ const tracks = [
     height={300}
     scale={50}
     tracks={tracks}
+    currentTime={3.2}
     onSelectTrack={(trackId) => console.log('Selected track:', trackId)}
     onSelectKeyframe={(keyframeId) => console.log('Selected keyframe:', keyframeId)}
     onMoveKeyframe={(keyframeId, time) => console.log('Moved keyframe:', keyframeId, 'to time:', time)}
+    onTimeChange={(time) => console.log('Playhead moved to:', time)}
 />;
 ```
+
+## Features
+
+- **2x2 Grid Layout**: Organized with TimelineRuler header, track labels sidebar, and scrollable timeline area
+- **Draggable Playhead**: Interactive time navigation with triangular indicator and vertical line
+- **Track Visualization**: TimelineTrack components for visual track representation
+- **Keyframe Editing**: TimelineTrackKeyframes components with selection and movement capabilities
+- **Responsive Design**: Configurable height and scale with proper sticky positioning
+- **Theme Integration**: Consistent styling using theme variables throughout

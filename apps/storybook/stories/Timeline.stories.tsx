@@ -14,6 +14,9 @@ export default {
         scale: {
             control: { type: 'number', min: 20, max: 100, step: 10 },
         },
+        currentTime: {
+            control: { type: 'number', min: 0, max: 15, step: 0.1 },
+        },
     },
 };
 
@@ -131,6 +134,7 @@ export const WithInteractions = {
     args: {
         scale: 50,
         tracks: sampleTracks,
+        currentTime: 2.5,
         onSelectTrack: (trackId: string) => {
             // eslint-disable-next-line no-console
             console.log('Selected track:', trackId);
@@ -142,6 +146,10 @@ export const WithInteractions = {
         onMoveKeyframe: (keyframeId: string, time: number) => {
             // eslint-disable-next-line no-console
             console.log('Moved keyframe:', keyframeId, 'to time:', time);
+        },
+        onTimeChange: (time: number) => {
+            // eslint-disable-next-line no-console
+            console.log('Playhead moved to time:', time);
         },
     },
 };
@@ -209,5 +217,53 @@ export const ManyTracks = {
                 ],
             },
         ],
+    },
+};
+
+export const WithPlayhead = {
+    args: {
+        scale: 50,
+        tracks: sampleTracks,
+        currentTime: 3.2,
+        onTimeChange: (time: number) => {
+            // eslint-disable-next-line no-console
+            console.log('Playhead time:', time);
+        },
+    },
+};
+
+export const PlayheadAtStart = {
+    args: {
+        scale: 60,
+        tracks: sampleTracks,
+        currentTime: 0,
+    },
+};
+
+export const PlayheadInMiddle = {
+    args: {
+        scale: 45,
+        tracks: sampleTracks,
+        currentTime: 4.5,
+    },
+};
+
+export const PlayheadWithDragCallback = {
+    args: {
+        scale: 50,
+        tracks: sampleTracks,
+        currentTime: 1.8,
+        onTimeChange: (time: number) => {
+            // eslint-disable-next-line no-console
+            console.log('Dragged playhead to:', time.toFixed(2), 'seconds');
+        },
+        onSelectTrack: (trackId: string) => {
+            // eslint-disable-next-line no-console
+            console.log('Selected track:', trackId);
+        },
+        onSelectKeyframe: (keyframeId: string) => {
+            // eslint-disable-next-line no-console
+            console.log('Selected keyframe:', keyframeId);
+        },
     },
 };
