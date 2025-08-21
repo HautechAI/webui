@@ -102,7 +102,7 @@ export const LargeWithIcon = {
     },
 };
 
-// Image with different sizes  
+// Image with different sizes
 export const SmallWithImage = {
     args: {
         src: img,

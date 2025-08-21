@@ -53,8 +53,8 @@ describe('Avatar', () => {
             </ThemeProvider>,
         );
         const avatarElement = container.querySelector('div');
-        expect(avatarElement).toHaveStyle({ 
-            background: 'linear-gradient(180deg, #ff0000 0%, #0000ff 100%)' 
+        expect(avatarElement).toHaveStyle({
+            background: 'linear-gradient(180deg, #ff0000 0%, #0000ff 100%)',
         });
     });
 
