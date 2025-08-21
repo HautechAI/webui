@@ -42,11 +42,11 @@ export const Zoom = ({ value, onChange }: ZoomProps) => {
     return (
         <ZoomContainer>
             <ZoomControls>
-                <IconButton size="small" variant="flat" onClick={handleDecrement} icon={<MinusIcon size={16} />} />
+                <IconButton size="xsmall" variant="flat" onClick={handleDecrement} icon={<MinusIcon />} />
                 <Typography variant="Body" textAlign="center">
                     {Math.round(value)}%
                 </Typography>
-                <IconButton size="small" variant="flat" onClick={handleIncrement} icon={<PlusIcon size={16} />} />
+                <IconButton size="xsmall" variant="flat" onClick={handleIncrement} icon={<PlusIcon />} />
             </ZoomControls>
         </ZoomContainer>
     );
