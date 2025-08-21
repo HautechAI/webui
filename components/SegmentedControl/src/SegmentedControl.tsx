@@ -18,6 +18,7 @@ export type SegmentedControlProps = {
     material?: boolean;
     whitespace?: keyof ThemeType['foundation']['spacing'];
     stretch?: boolean;
+    size?: 'default' | 'small';
 };
 
 const SegmentedControl = ({
@@ -28,6 +29,7 @@ const SegmentedControl = ({
     material,
     whitespace,
     stretch,
+    size = 'default',
 }: SegmentedControlProps) => {
     const handleClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>, value: string) => {
         onChange?.(e, value);
@@ -45,6 +47,7 @@ const SegmentedControl = ({
                         data-selected={isSelected}
                         data-whitespace={whitespace}
                         data-stretch={stretch}
+                        data-size={size}
                         key={optionValue}
                         onClick={(e) => handleClick(e, optionValue)}
                     >
