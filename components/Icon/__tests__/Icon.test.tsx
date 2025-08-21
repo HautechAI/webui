@@ -25,6 +25,7 @@ import {
     AlignMiddleIcon,
     AlignBottomIcon,
     PlayCircleIcon,
+    SkipToEndIcon,
 } from '../src/assets';
 import { ThemeProvider } from '../../ThemeProvider/src';
 import { testTheme } from '../../test-theme';
@@ -295,6 +296,36 @@ describe('Icon', () => {
             render(
                 <ThemeProvider theme={testTheme}>
                     <PlayCircleIcon style="bold" />
+                </ThemeProvider>,
+            );
+        }).not.toThrow();
+    });
+
+    it('should render SkipToEndIcon without crashing', () => {
+        expect(() => {
+            render(
+                <ThemeProvider theme={testTheme}>
+                    <SkipToEndIcon />
+                </ThemeProvider>,
+            );
+        }).not.toThrow();
+    });
+
+    it('should render SkipToEndIcon with outlined style', () => {
+        expect(() => {
+            render(
+                <ThemeProvider theme={testTheme}>
+                    <SkipToEndIcon style="outlined" />
+                </ThemeProvider>,
+            );
+        }).not.toThrow();
+    });
+
+    it('should render SkipToEndIcon with bold style', () => {
+        expect(() => {
+            render(
+                <ThemeProvider theme={testTheme}>
+                    <SkipToEndIcon style="bold" />
                 </ThemeProvider>,
             );
         }).not.toThrow();
