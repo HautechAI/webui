@@ -1,7 +1,7 @@
 {
     "name": "@hautechai/webui.pagination",
     "description": "",
-    "version": "2.1.17",
+    "version": "2.1.18",
     "type": "module",
     "main": "src/index.tsx",
     "publishConfig": {
