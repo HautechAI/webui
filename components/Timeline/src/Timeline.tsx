@@ -45,7 +45,7 @@ export interface TimelineProps {
 const Container = styled.div<{ height: number }>`
     display: grid;
     grid-template-columns: 200px 1fr;
-    grid-template-rows: 12px 1fr;
+    grid-template-rows: 24px 1fr;
     height: ${(props) => props.height}px;
     width: 100%;
     border: 1px solid ${themeVars.layout.strokes};
