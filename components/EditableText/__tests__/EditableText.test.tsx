@@ -9,14 +9,26 @@ const renderWithTheme = (component: React.ReactElement) => {
 };
 
 describe('EditableText', () => {
-    it('should render text in view mode', () => {
-        renderWithTheme(<EditableText text="Test text" mode="view" textStyle="medium-regular" />);
+    it('should render text in view mode with medium size and not selected by default', () => {
+        renderWithTheme(<EditableText text="Test text" mode="view" />);
 
         expect(screen.getByText('Test text')).toBeInTheDocument();
     });
 
-    it('should render input in edit mode', () => {
-        renderWithTheme(<EditableText text="Test text" mode="edit" textStyle="medium-regular" />);
+    it('should render text with small size when specified', () => {
+        renderWithTheme(<EditableText text="Test text" mode="view" size="small" />);
+
+        expect(screen.getByText('Test text')).toBeInTheDocument();
+    });
+
+    it('should render text with selected styling when selected is true', () => {
+        renderWithTheme(<EditableText text="Test text" mode="view" selected={true} />);
+
+        expect(screen.getByText('Test text')).toBeInTheDocument();
+    });
+
+    it('should render TextInput in edit mode', () => {
+        renderWithTheme(<EditableText text="Test text" mode="edit" />);
 
         const input = screen.getByDisplayValue('Test text');
         expect(input).toBeInTheDocument();
@@ -26,9 +38,7 @@ describe('EditableText', () => {
     it('should call onStartEditing on double click in view mode', () => {
         const onStartEditing = vi.fn();
 
-        renderWithTheme(
-            <EditableText text="Test text" mode="view" textStyle="medium-regular" onStartEditing={onStartEditing} />,
-        );
+        renderWithTheme(<EditableText text="Test text" mode="view" onStartEditing={onStartEditing} />);
 
         const textElement = screen.getByText('Test text');
         fireEvent.doubleClick(textElement);
@@ -39,7 +49,7 @@ describe('EditableText', () => {
     it('should call onChange when input value changes in edit mode', () => {
         const onChange = vi.fn();
 
-        renderWithTheme(<EditableText text="Test text" mode="edit" textStyle="medium-regular" onChange={onChange} />);
+        renderWithTheme(<EditableText text="Test text" mode="edit" onChange={onChange} />);
 
         const input = screen.getByDisplayValue('Test text');
         fireEvent.change(input, { target: { value: 'New text' } });
@@ -50,12 +60,10 @@ describe('EditableText', () => {
     it('should call onFinishEditing when Enter is pressed in edit mode', () => {
         const onFinishEditing = vi.fn();
 
-        renderWithTheme(
-            <EditableText text="Test text" mode="edit" textStyle="medium-regular" onFinishEditing={onFinishEditing} />,
-        );
+        renderWithTheme(<EditableText text="Test text" mode="edit" onFinishEditing={onFinishEditing} />);
 
         const input = screen.getByDisplayValue('Test text');
-        fireEvent.keyDown(input, { key: 'Enter', code: 'Enter' });
+        fireEvent.keyDown(input.parentElement!, { key: 'Enter', code: 'Enter' });
 
         expect(onFinishEditing).toHaveBeenCalledTimes(1);
     });

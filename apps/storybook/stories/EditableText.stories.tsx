@@ -11,9 +11,12 @@ export default {
     },
     tags: ['autodocs'],
     argTypes: {
-        textStyle: {
+        size: {
             control: { type: 'select' },
-            options: ['medium-regular', 'medium-emphasized', 'small-regular', 'small-emphasized'],
+            options: ['medium', 'small'],
+        },
+        selected: {
+            control: { type: 'boolean' },
         },
         mode: {
             control: { type: 'select' },
@@ -50,7 +53,8 @@ export const Interactive = () => {
         <EditableText
             text={text}
             mode={mode}
-            textStyle="medium-regular"
+            size="medium"
+            selected={false}
             onStartEditing={handleStartEditing}
             onChange={handleChange}
             onFinishEditing={handleFinishEditing}
@@ -62,7 +66,8 @@ export const MediumRegular = {
     args: {
         text: 'Medium regular text',
         mode: 'view',
-        textStyle: 'medium-regular',
+        size: 'medium',
+        selected: false,
     },
 };
 
@@ -70,7 +75,8 @@ export const MediumEmphasized = {
     args: {
         text: 'Medium emphasized text',
         mode: 'view',
-        textStyle: 'medium-emphasized',
+        size: 'medium',
+        selected: true,
     },
 };
 
@@ -78,7 +84,8 @@ export const SmallRegular = {
     args: {
         text: 'Small regular text',
         mode: 'view',
-        textStyle: 'small-regular',
+        size: 'small',
+        selected: false,
     },
 };
 
@@ -86,7 +93,8 @@ export const SmallEmphasized = {
     args: {
         text: 'Small emphasized text',
         mode: 'view',
-        textStyle: 'small-emphasized',
+        size: 'small',
+        selected: true,
     },
 };
 
@@ -94,7 +102,8 @@ export const EditMode = {
     args: {
         text: 'Text in edit mode',
         mode: 'edit',
-        textStyle: 'medium-regular',
+        size: 'medium',
+        selected: false,
     },
 };
 
@@ -107,7 +116,8 @@ export const InteractiveMediumEmphasized = () => {
         <EditableText
             text={text}
             mode={mode}
-            textStyle="medium-emphasized"
+            size="medium"
+            selected={true}
             onStartEditing={() => setMode('edit')}
             onChange={setText}
             onFinishEditing={() => setMode('view')}
@@ -123,7 +133,8 @@ export const InteractiveSmallRegular = () => {
         <EditableText
             text={text}
             mode={mode}
-            textStyle="small-regular"
+            size="small"
+            selected={false}
             onStartEditing={() => setMode('edit')}
             onChange={setText}
             onFinishEditing={() => setMode('view')}
@@ -139,7 +150,8 @@ export const InteractiveSmallEmphasized = () => {
         <EditableText
             text={text}
             mode={mode}
-            textStyle="small-emphasized"
+            size="small"
+            selected={true}
             onStartEditing={() => setMode('edit')}
             onChange={setText}
             onFinishEditing={() => setMode('view')}
