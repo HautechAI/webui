@@ -6,12 +6,10 @@ import { MinusIcon, PlusIcon } from '@hautechai/webui.icon';
 import { Typography } from '@hautechai/webui.typography';
 
 const ZoomContainer = styled.div`
-    display: flex;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: ${themeVars.spacing.m};
-    width: 100%;
-    height: 100%;
     padding: ${themeVars.spacing.m};
     background: ${themeVars.layout.surfaceLow};
     border-radius: ${themeVars.cornerRadius.m};
