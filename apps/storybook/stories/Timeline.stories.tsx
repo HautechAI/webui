@@ -10,15 +10,10 @@ const meta: Meta<typeof Timeline> = {
     },
     tags: ['autodocs'],
     argTypes: {
-        height: {
-            control: { type: 'number', min: 200, max: 600, step: 50 },
-        },
-        scale: {
-            control: { type: 'number', min: 20, max: 100, step: 10 },
-        },
-        currentTime: {
-            control: { type: 'number', min: 0, max: 15, step: 0.1 },
-        },
+        height: { control: { type: 'number', min: 200, max: 600, step: 50 } },
+        scale: { control: { type: 'number', min: 20, max: 100, step: 10 } },
+        duration: { control: { type: 'number', min: 1, max: 60, step: 1 } },
+        currentTime: { control: { type: 'number', min: 0, max: 60, step: 0.1 } },
     },
     args: {
         onSelectTrack: fn(),
@@ -114,6 +109,7 @@ const sampleTracks = [
 export const Default = {
     args: {
         scale: 50,
+        duration: 15,
         tracks: sampleTracks,
     },
 };
@@ -122,6 +118,7 @@ export const CustomHeight = {
     args: {
         height: 400,
         scale: 50,
+        duration: 15,
         tracks: sampleTracks,
     },
 };
@@ -129,6 +126,7 @@ export const CustomHeight = {
 export const LargeScale = {
     args: {
         scale: 80,
+        duration: 15,
         tracks: sampleTracks,
     },
 };
@@ -136,6 +134,7 @@ export const LargeScale = {
 export const SmallScale = {
     args: {
         scale: 30,
+        duration: 15,
         tracks: sampleTracks,
     },
 };
@@ -143,6 +142,7 @@ export const SmallScale = {
 export const WithInteractions = {
     args: {
         scale: 50,
+        duration: 15,
         tracks: sampleTracks,
         currentTime: 2.5,
         onSelectTrack: (trackId: string) => {
@@ -167,6 +167,7 @@ export const WithInteractions = {
 export const SingleTrack = {
     args: {
         scale: 60,
+        duration: 10,
         tracks: [sampleTracks[0]],
     },
 };
@@ -174,6 +175,7 @@ export const SingleTrack = {
 export const EmptyTimeline = {
     args: {
         scale: 50,
+        duration: 0,
         tracks: [],
     },
 };
@@ -181,6 +183,7 @@ export const EmptyTimeline = {
 export const ManyTracks = {
     args: {
         scale: 40,
+        duration: 20,
         tracks: [
             ...sampleTracks,
             {
@@ -233,6 +236,7 @@ export const ManyTracks = {
 export const WithPlayhead = {
     args: {
         scale: 50,
+        duration: 15,
         tracks: sampleTracks,
         currentTime: 3.2,
         onTimeChange: (time: number) => {
@@ -245,6 +249,7 @@ export const WithPlayhead = {
 export const PlayheadAtStart = {
     args: {
         scale: 60,
+        duration: 15,
         tracks: sampleTracks,
         currentTime: 0,
     },
@@ -253,6 +258,7 @@ export const PlayheadAtStart = {
 export const PlayheadInMiddle = {
     args: {
         scale: 45,
+        duration: 15,
         tracks: sampleTracks,
         currentTime: 4.5,
     },
@@ -261,6 +267,7 @@ export const PlayheadInMiddle = {
 export const PlayheadWithDragCallback = {
     args: {
         scale: 50,
+        duration: 15,
         tracks: sampleTracks,
         currentTime: 1.8,
         onTimeChange: (time: number) => {

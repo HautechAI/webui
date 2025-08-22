@@ -48,7 +48,7 @@ describe('Timeline', () => {
     const renderTimeline = (props = {}) => {
         return render(
             <ThemeProvider theme={testTheme}>
-                <Timeline scale={50} tracks={mockTracks} {...props} />
+                <Timeline scale={50} duration={20} tracks={mockTracks} {...props} />
             </ThemeProvider>,
         );
     };
@@ -106,7 +106,7 @@ describe('Timeline', () => {
     it('handles empty tracks array', () => {
         const { container } = render(
             <ThemeProvider theme={testTheme}>
-                <Timeline scale={50} tracks={[]} />
+                <Timeline scale={50} duration={0} tracks={[]} />
             </ThemeProvider>,
         );
 
@@ -162,7 +162,7 @@ describe('Timeline', () => {
         it('renders playhead with different currentTime values', () => {
             const { rerender } = render(
                 <ThemeProvider theme={testTheme}>
-                    <Timeline scale={50} tracks={mockTracks} currentTime={0} />
+                    <Timeline scale={50} duration={20} tracks={mockTracks} currentTime={0} />
                 </ThemeProvider>,
             );
 
@@ -172,7 +172,7 @@ describe('Timeline', () => {
             // Rerender with different currentTime
             rerender(
                 <ThemeProvider theme={testTheme}>
-                    <Timeline scale={50} tracks={mockTracks} currentTime={5} />
+                    <Timeline scale={50} duration={20} tracks={mockTracks} currentTime={5} />
                 </ThemeProvider>,
             );
 
