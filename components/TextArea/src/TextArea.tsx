@@ -115,7 +115,7 @@ const OuterActionButtonContainer = styled(ActionButtonContainer)`
 `;
 
 const InnerActionButtonContainer = styled(ActionButtonContainer)`
-    padding: ${themeVars.spacing.m};
+    /* No additional padding - action button should be positioned naturally inside the container */
 `;
 
 const getIcon = (icon: React.ReactNode) => (
