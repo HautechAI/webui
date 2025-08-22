@@ -51,3 +51,10 @@ export const Interactive = {
         return <Zoom value={zoom} onChange={setZoom} />;
     },
 };
+
+export const InteractiveWithCustomStep = {
+    render: () => {
+        const [zoom, setZoom] = useState(123.7);
+        return <Zoom value={zoom} onChange={setZoom} step={25} />;
+    },
+};

@@ -31,11 +31,17 @@ export type ZoomProps = {
 
 export const Zoom = ({ value, onChange, step = 10 }: ZoomProps) => {
     const handleDecrement = useCallback(() => {
-        onChange(value - step);
+        const newValue = Math.floor(value / step) * step;
+        // If value is already at a step boundary, go to previous step
+        const finalValue = newValue === value ? newValue - step : newValue;
+        onChange(finalValue);
     }, [value, onChange, step]);
 
     const handleIncrement = useCallback(() => {
-        onChange(value + step);
+        const newValue = Math.ceil(value / step) * step;
+        // If value is already at a step boundary, go to next step
+        const finalValue = newValue === value ? newValue + step : newValue;
+        onChange(finalValue);
     }, [value, onChange, step]);
 
     return (
