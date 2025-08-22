@@ -56,6 +56,7 @@ const Container = styled.div<{ height: number }>`
     border: 1px solid ${themeVars.layout.strokes};
     border-radius: ${themeVars.cornerRadius.s};
     overflow: auto;
+    position: relative; // Enable absolute positioning for playhead
 `;
 
 // Empty top-left cell
@@ -226,16 +227,16 @@ export const Timeline: React.FC<TimelineProps> = ({
                             ))}
                         </React.Fragment>
                     ))}
-
-                    {/* Playhead */}
-                    <TimelinePlayhead
-                        currentTime={currentTime}
-                        scale={scale}
-                        timelineHeight={height - 24} // Subtract header height
-                        onTimeChange={onTimeChange}
-                    />
                 </TimelineContent>
             </BottomRight>
+
+            {/* Playhead - positioned as overlay spanning ruler and content */}
+            <TimelinePlayhead
+                currentTime={currentTime}
+                scale={scale}
+                timelineHeight={height}
+                onTimeChange={onTimeChange}
+            />
         </Container>
     );
 };

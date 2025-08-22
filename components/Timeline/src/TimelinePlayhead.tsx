@@ -13,29 +13,31 @@ export interface TimelinePlayheadProps {
     onTimeChange?: (time: number) => void;
 }
 
-const StyledPlayhead = styled.div<{ $left: number }>`
+// Container for the playhead that spans ruler and timeline areas
+const PlayheadContainer = styled.div<{ $left: number }>`
+    position: absolute;
+    left: ${(props) => 200 + props.$left}px; // 200px for sidebar + currentTime position
+    top: 0;
     width: 2px;
     height: 100%;
-    left: ${(props) => props.$left}px;
-    top: -24px;
-    position: absolute;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    display: flex;
     pointer-events: none;
-    z-index: 30;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 `;
 
+// Head positioned in ruler area (top 24px)
 const StyledHead = styled.div<{ $isDragging: boolean }>`
-    left: -7px;
-    top: 0;
     position: absolute;
+    left: -7px;
+    top: 2px; // Small offset from top
     justify-content: center;
     align-items: center;
     display: inline-flex;
     cursor: ${(props) => (props.$isDragging ? 'grabbing' : 'grab')};
     pointer-events: auto;
+    z-index: 101;
 
     &:hover {
         transform: scale(1.1);
@@ -50,13 +52,15 @@ const StyledShape = styled.div`
     clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
 `;
 
+// Line extends from ruler area down through timeline
 const StyledLine = styled.div<{ $height: number }>`
+    position: absolute;
+    top: 0;
     width: 2px;
     height: ${(props) => props.$height}px;
     background: ${themeVars.actions.primary};
     border-radius: 2px;
     outline: 1px ${themeVars.layout.surfaceLow} solid;
-    margin-top: 20px;
 `;
 
 export const TimelinePlayhead: React.FC<TimelinePlayheadProps> = ({
@@ -108,11 +112,11 @@ export const TimelinePlayhead: React.FC<TimelinePlayheadProps> = ({
     const leftPosition = currentTime * scale;
 
     return (
-        <StyledPlayhead $left={leftPosition}>
+        <PlayheadContainer $left={leftPosition}>
             <StyledHead $isDragging={isDragging} onMouseDown={handleMouseDown}>
                 <StyledShape />
             </StyledHead>
             <StyledLine $height={timelineHeight} />
-        </StyledPlayhead>
+        </PlayheadContainer>
     );
 };
