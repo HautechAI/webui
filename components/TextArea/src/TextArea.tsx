@@ -128,21 +128,22 @@ const OuterActionButtonContainer = styled(ActionButtonContainer)`
 `;
 
 const InnerActionButtonContainer = styled(ActionButtonContainer)`
-    /* No additional padding - action button should be positioned naturally inside the container */
-    position: absolute;
-    right: ${themeVars.spacing.ml};
+    position: relative;
+    right: 0;
+    top: 0;
+    display: flex;
+    height: 100%;
 
     &[data-position='top'] {
-        top: ${themeVars.spacing.m};
+        align-items: flex-start;
     }
 
     &[data-position='middle'] {
-        top: 50%;
-        transform: translateY(-50%);
+        align-items: center;
     }
 
     &[data-position='bottom'] {
-        bottom: ${themeVars.spacing.m};
+        align-items: flex-end;
     }
 `;
 
