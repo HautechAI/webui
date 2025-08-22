@@ -1,4 +1,3 @@
-import { IconButton, IconButtonProps } from '@hautechai/webui.iconbutton';
 import { styled } from '@hautechai/webui.themeprovider';
 import { themeVars } from '@hautechai/webui.themeprovider';
 import React, { ChangeEventHandler, useCallback, useRef } from 'react';
@@ -18,8 +17,9 @@ export const InputContainer = styled.div<{ variation: 'filled' | 'outlined' }>`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: start;
+    align-items: center;
     cursor: text;
+    position: relative;
 
     padding: ${themeVars.spacing.m} ${themeVars.spacing.ml};
     flex: 1 0 0;
@@ -104,12 +104,47 @@ const InnerIconContainer = styled.div`
     align-items: center;
 `;
 
-const OuterIconContainer = styled.div`
-    width: 36px;
-    height: 36px;
+const ActionButtonContainer = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+`;
+
+const OuterActionButtonContainer = styled(ActionButtonContainer)`
+    width: 36px;
+    height: 36px;
+
+    &[data-position='top'] {
+        align-self: flex-start;
+    }
+
+    &[data-position='middle'] {
+        align-self: center;
+    }
+
+    &[data-position='bottom'] {
+        align-self: flex-end;
+    }
+`;
+
+const InnerActionButtonContainer = styled(ActionButtonContainer)`
+    position: relative;
+    right: 0;
+    top: 0;
+    display: flex;
+    height: 100%;
+
+    &[data-position='top'] {
+        align-items: flex-start;
+    }
+
+    &[data-position='middle'] {
+        align-items: center;
+    }
+
+    &[data-position='bottom'] {
+        align-items: flex-end;
+    }
 `;
 
 const getIcon = (icon: React.ReactNode) => (
@@ -137,9 +172,10 @@ export type TextAreaProps = {
     variation?: 'filled' | 'outlined';
     minRows?: number;
     maxRows?: number;
-} & Pick<Partial<IconButtonProps>, 'icon'> & {
-        onIconButtonClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
-    };
+    actionButton?: React.ReactNode;
+    actionButtonInside?: boolean;
+    actionButtonPosition?: 'top' | 'middle' | 'bottom';
+};
 
 export const TextArea = (props: TextAreaProps) => {
     const ref = useRef<HTMLTextAreaElement>(null);
@@ -148,7 +184,14 @@ export const TextArea = (props: TextAreaProps) => {
         ref.current?.focus();
     }, []);
 
-    const { disabled, icon, minRows = 4, maxRows } = props;
+    const {
+        disabled,
+        actionButton,
+        actionButtonInside = false,
+        actionButtonPosition = 'middle',
+        minRows = 4,
+        maxRows,
+    } = props;
 
     return (
         <Container onClick={handleClick} data-disabled={!!disabled}>
@@ -169,23 +212,16 @@ export const TextArea = (props: TextAreaProps) => {
                     placeholder={props.placeholder}
                 />
                 {props.trailingIcon ? getIcon(props.trailingIcon) : null}
+                {actionButton && actionButtonInside && (
+                    <InnerActionButtonContainer data-position={actionButtonPosition}>
+                        {actionButton}
+                    </InnerActionButtonContainer>
+                )}
             </InputContainer>
-            {icon && (
-                <OuterIconContainer>
-                    <IconButton
-                        variant="flat"
-                        size="small"
-                        icon={
-                            React.isValidElement<{ size: number }>(icon)
-                                ? React.cloneElement(icon, {
-                                      size: 20,
-                                  })
-                                : icon
-                        }
-                        disabled={disabled}
-                        onClick={props.onIconButtonClick}
-                    />
-                </OuterIconContainer>
+            {actionButton && !actionButtonInside && (
+                <OuterActionButtonContainer data-position={actionButtonPosition}>
+                    {actionButton}
+                </OuterActionButtonContainer>
             )}
         </Container>
     );

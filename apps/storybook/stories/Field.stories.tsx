@@ -12,6 +12,7 @@ import { Dropdown } from '../../../components/Dropdown/src';
 import { SegmentedControl } from '../../../components/SegmentedControl/src';
 import { Counter } from '../../../components/Counter/src';
 import { ToolButton } from '../../../components/ToolButton/src';
+import { IconButton } from '../../../components/IconButton/src';
 
 const meta: Meta<typeof Field> = {
     title: 'Input/Field',
@@ -196,8 +197,9 @@ export const WithAreaWithIcons: Story = {
                 placeholder="Any text"
                 leadingIcon={<PlaceholderIcon />}
                 trailingIcon={<PlaceholderIcon />}
-                icon={<PlaceholderIcon />}
-                onIconButtonClick={fn() as () => void}
+                actionButton={
+                    <IconButton variant="flat" size="small" icon={<PlaceholderIcon />} onClick={fn() as () => void} />
+                }
                 onChange={fn() as (e: React.ChangeEvent<HTMLTextAreaElement>) => void}
             />
         ),
@@ -213,8 +215,15 @@ export const WithAreaDisabled: Story = {
             <TextArea
                 disabled
                 placeholder="Any text"
-                icon={<PlaceholderIcon />}
-                onIconButtonClick={fn() as () => void}
+                actionButton={
+                    <IconButton
+                        variant="flat"
+                        size="small"
+                        icon={<PlaceholderIcon />}
+                        disabled
+                        onClick={fn() as () => void}
+                    />
+                }
                 onChange={fn() as (e: React.ChangeEvent<HTMLTextAreaElement>) => void}
             />
         ),
@@ -230,8 +239,9 @@ export const WithAreaLocked: Story = {
         children: (
             <TextArea
                 placeholder="Any text"
-                icon={<PlaceholderIcon />}
-                onIconButtonClick={fn() as () => void}
+                actionButton={
+                    <IconButton variant="flat" size="small" icon={<PlaceholderIcon />} onClick={fn() as () => void} />
+                }
                 onChange={fn() as (e: React.ChangeEvent<HTMLTextAreaElement>) => void}
             />
         ),
