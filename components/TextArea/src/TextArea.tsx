@@ -17,7 +17,7 @@ export const InputContainer = styled.div<{ variation: 'filled' | 'outlined' }>`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: start;
+    align-items: center;
     cursor: text;
 
     padding: ${themeVars.spacing.m} ${themeVars.spacing.ml};
