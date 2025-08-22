@@ -1,4 +1,3 @@
-import { IconButton, IconButtonProps } from '@hautechai/webui.iconbutton';
 import { styled } from '@hautechai/webui.themeprovider';
 import { themeVars } from '@hautechai/webui.themeprovider';
 import React, { ChangeEventHandler, useCallback, useRef } from 'react';
@@ -104,12 +103,19 @@ const InnerIconContainer = styled.div`
     align-items: center;
 `;
 
-const OuterIconContainer = styled.div`
-    width: 36px;
-    height: 36px;
+const ActionButtonContainer = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+`;
+
+const OuterActionButtonContainer = styled(ActionButtonContainer)`
+    width: 36px;
+    height: 36px;
+`;
+
+const InnerActionButtonContainer = styled(ActionButtonContainer)`
+    padding: ${themeVars.spacing.m};
 `;
 
 const getIcon = (icon: React.ReactNode) => (
@@ -137,9 +143,9 @@ export type TextAreaProps = {
     variation?: 'filled' | 'outlined';
     minRows?: number;
     maxRows?: number;
-} & Pick<Partial<IconButtonProps>, 'icon'> & {
-        onIconButtonClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
-    };
+    actionButton?: React.ReactNode;
+    actionButtonInside?: boolean;
+};
 
 export const TextArea = (props: TextAreaProps) => {
     const ref = useRef<HTMLTextAreaElement>(null);
@@ -148,7 +154,7 @@ export const TextArea = (props: TextAreaProps) => {
         ref.current?.focus();
     }, []);
 
-    const { disabled, icon, minRows = 4, maxRows } = props;
+    const { disabled, actionButton, actionButtonInside = false, minRows = 4, maxRows } = props;
 
     return (
         <Container onClick={handleClick} data-disabled={!!disabled}>
@@ -169,23 +175,12 @@ export const TextArea = (props: TextAreaProps) => {
                     placeholder={props.placeholder}
                 />
                 {props.trailingIcon ? getIcon(props.trailingIcon) : null}
+                {actionButton && actionButtonInside && (
+                    <InnerActionButtonContainer>{actionButton}</InnerActionButtonContainer>
+                )}
             </InputContainer>
-            {icon && (
-                <OuterIconContainer>
-                    <IconButton
-                        variant="flat"
-                        size="small"
-                        icon={
-                            React.isValidElement<{ size: number }>(icon)
-                                ? React.cloneElement(icon, {
-                                      size: 20,
-                                  })
-                                : icon
-                        }
-                        disabled={disabled}
-                        onClick={props.onIconButtonClick}
-                    />
-                </OuterIconContainer>
+            {actionButton && !actionButtonInside && (
+                <OuterActionButtonContainer>{actionButton}</OuterActionButtonContainer>
             )}
         </Container>
     );

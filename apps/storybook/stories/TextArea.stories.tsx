@@ -3,6 +3,7 @@ import { fn } from '@storybook/test';
 import { Box } from '../../../components/Box/src';
 import { PlaceholderIcon } from '../../../components/Icon/src';
 import { TextArea } from '../../../components/TextArea/src';
+import { IconButton } from '../../../components/IconButton/src';
 
 export default {
     title: 'Input/TextArea',
@@ -39,10 +40,16 @@ export const WithIcons = {
     },
 };
 
-export const WithIconButton = {
+export const WithActionButton = {
     args: {
-        icon: <PlaceholderIcon />,
-        onIconButtonClick: fn() as React.MouseEventHandler<HTMLButtonElement>,
+        actionButton: (
+            <IconButton
+                variant="flat"
+                size="small"
+                icon={<PlaceholderIcon />}
+                onClick={fn() as React.MouseEventHandler<HTMLButtonElement>}
+            />
+        ),
     },
 };
 
@@ -55,14 +62,35 @@ export const WithError = {
 export const Disabled = {
     args: {
         disabled: true,
-        icon: <PlaceholderIcon />,
-        onIconButtonClick: fn() as React.MouseEventHandler<HTMLButtonElement>,
+        actionButton: (
+            <IconButton
+                variant="flat"
+                size="small"
+                icon={<PlaceholderIcon />}
+                disabled
+                onClick={fn() as React.MouseEventHandler<HTMLButtonElement>}
+            />
+        ),
     },
 };
 
 export const WithCustomClass = {
     args: {
         className: 'custom-textarea',
+    },
+};
+
+export const WithActionButtonInside = {
+    args: {
+        actionButton: (
+            <IconButton
+                variant="flat"
+                size="small"
+                icon={<PlaceholderIcon />}
+                onClick={fn() as React.MouseEventHandler<HTMLButtonElement>}
+            />
+        ),
+        actionButtonInside: true,
     },
 };
 
