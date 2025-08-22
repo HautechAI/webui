@@ -6,10 +6,11 @@ A zoom control component that displays zoom percentage with increment and decrem
 
 ## Parameters
 
-| Parameter | Type                    | Description                                      |
-| --------- | ----------------------- | ------------------------------------------------ |
-| value     | number                  | The current zoom value (e.g., 100 for 100%)      |
-| onChange  | (value: number) => void | Callback function called when zoom value changes |
+| Parameter | Type                    | Description                                                    |
+| --------- | ----------------------- | -------------------------------------------------------------- |
+| value     | number                  | The current zoom value (e.g., 100 for 100%)                    |
+| onChange  | (value: number) => void | Callback function called when zoom value changes               |
+| step      | number                  | Optional. The step value for increment/decrement (default: 10) |
 
 ## Usage Example
 
@@ -18,5 +19,9 @@ import { Zoom } from '@hautechai/webui.zoom';
 
 const [zoomLevel, setZoomLevel] = useState(100);
 
-<Zoom value={zoomLevel} onChange={setZoomLevel} />;
+// Default step (10)
+<Zoom value={zoomLevel} onChange={setZoomLevel} />
+
+// Custom step (25)
+<Zoom value={zoomLevel} onChange={setZoomLevel} step={25} />
 ```

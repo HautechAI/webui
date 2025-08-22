@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { fn } from '@storybook/test';
 import { Box } from '../../../components/Box/src';
 import { Zoom } from '../../../components/Zoom/src';
@@ -42,5 +42,12 @@ export const At200Percent = {
 export const WithDecimal = {
     args: {
         value: 123.7,
+    },
+};
+
+export const Interactive = {
+    render: () => {
+        const [zoom, setZoom] = useState(100);
+        return <Zoom value={zoom} onChange={setZoom} />;
     },
 };

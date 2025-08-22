@@ -26,16 +26,17 @@ const ZoomControls = styled.div`
 export type ZoomProps = {
     value: number;
     onChange: (value: number) => void;
+    step?: number;
 };
 
-export const Zoom = ({ value, onChange }: ZoomProps) => {
+export const Zoom = ({ value, onChange, step = 10 }: ZoomProps) => {
     const handleDecrement = useCallback(() => {
-        onChange(value - 10); // Decrease by 10%
-    }, [value, onChange]);
+        onChange(value - step);
+    }, [value, onChange, step]);
 
     const handleIncrement = useCallback(() => {
-        onChange(value + 10); // Increase by 10%
-    }, [value, onChange]);
+        onChange(value + step);
+    }, [value, onChange, step]);
 
     return (
         <ZoomContainer>

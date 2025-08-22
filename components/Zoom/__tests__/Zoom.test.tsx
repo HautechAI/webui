@@ -92,4 +92,42 @@ describe('Zoom', () => {
         fireEvent.click(minusButton);
         expect(onChange).toHaveBeenCalledWith(190);
     });
+
+    it('should use custom step value when provided', () => {
+        const onChange = vi.fn();
+        render(
+            <ThemeProvider theme={testTheme}>
+                <Zoom value={100} onChange={onChange} step={25} />
+            </ThemeProvider>,
+        );
+
+        // Test increment with custom step
+        const plusButton = screen.getAllByRole('button')[1];
+        fireEvent.click(plusButton);
+        expect(onChange).toHaveBeenCalledWith(125);
+
+        // Test decrement with custom step
+        const minusButton = screen.getAllByRole('button')[0];
+        fireEvent.click(minusButton);
+        expect(onChange).toHaveBeenCalledWith(75);
+    });
+
+    it('should use default step of 10 when step is not provided', () => {
+        const onChange = vi.fn();
+        render(
+            <ThemeProvider theme={testTheme}>
+                <Zoom value={100} onChange={onChange} />
+            </ThemeProvider>,
+        );
+
+        // Test increment with default step
+        const plusButton = screen.getAllByRole('button')[1];
+        fireEvent.click(plusButton);
+        expect(onChange).toHaveBeenCalledWith(110);
+
+        // Test decrement with default step
+        const minusButton = screen.getAllByRole('button')[0];
+        fireEvent.click(minusButton);
+        expect(onChange).toHaveBeenCalledWith(90);
+    });
 });
