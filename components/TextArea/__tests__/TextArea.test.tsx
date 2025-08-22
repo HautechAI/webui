@@ -59,4 +59,70 @@ describe('TextArea', () => {
         expect(screen.getByTestId('action-button')).toBeInTheDocument();
         expect(screen.getByTestId('leading-icon')).toBeInTheDocument();
     });
+
+    describe('Action Button Positioning', () => {
+        it('should default to middle position', () => {
+            const TestButton = () => <button data-testid="action-button">Test Button</button>;
+            const { container } = renderWithTheme(
+                <TextArea value="" onChange={() => {}} actionButton={<TestButton />} />,
+            );
+
+            const actionButtonContainer = container.querySelector('[data-position="middle"]');
+            expect(actionButtonContainer).toBeInTheDocument();
+        });
+
+        it('should position action button at top when actionButtonPosition is top', () => {
+            const TestButton = () => <button data-testid="action-button">Test Button</button>;
+            const { container } = renderWithTheme(
+                <TextArea value="" onChange={() => {}} actionButton={<TestButton />} actionButtonPosition="top" />,
+            );
+
+            const actionButtonContainer = container.querySelector('[data-position="top"]');
+            expect(actionButtonContainer).toBeInTheDocument();
+        });
+
+        it('should position action button at bottom when actionButtonPosition is bottom', () => {
+            const TestButton = () => <button data-testid="action-button">Test Button</button>;
+            const { container } = renderWithTheme(
+                <TextArea value="" onChange={() => {}} actionButton={<TestButton />} actionButtonPosition="bottom" />,
+            );
+
+            const actionButtonContainer = container.querySelector('[data-position="bottom"]');
+            expect(actionButtonContainer).toBeInTheDocument();
+        });
+
+        it('should apply positioning to outside action button', () => {
+            const TestButton = () => <button data-testid="action-button">Test Button</button>;
+            const { container } = renderWithTheme(
+                <TextArea
+                    value=""
+                    onChange={() => {}}
+                    actionButton={<TestButton />}
+                    actionButtonInside={false}
+                    actionButtonPosition="top"
+                />,
+            );
+
+            const actionButtonContainer = container.querySelector('[data-position="top"]');
+            expect(actionButtonContainer).toBeInTheDocument();
+            expect(screen.getByTestId('action-button')).toBeInTheDocument();
+        });
+
+        it('should apply positioning to inside action button', () => {
+            const TestButton = () => <button data-testid="action-button">Test Button</button>;
+            const { container } = renderWithTheme(
+                <TextArea
+                    value=""
+                    onChange={() => {}}
+                    actionButton={<TestButton />}
+                    actionButtonInside={true}
+                    actionButtonPosition="bottom"
+                />,
+            );
+
+            const actionButtonContainer = container.querySelector('[data-position="bottom"]');
+            expect(actionButtonContainer).toBeInTheDocument();
+            expect(screen.getByTestId('action-button')).toBeInTheDocument();
+        });
+    });
 });

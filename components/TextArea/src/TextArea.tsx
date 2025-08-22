@@ -19,6 +19,7 @@ export const InputContainer = styled.div<{ variation: 'filled' | 'outlined' }>`
     justify-content: space-between;
     align-items: center;
     cursor: text;
+    position: relative;
 
     padding: ${themeVars.spacing.m} ${themeVars.spacing.ml};
     flex: 1 0 0;
@@ -112,10 +113,37 @@ const ActionButtonContainer = styled.div`
 const OuterActionButtonContainer = styled(ActionButtonContainer)`
     width: 36px;
     height: 36px;
+
+    &[data-position='top'] {
+        align-self: flex-start;
+    }
+
+    &[data-position='middle'] {
+        align-self: center;
+    }
+
+    &[data-position='bottom'] {
+        align-self: flex-end;
+    }
 `;
 
 const InnerActionButtonContainer = styled(ActionButtonContainer)`
     /* No additional padding - action button should be positioned naturally inside the container */
+    position: absolute;
+    right: ${themeVars.spacing.ml};
+
+    &[data-position='top'] {
+        top: ${themeVars.spacing.m};
+    }
+
+    &[data-position='middle'] {
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    &[data-position='bottom'] {
+        bottom: ${themeVars.spacing.m};
+    }
 `;
 
 const getIcon = (icon: React.ReactNode) => (
@@ -145,6 +173,7 @@ export type TextAreaProps = {
     maxRows?: number;
     actionButton?: React.ReactNode;
     actionButtonInside?: boolean;
+    actionButtonPosition?: 'top' | 'middle' | 'bottom';
 };
 
 export const TextArea = (props: TextAreaProps) => {
@@ -154,7 +183,14 @@ export const TextArea = (props: TextAreaProps) => {
         ref.current?.focus();
     }, []);
 
-    const { disabled, actionButton, actionButtonInside = false, minRows = 4, maxRows } = props;
+    const {
+        disabled,
+        actionButton,
+        actionButtonInside = false,
+        actionButtonPosition = 'middle',
+        minRows = 4,
+        maxRows,
+    } = props;
 
     return (
         <Container onClick={handleClick} data-disabled={!!disabled}>
@@ -176,11 +212,15 @@ export const TextArea = (props: TextAreaProps) => {
                 />
                 {props.trailingIcon ? getIcon(props.trailingIcon) : null}
                 {actionButton && actionButtonInside && (
-                    <InnerActionButtonContainer>{actionButton}</InnerActionButtonContainer>
+                    <InnerActionButtonContainer data-position={actionButtonPosition}>
+                        {actionButton}
+                    </InnerActionButtonContainer>
                 )}
             </InputContainer>
             {actionButton && !actionButtonInside && (
-                <OuterActionButtonContainer>{actionButton}</OuterActionButtonContainer>
+                <OuterActionButtonContainer data-position={actionButtonPosition}>
+                    {actionButton}
+                </OuterActionButtonContainer>
             )}
         </Container>
     );

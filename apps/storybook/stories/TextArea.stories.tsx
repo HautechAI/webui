@@ -94,6 +94,64 @@ export const WithActionButtonInside = {
     },
 };
 
+export const WithActionButtonPositionTop = {
+    args: {
+        actionButton: (
+            <IconButton
+                variant="flat"
+                size="small"
+                icon={<PlaceholderIcon />}
+                onClick={fn() as React.MouseEventHandler<HTMLButtonElement>}
+            />
+        ),
+        actionButtonPosition: 'top',
+    },
+};
+
+export const WithActionButtonPositionBottom = {
+    args: {
+        actionButton: (
+            <IconButton
+                variant="flat"
+                size="small"
+                icon={<PlaceholderIcon />}
+                onClick={fn() as React.MouseEventHandler<HTMLButtonElement>}
+            />
+        ),
+        actionButtonPosition: 'bottom',
+    },
+};
+
+export const WithActionButtonInsideTop = {
+    args: {
+        actionButton: (
+            <IconButton
+                variant="flat"
+                size="small"
+                icon={<PlaceholderIcon />}
+                onClick={fn() as React.MouseEventHandler<HTMLButtonElement>}
+            />
+        ),
+        actionButtonInside: true,
+        actionButtonPosition: 'top',
+    },
+};
+
+export const WithActionButtonInsideBottom = {
+    args: {
+        actionButton: (
+            <IconButton
+                variant="flat"
+                size="small"
+                icon={<PlaceholderIcon />}
+                onClick={fn() as React.MouseEventHandler<HTMLButtonElement>}
+            />
+        ),
+        actionButtonInside: true,
+        actionButtonPosition: 'bottom',
+    },
+};
+
 export const WithMinMaxRows = {
     args: {
         minRows: 3,
