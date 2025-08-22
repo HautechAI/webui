@@ -7,6 +7,8 @@ import { LayerTreeItemChild } from '@hautechai/webui.layertreeitemchild';
 import { FolderIcon } from '@hautechai/webui.icon';
 import { TimelineRuler } from '@hautechai/webui.timelineruler';
 import { TimelinePlayhead } from './TimelinePlayhead';
+import { TimelineScrollbar } from './TimelineScrollbar';
+import { SIDEBAR_WIDTH, EXTRA_END_PADDING } from './constants';
 
 export interface TimelineTrackData {
     id: string;
@@ -58,66 +60,6 @@ const Wrapper = styled.div<{ height: number }>`
     flex-direction: column;
     height: ${(p) => p.height}px;
     width: 100%;
-`;
-
-// Shared constants
-const SIDEBAR_WIDTH = 200;
-const EXTRA_END_PADDING = 30; // extra px to allow some space past last frame
-
-const ScrollbarContainer = styled.div`
-    width: calc(100% - ${SIDEBAR_WIDTH}px);
-    padding-left: ${SIDEBAR_WIDTH}px;
-    background: ${themeVars.layout.surfaceMid};
-    height: 24px;
-    position: relative;
-    z-index: 30;
-    display: flex;
-    align-items: center;
-    user-select: none;
-`;
-
-const ScrollbarTrack = styled.div`
-    position: relative;
-    flex: 0 0 auto;
-    width: 100%; /* limit width to container minus left padding */
-    height: 8px;
-    background: transparent; /* Track itself transparent; fill only between handles */
-`;
-
-// Viewport range representation (the area between handles)
-const ScrollbarRange = styled.div<{ left: number; width: number }>`
-    position: absolute;
-    top: 0;
-    height: 8px;
-    left: ${(p) => p.left}px;
-    width: ${(p) => p.width}px;
-    display: flex;
-    align-items: center;
-    cursor: grab;
-`;
-
-const HandleBase = styled.div`
-    width: 8px;
-    height: 8px;
-    background: ${themeVars.layout.onSurface.tertiary};
-`;
-
-const RangeFill = styled.div`
-    flex: 1 1 auto;
-    height: 8px;
-    background: ${themeVars.layout.strokes};
-`;
-
-const ScrollbarHandleStart = styled(HandleBase)`
-    border-top-left-radius: 32px;
-    border-bottom-left-radius: 32px;
-    cursor: ew-resize;
-`;
-
-const ScrollbarHandleEnd = styled(HandleBase)`
-    border-top-right-radius: 32px;
-    border-bottom-right-radius: 32px;
-    cursor: ew-resize;
 `;
 
 // Main timeline grid container (fills remaining space beneath scrollbar placeholder)
@@ -242,52 +184,6 @@ export const Timeline: React.FC<TimelineProps> = ({
 
     // Refs
     const scrollContainerRef = React.useRef<HTMLDivElement | null>(null);
-    const trackRef = React.useRef<HTMLDivElement | null>(null);
-
-    // Range state
-    const [rangeLeft, setRangeLeft] = React.useState(0);
-    const [rangeWidth, setRangeWidth] = React.useState(0);
-
-    // Sync range (viewport) with scroll & scale
-    const syncRange = React.useCallback(() => {
-        const container = scrollContainerRef.current;
-        const track = trackRef.current;
-        if (!container || !track) return;
-        const trackWidth = track.clientWidth;
-        const viewportWidth = container.clientWidth - SIDEBAR_WIDTH; // only the scrollable content area
-        const timeWidth = timelineDuration * internalScale; // pure time span width (no padding)
-        const contentWidth = timeWidth + EXTRA_END_PADDING; // actual scroll content width
-        if (timeWidth <= 0) return;
-        const visibleRatio = Math.min(1, viewportWidth / contentWidth); // width proportional to full scrollable content
-        const scrollLeft = container.scrollLeft; // 0..(contentWidth - viewportWidth)
-        const newWidth = Math.max(8, visibleRatio * trackWidth);
-        const scrollableContent = Math.max(0, contentWidth - viewportWidth);
-        if (scrollableContent === 0) {
-            setRangeWidth(trackWidth);
-            setRangeLeft(0);
-            return;
-        }
-        const maxRangeLeft = trackWidth - newWidth;
-        const newLeft = (scrollLeft / scrollableContent) * maxRangeLeft;
-        setRangeWidth(newWidth);
-        setRangeLeft(newLeft);
-    }, [internalScale, timelineDuration]);
-
-    React.useEffect(() => {
-        syncRange();
-    }, [internalScale, timelineDuration, tracks, syncRange]);
-
-    React.useEffect(() => {
-        const container = scrollContainerRef.current;
-        if (!container) return;
-        const handler = () => syncRange();
-        container.addEventListener('scroll', handler);
-        window.addEventListener('resize', handler);
-        return () => {
-            container.removeEventListener('scroll', handler);
-            window.removeEventListener('resize', handler);
-        };
-    }, [syncRange]);
 
     const applyScale = React.useCallback(
         (newScale: number) => {
@@ -298,134 +194,26 @@ export const Timeline: React.FC<TimelineProps> = ({
         [onScaleChange],
     );
 
-    type DragMode = 'left' | 'right' | 'move' | null;
-    const dragRef = React.useRef<{
-        mode: DragMode;
-        startX: number;
-        startLeft: number;
-        startWidth: number;
-        trackWidth: number;
-        viewportWidth: number;
-        contentWidth: number;
-    } | null>(null);
-
-    const beginDrag = (e: React.PointerEvent, mode: DragMode) => {
-        if (!trackRef.current || !scrollContainerRef.current) return;
-        const trackWidth = trackRef.current.clientWidth;
-        const viewportWidth = scrollContainerRef.current.clientWidth - SIDEBAR_WIDTH;
-        dragRef.current = {
-            mode,
-            startX: e.clientX,
-            startLeft: rangeLeft,
-            startWidth: rangeWidth,
-            trackWidth,
-            viewportWidth,
-            contentWidth: timelineDuration * internalScale + EXTRA_END_PADDING,
-        };
-        (e.target as HTMLElement).setPointerCapture(e.pointerId);
-        e.preventDefault();
-    };
-
-    const handlePointerMove = React.useCallback(
-        (e: PointerEvent) => {
-            const state = dragRef.current;
-            if (!state || !scrollContainerRef.current) return;
-            const dx = e.clientX - state.startX;
-            let newLeft = state.startLeft;
-            let newWidth = state.startWidth;
-
-            if (state.mode === 'move') {
-                newLeft = Math.min(Math.max(0, state.startLeft + dx), state.trackWidth - state.startWidth);
-            }
-            if (state.mode === 'left') {
-                newLeft = Math.min(Math.max(0, state.startLeft + dx), state.startLeft + state.startWidth - 16);
-                newWidth = state.startWidth + (state.startLeft - newLeft);
-            }
-            if (state.mode === 'right') {
-                newWidth = Math.max(16, state.startWidth + dx);
-                if (newLeft + newWidth > state.trackWidth) newWidth = state.trackWidth - newLeft;
-            }
-
-            setRangeLeft(newLeft);
-            setRangeWidth(newWidth);
-
-            // Recompute scale and scroll based on new range
-            // rangeRatioWidthContent: viewportWidth / contentWidth
-            const rangeRatioWidthContent = newWidth / state.trackWidth;
-            const padding = EXTRA_END_PADDING;
-            // Solve for scale: viewport = r * (timelineDuration*scale + padding)
-            // => scale = (viewport - r*padding) / (r * timelineDuration)
-            let newScale = internalScale;
-            if (rangeRatioWidthContent > 0) {
-                newScale =
-                    (state.viewportWidth - rangeRatioWidthContent * padding) /
-                    (rangeRatioWidthContent * timelineDuration);
-                if (!isFinite(newScale) || newScale <= 0) newScale = internalScale;
-            }
-            applyScale(newScale);
-
-            const timeWidth = timelineDuration * newScale;
-            const contentWidth = timeWidth + EXTRA_END_PADDING;
-            const viewportWidth = state.viewportWidth;
-            const scrollableContent = Math.max(0, contentWidth - viewportWidth);
-            if (scrollableContent > 0) {
-                const maxRangeLeft = state.trackWidth - newWidth;
-                const normalizedLeft = maxRangeLeft === 0 ? 0 : newLeft / maxRangeLeft; // 0..1
-                scrollContainerRef.current.scrollLeft = normalizedLeft * scrollableContent;
-            } else {
-                scrollContainerRef.current.scrollLeft = 0;
-            }
-        },
-        [applyScale, internalScale, timelineDuration],
-    );
-
-    const handlePointerUp = React.useCallback(() => {
-        dragRef.current = null;
-    }, []);
-
-    React.useEffect(() => {
-        window.addEventListener('pointermove', handlePointerMove);
-        window.addEventListener('pointerup', handlePointerUp);
-        return () => {
-            window.removeEventListener('pointermove', handlePointerMove);
-            window.removeEventListener('pointerup', handlePointerUp);
-        };
-    }, [handlePointerMove, handlePointerUp]);
-
-    // Recalculate initial scale if entire timeline should fit when range is full width
+    // Recalculate initial scale if entire timeline should fit (initial mount only)
     React.useEffect(() => {
         if (!scrollContainerRef.current) return;
         const viewportWidth = scrollContainerRef.current.clientWidth - SIDEBAR_WIDTH;
         if (viewportWidth > 0 && timelineDuration > 0) {
-            // If range effectively covers track (initial load) ensure scale <= provided scale to fit
-            const fitScale = viewportWidth / timelineDuration; // padding deliberately excluded so entire time span fits
+            const fitScale = viewportWidth / timelineDuration;
             if (scale === internalScale && internalScale > fitScale) {
                 applyScale(fitScale);
             }
         }
-    }, [timelineDuration]);
+    }, []);
 
     return (
         <Wrapper height={height}>
-            <ScrollbarContainer data-timeline-scrollbar="true">
-                <ScrollbarTrack ref={trackRef}>
-                    <ScrollbarRange left={rangeLeft} width={rangeWidth} onPointerDown={(e) => beginDrag(e, 'move')}>
-                        <ScrollbarHandleStart
-                            onPointerDown={(e) => {
-                                e.stopPropagation();
-                                beginDrag(e, 'left');
-                            }}
-                        />
-                        <RangeFill />
-                        <ScrollbarHandleEnd
-                            onPointerDown={(e) => {
-                                e.stopPropagation();
-                                beginDrag(e, 'right');
-                            }}
-                        />
-                    </ScrollbarRange>
-                </ScrollbarTrack>
-            </ScrollbarContainer>
+            <TimelineScrollbar
+                duration={timelineDuration}
+                scale={internalScale}
+                onScaleChange={applyScale}
+                scrollContainerRef={scrollContainerRef}
+            />
             <Container ref={scrollContainerRef}>
                 <TopLeft />
                 <TopRight>
