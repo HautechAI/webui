@@ -1,6 +1,8 @@
+import { fn } from '@storybook/test';
 import { Timeline } from '../../../components/Timeline/src';
+import { Meta } from '@storybook/react';
 
-export default {
+const meta: Meta<typeof Timeline> = {
     title: 'VisualEditor/Timeline',
     component: Timeline,
     parameters: {
@@ -18,7 +20,15 @@ export default {
             control: { type: 'number', min: 0, max: 15, step: 0.1 },
         },
     },
+    args: {
+        onSelectTrack: fn(),
+        onSelectKeyframe: fn(),
+        onMoveKeyframe: fn(),
+        onTimeChange: fn(),
+    },
 };
+
+export default meta;
 
 const sampleTracks = [
     {

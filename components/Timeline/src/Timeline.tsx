@@ -77,7 +77,6 @@ const TopRight = styled.div`
     position: sticky;
     top: 0;
     z-index: 2;
-    overflow: hidden;
 `;
 
 // Container for the ruler with proper width
@@ -169,6 +168,12 @@ export const Timeline: React.FC<TimelineProps> = ({
                 <RulerContainer scale={scale} maxTime={maxTime}>
                     <TimelineRuler scale={scale} length={maxTime} numberedGraduationsDistance={40} />
                 </RulerContainer>
+                <TimelinePlayhead
+                    currentTime={currentTime}
+                    scale={scale}
+                    timelineHeight={height}
+                    onTimeChange={onTimeChange}
+                />
             </TopRight>
 
             <BottomLeft>
@@ -182,6 +187,7 @@ export const Timeline: React.FC<TimelineProps> = ({
                                 selected={track.selected}
                                 expanded={true}
                                 onClick={() => handleTrackClick(track.id)}
+                                editable={true}
                             />
                         </TrackRow>
 
@@ -192,6 +198,7 @@ export const Timeline: React.FC<TimelineProps> = ({
                                     label={keyframeProp.label}
                                     selected={false}
                                     onSelect={() => handleKeyframeClick(keyframeProp.id)}
+                                    editable={false}
                                 />
                             </KeyframeRow>
                         ))}
@@ -229,14 +236,6 @@ export const Timeline: React.FC<TimelineProps> = ({
                     ))}
                 </TimelineContent>
             </BottomRight>
-
-            {/* Playhead - positioned as overlay spanning ruler and content */}
-            <TimelinePlayhead
-                currentTime={currentTime}
-                scale={scale}
-                timelineHeight={height}
-                onTimeChange={onTimeChange}
-            />
         </Container>
     );
 };

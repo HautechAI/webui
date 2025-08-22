@@ -14,6 +14,8 @@ export interface LayerTreeItemChildProps {
     onChange?: (value: string) => void;
     /** Handler for when the item is selected */
     onSelect?: () => void;
+    /** Whether the label text is user editable (defaults to true) */
+    editable?: boolean;
 }
 
 const Container = styled.div<{ selected: boolean }>`
@@ -56,12 +58,12 @@ const EditableTextContainer = styled.div`
     justify-content: flex-start;
     align-items: flex-start;
     display: inline-flex;
-    min-width: 0; /* Allow shrinking to enable text truncation */
-    overflow: hidden; /* Ensure container doesn't overflow */
+    min-width: 0;
+    overflow: hidden;
 `;
 
 const InputContainer = styled.div`
-    flex-shrink: 0; /* Fixed size, don't shrink */
+    flex-shrink: 0;
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
@@ -70,16 +72,18 @@ const InputContainer = styled.div`
 `;
 
 export const LayerTreeItemChild = (props: LayerTreeItemChildProps) => {
-    const { label, selected = false, input, onChange, onSelect } = props;
+    const { label, selected = false, input, onChange, onSelect, editable = true } = props;
 
     const [isEditing, setIsEditing] = useState(false);
     const [currentLabel, setCurrentLabel] = useState(label);
 
     const handleStartEditing = () => {
+        if (!editable) return;
         setIsEditing(true);
     };
 
     const handleFinishEditing = () => {
+        if (!editable) return;
         setIsEditing(false);
         if (onChange && currentLabel !== label) {
             onChange(currentLabel);
@@ -87,6 +91,7 @@ export const LayerTreeItemChild = (props: LayerTreeItemChildProps) => {
     };
 
     const handleTextChange = (value: string) => {
+        if (!editable) return;
         setCurrentLabel(value);
     };
 
@@ -96,10 +101,17 @@ export const LayerTreeItemChild = (props: LayerTreeItemChildProps) => {
         }
     };
 
-    // Update internal state when label prop changes
     React.useEffect(() => {
         setCurrentLabel(label);
     }, [label]);
+
+    // If editable prop becomes false while editing, exit edit mode without firing change
+    React.useEffect(() => {
+        if (!editable && isEditing) {
+            setIsEditing(false);
+            setCurrentLabel(label); // revert to prop label
+        }
+    }, [editable, isEditing, label]);
 
     return (
         <Container selected={selected} onClick={handleContainerClick}>
@@ -108,12 +120,12 @@ export const LayerTreeItemChild = (props: LayerTreeItemChildProps) => {
                 <EditableTextContainer>
                     <EditableText
                         text={currentLabel}
-                        mode={isEditing ? 'edit' : 'view'}
+                        mode={editable && isEditing ? 'edit' : 'view'}
                         size="small"
                         selected={selected}
-                        onStartEditing={handleStartEditing}
-                        onChange={handleTextChange}
-                        onFinishEditing={handleFinishEditing}
+                        onStartEditing={editable ? handleStartEditing : undefined}
+                        onChange={editable ? handleTextChange : undefined}
+                        onFinishEditing={editable ? handleFinishEditing : undefined}
                     />
                 </EditableTextContainer>
                 {input && <InputContainer>{input}</InputContainer>}
