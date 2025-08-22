@@ -224,3 +224,63 @@ export const StretchComparison = {
         );
     },
 };
+
+export const HIGSmall = {
+    args: {
+        options: [
+            { label: 'All', value: 'all' },
+            { label: 'Classic', value: 'classic' },
+            { label: 'Batch', value: 'batch' },
+        ],
+        size: 'small',
+    },
+};
+
+export const MaterialSmall = {
+    args: {
+        options: [
+            { label: 'All', value: 'all' },
+            { label: 'Classic', value: 'classic' },
+            { label: 'Batch', value: 'batch' },
+        ],
+        material: true,
+        size: 'small',
+    },
+};
+
+export const SizeComparison = {
+    render: () => {
+        const [value1, setValue1] = useState('all');
+        const [value2, setValue2] = useState('all');
+
+        return (
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', alignItems: 'flex-start' }}>
+                <div>
+                    <h3>Default Size</h3>
+                    <SegmentedControl
+                        options={[
+                            { label: 'All', value: 'all' },
+                            { label: 'Classic', value: 'classic' },
+                            { label: 'Batch', value: 'batch' },
+                        ]}
+                        value={value1}
+                        onChange={(e, v) => setValue1(v)}
+                    />
+                </div>
+                <div>
+                    <h3>Small Size (28px height)</h3>
+                    <SegmentedControl
+                        options={[
+                            { label: 'All', value: 'all' },
+                            { label: 'Classic', value: 'classic' },
+                            { label: 'Batch', value: 'batch' },
+                        ]}
+                        value={value2}
+                        onChange={(e, v) => setValue2(v)}
+                        size="small"
+                    />
+                </div>
+            </div>
+        );
+    },
+};

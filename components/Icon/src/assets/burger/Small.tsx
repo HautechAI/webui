@@ -16,7 +16,8 @@ const SvgSmall = (
             {...props}
         >
             <path
-                fill={resolveIconColor(props.color)}
+                style={{ color: resolveIconColor(props.color) }}
+                fill="currentColor"
                 fillRule="evenodd"
                 d="M17.291 5.833a.625.625 0 0 1-.625.625H3.333a.625.625 0 0 1 0-1.25h13.333a.625.625 0 0 1 .625.625m0 4.167a.625.625 0 0 1-.625.625H3.333a.625.625 0 0 1 0-1.25h13.333a.625.625 0 0 1 .625.625m0 4.167a.625.625 0 0 1-.625.625H3.333a.625.625 0 1 1 0-1.25h13.333a.625.625 0 0 1 .625.625"
                 clipRule="evenodd"

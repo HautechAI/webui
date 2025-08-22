@@ -27,7 +27,12 @@ const AllIcons = () => {
         if (typeof Comp !== 'function') continue;
         items.push({ key: `${name}-default`, name, Comp, props: {} });
         if ((Comp as React.ComponentType<IconProps> & { hasStyleVariant?: boolean }).hasStyleVariant) {
-            items.push({ key: `${name}-style-bold`, name: `${name} (style=bold)`, Comp, props: { style: 'bold' } });
+            items.push({
+                key: `${name}-style-bold`,
+                name: `${name} (style=bold)`,
+                Comp,
+                props: { style: 'bold' },
+            });
         }
     }
 

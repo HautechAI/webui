@@ -305,6 +305,22 @@ importers:
                 version: link:../Tooltip
         publishDirectory: dist
 
+    components/ColorPickerInput:
+        dependencies:
+            '@hautechai/webui.colorpickercontent':
+                specifier: workspace:^
+                version: link:../ColorPickerContent
+            '@hautechai/webui.popover':
+                specifier: workspace:^
+                version: link:../Popover
+            '@hautechai/webui.textinput':
+                specifier: workspace:^
+                version: link:../TextInput
+            '@hautechai/webui.themeprovider':
+                specifier: workspace:^
+                version: link:../ThemeProvider
+        publishDirectory: dist
+
     components/Column:
         dependencies:
             '@hautechai/webui.themeprovider':
@@ -413,6 +429,9 @@ importers:
 
     components/EditableText:
         dependencies:
+            '@hautechai/webui.textinput':
+                specifier: workspace:^
+                version: link:../TextInput
             '@hautechai/webui.themeprovider':
                 specifier: workspace:^
                 version: link:../ThemeProvider
@@ -995,6 +1014,25 @@ importers:
             '@hautechai/webui.themeprovider':
                 specifier: workspace:^
                 version: link:../ThemeProvider
+            '@hautechai/webui.typography':
+                specifier: workspace:^
+                version: link:../Typography
+        publishDirectory: dist
+
+    components/TimelineToolbar:
+        dependencies:
+            '@hautechai/webui.icon':
+                specifier: workspace:^
+                version: link:../Icon
+            '@hautechai/webui.iconbutton':
+                specifier: workspace:^
+                version: link:../IconButton
+            '@hautechai/webui.themeprovider':
+                specifier: workspace:^
+                version: link:../ThemeProvider
+            '@hautechai/webui.toggleiconbutton':
+                specifier: workspace:^
+                version: link:../ToggleIconButton
             '@hautechai/webui.typography':
                 specifier: workspace:^
                 version: link:../Typography

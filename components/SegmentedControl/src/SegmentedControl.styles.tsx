@@ -96,6 +96,10 @@ export const HIGRow = styled.div`
         padding-right: ${themeVars.spacing.xxxl};
     }
 
+    &[data-size='small'] {
+        padding: ${themeVars.spacing.s} ${themeVars.spacing.s};
+    }
+
     transition:
         background-color ${themeVars.animation.duration.fast} ${themeVars.animation.timing.easeOut},
         color ${themeVars.animation.duration.fast} ${themeVars.animation.timing.easeOut};
@@ -165,6 +169,11 @@ export const MaterialRow = styled.div`
     &[data-whitespace='xxxl'] {
         padding-left: ${themeVars.spacing.xxxl};
         padding-right: ${themeVars.spacing.xxxl};
+    }
+
+    &[data-size='small'] {
+        padding: ${themeVars.spacing.xs} ${themeVars.spacing.s};
+        padding-bottom: ${themeVars.spacing.s};
     }
 
     transition: color ${themeVars.animation.duration.fast} ${themeVars.animation.timing.easeOut};

@@ -18,7 +18,8 @@ const SvgSmall = (
             {...props}
         >
             <path
-                fill={resolveIconColor(props.color)}
+                style={{ color: resolveIconColor(props.color) }}
+                fill="currentColor"
                 d="M6 10a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m5.25 0a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m5.25 0a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0"
             />
         </svg>

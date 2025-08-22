@@ -1,7 +1,7 @@
 {
     "name": "@hautechai/webui.imageinput",
     "description": "",
-    "version": "2.1.16",
+    "version": "2.1.19",
     "type": "module",
     "main": "src/index.tsx",
     "sideEffects": false,

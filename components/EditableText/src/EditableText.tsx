@@ -1,73 +1,31 @@
 import React, { useCallback, useEffect, useRef } from 'react';
-import { styled } from '@hautechai/webui.themeprovider';
-import { themeVars } from '@hautechai/webui.themeprovider';
 import { Typography } from '@hautechai/webui.typography';
-
-type TextStyle = 'medium-regular' | 'medium-emphasized' | 'small-regular' | 'small-emphasized';
+import { TextInput } from '@hautechai/webui.textinput';
 
 type Mode = 'view' | 'edit';
 
 export type EditableTextProps = {
     text: string;
     mode: Mode;
-    textStyle?: TextStyle;
+    size?: 'medium' | 'small';
+    selected?: boolean;
     onStartEditing?: () => void;
     onChange?: (value: string) => void;
     onFinishEditing?: () => void;
 };
 
-// Styled input that matches TextInput small size
-const EditInput = styled.input`
-    box-sizing: border-box;
-    width: 100%;
-    font-family: Inter;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 20px;
-    color: ${themeVars.layout.onSurface.primary};
-    background: transparent;
-    border: none;
-    outline: none;
-    padding: 4px 8px;
-    border-radius: 8px;
-    border: 1px solid ${themeVars.layout.strokes};
-
-    &:focus {
-        border-color: ${themeVars.actions.primary};
-        outline: 1px solid ${themeVars.actions.primary};
-        outline-offset: -1px;
-    }
-
-    &:hover {
-        border-color: ${themeVars.layout.onSurface.tertiary};
-    }
-`;
-
-const InputContainer = styled.div`
-    display: inline-block;
-`;
-
-// Map textStyle to Typography variants
-const getTypographyVariant = (textStyle: TextStyle) => {
-    switch (textStyle) {
-        case 'medium-regular':
-            return 'LabelMediumRegular';
-        case 'medium-emphasized':
-            return 'LabelMediumEmphasized';
-        case 'small-regular':
-            return 'LabelSmallRegular';
-        case 'small-emphasized':
-            return 'LabelSmallEmphasized';
-        default:
-            return 'LabelMediumRegular';
+// Get Typography variant based on size and selected state
+const getTypographyVariant = (size: 'medium' | 'small' = 'medium', selected: boolean = false) => {
+    if (size === 'medium') {
+        return selected ? 'LabelMediumEmphasized' : 'LabelMediumRegular';
+    } else {
+        return selected ? 'LabelSmallEmphasized' : 'LabelSmallRegular';
     }
 };
 
 export const EditableText = (props: EditableTextProps) => {
-    const { text, mode, textStyle = 'medium-regular', onStartEditing, onChange, onFinishEditing } = props;
+    const { text, mode, size = 'medium', selected = false, onStartEditing, onChange, onFinishEditing } = props;
     const containerRef = useRef<HTMLDivElement>(null);
-    const inputRef = useRef<HTMLInputElement>(null);
 
     // Handle double click to start editing
     const handleDoubleClick = useCallback(() => {
@@ -82,16 +40,6 @@ export const EditableText = (props: EditableTextProps) => {
             onChange?.(e.target.value);
         },
         [onChange],
-    );
-
-    // Handle key press (Enter to finish editing)
-    const handleKeyDown = useCallback(
-        (e: React.KeyboardEvent<HTMLInputElement>) => {
-            if (e.key === 'Enter') {
-                onFinishEditing?.();
-            }
-        },
-        [onFinishEditing],
     );
 
     // Handle click outside to finish editing
@@ -115,31 +63,25 @@ export const EditableText = (props: EditableTextProps) => {
         }
     }, [mode, onFinishEditing]);
 
-    // Focus and select input when entering edit mode
-    useEffect(() => {
-        if (mode === 'edit' && inputRef.current) {
-            inputRef.current.focus();
-            inputRef.current.select();
-        }
-    }, [mode]);
-
     if (mode === 'edit') {
         return (
-            <InputContainer ref={containerRef}>
-                <EditInput
-                    ref={inputRef}
-                    type="text"
-                    value={text}
-                    onChange={handleInputChange}
-                    onKeyDown={handleKeyDown}
-                />
-            </InputContainer>
+            <div
+                ref={containerRef}
+                style={{ display: 'inline-block' }}
+                onKeyDown={(e) => {
+                    if (e.key === 'Enter') {
+                        onFinishEditing?.();
+                    }
+                }}
+            >
+                <TextInput type="text" value={text} onChange={handleInputChange} size="small" variation="outlined" />
+            </div>
         );
     }
 
     return (
         <div onDoubleClick={handleDoubleClick} style={{ cursor: 'pointer', display: 'inline-block', width: '100%' }}>
-            <Typography variant={getTypographyVariant(textStyle)} noWrap={true} overflow="ellipsis">
+            <Typography variant={getTypographyVariant(size, selected)} noWrap={true} overflow="ellipsis">
                 {text.trim() || '\u00A0'}
             </Typography>
         </div>

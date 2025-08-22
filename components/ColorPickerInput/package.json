@@ -1,0 +1,25 @@
+{
+    "name": "@hautechai/webui.colorpickerinput",
+    "description": "Color picker input component based on TextInput with popover color selection",
+    "version": "1.0.4",
+    "type": "module",
+    "main": "src/index.tsx",
+    "publishConfig": {
+        "directory": "dist",
+        "linkDirectory": false,
+        "access": "public"
+    },
+    "scripts": {
+        "prepack": "node ../../scripts/build-component.mjs",
+        "lint:tsc": "tsc --noEmit",
+        "lint": "pnpm lint:tsc"
+    },
+    "author": "HautechAI",
+    "dependencies": {
+        "@hautechai/webui.colorpickercontent": "workspace:^",
+        "@hautechai/webui.popover": "workspace:^",
+        "@hautechai/webui.textinput": "workspace:^",
+        "@hautechai/webui.themeprovider": "workspace:^"
+    },
+    "license": "Apache-2.0"
+}

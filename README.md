@@ -23,6 +23,7 @@ The library includes the following components organized by category:
 | [**ButtonBase**](components/ButtonBase/README.md)                 | Base button component providing common button functionality                               |
 | [**Checkbox**](components/Checkbox/README.md)                     | Input control for boolean selection with custom styling                                   |
 | [**ColorPickerContent**](components/ColorPickerContent/README.md) | Color picker content with SV panel, hue/alpha sliders, eyedropper, and format inputs      |
+| [**ColorPickerInput**](components/ColorPickerInput/README.md)     | Color picker input component based on TextInput with popover color selection              |
 | [**Counter**](components/Counter/README.md)                       | Numeric display with increment/decrement controls                                         |
 | [**Dropdown**](components/Dropdown/README.md)                     | Select input with customizable options and styling                                        |
 | [**EditableText**](components/EditableText/README.md)             | Text display that switches to input mode on double-click for inline editing               |
@@ -100,11 +101,12 @@ The library includes the following components organized by category:
 
 ### Interaction
 
-| Component                                                 | Description                                                              |
-| --------------------------------------------------------- | ------------------------------------------------------------------------ |
-| [**HoverControls**](components/HoverControls/README.md)   | Action buttons that appear on hover interactions                         |
-| [**KeyframeToggle**](components/KeyframeToggle/README.md) | Toggle button component for keyframe interactions in timeline interfaces |
-| [**Popover**](components/Popover/README.md)               | Floating content container positioned relative to trigger                |
+| Component                                                   | Description                                                              |
+| ----------------------------------------------------------- | ------------------------------------------------------------------------ |
+| [**HoverControls**](components/HoverControls/README.md)     | Action buttons that appear on hover interactions                         |
+| [**KeyframeToggle**](components/KeyframeToggle/README.md)   | Toggle button component for keyframe interactions in timeline interfaces |
+| [**Popover**](components/Popover/README.md)                 | Floating content container positioned relative to trigger                |
+| [**TimelineToolbar**](components/TimelineToolbar/README.md) | Timeline toolbar with playback controls and time display                 |
 
 ### Tabs
 
