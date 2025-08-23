@@ -111,4 +111,5 @@ import {
 <HIcon size={24} />
 <AngleIcon size={24} />
 <OptionsIcon size={24} />
+<RectangleIcon size={24} />
 ```
