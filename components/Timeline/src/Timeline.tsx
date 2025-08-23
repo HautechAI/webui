@@ -44,10 +44,12 @@ export interface TimelineProps {
     onSelectTrack?: (trackId: string) => void;
     /** Called when a keyframe is selected */
     onSelectKeyframe?: (keyframeId: string) => void;
-    /** Called when a track is moved */
-    _onMoveTrack?: (trackId: string, start: number, duration: number) => void;
+    /** Called when a track is moved or resized */
+    onMoveTrack?: (trackId: string, start: number, duration: number) => void;
     /** Called when a keyframe is moved */
     onMoveKeyframe?: (keyframeId: string, time: number) => void;
+    /** Called when a track is renamed */
+    onRenameTrack?: (trackId: string, newTitle: string) => void;
     /** Called when playhead time changes */
     onTimeChange?: (time: number) => void;
     /** Called when user adjusts scale via custom scrollbar */
@@ -153,8 +155,9 @@ export const Timeline: React.FC<TimelineProps> = ({
     currentTime = 0,
     onSelectTrack,
     onSelectKeyframe,
-    _onMoveTrack,
+    onMoveTrack: _onMoveTrack, // Currently not implemented - track movement would require drag handlers
     onMoveKeyframe,
+    onRenameTrack,
     onTimeChange,
     onScaleChange,
 }) => {
@@ -171,6 +174,10 @@ export const Timeline: React.FC<TimelineProps> = ({
 
     const handleKeyframeMove = (params: { id: string; time: number }) => {
         onMoveKeyframe?.(params.id, params.time);
+    };
+
+    const handleTrackRename = (trackId: string, newTitle: string) => {
+        onRenameTrack?.(trackId, newTitle);
     };
 
     // Height available for the timeline grid (exclude the 24px scrollbar placeholder)
@@ -243,6 +250,7 @@ export const Timeline: React.FC<TimelineProps> = ({
                                     selected={track.selected}
                                     expanded={true}
                                     onClick={() => handleTrackClick(track.id)}
+                                    onChange={(newTitle) => handleTrackRename(track.id, newTitle)}
                                     editable={true}
                                 />
                             </TrackRow>

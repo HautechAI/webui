@@ -1,5 +1,6 @@
+import React from 'react';
 import { fn } from '@storybook/test';
-import { Timeline } from '../../../components/Timeline/src';
+import { Timeline, type TimelineTrackData } from '../../../components/Timeline/src';
 import { Meta } from '@storybook/react';
 
 const meta: Meta<typeof Timeline> = {
@@ -18,7 +19,9 @@ const meta: Meta<typeof Timeline> = {
     args: {
         onSelectTrack: fn(),
         onSelectKeyframe: fn(),
+        onMoveTrack: fn(),
         onMoveKeyframe: fn(),
+        onRenameTrack: fn(),
         onTimeChange: fn(),
     },
 };
@@ -282,5 +285,148 @@ export const PlayheadWithDragCallback = {
             // eslint-disable-next-line no-console
             console.log('Selected keyframe:', keyframeId);
         },
+    },
+};
+
+// Fully Interactive Story with complete state management
+export const FullyInteractive = {
+    render: () => {
+        const [timelineData, setTimelineData] = React.useState<{
+            currentTime: number;
+            tracks: TimelineTrackData[];
+        }>({
+            currentTime: 2.5,
+            tracks: JSON.parse(JSON.stringify(sampleTracks)), // Deep copy
+        });
+
+        const [recentActions, setRecentActions] = React.useState<string[]>([]);
+
+        const addAction = (action: string) => {
+            setRecentActions((prev) => [action, ...prev.slice(0, 9)]); // Keep last 10 actions
+        };
+
+        const handleTimeChange = (time: number) => {
+            setTimelineData((prev) => ({ ...prev, currentTime: time }));
+            addAction(`🎯 Playhead moved to ${time.toFixed(2)}s`);
+        };
+
+        const handleSelectTrack = (trackId: string) => {
+            setTimelineData((prev) => ({
+                ...prev,
+                tracks: prev.tracks.map((track) => ({
+                    ...track,
+                    selected: track.id === trackId ? !track.selected : track.selected,
+                })),
+            }));
+            const track = timelineData.tracks.find((t) => t.id === trackId);
+            addAction(`🎵 ${track?.selected ? 'Deselected' : 'Selected'} track: ${track?.title}`);
+        };
+
+        const handleSelectKeyframe = (keyframeId: string) => {
+            setTimelineData((prev) => ({
+                ...prev,
+                tracks: prev.tracks.map((track) => ({
+                    ...track,
+                    keyframeProps: track.keyframeProps.map((prop) => ({
+                        ...prop,
+                        keyframes: prop.keyframes.map((kf) => ({
+                            ...kf,
+                            selected: kf.id === keyframeId ? !kf.selected : kf.selected,
+                        })),
+                    })),
+                })),
+            }));
+            // Find the keyframe to get context
+            let keyframeName = 'Unknown';
+            timelineData.tracks.forEach((track) => {
+                track.keyframeProps.forEach((prop) => {
+                    const kf = prop.keyframes.find((k) => k.id === keyframeId);
+                    if (kf) keyframeName = `${track.title}/${prop.label}@${kf.time}s`;
+                });
+            });
+            addAction(`⭐ Selected keyframe: ${keyframeName}`);
+        };
+
+        const handleMoveKeyframe = (keyframeId: string, newTime: number) => {
+            setTimelineData((prev) => ({
+                ...prev,
+                tracks: prev.tracks.map((track) => ({
+                    ...track,
+                    keyframeProps: track.keyframeProps.map((prop) => ({
+                        ...prop,
+                        keyframes: prop.keyframes.map((kf) => (kf.id === keyframeId ? { ...kf, time: newTime } : kf)),
+                    })),
+                })),
+            }));
+            // Find the keyframe to get context
+            let keyframeName = 'Unknown';
+            timelineData.tracks.forEach((track) => {
+                track.keyframeProps.forEach((prop) => {
+                    const kf = prop.keyframes.find((k) => k.id === keyframeId);
+                    if (kf) keyframeName = `${track.title}/${prop.label}`;
+                });
+            });
+            addAction(`🔄 Moved keyframe ${keyframeName} to ${newTime.toFixed(2)}s`);
+        };
+
+        const handleRenameTrack = (trackId: string, newTitle: string) => {
+            setTimelineData((prev) => ({
+                ...prev,
+                tracks: prev.tracks.map((track) => (track.id === trackId ? { ...track, title: newTitle } : track)),
+            }));
+            addAction(`✏️ Renamed track to: ${newTitle}`);
+        };
+
+        return (
+            <div>
+                <div style={{ marginBottom: '16px', padding: '12px', background: '#f5f5f5', borderRadius: '4px' }}>
+                    <strong>Interactive Timeline Demo</strong>
+                    <div style={{ fontSize: '14px', margin: '8px 0' }}>
+                        Current time: <strong>{timelineData.currentTime.toFixed(2)}s</strong>
+                    </div>
+                    <div style={{ fontSize: '12px', color: '#666' }}>
+                        • Drag the playhead to change current time
+                        <br />
+                        • Click tracks to select/deselect them
+                        <br />
+                        • Click keyframes to select them
+                        <br />
+                        • Drag keyframes to move them along the timeline
+                        <br />
+                        • Double-click track names to rename them
+                        <br />• <em>Track movement/resizing: Coming soon!</em>
+                    </div>
+                </div>
+
+                <Timeline
+                    scale={50}
+                    duration={15}
+                    tracks={timelineData.tracks}
+                    currentTime={timelineData.currentTime}
+                    onTimeChange={handleTimeChange}
+                    onSelectTrack={handleSelectTrack}
+                    onSelectKeyframe={handleSelectKeyframe}
+                    onMoveKeyframe={handleMoveKeyframe}
+                    onRenameTrack={handleRenameTrack}
+                />
+
+                <div style={{ marginTop: '16px', padding: '12px', background: '#f9f9f9', borderRadius: '4px' }}>
+                    <strong>Recent Actions:</strong>
+                    <div style={{ fontSize: '12px', marginTop: '8px', maxHeight: '120px', overflow: 'auto' }}>
+                        {recentActions.length === 0 ? (
+                            <div style={{ color: '#999', fontStyle: 'italic' }}>
+                                No actions yet - try interacting with the timeline!
+                            </div>
+                        ) : (
+                            recentActions.map((action, index) => (
+                                <div key={index} style={{ padding: '2px 0', borderBottom: '1px solid #eee' }}>
+                                    {action}
+                                </div>
+                            ))
+                        )}
+                    </div>
+                </div>
+            </div>
+        );
     },
 };
