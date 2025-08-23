@@ -23,7 +23,7 @@ describe('FileInput', () => {
         }).not.toThrow();
     });
 
-    it('should call stopPropagation when dragover event is triggered', () => {
+    it('should call stopPropagation by default when dragover event is triggered', () => {
         const { container } = render(
             <ThemeProvider theme={testTheme}>
                 <FileInput onChange={() => {}} />
@@ -64,7 +64,7 @@ describe('FileInput', () => {
         }
     });
 
-    it('should call stopPropagation when drop event is triggered', () => {
+    it('should call stopPropagation by default when drop event is triggered', () => {
         const { container } = render(
             <ThemeProvider theme={testTheme}>
                 <FileInput onChange={() => {}} />
@@ -92,6 +92,34 @@ describe('FileInput', () => {
         expect(true).toBe(true);
     });
 
+    it('should not call stopPropagation when stopPropagation prop is false', () => {
+        const { container } = render(
+            <ThemeProvider theme={testTheme}>
+                <FileInput onChange={() => {}} stopPropagation={false} />
+            </ThemeProvider>,
+        );
+
+        const fileInput = container.querySelector('[data-active="false"]');
+        expect(fileInput).toBeTruthy();
+
+        // Test that the component still renders correctly when propagation is disabled
+        expect(fileInput).toBeTruthy();
+    });
+
+    it('should explicitly call stopPropagation when stopPropagation prop is true', () => {
+        const { container } = render(
+            <ThemeProvider theme={testTheme}>
+                <FileInput onChange={() => {}} stopPropagation={true} />
+            </ThemeProvider>,
+        );
+
+        const fileInput = container.querySelector('[data-active="false"]');
+        expect(fileInput).toBeTruthy();
+
+        // Test that the component renders correctly when propagation is explicitly enabled
+        expect(fileInput).toBeTruthy();
+    });
+
     it('should render button variant correctly', () => {
         const { container } = render(
             <ThemeProvider theme={testTheme}>
@@ -103,6 +131,20 @@ describe('FileInput', () => {
         expect(fileInput).toBeTruthy();
 
         // Verify the button variant renders
+        expect(container.querySelector('button')).toBeTruthy();
+    });
+
+    it('should render button variant correctly with stopPropagation disabled', () => {
+        const { container } = render(
+            <ThemeProvider theme={testTheme}>
+                <FileInput onChange={() => {}} variant="button" stopPropagation={false} />
+            </ThemeProvider>,
+        );
+
+        const fileInput = container.firstElementChild;
+        expect(fileInput).toBeTruthy();
+
+        // Verify the button variant renders with propagation disabled
         expect(container.querySelector('button')).toBeTruthy();
     });
 

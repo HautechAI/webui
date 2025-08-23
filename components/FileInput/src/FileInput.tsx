@@ -67,6 +67,9 @@ export type FileInputProps = {
     /** @property Optional label for upload button */
     labelButton?: string;
 
+    /** @property Whether to stop event propagation on drag events. Defaults to true to prevent interference with parent drag handlers */
+    stopPropagation?: boolean;
+
     variant?: 'dropzone' | 'button';
     stretch?: boolean;
 };
@@ -78,6 +81,7 @@ export const FileInput: React.FC<FileInputProps> = (props) => {
         labelButton = 'Open file',
         labelDragRejected = 'Uploading error',
         labelDragRejectedButton = 'Uploading again',
+        stopPropagation = true,
     } = props;
 
     const onDrop = (acceptedFiles: File[]) => {
@@ -87,11 +91,15 @@ export const FileInput: React.FC<FileInputProps> = (props) => {
     };
 
     const handleDragOver = (e: React.DragEvent) => {
-        e.stopPropagation();
+        if (stopPropagation) {
+            e.stopPropagation();
+        }
     };
 
     const handleDrop = (e: React.DragEvent) => {
-        e.stopPropagation();
+        if (stopPropagation) {
+            e.stopPropagation();
+        }
     };
 
     const {
