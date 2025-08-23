@@ -517,6 +517,16 @@ importers:
                 version: link:../Tooltip
         publishDirectory: dist
 
+    components/HorizontalTextAlignmentControl:
+        dependencies:
+            '@hautechai/webui.icon':
+                specifier: workspace:^
+                version: link:../Icon
+            '@hautechai/webui.segmentedcontrol':
+                specifier: workspace:^
+                version: link:../SegmentedControl
+        publishDirectory: dist
+
     components/HoverControls:
         dependencies:
             '@hautechai/webui.checkbox':
@@ -1128,6 +1138,16 @@ importers:
             '@hautechai/webui.row':
                 specifier: workspace:^
                 version: link:../Row
+        publishDirectory: dist
+
+    components/VerticalAlignmentControl:
+        dependencies:
+            '@hautechai/webui.icon':
+                specifier: workspace:^
+                version: link:../Icon
+            '@hautechai/webui.segmentedcontrol':
+                specifier: workspace:^
+                version: link:../SegmentedControl
         publishDirectory: dist
 
     components/VisualEditorInput:
