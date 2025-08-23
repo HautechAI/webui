@@ -21,16 +21,15 @@ yarn add @hautechai/webui.timelinetrack
 
 ### TimelineTrack
 
-| Parameter       | Type                      | Description                                                              |
-| --------------- | ------------------------- | ------------------------------------------------------------------------ |
-| start           | number                    | Start time in seconds for the track position                             |
-| duration        | number                    | Duration in seconds for the track length                                 |
-| scale           | number                    | Scale in pixels per second for positioning calculations                  |
-| selected        | boolean                   | Optional. Whether the track is in selected state (shows resize handlers) |
-| startHandlerRef | React.Ref<HTMLDivElement> | Optional. Ref for the start resize handler                               |
-| endHandlerRef   | React.Ref<HTMLDivElement> | Optional. Ref for the end resize handler                                 |
-| bodyRef         | React.Ref<HTMLDivElement> | Optional. Ref for the body (draggable area)                              |
-| className       | string                    | Optional. Additional CSS class for the container                         |
+| Parameter | Type                                      | Description                                                                                 |
+| --------- | ----------------------------------------- | ------------------------------------------------------------------------------------------- |
+| start     | number                                    | Start time in seconds for the track position (controlled)                                   |
+| duration  | number                                    | Duration in seconds for the track length (controlled)                                       |
+| scale     | number                                    | Scale in pixels per second for positioning calculations                                     |
+| selected  | boolean                                   | Optional. Whether the track is in selected state (shows resize handlers)                    |
+| onChange  | (start: number, duration: number) => void | Optional. Fired while user drags the body or resizes start/end. Provide to make interactive |
+| onSelect  | () => void                                | Optional. Fired when user initiates interaction (pointer down) on the track or a handle     |
+| className | string                                    | Optional. Additional CSS class for the container                                            |
 
 ### TimelineTrackKeyframes
 
@@ -48,18 +47,15 @@ yarn add @hautechai/webui.timelinetrack
 ### TimelineTrack
 
 ```tsx
-const startHandlerRef = useRef<HTMLDivElement>(null);
-const endHandlerRef = useRef<HTMLDivElement>(null);
-const bodyRef = useRef<HTMLDivElement>(null);
+const [track, setTrack] = useState({ start: 2, duration: 5 });
 
 <TimelineTrack
-    start={2}
-    duration={5}
+    start={track.start}
+    duration={track.duration}
     scale={50}
     selected={true}
-    startHandlerRef={startHandlerRef}
-    endHandlerRef={endHandlerRef}
-    bodyRef={bodyRef}
+    onChange={(start, duration) => setTrack({ start, duration })}
+    onSelect={() => console.log('selected')}
 />;
 ```
 
