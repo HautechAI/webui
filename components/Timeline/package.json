@@ -1,7 +1,7 @@
 {
     "name": "@hautechai/webui.timeline",
     "description": "Timeline component with tracks and keyframes for video editing interfaces",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "type": "module",
     "main": "src/index.tsx",
     "sideEffects": false,
@@ -17,12 +17,12 @@
     },
     "author": "HautechAI",
     "dependencies": {
-        "@hautechai/webui.themeprovider": "workspace:^",
-        "@hautechai/webui.timelinetrack": "workspace:^",
-        "@hautechai/webui.layertreeitemparent": "workspace:^",
-        "@hautechai/webui.layertreeitemchild": "workspace:^",
         "@hautechai/webui.icon": "workspace:^",
-        "@hautechai/webui.timelineruler": "workspace:^"
+        "@hautechai/webui.layertreeitemchild": "workspace:^",
+        "@hautechai/webui.layertreeitemparent": "workspace:^",
+        "@hautechai/webui.themeprovider": "workspace:^",
+        "@hautechai/webui.timelineruler": "workspace:^",
+        "@hautechai/webui.timelinetrack": "workspace:^"
     },
     "license": "Apache-2.0"
 }
