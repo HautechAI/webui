@@ -93,6 +93,16 @@ describe('Timeline', () => {
         expect(onSelectTrack).toHaveBeenCalledWith('track1');
     });
 
+    it('calls onSelectTrack when track bar itself is interacted with (onSelect passthrough)', () => {
+        const onSelectTrack = vi.fn();
+        const { container } = renderTimeline({ onSelectTrack });
+        const trackBars = container.querySelectorAll('[data-part="track"]');
+        expect(trackBars.length).toBeGreaterThan(0);
+        // Simulate pointer down (selection gesture)
+        (trackBars[0] as HTMLElement).dispatchEvent(new PointerEvent('pointerdown', { bubbles: true }));
+        expect(onSelectTrack).toHaveBeenCalled();
+    });
+
     it('calls onSelectKeyframe when keyframe property is selected', () => {
         const onSelectKeyframe = vi.fn();
         renderTimeline({ onSelectKeyframe });

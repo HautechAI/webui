@@ -3,7 +3,7 @@ import React from 'react';
 import { TimelineTrackKeyframes, type TimelineTrackKeyframesProps } from '../../../components/TimelineTrack/src';
 
 const meta: Meta<typeof TimelineTrackKeyframes> = {
-    title: 'Data Display/TimelineTrackKeyframes',
+    title: 'Visual Editor/TimelineTrackKeyframes',
     component: TimelineTrackKeyframes,
     parameters: {
         layout: 'padded',

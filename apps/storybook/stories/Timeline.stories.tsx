@@ -4,7 +4,7 @@ import { Timeline, type TimelineTrackData } from '../../../components/Timeline/s
 import { Meta } from '@storybook/react';
 
 const meta: Meta<typeof Timeline> = {
-    title: 'VisualEditor/Timeline',
+    title: 'Visual Editor/Timeline',
     component: Timeline,
     parameters: {
         layout: 'padded',
@@ -377,6 +377,16 @@ export const FullyInteractive = {
             addAction(`✏️ Renamed track to: ${newTitle}`);
         };
 
+        const handleMoveTrack = (trackId: string, newStart: number, newDuration: number) => {
+            setTimelineData((prev) => ({
+                ...prev,
+                tracks: prev.tracks.map((track) =>
+                    track.id === trackId ? { ...track, start: newStart, duration: newDuration } : track,
+                ),
+            }));
+            addAction(`📦 Track "${trackId}" moved: start=${newStart.toFixed(2)}s duration=${newDuration.toFixed(2)}s`);
+        };
+
         return (
             <div>
                 <div style={{ marginBottom: '16px', padding: '12px', background: '#f5f5f5', borderRadius: '4px' }}>
@@ -394,7 +404,7 @@ export const FullyInteractive = {
                         • Drag keyframes to move them along the timeline
                         <br />
                         • Double-click track names to rename them
-                        <br />• <em>Track movement/resizing: Coming soon!</em>
+                        <br />• Drag track bar (empty area) to move a track; drag left/right handles to resize
                     </div>
                 </div>
 
@@ -408,6 +418,7 @@ export const FullyInteractive = {
                     onSelectKeyframe={handleSelectKeyframe}
                     onMoveKeyframe={handleMoveKeyframe}
                     onRenameTrack={handleRenameTrack}
+                    onMoveTrack={handleMoveTrack}
                 />
 
                 <div style={{ marginTop: '16px', padding: '12px', background: '#f9f9f9', borderRadius: '4px' }}>

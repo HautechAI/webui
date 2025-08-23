@@ -1,7 +1,7 @@
 import { TimelineRuler } from '../../../components/TimelineRuler/src';
 
 export default {
-    title: 'Data Display/TimelineRuler',
+    title: 'Visual Editor/TimelineRuler',
     component: TimelineRuler,
     parameters: {
         layout: 'padded',
