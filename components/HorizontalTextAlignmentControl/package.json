@@ -1,0 +1,23 @@
+{
+    "name": "@hautechai/webui.horizontaltextalignmentcontrol",
+    "description": "",
+    "version": "1.0.0",
+    "type": "module",
+    "main": "src/index.tsx",
+    "publishConfig": {
+        "directory": "dist",
+        "linkDirectory": false,
+        "access": "public"
+    },
+    "scripts": {
+        "prepack": "node ../../scripts/build-component.mjs",
+        "lint:tsc": "tsc --noEmit",
+        "lint": "pnpm lint:tsc"
+    },
+    "author": "HautechAI",
+    "dependencies": {
+        "@hautechai/webui.segmentedcontrol": "workspace:^",
+        "@hautechai/webui.icon": "workspace:^"
+    },
+    "license": "Apache-2.0"
+}
