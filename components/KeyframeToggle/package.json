@@ -1,7 +1,7 @@
 {
     "name": "@hautechai/webui.keyframetoggle",
     "description": "Keyframe toggle component for timeline interactions",
-    "version": "2.1.19",
+    "version": "2.1.20",
     "type": "module",
     "main": "src/index.tsx",
     "publishConfig": {

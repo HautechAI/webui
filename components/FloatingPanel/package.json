@@ -1,7 +1,7 @@
 {
     "name": "@hautechai/webui.floatingpanel",
     "description": "",
-    "version": "2.1.19",
+    "version": "2.1.20",
     "type": "module",
     "main": "src/index.tsx",
     "publishConfig": {
