@@ -155,7 +155,7 @@ export const Timeline: React.FC<TimelineProps> = ({
     currentTime = 0,
     onSelectTrack,
     onSelectKeyframe,
-    onMoveTrack: _onMoveTrack, // Currently not implemented - track movement would require drag handlers
+    onMoveTrack: onMoveTrack,
     onMoveKeyframe,
     onRenameTrack,
     onTimeChange,
@@ -281,6 +281,10 @@ export const Timeline: React.FC<TimelineProps> = ({
                                         duration={track.duration}
                                         scale={internalScale}
                                         selected={track.selected}
+                                        onSelect={() => handleTrackClick(track.id)}
+                                        onChange={(newStart, newDuration) =>
+                                            onMoveTrack?.(track.id, newStart, newDuration)
+                                        }
                                     />
                                 </TrackRow>
 

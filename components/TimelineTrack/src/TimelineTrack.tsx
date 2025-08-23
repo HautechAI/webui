@@ -11,12 +11,10 @@ export interface TimelineTrackProps {
     scale: number;
     /** Whether the track is selected */
     selected?: boolean;
-    /** Ref for the start resize handler */
-    startHandlerRef?: React.Ref<HTMLDivElement>;
-    /** Ref for the end resize handler */
-    endHandlerRef?: React.Ref<HTMLDivElement>;
-    /** Ref for the body (draggable area) */
-    bodyRef?: React.Ref<HTMLDivElement>;
+    /** Change handler fired continuously while user drags or resizes (controlled component contract) */
+    onChange?: (start: number, duration: number) => void;
+    /** Fired when user attempts to select the track (pointer down on body or a resize handle) */
+    onSelect?: () => void;
     /** Additional className for the container */
     className?: string;
 }
@@ -91,28 +89,87 @@ const ResizeLine = styled.div`
 `;
 
 export const TimelineTrack = forwardRef<HTMLDivElement, TimelineTrackProps>((props, ref) => {
-    const { start, duration, scale, selected = false, startHandlerRef, endHandlerRef, bodyRef, className } = props;
+    const { start, duration, scale, selected = false, onChange, onSelect, className } = props;
 
-    // Calculate track width and position based on start, duration, and scale
-    // Account for container padding (8px on each side = 16px total)
-    const _containerPadding = 16; // 8px left + 8px right
     const trackWidth = Math.max(0, duration * scale);
     const trackLeft = start * scale;
+
+    // Pointer interaction helpers
+    const initInteraction = (type: 'move' | 'resize-start' | 'resize-end', e: React.PointerEvent<HTMLDivElement>) => {
+        if (!onChange) return; // if no handler, skip interaction logic
+        e.preventDefault();
+        const originX = e.clientX;
+        const initialStart = start;
+        const initialDuration = duration;
+
+        const handleMove = (ev: PointerEvent) => {
+            const deltaPx = ev.clientX - originX;
+            const deltaSec = deltaPx / scale;
+            if (type === 'move') {
+                const newStart = Math.max(0, initialStart + deltaSec);
+                onChange(newStart, initialDuration);
+            } else if (type === 'resize-start') {
+                let newStart = initialStart + deltaSec;
+                let newDuration = initialDuration - deltaSec;
+                if (newStart < 0) {
+                    // Adjust duration if clamped at 0
+                    newDuration += newStart; // newStart is negative
+                    newStart = 0;
+                }
+                if (newDuration < 0) {
+                    // Prevent negative duration; clamp at zero and adjust start backwards
+                    newStart += newDuration; // newDuration negative
+                    newDuration = 0;
+                    if (newStart < 0) newStart = 0; // final clamp
+                }
+                onChange(newStart, newDuration);
+            } else if (type === 'resize-end') {
+                let newDuration = initialDuration + deltaSec;
+                if (newDuration < 0) newDuration = 0;
+                onChange(initialStart, newDuration);
+            }
+        };
+
+        const handleUp = () => {
+            document.removeEventListener('pointermove', handleMove);
+            document.removeEventListener('pointerup', handleUp);
+        };
+
+        document.addEventListener('pointermove', handleMove);
+        document.addEventListener('pointerup', handleUp, { once: true });
+    };
 
     return (
         <Container ref={ref} className={className} data-selected={selected}>
             <Track
-                ref={bodyRef}
                 style={{
                     width: trackWidth,
                     marginLeft: trackLeft,
                 }}
                 data-part="track"
+                onPointerDown={(e) => {
+                    onSelect?.();
+                    initInteraction('move', e);
+                }}
             >
-                <ResizeHandler ref={startHandlerRef} data-part="resize-handler">
+                <ResizeHandler
+                    data-part="resize-handler"
+                    onPointerDown={(e) => {
+                        e.stopPropagation();
+                        onSelect?.();
+                        initInteraction('resize-start', e);
+                    }}
+                >
                     <ResizeLine />
                 </ResizeHandler>
-                <ResizeHandler ref={endHandlerRef} data-part="resize-handler">
+                <ResizeHandler
+                    data-part="resize-handler"
+                    onPointerDown={(e) => {
+                        e.stopPropagation();
+                        onSelect?.();
+                        initInteraction('resize-end', e);
+                    }}
+                >
                     <ResizeLine />
                 </ResizeHandler>
             </Track>

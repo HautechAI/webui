@@ -1,9 +1,9 @@
 import React from 'react';
-import { useRef } from 'react';
+import { useState } from 'react';
 import { TimelineTrack, type TimelineTrackProps } from '../../../components/TimelineTrack/src';
 
 export default {
-    title: 'VisualEditor/Timeline/TimelineTrack',
+    title: 'Visual Editor/TimelineTrack',
     component: TimelineTrack,
     parameters: {
         layout: 'padded',
@@ -46,35 +46,38 @@ export default {
 
 export const Default = {
     render: function DefaultRender(args: TimelineTrackProps) {
-        const startHandlerRef = useRef<HTMLDivElement>(null);
-        const endHandlerRef = useRef<HTMLDivElement>(null);
-        const bodyRef = useRef<HTMLDivElement>(null);
-
-        return (
-            <TimelineTrack
-                {...args}
-                startHandlerRef={startHandlerRef}
-                endHandlerRef={endHandlerRef}
-                bodyRef={bodyRef}
-            />
-        );
+        return <TimelineTrack {...args} />;
     },
     args: {},
 };
 
 export const Selected = {
     render: function SelectedRender(args: TimelineTrackProps) {
-        const startHandlerRef = useRef<HTMLDivElement>(null);
-        const endHandlerRef = useRef<HTMLDivElement>(null);
-        const bodyRef = useRef<HTMLDivElement>(null);
+        return <TimelineTrack {...args} />;
+    },
+    args: {
+        selected: true,
+    },
+};
 
+export const Interactive = {
+    render: function InteractiveRender(args: TimelineTrackProps) {
+        const [state, setState] = useState({ start: args.start, duration: args.duration });
         return (
-            <TimelineTrack
-                {...args}
-                startHandlerRef={startHandlerRef}
-                endHandlerRef={endHandlerRef}
-                bodyRef={bodyRef}
-            />
+            <div style={{ padding: 16 }}>
+                <TimelineTrack
+                    {...args}
+                    start={state.start}
+                    duration={state.duration}
+                    onChange={(start, duration) => setState({ start, duration })}
+                    onSelect={() => {
+                        /* selection */
+                    }}
+                />
+                <div style={{ marginTop: 12, fontFamily: 'monospace', fontSize: 12 }}>
+                    start: {state.start.toFixed(2)}s | duration: {state.duration.toFixed(2)}s
+                </div>
+            </div>
         );
     },
     args: {

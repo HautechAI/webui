@@ -4,7 +4,7 @@ import { SIDEBAR_WIDTH, EXTRA_END_PADDING } from './constants';
 
 const ScrollbarContainer = styled.div`
     width: calc(100% - ${SIDEBAR_WIDTH}px);
-    padding-left: ${SIDEBAR_WIDTH}px;
+    padding-left: ${SIDEBAR_WIDTH - 1}px;
     background: ${themeVars.layout.surfaceMid};
     height: 24px;
     position: relative;
@@ -12,6 +12,16 @@ const ScrollbarContainer = styled.div`
     display: flex;
     align-items: center;
     user-select: none;
+`;
+
+const ScrollbarTrackContainer = styled.div`
+    display: flex;
+    flex: 0 0 auto;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border-left: 1px solid ${themeVars.layout.strokes};
 `;
 
 const ScrollbarTrack = styled.div`
@@ -232,23 +242,25 @@ export const TimelineScrollbar: React.FC<TimelineScrollbarProps> = ({
 
     return (
         <ScrollbarContainer data-timeline-scrollbar="true">
-            <ScrollbarTrack ref={trackRef}>
-                <ScrollbarRange left={rangeLeft} width={rangeWidth} onPointerDown={(e) => beginDrag(e, 'move')}>
-                    <ScrollbarHandleStart
-                        onPointerDown={(e) => {
-                            e.stopPropagation();
-                            beginDrag(e, 'left');
-                        }}
-                    />
-                    <RangeFill />
-                    <ScrollbarHandleEnd
-                        onPointerDown={(e) => {
-                            e.stopPropagation();
-                            beginDrag(e, 'right');
-                        }}
-                    />
-                </ScrollbarRange>
-            </ScrollbarTrack>
+            <ScrollbarTrackContainer>
+                <ScrollbarTrack ref={trackRef}>
+                    <ScrollbarRange left={rangeLeft} width={rangeWidth} onPointerDown={(e) => beginDrag(e, 'move')}>
+                        <ScrollbarHandleStart
+                            onPointerDown={(e) => {
+                                e.stopPropagation();
+                                beginDrag(e, 'left');
+                            }}
+                        />
+                        <RangeFill />
+                        <ScrollbarHandleEnd
+                            onPointerDown={(e) => {
+                                e.stopPropagation();
+                                beginDrag(e, 'right');
+                            }}
+                        />
+                    </ScrollbarRange>
+                </ScrollbarTrack>
+            </ScrollbarTrackContainer>
         </ScrollbarContainer>
     );
 };
