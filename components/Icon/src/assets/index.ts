@@ -72,6 +72,7 @@ export * from './pose';
 export * from './redo';
 export * from './repeat';
 export * from './replace';
+export * from './rectangle';
 export * from './rewindBack';
 export * from './rewindForward';
 export * from './search';

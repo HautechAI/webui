@@ -27,6 +27,7 @@ import {
     AlignBottomIcon,
     PlayCircleIcon,
     SkipToEndIcon,
+    RectangleIcon,
 } from '../src/assets';
 import { ThemeProvider } from '../../ThemeProvider/src';
 import { testTheme } from '../../test-theme';
@@ -337,6 +338,16 @@ describe('Icon', () => {
             render(
                 <ThemeProvider theme={testTheme}>
                     <SkipToEndIcon style="bold" />
+                </ThemeProvider>,
+            );
+        }).not.toThrow();
+    });
+
+    it('should render RectangleIcon without crashing', () => {
+        expect(() => {
+            render(
+                <ThemeProvider theme={testTheme}>
+                    <RectangleIcon />
                 </ThemeProvider>,
             );
         }).not.toThrow();
