@@ -186,6 +186,8 @@ export const WhiteSpace = styled.div`
 
 export const Icon = styled.div`
     display: flex;
+    width: 20px;
+    height: 20px;
     color: ${themeVars.layout.onSurface.tertiary};
     &[data-selected='true'] {
         color: ${themeVars.layout.onSurface.primary};
