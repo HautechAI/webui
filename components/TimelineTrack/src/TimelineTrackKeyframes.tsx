@@ -25,7 +25,7 @@ export interface TimelineTrackKeyframesProps {
 // Container styles - same as TimelineTrack for consistent height and behavior
 const Container = styled.div`
     width: 100%;
-    height: 100%;
+    height: 20px;
     padding: 8px;
     overflow: hidden;
     justify-content: flex-start;

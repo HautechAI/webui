@@ -13,14 +13,12 @@ export type TimelineRulerProps = {
 };
 
 const StyledRuler = styled.div`
-    width: 100%;
-    height: 100%;
     padding: ${themeVars.spacing.xs} ${themeVars.spacing.m};
-    border-bottom: ${themeVars.stroke.thin} solid ${themeVars.layout.strokes};
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
+    overflow: hidden;
 `;
 
 const StyledTimelineRuler = styled.div`
