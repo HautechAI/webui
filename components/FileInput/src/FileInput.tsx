@@ -86,6 +86,14 @@ export const FileInput: React.FC<FileInputProps> = (props) => {
         }
     };
 
+    const handleDragOver = (e: React.DragEvent) => {
+        e.stopPropagation();
+    };
+
+    const handleDrop = (e: React.DragEvent) => {
+        e.stopPropagation();
+    };
+
     const {
         getRootProps,
         getInputProps,
@@ -143,7 +151,7 @@ export const FileInput: React.FC<FileInputProps> = (props) => {
     };
 
     return props.variant === 'button' ? (
-        <ButtonFileInput {...getRootProps({})}>
+        <ButtonFileInput {...getRootProps({ onDragOver: handleDragOver, onDrop: handleDrop })}>
             <input {...getInputProps()} />
             <Button label={labelButton} leadingIcon={<UploadIcon size={20} />} stretch={props.stretch} />
         </ButtonFileInput>
@@ -152,7 +160,7 @@ export const FileInput: React.FC<FileInputProps> = (props) => {
             data-reject={isDragReject}
             data-accept={delayedAccept}
             data-active={isDragActive}
-            {...getRootProps({})}
+            {...getRootProps({ onDragOver: handleDragOver, onDrop: handleDrop })}
         >
             <input {...getInputProps()} />
             {renderContent()}
