@@ -3,7 +3,7 @@ import { UploadIcon } from '@hautechai/webui.icon';
 import { styled } from '@hautechai/webui.themeprovider';
 import { themeVars } from '@hautechai/webui.themeprovider';
 import { Typography, TypographyProps } from '@hautechai/webui.typography';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
 
 const FileInputContainer = styled.div<Pick<FileInputProps, 'stretch'>>`
@@ -82,23 +82,14 @@ export const FileInput: React.FC<FileInputProps> = (props) => {
         labelDragRejected = 'Uploading error',
         labelDragRejectedButton = 'Uploading again',
         stopPropagation = true,
+        accept,
     } = props;
+
+    const dropzoneRef = useRef<HTMLDivElement>(null);
 
     const onDrop = (acceptedFiles: File[]) => {
         if (acceptedFiles.length > 0) {
             props.onChange(acceptedFiles);
-        }
-    };
-
-    const handleDragOver = (e: React.DragEvent) => {
-        if (stopPropagation) {
-            e.stopPropagation();
-        }
-    };
-
-    const handleDrop = (e: React.DragEvent) => {
-        if (stopPropagation) {
-            e.stopPropagation();
         }
     };
 
@@ -111,10 +102,52 @@ export const FileInput: React.FC<FileInputProps> = (props) => {
         fileRejections: _fileRejections,
     } = useDropzone({
         onDrop,
-        accept: { 'image/*': [] },
+        accept: accept,
         maxFiles: props.maxFiles,
         maxSize: props.maxSize,
     });
+
+    // Handle event propagation by attaching direct event listeners
+    useEffect(() => {
+        const dropzoneElement = dropzoneRef.current;
+        if (!dropzoneElement) return;
+
+        const handleDragOver = (e: DragEvent) => {
+            if (stopPropagation) {
+                e.stopPropagation();
+            }
+        };
+
+        const handleDrop = (e: DragEvent) => {
+            if (stopPropagation) {
+                e.stopPropagation();
+            }
+        };
+
+        const handleDragEnter = (e: DragEvent) => {
+            if (stopPropagation) {
+                e.stopPropagation();
+            }
+        };
+
+        const handleDragLeave = (e: DragEvent) => {
+            if (stopPropagation) {
+                e.stopPropagation();
+            }
+        };
+
+        dropzoneElement.addEventListener('dragover', handleDragOver);
+        dropzoneElement.addEventListener('drop', handleDrop);
+        dropzoneElement.addEventListener('dragenter', handleDragEnter);
+        dropzoneElement.addEventListener('dragleave', handleDragLeave);
+
+        return () => {
+            dropzoneElement.removeEventListener('dragover', handleDragOver);
+            dropzoneElement.removeEventListener('drop', handleDrop);
+            dropzoneElement.removeEventListener('dragenter', handleDragEnter);
+            dropzoneElement.removeEventListener('dragleave', handleDragLeave);
+        };
+    }, [stopPropagation]);
 
     const [delayedAccept, setDelayedAccept] = useState(false);
 
@@ -159,16 +192,17 @@ export const FileInput: React.FC<FileInputProps> = (props) => {
     };
 
     return props.variant === 'button' ? (
-        <ButtonFileInput {...getRootProps({ onDragOver: handleDragOver, onDrop: handleDrop })}>
+        <ButtonFileInput ref={dropzoneRef} {...getRootProps()}>
             <input {...getInputProps()} />
             <Button label={labelButton} leadingIcon={<UploadIcon size={20} />} stretch={props.stretch} />
         </ButtonFileInput>
     ) : (
         <FileInputContainer
+            ref={dropzoneRef}
             data-reject={isDragReject}
             data-accept={delayedAccept}
             data-active={isDragActive}
-            {...getRootProps({ onDragOver: handleDragOver, onDrop: handleDrop })}
+            {...getRootProps()}
         >
             <input {...getInputProps()} />
             {renderContent()}
