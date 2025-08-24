@@ -190,4 +190,207 @@ describe('Timeline', () => {
             expect(timelineContent).toBeInTheDocument();
         });
     });
+
+    describe('event callbacks', () => {
+        it('calls onStartMoveTrack when track drag starts', () => {
+            const onStartMoveTrack = vi.fn();
+            const { container } = renderTimeline({ onStartMoveTrack });
+
+            const trackBars = container.querySelectorAll('[data-part="track"]');
+            expect(trackBars.length).toBeGreaterThan(0);
+
+            // Simulate pointer down to start drag
+            (trackBars[0] as HTMLElement).dispatchEvent(
+                new PointerEvent('pointerdown', {
+                    bubbles: true,
+                    clientX: 100,
+                }),
+            );
+
+            expect(onStartMoveTrack).toHaveBeenCalledWith('track1');
+        });
+
+        it('calls onFinishMoveTrack when track drag ends', () => {
+            const onFinishMoveTrack = vi.fn();
+            const { container } = renderTimeline({ onFinishMoveTrack });
+
+            const trackBars = container.querySelectorAll('[data-part="track"]');
+            expect(trackBars.length).toBeGreaterThan(0);
+
+            // Start drag
+            (trackBars[0] as HTMLElement).dispatchEvent(
+                new PointerEvent('pointerdown', {
+                    bubbles: true,
+                    clientX: 100,
+                }),
+            );
+
+            // End drag
+            document.dispatchEvent(
+                new PointerEvent('pointerup', {
+                    bubbles: true,
+                    clientX: 150,
+                }),
+            );
+
+            expect(onFinishMoveTrack).toHaveBeenCalledWith('track1', 0, 10);
+        });
+
+        it('calls onStartMoveKeyframe when keyframe drag starts', () => {
+            const onStartMoveKeyframe = vi.fn();
+            const { container } = renderTimeline({ onStartMoveKeyframe });
+
+            const keyframes = container.querySelectorAll('[data-part="keyframe"]');
+            expect(keyframes.length).toBeGreaterThan(0);
+
+            // Simulate mouse down to start keyframe drag
+            (keyframes[0] as HTMLElement).dispatchEvent(
+                new MouseEvent('mousedown', {
+                    bubbles: true,
+                    clientX: 100,
+                }),
+            );
+
+            expect(onStartMoveKeyframe).toHaveBeenCalledWith('kf1');
+        });
+
+        it('calls onFinishMoveKeyframe when keyframe drag ends', async () => {
+            const onFinishMoveKeyframe = vi.fn();
+            const { container } = renderTimeline({ onFinishMoveKeyframe });
+
+            const keyframes = container.querySelectorAll('[data-part="keyframe"]');
+            expect(keyframes.length).toBeGreaterThan(0);
+
+            // Start keyframe drag
+            (keyframes[0] as HTMLElement).dispatchEvent(
+                new MouseEvent('mousedown', {
+                    bubbles: true,
+                    clientX: 100,
+                }),
+            );
+
+            // Wait a bit for React state to update
+            await new Promise((resolve) => setTimeout(resolve, 10));
+
+            // End keyframe drag
+            document.dispatchEvent(
+                new MouseEvent('mouseup', {
+                    bubbles: true,
+                    clientX: 150,
+                }),
+            );
+
+            expect(onFinishMoveKeyframe).toHaveBeenCalledWith('kf1', 2);
+        });
+
+        it('calls onStartMoveTrack when resizing track start handle', () => {
+            const onStartMoveTrack = vi.fn();
+            const { container } = renderTimeline({ onStartMoveTrack });
+
+            const resizeHandlers = container.querySelectorAll('[data-part="resize-handler"]');
+            expect(resizeHandlers.length).toBeGreaterThan(0);
+
+            // Simulate pointer down on resize handle
+            (resizeHandlers[0] as HTMLElement).dispatchEvent(
+                new PointerEvent('pointerdown', {
+                    bubbles: true,
+                    clientX: 100,
+                }),
+            );
+
+            expect(onStartMoveTrack).toHaveBeenCalledWith('track1');
+        });
+
+        it('calls onFinishMoveTrack when resizing track end handle', () => {
+            const onFinishMoveTrack = vi.fn();
+            const { container } = renderTimeline({ onFinishMoveTrack });
+
+            const resizeHandlers = container.querySelectorAll('[data-part="resize-handler"]');
+            expect(resizeHandlers.length).toBeGreaterThan(1);
+
+            // Start resize on end handle
+            (resizeHandlers[1] as HTMLElement).dispatchEvent(
+                new PointerEvent('pointerdown', {
+                    bubbles: true,
+                    clientX: 100,
+                }),
+            );
+
+            // End resize
+            document.dispatchEvent(
+                new PointerEvent('pointerup', {
+                    bubbles: true,
+                    clientX: 150,
+                }),
+            );
+
+            expect(onFinishMoveTrack).toHaveBeenCalledWith('track1', 0, 10);
+        });
+
+        it('works without optional callbacks - no errors thrown', () => {
+            // Should not throw errors when callbacks are not provided
+            const { container } = renderTimeline({});
+
+            const trackBars = container.querySelectorAll('[data-part="track"]');
+            expect(trackBars.length).toBeGreaterThan(0);
+
+            expect(() => {
+                // Start drag
+                (trackBars[0] as HTMLElement).dispatchEvent(
+                    new PointerEvent('pointerdown', {
+                        bubbles: true,
+                        clientX: 100,
+                    }),
+                );
+
+                // End drag
+                document.dispatchEvent(
+                    new PointerEvent('pointerup', {
+                        bubbles: true,
+                        clientX: 150,
+                    }),
+                );
+            }).not.toThrow();
+        });
+
+        it('calls both existing and new callbacks during track operations', () => {
+            const onMoveTrack = vi.fn();
+            const onStartMoveTrack = vi.fn();
+            const onFinishMoveTrack = vi.fn();
+            const { container } = renderTimeline({ onMoveTrack, onStartMoveTrack, onFinishMoveTrack });
+
+            const trackBars = container.querySelectorAll('[data-part="track"]');
+            expect(trackBars.length).toBeGreaterThan(0);
+
+            // Start drag
+            (trackBars[0] as HTMLElement).dispatchEvent(
+                new PointerEvent('pointerdown', {
+                    bubbles: true,
+                    clientX: 100,
+                }),
+            );
+
+            expect(onStartMoveTrack).toHaveBeenCalledWith('track1');
+
+            // Move during drag
+            document.dispatchEvent(
+                new PointerEvent('pointermove', {
+                    bubbles: true,
+                    clientX: 120,
+                }),
+            );
+
+            expect(onMoveTrack).toHaveBeenCalled();
+
+            // End drag
+            document.dispatchEvent(
+                new PointerEvent('pointerup', {
+                    bubbles: true,
+                    clientX: 150,
+                }),
+            );
+
+            expect(onFinishMoveTrack).toHaveBeenCalledWith('track1', 0.4, 10);
+        });
+    });
 });

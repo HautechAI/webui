@@ -23,6 +23,10 @@ const meta: Meta<typeof Timeline> = {
         onMoveKeyframe: fn(),
         onRenameTrack: fn(),
         onTimeChange: fn(),
+        onStartMoveTrack: fn(),
+        onFinishMoveTrack: fn(),
+        onStartMoveKeyframe: fn(),
+        onFinishMoveKeyframe: fn(),
     },
 };
 
@@ -419,6 +423,22 @@ export const FullyInteractive = {
                     onMoveKeyframe={handleMoveKeyframe}
                     onRenameTrack={handleRenameTrack}
                     onMoveTrack={handleMoveTrack}
+                    onStartMoveTrack={(trackId) => {
+                        const track = timelineData.tracks.find((t) => t.id === trackId);
+                        addAction(`🟢 Started moving track: ${track?.title}`);
+                    }}
+                    onFinishMoveTrack={(trackId, start, duration) => {
+                        const track = timelineData.tracks.find((t) => t.id === trackId);
+                        addAction(
+                            `🔵 Finished moving track: ${track?.title} at start=${start.toFixed(1)}s, duration=${duration.toFixed(1)}s`,
+                        );
+                    }}
+                    onStartMoveKeyframe={(keyframeId) => {
+                        addAction(`🟢 Started moving keyframe: ${keyframeId}`);
+                    }}
+                    onFinishMoveKeyframe={(keyframeId, time) => {
+                        addAction(`🔵 Finished moving keyframe: ${keyframeId} at time=${time.toFixed(1)}s`);
+                    }}
                 />
 
                 <div style={{ marginTop: '16px', padding: '12px', background: '#f9f9f9', borderRadius: '4px' }}>
@@ -431,6 +451,91 @@ export const FullyInteractive = {
                         ) : (
                             recentActions.map((action, index) => (
                                 <div key={index} style={{ padding: '2px 0', borderBottom: '1px solid #eee' }}>
+                                    {action}
+                                </div>
+                            ))
+                        )}
+                    </div>
+                </div>
+            </div>
+        );
+    },
+};
+
+// Demo for new Start/Finish Move Callbacks
+export const StartFinishCallbacks = {
+    render: () => {
+        const [dragActions, setDragActions] = React.useState<string[]>([]);
+
+        const addDragAction = (action: string) => {
+            setDragActions((prev) => [action, ...prev.slice(0, 19)]); // Keep last 20 actions
+        };
+
+        return (
+            <div>
+                <div style={{ marginBottom: '16px', padding: '12px', background: '#e8f5e9', borderRadius: '4px' }}>
+                    <strong>Start/Finish Move Callbacks Demo</strong>
+                    <div style={{ fontSize: '12px', color: '#2e7d32', margin: '8px 0' }}>
+                        This demo shows the new onStartMove/onFinishMove callbacks for tracks and keyframes.
+                        <br />• <strong>Green</strong> = Start events
+                        <br />• <strong>Blue</strong> = Finish events
+                        <br />• <strong>Gray</strong> = Move events (during drag)
+                    </div>
+                </div>
+
+                <Timeline
+                    scale={50}
+                    duration={15}
+                    tracks={sampleTracks}
+                    currentTime={2.5}
+                    onMoveTrack={(trackId, start, duration) => {
+                        const track = sampleTracks.find((t) => t.id === trackId);
+                        addDragAction(
+                            `🔄 Move: ${track?.title} - start=${start.toFixed(1)}s, duration=${duration.toFixed(1)}s`,
+                        );
+                    }}
+                    onMoveKeyframe={(keyframeId, time) => {
+                        addDragAction(`🔄 Move: Keyframe ${keyframeId} - time=${time.toFixed(1)}s`);
+                    }}
+                    onStartMoveTrack={(trackId) => {
+                        const track = sampleTracks.find((t) => t.id === trackId);
+                        addDragAction(`🟢 START: Moving track "${track?.title}"`);
+                    }}
+                    onFinishMoveTrack={(trackId, start, duration) => {
+                        const track = sampleTracks.find((t) => t.id === trackId);
+                        addDragAction(
+                            `🔵 FINISH: Moving track "${track?.title}" to start=${start.toFixed(1)}s, duration=${duration.toFixed(1)}s`,
+                        );
+                    }}
+                    onStartMoveKeyframe={(keyframeId) => {
+                        addDragAction(`🟢 START: Moving keyframe "${keyframeId}"`);
+                    }}
+                    onFinishMoveKeyframe={(keyframeId, time) => {
+                        addDragAction(`🔵 FINISH: Moving keyframe "${keyframeId}" to time=${time.toFixed(1)}s`);
+                    }}
+                />
+
+                <div style={{ marginTop: '16px', padding: '12px', background: '#f5f5f5', borderRadius: '4px' }}>
+                    <strong>Drag Events Log:</strong>
+                    <div style={{ fontSize: '12px', marginTop: '8px', maxHeight: '200px', overflow: 'auto' }}>
+                        {dragActions.length === 0 ? (
+                            <div style={{ color: '#999', fontStyle: 'italic' }}>
+                                No drag events yet - try dragging tracks or keyframes!
+                            </div>
+                        ) : (
+                            dragActions.map((action, index) => (
+                                <div
+                                    key={index}
+                                    style={{
+                                        padding: '3px 0',
+                                        borderBottom: '1px solid #eee',
+                                        color: action.includes('START')
+                                            ? '#2e7d32'
+                                            : action.includes('FINISH')
+                                              ? '#1976d2'
+                                              : '#666',
+                                    }}
+                                >
                                     {action}
                                 </div>
                             ))
