@@ -3,7 +3,7 @@ import { UploadIcon } from '@hautechai/webui.icon';
 import { styled } from '@hautechai/webui.themeprovider';
 import { themeVars } from '@hautechai/webui.themeprovider';
 import { Typography, TypographyProps } from '@hautechai/webui.typography';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { useDropzone } from 'react-dropzone';
 
 const FileInputContainer = styled.div<Pick<FileInputProps, 'stretch'>>`
@@ -107,38 +107,31 @@ export const FileInput: React.FC<FileInputProps> = (props) => {
         maxSize: props.maxSize,
     });
 
-    // Get the root props from react-dropzone - use them as-is to avoid interfering
+    // Get the root props from react-dropzone
     const rootProps = getRootProps();
 
-    // Add event listeners to control propagation without interfering with react-dropzone
-    useEffect(() => {
-        const element = dropzoneRef.current;
-        if (!element || !stopPropagation) return;
-
-        // Use capturing phase to intercept events before they bubble up to parent
-        const handleDragEvent = (event: Event) => {
-            // Only stop propagation if the event is leaving our component
-            // This allows react-dropzone to work normally within our component
-            if (event.target === element || element.contains(event.target as Node)) {
-                // Let react-dropzone handle the event normally within our component
-                // but stop it from propagating to parent containers
-                event.stopPropagation();
-            }
-        };
-
-        // Add capturing event listeners to control propagation
-        element.addEventListener('dragenter', handleDragEvent, true);
-        element.addEventListener('dragover', handleDragEvent, true);
-        element.addEventListener('dragleave', handleDragEvent, true);
-        element.addEventListener('drop', handleDragEvent, true);
-
-        return () => {
-            element.removeEventListener('dragenter', handleDragEvent, true);
-            element.removeEventListener('dragover', handleDragEvent, true);
-            element.removeEventListener('dragleave', handleDragEvent, true);
-            element.removeEventListener('drop', handleDragEvent, true);
-        };
-    }, [stopPropagation]);
+    // Wrap the event handlers to add stopPropagation if needed
+    const wrappedRootProps = stopPropagation
+        ? {
+              ...rootProps,
+              onDragEnter: (event: React.DragEvent<HTMLDivElement>) => {
+                  rootProps.onDragEnter?.(event);
+                  event.stopPropagation();
+              },
+              onDragOver: (event: React.DragEvent<HTMLDivElement>) => {
+                  rootProps.onDragOver?.(event);
+                  event.stopPropagation();
+              },
+              onDragLeave: (event: React.DragEvent<HTMLDivElement>) => {
+                  rootProps.onDragLeave?.(event);
+                  event.stopPropagation();
+              },
+              onDrop: (event: React.DragEvent<HTMLDivElement>) => {
+                  rootProps.onDrop?.(event);
+                  event.stopPropagation();
+              },
+          }
+        : rootProps;
 
     const [delayedAccept, setDelayedAccept] = useState(false);
 
@@ -183,7 +176,7 @@ export const FileInput: React.FC<FileInputProps> = (props) => {
     };
 
     return props.variant === 'button' ? (
-        <ButtonFileInput ref={dropzoneRef} {...rootProps}>
+        <ButtonFileInput ref={dropzoneRef} {...wrappedRootProps}>
             <input {...getInputProps()} />
             <Button label={labelButton} leadingIcon={<UploadIcon size={20} />} stretch={props.stretch} />
         </ButtonFileInput>
@@ -193,7 +186,7 @@ export const FileInput: React.FC<FileInputProps> = (props) => {
             data-reject={isDragReject}
             data-accept={delayedAccept}
             data-active={isDragActive}
-            {...rootProps}
+            {...wrappedRootProps}
         >
             <input {...getInputProps()} />
             {renderContent()}
