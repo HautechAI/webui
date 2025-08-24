@@ -223,7 +223,7 @@ export const VisualEditorInput = (props: VisualEditorInputProps) => {
                         size="xsmall"
                         icon={<UnlinkIcon size={16} />}
                         onClick={props.onTogglePort}
-                        disabled={isInputDisabled}
+                        disabled={disabled}
                     />
                 </UnitsContainer>
             );
@@ -238,7 +238,7 @@ export const VisualEditorInput = (props: VisualEditorInputProps) => {
                         size="xsmall"
                         icon={<WorkflowIcon size={16} />}
                         onClick={props.onTogglePort}
-                        disabled={isInputDisabled}
+                        disabled={disabled}
                     />
                     <Dropdown
                         size="xsmall"
@@ -291,7 +291,7 @@ export const VisualEditorInput = (props: VisualEditorInputProps) => {
                 {renderTrailingControls()}
             </InputBox>
             <KeyframeContainer onMouseEnter={handleKeyframeMouseEnter} onMouseLeave={handleKeyframeMouseLeave}>
-                <KeyframeToggle state={keyframesState} onClick={handleKeyframeClick} disabled={isInputDisabled} />
+                <KeyframeToggle state={keyframesState} onClick={handleKeyframeClick} disabled={disabled} />
             </KeyframeContainer>
         </Container>
     );
