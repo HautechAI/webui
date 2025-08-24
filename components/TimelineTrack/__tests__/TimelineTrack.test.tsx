@@ -103,4 +103,84 @@ describe('TimelineTrack', () => {
         expect(last?.[0]).toBe(5); // start should remain the same
         expect(last?.[1]).toBeCloseTo(3); // duration increased
     });
+
+    it('calls onStartMove when starting to move track', () => {
+        const onStartMove = vi.fn();
+        const { container } = render(<TimelineTrack start={2} duration={3} scale={30} onStartMove={onStartMove} />);
+        const track = container.querySelector('[data-part="track"]');
+        fireEvent.pointerDown(track!, { clientX: 100 });
+
+        expect(onStartMove).toHaveBeenCalledTimes(1);
+    });
+
+    it('calls onFinishMove when finishing track movement', () => {
+        const onFinishMove = vi.fn();
+        const { container } = render(<TimelineTrack start={2} duration={3} scale={30} onFinishMove={onFinishMove} />);
+        const track = container.querySelector('[data-part="track"]');
+        fireEvent.pointerDown(track!, { clientX: 100 });
+        fireEvent.pointerUp(document, { clientX: 120 });
+
+        expect(onFinishMove).toHaveBeenCalledTimes(1);
+    });
+
+    it('calls onStartMove when starting to resize track', () => {
+        const onStartMove = vi.fn();
+        const { container } = render(
+            <TimelineTrack start={2} duration={3} scale={30} onStartMove={onStartMove} selected />,
+        );
+        const handles = container.querySelectorAll('[data-part="resize-handler"]');
+        const startHandle = handles[0];
+        fireEvent.pointerDown(startHandle, { clientX: 100 });
+
+        expect(onStartMove).toHaveBeenCalledTimes(1);
+    });
+
+    it('calls onFinishMove when finishing track resize', () => {
+        const onFinishMove = vi.fn();
+        const { container } = render(
+            <TimelineTrack start={2} duration={3} scale={30} onFinishMove={onFinishMove} selected />,
+        );
+        const handles = container.querySelectorAll('[data-part="resize-handler"]');
+        const endHandle = handles[1];
+        fireEvent.pointerDown(endHandle, { clientX: 200 });
+        fireEvent.pointerUp(document, { clientX: 220 });
+
+        expect(onFinishMove).toHaveBeenCalledTimes(1);
+    });
+
+    it('works without onStartMove and onFinishMove callbacks', () => {
+        const { container } = render(<TimelineTrack start={2} duration={3} scale={30} />);
+        const track = container.querySelector('[data-part="track"]');
+
+        expect(() => {
+            fireEvent.pointerDown(track!, { clientX: 100 });
+            fireEvent.pointerUp(document, { clientX: 120 });
+        }).not.toThrow();
+    });
+
+    it('calls both onChange and onStartMove/onFinishMove during operations', () => {
+        const onChange = vi.fn();
+        const onStartMove = vi.fn();
+        const onFinishMove = vi.fn();
+        const { container } = render(
+            <TimelineTrack
+                start={2}
+                duration={3}
+                scale={30}
+                onChange={onChange}
+                onStartMove={onStartMove}
+                onFinishMove={onFinishMove}
+            />,
+        );
+        const track = container.querySelector('[data-part="track"]');
+
+        fireEvent.pointerDown(track!, { clientX: 100 });
+        expect(onStartMove).toHaveBeenCalledTimes(1);
+
+        fireEvent.pointerMove(document, { clientX: 120 });
+        expect(onChange).toHaveBeenCalled();
+
+        fireEvent.pointerUp(document, { clientX: 120 });
+        expect(onFinishMove).toHaveBeenCalledTimes(1);
+    });
 });

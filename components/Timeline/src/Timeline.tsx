@@ -54,6 +54,14 @@ export interface TimelineProps {
     onTimeChange?: (time: number) => void;
     /** Called when user adjusts scale via custom scrollbar */
     onScaleChange?: (scale: number) => void;
+    /** Called when track move/resize operation starts */
+    onStartMoveTrack?: (trackId: string) => void;
+    /** Called when track move/resize operation finishes */
+    onFinishMoveTrack?: (trackId: string, start: number, duration: number) => void;
+    /** Called when keyframe move operation starts */
+    onStartMoveKeyframe?: (keyframeId: string) => void;
+    /** Called when keyframe move operation finishes */
+    onFinishMoveKeyframe?: (keyframeId: string, time: number) => void;
 }
 
 // Wrapper that now reserves 24px for the custom scrollbar area above the timeline grid
@@ -160,6 +168,10 @@ export const Timeline: React.FC<TimelineProps> = ({
     onRenameTrack,
     onTimeChange,
     onScaleChange,
+    onStartMoveTrack,
+    onFinishMoveTrack,
+    onStartMoveKeyframe,
+    onFinishMoveKeyframe,
 }) => {
     // Use provided duration directly (previously computed as maxTime)
     const timelineDuration = duration;
@@ -176,8 +188,24 @@ export const Timeline: React.FC<TimelineProps> = ({
         onMoveKeyframe?.(params.id, params.time);
     };
 
+    const handleKeyframeStartMove = (keyframeId: string) => {
+        onStartMoveKeyframe?.(keyframeId);
+    };
+
+    const handleKeyframeFinishMove = (keyframeId: string, time: number) => {
+        onFinishMoveKeyframe?.(keyframeId, time);
+    };
+
     const handleTrackRename = (trackId: string, newTitle: string) => {
         onRenameTrack?.(trackId, newTitle);
+    };
+
+    const handleTrackStartMove = (trackId: string) => {
+        onStartMoveTrack?.(trackId);
+    };
+
+    const handleTrackFinishMove = (trackId: string, start: number, duration: number) => {
+        onFinishMoveTrack?.(trackId, start, duration);
     };
 
     // Height available for the timeline grid (exclude the 24px scrollbar placeholder)
@@ -285,6 +313,10 @@ export const Timeline: React.FC<TimelineProps> = ({
                                         onChange={(newStart, newDuration) =>
                                             onMoveTrack?.(track.id, newStart, newDuration)
                                         }
+                                        onStartMove={() => handleTrackStartMove(track.id)}
+                                        onFinishMove={(start, duration) =>
+                                            handleTrackFinishMove(track.id, start, duration)
+                                        }
                                     />
                                 </TrackRow>
 
@@ -297,6 +329,8 @@ export const Timeline: React.FC<TimelineProps> = ({
                                             selected={false}
                                             onClick={({ id }) => handleKeyframeClick(id)}
                                             onMove={handleKeyframeMove}
+                                            onStartMove={handleKeyframeStartMove}
+                                            onFinishMove={handleKeyframeFinishMove}
                                         />
                                     </KeyframeRow>
                                 ))}
