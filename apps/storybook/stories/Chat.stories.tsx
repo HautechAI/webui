@@ -9,7 +9,7 @@ export default {
     tags: ['autodocs'],
     decorators: [
         (Story: React.ComponentType) => (
-            <div style={{ width: '400px', height: '600px', border: '1px dashed #ccc' }}>
+            <div style={{ width: '400px', minHeight: '500px', border: '1px dashed #ccc' }}>
                 <Story />
             </div>
         ),

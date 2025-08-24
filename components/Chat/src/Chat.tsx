@@ -156,7 +156,7 @@ export const Chat = (props: ChatProps) => {
         >
             {messages.map((message) => (
                 <MessageContainer key={message.id}>
-                    <Row spacing="s" align="center">
+                    <Row spacing="m" align="center">
                         <Avatar
                             src={message.author.avatarSrc}
                             initials={message.author.initials}
@@ -164,7 +164,7 @@ export const Chat = (props: ChatProps) => {
                             size="small"
                         />
                         <Typography
-                            variant="CaptionEmphasized"
+                            variant="LabelSmallEmphasized"
                             color="layout.onSurface.primary"
                             noWrap
                             component="span"
