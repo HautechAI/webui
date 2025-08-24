@@ -116,27 +116,19 @@ export const FileInput: React.FC<FileInputProps> = (props) => {
               ...rootProps,
               onDragEnter: (event: React.DragEvent<HTMLDivElement>) => {
                   rootProps.onDragEnter?.(event);
-                  if (!event.defaultPrevented) {
-                      event.stopPropagation();
-                  }
+                  event.stopPropagation();
               },
               onDragOver: (event: React.DragEvent<HTMLDivElement>) => {
                   rootProps.onDragOver?.(event);
-                  if (!event.defaultPrevented) {
-                      event.stopPropagation();
-                  }
+                  event.stopPropagation();
               },
               onDragLeave: (event: React.DragEvent<HTMLDivElement>) => {
                   rootProps.onDragLeave?.(event);
-                  if (!event.defaultPrevented) {
-                      event.stopPropagation();
-                  }
+                  event.stopPropagation();
               },
               onDrop: (event: React.DragEvent<HTMLDivElement>) => {
                   rootProps.onDrop?.(event);
-                  if (!event.defaultPrevented) {
-                      event.stopPropagation();
-                  }
+                  event.stopPropagation();
               },
           }
         : rootProps;
