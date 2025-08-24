@@ -1,7 +1,7 @@
 import { Column } from '@hautechai/webui.column';
 import { MenuItem, MenuItemProps } from '@hautechai/webui.menuitem';
 import { Popover, PopoverProps, PopoverRef } from '@hautechai/webui.popover';
-import { useRef } from 'react';
+import { useCallback, useMemo, useRef } from 'react';
 
 export type MenuProps = {
     options: (MenuItemProps & { value?: string })[];
@@ -36,16 +36,19 @@ export const Menu = (props: MenuProps) => {
         </Column>
     );
 
+    const menu = useMemo(() => renderMenuList(), [props.options, props.onChange]);
+    const getMenu = useCallback(() => menu, [menu]);
+
     if (props.trigger) {
         return (
             <Popover
                 ref={popoverRef}
-                content={renderMenuList}
+                content={getMenu}
                 contentPositions={props.contentPositions}
                 trigger={props.trigger}
             />
         );
     }
 
-    return renderMenuList();
+    return menu;
 };

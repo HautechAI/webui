@@ -200,10 +200,13 @@ export const Dropdown = (props: DropdownProps) => {
         if (!props.disabled) setIsOpen((prev) => !prev);
     }, [props.disabled]);
 
-    const handleSelect = (val: string) => {
-        props.onChange?.(val);
-        setIsOpen(false);
-    };
+    const handleSelect = useCallback(
+        (val: string) => {
+            props.onChange?.(val);
+            setIsOpen(false);
+        },
+        [props.onChange],
+    );
 
     useEffect(() => {
         const handleClickOutside = (event: MouseEvent) => {
