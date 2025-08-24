@@ -4,7 +4,7 @@ import { themeVars } from '@hautechai/webui.themeprovider';
 import React from 'react';
 
 export type IconButtonProps = {
-    variant?: 'filled' | 'outlined' | 'flat';
+    variant?: 'filled' | 'outlined' | 'flat' | 'primary';
     size?: 'medium' | 'small' | 'xsmall';
     icon: React.ReactNode;
     disabled?: boolean;
@@ -63,6 +63,30 @@ const StyledButton = styled(ButtonBase)`
     &[data-variant='flat'] {
         border-width: 0px;
         background-color: var(--icon-button-bg, transparent);
+    }
+
+    &[data-variant='primary'] {
+        border-width: 0px;
+        background-color: ${themeVars.actions.primary};
+        color: ${themeVars.actions.onPrimary};
+    }
+    &[data-variant='primary']:hover:not(:disabled) {
+        background-color: ${themeVars.actions.onSecondary};
+        color: ${themeVars.actions.secondary};
+    }
+    &[data-variant='primary']:active:not(:disabled) {
+        background-color: ${themeVars.actions.onTertiary};
+        color: ${themeVars.actions.secondary};
+    }
+    &[data-variant='primary']:focus-visible:not(:disabled) {
+        border-width: ${themeVars.stroke.thin};
+        border-color: ${themeVars.layout.onSurface.primary};
+        background-color: ${themeVars.actions.primary};
+        color: ${themeVars.actions.onPrimary};
+    }
+    &[data-variant='primary']:disabled {
+        background-color: ${themeVars.layout.surfaceMid};
+        color: ${themeVars.layout.onSurface.tertiary};
     }
 `;
 

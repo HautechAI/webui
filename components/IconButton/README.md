@@ -21,7 +21,7 @@ yarn add @hautechai/webui.iconbutton
 
 | Parameter        | Type                                             | Description                                                                |
 | ---------------- | ------------------------------------------------ | -------------------------------------------------------------------------- |
-| variant          | 'filled' \| 'outlined' \| 'flat'                 | Optional visual style variant (defaults to 'filled')                       |
+| variant          | 'filled' \| 'outlined' \| 'flat' \| 'primary'    | Optional visual style variant (defaults to 'filled')                       |
 | size             | 'medium' \| 'small' \| 'xsmall'                  | Optional size variant controlling button dimensions (defaults to 'medium') |
 | icon             | React.ReactNode                                  | Required icon component to be displayed                                    |
 | disabled         | boolean                                          | When true, disables button interaction and applies disabled styling        |

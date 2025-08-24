@@ -86,3 +86,28 @@ export const FlatMediumDisabled = {
         icon: <BurgerIcon />,
     },
 };
+
+export const PrimaryMedium = {
+    args: {
+        variant: 'primary',
+        size: 'medium',
+        icon: <BurgerIcon />,
+    },
+};
+
+export const PrimarySmall = {
+    args: {
+        variant: 'primary',
+        size: 'small',
+        icon: <BurgerIcon size={20} />,
+    },
+};
+
+export const PrimaryMediumDisabled = {
+    args: {
+        variant: 'primary',
+        size: 'medium',
+        disabled: true,
+        icon: <BurgerIcon />,
+    },
+};
