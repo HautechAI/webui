@@ -9,7 +9,7 @@ export default {
     tags: ['autodocs'],
     decorators: [
         (Story: React.ComponentType) => (
-            <div style={{ width: '400px', height: '600px', border: '1px solid #ccc' }}>
+            <div style={{ width: '400px', height: '600px', border: '1px dashed #ccc' }}>
                 <Story />
             </div>
         ),
@@ -102,6 +102,37 @@ const diverseMessages: ChatMessage[] = [
             initials: 'D',
         },
         content: 'Working on some React components. Very exciting stuff!',
+    },
+];
+
+const markdownMessages: ChatMessage[] = [
+    {
+        id: '1',
+        author: {
+            name: 'Developer',
+            initials: 'D',
+            gradient: ['#667eea', '#764ba2'],
+        },
+        content:
+            "## Code Review Summary\n\nHere are the **key findings** from the review:\n\n### Issues Found\n\n- Fixed SQL injection vulnerability\n- Refactored database queries for better performance\n- Updated `error handling` logic\n\n```javascript\n// New helper function\nfunction validateInput(data) {\n    if (!data || typeof data !== 'string') {\n        throw new Error('Invalid input');\n    }\n    return data.trim();\n}\n```\n\n**Next steps:**\n1. Update unit tests\n2. Deploy to staging\n3. Monitor performance\n\n> Remember to update the documentation after deployment!",
+    },
+    {
+        id: '2',
+        author: {
+            name: 'Agent',
+            avatarSrc: 'https://placehold.co/24x24/4ecdc4/ffffff',
+        },
+        content:
+            "Thanks for the detailed review! I'll implement these changes:\n\n### Implementation Plan\n\n**High Priority:**\n- [ ] Fix SQL injection *immediately*\n- [ ] Add input validation\n\n**Medium Priority:**\n- [ ] Refactor database queries\n- [ ] Update error handling\n\n**Code example for the fix:**\n\n```sql\nSELECT * FROM users WHERE id = ?\n```\n\nThis uses parameterized queries to prevent injection attacks.\n\n**Resources:**\n- [OWASP SQL Injection Guide](https://owasp.org)\n- [Database Security Best Practices](https://example.com)\n\nLet me know if you need any clarification!",
+    },
+    {
+        id: '3',
+        author: {
+            name: 'Developer',
+            initials: 'D',
+            gradient: ['#667eea', '#764ba2'],
+        },
+        isTyping: true,
     },
 ];
 
@@ -259,5 +290,11 @@ export const MixedAvatarTypes = {
                 content: 'Message with no avatar fallback',
             },
         ],
+    },
+};
+
+export const WithMarkdownContent = {
+    args: {
+        messages: markdownMessages,
     },
 };
