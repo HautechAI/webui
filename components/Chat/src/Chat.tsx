@@ -2,115 +2,139 @@ import React from 'react';
 import { Row } from '@hautechai/webui.row';
 import { Avatar } from '@hautechai/webui.avatar';
 import { DotsLoader } from '@hautechai/webui.dotsloader';
+import { Typography } from '@hautechai/webui.typography';
 import { themeVars } from '@hautechai/webui.themeprovider';
-import ReactMarkdown from 'react-markdown';
+import ReactMarkdown, { Components } from 'react-markdown';
 import styled from '@emotion/styled';
 
-// Styled markdown container with theme integration
-const MarkdownContainer = styled.div`
-    max-width: 100%;
-    word-wrap: break-word;
+// Styled components for markdown elements
+const StyledH1 = styled.div`
+    margin: ${themeVars.spacing.s} 0;
+`;
 
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
-        margin: ${themeVars.spacing.s} 0;
-        color: ${themeVars.layout.onSurface.primary};
-        font-family: inherit;
-    }
+const StyledH2 = styled.div`
+    margin: ${themeVars.spacing.s} 0;
+`;
 
-    h1 {
-        font-size: 1.5rem;
-        font-weight: 600;
-        line-height: 1.2;
-    }
+const StyledH3 = styled.div`
+    margin: ${themeVars.spacing.s} 0;
+`;
 
-    h2 {
-        font-size: 1.25rem;
-        font-weight: 600;
-        line-height: 1.3;
-    }
+const StyledParagraph = styled.div`
+    margin: ${themeVars.spacing.s} 0;
+`;
 
-    h3 {
-        font-size: 1.125rem;
-        font-weight: 600;
-        line-height: 1.4;
-    }
+const StyledCode = styled.code`
+    background-color: ${themeVars.layout.surfaceMid};
+    color: ${themeVars.layout.onSurface.primary};
+    padding: ${themeVars.spacing.xs} ${themeVars.spacing.s};
+    border-radius: ${themeVars.cornerRadius.s};
+    font-family: 'Fira Code', 'Monaco', 'Consolas', monospace;
+    font-size: 13px;
+`;
 
-    p {
-        margin: ${themeVars.spacing.s} 0;
-        color: ${themeVars.layout.onSurface.secondary};
-        font-size: 14px;
-        font-weight: 400;
-        line-height: 1.5;
-    }
-
-    strong {
-        color: ${themeVars.layout.onSurface.primary};
-        font-weight: 600;
-    }
-
-    em {
-        font-style: italic;
-        color: ${themeVars.layout.onSurface.secondary};
-    }
+const StyledPre = styled.pre`
+    background-color: ${themeVars.layout.surfaceMid};
+    border: 1px solid ${themeVars.layout.strokes};
+    border-radius: ${themeVars.cornerRadius.m};
+    padding: ${themeVars.spacing.m};
+    margin: ${themeVars.spacing.s} 0;
+    overflow-x: auto;
 
     code {
-        background-color: ${themeVars.layout.surfaceMid};
-        color: ${themeVars.layout.onSurface.primary};
-        padding: ${themeVars.spacing.xs} ${themeVars.spacing.s};
-        border-radius: ${themeVars.cornerRadius.s};
-        font-family: 'Fira Code', 'Monaco', 'Consolas', monospace;
-        font-size: 13px;
+        background-color: transparent;
+        padding: 0;
+        border-radius: 0;
     }
+`;
 
-    pre {
-        background-color: ${themeVars.layout.surfaceMid};
-        border: 1px solid ${themeVars.layout.strokes};
-        border-radius: ${themeVars.cornerRadius.m};
-        padding: ${themeVars.spacing.m};
-        margin: ${themeVars.spacing.s} 0;
-        overflow-x: auto;
+const StyledBlockquote = styled.blockquote`
+    border-left: 4px solid ${themeVars.layout.strokes};
+    margin: ${themeVars.spacing.s} 0;
+    padding-left: ${themeVars.spacing.m};
+    color: ${themeVars.layout.onSurface.secondary};
+    font-style: italic;
+`;
 
-        code {
-            background-color: transparent;
-            padding: 0;
-            border-radius: 0;
-        }
-    }
-
-    blockquote {
-        border-left: 4px solid ${themeVars.layout.strokes};
-        margin: ${themeVars.spacing.s} 0;
-        padding-left: ${themeVars.spacing.m};
-        color: ${themeVars.layout.onSurface.secondary};
-        font-style: italic;
-    }
-
-    ul,
-    ol {
-        margin: ${themeVars.spacing.s} 0;
-        padding-left: ${themeVars.spacing.l};
-        color: ${themeVars.layout.onSurface.secondary};
-    }
+const StyledList = styled.ul`
+    margin: ${themeVars.spacing.s} 0;
+    padding-left: ${themeVars.spacing.l};
+    color: ${themeVars.layout.onSurface.secondary};
 
     li {
         margin: ${themeVars.spacing.xs} 0;
     }
+`;
 
-    a {
-        color: ${themeVars.actions.primary};
-        text-decoration: none;
+const StyledOrderedList = styled.ol`
+    margin: ${themeVars.spacing.s} 0;
+    padding-left: ${themeVars.spacing.l};
+    color: ${themeVars.layout.onSurface.secondary};
 
-        &:hover {
-            opacity: 0.8;
-            text-decoration: underline;
-        }
+    li {
+        margin: ${themeVars.spacing.xs} 0;
     }
 `;
+
+const StyledStrong = styled.strong`
+    color: ${themeVars.layout.onSurface.primary};
+    font-weight: 600;
+`;
+
+const StyledEm = styled.em`
+    font-style: italic;
+    color: ${themeVars.layout.onSurface.secondary};
+`;
+
+const StyledLink = styled.a`
+    color: ${themeVars.actions.primary};
+    text-decoration: none;
+
+    &:hover {
+        opacity: 0.8;
+        text-decoration: underline;
+    }
+`;
+
+// React Markdown components mapping
+const markdownComponents: Components = {
+    h1: ({ children }) => (
+        <StyledH1>
+            <Typography variant="H1" color="layout.onSurface.primary" component="h1">
+                {children}
+            </Typography>
+        </StyledH1>
+    ),
+    h2: ({ children }) => (
+        <StyledH2>
+            <Typography variant="H2" color="layout.onSurface.primary" component="h2">
+                {children}
+            </Typography>
+        </StyledH2>
+    ),
+    h3: ({ children }) => (
+        <StyledH3>
+            <Typography variant="H3" color="layout.onSurface.primary" component="h3">
+                {children}
+            </Typography>
+        </StyledH3>
+    ),
+    p: ({ children }) => (
+        <StyledParagraph>
+            <Typography variant="Body" color="layout.onSurface.secondary" component="p">
+                {children}
+            </Typography>
+        </StyledParagraph>
+    ),
+    strong: ({ children }) => <StyledStrong>{children}</StyledStrong>,
+    em: ({ children }) => <StyledEm>{children}</StyledEm>,
+    code: ({ children }) => <StyledCode>{children}</StyledCode>,
+    pre: ({ children }) => <StyledPre>{children}</StyledPre>,
+    blockquote: ({ children }) => <StyledBlockquote>{children}</StyledBlockquote>,
+    ul: ({ children }) => <StyledList>{children}</StyledList>,
+    ol: ({ children }) => <StyledOrderedList>{children}</StyledOrderedList>,
+    a: ({ children, ...props }) => <StyledLink {...props}>{children}</StyledLink>,
+};
 
 export type ChatMessage = {
     id: string;
@@ -134,14 +158,6 @@ const MessageContainer = styled.div`
     display: flex;
     flex-direction: column;
     gap: ${themeVars.spacing.s};
-`;
-
-const AuthorText = styled.span`
-    white-space: nowrap;
-    color: ${themeVars.layout.onSurface.primary};
-    font-size: 12px;
-    font-weight: 600;
-    line-height: 1.4;
 `;
 
 export const Chat = (props: ChatProps) => {
@@ -170,15 +186,22 @@ export const Chat = (props: ChatProps) => {
                             gradient={message.author.gradient}
                             size="small"
                         />
-                        <AuthorText>{message.author.name}</AuthorText>
+                        <Typography
+                            variant="CaptionEmphasized"
+                            color="layout.onSurface.primary"
+                            noWrap
+                            component="span"
+                        >
+                            {message.author.name}
+                        </Typography>
                     </Row>
                     {message.isTyping ? (
                         <DotsLoader />
                     ) : (
                         message.content && (
-                            <MarkdownContainer>
-                                <ReactMarkdown>{message.content}</ReactMarkdown>
-                            </MarkdownContainer>
+                            <div style={{ maxWidth: '100%', wordWrap: 'break-word' }}>
+                                <ReactMarkdown components={markdownComponents}>{message.content}</ReactMarkdown>
+                            </div>
                         )
                     )}
                 </MessageContainer>
