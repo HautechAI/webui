@@ -46,7 +46,9 @@ const KeyframeContainer = styled.div`
 
 export type VisualEditorInputProps = {
     // Input component props (defaults to NumberWithUnitsInput)
-    inputComponent?: React.ComponentType<Record<string, unknown>>;
+    // Using any here to support flexible component composition
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    inputComponent?: React.ComponentType<any>;
     inputProps?: Record<string, unknown>;
 
     // Legacy props for backward compatibility
