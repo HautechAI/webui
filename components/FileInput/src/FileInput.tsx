@@ -107,29 +107,39 @@ export const FileInput: React.FC<FileInputProps> = (props) => {
         maxSize: props.maxSize,
     });
 
-    // Create custom event handlers that control propagation
-    const createEventHandler = <T extends Element>(originalHandler?: React.DragEventHandler<T>) => {
-        return (event: React.DragEvent<T>) => {
-            if (stopPropagation) {
-                event.stopPropagation();
-            }
-            if (originalHandler) {
-                originalHandler(event);
-            }
-        };
-    };
-
     // Get the root props from react-dropzone
     const rootProps = getRootProps();
 
-    // Override the drag event handlers to control propagation
-    const customRootProps = {
-        ...rootProps,
-        onDragEnter: createEventHandler(rootProps.onDragEnter),
-        onDragOver: createEventHandler(rootProps.onDragOver),
-        onDragLeave: createEventHandler(rootProps.onDragLeave),
-        onDrop: createEventHandler(rootProps.onDrop),
-    };
+    // Create custom event handlers that control propagation without interfering with react-dropzone
+    const customRootProps = stopPropagation
+        ? {
+              ...rootProps,
+              onDragEnter: (event: React.DragEvent<HTMLDivElement>) => {
+                  rootProps.onDragEnter?.(event);
+                  if (!event.defaultPrevented) {
+                      event.stopPropagation();
+                  }
+              },
+              onDragOver: (event: React.DragEvent<HTMLDivElement>) => {
+                  rootProps.onDragOver?.(event);
+                  if (!event.defaultPrevented) {
+                      event.stopPropagation();
+                  }
+              },
+              onDragLeave: (event: React.DragEvent<HTMLDivElement>) => {
+                  rootProps.onDragLeave?.(event);
+                  if (!event.defaultPrevented) {
+                      event.stopPropagation();
+                  }
+              },
+              onDrop: (event: React.DragEvent<HTMLDivElement>) => {
+                  rootProps.onDrop?.(event);
+                  if (!event.defaultPrevented) {
+                      event.stopPropagation();
+                  }
+              },
+          }
+        : rootProps;
 
     const [delayedAccept, setDelayedAccept] = useState(false);
 
