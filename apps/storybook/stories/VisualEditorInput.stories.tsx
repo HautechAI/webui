@@ -2,6 +2,8 @@ import { fn } from '@storybook/test';
 import React, { useState } from 'react';
 import { Box } from '../../../components/Box/src';
 import { PlaceholderIcon } from '../../../components/Icon/src';
+import { TextInput } from '../../../components/TextInput/src';
+import { NumberWithUnitsInput } from '../../../components/NumberWithUnitsInput/src';
 import { VisualEditorInput, type VisualEditorInputProps } from '../../../components/VisualEditorInput/src';
 
 export default {
@@ -185,4 +187,133 @@ export const AllStates = {
         onTogglePort: fn() as () => void,
         onChangeUnits: fn() as (units: string) => void,
     },
+};
+
+// New composition API examples
+export const WithCompositionAPI = {
+    render: () => (
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+            <div>
+                <h3 style={{ marginBottom: '16px', fontSize: '16px' }}>Composition API with NumberWithUnitsInput</h3>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+                    <VisualEditorInput
+                        inputComponent={NumberWithUnitsInput}
+                        inputProps={{
+                            value: '100',
+                            units: 'px',
+                            availableUnits: ['px', '%', 'em', 'rem'],
+                            placeholder: 'Enter value',
+                            onChange: fn(),
+                            onChangeUnits: fn(),
+                            onToggleWorkflow: fn(),
+                        }}
+                        isPort={false}
+                        keyframesState="noKeyframes"
+                        onToggleKeyframe={fn()}
+                        onTogglePort={fn()}
+                    />
+
+                    <VisualEditorInput
+                        inputComponent={NumberWithUnitsInput}
+                        inputProps={{
+                            value: '200',
+                            units: '%',
+                            availableUnits: ['%', 'px'],
+                            placeholder: 'Percentage value',
+                            onChange: fn(),
+                            onChangeUnits: fn(),
+                            onToggleWorkflow: fn(),
+                            leadingIcon: <PlaceholderIcon />,
+                        }}
+                        isPort={true}
+                        keyframesState="hasKeyframes"
+                        onToggleKeyframe={fn()}
+                        onTogglePort={fn()}
+                    />
+                </div>
+            </div>
+
+            <div>
+                <h3 style={{ marginBottom: '16px', fontSize: '16px' }}>Composition API with TextInput</h3>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+                    <VisualEditorInput
+                        inputComponent={TextInput}
+                        inputProps={{
+                            type: 'text',
+                            value: 'Custom text input',
+                            placeholder: 'Enter text',
+                            onChange: fn(),
+                            leadingIcon: <PlaceholderIcon />,
+                        }}
+                        isPort={false}
+                        keyframesState="noKeyframes"
+                        onToggleKeyframe={fn()}
+                        onTogglePort={fn()}
+                    />
+
+                    <VisualEditorInput
+                        inputComponent={TextInput}
+                        inputProps={{
+                            type: 'email',
+                            value: 'user@example.com',
+                            placeholder: 'Enter email',
+                            onChange: fn(),
+                            variation: 'outlined',
+                            size: 'small',
+                        }}
+                        isPort={true}
+                        keyframesState="isKeyframe"
+                        onToggleKeyframe={fn()}
+                        onTogglePort={fn()}
+                    />
+                </div>
+            </div>
+        </div>
+    ),
+    args: {},
+};
+
+export const CompositionVsLegacy = {
+    render: () => (
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+            <div>
+                <h3 style={{ marginBottom: '16px', fontSize: '16px' }}>Legacy API (Backward Compatible)</h3>
+                <VisualEditorInput
+                    value="100"
+                    units="px"
+                    availableUnits={['px', '%', 'em', 'rem']}
+                    isPort={false}
+                    keyframesState="noKeyframes"
+                    onChange={fn()}
+                    onToggleKeyframe={fn()}
+                    onTogglePort={fn()}
+                    onChangeUnits={fn()}
+                    leadingIcon={<PlaceholderIcon />}
+                    placeholder="Legacy API"
+                />
+            </div>
+
+            <div>
+                <h3 style={{ marginBottom: '16px', fontSize: '16px' }}>New Composition API</h3>
+                <VisualEditorInput
+                    inputComponent={NumberWithUnitsInput}
+                    inputProps={{
+                        value: '100',
+                        units: 'px',
+                        availableUnits: ['px', '%', 'em', 'rem'],
+                        placeholder: 'Composition API',
+                        leadingIcon: <PlaceholderIcon />,
+                        onChange: fn(),
+                        onChangeUnits: fn(),
+                        onToggleWorkflow: fn(),
+                    }}
+                    isPort={false}
+                    keyframesState="noKeyframes"
+                    onToggleKeyframe={fn()}
+                    onTogglePort={fn()}
+                />
+            </div>
+        </div>
+    ),
+    args: {},
 };
