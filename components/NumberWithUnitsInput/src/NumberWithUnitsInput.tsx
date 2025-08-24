@@ -34,6 +34,7 @@ export type NumberWithUnitsInputProps = {
     hasError?: boolean;
     variation?: 'filled' | 'outlined';
     size?: 'medium' | 'small';
+    disableHoverControls?: boolean;
 };
 
 export const NumberWithUnitsInput = (props: NumberWithUnitsInputProps) => {
@@ -89,7 +90,7 @@ export const NumberWithUnitsInput = (props: NumberWithUnitsInputProps) => {
             disabled={props.disabled}
             leadingIcon={props.leadingIcon}
             trailingIcon={renderTrailingIcon()}
-            trailingHoverContent={renderTrailingHoverContent()}
+            trailingHoverContent={props.disableHoverControls ? undefined : renderTrailingHoverContent()}
             value={props.value}
             onChange={(e) => props.onChange?.(e.target.value)}
             hasError={props.hasError}

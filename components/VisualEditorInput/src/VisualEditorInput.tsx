@@ -115,6 +115,7 @@ export const VisualEditorInput = (props: VisualEditorInputProps) => {
             hasError: props.hasError,
             variation: props.variation,
             size: size,
+            disableHoverControls: isPort, // Disable hover controls when in port mode
         };
     }
 
