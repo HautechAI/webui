@@ -71,7 +71,14 @@ import {
   AlignTextRightIcon,
   AlignTopIcon,
   AlignMiddleIcon,
-  AlignBottomIcon
+  AlignBottomIcon,
+  LineHeightIcon,
+  LetterSpacingIcon,
+  TextUnderlineIcon,
+  TextStrikethroughIcon,
+  TextUppercaseIcon,
+  TextLowercaseIcon,
+  TextTitlecaseIcon
 } from '@hautechai/webui.icon';
 
 // Basic usage
@@ -87,6 +94,15 @@ import {
 <EyeClosedIcon size={24} />
 <TextIcon size={24} />
 <ImageIcon size={24} />
+
+// Text formatting icons
+<LineHeightIcon size={24} />
+<LetterSpacingIcon size={24} />
+<TextUnderlineIcon size={24} />
+<TextStrikethroughIcon size={24} />
+<TextUppercaseIcon size={24} />
+<TextLowercaseIcon size={24} />
+<TextTitlecaseIcon size={24} />
 
 // Alignment icons
 <AlignTextLeftIcon size={24} />

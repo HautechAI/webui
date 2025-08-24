@@ -28,6 +28,13 @@ import {
     PlayCircleIcon,
     SkipToEndIcon,
     RectangleIcon,
+    LineHeightIcon,
+    LetterSpacingIcon,
+    TextUnderlineIcon,
+    TextStrikethroughIcon,
+    TextUppercaseIcon,
+    TextLowercaseIcon,
+    TextTitlecaseIcon,
 } from '../src/assets';
 import { ThemeProvider } from '../../ThemeProvider/src';
 import { testTheme } from '../../test-theme';
@@ -348,6 +355,76 @@ describe('Icon', () => {
             render(
                 <ThemeProvider theme={testTheme}>
                     <RectangleIcon />
+                </ThemeProvider>,
+            );
+        }).not.toThrow();
+    });
+
+    it('should render LineHeightIcon without crashing', () => {
+        expect(() => {
+            render(
+                <ThemeProvider theme={testTheme}>
+                    <LineHeightIcon />
+                </ThemeProvider>,
+            );
+        }).not.toThrow();
+    });
+
+    it('should render LetterSpacingIcon without crashing', () => {
+        expect(() => {
+            render(
+                <ThemeProvider theme={testTheme}>
+                    <LetterSpacingIcon />
+                </ThemeProvider>,
+            );
+        }).not.toThrow();
+    });
+
+    it('should render TextUnderlineIcon without crashing', () => {
+        expect(() => {
+            render(
+                <ThemeProvider theme={testTheme}>
+                    <TextUnderlineIcon />
+                </ThemeProvider>,
+            );
+        }).not.toThrow();
+    });
+
+    it('should render TextStrikethroughIcon without crashing', () => {
+        expect(() => {
+            render(
+                <ThemeProvider theme={testTheme}>
+                    <TextStrikethroughIcon />
+                </ThemeProvider>,
+            );
+        }).not.toThrow();
+    });
+
+    it('should render TextUppercaseIcon without crashing', () => {
+        expect(() => {
+            render(
+                <ThemeProvider theme={testTheme}>
+                    <TextUppercaseIcon />
+                </ThemeProvider>,
+            );
+        }).not.toThrow();
+    });
+
+    it('should render TextLowercaseIcon without crashing', () => {
+        expect(() => {
+            render(
+                <ThemeProvider theme={testTheme}>
+                    <TextLowercaseIcon />
+                </ThemeProvider>,
+            );
+        }).not.toThrow();
+    });
+
+    it('should render TextTitlecaseIcon without crashing', () => {
+        expect(() => {
+            render(
+                <ThemeProvider theme={testTheme}>
+                    <TextTitlecaseIcon />
                 </ThemeProvider>,
             );
         }).not.toThrow();
