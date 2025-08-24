@@ -20,6 +20,10 @@ export interface TimelineTrackKeyframesProps {
     onClick?: (params: { id: string }) => void;
     /** Additional className for the container */
     className?: string;
+    /** Called when keyframe move operation starts */
+    onStartMove?: (keyframeId: string) => void;
+    /** Called when keyframe move operation finishes */
+    onFinishMove?: (keyframeId: string) => void;
 }
 
 // Container styles - same as TimelineTrack for consistent height and behavior
@@ -107,11 +111,12 @@ const KeyframeContainer = styled.div`
 `;
 
 export const TimelineTrackKeyframes = forwardRef<HTMLDivElement, TimelineTrackKeyframesProps>((props, ref) => {
-    const { scale, selected = false, keyframes, onMove, onClick, className } = props;
+    const { scale, selected = false, keyframes, onMove, onClick, onStartMove, onFinishMove, className } = props;
     const [dragging, setDragging] = useState<{ id: string; startX: number; startTime: number; offsetX: number } | null>(
         null,
     );
     const timelineRef = useRef<HTMLDivElement>(null);
+    const draggingRef = useRef<string | null>(null);
 
     // Handle keyframe click
     const handleKeyframeClick = useCallback(
@@ -150,8 +155,14 @@ export const TimelineTrackKeyframes = forwardRef<HTMLDivElement, TimelineTrackKe
                 startTime: currentTime,
                 offsetX: offsetX, // Store the offset to maintain relative position
             });
+
+            // Also store in ref for immediate access
+            draggingRef.current = keyframeId;
+
+            // Call start callback when keyframe drag begins
+            onStartMove?.(keyframeId);
         },
-        [scale],
+        [scale, onStartMove],
     );
 
     // Handle mouse move during drag
@@ -172,8 +183,14 @@ export const TimelineTrackKeyframes = forwardRef<HTMLDivElement, TimelineTrackKe
 
     // Handle mouse up to end drag
     const handleMouseUp = useCallback(() => {
+        const currentDraggingId = draggingRef.current;
+        if (currentDraggingId) {
+            // Call finish callback when keyframe drag ends
+            onFinishMove?.(currentDraggingId);
+        }
         setDragging(null);
-    }, []);
+        draggingRef.current = null;
+    }, [onFinishMove]);
 
     // Attach global mouse events for dragging
     React.useEffect(() => {

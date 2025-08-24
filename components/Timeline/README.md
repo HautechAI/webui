@@ -6,17 +6,24 @@ Timeline component that provides a 2x2 grid layout for video editing interfaces 
 
 ## Parameters
 
-| Parameter        | Type                                       | Description                                                                 |
-| ---------------- | ------------------------------------------ | --------------------------------------------------------------------------- |
-| height           | number                                     | Optional. Height of the timeline component in pixels (default: 250)         |
-| scale            | number                                     | Required. Scale in pixels per second for timeline display                   |
-| duration         | number                                     | Required. Total duration in seconds of the full timeline (replaces maxTime) |
-| tracks           | TimelineTrackData[]                        | Required. Array of track data with keyframe properties                      |
-| currentTime      | number                                     | Optional. Current playhead time position in seconds (default: 0)            |
-| onSelectTrack    | (trackId: string) => void                  | Optional. Called when a track is selected                                   |
-| onSelectKeyframe | (keyframeId: string) => void               | Optional. Called when a keyframe is selected                                |
-| onMoveKeyframe   | (keyframeId: string, time: number) => void | Optional. Called when a keyframe is moved                                   |
-| onTimeChange     | (time: number) => void                     | Optional. Called when playhead time changes through user interaction        |
+| Parameter            | Type                                                       | Description                                                                 |
+| -------------------- | ---------------------------------------------------------- | --------------------------------------------------------------------------- |
+| height               | number                                                     | Optional. Height of the timeline component in pixels (default: 250)         |
+| scale                | number                                                     | Required. Scale in pixels per second for timeline display                   |
+| duration             | number                                                     | Required. Total duration in seconds of the full timeline (replaces maxTime) |
+| tracks               | TimelineTrackData[]                                        | Required. Array of track data with keyframe properties                      |
+| currentTime          | number                                                     | Optional. Current playhead time position in seconds (default: 0)            |
+| onSelectTrack        | (trackId: string) => void                                  | Optional. Called when a track is selected                                   |
+| onSelectKeyframe     | (keyframeId: string) => void                               | Optional. Called when a keyframe is selected                                |
+| onMoveTrack          | (trackId: string, start: number, duration: number) => void | Optional. Called when a track is moved or resized                           |
+| onMoveKeyframe       | (keyframeId: string, time: number) => void                 | Optional. Called when a keyframe is moved                                   |
+| onRenameTrack        | (trackId: string, newTitle: string) => void                | Optional. Called when a track is renamed                                    |
+| onTimeChange         | (time: number) => void                                     | Optional. Called when playhead time changes through user interaction        |
+| onScaleChange        | (scale: number) => void                                    | Optional. Called when user adjusts scale via custom scrollbar               |
+| onStartMoveTrack     | (trackId: string) => void                                  | Optional. Called when track move/resize operation starts                    |
+| onFinishMoveTrack    | (trackId: string) => void                                  | Optional. Called when track move/resize operation finishes                  |
+| onStartMoveKeyframe  | (keyframeId: string) => void                               | Optional. Called when keyframe move operation starts                        |
+| onFinishMoveKeyframe | (keyframeId: string) => void                               | Optional. Called when keyframe move operation finishes                      |
 
 ### TimelineTrackData Interface
 
@@ -81,8 +88,15 @@ const tracks = [
     currentTime={3.2}
     onSelectTrack={(trackId) => console.log('Selected track:', trackId)}
     onSelectKeyframe={(keyframeId) => console.log('Selected keyframe:', keyframeId)}
+    onMoveTrack={(trackId, start, duration) => console.log('Moved track:', trackId, 'to', start, duration)}
     onMoveKeyframe={(keyframeId, time) => console.log('Moved keyframe:', keyframeId, 'to time:', time)}
+    onRenameTrack={(trackId, newTitle) => console.log('Renamed track:', trackId, 'to:', newTitle)}
     onTimeChange={(time) => console.log('Playhead moved to:', time)}
+    onScaleChange={(scale) => console.log('Scale changed to:', scale)}
+    onStartMoveTrack={(trackId) => console.log('Started moving track:', trackId)}
+    onFinishMoveTrack={(trackId) => console.log('Finished moving track:', trackId)}
+    onStartMoveKeyframe={(keyframeId) => console.log('Started moving keyframe:', keyframeId)}
+    onFinishMoveKeyframe={(keyframeId) => console.log('Finished moving keyframe:', keyframeId)}
 />;
 ```
 

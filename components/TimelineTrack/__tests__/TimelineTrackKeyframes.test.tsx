@@ -137,4 +137,91 @@ describe('TimelineTrackKeyframes', () => {
         expect(keyframes[1]).toHaveStyle('left: 150px');
         expect(keyframes[2]).toHaveStyle('left: 250px');
     });
+
+    it('calls onStartMove when keyframe drag starts', () => {
+        const onStartMove = vi.fn();
+        const keyframes = [{ id: 'keyframe1', time: 2, selected: false }];
+        const { container } = renderWithTheme(
+            <TimelineTrackKeyframes scale={50} keyframes={keyframes} onStartMove={onStartMove} />,
+        );
+
+        const keyframe = container.querySelector('[data-part="keyframe"]');
+        fireEvent.mouseDown(keyframe!, { clientX: 100 });
+
+        expect(onStartMove).toHaveBeenCalledWith('keyframe1');
+    });
+
+    it('calls onFinishMove when keyframe drag ends', () => {
+        const onFinishMove = vi.fn();
+        const keyframes = [{ id: 'keyframe1', time: 2, selected: false }];
+        const { container } = renderWithTheme(
+            <TimelineTrackKeyframes scale={50} keyframes={keyframes} onFinishMove={onFinishMove} />,
+        );
+
+        const keyframe = container.querySelector('[data-part="keyframe"]');
+        fireEvent.mouseDown(keyframe!, { clientX: 100 });
+        fireEvent.mouseUp(document, { clientX: 150 });
+
+        expect(onFinishMove).toHaveBeenCalledWith('keyframe1');
+    });
+
+    it('works without onStartMove and onFinishMove callbacks', () => {
+        const keyframes = [{ id: 'keyframe1', time: 2, selected: false }];
+        const { container } = renderWithTheme(<TimelineTrackKeyframes scale={50} keyframes={keyframes} />);
+
+        const keyframe = container.querySelector('[data-part="keyframe"]');
+
+        expect(() => {
+            fireEvent.mouseDown(keyframe!, { clientX: 100 });
+            fireEvent.mouseUp(document, { clientX: 150 });
+        }).not.toThrow();
+    });
+
+    it('calls both onMove and onStartMove/onFinishMove during keyframe operations', () => {
+        const onMove = vi.fn();
+        const onStartMove = vi.fn();
+        const onFinishMove = vi.fn();
+        const keyframes = [{ id: 'keyframe1', time: 2, selected: false }];
+        const { container } = renderWithTheme(
+            <TimelineTrackKeyframes
+                scale={50}
+                keyframes={keyframes}
+                onMove={onMove}
+                onStartMove={onStartMove}
+                onFinishMove={onFinishMove}
+            />,
+        );
+
+        const keyframe = container.querySelector('[data-part="keyframe"]');
+
+        fireEvent.mouseDown(keyframe!, { clientX: 100 });
+        expect(onStartMove).toHaveBeenCalledWith('keyframe1');
+
+        fireEvent.mouseMove(document, { clientX: 120 });
+        expect(onMove).toHaveBeenCalled();
+
+        fireEvent.mouseUp(document, { clientX: 120 });
+        expect(onFinishMove).toHaveBeenCalledWith('keyframe1');
+    });
+
+    it('calls onStartMove with correct keyframe ID for different keyframes', () => {
+        const onStartMove = vi.fn();
+        const keyframes = [
+            { id: 'keyframe1', time: 1, selected: false },
+            { id: 'keyframe2', time: 3, selected: false },
+        ];
+        const { container } = renderWithTheme(
+            <TimelineTrackKeyframes scale={50} keyframes={keyframes} onStartMove={onStartMove} />,
+        );
+
+        const keyframeElements = container.querySelectorAll('[data-part="keyframe"]');
+
+        // Start dragging first keyframe
+        fireEvent.mouseDown(keyframeElements[0], { clientX: 50 });
+        expect(onStartMove).toHaveBeenCalledWith('keyframe1');
+
+        // Start dragging second keyframe
+        fireEvent.mouseDown(keyframeElements[1], { clientX: 150 });
+        expect(onStartMove).toHaveBeenCalledWith('keyframe2');
+    });
 });
