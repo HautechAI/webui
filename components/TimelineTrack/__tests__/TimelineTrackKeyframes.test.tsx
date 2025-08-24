@@ -162,7 +162,7 @@ describe('TimelineTrackKeyframes', () => {
         fireEvent.mouseDown(keyframe!, { clientX: 100 });
         fireEvent.mouseUp(document, { clientX: 150 });
 
-        expect(onFinishMove).toHaveBeenCalledWith('keyframe1');
+        expect(onFinishMove).toHaveBeenCalledWith('keyframe1', 2);
     });
 
     it('works without onStartMove and onFinishMove callbacks', () => {
@@ -201,7 +201,7 @@ describe('TimelineTrackKeyframes', () => {
         expect(onMove).toHaveBeenCalled();
 
         fireEvent.mouseUp(document, { clientX: 120 });
-        expect(onFinishMove).toHaveBeenCalledWith('keyframe1');
+        expect(onFinishMove).toHaveBeenCalledWith('keyframe1', 2.4);
     });
 
     it('calls onStartMove with correct keyframe ID for different keyframes', () => {

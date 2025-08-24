@@ -30,7 +30,7 @@ yarn add @hautechai/webui.timelinetrack
 | onChange     | (start: number, duration: number) => void | Optional. Fired while user drags the body or resizes start/end. Provide to make interactive |
 | onSelect     | () => void                                | Optional. Fired when user initiates interaction (pointer down) on the track or a handle     |
 | onStartMove  | () => void                                | Optional. Called when move/resize operation starts                                          |
-| onFinishMove | () => void                                | Optional. Called when move/resize operation finishes                                        |
+| onFinishMove | (start: number, duration: number) => void | Optional. Called when move/resize operation finishes                                        |
 | className    | string                                    | Optional. Additional CSS class for the container                                            |
 
 ### TimelineTrackKeyframes
@@ -43,7 +43,7 @@ yarn add @hautechai/webui.timelinetrack
 | onMove       | (params: {id: string, time: number}) => void         | Optional. Called when a keyframe is dragged to a new time position |
 | onClick      | (params: {id: string}) => void                       | Optional. Called when a keyframe or connection line is clicked     |
 | onStartMove  | (keyframeId: string) => void                         | Optional. Called when keyframe move operation starts               |
-| onFinishMove | (keyframeId: string) => void                         | Optional. Called when keyframe move operation finishes             |
+| onFinishMove | (keyframeId: string, time: number) => void           | Optional. Called when keyframe move operation finishes             |
 | className    | string                                               | Optional. Additional CSS class for the container                   |
 
 ## Usage Examples
@@ -61,7 +61,7 @@ const [track, setTrack] = useState({ start: 2, duration: 5 });
     onChange={(start, duration) => setTrack({ start, duration })}
     onSelect={() => console.log('selected')}
     onStartMove={() => console.log('Started moving track')}
-    onFinishMove={() => console.log('Finished moving track')}
+    onFinishMove={(start, duration) => console.log('Finished moving track to', start, duration)}
 />;
 ```
 
@@ -81,7 +81,7 @@ const keyframes = [
     onClick={(params) => console.log('Clicked keyframe:', params.id)}
     onMove={(params) => console.log('Moved keyframe:', params.id, 'to time:', params.time)}
     onStartMove={(keyframeId) => console.log('Started moving keyframe:', keyframeId)}
-    onFinishMove={(keyframeId) => console.log('Finished moving keyframe:', keyframeId)}
+    onFinishMove={(keyframeId, time) => console.log('Finished moving keyframe:', keyframeId, 'to time:', time)}
 />;
 />;
 ```

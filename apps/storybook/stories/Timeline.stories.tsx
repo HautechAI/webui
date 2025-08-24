@@ -427,15 +427,17 @@ export const FullyInteractive = {
                         const track = timelineData.tracks.find((t) => t.id === trackId);
                         addAction(`🟢 Started moving track: ${track?.title}`);
                     }}
-                    onFinishMoveTrack={(trackId) => {
+                    onFinishMoveTrack={(trackId, start, duration) => {
                         const track = timelineData.tracks.find((t) => t.id === trackId);
-                        addAction(`🔵 Finished moving track: ${track?.title}`);
+                        addAction(
+                            `🔵 Finished moving track: ${track?.title} at start=${start.toFixed(1)}s, duration=${duration.toFixed(1)}s`,
+                        );
                     }}
                     onStartMoveKeyframe={(keyframeId) => {
                         addAction(`🟢 Started moving keyframe: ${keyframeId}`);
                     }}
-                    onFinishMoveKeyframe={(keyframeId) => {
-                        addAction(`🔵 Finished moving keyframe: ${keyframeId}`);
+                    onFinishMoveKeyframe={(keyframeId, time) => {
+                        addAction(`🔵 Finished moving keyframe: ${keyframeId} at time=${time.toFixed(1)}s`);
                     }}
                 />
 
@@ -499,15 +501,17 @@ export const StartFinishCallbacks = {
                         const track = sampleTracks.find((t) => t.id === trackId);
                         addDragAction(`🟢 START: Moving track "${track?.title}"`);
                     }}
-                    onFinishMoveTrack={(trackId) => {
+                    onFinishMoveTrack={(trackId, start, duration) => {
                         const track = sampleTracks.find((t) => t.id === trackId);
-                        addDragAction(`🔵 FINISH: Moving track "${track?.title}"`);
+                        addDragAction(
+                            `🔵 FINISH: Moving track "${track?.title}" to start=${start.toFixed(1)}s, duration=${duration.toFixed(1)}s`,
+                        );
                     }}
                     onStartMoveKeyframe={(keyframeId) => {
                         addDragAction(`🟢 START: Moving keyframe "${keyframeId}"`);
                     }}
-                    onFinishMoveKeyframe={(keyframeId) => {
-                        addDragAction(`🔵 FINISH: Moving keyframe "${keyframeId}"`);
+                    onFinishMoveKeyframe={(keyframeId, time) => {
+                        addDragAction(`🔵 FINISH: Moving keyframe "${keyframeId}" to time=${time.toFixed(1)}s`);
                     }}
                 />
 

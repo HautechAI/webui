@@ -21,9 +21,9 @@ Timeline component that provides a 2x2 grid layout for video editing interfaces 
 | onTimeChange         | (time: number) => void                                     | Optional. Called when playhead time changes through user interaction        |
 | onScaleChange        | (scale: number) => void                                    | Optional. Called when user adjusts scale via custom scrollbar               |
 | onStartMoveTrack     | (trackId: string) => void                                  | Optional. Called when track move/resize operation starts                    |
-| onFinishMoveTrack    | (trackId: string) => void                                  | Optional. Called when track move/resize operation finishes                  |
+| onFinishMoveTrack    | (trackId: string, start: number, duration: number) => void | Optional. Called when track move/resize operation finishes                  |
 | onStartMoveKeyframe  | (keyframeId: string) => void                               | Optional. Called when keyframe move operation starts                        |
-| onFinishMoveKeyframe | (keyframeId: string) => void                               | Optional. Called when keyframe move operation finishes                      |
+| onFinishMoveKeyframe | (keyframeId: string, time: number) => void                 | Optional. Called when keyframe move operation finishes                      |
 
 ### TimelineTrackData Interface
 
@@ -94,9 +94,11 @@ const tracks = [
     onTimeChange={(time) => console.log('Playhead moved to:', time)}
     onScaleChange={(scale) => console.log('Scale changed to:', scale)}
     onStartMoveTrack={(trackId) => console.log('Started moving track:', trackId)}
-    onFinishMoveTrack={(trackId) => console.log('Finished moving track:', trackId)}
+    onFinishMoveTrack={(trackId, start, duration) =>
+        console.log('Finished moving track:', trackId, 'at', start, duration)
+    }
     onStartMoveKeyframe={(keyframeId) => console.log('Started moving keyframe:', keyframeId)}
-    onFinishMoveKeyframe={(keyframeId) => console.log('Finished moving keyframe:', keyframeId)}
+    onFinishMoveKeyframe={(keyframeId, time) => console.log('Finished moving keyframe:', keyframeId, 'at time:', time)}
 />;
 ```
 

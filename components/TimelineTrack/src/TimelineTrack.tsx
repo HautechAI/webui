@@ -20,7 +20,7 @@ export interface TimelineTrackProps {
     /** Called when move/resize operation starts */
     onStartMove?: () => void;
     /** Called when move/resize operation finishes */
-    onFinishMove?: () => void;
+    onFinishMove?: (start: number, duration: number) => void;
 }
 
 // Container styles - track container with hover and selected states
@@ -115,6 +115,10 @@ export const TimelineTrack = forwardRef<HTMLDivElement, TimelineTrackProps>((pro
         const initialStart = start;
         const initialDuration = duration;
 
+        // Track the final values during drag
+        let finalStart = initialStart;
+        let finalDuration = initialDuration;
+
         // Always call start callback when drag begins, regardless of onChange
         onStartMove?.();
 
@@ -122,7 +126,7 @@ export const TimelineTrack = forwardRef<HTMLDivElement, TimelineTrackProps>((pro
             // If no onChange handler, still set up event listeners for finish callback
             const handleUp = () => {
                 document.removeEventListener('pointerup', handleUp);
-                onFinishMove?.();
+                onFinishMove?.(finalStart, finalDuration);
             };
             document.addEventListener('pointerup', handleUp, { once: true });
             return;
@@ -133,6 +137,8 @@ export const TimelineTrack = forwardRef<HTMLDivElement, TimelineTrackProps>((pro
             const deltaSec = deltaPx / scale;
             if (type === 'move') {
                 const newStart = Math.max(0, initialStart + deltaSec);
+                finalStart = newStart;
+                finalDuration = initialDuration;
                 onChange(newStart, initialDuration);
             } else if (type === 'resize-start') {
                 let newStart = initialStart + deltaSec;
@@ -148,10 +154,14 @@ export const TimelineTrack = forwardRef<HTMLDivElement, TimelineTrackProps>((pro
                     newDuration = 0;
                     if (newStart < 0) newStart = 0; // final clamp
                 }
+                finalStart = newStart;
+                finalDuration = newDuration;
                 onChange(newStart, newDuration);
             } else if (type === 'resize-end') {
                 let newDuration = initialDuration + deltaSec;
                 if (newDuration < 0) newDuration = 0;
+                finalStart = initialStart;
+                finalDuration = newDuration;
                 onChange(initialStart, newDuration);
             }
         };
@@ -159,8 +169,8 @@ export const TimelineTrack = forwardRef<HTMLDivElement, TimelineTrackProps>((pro
         const handleUp = () => {
             document.removeEventListener('pointermove', handleMove);
             document.removeEventListener('pointerup', handleUp);
-            // Call finish callback when drag ends
-            onFinishMove?.();
+            // Call finish callback when drag ends with final values
+            onFinishMove?.(finalStart, finalDuration);
         };
 
         document.addEventListener('pointermove', handleMove);

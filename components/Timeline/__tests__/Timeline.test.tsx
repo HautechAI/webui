@@ -233,7 +233,7 @@ describe('Timeline', () => {
                 }),
             );
 
-            expect(onFinishMoveTrack).toHaveBeenCalledWith('track1');
+            expect(onFinishMoveTrack).toHaveBeenCalledWith('track1', 0, 10);
         });
 
         it('calls onStartMoveKeyframe when keyframe drag starts', () => {
@@ -280,7 +280,7 @@ describe('Timeline', () => {
                 }),
             );
 
-            expect(onFinishMoveKeyframe).toHaveBeenCalledWith('kf1');
+            expect(onFinishMoveKeyframe).toHaveBeenCalledWith('kf1', 2);
         });
 
         it('calls onStartMoveTrack when resizing track start handle', () => {
@@ -324,7 +324,7 @@ describe('Timeline', () => {
                 }),
             );
 
-            expect(onFinishMoveTrack).toHaveBeenCalledWith('track1');
+            expect(onFinishMoveTrack).toHaveBeenCalledWith('track1', 0, 10);
         });
 
         it('works without optional callbacks - no errors thrown', () => {
@@ -390,7 +390,7 @@ describe('Timeline', () => {
                 }),
             );
 
-            expect(onFinishMoveTrack).toHaveBeenCalledWith('track1');
+            expect(onFinishMoveTrack).toHaveBeenCalledWith('track1', 0.4, 10);
         });
     });
 });
