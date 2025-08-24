@@ -46,7 +46,7 @@ const KeyframeContainer = styled.div`
 
 export type VisualEditorInputProps = {
     // Input component props (defaults to NumberWithUnitsInput)
-    inputComponent?: React.ComponentType<any>;
+    inputComponent?: React.ComponentType<Record<string, unknown>>;
     inputProps?: Record<string, unknown>;
 
     // Legacy props for backward compatibility
@@ -93,37 +93,41 @@ export const VisualEditorInput = (props: VisualEditorInputProps) => {
     // Create input component props based on whether using composition or legacy props
     const InputComponent = props.inputComponent || NumberWithUnitsInput;
 
-    // Build props for the input component
-    let inputComponentProps: Record<string, unknown>;
+    // Helper function to safely spread props to the dynamic input component
+    const renderInputComponent = () => {
+        // Build props for the input component
+        let inputComponentProps: Record<string, unknown>;
 
-    if (props.inputProps) {
-        // If using composition with explicit inputProps
-        inputComponentProps = props.inputProps;
-    } else {
-        // Use legacy props to construct NumberWithUnitsInput props
-        inputComponentProps = {
-            className: props.className,
-            placeholder: props.placeholder,
-            disabled: disabled || isPort, // Disable input when connected as port
-            leadingIcon: props.leadingIcon,
-            value: props.value || '',
-            units: props.units || 'px',
-            availableUnits: props.availableUnits || ['px', '%', 'em', 'rem'],
-            onChange: props.onChange,
-            onChangeUnits: props.onChangeUnits,
-            onToggleWorkflow: props.onTogglePort,
-            hasError: props.hasError,
-            variation: props.variation,
-            size: size,
-            disableHoverControls: isPort, // Disable hover controls when in port mode
-        };
-    }
+        if (props.inputProps) {
+            // If using composition with explicit inputProps
+            inputComponentProps = props.inputProps;
+        } else {
+            // Use legacy props to construct NumberWithUnitsInput props
+            inputComponentProps = {
+                className: props.className,
+                placeholder: props.placeholder,
+                disabled: disabled || isPort, // Disable input when connected as port
+                leadingIcon: props.leadingIcon,
+                value: props.value || '',
+                units: props.units || 'px',
+                availableUnits: props.availableUnits || ['px', '%', 'em', 'rem'],
+                onChange: props.onChange,
+                onChangeUnits: props.onChangeUnits,
+                onToggleWorkflow: props.onTogglePort,
+                hasError: props.hasError,
+                variation: props.variation,
+                size: size,
+                disableHoverControls: isPort, // Disable hover controls when in port mode
+            };
+        }
+
+        return React.createElement(InputComponent, inputComponentProps);
+    };
 
     return (
         <Container className="visual-editor-input" data-disabled={!!(disabled || isPort)} size={size}>
             <InputWrapper>
-                {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
-                <InputComponent {...(inputComponentProps as any)} />
+                {renderInputComponent()}
                 {isPort && (
                     <PortToggleOverlay size={size} data-is-port="true">
                         <ToggleIconButton
