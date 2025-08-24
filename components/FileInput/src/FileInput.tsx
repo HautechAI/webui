@@ -107,47 +107,29 @@ export const FileInput: React.FC<FileInputProps> = (props) => {
         maxSize: props.maxSize,
     });
 
-    // Handle event propagation by attaching direct event listeners
-    useEffect(() => {
-        const dropzoneElement = dropzoneRef.current;
-        if (!dropzoneElement) return;
-
-        const handleDragOver = (e: DragEvent) => {
+    // Create custom event handlers that control propagation
+    const createEventHandler = <T extends Element>(originalHandler?: React.DragEventHandler<T>) => {
+        return (event: React.DragEvent<T>) => {
             if (stopPropagation) {
-                e.stopPropagation();
+                event.stopPropagation();
+            }
+            if (originalHandler) {
+                originalHandler(event);
             }
         };
+    };
 
-        const handleDrop = (e: DragEvent) => {
-            if (stopPropagation) {
-                e.stopPropagation();
-            }
-        };
+    // Get the root props from react-dropzone
+    const rootProps = getRootProps();
 
-        const handleDragEnter = (e: DragEvent) => {
-            if (stopPropagation) {
-                e.stopPropagation();
-            }
-        };
-
-        const handleDragLeave = (e: DragEvent) => {
-            if (stopPropagation) {
-                e.stopPropagation();
-            }
-        };
-
-        dropzoneElement.addEventListener('dragover', handleDragOver);
-        dropzoneElement.addEventListener('drop', handleDrop);
-        dropzoneElement.addEventListener('dragenter', handleDragEnter);
-        dropzoneElement.addEventListener('dragleave', handleDragLeave);
-
-        return () => {
-            dropzoneElement.removeEventListener('dragover', handleDragOver);
-            dropzoneElement.removeEventListener('drop', handleDrop);
-            dropzoneElement.removeEventListener('dragenter', handleDragEnter);
-            dropzoneElement.removeEventListener('dragleave', handleDragLeave);
-        };
-    }, [stopPropagation]);
+    // Override the drag event handlers to control propagation
+    const customRootProps = {
+        ...rootProps,
+        onDragEnter: createEventHandler(rootProps.onDragEnter),
+        onDragOver: createEventHandler(rootProps.onDragOver),
+        onDragLeave: createEventHandler(rootProps.onDragLeave),
+        onDrop: createEventHandler(rootProps.onDrop),
+    };
 
     const [delayedAccept, setDelayedAccept] = useState(false);
 
@@ -192,7 +174,7 @@ export const FileInput: React.FC<FileInputProps> = (props) => {
     };
 
     return props.variant === 'button' ? (
-        <ButtonFileInput ref={dropzoneRef} {...getRootProps()}>
+        <ButtonFileInput ref={dropzoneRef} {...customRootProps}>
             <input {...getInputProps()} />
             <Button label={labelButton} leadingIcon={<UploadIcon size={20} />} stretch={props.stretch} />
         </ButtonFileInput>
@@ -202,7 +184,7 @@ export const FileInput: React.FC<FileInputProps> = (props) => {
             data-reject={isDragReject}
             data-accept={delayedAccept}
             data-active={isDragActive}
-            {...getRootProps()}
+            {...customRootProps}
         >
             <input {...getInputProps()} />
             {renderContent()}
