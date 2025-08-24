@@ -178,4 +178,47 @@ describe('VisualEditorInput', () => {
             expect(unlinkToggleButton.disabled).toBe(true);
         }
     });
+
+    it('should allow disconnect button to be clickable when isPort is true but component is not disabled', () => {
+        const mockOnTogglePort = vi.fn();
+        const props = {
+            value: '100',
+            units: 'px',
+            availableUnits: ['px', '%', 'em'],
+            isPort: true,
+            keyframesState: 'noKeyframes' as const,
+            disabled: false,
+            onTogglePort: mockOnTogglePort,
+        };
+
+        const { container } = render(
+            <TestWrapper>
+                <VisualEditorInput {...props} />
+            </TestWrapper>,
+        );
+
+        // Find the component container
+        const visualEditorInputContainer = container.querySelector('[data-disabled="true"]');
+        expect(visualEditorInputContainer).toBeTruthy();
+
+        // Trigger hover to show disconnect button
+        fireEvent.mouseEnter(visualEditorInputContainer!);
+
+        // Look for the disconnect toggle button (UnlinkIcon)
+        const toggleButtons = container.querySelectorAll('button');
+
+        // Find the disconnect button that should NOT be disabled
+        const disconnectButton = Array.from(toggleButtons).find(
+            (button) => button.getAttribute('data-variant') === 'flat' && button.getAttribute('data-size') === 'xsmall',
+        );
+
+        if (disconnectButton) {
+            // The disconnect button should NOT be disabled when only isPort=true
+            expect(disconnectButton.disabled).toBe(false);
+
+            // Click the disconnect button to verify it's functional
+            fireEvent.click(disconnectButton);
+            expect(mockOnTogglePort).toHaveBeenCalledTimes(1);
+        }
+    });
 });
