@@ -8,36 +8,6 @@ import ReactMarkdown, { Components } from 'react-markdown';
 import styled from '@emotion/styled';
 
 // Styled components for markdown elements
-const StyledH1 = styled.h1`
-    color: ${themeVars.layout.onSurface.primary};
-    font-size: 24px;
-    font-weight: 700;
-    line-height: 1.2;
-    margin: ${themeVars.spacing.m} 0 ${themeVars.spacing.s} 0;
-`;
-
-const StyledH2 = styled.h2`
-    color: ${themeVars.layout.onSurface.primary};
-    font-size: 20px;
-    font-weight: 600;
-    line-height: 1.3;
-    margin: ${themeVars.spacing.s} 0 ${themeVars.spacing.xs} 0;
-`;
-
-const StyledH3 = styled.h3`
-    color: ${themeVars.layout.onSurface.primary};
-    font-size: 18px;
-    font-weight: 600;
-    line-height: 1.3;
-    margin: ${themeVars.spacing.s} 0 ${themeVars.spacing.xs} 0;
-`;
-
-const StyledParagraph = styled.p`
-    color: ${themeVars.layout.onSurface.secondary};
-    font-size: 14px;
-    line-height: 1.4;
-    margin: ${themeVars.spacing.xs} 0;
-`;
 
 const StyledCode = styled.code`
     background-color: ${themeVars.layout.surfaceMid};
@@ -113,10 +83,26 @@ const StyledLink = styled.a`
 
 // React Markdown components mapping
 const markdownComponents: Components = {
-    h1: ({ children }) => <StyledH1>{children}</StyledH1>,
-    h2: ({ children }) => <StyledH2>{children}</StyledH2>,
-    h3: ({ children }) => <StyledH3>{children}</StyledH3>,
-    p: ({ children }) => <StyledParagraph>{children}</StyledParagraph>,
+    h1: ({ children }) => (
+        <Typography variant="H1" color="layout.onSurface.primary">
+            {children}
+        </Typography>
+    ),
+    h2: ({ children }) => (
+        <Typography variant="H2" color="layout.onSurface.primary">
+            {children}
+        </Typography>
+    ),
+    h3: ({ children }) => (
+        <Typography variant="H3" color="layout.onSurface.primary">
+            {children}
+        </Typography>
+    ),
+    p: ({ children }) => (
+        <Typography variant="Body" color="layout.onSurface.secondary">
+            {children}
+        </Typography>
+    ),
     strong: ({ children }) => <StyledStrong>{children}</StyledStrong>,
     em: ({ children }) => <StyledEm>{children}</StyledEm>,
     code: ({ children }) => <StyledCode>{children}</StyledCode>,
