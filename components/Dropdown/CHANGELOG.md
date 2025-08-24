@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.22](https://github.com/HautechAI/webui/compare/@hautechai/webui.dropdown@2.1.21...@hautechai/webui.dropdown@2.1.22) (2025-08-24)
+
+### Bug Fixes
+
+- Dropdown menu rerenders ([8f64a88](https://github.com/HautechAI/webui/commit/8f64a8887ea04842ffa93ccc934f8eac1adaeff8))
+
 ## [2.1.21](https://github.com/HautechAI/webui/compare/@hautechai/webui.dropdown@2.1.20...@hautechai/webui.dropdown@2.1.21) (2025-08-24)
 
 **Note:** Version bump only for package @hautechai/webui.dropdown
