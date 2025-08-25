@@ -1,7 +1,7 @@
 import { styled } from '@hautechai/webui.themeprovider';
 import { themeVars } from '@hautechai/webui.themeprovider';
 import { IconButton, IconButtonProps } from '@hautechai/webui.iconbutton';
-import React, { useCallback, useRef } from 'react';
+import React, { useCallback, useRef, useState } from 'react';
 
 const Container = styled.div<{ size: 'medium' | 'small' }>`
     display: flex;
@@ -126,6 +126,7 @@ export type TextInputProps = {
     disabled?: boolean;
     leadingIcon?: React.ReactNode;
     trailingIcon?: React.ReactNode;
+    trailingHoverContent?: React.ReactNode;
     value?: string;
     onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
     step?: number;
@@ -139,6 +140,8 @@ export type TextInputProps = {
 
 export const TextInput = (props: TextInputProps) => {
     const ref = useRef<HTMLInputElement>(null);
+    const [isHovered, setIsHovered] = useState(false);
+
     const handleClick = useCallback(() => {
         ref.current?.focus();
     }, []);
@@ -146,8 +149,21 @@ export const TextInput = (props: TextInputProps) => {
     const { disabled, icon } = props;
     const size = props.size ?? 'medium';
 
+    const renderTrailingContent = () => {
+        if (props.trailingHoverContent && isHovered) {
+            return props.trailingHoverContent;
+        }
+        return props.trailingIcon ? getIcon(props.trailingIcon, size) : null;
+    };
+
     return (
-        <Container onClick={handleClick} data-disabled={!!disabled} size={size}>
+        <Container
+            onClick={handleClick}
+            data-disabled={!!disabled}
+            size={size}
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+        >
             <InputContainer
                 data-disabled={!!disabled}
                 variation={props.variation ?? 'filled'}
@@ -166,7 +182,7 @@ export const TextInput = (props: TextInputProps) => {
                     value={props.value}
                     onChange={props.onChange}
                 />
-                {props.trailingIcon ? getIcon(props.trailingIcon, size) : null}
+                {renderTrailingContent()}
             </InputContainer>
             {icon && (
                 <IconButton

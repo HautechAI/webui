@@ -335,6 +335,26 @@ Before submitting component changes:
 - Use theme variables from `@hautechai/webui.themeprovider` for consistent theming
 - Avoid conditional rendering of elements for visual states - render elements and control visibility/appearance with CSS
 
+## Code Quality Guidelines
+
+### ESLint Rules
+
+**Never disable ESLint rules**:
+
+- **Never use `// eslint-disable-line` or `// eslint-disable-next-line`** to suppress ESLint warnings or errors
+- **Never use `/* eslint-disable */` blocks** to disable rules for sections of code
+- **Fix the underlying issue** rather than suppressing the lint rule
+- **Improve TypeScript types** rather than using `any` or disabling type-checking rules
+- **Refactor code structure** if complexity rules are triggered
+- If a rule seems inappropriate for the codebase, discuss removing it from the ESLint configuration rather than disabling it inline
+
+**Common alternatives to disabling rules:**
+
+- Instead of `@typescript-eslint/no-explicit-any`, use proper TypeScript interfaces and generic types
+- Instead of `@typescript-eslint/no-unused-vars`, remove unused variables or prefix them with underscore if needed for function signatures
+- Instead of complexity rules, refactor large functions into smaller, focused functions
+- Instead of import/export rules, organize imports and exports according to the established patterns
+
 ## Import Guidelines
 
 ### Component Import Rules

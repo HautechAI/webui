@@ -2,6 +2,8 @@ import { styled } from '@hautechai/webui.themeprovider';
 import { themeVars } from '@hautechai/webui.themeprovider';
 import { Menu } from '@hautechai/webui.menu';
 import { Typography } from '@hautechai/webui.typography';
+import { ToggleIconButton } from '../../ToggleIconButton/src';
+import { WorkflowIcon } from '@hautechai/webui.icon';
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { ArrowAltDownIcon } from '@hautechai/webui.icon';
 
@@ -22,6 +24,38 @@ const Container = styled.div`
         flex: 0 0 auto;
         width: fit-content;
         align-self: flex-start;
+    }
+`;
+
+const HoverControlsContainer = styled.div`
+    position: absolute;
+    right: ${themeVars.spacing.m};
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: ${themeVars.spacing.s};
+
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity ${themeVars.animation.duration.normal} ${themeVars.animation.timing.ease};
+
+    &[data-size='small'] {
+        right: ${themeVars.spacing.s};
+    }
+
+    &[data-size='xsmall'] {
+        right: ${themeVars.spacing.xs};
+    }
+`;
+
+const HoverWrapper = styled.div`
+    position: relative;
+
+    &:hover .hover-controls-container:not([data-disabled='true']) {
+        opacity: 1;
+        visibility: visible;
     }
 `;
 
@@ -185,6 +219,9 @@ export type DropdownProps = {
     options: Array<{ label: string; value: string }>;
     onChange?: (value: string) => void;
     hasError?: boolean;
+    trailingHoverContent?: React.ReactNode;
+    disableHoverControls?: boolean;
+    onToggleWorkflow?: () => void;
 };
 
 export const Dropdown = (props: DropdownProps) => {
@@ -228,32 +265,56 @@ export const Dropdown = (props: DropdownProps) => {
     const size = props.size ?? 'medium';
     const collapsed = !!props.collapsed;
 
+    const renderDefaultTrailingHoverContent = () => {
+        return (
+            <ToggleIconButton
+                variant="flat"
+                size="xsmall"
+                icon={<WorkflowIcon size={16} />}
+                onClick={props.onToggleWorkflow}
+                disabled={props.disabled}
+            />
+        );
+    };
+
     return (
         <Container data-disabled={disabled} data-collapsed={collapsed} ref={ref}>
-            <ButtonContainer
-                data-disabled={disabled}
-                data-type={props.type ?? 'filled'}
-                data-has-error={props.hasError}
-                onClick={handleToggle}
-                data-open={isOpen}
-                data-size={size}
-                data-collapsed={collapsed}
-            >
-                {!collapsed && (
-                    <Label
-                        variant={size === 'medium' ? 'LabelMediumRegular' : 'LabelSmallRegular'}
-                        color={disabled ? 'layout.strokes' : 'layout.onSurface.primary'}
+            <HoverWrapper>
+                <ButtonContainer
+                    data-disabled={disabled}
+                    data-type={props.type ?? 'filled'}
+                    data-has-error={props.hasError}
+                    onClick={handleToggle}
+                    data-open={isOpen}
+                    data-size={size}
+                    data-collapsed={collapsed}
+                >
+                    {!collapsed && (
+                        <Label
+                            variant={size === 'medium' ? 'LabelMediumRegular' : 'LabelSmallRegular'}
+                            color={disabled ? 'layout.strokes' : 'layout.onSurface.primary'}
+                        >
+                            {selectedOption ? selectedOption.label : props.label}
+                        </Label>
+                    )}
+                    <RotatingArrow data-size={size} style={{ transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)' }}>
+                        <ArrowAltDownIcon
+                            size={size === 'medium' ? 20 : 16}
+                            color={disabled ? 'layout.strokes' : 'layout.onSurface.secondary'}
+                        />
+                    </RotatingArrow>
+                </ButtonContainer>
+
+                {!props.disableHoverControls && !collapsed && (
+                    <HoverControlsContainer
+                        className="hover-controls-container"
+                        data-disabled={disabled}
+                        data-size={size}
                     >
-                        {selectedOption ? selectedOption.label : props.label}
-                    </Label>
+                        {props.trailingHoverContent || renderDefaultTrailingHoverContent()}
+                    </HoverControlsContainer>
                 )}
-                <RotatingArrow data-size={size} style={{ transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)' }}>
-                    <ArrowAltDownIcon
-                        size={size === 'medium' ? 20 : 16}
-                        color={disabled ? 'layout.strokes' : 'layout.onSurface.secondary'}
-                    />
-                </RotatingArrow>
-            </ButtonContainer>
+            </HoverWrapper>
             <MenuContainer data-open={isOpen}>
                 <Menu
                     size={size === 'xsmall' ? 'small' : size}
