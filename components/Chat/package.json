@@ -1,0 +1,30 @@
+{
+    "name": "@hautechai/webui.chat",
+    "description": "",
+    "version": "2.1.0",
+    "type": "module",
+    "main": "src/index.tsx",
+    "publishConfig": {
+        "directory": "dist",
+        "linkDirectory": false,
+        "access": "public"
+    },
+    "scripts": {
+        "prepack": "node ../../scripts/build-component.mjs",
+        "lint:tsc": "tsc --noEmit",
+        "lint": "pnpm lint:tsc"
+    },
+    "author": "HautechAI",
+    "dependencies": {
+        "@emotion/styled": "^11.14.1",
+        "@hautechai/webui.avatar": "workspace:^",
+        "@hautechai/webui.box": "workspace:^",
+        "@hautechai/webui.column": "workspace:^",
+        "@hautechai/webui.dotsloader": "workspace:^",
+        "@hautechai/webui.row": "workspace:^",
+        "@hautechai/webui.themeprovider": "workspace:^",
+        "@hautechai/webui.typography": "workspace:^",
+        "react-markdown": "^10.1.0"
+    },
+    "license": "Apache-2.0"
+}
