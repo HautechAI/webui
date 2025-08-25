@@ -29,7 +29,7 @@ const Container = styled.div`
 
 const HoverControlsContainer = styled.div`
     position: absolute;
-    right: ${themeVars.spacing.m};
+    right: calc(${themeVars.spacing.m} + 20px + ${themeVars.spacing.s});
     top: 50%;
     transform: translateY(-50%);
     z-index: 2;
@@ -42,11 +42,11 @@ const HoverControlsContainer = styled.div`
     transition: opacity ${themeVars.animation.duration.normal} ${themeVars.animation.timing.ease};
 
     &[data-size='small'] {
-        right: ${themeVars.spacing.s};
+        right: calc(${themeVars.spacing.s} + 16px + ${themeVars.spacing.s});
     }
 
     &[data-size='xsmall'] {
-        right: ${themeVars.spacing.xs};
+        right: calc(${themeVars.spacing.xs} + 16px + ${themeVars.spacing.s});
     }
 `;
 

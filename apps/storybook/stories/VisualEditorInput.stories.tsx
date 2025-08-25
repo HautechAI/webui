@@ -9,7 +9,7 @@ import { Dropdown } from '../../../components/Dropdown/src';
 import { HorizontalTextAlignmentControl } from '../../../components/HorizontalTextAlignmentControl/src';
 import { KeyframeToggle } from '../../../components/KeyframeToggle/src';
 import { ToggleIconButton } from '../../../components/ToggleIconButton/src';
-import { UnlinkIcon } from '../../../components/Icon/src';
+import { UnlinkIcon, WorkflowIcon } from '../../../components/Icon/src';
 import { VisualEditorInput, type VisualEditorInputProps } from '../../../components/VisualEditorInput/src';
 
 export default {
@@ -460,15 +460,13 @@ export const WithExternalPortToggle = {
                             />
                         </div>
 
-                        {/* External port toggle - only show when in port mode */}
-                        {isPort && (
-                            <ToggleIconButton
-                                variant="flat"
-                                size="xsmall"
-                                icon={<UnlinkIcon size={16} />}
-                                onClick={handleTogglePort}
-                            />
-                        )}
+                        {/* External port toggle - show unlink when in port mode, workflow when not */}
+                        <ToggleIconButton
+                            variant="flat"
+                            size="xsmall"
+                            icon={isPort ? <UnlinkIcon size={16} /> : <WorkflowIcon size={16} />}
+                            onClick={handleTogglePort}
+                        />
 
                         {/* Keyframe controls using the actual KeyframeToggle component */}
                         <KeyframeToggle state={keyframesState} onClick={handleToggleKeyframe} />
