@@ -7,7 +7,7 @@ import { NumberWithUnitsInput } from '../../NumberWithUnitsInput/src';
 import React, { useCallback } from 'react';
 
 const Container = styled.div<{ size: 'medium' | 'small' }>`
-    display: flex;
+    display: inline-flex;
     gap: ${({ size }) => (size === 'small' ? themeVars.spacing.s : themeVars.spacing.m)};
     align-items: center;
     flex: 1;
@@ -24,19 +24,11 @@ const InputWrapper = styled.div`
 
 const PortToggleOverlay = styled.div<{ size: 'medium' | 'small' }>`
     position: absolute;
-    right: ${({ size }) => (size === 'small' ? themeVars.spacing.m : themeVars.spacing.ml)};
+    right: calc(${({ size }) => (size === 'small' ? themeVars.spacing.m : themeVars.spacing.ml)} + ${({ size }) => (size === 'small' ? '16px' : '20px')} + ${themeVars.spacing.s});
     top: 50%;
     transform: translateY(-50%);
     z-index: 1;
-    display: none;
-
-    &[data-is-port='true'] {
-        display: none;
-    }
-
-    .visual-editor-input:hover &[data-is-port='true'] {
-        display: block;
-    }
+    display: block;
 `;
 
 const KeyframeContainer = styled.div`
