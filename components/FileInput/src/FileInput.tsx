@@ -105,35 +105,11 @@ export const FileInput: React.FC<FileInputProps> = (props) => {
         accept: accept,
         maxFiles: props.maxFiles,
         maxSize: props.maxSize,
+        noDragEventsBubbling: stopPropagation,
     });
 
     // Get the root props from react-dropzone
     const rootProps = getRootProps();
-
-    // Use useEffect to add event listeners for propagation control
-    useEffect(() => {
-        const element = dropzoneRef.current;
-        if (!element || !stopPropagation) return;
-
-        const handleEventPropagation = (event: Event) => {
-            // Stop propagation to parent containers
-            event.stopPropagation();
-        };
-
-        // Add event listeners to the dropzone element itself
-        // This will stop propagation after react-dropzone has processed the events
-        element.addEventListener('dragenter', handleEventPropagation);
-        element.addEventListener('dragover', handleEventPropagation);
-        element.addEventListener('dragleave', handleEventPropagation);
-        element.addEventListener('drop', handleEventPropagation);
-
-        return () => {
-            element.removeEventListener('dragenter', handleEventPropagation);
-            element.removeEventListener('dragover', handleEventPropagation);
-            element.removeEventListener('dragleave', handleEventPropagation);
-            element.removeEventListener('drop', handleEventPropagation);
-        };
-    }, [stopPropagation]);
 
     const [delayedAccept, setDelayedAccept] = useState(false);
 
