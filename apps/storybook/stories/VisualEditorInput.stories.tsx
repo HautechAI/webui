@@ -7,6 +7,9 @@ import { NumberWithUnitsInput } from '../../../components/NumberWithUnitsInput/s
 import ColorPickerInput from '../../../components/ColorPickerInput/src';
 import { Dropdown } from '../../../components/Dropdown/src';
 import { HorizontalTextAlignmentControl } from '../../../components/HorizontalTextAlignmentControl/src';
+import { KeyframeToggle } from '../../../components/KeyframeToggle/src';
+import { ToggleIconButton } from '../../../components/ToggleIconButton/src';
+import { UnlinkIcon } from '../../../components/Icon/src';
 import { VisualEditorInput, type VisualEditorInputProps } from '../../../components/VisualEditorInput/src';
 
 export default {
@@ -385,6 +388,7 @@ export const WithDropdown = {
                                 onChange: fn(),
                                 placeholder: 'Select alignment',
                                 size: 'small',
+                                onToggleWorkflow: fn(),
                             }}
                             isPort={false}
                             keyframesState="noKeyframes"
@@ -400,6 +404,7 @@ export const WithDropdown = {
                                 onChange: fn(),
                                 placeholder: 'Dropdown as port',
                                 size: 'small',
+                                onToggleWorkflow: fn(),
                             }}
                             isPort={true}
                             keyframesState="isKeyframe"
@@ -423,12 +428,17 @@ export const WithExternalPortToggle = {
             'noKeyframes',
         );
 
-        const handleToggleKeyframe = () => {
+        const handleToggleKeyframe = (e: React.MouseEvent<HTMLButtonElement>) => {
+            e.stopPropagation();
             setKeyframesState((prev) => {
                 if (prev === 'noKeyframes') return 'hasKeyframes';
                 if (prev === 'hasKeyframes') return 'isKeyframe';
                 return 'noKeyframes';
             });
+        };
+
+        const handleTogglePort = () => {
+            setIsPort((prev) => !prev);
         };
 
         return (
@@ -437,6 +447,7 @@ export const WithExternalPortToggle = {
                     <h3 style={{ marginBottom: '16px', fontSize: '16px' }}>External Port Toggle Mode</h3>
                     <p style={{ marginBottom: '16px', fontSize: '14px', color: '#666' }}>
                         In this mode, the port toggle button appears outside the input, next to the keyframe controls.
+                        Uses the same KeyframeToggle and port button components as the regular inputs.
                     </p>
 
                     <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
@@ -449,53 +460,18 @@ export const WithExternalPortToggle = {
                             />
                         </div>
 
-                        {/* External port toggle */}
+                        {/* External port toggle - only show when in port mode */}
                         {isPort && (
-                            <button
-                                onClick={() => setIsPort(false)}
-                                style={{
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    justifyContent: 'center',
-                                    width: '24px',
-                                    height: '24px',
-                                    border: '1px solid #ddd',
-                                    borderRadius: '4px',
-                                    background: '#f5f5f5',
-                                    cursor: 'pointer',
-                                    fontSize: '12px',
-                                }}
-                                title="Disconnect port"
-                            >
-                                🔌
-                            </button>
+                            <ToggleIconButton
+                                variant="flat"
+                                size="xsmall"
+                                icon={<UnlinkIcon size={16} />}
+                                onClick={handleTogglePort}
+                            />
                         )}
 
-                        {/* Keyframe controls */}
-                        <button
-                            onClick={handleToggleKeyframe}
-                            style={{
-                                display: 'flex',
-                                alignItems: 'center',
-                                justifyContent: 'center',
-                                width: '24px',
-                                height: '24px',
-                                border: '1px solid #ddd',
-                                borderRadius: '4px',
-                                background:
-                                    keyframesState === 'noKeyframes'
-                                        ? '#fff'
-                                        : keyframesState === 'hasKeyframes'
-                                          ? '#e3f2fd'
-                                          : '#2196f3',
-                                cursor: 'pointer',
-                                fontSize: '12px',
-                                color: keyframesState === 'isKeyframe' ? 'white' : 'inherit',
-                            }}
-                            title={`Keyframes: ${keyframesState}`}
-                        >
-                            ◆
-                        </button>
+                        {/* Keyframe controls using the actual KeyframeToggle component */}
+                        <KeyframeToggle state={keyframesState} onClick={handleToggleKeyframe} />
                     </div>
 
                     <div style={{ marginTop: '16px', fontSize: '12px', color: '#888' }}>
@@ -503,8 +479,16 @@ export const WithExternalPortToggle = {
                         <div>Is Port: {isPort ? 'Yes' : 'No'}</div>
                         <div>Keyframes: {keyframesState}</div>
                         <button
-                            onClick={() => setIsPort(!isPort)}
-                            style={{ marginTop: '8px', padding: '4px 8px', fontSize: '12px' }}
+                            onClick={handleTogglePort}
+                            style={{
+                                marginTop: '8px',
+                                padding: '4px 8px',
+                                fontSize: '12px',
+                                borderRadius: '4px',
+                                border: '1px solid #ccc',
+                                background: '#f5f5f5',
+                                cursor: 'pointer',
+                            }}
                         >
                             Toggle Port Mode
                         </button>

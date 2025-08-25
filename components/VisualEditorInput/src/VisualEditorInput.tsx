@@ -102,7 +102,11 @@ export const VisualEditorInput = (props: VisualEditorInputProps) => {
 
         if (props.inputProps) {
             // If using composition with explicit inputProps
-            inputComponentProps = props.inputProps;
+            inputComponentProps = {
+                ...props.inputProps,
+                // Override disableHoverControls when in port mode
+                disableHoverControls: isPort || props.inputProps.disableHoverControls,
+            };
         } else {
             // Use legacy props to construct NumberWithUnitsInput props
             inputComponentProps = {
