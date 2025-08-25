@@ -2,8 +2,9 @@ import { styled } from '@hautechai/webui.themeprovider';
 import { themeVars } from '@hautechai/webui.themeprovider';
 import { KeyframeToggle, type KeyframeToggleState } from '@hautechai/webui.keyframetoggle';
 import { ToggleIconButton } from '@hautechai/webui.toggleiconbutton';
-import { UnlinkIcon } from '@hautechai/webui.icon';
+import { UnlinkIcon, WorkflowIcon } from '@hautechai/webui.icon';
 import { NumberWithUnitsInput } from '../../NumberWithUnitsInput/src';
+import { Dropdown } from '../../Dropdown/src';
 import React, { useCallback } from 'react';
 
 const Container = styled.div<{ size: 'medium' | 'small' }>`
@@ -102,6 +103,19 @@ export const VisualEditorInput = (props: VisualEditorInputProps) => {
                 // Override disableHoverControls when in port mode
                 disableHoverControls: isPort || props.inputProps.disableHoverControls,
             };
+
+            // For Dropdown components, provide trailingHoverContent if not already provided and not in port mode
+            if (InputComponent === Dropdown && !isPort && !inputComponentProps.trailingHoverContent) {
+                inputComponentProps.trailingHoverContent = (
+                    <ToggleIconButton
+                        variant="flat"
+                        size="xsmall"
+                        icon={<WorkflowIcon size={16} />}
+                        onClick={props.onTogglePort}
+                        disabled={disabled}
+                    />
+                );
+            }
         } else {
             // Use legacy props to construct NumberWithUnitsInput props
             inputComponentProps = {

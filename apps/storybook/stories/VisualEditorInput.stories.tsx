@@ -385,7 +385,6 @@ export const WithDropdown = {
                                 onChange: fn(),
                                 placeholder: 'Select alignment',
                                 size: 'small',
-                                onToggleWorkflow: fn(),
                             }}
                             isPort={false}
                             keyframesState="noKeyframes"
@@ -401,7 +400,6 @@ export const WithDropdown = {
                                 onChange: fn(),
                                 placeholder: 'Dropdown as port',
                                 size: 'small',
-                                onToggleWorkflow: fn(),
                             }}
                             isPort={true}
                             keyframesState="isKeyframe"
@@ -437,7 +435,7 @@ export const WithSegmentedControl = {
             setIsPort((prev) => !prev);
         };
 
-        const handleAlignmentChange = (_, newValue: 'left' | 'center' | 'right') => {
+        const handleAlignmentChange = (_: unknown, newValue: 'left' | 'center' | 'right') => {
             setAlignment(newValue);
         };
 

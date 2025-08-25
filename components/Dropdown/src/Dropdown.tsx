@@ -2,8 +2,6 @@ import { styled } from '@hautechai/webui.themeprovider';
 import { themeVars } from '@hautechai/webui.themeprovider';
 import { Menu } from '@hautechai/webui.menu';
 import { Typography } from '@hautechai/webui.typography';
-import { ToggleIconButton } from '../../ToggleIconButton/src';
-import { WorkflowIcon } from '@hautechai/webui.icon';
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { ArrowAltDownIcon } from '@hautechai/webui.icon';
 
@@ -27,6 +25,17 @@ const Container = styled.div`
     }
 `;
 
+const HoverWrapper = styled.div`
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    &:hover .hover-controls-container {
+        opacity: 1;
+        pointer-events: auto;
+    }
+`;
+
 const HoverControlsContainer = styled.div`
     position: absolute;
     right: calc(${themeVars.spacing.m} + 20px + ${themeVars.spacing.s});
@@ -35,10 +44,9 @@ const HoverControlsContainer = styled.div`
     z-index: 2;
     display: flex;
     align-items: center;
-    gap: ${themeVars.spacing.s};
-
+    gap: ${themeVars.spacing.xs};
     opacity: 0;
-    visibility: hidden;
+    pointer-events: none;
     transition: opacity ${themeVars.animation.duration.normal} ${themeVars.animation.timing.ease};
 
     &[data-size='small'] {
@@ -47,15 +55,6 @@ const HoverControlsContainer = styled.div`
 
     &[data-size='xsmall'] {
         right: calc(${themeVars.spacing.xs} + 16px + ${themeVars.spacing.s});
-    }
-`;
-
-const HoverWrapper = styled.div`
-    position: relative;
-
-    &:hover .hover-controls-container:not([data-disabled='true']) {
-        opacity: 1;
-        visibility: visible;
     }
 `;
 
@@ -221,7 +220,6 @@ export type DropdownProps = {
     hasError?: boolean;
     trailingHoverContent?: React.ReactNode;
     disableHoverControls?: boolean;
-    onToggleWorkflow?: () => void;
 };
 
 export const Dropdown = (props: DropdownProps) => {
@@ -265,18 +263,6 @@ export const Dropdown = (props: DropdownProps) => {
     const size = props.size ?? 'medium';
     const collapsed = !!props.collapsed;
 
-    const renderDefaultTrailingHoverContent = () => {
-        return (
-            <ToggleIconButton
-                variant="flat"
-                size="xsmall"
-                icon={<WorkflowIcon size={16} />}
-                onClick={props.onToggleWorkflow}
-                disabled={props.disabled}
-            />
-        );
-    };
-
     return (
         <Container data-disabled={disabled} data-collapsed={collapsed} ref={ref}>
             <HoverWrapper>
@@ -305,13 +291,13 @@ export const Dropdown = (props: DropdownProps) => {
                     </RotatingArrow>
                 </ButtonContainer>
 
-                {!props.disableHoverControls && !collapsed && (
+                {!props.disableHoverControls && !collapsed && props.trailingHoverContent && (
                     <HoverControlsContainer
                         className="hover-controls-container"
                         data-disabled={disabled}
                         data-size={size}
                     >
-                        {props.trailingHoverContent || renderDefaultTrailingHoverContent()}
+                        {props.trailingHoverContent}
                     </HoverControlsContainer>
                 )}
             </HoverWrapper>
