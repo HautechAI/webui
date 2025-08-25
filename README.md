@@ -96,6 +96,7 @@ The library includes the following components organized by category:
 | ----------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
 | [**AspectRatio**](components/AspectRatio/README.md)                     | Container that maintains a specific aspect ratio for its content                  |
 | [**Card**](components/Card/README.md)                                   | Content container with image, label, and action buttons                           |
+| [**Chat**](components/Chat/README.md)                                   | Conversational interface component for displaying messages with typing indicators |
 | [**ImageInputWithSamples**](components/ImageInputWithSamples/README.md) | Image input with predefined sample options                                        |
 | [**LayerTreeItemChild**](components/LayerTreeItemChild/README.md)       | Child item component for layer trees with editable label and optional input field |
 | [**LayerTreeItemParent**](components/LayerTreeItemParent/README.md)     | Header component for layer tree items with expandable/collapsible functionality   |
