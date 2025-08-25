@@ -63,8 +63,9 @@ describe('Chat', () => {
     it('should render typing indicator when message is in typing state', () => {
         const { container } = renderWithTheme(<Chat messages={[typingMessage]} />);
 
-        expect(screen.getByText('Agent')).toBeTruthy();
-        // For typing state, content should not be rendered, but name should be
+        // For typing state, name should be replaced by typing indicator
+        expect(screen.queryByText('Agent')).toBeFalsy();
+        // Content should not be rendered
         expect(screen.queryByText('I am doing well, thank you for asking!')).toBeFalsy();
         // Check that DotsLoader is rendered (it creates div elements with data-dot attributes)
         const dots = container.querySelectorAll('[data-dot]');

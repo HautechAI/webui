@@ -163,23 +163,23 @@ export const Chat = (props: ChatProps) => {
                             gradient={message.author.gradient}
                             size="small"
                         />
-                        <Typography
-                            variant="LabelSmallEmphasized"
-                            color="layout.onSurface.primary"
-                            noWrap
-                            component="span"
-                        >
-                            {message.author.name}
-                        </Typography>
+                        {message.isTyping ? (
+                            <DotsLoader />
+                        ) : (
+                            <Typography
+                                variant="LabelSmallEmphasized"
+                                color="layout.onSurface.primary"
+                                noWrap
+                                component="span"
+                            >
+                                {message.author.name}
+                            </Typography>
+                        )}
                     </Row>
-                    {message.isTyping ? (
-                        <DotsLoader />
-                    ) : (
-                        message.content && (
-                            <div style={{ maxWidth: '100%', wordWrap: 'break-word' }}>
-                                <ReactMarkdown components={markdownComponents}>{message.content}</ReactMarkdown>
-                            </div>
-                        )
+                    {!message.isTyping && message.content && (
+                        <div style={{ maxWidth: '100%', wordWrap: 'break-word' }}>
+                            <ReactMarkdown components={markdownComponents}>{message.content}</ReactMarkdown>
+                        </div>
                     )}
                 </MessageContainer>
             ))}
