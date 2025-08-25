@@ -24,7 +24,10 @@ const InputWrapper = styled.div`
 
 const PortToggleOverlay = styled.div<{ size: 'medium' | 'small' }>`
     position: absolute;
-    right: calc(${({ size }) => (size === 'small' ? themeVars.spacing.m : themeVars.spacing.ml)} + ${({ size }) => (size === 'small' ? '16px' : '20px')} + ${themeVars.spacing.s});
+    right: calc(
+        ${({ size }) => (size === 'small' ? themeVars.spacing.m : themeVars.spacing.ml)} +
+            ${({ size }) => (size === 'small' ? '16px' : '20px')} + ${themeVars.spacing.s}
+    );
     top: 50%;
     transform: translateY(-50%);
     z-index: 1;

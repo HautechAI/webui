@@ -7,9 +7,6 @@ import { NumberWithUnitsInput } from '../../../components/NumberWithUnitsInput/s
 import ColorPickerInput from '../../../components/ColorPickerInput/src';
 import { Dropdown } from '../../../components/Dropdown/src';
 import { HorizontalTextAlignmentControl } from '../../../components/HorizontalTextAlignmentControl/src';
-import { KeyframeToggle } from '../../../components/KeyframeToggle/src';
-import { ToggleIconButton } from '../../../components/ToggleIconButton/src';
-import { UnlinkIcon, WorkflowIcon } from '../../../components/Icon/src';
 import { VisualEditorInput, type VisualEditorInputProps } from '../../../components/VisualEditorInput/src';
 
 export default {
@@ -419,8 +416,8 @@ export const WithDropdown = {
     args: {},
 };
 
-// Story demonstrating external port toggle mode with HorizontalTextAlignmentControl
-export const WithExternalPortToggle = {
+// Story demonstrating VisualEditorInput with HorizontalTextAlignmentControl
+export const WithSegmentedControl = {
     render: () => {
         const [alignment, setAlignment] = useState<'left' | 'center' | 'right'>('center');
         const [isPort, setIsPort] = useState(false);
@@ -428,8 +425,7 @@ export const WithExternalPortToggle = {
             'noKeyframes',
         );
 
-        const handleToggleKeyframe = (e: React.MouseEvent<HTMLButtonElement>) => {
-            e.stopPropagation();
+        const handleToggleKeyframe = () => {
             setKeyframesState((prev) => {
                 if (prev === 'noKeyframes') return 'hasKeyframes';
                 if (prev === 'hasKeyframes') return 'isKeyframe';
@@ -441,35 +437,51 @@ export const WithExternalPortToggle = {
             setIsPort((prev) => !prev);
         };
 
+        const handleAlignmentChange = (_, newValue: 'left' | 'center' | 'right') => {
+            setAlignment(newValue);
+        };
+
         return (
             <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
                 <div>
-                    <h3 style={{ marginBottom: '16px', fontSize: '16px' }}>External Port Toggle Mode</h3>
+                    <h3 style={{ marginBottom: '16px', fontSize: '16px' }}>VisualEditorInput with Segmented Control</h3>
                     <p style={{ marginBottom: '16px', fontSize: '14px', color: '#666' }}>
-                        In this mode, the port toggle button appears outside the input, next to the keyframe controls.
-                        Uses the same KeyframeToggle and port button components as the regular inputs.
+                        VisualEditorInput wrapping HorizontalTextAlignmentControl with proper port and keyframe
+                        controls.
                     </p>
 
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                        {/* Input component */}
-                        <div style={{ flex: 1 }}>
-                            <HorizontalTextAlignmentControl
-                                value={alignment}
-                                onChange={(_, newValue: 'left' | 'center' | 'right') => setAlignment(newValue)}
-                                size="small"
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+                        <div>
+                            <h4 style={{ marginBottom: '8px', fontSize: '14px' }}>Normal Mode</h4>
+                            <VisualEditorInput
+                                inputComponent={HorizontalTextAlignmentControl}
+                                inputProps={{
+                                    value: alignment,
+                                    onChange: handleAlignmentChange,
+                                    size: 'small',
+                                }}
+                                isPort={false}
+                                keyframesState={keyframesState}
+                                onToggleKeyframe={handleToggleKeyframe}
+                                onTogglePort={handleTogglePort}
                             />
                         </div>
 
-                        {/* External port toggle - show unlink when in port mode, workflow when not */}
-                        <ToggleIconButton
-                            variant="flat"
-                            size="xsmall"
-                            icon={isPort ? <UnlinkIcon size={16} /> : <WorkflowIcon size={16} />}
-                            onClick={handleTogglePort}
-                        />
-
-                        {/* Keyframe controls using the actual KeyframeToggle component */}
-                        <KeyframeToggle state={keyframesState} onClick={handleToggleKeyframe} />
+                        <div>
+                            <h4 style={{ marginBottom: '8px', fontSize: '14px' }}>Port Mode</h4>
+                            <VisualEditorInput
+                                inputComponent={HorizontalTextAlignmentControl}
+                                inputProps={{
+                                    value: alignment,
+                                    onChange: handleAlignmentChange,
+                                    size: 'small',
+                                }}
+                                isPort={isPort}
+                                keyframesState={keyframesState}
+                                onToggleKeyframe={handleToggleKeyframe}
+                                onTogglePort={handleTogglePort}
+                            />
+                        </div>
                     </div>
 
                     <div style={{ marginTop: '16px', fontSize: '12px', color: '#888' }}>
