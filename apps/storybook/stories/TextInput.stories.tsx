@@ -112,6 +112,87 @@ export const WithTrailingHoverContent = {
     },
 };
 
+// Dedicated hover controls stories
+export const HoverControlsSingleButton = {
+    args: {
+        trailingIcon: <PlaceholderIcon />,
+        trailingHoverContent: (
+            <ToggleIconButton variant="flat" size="xsmall" icon={<WorkflowIcon size={16} />} onClick={fn()} />
+        ),
+        placeholder: 'Hover to see button',
+    },
+};
+
+export const HoverControlsMultipleButtons = {
+    args: {
+        trailingIcon: <PlaceholderIcon />,
+        trailingHoverContent: (
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <ToggleIconButton variant="flat" size="xsmall" icon={<WorkflowIcon size={16} />} onClick={fn()} />
+                <ToggleIconButton variant="flat" size="xsmall" icon={<PlaceholderIcon size={16} />} onClick={fn()} />
+            </div>
+        ),
+        placeholder: 'Hover to see multiple buttons',
+    },
+};
+
+export const HoverControlsWithDropdown = {
+    args: {
+        trailingIcon: <PlaceholderIcon />,
+        trailingHoverContent: (
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <ToggleIconButton variant="flat" size="xsmall" icon={<WorkflowIcon size={16} />} onClick={fn()} />
+                <Dropdown
+                    size="xsmall"
+                    collapsed={true}
+                    value="px"
+                    options={[
+                        { label: 'px', value: 'px' },
+                        { label: '%', value: '%' },
+                        { label: 'em', value: 'em' },
+                    ]}
+                    onChange={fn()}
+                />
+            </div>
+        ),
+        placeholder: 'Hover to see button and dropdown',
+    },
+};
+
+export const HoverControlsSmallSize = {
+    args: {
+        size: 'small',
+        trailingIcon: <PlaceholderIcon />,
+        trailingHoverContent: (
+            <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+                <ToggleIconButton variant="flat" size="xsmall" icon={<WorkflowIcon size={16} />} onClick={fn()} />
+                <Dropdown
+                    size="xsmall"
+                    collapsed={true}
+                    value="px"
+                    options={[
+                        { label: 'px', value: 'px' },
+                        { label: '%', value: '%' },
+                    ]}
+                    onChange={fn()}
+                />
+            </div>
+        ),
+        placeholder: 'Small input with hover controls',
+    },
+};
+
+export const HoverControlsWithBothIcons = {
+    args: {
+        leadingIcon: <PlaceholderIcon />,
+        trailingIcon: <PlaceholderIcon />,
+        trailingHoverContent: (
+            <ToggleIconButton variant="flat" size="xsmall" icon={<WorkflowIcon size={16} />} onClick={fn()} />
+        ),
+        placeholder: 'Leading icon + hover controls',
+    },
+};
+
 export const AllVariations = {
     render: () => (
         <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
@@ -151,11 +232,47 @@ export const AllVariations = {
             </div>
 
             <div>
-                <h3 style={{ marginBottom: '16px', fontSize: '16px' }}>Hover Content Feature</h3>
+                <h3 style={{ marginBottom: '16px', fontSize: '16px' }}>Hover Controls Feature</h3>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
                     <TextInput
                         type="text"
-                        placeholder="Hover to see controls"
+                        placeholder="Single button on hover"
+                        trailingIcon={<PlaceholderIcon />}
+                        trailingHoverContent={
+                            <ToggleIconButton
+                                variant="flat"
+                                size="xsmall"
+                                icon={<WorkflowIcon size={16} />}
+                                onClick={fn()}
+                            />
+                        }
+                        onChange={fn()}
+                    />
+                    <TextInput
+                        type="text"
+                        placeholder="Multiple buttons on hover"
+                        trailingIcon={<PlaceholderIcon />}
+                        trailingHoverContent={
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                                <ToggleIconButton
+                                    variant="flat"
+                                    size="xsmall"
+                                    icon={<WorkflowIcon size={16} />}
+                                    onClick={fn()}
+                                />
+                                <ToggleIconButton
+                                    variant="flat"
+                                    size="xsmall"
+                                    icon={<PlaceholderIcon size={16} />}
+                                    onClick={fn()}
+                                />
+                            </div>
+                        }
+                        onChange={fn()}
+                    />
+                    <TextInput
+                        type="text"
+                        placeholder="Button and dropdown on hover"
                         trailingIcon={<PlaceholderIcon />}
                         trailingHoverContent={
                             <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>

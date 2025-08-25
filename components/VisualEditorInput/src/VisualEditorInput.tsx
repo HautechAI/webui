@@ -11,7 +11,8 @@ const Container = styled.div<{ size: 'medium' | 'small' }>`
     display: inline-flex;
     gap: ${({ size }) => (size === 'small' ? themeVars.spacing.s : themeVars.spacing.m)};
     align-items: center;
-    flex: 1;
+    width: 100%;
+    min-width: 100%;
     &[data-disabled='true'] {
         cursor: not-allowed;
         color: ${themeVars.layout.strokes};
@@ -21,14 +22,24 @@ const Container = styled.div<{ size: 'medium' | 'small' }>`
 const InputWrapper = styled.div`
     flex: 1;
     position: relative;
+    width: 100%;
+    min-width: 0; /* Allow flex items to shrink below their intrinsic width */
 `;
 
-const PortToggleOverlay = styled.div<{ size: 'medium' | 'small' }>`
+const PortToggleOverlay = styled.div<{ size: 'medium' | 'small'; inputType?: string }>`
     position: absolute;
     right: calc(
         ${({ size }) => (size === 'small' ? themeVars.spacing.m : themeVars.spacing.ml)} +
             ${({ size }) => (size === 'small' ? '16px' : '20px')} + ${themeVars.spacing.s}
     );
+
+    /* ColorPicker input needs different positioning due to different internal structure */
+    ${({ inputType }) =>
+        inputType === 'ColorPickerInput' &&
+        `
+        right: calc(${themeVars.spacing.ml} + 16px + ${themeVars.spacing.s});
+    `}
+
     top: 50%;
     transform: translateY(-50%);
     z-index: 1;
@@ -144,7 +155,7 @@ export const VisualEditorInput = (props: VisualEditorInputProps) => {
             <InputWrapper>
                 {renderInputComponent()}
                 {isPort && (
-                    <PortToggleOverlay size={size} data-is-port="true">
+                    <PortToggleOverlay size={size} inputType={InputComponent.name} data-is-port="true">
                         <ToggleIconButton
                             variant="flat"
                             size="xsmall"
