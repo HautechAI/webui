@@ -3,7 +3,7 @@ import { UploadIcon } from '@hautechai/webui.icon';
 import { styled } from '@hautechai/webui.themeprovider';
 import { themeVars } from '@hautechai/webui.themeprovider';
 import { Typography, TypographyProps } from '@hautechai/webui.typography';
-import React, { useEffect, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { useDropzone } from 'react-dropzone';
 
 const FileInputContainer = styled.div<Pick<FileInputProps, 'stretch'>>`
@@ -67,6 +67,9 @@ export type FileInputProps = {
     /** @property Optional label for upload button */
     labelButton?: string;
 
+    /** @property Whether to stop event propagation on drag events. Defaults to true to prevent interference with parent drag handlers */
+    stopPropagation?: boolean;
+
     variant?: 'dropzone' | 'button';
     stretch?: boolean;
 };
@@ -78,7 +81,11 @@ export const FileInput: React.FC<FileInputProps> = (props) => {
         labelButton = 'Open file',
         labelDragRejected = 'Uploading error',
         labelDragRejectedButton = 'Uploading again',
+        stopPropagation = true,
+        accept,
     } = props;
+
+    const dropzoneRef = useRef<HTMLDivElement>(null);
 
     const onDrop = (acceptedFiles: File[]) => {
         if (acceptedFiles.length > 0) {
@@ -95,10 +102,14 @@ export const FileInput: React.FC<FileInputProps> = (props) => {
         fileRejections: _fileRejections,
     } = useDropzone({
         onDrop,
-        accept: { 'image/*': [] },
+        accept: accept,
         maxFiles: props.maxFiles,
         maxSize: props.maxSize,
+        noDragEventsBubbling: stopPropagation,
     });
+
+    // Get the root props from react-dropzone
+    const rootProps = getRootProps();
 
     const [delayedAccept, setDelayedAccept] = useState(false);
 
@@ -143,16 +154,17 @@ export const FileInput: React.FC<FileInputProps> = (props) => {
     };
 
     return props.variant === 'button' ? (
-        <ButtonFileInput {...getRootProps({})}>
+        <ButtonFileInput ref={dropzoneRef} {...rootProps}>
             <input {...getInputProps()} />
             <Button label={labelButton} leadingIcon={<UploadIcon size={20} />} stretch={props.stretch} />
         </ButtonFileInput>
     ) : (
         <FileInputContainer
+            ref={dropzoneRef}
             data-reject={isDragReject}
             data-accept={delayedAccept}
             data-active={isDragActive}
-            {...getRootProps({})}
+            {...rootProps}
         >
             <input {...getInputProps()} />
             {renderContent()}
