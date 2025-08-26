@@ -33,6 +33,7 @@ The library includes the following components organized by category:
 | [**IconButton**](components/IconButton/README.md)                                         | Button component optimized for displaying icons                                           |
 | [**ImageInput**](components/ImageInput/README.md)                                         | Specialized input for image upload and preview                                            |
 | [**LinkButton**](components/LinkButton/README.md)                                         | Button styled as a hyperlink with navigation capabilities                                 |
+| [**NumberWithUnitsInput**](components/NumberWithUnitsInput/README.md)                     | Number input component with units selection and hover-based dropdown                      |
 | [**SegmentedControl**](components/SegmentedControl/README.md)                             | Multi-option selector with segmented button appearance                                    |
 | [**Slider**](components/Slider/README.md)                                                 | Range input control for selecting numeric values                                          |
 | [**Switch**](components/Switch/README.md)                                                 | Toggle control for boolean on/off states                                                  |
