@@ -61,9 +61,9 @@ export const Material = {
 export const HIGWithIcons = {
     args: {
         options: [
-            { label: 'All', value: 'all', leadingIcon: <UploadIcon size={18} /> },
-            { label: 'Classic', value: 'classic', trailingIcon: <HintIcon size={18} /> },
-            { value: 'batch', leadingIcon: <ArrowAltRightIcon size={18} /> },
+            { label: 'All', value: 'all', leadingIcon: <UploadIcon /> },
+            { label: 'Classic', value: 'classic', trailingIcon: <HintIcon /> },
+            { value: 'batch', leadingIcon: <ArrowAltRightIcon /> },
         ],
         defaultSelectedIndex: 1,
     },
@@ -72,7 +72,7 @@ export const HIGWithIcons = {
 export const HIGWithHint = {
     args: {
         options: [
-            { label: 'All', value: 'all', leadingIcon: <UploadIcon size={18} /> },
+            { label: 'All', value: 'all', leadingIcon: <UploadIcon /> },
             { label: 'Classic', value: 'classic', trailingIcon: <Hint position="bottom" hint="This is a tooltip." /> },
         ],
         defaultSelectedIndex: 1,
