@@ -40,7 +40,7 @@ const SegmentedControl = ({
 
     const injectIconSize = (icon: React.ReactNode): React.ReactNode => {
         if (React.isValidElement(icon) && icon.props && typeof icon.type !== 'string') {
-            return React.cloneElement(icon as React.ReactElement<any>, { ...icon.props, size: 20 });
+            return React.cloneElement(icon as React.ReactElement<{ size?: number }>, { ...icon.props, size: 20 });
         }
         return icon;
     };
