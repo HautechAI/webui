@@ -19,7 +19,7 @@ const InputBox = styled.div<{ variation: 'filled' | 'outlined'; size: 'medium' |
     align-items: center;
     cursor: text;
 
-    padding: ${({ size }: { size: 'medium' | 'small' }) =>
+    padding: ${({ size }) =>
         size === 'small'
             ? `${themeVars.spacing.s} ${themeVars.spacing.m}`
             : `${themeVars.spacing.m} ${themeVars.spacing.ml}`};
@@ -30,8 +30,7 @@ const InputBox = styled.div<{ variation: 'filled' | 'outlined'; size: 'medium' |
     border-style: solid;
     border-color: ${themeVars.layout.strokes};
 
-    background: ${({ variation }: { variation: 'filled' | 'outlined' }) =>
-        variation === 'filled' ? themeVars.layout.surfaceLow : 'transparent'};
+    background: ${({ variation }) => (variation === 'filled' ? themeVars.layout.surfaceLow : 'transparent')};
     &[data-has-error='true'] {
         border-color: ${themeVars.actions.error};
         outline-width: ${themeVars.stroke.thin};
@@ -99,8 +98,8 @@ const CustomInput = styled.input`
 `;
 
 const InnerIconContainer = styled.div<{ size: 'medium' | 'small' }>`
-    width: ${({ size }: { size: 'medium' | 'small' }) => (size === 'small' ? '16px' : '20px')};
-    height: ${({ size }: { size: 'medium' | 'small' }) => (size === 'small' ? '16px' : '20px')};
+    width: ${({ size }) => (size === 'small' ? '16px' : '20px')};
+    height: ${({ size }) => (size === 'small' ? '16px' : '20px')};
     display: flex;
     justify-content: center;
     align-items: center;
