@@ -16,11 +16,13 @@
     },
     "author": "HautechAI",
     "dependencies": {
+        "@hautechai/webui.dropdown": "workspace:^",
         "@hautechai/webui.icon": "workspace:^",
         "@hautechai/webui.keyframetoggle": "workspace:^",
         "@hautechai/webui.numberwithunitsinput": "workspace:^",
         "@hautechai/webui.themeprovider": "workspace:^",
-        "@hautechai/webui.toggleiconbutton": "workspace:^"
+        "@hautechai/webui.toggleiconbutton": "workspace:^",
+        "@hautechai/webui.typography": "workspace:^"
     },
     "license": "Apache-2.0"
 }
