@@ -786,6 +786,25 @@ importers:
                 version: link:../Typography
         publishDirectory: dist
 
+    components/NumberWithUnitsInput:
+        dependencies:
+            '@hautechai/webui.dropdown':
+                specifier: workspace:*
+                version: link:../Dropdown
+            '@hautechai/webui.themeprovider':
+                specifier: workspace:*
+                version: link:../ThemeProvider
+            '@hautechai/webui.typography':
+                specifier: workspace:*
+                version: link:../Typography
+            react:
+                specifier: ^19.0.0
+                version: 19.0.0
+        devDependencies:
+            typescript:
+                specifier: ^5.7.2
+                version: 5.7.3
+
     components/OperationItem:
         dependencies:
             '@hautechai/webui.badge':
@@ -1192,9 +1211,9 @@ importers:
             '@hautechai/webui.keyframetoggle':
                 specifier: workspace:^
                 version: link:../KeyframeToggle
-            '@hautechai/webui.textinput':
+            '@hautechai/webui.numberwithunitsinput':
                 specifier: workspace:^
-                version: link:../TextInput
+                version: link:../NumberWithUnitsInput
             '@hautechai/webui.themeprovider':
                 specifier: workspace:^
                 version: link:../ThemeProvider
