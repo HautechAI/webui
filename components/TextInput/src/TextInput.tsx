@@ -1,7 +1,7 @@
 import { styled } from '@hautechai/webui.themeprovider';
 import { themeVars } from '@hautechai/webui.themeprovider';
 import { IconButton, IconButtonProps } from '@hautechai/webui.iconbutton';
-import React, { useCallback, useRef } from 'react';
+import React, { useCallback, useRef, useState } from 'react';
 
 const Container = styled.div<{ size: 'medium' | 'small' }>`
     display: flex;
@@ -107,6 +107,20 @@ const InnerIconContainer = styled.div<{ size: 'medium' | 'small' }>`
     align-items: center;
 `;
 
+const HoverControlsContainer = styled.div`
+    display: flex;
+    align-items: center;
+    gap: ${themeVars.spacing.xs};
+    opacity: 0;
+    transition: opacity ${themeVars.animation.duration.fast} ${themeVars.animation.timing.easeOut};
+    pointer-events: none;
+
+    &[data-show='true'] {
+        opacity: 1;
+        pointer-events: auto;
+    }
+`;
+
 const getIcon = (icon: React.ReactNode, size: 'medium' | 'small') => (
     <InnerIconContainer size={size}>
         {React.Children.map(icon, (child) => {
@@ -126,6 +140,7 @@ export type TextInputProps = {
     disabled?: boolean;
     leadingIcon?: React.ReactNode;
     trailingIcon?: React.ReactNode;
+    hoverControls?: React.ReactNode;
     value?: string;
     onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
     step?: number;
@@ -139,15 +154,41 @@ export type TextInputProps = {
 
 export const TextInput = (props: TextInputProps) => {
     const ref = useRef<HTMLInputElement>(null);
+    const [isHovered, setIsHovered] = useState(false);
+    const [isFocused, setIsFocused] = useState(false);
+
     const handleClick = useCallback(() => {
         ref.current?.focus();
     }, []);
 
-    const { disabled, icon } = props;
+    const handleMouseEnter = useCallback(() => {
+        setIsHovered(true);
+    }, []);
+
+    const handleMouseLeave = useCallback(() => {
+        setIsHovered(false);
+    }, []);
+
+    const handleFocus = useCallback(() => {
+        setIsFocused(true);
+    }, []);
+
+    const handleBlur = useCallback(() => {
+        setIsFocused(false);
+    }, []);
+
+    const { disabled, icon, hoverControls } = props;
     const size = props.size ?? 'medium';
+    const showHoverControls = (isHovered || isFocused) && hoverControls && !disabled;
 
     return (
-        <Container onClick={handleClick} data-disabled={!!disabled} size={size}>
+        <Container
+            onClick={handleClick}
+            data-disabled={!!disabled}
+            size={size}
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+        >
             <InputContainer
                 data-disabled={!!disabled}
                 variation={props.variation ?? 'filled'}
@@ -165,8 +206,13 @@ export const TextInput = (props: TextInputProps) => {
                     placeholder={props.placeholder}
                     value={props.value}
                     onChange={props.onChange}
+                    onFocus={handleFocus}
+                    onBlur={handleBlur}
                 />
                 {props.trailingIcon ? getIcon(props.trailingIcon, size) : null}
+                {hoverControls && (
+                    <HoverControlsContainer data-show={showHoverControls}>{hoverControls}</HoverControlsContainer>
+                )}
             </InputContainer>
             {icon && (
                 <IconButton
