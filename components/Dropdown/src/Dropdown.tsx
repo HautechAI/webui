@@ -12,6 +12,7 @@ const Container = styled.div`
     flex: 1 0 0;
     gap: ${themeVars.spacing.m};
     color: ${themeVars.layout.onSurface.primary};
+    max-width: 100%;
 
     &[data-disabled='true'] {
         color: ${themeVars.layout.strokes};
@@ -142,6 +143,28 @@ const RotatingArrow = styled.div`
     }
 `;
 
+const HoverControlsContainer = styled.div`
+    display: flex;
+    align-items: center;
+    gap: 0;
+    opacity: 0;
+    width: 0;
+    overflow: hidden;
+    transition:
+        opacity ${themeVars.animation.duration.fast} ${themeVars.animation.timing.easeOut},
+        width ${themeVars.animation.duration.fast} ${themeVars.animation.timing.easeOut},
+        gap ${themeVars.animation.duration.fast} ${themeVars.animation.timing.easeOut};
+    pointer-events: none;
+
+    &[data-show='true'] {
+        opacity: 1;
+        width: auto;
+        overflow: visible;
+        pointer-events: auto;
+        gap: ${themeVars.spacing.xs};
+    }
+`;
+
 const MenuContainer = styled.div`
     position: absolute;
     top: 100%;
@@ -185,10 +208,13 @@ export type DropdownProps = {
     options: Array<{ label: string; value: string }>;
     onChange?: (value: string) => void;
     hasError?: boolean;
+    hoverControls?: React.ReactNode;
 };
 
 export const Dropdown = (props: DropdownProps) => {
     const [isOpen, setIsOpen] = useState(false);
+    const [isHovered, setIsHovered] = useState(false);
+    const [isFocused, setIsFocused] = useState(false);
     const ref = useRef<HTMLDivElement>(null);
 
     const selectedOption = useMemo(
@@ -208,6 +234,22 @@ export const Dropdown = (props: DropdownProps) => {
         [props.onChange],
     );
 
+    const handleMouseEnter = useCallback(() => {
+        setIsHovered(true);
+    }, []);
+
+    const handleMouseLeave = useCallback(() => {
+        setIsHovered(false);
+    }, []);
+
+    const handleFocus = useCallback(() => {
+        setIsFocused(true);
+    }, []);
+
+    const handleBlur = useCallback(() => {
+        setIsFocused(false);
+    }, []);
+
     useEffect(() => {
         const handleClickOutside = (event: MouseEvent) => {
             if (ref.current && !ref.current.contains(event.target as Node)) {
@@ -224,9 +266,10 @@ export const Dropdown = (props: DropdownProps) => {
         };
     }, [isOpen]);
 
-    const { disabled } = props;
+    const { disabled, hoverControls } = props;
     const size = props.size ?? 'medium';
     const collapsed = !!props.collapsed;
+    const showHoverControls = (isHovered || isFocused) && hoverControls && !disabled;
 
     return (
         <Container data-disabled={disabled} data-collapsed={collapsed} ref={ref}>
@@ -238,6 +281,11 @@ export const Dropdown = (props: DropdownProps) => {
                 data-open={isOpen}
                 data-size={size}
                 data-collapsed={collapsed}
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
+                onFocus={handleFocus}
+                onBlur={handleBlur}
+                tabIndex={disabled ? -1 : 0}
             >
                 {!collapsed && (
                     <Label
@@ -246,6 +294,9 @@ export const Dropdown = (props: DropdownProps) => {
                     >
                         {selectedOption ? selectedOption.label : props.label}
                     </Label>
+                )}
+                {hoverControls && (
+                    <HoverControlsContainer data-show={showHoverControls}>{hoverControls}</HoverControlsContainer>
                 )}
                 <RotatingArrow data-size={size} style={{ transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)' }}>
                     <ArrowAltDownIcon

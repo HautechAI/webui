@@ -157,6 +157,7 @@ export const ColorPickerInput = (props: ColorPickerInputProps) => {
         onChange,
         onColorChange,
         size = 'medium',
+        hoverControls,
         ...textInputProps
     } = props;
 
@@ -226,6 +227,7 @@ export const ColorPickerInput = (props: ColorPickerInputProps) => {
                         onChange={handleInputChange}
                         size={size}
                         leadingIcon={colorSwatch}
+                        hoverControls={hoverControls}
                     />
                 </div>
             )}

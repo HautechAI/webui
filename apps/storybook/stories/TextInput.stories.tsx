@@ -3,6 +3,7 @@ import { fn } from '@storybook/test';
 import { Box } from '../../../components/Box/src';
 import { PlaceholderIcon } from '../../../components/Icon/src';
 import { TextInput } from '../../../components/TextInput/src';
+import { IconButton } from '../../../components/IconButton/src';
 
 export default {
     title: 'Input/TextInput',
@@ -72,5 +73,41 @@ export const Small = {
         size: 'small',
         leadingIcon: <PlaceholderIcon />,
         trailingIcon: <PlaceholderIcon />,
+    },
+};
+
+export const WithHoverControls = {
+    args: {
+        hoverControls: (
+            <>
+                <IconButton variant="flat" icon={<PlaceholderIcon />} size="xsmall" />
+                <IconButton variant="flat" icon={<PlaceholderIcon />} size="xsmall" />
+            </>
+        ),
+    },
+};
+
+export const WithHoverControlsAndIcons = {
+    args: {
+        leadingIcon: <PlaceholderIcon />,
+        trailingIcon: <PlaceholderIcon />,
+        hoverControls: (
+            <>
+                <IconButton variant="flat" icon={<PlaceholderIcon />} size="xsmall" />
+                <IconButton variant="flat" icon={<PlaceholderIcon />} size="xsmall" />
+            </>
+        ),
+    },
+};
+
+export const SmallWithHoverControls = {
+    args: {
+        size: 'small',
+        hoverControls: (
+            <>
+                <IconButton variant="flat" icon={<PlaceholderIcon />} size="xsmall" />
+                <IconButton variant="flat" icon={<PlaceholderIcon />} size="xsmall" />
+            </>
+        ),
     },
 };

@@ -3,6 +3,8 @@ import { fn } from '@storybook/test';
 import type { Meta, StoryObj } from '@storybook/react';
 import { Box } from '../../../components/Box/src';
 import { Dropdown } from '../../../components/Dropdown/src';
+import { IconButton } from '../../../components/IconButton/src';
+import { PlaceholderIcon } from '../../../components/Icon/src';
 
 const meta: Meta<typeof Dropdown> = {
     title: 'Input/Dropdown',
@@ -153,5 +155,55 @@ export const CollapsedSmall: Story = {
     args: {
         size: 'small',
         collapsed: true,
+    },
+};
+
+export const WithHoverControls: Story = {
+    args: {
+        label: 'Dropdown with hover controls',
+        hoverControls: (
+            <>
+                <IconButton variant="flat" icon={<PlaceholderIcon />} size="xsmall" />
+                <IconButton variant="flat" icon={<PlaceholderIcon />} size="xsmall" />
+            </>
+        ),
+    },
+};
+
+export const CollapsedWithHoverControls: Story = {
+    args: {
+        collapsed: true,
+        hoverControls: (
+            <>
+                <IconButton variant="flat" icon={<PlaceholderIcon />} size="xsmall" />
+                <IconButton variant="flat" icon={<PlaceholderIcon />} size="xsmall" />
+            </>
+        ),
+    },
+};
+
+export const SmallWithHoverControls: Story = {
+    args: {
+        size: 'small',
+        label: 'Small dropdown with hover controls',
+        hoverControls: (
+            <>
+                <IconButton variant="flat" icon={<PlaceholderIcon />} size="xsmall" />
+                <IconButton variant="flat" icon={<PlaceholderIcon />} size="xsmall" />
+            </>
+        ),
+    },
+};
+
+export const OutlinedWithHoverControls: Story = {
+    args: {
+        type: 'outlined',
+        label: 'Outlined dropdown with hover controls',
+        hoverControls: (
+            <>
+                <IconButton variant="flat" icon={<PlaceholderIcon />} size="xsmall" />
+                <IconButton variant="flat" icon={<PlaceholderIcon />} size="xsmall" />
+            </>
+        ),
     },
 };
