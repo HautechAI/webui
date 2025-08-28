@@ -146,13 +146,14 @@ const RotatingArrow = styled.div`
 const HoverControlsContainer = styled.div`
     display: flex;
     align-items: center;
-    gap: ${themeVars.spacing.xs};
+    gap: 0;
     opacity: 0;
     width: 0;
     overflow: hidden;
     transition:
         opacity ${themeVars.animation.duration.fast} ${themeVars.animation.timing.easeOut},
-        width ${themeVars.animation.duration.fast} ${themeVars.animation.timing.easeOut};
+        width ${themeVars.animation.duration.fast} ${themeVars.animation.timing.easeOut},
+        gap ${themeVars.animation.duration.fast} ${themeVars.animation.timing.easeOut};
     pointer-events: none;
 
     &[data-show='true'] {
@@ -160,6 +161,7 @@ const HoverControlsContainer = styled.div`
         width: auto;
         overflow: visible;
         pointer-events: auto;
+        gap: ${themeVars.spacing.xs};
     }
 `;
 
