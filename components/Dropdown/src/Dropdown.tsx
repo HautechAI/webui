@@ -12,6 +12,7 @@ const Container = styled.div`
     flex: 1 0 0;
     gap: ${themeVars.spacing.m};
     color: ${themeVars.layout.onSurface.primary};
+    max-width: 100%;
 
     &[data-disabled='true'] {
         color: ${themeVars.layout.strokes};
