@@ -147,11 +147,17 @@ const HoverControlsContainer = styled.div`
     align-items: center;
     gap: ${themeVars.spacing.xs};
     opacity: 0;
-    transition: opacity ${themeVars.animation.duration.fast} ${themeVars.animation.timing.easeOut};
+    width: 0;
+    overflow: hidden;
+    transition:
+        opacity ${themeVars.animation.duration.fast} ${themeVars.animation.timing.easeOut},
+        width ${themeVars.animation.duration.fast} ${themeVars.animation.timing.easeOut};
     pointer-events: none;
 
     &[data-show='true'] {
         opacity: 1;
+        width: auto;
+        overflow: visible;
         pointer-events: auto;
     }
 `;
@@ -286,15 +292,15 @@ export const Dropdown = (props: DropdownProps) => {
                         {selectedOption ? selectedOption.label : props.label}
                     </Label>
                 )}
+                {hoverControls && (
+                    <HoverControlsContainer data-show={showHoverControls}>{hoverControls}</HoverControlsContainer>
+                )}
                 <RotatingArrow data-size={size} style={{ transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)' }}>
                     <ArrowAltDownIcon
                         size={size === 'medium' ? 20 : 16}
                         color={disabled ? 'layout.strokes' : 'layout.onSurface.secondary'}
                     />
                 </RotatingArrow>
-                {hoverControls && (
-                    <HoverControlsContainer data-show={showHoverControls}>{hoverControls}</HoverControlsContainer>
-                )}
             </ButtonContainer>
             <MenuContainer data-open={isOpen}>
                 <Menu

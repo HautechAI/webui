@@ -112,11 +112,17 @@ const HoverControlsContainer = styled.div`
     align-items: center;
     gap: ${themeVars.spacing.xs};
     opacity: 0;
-    transition: opacity ${themeVars.animation.duration.fast} ${themeVars.animation.timing.easeOut};
+    width: 0;
+    overflow: hidden;
+    transition:
+        opacity ${themeVars.animation.duration.fast} ${themeVars.animation.timing.easeOut},
+        width ${themeVars.animation.duration.fast} ${themeVars.animation.timing.easeOut};
     pointer-events: none;
 
     &[data-show='true'] {
         opacity: 1;
+        width: auto;
+        overflow: visible;
         pointer-events: auto;
     }
 `;
@@ -209,10 +215,10 @@ export const TextInput = (props: TextInputProps) => {
                     onFocus={handleFocus}
                     onBlur={handleBlur}
                 />
-                {props.trailingIcon ? getIcon(props.trailingIcon, size) : null}
                 {hoverControls && (
                     <HoverControlsContainer data-show={showHoverControls}>{hoverControls}</HoverControlsContainer>
                 )}
+                {props.trailingIcon ? getIcon(props.trailingIcon, size) : null}
             </InputContainer>
             {icon && (
                 <IconButton
