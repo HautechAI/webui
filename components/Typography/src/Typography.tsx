@@ -6,7 +6,7 @@ import { Paths } from 'type-fest';
 type TextAlign = 'left' | 'right' | 'center' | 'inherit';
 
 const BaseComponent = (
-    props: Pick<TypographyProps, 'className' | 'children' | 'component'> & { style?: React.CSSProperties },
+    props: Pick<TypographyProps, 'className' | 'children' | 'component' | 'testId'> & { style?: React.CSSProperties },
 ) => {
     const { component, ...rest } = props;
     const Component = component ?? 'div';
@@ -164,10 +164,11 @@ export type TypographyProps = {
     noWrap?: boolean;
     overflow?: 'auto' | 'hidden' | 'ellipsis';
     component?: 'h1' | 'h2' | 'h3' | 'p' | 'span' | 'div';
+    testId?: string;
 };
 
 export const Typography = (props: TypographyProps) => {
-    const { variant, color, textAlign, noWrap, overflow, ...rest } = props;
+    const { variant, color, textAlign, noWrap, overflow, testId, ...rest } = props;
 
     const dynamicStyles: React.CSSProperties = {
         color: color ? get(themeVars, color) : 'currentColor',
@@ -179,6 +180,7 @@ export const Typography = (props: TypographyProps) => {
             data-variant={variant}
             data-nowrap={noWrap ? 'true' : undefined}
             data-overflow={overflow}
+            data-testid={testId}
             style={dynamicStyles}
             {...rest}
         />

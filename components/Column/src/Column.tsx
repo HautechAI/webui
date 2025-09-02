@@ -2,9 +2,11 @@ import { styled } from '@hautechai/webui.themeprovider';
 import { themeVars, ThemeType } from '@hautechai/webui.themeprovider';
 import { PropsWithChildren } from 'react';
 
-const BaseComponent = (props: Pick<ColumnProps, 'className' | 'children'> & { style?: React.CSSProperties }) => {
-    const { className, children, style } = props;
-    return <div {...{ className, children, style }} />;
+const BaseComponent = (
+    props: Pick<ColumnProps, 'className' | 'children' | 'testId'> & { style?: React.CSSProperties },
+) => {
+    const { className, children, style, testId } = props;
+    return <div {...{ className, children, style }} data-testid={testId} />;
 };
 
 const Container = styled(BaseComponent)`
@@ -23,10 +25,11 @@ export type ColumnProps = PropsWithChildren<{
     overflow?: 'hidden' | 'visible' | 'scroll' | 'auto';
     overflowX?: 'hidden' | 'visible' | 'scroll' | 'auto';
     overflowY?: 'hidden' | 'visible' | 'scroll' | 'auto';
+    testId?: string;
 }>;
 
 export const Column = (props: ColumnProps) => {
-    const { children, spacing, align, stretch, overflow, overflowX, overflowY, ...rest } = props;
+    const { children, spacing, align, stretch, overflow, overflowX, overflowY, testId, ...rest } = props;
     const style: React.CSSProperties = {
         gap: spacing ? themeVars.spacing[spacing] : 0,
         alignItems: align,
@@ -36,7 +39,7 @@ export const Column = (props: ColumnProps) => {
         ...(overflowY ? { overflowY } : {}),
     };
     return (
-        <Container style={style} {...rest}>
+        <Container style={style} testId={testId} {...rest}>
             {children}
         </Container>
     );
