@@ -9,6 +9,7 @@ export type AvatarProps = {
     icon?: ReactNode;
     size?: 'small' | 'medium' | 'large';
     gradient?: [string, string];
+    testId?: string;
 };
 
 const Container = styled('div')<{ $size: 'small' | 'medium' | 'large'; $gradient?: [string, string] }>`
@@ -33,7 +34,7 @@ const Image = styled.div`
 `;
 
 export const Avatar = (props: AvatarProps) => {
-    const { size = 'medium', gradient, src, icon, initials } = props;
+    const { size = 'medium', gradient, src, icon, initials, testId } = props;
 
     // Dynamic icon size based on Avatar size
     const iconSize = size === 'small' ? 12 : size === 'large' ? 30 : 20;
@@ -42,7 +43,7 @@ export const Avatar = (props: AvatarProps) => {
     const typographyVariant = size === 'small' ? 'CaptionEmphasized' : size === 'large' ? 'H1' : 'H2';
 
     return (
-        <Container $size={size} $gradient={gradient}>
+        <Container $size={size} $gradient={gradient} data-testid={testId}>
             {src ? (
                 <Image style={{ backgroundImage: `url(${src})` }} />
             ) : (
