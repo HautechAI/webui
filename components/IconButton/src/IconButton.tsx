@@ -108,7 +108,7 @@ export const IconButton = (props: IconButtonProps) => {
         <StyledButton
             data-variant={variant}
             data-size={size}
-            data-testid={testId}
+            testId={testId}
             style={
                 customBackground
                     ? ({ ['--icon-button-bg' as string]: customBackground } as React.CSSProperties)

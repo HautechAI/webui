@@ -22,10 +22,11 @@ export type ButtonBaseProps = PropsWithChildren<{
     disabled?: boolean;
     stretch?: boolean;
     style?: React.CSSProperties;
+    testId?: string;
 }>;
 
 export const ButtonBase = (props: ButtonBaseProps) => {
-    const { stretch, className, disabled, style, ...rest } = props;
+    const { stretch, className, disabled, style, testId, ...rest } = props;
 
     const buttonClassName = [className, !disabled ? 'htch-webui-hoverable' : ''].filter(Boolean).join(' ');
 
@@ -35,6 +36,7 @@ export const ButtonBase = (props: ButtonBaseProps) => {
             className={buttonClassName}
             disabled={disabled}
             data-stretch={stretch ? 'true' : undefined}
+            data-testid={testId}
             style={style}
         />
     );

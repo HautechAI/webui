@@ -131,7 +131,7 @@ export const Button = (props: ButtonProps) => {
             data-hierarchy={hierarchy}
             data-size={size}
             stretch={stretch}
-            data-testid={testId}
+            testId={testId}
             {...rest}
         >
             {leadingIcon}
