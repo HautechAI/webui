@@ -138,6 +138,7 @@ export const Tile = (props: TileProps) => {
         muted,
         playsInline,
         color,
+        testId,
         ...rest
     } = props;
     const { width, height } = props;
@@ -160,7 +161,7 @@ export const Tile = (props: TileProps) => {
     } as React.CSSProperties;
 
     if (component === 'img') {
-        return <StyledTileImg data-selected={!!props.selected} src={src} alt={alt} style={styleDims} {...rest} / data-testid={props.testId || testId}>;
+        return <StyledTileImg data-selected={!!props.selected} src={src} alt={alt} style={styleDims} data-testid={testId} {...rest} />;
     }
 
     if (component === 'video') {
@@ -174,6 +175,7 @@ export const Tile = (props: TileProps) => {
                 muted={muted ?? true}
                 playsInline={playsInline ?? true}
                 style={styleDims}
+                data-testid={testId}
                 {...rest}
             />
         );
@@ -186,6 +188,7 @@ export const Tile = (props: TileProps) => {
                 ...styleDims,
                 ['--tile-bg-image' as string]: src ? `url(${src})` : undefined,
             }}
+            data-testid={testId}
             {...rest}
         >
             {icon}

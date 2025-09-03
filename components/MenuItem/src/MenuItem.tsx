@@ -79,9 +79,10 @@ export const MenuItem = ({
     type,
     size = 'small',
     onClick,
+    testId,
 }: MenuItemProps) => {
     return (
-        <Container data-selected={!!isSelected} data-type={type} data-size={size} onClick={onClick}>
+        <Container data-selected={!!isSelected} data-type={type} data-size={size} onClick={onClick} data-testid={testId}>
             <Row spacing="m">
                 {renderIcon(leadingIcon)}
                 <Typography

@@ -47,9 +47,9 @@ export type SidebarProps = {
     testId?: string;
 };
 export const Sidebar = (props: SidebarProps) => {
-    const { hierarchy = 'mid', side = 'left' } = props;
+    const { hierarchy = 'mid', side = 'left', testId } = props;
     return (
-        <StyledContainer data-hierarchy={hierarchy} data-stretch={!!props.stretch} data-side={side} data-testid={props.testId || testId}>
+        <StyledContainer data-hierarchy={hierarchy} data-stretch={!!props.stretch} data-side={side} data-testid={testId}>
             {props.header}
             <SidebarContent>{props.content}</SidebarContent>
             {props.footer}

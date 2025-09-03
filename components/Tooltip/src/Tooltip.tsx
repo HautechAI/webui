@@ -37,6 +37,7 @@ type TooltipBaseProps = {
     reposition?: boolean;
     boundaryElement?: HTMLElement;
     zIndex?: number;
+    testId?: string;
 };
 
 type TooltipSmallProps = TooltipBaseProps & {
@@ -53,7 +54,7 @@ type TooltipProps = TooltipSmallProps | TooltipMediumProps;
 
 export const Tooltip = (props: TooltipProps) => {
     const [visible, setVisible] = useState(false);
-    const hideTimeout = useRef<ReturnType<typeof setTimeout data-testid={props.testId || testId}> | null>(null);
+    const hideTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
 
     const cancelHideTooltip = () => {
         if (hideTimeout.current) {
@@ -79,7 +80,7 @@ export const Tooltip = (props: TooltipProps) => {
         </Typography>
     );
     return (
-        <TooltipContainer>
+        <TooltipContainer data-testid={props.testId}>
             <TinyPopover
                 reposition={props.reposition ?? false}
                 boundaryElement={props.boundaryElement}

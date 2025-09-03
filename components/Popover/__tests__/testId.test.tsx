@@ -9,7 +9,11 @@ describe('Popover - testId prop', () => {
     it('should apply testId as data-testid attribute when provided', () => {
         render(
             <ThemeProvider theme={testTheme}>
-                <Popover testId="my-test-popover" />
+                <Popover 
+                    testId="my-test-popover" 
+                    content={({ close }) => <div>Content</div>}
+                    trigger={() => <div>Trigger</div>}
+                />
             </ThemeProvider>,
         );
 
@@ -19,11 +23,14 @@ describe('Popover - testId prop', () => {
     it('should not render data-testid attribute when testId is not provided', () => {
         const { container } = render(
             <ThemeProvider theme={testTheme}>
-                <Popover />
+                <Popover 
+                    content={({ close }) => <div>Content</div>}
+                    trigger={() => <div>Trigger</div>}
+                />
             </ThemeProvider>,
         );
 
-        const element = container.firstChild;
-        expect(element?.getAttribute?.('data-testid')).toBeNull();
+        const element = container.querySelector('[data-testid]');
+        expect(element).toBeNull();
     });
 });
