@@ -16,6 +16,7 @@ export type AspectRatioProps = {
     sizeForRatio: (aspectRatio: string) => { width: number; height: number };
     value?: string;
     onChange?: (aspectRatio: string) => void;
+    testId?: string;
 };
 
 export const AspectRatio = (props: AspectRatioProps) => {
@@ -33,7 +34,7 @@ export const AspectRatio = (props: AspectRatioProps) => {
     } = useLogic(props);
 
     return (
-        <Container ref={ref}>
+        <Container ref={ref} data-testid={props.testId}>
             <SegmentedControl
                 {...props}
                 options={[

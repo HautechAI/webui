@@ -11,7 +11,7 @@ describe('Popover - testId prop', () => {
             <ThemeProvider theme={testTheme}>
                 <Popover 
                     testId="my-test-popover" 
-                    content={({ close }) => <div>Content</div>}
+                    content={({ close: _close }) => <div>Content</div>}
                     trigger={() => <div>Trigger</div>}
                 />
             </ThemeProvider>,
@@ -24,7 +24,7 @@ describe('Popover - testId prop', () => {
         const { container } = render(
             <ThemeProvider theme={testTheme}>
                 <Popover 
-                    content={({ close }) => <div>Content</div>}
+                    content={({ close: _close }) => <div>Content</div>}
                     trigger={() => <div>Trigger</div>}
                 />
             </ThemeProvider>,
