@@ -140,7 +140,7 @@ const hsvToHex = (hsv: HSVColor, withAlpha: boolean = false): string => {
     return `#${toHex(r)}${toHex(g)}${toHex(b)}`;
 };
 
-export interface ColorPickerInputProps extends Omit<TextInputProps, 'leadingIcon' | 'type' data-testid={props.testId || testId}> {
+export interface ColorPickerInputProps extends Omit<TextInputProps, 'leadingIcon' | 'type'> {
     /** Whether to enable alpha channel support */
     alphaEnabled?: boolean;
     /** Popover positioning directions */

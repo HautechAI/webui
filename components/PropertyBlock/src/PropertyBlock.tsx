@@ -56,10 +56,10 @@ export type PropertyBlockProps = {
 };
 
 export const PropertyBlock = (props: PropertyBlockProps) => {
-    const { children, removable = false, removed = false, className, label = 'Property', onToggle } = props;
+    const { children, removable = false, removed = false, className, label = 'Property', onToggle, testId } = props;
 
     return (
-        <Container className={className} data-testid={props.testId || testId}>
+        <Container className={className} data-testid={testId}>
             <PropertyHeader>
                 <Label>
                     <Typography

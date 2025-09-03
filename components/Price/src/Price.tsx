@@ -17,7 +17,7 @@ export type PriceProps = {
 
 export const Price = (props: PriceProps) => {
     return (
-        <Container data-testid={props.testId || testId}>
+        <Container data-testid={props.testId}>
             <Typography variant="H1" color="layout.onSurface.primary">
                 {props.price}
             </Typography>

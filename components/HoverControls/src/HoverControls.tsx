@@ -39,7 +39,7 @@ export const HoverControls = (props: HoverControlsProps) => {
     }, [onChangeSelected, selected]);
 
     return (
-        <StyledHoverControls className="htch-webui-hoverable" onClick={handleClick} data-testid={props.testId || testId}>
+        <StyledHoverControls className="htch-webui-hoverable" onClick={handleClick} data-testid={props.testId}>
             <ControlsContainer>
                 <CheckboxWrapper data-selected={!!selected} data-hover-disabled={!!hoverDisabled}>
                     <Checkbox checked={!!selected} readOnly />

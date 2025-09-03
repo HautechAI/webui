@@ -22,6 +22,7 @@ export type DataItemBaseProps = {
     primary?: 'data' | 'heading';
     size?: 'medium' | 'small';
     stretch?: boolean;
+    testId?: string;
 };
 
 export type DataItemRowProps = DataItemBaseProps & {
@@ -49,7 +50,6 @@ const HeadingTypographyVariants: Record<
         data: 'CaptionRegular',
         heading: 'LabelSmallEmphasized',
     },
-    testId?: string;
 };
 
 const DataTypographyVariants: Record<
@@ -69,7 +69,7 @@ const DataTypographyVariants: Record<
 export const DataItem = (props: DataItemProps) => {
     const { size = 'medium', primary = 'data', stretch } = props;
     return props.direction === 'row' ? (
-        <div style={{ padding: `${props.size === 'small' ? '0' : 'var(--spacing-m)'} 0` }}>
+        <div style={{ padding: `${props.size === 'small' ? '0' : 'var(--spacing-m)'} 0` }} data-testid={props.testId}>
             <RowContainer justify="space-between" align="center" stretch={stretch}>
                 <Typography
                     variant="LabelSmallEmphasized"
@@ -99,7 +99,7 @@ export const DataItem = (props: DataItemProps) => {
             </RowContainer>
         </div>
     ) : (
-        <Row spacing="m" stretch={stretch}>
+        <Row spacing="m" stretch={stretch} data-testid={props.testId}>
             {props.direction === 'column' && props.leadingIcon && <Avatar icon={props.leadingIcon} />}
             <ColumnContainer style={{ flex: stretch ? 1 : undefined }}>
                 <Row spacing="xs" align="center">

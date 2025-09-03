@@ -59,7 +59,7 @@ export const FloatingPanel = (props: FloatingPanelProps) => {
         width: props.width ? `${props.width}px` : undefined,
     };
     return (
-        <Container className={props.className} style={style} data-testid={props.testId || testId}>
+        <Container className={props.className} style={style} data-testid={props.testId}>
             <Header>
                 <IconButton
                     variant="flat"

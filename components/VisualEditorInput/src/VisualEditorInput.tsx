@@ -125,7 +125,7 @@ const UnitsContainer = styled.div`
 `;
 
 const getIcon = (icon: React.ReactNode, size: 'medium' | 'small') => (
-    <InnerIconContainer size={size} data-testid={props.testId || testId}>
+    <InnerIconContainer size={size}>
         {React.Children.map(icon, (child) => {
             if (React.isValidElement<{ size: number }>(child)) {
                 return React.cloneElement(child, {
@@ -270,6 +270,7 @@ export const VisualEditorInput = (props: VisualEditorInputProps) => {
             size={size}
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
+            data-testid={props.testId}
         >
             <InputBox
                 data-disabled={!!isInputDisabled}

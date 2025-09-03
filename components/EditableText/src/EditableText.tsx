@@ -26,7 +26,7 @@ const getTypographyVariant = (size: 'medium' | 'small' = 'medium', selected: boo
 
 export const EditableText = (props: EditableTextProps) => {
     const { text, mode, size = 'medium', selected = false, onStartEditing, onChange, onFinishEditing } = props;
-    const containerRef = useRef<HTMLDivElement data-testid={props.testId || testId}>(null);
+    const containerRef = useRef<HTMLDivElement>(null);
 
     // Handle double click to start editing
     const handleDoubleClick = useCallback(() => {
@@ -69,6 +69,7 @@ export const EditableText = (props: EditableTextProps) => {
             <div
                 ref={containerRef}
                 style={{ display: 'inline-block' }}
+                data-testid={props.testId}
                 onKeyDown={(e) => {
                     if (e.key === 'Enter') {
                         onFinishEditing?.();
@@ -81,7 +82,7 @@ export const EditableText = (props: EditableTextProps) => {
     }
 
     return (
-        <div onDoubleClick={handleDoubleClick} style={{ cursor: 'pointer', display: 'inline-block', width: '100%' }}>
+        <div onDoubleClick={handleDoubleClick} style={{ cursor: 'pointer', display: 'inline-block', width: '100%' }} data-testid={props.testId}>
             <Typography variant={getTypographyVariant(size, selected)} noWrap={true} overflow="ellipsis">
                 {text.trim() || '\u00A0'}
             </Typography>

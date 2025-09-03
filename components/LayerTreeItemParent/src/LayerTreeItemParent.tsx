@@ -126,7 +126,7 @@ export const LayerTreeItemParent = (props: LayerTreeItemParentProps) => {
     }, [label]);
 
     return (
-        <Container selected={selected} data-testid={props.testId || testId}>
+        <Container selected={selected} data-testid={props.testId}>
             <ExpandButton>
                 <IconButton
                     variant="flat"

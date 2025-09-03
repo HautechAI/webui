@@ -70,7 +70,7 @@ const Dot = styled.div<{ delay: number }>`
 `;
 
 export const DotsLoader = (props: DotsLoaderProps) => {
-    const { className, speed = 3 } = props;
+    const { className, speed = 3, testId } = props;
 
     // Calculate delays as fractions of the total speed
     const delay1 = 0;
@@ -78,7 +78,7 @@ export const DotsLoader = (props: DotsLoaderProps) => {
     const delay3 = (speed * 2) / 3;
 
     return (
-        <Container className={className} speed={speed} data-testid={props.testId || testId}>
+        <Container className={className} speed={speed} data-testid={testId}>
             <Dot data-dot="1" delay={delay1} />
             <Dot data-dot="2" delay={delay2} />
             <Dot data-dot="3" delay={delay3} />

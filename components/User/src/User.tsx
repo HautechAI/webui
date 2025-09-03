@@ -35,7 +35,7 @@ export type UserProps = {
 
 export const User = (props: UserProps) => {
     return (
-        <Container data-testid={props.testId || testId}>
+        <Container data-testid={props.testId}>
             <UserContainer>
                 <Avatar src={props.avatar!} initials={props?.title?.substring(0, 1)!} />
                 <LabelsContainer>

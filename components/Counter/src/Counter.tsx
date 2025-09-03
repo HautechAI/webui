@@ -43,7 +43,7 @@ export const Counter = ({ min, max, step = 1, value = 0, onChange }: CounterProp
     }, [value, max, onChange]);
 
     return (
-        <CounterContainer data-testid={props.testId || testId}>
+        <CounterContainer data-testid={props.testId}>
             <IconButton
                 size="small"
                 variant="flat"

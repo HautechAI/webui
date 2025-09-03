@@ -57,7 +57,7 @@ const Heading = styled(Row)`
 export const ContextMenu = ({ menus, heading, children, variation = 'menu', isLeftClick }: ContextMenuProps) => {
     const [isOpen, setIsOpen] = useState(false);
     const [position, setPosition] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
-    const menuRef = useRef<HTMLDivElement data-testid={props.testId || testId}>(null);
+    const menuRef = useRef<HTMLDivElement>(null);
 
     const handleOpen = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
         if (!isLeftClick) {
