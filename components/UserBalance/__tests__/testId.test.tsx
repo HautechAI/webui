@@ -9,7 +9,7 @@ describe('UserBalance - testId prop', () => {
     it('should apply testId as data-testid attribute when provided', () => {
         render(
             <ThemeProvider theme={testTheme}>
-                <UserBalance testId="my-test-userbalance"  />
+                <UserBalance testId="my-test-userbalance" balance="100.00" />
             </ThemeProvider>,
         );
 
@@ -19,11 +19,11 @@ describe('UserBalance - testId prop', () => {
     it('should not render data-testid attribute when testId is not provided', () => {
         const { container } = render(
             <ThemeProvider theme={testTheme}>
-                <UserBalance  />
+                <UserBalance balance="100.00" />
             </ThemeProvider>,
         );
 
-        const element = container.firstChild;
+        const element = container.firstChild as Element;
         expect(element?.getAttribute?.('data-testid')).toBeNull();
     });
 });

@@ -9,7 +9,7 @@ describe('NodeFooter - testId prop', () => {
     it('should apply testId as data-testid attribute when provided', () => {
         render(
             <ThemeProvider theme={testTheme}>
-                <NodeFooter testId="my-test-nodefooter"  />
+                <NodeFooter testId="my-test-nodefooter" />
             </ThemeProvider>,
         );
 
@@ -19,11 +19,11 @@ describe('NodeFooter - testId prop', () => {
     it('should not render data-testid attribute when testId is not provided', () => {
         const { container } = render(
             <ThemeProvider theme={testTheme}>
-                <NodeFooter  />
+                <NodeFooter />
             </ThemeProvider>,
         );
 
-        const element = container.firstChild;
+        const element = container.firstChild as Element;
         expect(element?.getAttribute?.('data-testid')).toBeNull();
     });
 });

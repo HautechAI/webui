@@ -6,25 +6,25 @@ import { ThemeProvider } from '../../ThemeProvider/src';
 import { testTheme } from '../../test-theme';
 
 describe('AppBarMobile testId', () => {
-  it('should render with data-testid when testId is provided', () => {
-    const { container } = render(
-      <ThemeProvider theme={testTheme}>
-        <AppBarMobile testId="test-appbar-mobile" top="Top" center="Center" bottom="Bottom" />
-      </ThemeProvider>
-    );
+    it('should render with data-testid when testId is provided', () => {
+        const { container } = render(
+            <ThemeProvider theme={testTheme}>
+                <AppBarMobile testId="test-appbar-mobile" top="Top" center="Center" bottom="Bottom" />
+            </ThemeProvider>,
+        );
 
-    const appBarMobile = container.querySelector('[data-testid="test-appbar-mobile"]');
-    expect(appBarMobile).toBeInTheDocument();
-  });
+        const appBarMobile = container.querySelector('[data-testid="test-appbar-mobile"]');
+        expect(appBarMobile).toBeInTheDocument();
+    });
 
-  it('should not render data-testid when testId is not provided', () => {
-    const { container } = render(
-      <ThemeProvider theme={testTheme}>
-        <AppBarMobile top="Top" center="Center" bottom="Bottom" />
-      </ThemeProvider>
-    );
+    it('should not render data-testid when testId is not provided', () => {
+        const { container } = render(
+            <ThemeProvider theme={testTheme}>
+                <AppBarMobile top="Top" center="Center" bottom="Bottom" />
+            </ThemeProvider>,
+        );
 
-    const appBarMobileWithTestId = container.querySelector('[data-testid]');
-    expect(appBarMobileWithTestId).toBeNull();
-  });
+        const appBarMobileWithTestId = container.querySelector('[data-testid]');
+        expect(appBarMobileWithTestId).toBeNull();
+    });
 });

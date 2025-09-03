@@ -9,7 +9,7 @@ describe('TimelineRuler - testId prop', () => {
     it('should apply testId as data-testid attribute when provided', () => {
         render(
             <ThemeProvider theme={testTheme}>
-                <TimelineRuler testId="my-test-timelineruler"  />
+                <TimelineRuler testId="my-test-timelineruler" scale={1} length={100} numberedGraduationsDistance={10} />
             </ThemeProvider>,
         );
 
@@ -19,11 +19,11 @@ describe('TimelineRuler - testId prop', () => {
     it('should not render data-testid attribute when testId is not provided', () => {
         const { container } = render(
             <ThemeProvider theme={testTheme}>
-                <TimelineRuler  />
+                <TimelineRuler scale={1} length={100} numberedGraduationsDistance={10} />
             </ThemeProvider>,
         );
 
-        const element = container.firstChild;
+        const element = container.firstChild as Element;
         expect(element?.getAttribute?.('data-testid')).toBeNull();
     });
 });

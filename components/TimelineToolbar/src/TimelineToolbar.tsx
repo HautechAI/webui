@@ -19,6 +19,7 @@ export interface TimelineToolbarProps {
     currentTime: number;
     /** Whether repeat is enabled */
     repeatEnabled: boolean;
+    testId?: string;
     /** Whether the player is currently playing */
     isPlaying?: boolean;
     /** Callback when skip to start button is clicked */
@@ -84,6 +85,7 @@ const formatTime = (seconds: number): string => {
 export const TimelineToolbar: React.FC<TimelineToolbarProps> = ({
     currentTime,
     repeatEnabled,
+    testId,
     isPlaying = false,
     onSkipToStart,
     onRewindBack,
@@ -93,7 +95,7 @@ export const TimelineToolbar: React.FC<TimelineToolbarProps> = ({
     onRepeatToggle,
 }) => {
     return (
-        <Container>
+        <Container data-testid={testId}>
             <Tools>
                 <Duration>
                     <Typography variant="LabelMediumRegular">{formatTime(currentTime)}</Typography>

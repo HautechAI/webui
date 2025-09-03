@@ -9,7 +9,7 @@ describe('Tooltip - testId prop', () => {
     it('should apply testId as data-testid attribute when provided', () => {
         render(
             <ThemeProvider theme={testTheme}>
-                <Tooltip testId="my-test-tooltip" />
+                <Tooltip testId="my-test-tooltip" text="Test tooltip"><span>Hover me</span></Tooltip>
             </ThemeProvider>,
         );
 
@@ -19,11 +19,11 @@ describe('Tooltip - testId prop', () => {
     it('should not render data-testid attribute when testId is not provided', () => {
         const { container } = render(
             <ThemeProvider theme={testTheme}>
-                <Tooltip />
+                <Tooltip text="Test tooltip"><span>Hover me</span></Tooltip>
             </ThemeProvider>,
         );
 
-        const element = container.firstChild;
+        const element = container.firstChild as Element;
         expect(element?.getAttribute?.('data-testid')).toBeNull();
     });
 });

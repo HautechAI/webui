@@ -9,7 +9,7 @@ describe('Divider - testId prop', () => {
     it('should apply testId as data-testid attribute when provided', () => {
         render(
             <ThemeProvider theme={testTheme}>
-                <Divider testId="my-test-divider"  />
+                <Divider testId="my-test-divider" />
             </ThemeProvider>,
         );
 
@@ -19,11 +19,11 @@ describe('Divider - testId prop', () => {
     it('should not render data-testid attribute when testId is not provided', () => {
         const { container } = render(
             <ThemeProvider theme={testTheme}>
-                <Divider  />
+                <Divider />
             </ThemeProvider>,
         );
 
-        const element = container.firstChild;
+        const element = container.firstChild as Element;
         expect(element?.getAttribute?.('data-testid')).toBeNull();
     });
 });

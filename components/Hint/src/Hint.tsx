@@ -24,7 +24,14 @@ export type HintProps = {
 
 export const Hint = ({ hint, buttonLabel, onClick, position = 'bottom', testId }: HintProps) => {
     return (
-        <Tooltip size="medium" text={hint} buttonLabel={buttonLabel} onClick={onClick} position={position} data-testid={testId}>
+        <Tooltip
+            size="medium"
+            text={hint}
+            buttonLabel={buttonLabel}
+            onClick={onClick}
+            position={position}
+            data-testid={testId}
+        >
             <Icon size={16} />
         </Tooltip>
     );

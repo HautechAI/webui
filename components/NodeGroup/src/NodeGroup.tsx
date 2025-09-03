@@ -9,6 +9,7 @@ export interface NodeGroupProps {
     collapsed?: boolean;
     /** Children to render when expanded */
     children: React.ReactNode;
+    testId?: string;
     /** Handler for toggle state */
     onToggle?: () => void;
 }
@@ -36,10 +37,10 @@ const ContentContainer = styled.div<{ $collapsed: boolean }>`
 `;
 
 export const NodeGroup = (props: NodeGroupProps) => {
-    const { label, collapsed = false, children, onToggle } = props;
+    const { label, collapsed = false, children, onToggle, testId } = props;
 
     return (
-        <Container data-testid={props.testId}>
+        <Container data-testid={testId}>
             <NodeGroupHeader label={label} collapsed={collapsed} onToggle={onToggle} />
             <ContentContainer $collapsed={collapsed} data-collapsed={collapsed}>
                 {children}

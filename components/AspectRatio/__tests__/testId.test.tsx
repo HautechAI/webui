@@ -6,31 +6,31 @@ import { ThemeProvider } from '../../ThemeProvider/src';
 import { testTheme } from '../../test-theme';
 
 describe('AspectRatio testId', () => {
-  const mockProps = {
-    options: ['16:9', '4:3', '1:1'],
-    defaultOptions: ['16:9', '4:3', '1:1'] as [string, string, string],
-    sizeForRatio: (_aspectRatio: string) => ({ width: 16, height: 9 }),
-  };
+    const mockProps = {
+        options: ['16:9', '4:3', '1:1'],
+        defaultOptions: ['16:9', '4:3', '1:1'] as [string, string, string],
+        sizeForRatio: (_aspectRatio: string) => ({ width: 16, height: 9 }),
+    };
 
-  it('should render with data-testid when testId is provided', () => {
-    const { container } = render(
-      <ThemeProvider theme={testTheme}>
-        <AspectRatio {...mockProps} testId="test-aspect-ratio" />
-      </ThemeProvider>
-    );
+    it('should render with data-testid when testId is provided', () => {
+        const { container } = render(
+            <ThemeProvider theme={testTheme}>
+                <AspectRatio {...mockProps} testId="test-aspect-ratio" />
+            </ThemeProvider>,
+        );
 
-    const aspectRatio = container.querySelector('[data-testid="test-aspect-ratio"]');
-    expect(aspectRatio).toBeInTheDocument();
-  });
+        const aspectRatio = container.querySelector('[data-testid="test-aspect-ratio"]');
+        expect(aspectRatio).toBeInTheDocument();
+    });
 
-  it('should not render data-testid when testId is not provided', () => {
-    const { container } = render(
-      <ThemeProvider theme={testTheme}>
-        <AspectRatio {...mockProps} />
-      </ThemeProvider>
-    );
+    it('should not render data-testid when testId is not provided', () => {
+        const { container } = render(
+            <ThemeProvider theme={testTheme}>
+                <AspectRatio {...mockProps} />
+            </ThemeProvider>,
+        );
 
-    const aspectRatioWithTestId = container.querySelector('[data-testid]');
-    expect(aspectRatioWithTestId).toBeNull();
-  });
+        const aspectRatioWithTestId = container.querySelector('[data-testid]');
+        expect(aspectRatioWithTestId).toBeNull();
+    });
 });

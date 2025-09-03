@@ -6,25 +6,25 @@ import { ThemeProvider } from '../../ThemeProvider/src';
 import { testTheme } from '../../test-theme';
 
 describe('Box testId', () => {
-  it('should render with data-testid when testId is provided', () => {
-    const { container } = render(
-      <ThemeProvider theme={testTheme}>
-        <Box testId="test-box">Box content</Box>
-      </ThemeProvider>
-    );
+    it('should render with data-testid when testId is provided', () => {
+        const { container } = render(
+            <ThemeProvider theme={testTheme}>
+                <Box testId="test-box">Box content</Box>
+            </ThemeProvider>,
+        );
 
-    const box = container.querySelector('[data-testid="test-box"]');
-    expect(box).toBeInTheDocument();
-  });
+        const box = container.querySelector('[data-testid="test-box"]');
+        expect(box).toBeInTheDocument();
+    });
 
-  it('should not render data-testid when testId is not provided', () => {
-    const { container } = render(
-      <ThemeProvider theme={testTheme}>
-        <Box>Box content</Box>
-      </ThemeProvider>
-    );
+    it('should not render data-testid when testId is not provided', () => {
+        const { container } = render(
+            <ThemeProvider theme={testTheme}>
+                <Box>Box content</Box>
+            </ThemeProvider>,
+        );
 
-    const boxWithTestId = container.querySelector('[data-testid]');
-    expect(boxWithTestId).toBeNull();
-  });
+        const boxWithTestId = container.querySelector('[data-testid]');
+        expect(boxWithTestId).toBeNull();
+    });
 });

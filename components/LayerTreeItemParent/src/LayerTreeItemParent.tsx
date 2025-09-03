@@ -98,6 +98,8 @@ export const LayerTreeItemParent = (props: LayerTreeItemParentProps) => {
         onExpandToggle,
         onClick,
         onChange,
+        onCollapseToggle: _onCollapseToggle,
+        testId,
     } = props;
 
     const [isEditing, setIsEditing] = useState(false);
@@ -126,7 +128,7 @@ export const LayerTreeItemParent = (props: LayerTreeItemParentProps) => {
     }, [label]);
 
     return (
-        <Container selected={selected} data-testid={props.testId}>
+        <Container selected={selected} data-testid={testId}>
             <ExpandButton>
                 <IconButton
                     variant="flat"

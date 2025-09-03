@@ -82,7 +82,11 @@ export const EditableText = (props: EditableTextProps) => {
     }
 
     return (
-        <div onDoubleClick={handleDoubleClick} style={{ cursor: 'pointer', display: 'inline-block', width: '100%' }} data-testid={props.testId}>
+        <div
+            onDoubleClick={handleDoubleClick}
+            style={{ cursor: 'pointer', display: 'inline-block', width: '100%' }}
+            data-testid={props.testId}
+        >
             <Typography variant={getTypographyVariant(size, selected)} noWrap={true} overflow="ellipsis">
                 {text.trim() || '\u00A0'}
             </Typography>

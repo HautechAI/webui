@@ -9,8 +9,8 @@ describe('Popover - testId prop', () => {
     it('should apply testId as data-testid attribute when provided', () => {
         render(
             <ThemeProvider theme={testTheme}>
-                <Popover 
-                    testId="my-test-popover" 
+                <Popover
+                    testId="my-test-popover"
                     content={({ close: _close }) => <div>Content</div>}
                     trigger={() => <div>Trigger</div>}
                 />
@@ -23,10 +23,7 @@ describe('Popover - testId prop', () => {
     it('should not render data-testid attribute when testId is not provided', () => {
         const { container } = render(
             <ThemeProvider theme={testTheme}>
-                <Popover 
-                    content={({ close: _close }) => <div>Content</div>}
-                    trigger={() => <div>Trigger</div>}
-                />
+                <Popover content={({ close: _close }) => <div>Content</div>} trigger={() => <div>Trigger</div>} />
             </ThemeProvider>,
         );
 

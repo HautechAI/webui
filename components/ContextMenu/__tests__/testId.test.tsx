@@ -9,7 +9,7 @@ describe('ContextMenu - testId prop', () => {
     it('should apply testId as data-testid attribute when provided', () => {
         render(
             <ThemeProvider theme={testTheme}>
-                <ContextMenu testId="my-test-contextmenu"  />
+                <ContextMenu testId="my-test-contextmenu" />
             </ThemeProvider>,
         );
 
@@ -19,11 +19,11 @@ describe('ContextMenu - testId prop', () => {
     it('should not render data-testid attribute when testId is not provided', () => {
         const { container } = render(
             <ThemeProvider theme={testTheme}>
-                <ContextMenu  />
+                <ContextMenu />
             </ThemeProvider>,
         );
 
-        const element = container.firstChild;
+        const element = container.firstChild as Element;
         expect(element?.getAttribute?.('data-testid')).toBeNull();
     });
 });

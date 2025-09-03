@@ -9,7 +9,7 @@ describe('TimelineToolbar - testId prop', () => {
     it('should apply testId as data-testid attribute when provided', () => {
         render(
             <ThemeProvider theme={testTheme}>
-                <TimelineToolbar testId="my-test-timelinetoolbar"  />
+                <TimelineToolbar testId="my-test-timelinetoolbar" currentTime={0} repeatEnabled={false} />
             </ThemeProvider>,
         );
 
@@ -19,11 +19,11 @@ describe('TimelineToolbar - testId prop', () => {
     it('should not render data-testid attribute when testId is not provided', () => {
         const { container } = render(
             <ThemeProvider theme={testTheme}>
-                <TimelineToolbar  />
+                <TimelineToolbar currentTime={0} repeatEnabled={false} />
             </ThemeProvider>,
         );
 
-        const element = container.firstChild;
+        const element = container.firstChild as Element;
         expect(element?.getAttribute?.('data-testid')).toBeNull();
     });
 });

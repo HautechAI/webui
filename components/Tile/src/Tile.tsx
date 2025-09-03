@@ -161,7 +161,16 @@ export const Tile = (props: TileProps) => {
     } as React.CSSProperties;
 
     if (component === 'img') {
-        return <StyledTileImg data-selected={!!props.selected} src={src} alt={alt} style={styleDims} data-testid={testId} {...rest} />;
+        return (
+            <StyledTileImg
+                data-selected={!!props.selected}
+                src={src}
+                alt={alt}
+                style={styleDims}
+                data-testid={testId}
+                {...rest}
+            />
+        );
     }
 
     if (component === 'video') {

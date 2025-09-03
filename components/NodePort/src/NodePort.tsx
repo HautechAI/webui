@@ -48,7 +48,7 @@ const PortHandle = styled.div`
 
 export const NodePort: React.FC<NodePortProps> = ({ type, label, interactiveHandle }) => {
     return (
-        <Container data-type={type}>
+        <Container data-testid={testId} data-type={type}>
             {label && (
                 <Typography variant="CaptionRegular" color="layout.onSurface.secondary">
                     {label}

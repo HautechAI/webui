@@ -9,7 +9,7 @@ describe('DotsLoader - testId prop', () => {
     it('should apply testId as data-testid attribute when provided', () => {
         render(
             <ThemeProvider theme={testTheme}>
-                <DotsLoader testId="my-test-dotsloader"  />
+                <DotsLoader testId="my-test-dotsloader" />
             </ThemeProvider>,
         );
 
@@ -19,11 +19,11 @@ describe('DotsLoader - testId prop', () => {
     it('should not render data-testid attribute when testId is not provided', () => {
         const { container } = render(
             <ThemeProvider theme={testTheme}>
-                <DotsLoader  />
+                <DotsLoader />
             </ThemeProvider>,
         );
 
-        const element = container.firstChild;
+        const element = container.firstChild as Element;
         expect(element?.getAttribute?.('data-testid')).toBeNull();
     });
 });

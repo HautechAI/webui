@@ -9,7 +9,7 @@ describe('HoverControls - testId prop', () => {
     it('should apply testId as data-testid attribute when provided', () => {
         render(
             <ThemeProvider theme={testTheme}>
-                <HoverControls testId="my-test-hovercontrols"  />
+                <HoverControls testId="my-test-hovercontrols" />
             </ThemeProvider>,
         );
 
@@ -19,11 +19,11 @@ describe('HoverControls - testId prop', () => {
     it('should not render data-testid attribute when testId is not provided', () => {
         const { container } = render(
             <ThemeProvider theme={testTheme}>
-                <HoverControls  />
+                <HoverControls />
             </ThemeProvider>,
         );
 
-        const element = container.firstChild;
+        const element = container.firstChild as Element;
         expect(element?.getAttribute?.('data-testid')).toBeNull();
     });
 });

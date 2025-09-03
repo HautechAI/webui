@@ -4,6 +4,7 @@ import { themeVars } from '@hautechai/webui.themeprovider';
 
 export interface NodeContainerProps {
     children: React.ReactNode;
+    testId?: string;
     width?: number;
     selected?: boolean;
 }
@@ -22,9 +23,9 @@ const Container = styled.div<{ width?: number }>`
     }
 `;
 
-export const NodeContainer: React.FC<NodeContainerProps> = ({ children, width, selected = false }) => {
+    export const NodeContainer: React.FC<NodeContainerProps> = ({ children, width, selected = false, testId }) => {
     return (
-        <Container width={width} data-selected={selected}>
+        <Container width={width} data-selected={selected} data-testid={testId}>
             {children}
         </Container>
     );

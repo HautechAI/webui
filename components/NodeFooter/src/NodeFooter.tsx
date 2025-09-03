@@ -5,6 +5,7 @@ import { themeVars } from '@hautechai/webui.themeprovider';
 export interface NodeFooterProps {
     inputPorts?: React.ReactNode;
     outputPorts?: React.ReactNode;
+    testId?: string;
 }
 
 const Container = styled.div`
@@ -28,9 +29,9 @@ const OutputPorts = styled.div`
     align-items: flex-end;
 `;
 
-export const NodeFooter: React.FC<NodeFooterProps> = ({ inputPorts, outputPorts }) => {
+    export const NodeFooter: React.FC<NodeFooterProps> = ({ inputPorts, outputPorts, testId }) => {
     return (
-        <Container>
+        <Container data-testid={testId}>
             <InputPorts>{inputPorts}</InputPorts>
             <OutputPorts>{outputPorts}</OutputPorts>
         </Container>

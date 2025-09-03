@@ -9,7 +9,7 @@ describe('Counter - testId prop', () => {
     it('should apply testId as data-testid attribute when provided', () => {
         render(
             <ThemeProvider theme={testTheme}>
-                <Counter testId="my-test-counter"  />
+                <Counter testId="my-test-counter" />
             </ThemeProvider>,
         );
 
@@ -19,11 +19,11 @@ describe('Counter - testId prop', () => {
     it('should not render data-testid attribute when testId is not provided', () => {
         const { container } = render(
             <ThemeProvider theme={testTheme}>
-                <Counter  />
+                <Counter />
             </ThemeProvider>,
         );
 
-        const element = container.firstChild;
+        const element = container.firstChild as Element;
         expect(element?.getAttribute?.('data-testid')).toBeNull();
     });
 });

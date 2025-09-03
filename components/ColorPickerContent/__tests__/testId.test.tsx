@@ -9,7 +9,7 @@ describe('ColorPickerContent - testId prop', () => {
     it('should apply testId as data-testid attribute when provided', () => {
         render(
             <ThemeProvider theme={testTheme}>
-                <ColorPickerContent testId="my-test-colorpickercontent"  />
+                <ColorPickerContent testId="my-test-colorpickercontent" />
             </ThemeProvider>,
         );
 
@@ -19,11 +19,11 @@ describe('ColorPickerContent - testId prop', () => {
     it('should not render data-testid attribute when testId is not provided', () => {
         const { container } = render(
             <ThemeProvider theme={testTheme}>
-                <ColorPickerContent  />
+                <ColorPickerContent />
             </ThemeProvider>,
         );
 
-        const element = container.firstChild;
+        const element = container.firstChild as Element;
         expect(element?.getAttribute?.('data-testid')).toBeNull();
     });
 });

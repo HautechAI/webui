@@ -9,7 +9,7 @@ describe('Chat - testId prop', () => {
     it('should apply testId as data-testid attribute when provided', () => {
         render(
             <ThemeProvider theme={testTheme}>
-                <Chat testId="my-test-chat"  />
+                <Chat testId="my-test-chat" />
             </ThemeProvider>,
         );
 
@@ -19,11 +19,11 @@ describe('Chat - testId prop', () => {
     it('should not render data-testid attribute when testId is not provided', () => {
         const { container } = render(
             <ThemeProvider theme={testTheme}>
-                <Chat  />
+                <Chat />
             </ThemeProvider>,
         );
 
-        const element = container.firstChild;
+        const element = container.firstChild as Element;
         expect(element?.getAttribute?.('data-testid')).toBeNull();
     });
 });
