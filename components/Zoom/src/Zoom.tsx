@@ -27,6 +27,7 @@ export type ZoomProps = {
     value: number;
     onChange: (value: number) => void;
     step?: number;
+    testId?: string;
 };
 
 export const Zoom = ({ value, onChange, step = 10 }: ZoomProps) => {
@@ -45,7 +46,7 @@ export const Zoom = ({ value, onChange, step = 10 }: ZoomProps) => {
     }, [value, onChange, step]);
 
     return (
-        <ZoomContainer>
+        <ZoomContainer data-testid={props.testId || testId}>
             <ZoomControls>
                 <IconButton size="xsmall" variant="flat" onClick={handleDecrement} icon={<MinusIcon />} />
                 <Typography variant="Body" textAlign="center">

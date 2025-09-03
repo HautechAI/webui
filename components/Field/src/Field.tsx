@@ -25,6 +25,7 @@ export type FieldProps = LockedProps & {
     caption?: string;
     actionButton?: React.ReactNode;
     children: React.ReactNode;
+    testId?: string;
 };
 
 export const Field = (props: FieldProps) => {

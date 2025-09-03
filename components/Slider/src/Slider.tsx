@@ -37,6 +37,7 @@ export type SliderProps = {
     step?: number;
     value: number;
     onChange: (value: number) => void;
+    testId?: string;
 };
 
 const Slider = ({ min, max, step = 1, value, onChange }: SliderProps) => {

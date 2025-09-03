@@ -49,6 +49,7 @@ const HeadingTypographyVariants: Record<
         data: 'CaptionRegular',
         heading: 'LabelSmallEmphasized',
     },
+    testId?: string;
 };
 
 const DataTypographyVariants: Record<

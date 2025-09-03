@@ -6,9 +6,10 @@ import React from 'react';
 export type KeyframeToggleState = 'noKeyframes' | 'hasKeyframes' | 'isKeyframe';
 
 export type KeyframeToggleProps = {
-    onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
+    onClick?: (e: React.MouseEvent<HTMLButtonElement data-testid={props.testId || testId}>) => void;
     state: KeyframeToggleState;
     disabled?: boolean;
+    testId?: string;
 };
 
 const StyledButton = styled('button')`

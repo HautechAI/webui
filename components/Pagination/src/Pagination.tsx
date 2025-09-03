@@ -44,12 +44,13 @@ export type PaginationProps = {
     currentPage: number;
     onPageChange: (page: number) => void;
     getPageHref?: (page: number) => string;
+    testId?: string;
 };
 
 const step = 2;
 
 export const Pagination = ({ totalPages, currentPage, onPageChange, getPageHref }: PaginationProps) => {
-    const handleClick = (event: React.MouseEvent<HTMLAnchorElement>, page: number) => {
+    const handleClick = (event: React.MouseEvent<HTMLAnchorElement data-testid={props.testId || testId}>, page: number) => {
         if (onPageChange) {
             event.preventDefault();
             onPageChange(page);

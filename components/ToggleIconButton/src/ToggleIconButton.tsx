@@ -9,6 +9,7 @@ export type ToggleIconButtonProps = {
     checked?: boolean;
     disabled?: boolean;
     onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
+    testId?: string;
 };
 
 const StyledButton = styled(ButtonBase)`
@@ -171,10 +172,10 @@ const StyledButton = styled(ButtonBase)`
 `;
 
 export const ToggleIconButton = (props: ToggleIconButtonProps) => {
-    const { variant = 'filled', size = 'medium', icon, checked = false, ...rest } = props;
+    const { variant = 'filled', size = 'medium', icon, checked = false, testId, ...rest } = props;
 
     return (
-        <StyledButton data-variant={variant} data-size={size} data-checked={checked} {...rest}>
+        <StyledButton data-variant={variant} data-size={size} data-checked={checked} testId={testId} {...rest}>
             {icon}
         </StyledButton>
     );

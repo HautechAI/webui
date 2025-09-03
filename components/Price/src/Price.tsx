@@ -12,11 +12,12 @@ const Container = styled.div`
 export type PriceProps = {
     price: string;
     period: string;
+    testId?: string;
 };
 
 export const Price = (props: PriceProps) => {
     return (
-        <Container>
+        <Container data-testid={props.testId || testId}>
             <Typography variant="H1" color="layout.onSurface.primary">
                 {props.price}
             </Typography>

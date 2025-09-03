@@ -7,6 +7,7 @@ export type DotsLoaderProps = {
     className?: string;
     /** Animation speed in seconds. Default is 3 seconds. */
     speed?: number;
+    testId?: string;
 };
 
 const pulseAnimation = keyframes`
@@ -77,7 +78,7 @@ export const DotsLoader = (props: DotsLoaderProps) => {
     const delay3 = (speed * 2) / 3;
 
     return (
-        <Container className={className} speed={speed}>
+        <Container className={className} speed={speed} data-testid={props.testId || testId}>
             <Dot data-dot="1" delay={delay1} />
             <Dot data-dot="2" delay={delay2} />
             <Dot data-dot="3" delay={delay3} />

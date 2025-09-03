@@ -29,6 +29,7 @@ export type LinkButtonProps = {
     trailingIcon?: React.ReactNode;
     disabled?: boolean;
     onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
+    testId?: string;
 };
 
 const LabelVariants: Record<Required<LinkButtonProps>['size'], TypographyProps['variant']> = {
@@ -37,10 +38,10 @@ const LabelVariants: Record<Required<LinkButtonProps>['size'], TypographyProps['
 };
 
 export const LinkButton = (props: LinkButtonProps) => {
-    const { size = 'small', leadingIcon, trailingIcon, label, ...rest } = props;
+    const { size = 'small', leadingIcon, trailingIcon, label, testId, ...rest } = props;
 
     return (
-        <StyledButton {...rest}>
+        <StyledButton testId={testId} {...rest}>
             {leadingIcon}
             <Typography variant={LabelVariants[size]}>{label}</Typography>
             {trailingIcon}

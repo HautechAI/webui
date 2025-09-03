@@ -33,6 +33,7 @@ export type TextButtonProps = {
     disabled?: boolean;
     onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
     style?: React.CSSProperties;
+    testId?: string;
 };
 
 const LabelVariants: Record<Required<TextButtonProps>['size'], TypographyProps['variant']> = {
@@ -42,7 +43,7 @@ const LabelVariants: Record<Required<TextButtonProps>['size'], TypographyProps['
 };
 
 export const TextButton = (props: TextButtonProps) => {
-    const { hierarchy = 'primary', size = 'medium', leadingIcon, trailingIcon, label, ...rest } = props;
+    const { hierarchy = 'primary', size = 'medium', leadingIcon, trailingIcon, label, testId, ...rest } = props;
 
     const gapBySize = {
         medium: themeVars.spacing.m,
@@ -69,7 +70,7 @@ export const TextButton = (props: TextButtonProps) => {
 
     return (
         <span style={styleVars}>
-            <StyledButton {...(rest as Omit<ButtonBaseProps, 'children'>)}>
+            <StyledButton testId={testId} {...(rest as Omit<ButtonBaseProps, 'children'>)}>
                 {leadingIcon}
                 <Typography variant={LabelVariants[size]}>{label}</Typography>
                 {trailingIcon}

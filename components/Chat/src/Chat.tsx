@@ -84,7 +84,7 @@ const StyledLink = styled.a`
 // React Markdown components mapping
 const markdownComponents: Components = {
     h1: ({ children }) => (
-        <Typography variant="H1" color="layout.onSurface.primary">
+        <Typography variant="H1" color="layout.onSurface.primary" data-testid={props.testId || testId}>
             {children}
         </Typography>
     ),
@@ -128,6 +128,7 @@ export type ChatMessage = {
 export type ChatProps = {
     messages: ChatMessage[];
     className?: string;
+    testId?: string;
 };
 
 const MessageContainer = styled.div`

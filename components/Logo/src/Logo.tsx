@@ -2,6 +2,7 @@ import type { SVGProps } from 'react';
 
 export type LogoProps = {
     variant?: 'full' | 'icon';
+    testId?: string;
 } & SVGProps<SVGSVGElement>;
 
 const SvgLogoFull = (props: SVGProps<SVGSVGElement>) => (

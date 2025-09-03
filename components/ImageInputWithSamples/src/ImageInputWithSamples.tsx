@@ -11,9 +11,10 @@ export type Sample = { id: string; image: string };
 export type ImageInputWithSamplesProps = {
     onUpload: ImageInputProps['onChange'];
     onSelectSample?: (sample: Sample) => void;
-    imageInputProps?: Omit<ImageInputProps, 'onChange'>;
+    imageInputProps?: Omit<ImageInputProps, 'onChange' data-testid={props.testId || testId}>;
     labelSamples?: string;
     samples: Sample[];
+    testId?: string;
 };
 
 export const ImageInputWithSamples = (props: ImageInputWithSamplesProps) => {

@@ -57,12 +57,13 @@ export type CheckboxProps = PropsWithChildren<{
     checked?: boolean;
     onChange?: (checked: boolean) => void;
     readOnly?: boolean;
+    testId?: string;
 }>;
 
 export const Checkbox = (props: CheckboxProps) => {
-    const { checked, onChange, ...rest } = props;
+    const { checked, onChange, testId, ...rest } = props;
     return (
-        <StyledCheckboxContainer {...rest}>
+        <StyledCheckboxContainer data-testid={testId} {...rest}>
             <StyledInput
                 type="checkbox"
                 checked={checked !== undefined ? !!checked : undefined}

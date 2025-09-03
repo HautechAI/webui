@@ -71,7 +71,7 @@ const Label = styled(Typography)`
 `;
 
 const ChipContent = React.forwardRef<HTMLDivElement, ChipProps>((props, ref) => (
-    <Container ref={ref}>
+    <Container ref={ref} data-testid={props.testId}>
         {props.icon && (
             <Icon>
                 {React.Children.map(props.icon, (child) => {
@@ -97,6 +97,7 @@ export type ChipProps = {
     label: string;
     maxWidth?: number;
     showPopover?: boolean;
+    testId?: string;
 };
 
 export const Chip = (props: ChipProps) => {

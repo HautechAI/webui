@@ -114,7 +114,7 @@ export const LayerTreeItemChild = (props: LayerTreeItemChildProps) => {
     }, [editable, isEditing, label]);
 
     return (
-        <Container selected={selected} onClick={handleContainerClick}>
+        <Container selected={selected} onClick={handleContainerClick} data-testid={props.testId || testId}>
             <ChildIndent />
             <Content>
                 <EditableTextContainer>

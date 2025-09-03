@@ -11,4 +11,5 @@ export const ImageInput = (props: ImageInputProps) => {
         ...rest
     } = props;
     return <FileInput {...{ accept, label, labelDragActive, labelButton }} {...rest} />;
+    testId?: string;
 };

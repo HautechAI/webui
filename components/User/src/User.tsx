@@ -30,11 +30,12 @@ export type UserProps = {
     title?: string;
     subtitle?: string;
     actions?: React.ReactNode;
+    testId?: string;
 };
 
 export const User = (props: UserProps) => {
     return (
-        <Container>
+        <Container data-testid={props.testId || testId}>
             <UserContainer>
                 <Avatar src={props.avatar!} initials={props?.title?.substring(0, 1)!} />
                 <LabelsContainer>

@@ -39,7 +39,7 @@ export const NodeGroup = (props: NodeGroupProps) => {
     const { label, collapsed = false, children, onToggle } = props;
 
     return (
-        <Container>
+        <Container data-testid={props.testId || testId}>
             <NodeGroupHeader label={label} collapsed={collapsed} onToggle={onToggle} />
             <ContentContainer $collapsed={collapsed} data-collapsed={collapsed}>
                 {children}

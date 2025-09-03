@@ -121,6 +121,7 @@ export type TileProps = {
     muted?: boolean; // for video component
     playsInline?: boolean; // for video component
     color?: IconColorProp;
+    testId?: string;
 };
 
 export const Tile = (props: TileProps) => {
@@ -159,7 +160,7 @@ export const Tile = (props: TileProps) => {
     } as React.CSSProperties;
 
     if (component === 'img') {
-        return <StyledTileImg data-selected={!!props.selected} src={src} alt={alt} style={styleDims} {...rest} />;
+        return <StyledTileImg data-selected={!!props.selected} src={src} alt={alt} style={styleDims} {...rest} / data-testid={props.testId || testId}>;
     }
 
     if (component === 'video') {

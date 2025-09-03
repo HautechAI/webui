@@ -5,6 +5,7 @@ const DATA =
 
 export type ProgressProps = {
     size?: number;
+    testId?: string;
 };
 
 function base64ToArrayBuffer(base64: string) {

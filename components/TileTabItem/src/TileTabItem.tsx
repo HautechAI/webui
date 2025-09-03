@@ -26,6 +26,7 @@ export type TileTabItemProps = {
     selected?: boolean;
     value: string;
     onClick?: (value: string) => void;
+    testId?: string;
 };
 
 export const TileTabItem = (props: TileTabItemProps) => {
@@ -36,7 +37,7 @@ export const TileTabItem = (props: TileTabItemProps) => {
 
     const videoProps = video ? ({ src: video, component: 'video', autoPlay: true, loop: true } as const) : {};
     return (
-        <StyledTileTabItem onClick={clickHandler} data-selected={!!selected}>
+        <StyledTileTabItem onClick={clickHandler} data-selected={!!selected} data-testid={props.testId || testId}>
             <Tile size="small" {...{ icon, src: image, selected }} {...videoProps} />
             <Typography variant="LabelSmallRegular">{props.label}</Typography>
         </StyledTileTabItem>

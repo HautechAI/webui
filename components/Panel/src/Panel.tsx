@@ -58,6 +58,7 @@ export type PanelProps = {
     size?: 'small' | 'medium';
     stretch?: boolean;
     highlighted?: boolean;
+    testId?: string;
 };
 
 export const Panel = (props: PanelProps) => {
@@ -69,6 +70,7 @@ export const Panel = (props: PanelProps) => {
             size={props.size ?? 'medium'}
             stretch={props.stretch}
             highlighted={props.highlighted}
+            data-testid={props.testId}
         >
             {props.children}
         </Container>

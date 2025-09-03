@@ -72,6 +72,7 @@ export type FileInputProps = {
 
     variant?: 'dropzone' | 'button';
     stretch?: boolean;
+    testId?: string;
 };
 
 export const FileInput: React.FC<FileInputProps> = (props) => {

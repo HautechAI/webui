@@ -125,7 +125,7 @@ const UnitsContainer = styled.div`
 `;
 
 const getIcon = (icon: React.ReactNode, size: 'medium' | 'small') => (
-    <InnerIconContainer size={size}>
+    <InnerIconContainer size={size} data-testid={props.testId || testId}>
         {React.Children.map(icon, (child) => {
             if (React.isValidElement<{ size: number }>(child)) {
                 return React.cloneElement(child, {
@@ -154,6 +154,7 @@ export type VisualEditorInputProps = {
     hasError?: boolean;
     variation?: 'filled' | 'outlined';
     size?: 'medium' | 'small';
+    testId?: string;
 };
 
 const KeyframeContainer = styled.div`

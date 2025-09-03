@@ -6,6 +6,7 @@ export type VerticalAlignmentControlProps = {
     value?: 'top' | 'middle' | 'bottom';
     onChange?: (event: React.MouseEvent<HTMLDivElement, MouseEvent>, value: 'top' | 'middle' | 'bottom') => void;
     size?: 'default' | 'small';
+    testId?: string;
 };
 
 const VerticalAlignmentControl = ({ value, onChange, size }: VerticalAlignmentControlProps) => {

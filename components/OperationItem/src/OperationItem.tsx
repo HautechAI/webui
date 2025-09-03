@@ -32,7 +32,7 @@ const Progress = styled('div')`
 
 export const OperationItem = (props: OperationItemProps) => {
     return (
-        <Container>
+        <Container data-testid={props.testId || testId}>
             <TopContainer>
                 <Row align="center" justify="space-between" spacing="s">
                     <Row align="center" spacing="s">

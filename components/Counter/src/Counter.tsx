@@ -30,6 +30,7 @@ export type CounterProps = {
     step?: number;
     value?: number;
     onChange: (value: number) => void;
+    testId?: string;
 };
 
 export const Counter = ({ min, max, step = 1, value = 0, onChange }: CounterProps) => {
@@ -42,7 +43,7 @@ export const Counter = ({ min, max, step = 1, value = 0, onChange }: CounterProp
     }, [value, max, onChange]);
 
     return (
-        <CounterContainer>
+        <CounterContainer data-testid={props.testId || testId}>
             <IconButton
                 size="small"
                 variant="flat"

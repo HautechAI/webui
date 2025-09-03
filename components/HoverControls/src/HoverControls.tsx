@@ -29,6 +29,7 @@ export type HoverControlsProps = PropsWithChildren<{
     selected?: boolean;
     onChangeSelected?: (selected: boolean) => void;
     hoverDisabled?: boolean;
+    testId?: string;
 }>;
 
 export const HoverControls = (props: HoverControlsProps) => {
@@ -38,7 +39,7 @@ export const HoverControls = (props: HoverControlsProps) => {
     }, [onChangeSelected, selected]);
 
     return (
-        <StyledHoverControls className="htch-webui-hoverable" onClick={handleClick}>
+        <StyledHoverControls className="htch-webui-hoverable" onClick={handleClick} data-testid={props.testId || testId}>
             <ControlsContainer>
                 <CheckboxWrapper data-selected={!!selected} data-hover-disabled={!!hoverDisabled}>
                     <Checkbox checked={!!selected} readOnly />

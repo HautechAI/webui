@@ -6,6 +6,7 @@ export type HorizontalTextAlignmentControlProps = {
     value?: 'left' | 'center' | 'right';
     onChange?: (event: React.MouseEvent<HTMLDivElement, MouseEvent>, value: 'left' | 'center' | 'right') => void;
     size?: 'default' | 'small';
+    testId?: string;
 };
 
 const HorizontalTextAlignmentControl = ({ value, onChange, size }: HorizontalTextAlignmentControlProps) => {

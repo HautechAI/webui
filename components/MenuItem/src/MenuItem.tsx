@@ -57,6 +57,7 @@ export type MenuItemProps = (MainProps | CtaProps) & {
     leadingIcon?: React.ReactNode;
     trailingIcon?: React.ReactNode;
     onClick?: () => void;
+    testId?: string;
 };
 
 const renderIcon = (icon?: React.ReactNode, color?: string) =>

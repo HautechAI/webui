@@ -15,6 +15,7 @@ export type FullScreenProps = {
     children: React.ReactNode;
     zIndex?: number;
     className?: string;
+    testId?: string;
 };
 
 export const FullScreen = (props: FullScreenProps) => {

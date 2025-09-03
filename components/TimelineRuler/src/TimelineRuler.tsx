@@ -10,6 +10,7 @@ export type TimelineRulerProps = {
     length: number;
     /** Distance between numbered graduations in pixels */
     numberedGraduationsDistance: number;
+    testId?: string;
 };
 
 const StyledRuler = styled.div`

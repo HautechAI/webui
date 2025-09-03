@@ -12,6 +12,7 @@ export type EditableTextProps = {
     onStartEditing?: () => void;
     onChange?: (value: string) => void;
     onFinishEditing?: () => void;
+    testId?: string;
 };
 
 // Get Typography variant based on size and selected state
@@ -25,7 +26,7 @@ const getTypographyVariant = (size: 'medium' | 'small' = 'medium', selected: boo
 
 export const EditableText = (props: EditableTextProps) => {
     const { text, mode, size = 'medium', selected = false, onStartEditing, onChange, onFinishEditing } = props;
-    const containerRef = useRef<HTMLDivElement>(null);
+    const containerRef = useRef<HTMLDivElement data-testid={props.testId || testId}>(null);
 
     // Handle double click to start editing
     const handleDoubleClick = useCallback(() => {

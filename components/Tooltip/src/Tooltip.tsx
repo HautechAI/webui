@@ -53,7 +53,7 @@ type TooltipProps = TooltipSmallProps | TooltipMediumProps;
 
 export const Tooltip = (props: TooltipProps) => {
     const [visible, setVisible] = useState(false);
-    const hideTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
+    const hideTimeout = useRef<ReturnType<typeof setTimeout data-testid={props.testId || testId}> | null>(null);
 
     const cancelHideTooltip = () => {
         if (hideTimeout.current) {

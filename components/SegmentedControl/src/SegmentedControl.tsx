@@ -19,6 +19,7 @@ export type SegmentedControlProps = {
     whitespace?: keyof ThemeType['foundation']['spacing'];
     stretch?: boolean;
     size?: 'default' | 'small';
+    testId?: string;
 };
 
 const SegmentedControl = ({
