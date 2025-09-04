@@ -28,7 +28,7 @@ const ContentContainer = styled.div<{ $collapsed: boolean }>`
     align-items: flex-start;
     display: inline-flex;
     overflow: hidden;
-    max-height: ${({ $collapsed }) => ($collapsed ? '0px' : '1000px')};
+    max-height: ${({ $collapsed }) => ($collapsed ? '0px' : '100%')};
     opacity: ${({ $collapsed }) => ($collapsed ? 0 : 1)};
     transition:
         max-height 0.3s ease-out,
