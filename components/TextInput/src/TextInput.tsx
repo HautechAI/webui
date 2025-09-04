@@ -159,7 +159,6 @@ export const TextInput = (props: TextInputProps) => {
                     className={props.className}
                     type={props.type}
                     step={props.step}
-                    min={0}
                     disabled={disabled}
                     ref={ref}
                     placeholder={props.placeholder}
