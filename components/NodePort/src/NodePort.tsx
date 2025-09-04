@@ -7,6 +7,7 @@ export interface NodePortProps {
     type: 'input' | 'output';
     label?: string;
     interactiveHandle?: ReactNode;
+    testId?: string;
 }
 
 const Container = styled.div`
@@ -46,7 +47,7 @@ const PortHandle = styled.div`
     }
 `;
 
-export const NodePort: React.FC<NodePortProps> = ({ type, label, interactiveHandle }) => {
+export const NodePort: React.FC<NodePortProps> = ({ type, label, interactiveHandle, testId }) => {
     return (
         <Container data-testid={testId} data-type={type}>
             {label && (

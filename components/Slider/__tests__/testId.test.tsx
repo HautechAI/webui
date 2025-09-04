@@ -9,7 +9,7 @@ describe('Slider - testId prop', () => {
     it('should apply testId as data-testid attribute when provided', () => {
         render(
             <ThemeProvider theme={testTheme}>
-                <Slider testId="my-test-slider" />
+                <Slider testId="my-test-slider" min={0} max={100} value={50} onChange={() => {}} />
             </ThemeProvider>,
         );
 
@@ -19,7 +19,7 @@ describe('Slider - testId prop', () => {
     it('should not render data-testid attribute when testId is not provided', () => {
         const { container } = render(
             <ThemeProvider theme={testTheme}>
-                <Slider />
+                <Slider min={0} max={100} value={50} onChange={() => {}} />
             </ThemeProvider>,
         );
 

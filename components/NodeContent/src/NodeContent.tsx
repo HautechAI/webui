@@ -15,9 +15,5 @@ const Container = styled.div`
 `;
 
 export const NodeContent: React.FC<NodeContentProps> = ({ children, testId }) => {
-    return (
-        <Container data-testid={testId}>
-            {children}
-        </Container>
-    );
+    return <Container data-testid={testId}>{children}</Container>;
 };

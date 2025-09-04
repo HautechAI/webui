@@ -29,7 +29,7 @@ const OutputPorts = styled.div`
     align-items: flex-end;
 `;
 
-    export const NodeFooter: React.FC<NodeFooterProps> = ({ inputPorts, outputPorts, testId }) => {
+export const NodeFooter: React.FC<NodeFooterProps> = ({ inputPorts, outputPorts, testId }) => {
     return (
         <Container data-testid={testId}>
             <InputPorts>{inputPorts}</InputPorts>

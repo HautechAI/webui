@@ -3,7 +3,7 @@ import S from './Previews.styles';
 import { Row } from '@hautechai/webui.row';
 
 export const Previews = (props: PreviewsProps) => (
-    <Row>
+    <Row testId={props.testId}>
         {props.images.map((image, index) => (
             <S.PreviewContainer key={index}>
                 <S.Preview src={image} />

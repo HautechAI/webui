@@ -23,7 +23,7 @@ const Container = styled.div<{ width?: number }>`
     }
 `;
 
-    export const NodeContainer: React.FC<NodeContainerProps> = ({ children, width, selected = false, testId }) => {
+export const NodeContainer: React.FC<NodeContainerProps> = ({ children, width, selected = false, testId }) => {
     return (
         <Container width={width} data-selected={selected} data-testid={testId}>
             {children}

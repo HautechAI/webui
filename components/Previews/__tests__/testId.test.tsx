@@ -9,7 +9,7 @@ describe('Previews - testId prop', () => {
     it('should apply testId as data-testid attribute when provided', () => {
         render(
             <ThemeProvider theme={testTheme}>
-                <Previews testId="my-test-previews" />
+                <Previews testId="my-test-previews" images={['image1.jpg', 'image2.jpg']} />
             </ThemeProvider>,
         );
 
@@ -19,7 +19,7 @@ describe('Previews - testId prop', () => {
     it('should not render data-testid attribute when testId is not provided', () => {
         const { container } = render(
             <ThemeProvider theme={testTheme}>
-                <Previews />
+                <Previews images={['image1.jpg', 'image2.jpg']} />
             </ThemeProvider>,
         );
 

@@ -40,7 +40,7 @@ export type SliderProps = {
     testId?: string;
 };
 
-const Slider = ({ min, max, step = 1, value, onChange }: SliderProps) => {
+const Slider = ({ min, max, step = 1, value, onChange, testId }: SliderProps) => {
     const handleChange = useCallback(
         (event: React.ChangeEvent<HTMLInputElement>) => {
             onChange(Number(event.target.value));
@@ -59,6 +59,7 @@ const Slider = ({ min, max, step = 1, value, onChange }: SliderProps) => {
             step={step}
             value={value}
             onChange={handleChange}
+            data-testid={testId}
         />
     );
 };

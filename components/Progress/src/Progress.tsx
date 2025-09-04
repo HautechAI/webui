@@ -19,12 +19,14 @@ function base64ToArrayBuffer(base64: string) {
 
 export const Progress = (props: ProgressProps) => {
     return (
-        <DotLottieReact
-            data={base64ToArrayBuffer(DATA)}
-            loop
-            autoplay
-            {...{ style: props.size ? { width: props.size, height: props.size } : undefined }}
-        />
+        <div data-testid={props.testId}>
+            <DotLottieReact
+                data={base64ToArrayBuffer(DATA)}
+                loop
+                autoplay
+                {...{ style: props.size ? { width: props.size, height: props.size } : undefined }}
+            />
+        </div>
     );
 };
 
