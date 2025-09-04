@@ -797,13 +797,7 @@ importers:
             '@hautechai/webui.typography':
                 specifier: workspace:*
                 version: link:../Typography
-            react:
-                specifier: ^19.0.0
-                version: 19.0.0
-        devDependencies:
-            typescript:
-                specifier: ^5.7.2
-                version: 5.7.3
+        publishDirectory: dist
 
     components/OperationItem:
         dependencies:
@@ -8410,7 +8404,6 @@ packages:
                 integrity: sha512-2ymg6oRBpebeZi9UUNsgQ89bhx01TcTkmNTGnNO88imTmbSgy4nfujrgVEFKWpMTEGA11EDkTt7mqObTPdigIA==,
             }
         engines: { node: '>= 8' }
-        deprecated: The work that was done in this beta branch won't be included in future versions
 
     space-separated-tokens@2.0.2:
         resolution:
