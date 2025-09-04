@@ -1,24 +1,22 @@
 {
     "name": "@hautechai/webui.numberwithunitsinput",
-    "version": "0.0.1",
-    "description": "Number input component with units selection and hover-based dropdown",
+    "description": "Number input with units selection",
+    "version": "1.0.7",
+    "type": "module",
     "main": "src/index.tsx",
-    "module": "src/index.tsx",
-    "scripts": {
-        "build": "tsc",
-        "lint:tsc": "tsc --noEmit"
+    "publishConfig": {
+        "directory": "dist",
+        "linkDirectory": false,
+        "access": "public"
     },
+    "scripts": {
+        "prepack": "node ../../scripts/build-component.mjs"
+    },
+    "author": "HautechAI",
     "dependencies": {
         "@hautechai/webui.dropdown": "workspace:*",
         "@hautechai/webui.themeprovider": "workspace:*",
-        "@hautechai/webui.typography": "workspace:*",
-        "react": "^19.0.0"
+        "@hautechai/webui.typography": "workspace:*"
     },
-    "devDependencies": {
-        "typescript": "^5.7.2"
-    },
-    "peerDependencies": {
-        "react": "^19.0.0"
-    },
-    "license": "UNLICENSED"
+    "license": "Apache-2.0"
 }
