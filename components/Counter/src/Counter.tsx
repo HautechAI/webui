@@ -33,7 +33,7 @@ export type CounterProps = {
     testId?: string;
 };
 
-export const Counter = ({ min, max, step = 1, value = 0, onChange }: CounterProps) => {
+export const Counter = ({ min, max, step = 1, value = 0, onChange, testId }: CounterProps) => {
     const handleDecrement = useCallback(() => {
         onChange(value - step);
     }, [value, min, onChange]);
@@ -43,7 +43,7 @@ export const Counter = ({ min, max, step = 1, value = 0, onChange }: CounterProp
     }, [value, max, onChange]);
 
     return (
-        <CounterContainer data-testid={props.testId}>
+        <CounterContainer data-testid={testId}>
             <IconButton
                 size="small"
                 variant="flat"

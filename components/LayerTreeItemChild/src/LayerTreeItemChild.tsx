@@ -16,6 +16,8 @@ export interface LayerTreeItemChildProps {
     onSelect?: () => void;
     /** Whether the label text is user editable (defaults to true) */
     editable?: boolean;
+    /** Test ID for testing purposes */
+    testId?: string;
 }
 
 const Container = styled.div<{ selected: boolean }>`

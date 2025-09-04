@@ -22,6 +22,8 @@ export interface LayerTreeItemParentProps {
     onClick?: () => void;
     /** Handler for when the label text changes */
     onChange?: (value: string) => void;
+    /** Test ID for testing purposes */
+    testId?: string;
 }
 
 const Container = styled.div<{ selected: boolean }>`

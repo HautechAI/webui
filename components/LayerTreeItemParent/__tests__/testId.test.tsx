@@ -6,10 +6,13 @@ import { ThemeProvider } from '../../ThemeProvider/src';
 import { testTheme } from '../../test-theme';
 
 describe('LayerTreeItemParent - testId prop', () => {
+    const testIcon = <div>icon</div>;
+    const testLabel = 'Test Layer';
+
     it('should apply testId as data-testid attribute when provided', () => {
         render(
             <ThemeProvider theme={testTheme}>
-                <LayerTreeItemParent testId="my-test-layertreeitemparent" />
+                <LayerTreeItemParent testId="my-test-layertreeitemparent" icon={testIcon} label={testLabel} />
             </ThemeProvider>,
         );
 
@@ -19,7 +22,7 @@ describe('LayerTreeItemParent - testId prop', () => {
     it('should not render data-testid attribute when testId is not provided', () => {
         const { container } = render(
             <ThemeProvider theme={testTheme}>
-                <LayerTreeItemParent />
+                <LayerTreeItemParent icon={testIcon} label={testLabel} />
             </ThemeProvider>,
         );
 

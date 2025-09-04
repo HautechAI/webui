@@ -49,7 +49,7 @@ export type PaginationProps = {
 
 const step = 2;
 
-export const Pagination = ({ totalPages, currentPage, onPageChange, getPageHref }: PaginationProps) => {
+export const Pagination = ({ totalPages, currentPage, onPageChange, getPageHref, testId }: PaginationProps) => {
     const handleClick = (event: React.MouseEvent<HTMLAnchorElement>, page: number) => {
         if (onPageChange) {
             event.preventDefault();
@@ -80,7 +80,7 @@ export const Pagination = ({ totalPages, currentPage, onPageChange, getPageHref 
     }, [totalPages, currentPage]);
 
     return (
-        <Row spacing="m">
+        <Row spacing="m" testId={testId}>
             <IconButton
                 onClick={(e) => {
                     if (currentPage > 1) {

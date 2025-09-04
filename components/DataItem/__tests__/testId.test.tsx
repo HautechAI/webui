@@ -6,10 +6,16 @@ import { ThemeProvider } from '../../ThemeProvider/src';
 import { testTheme } from '../../test-theme';
 
 describe('DataItem - testId prop', () => {
+    const testProps = {
+        label: 'Test Label',
+        value: 'Test Value',
+        direction: 'row' as const
+    };
+
     it('should apply testId as data-testid attribute when provided', () => {
         render(
             <ThemeProvider theme={testTheme}>
-                <DataItem testId="my-test-dataitem" />
+                <DataItem testId="my-test-dataitem" {...testProps} />
             </ThemeProvider>,
         );
 
@@ -19,7 +25,7 @@ describe('DataItem - testId prop', () => {
     it('should not render data-testid attribute when testId is not provided', () => {
         const { container } = render(
             <ThemeProvider theme={testTheme}>
-                <DataItem />
+                <DataItem {...testProps} />
             </ThemeProvider>,
         );
 

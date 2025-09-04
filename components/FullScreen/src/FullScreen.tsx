@@ -19,6 +19,6 @@ export type FullScreenProps = {
 };
 
 export const FullScreen = (props: FullScreenProps) => {
-    const { children: _children, ...rest } = props;
-    return <Container {...rest}>{props.children}</Container>;
+    const { children, testId, ...rest } = props;
+    return <Container {...rest} data-testid={testId}>{children}</Container>;
 };

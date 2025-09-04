@@ -6,10 +6,16 @@ import { ThemeProvider } from '../../ThemeProvider/src';
 import { testTheme } from '../../test-theme';
 
 describe('NumberWithUnitsInput - testId prop', () => {
+    const testProps = {
+        value: '100',
+        units: 'px',
+        availableUnits: ['px', 'rem', '%']
+    };
+
     it('should apply testId as data-testid attribute when provided', () => {
         render(
             <ThemeProvider theme={testTheme}>
-                <NumberWithUnitsInput testId="my-test-numberwithunitsinput" placeholder="test" />
+                <NumberWithUnitsInput testId="my-test-numberwithunitsinput" {...testProps} />
             </ThemeProvider>,
         );
 
@@ -19,7 +25,7 @@ describe('NumberWithUnitsInput - testId prop', () => {
     it('should not render data-testid attribute when testId is not provided', () => {
         const { container } = render(
             <ThemeProvider theme={testTheme}>
-                <NumberWithUnitsInput placeholder="test" />
+                <NumberWithUnitsInput {...testProps} />
             </ThemeProvider>,
         );
 

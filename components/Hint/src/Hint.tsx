@@ -30,7 +30,7 @@ export const Hint = ({ hint, buttonLabel, onClick, position = 'bottom', testId }
             buttonLabel={buttonLabel}
             onClick={onClick}
             position={position}
-            data-testid={testId}
+            testId={testId}
         >
             <Icon size={16} />
         </Tooltip>

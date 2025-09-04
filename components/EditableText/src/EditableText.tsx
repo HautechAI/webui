@@ -88,7 +88,7 @@ export const EditableText = (props: EditableTextProps) => {
             data-testid={props.testId}
         >
             <Typography variant={getTypographyVariant(size, selected)} noWrap={true} overflow="ellipsis">
-                {text.trim() || '\u00A0'}
+                {text?.trim() || '\u00A0'}
             </Typography>
         </div>
     );

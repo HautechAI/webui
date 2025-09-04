@@ -44,8 +44,9 @@ const SvgLogoIcon = (props: SVGProps<SVGSVGElement>) => (
 );
 
 export const Logo = (props: LogoProps) => {
-    const { variant = 'full', ...rest } = props;
-    return variant === 'full' ? <SvgLogoFull {...rest} /> : <SvgLogoIcon {...rest} />;
+    const { variant = 'full', testId, ...rest } = props;
+    const svgProps = { ...rest, 'data-testid': testId };
+    return variant === 'full' ? <SvgLogoFull {...svgProps} /> : <SvgLogoIcon {...svgProps} />;
 };
 
 export default Logo;
