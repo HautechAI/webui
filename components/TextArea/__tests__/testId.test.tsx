@@ -23,7 +23,7 @@ describe('TextArea - testId prop', () => {
             </ThemeProvider>,
         );
 
-        const textArea = container.firstChild;
+        const textArea = container.firstChild as Element;
         expect(textArea?.getAttribute?.('data-testid')).toBeNull();
     });
 });

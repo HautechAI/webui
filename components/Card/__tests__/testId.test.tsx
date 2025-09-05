@@ -9,7 +9,7 @@ describe('Card - testId prop', () => {
     it('should apply testId as data-testid attribute when provided', () => {
         render(
             <ThemeProvider theme={testTheme}>
-                <Card testId="my-test-card" />
+                <Card testId="my-test-card" label="Test Card" image="test.jpg" />
             </ThemeProvider>,
         );
 
@@ -19,7 +19,7 @@ describe('Card - testId prop', () => {
     it('should not render data-testid attribute when testId is not provided', () => {
         const { container } = render(
             <ThemeProvider theme={testTheme}>
-                <Card />
+                <Card label="Test Card" image="test.jpg" />
             </ThemeProvider>,
         );
 

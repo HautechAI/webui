@@ -74,16 +74,7 @@ const InputContainer = styled.div`
 `;
 
 export const LayerTreeItemChild = (props: LayerTreeItemChildProps) => {
-    const {
-        label,
-        selected = false,
-        input,
-        onChange,
-        onSelect,
-        editable = true,
-        isSelected: _isSelected,
-        testId,
-    } = props;
+    const { label, selected = false, input, onChange, onSelect, editable = true, testId } = props;
 
     const [isEditing, setIsEditing] = useState(false);
     const [currentLabel, setCurrentLabel] = useState(label);

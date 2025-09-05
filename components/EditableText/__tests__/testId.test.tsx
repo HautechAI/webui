@@ -9,7 +9,7 @@ describe('EditableText - testId prop', () => {
     it('should apply testId as data-testid attribute when provided', () => {
         render(
             <ThemeProvider theme={testTheme}>
-                <EditableText testId="my-test-editabletext" />
+                <EditableText testId="my-test-editabletext" text="Test" mode="edit" />
             </ThemeProvider>,
         );
 
@@ -19,7 +19,7 @@ describe('EditableText - testId prop', () => {
     it('should not render data-testid attribute when testId is not provided', () => {
         const { container } = render(
             <ThemeProvider theme={testTheme}>
-                <EditableText />
+                <EditableText text="Test" mode="edit" />
             </ThemeProvider>,
         );
 

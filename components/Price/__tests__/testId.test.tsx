@@ -9,7 +9,7 @@ describe('Price - testId prop', () => {
     it('should apply testId as data-testid attribute when provided', () => {
         render(
             <ThemeProvider theme={testTheme}>
-                <Price testId="my-test-price" />
+                <Price testId="my-test-price" price="$10" period="month" />
             </ThemeProvider>,
         );
 
@@ -19,7 +19,7 @@ describe('Price - testId prop', () => {
     it('should not render data-testid attribute when testId is not provided', () => {
         const { container } = render(
             <ThemeProvider theme={testTheme}>
-                <Price />
+                <Price price="$10" period="month" />
             </ThemeProvider>,
         );
 

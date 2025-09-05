@@ -9,7 +9,7 @@ describe('FloatingPanel - testId prop', () => {
     it('should apply testId as data-testid attribute when provided', () => {
         render(
             <ThemeProvider theme={testTheme}>
-                <FloatingPanel testId="my-test-floatingpanel" />
+                <FloatingPanel testId="my-test-floatingpanel" title="Test Panel" />
             </ThemeProvider>,
         );
 
@@ -19,7 +19,7 @@ describe('FloatingPanel - testId prop', () => {
     it('should not render data-testid attribute when testId is not provided', () => {
         const { container } = render(
             <ThemeProvider theme={testTheme}>
-                <FloatingPanel />
+                <FloatingPanel title="Test Panel" />
             </ThemeProvider>,
         );
 

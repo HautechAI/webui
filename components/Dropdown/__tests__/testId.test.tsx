@@ -28,7 +28,7 @@ describe('Dropdown - testId prop', () => {
             </ThemeProvider>,
         );
 
-        const dropdown = container.firstChild;
+        const dropdown = container.firstChild as Element;
         expect(dropdown?.getAttribute?.('data-testid')).toBeNull();
     });
 });

@@ -9,7 +9,7 @@ describe('KeyframeToggle - testId prop', () => {
     it('should apply testId as data-testid attribute when provided', () => {
         render(
             <ThemeProvider theme={testTheme}>
-                <KeyframeToggle testId="my-test-keyframetoggle" />
+                <KeyframeToggle testId="my-test-keyframetoggle" state="noKeyframes" />
             </ThemeProvider>,
         );
 
@@ -19,7 +19,7 @@ describe('KeyframeToggle - testId prop', () => {
     it('should not render data-testid attribute when testId is not provided', () => {
         const { container } = render(
             <ThemeProvider theme={testTheme}>
-                <KeyframeToggle />
+                <KeyframeToggle state="noKeyframes" />
             </ThemeProvider>,
         );
 

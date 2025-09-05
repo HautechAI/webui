@@ -100,7 +100,6 @@ export const LayerTreeItemParent = (props: LayerTreeItemParentProps) => {
         onExpandToggle,
         onClick,
         onChange,
-        onCollapseToggle: _onCollapseToggle,
         testId,
     } = props;
 

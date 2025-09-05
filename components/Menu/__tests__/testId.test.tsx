@@ -29,7 +29,7 @@ describe('Menu - testId prop', () => {
         );
 
         // Menu returns Column directly, so check first child
-        const menu = container.firstChild;
+        const menu = container.firstChild as Element;
         expect(menu?.getAttribute?.('data-testid')).toBeNull();
     });
 });

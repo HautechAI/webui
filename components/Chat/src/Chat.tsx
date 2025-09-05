@@ -84,7 +84,7 @@ const StyledLink = styled.a`
 // React Markdown components mapping
 const markdownComponents: Components = {
     h1: ({ children }) => (
-        <Typography variant="H1" color="layout.onSurface.primary" data-testid={props.testId}>
+        <Typography variant="H1" color="layout.onSurface.primary">
             {children}
         </Typography>
     ),

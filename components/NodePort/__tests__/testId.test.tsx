@@ -9,7 +9,7 @@ describe('NodePort - testId prop', () => {
     it('should apply testId as data-testid attribute when provided', () => {
         render(
             <ThemeProvider theme={testTheme}>
-                <NodePort testId="my-test-nodeport" />
+                <NodePort testId="my-test-nodeport" type="input" />
             </ThemeProvider>,
         );
 
@@ -19,7 +19,7 @@ describe('NodePort - testId prop', () => {
     it('should not render data-testid attribute when testId is not provided', () => {
         const { container } = render(
             <ThemeProvider theme={testTheme}>
-                <NodePort />
+                <NodePort type="input" />
             </ThemeProvider>,
         );
 

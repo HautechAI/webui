@@ -9,7 +9,7 @@ describe('MenuItem - testId prop', () => {
     it('should apply testId as data-testid attribute when provided', () => {
         render(
             <ThemeProvider theme={testTheme}>
-                <MenuItem testId="my-test-menuitem" />
+                <MenuItem testId="my-test-menuitem" label="Test Item" />
             </ThemeProvider>,
         );
 
@@ -19,7 +19,7 @@ describe('MenuItem - testId prop', () => {
     it('should not render data-testid attribute when testId is not provided', () => {
         const { container } = render(
             <ThemeProvider theme={testTheme}>
-                <MenuItem />
+                <MenuItem label="Test Item" />
             </ThemeProvider>,
         );
 

@@ -9,7 +9,7 @@ describe('Pagination - testId prop', () => {
     it('should apply testId as data-testid attribute when provided', () => {
         render(
             <ThemeProvider theme={testTheme}>
-                <Pagination testId="my-test-pagination" />
+                <Pagination testId="my-test-pagination" totalPages={5} currentPage={1} onPageChange={() => {}} />
             </ThemeProvider>,
         );
 
@@ -19,7 +19,7 @@ describe('Pagination - testId prop', () => {
     it('should not render data-testid attribute when testId is not provided', () => {
         const { container } = render(
             <ThemeProvider theme={testTheme}>
-                <Pagination />
+                <Pagination totalPages={5} currentPage={1} onPageChange={() => {}} />
             </ThemeProvider>,
         );
 

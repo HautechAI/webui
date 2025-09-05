@@ -9,7 +9,9 @@ describe('ContextMenu - testId prop', () => {
     it('should apply testId as data-testid attribute when provided', () => {
         render(
             <ThemeProvider theme={testTheme}>
-                <ContextMenu testId="my-test-contextmenu" />
+                <ContextMenu testId="my-test-contextmenu">
+                    <div>Test</div>
+                </ContextMenu>
             </ThemeProvider>,
         );
 
@@ -19,7 +21,9 @@ describe('ContextMenu - testId prop', () => {
     it('should not render data-testid attribute when testId is not provided', () => {
         const { container } = render(
             <ThemeProvider theme={testTheme}>
-                <ContextMenu />
+                <ContextMenu>
+                    <div>Test</div>
+                </ContextMenu>
             </ThemeProvider>,
         );
 

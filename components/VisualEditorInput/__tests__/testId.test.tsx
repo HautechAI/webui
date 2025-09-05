@@ -15,13 +15,7 @@ describe('VisualEditorInput - testId prop', () => {
                     units="px"
                     availableUnits={['px']}
                     isPort={false}
-                    keyframesState={[]}
-                    placeholder="test"
-                    value="test"
-                    units="px"
-                    availableUnits={['px']}
-                    isPort={false}
-                    keyframesState={[]}
+                    keyframesState="noKeyframes"
                 />
             </ThemeProvider>,
         );
@@ -33,12 +27,11 @@ describe('VisualEditorInput - testId prop', () => {
         const { container } = render(
             <ThemeProvider theme={testTheme}>
                 <VisualEditorInput
-                    placeholder="test"
                     value="test"
                     units="px"
                     availableUnits={['px']}
                     isPort={false}
-                    keyframesState={[]}
+                    keyframesState="noKeyframes"
                 />
             </ThemeProvider>,
         );

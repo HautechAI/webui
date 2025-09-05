@@ -9,7 +9,9 @@ describe('Masonry - testId prop', () => {
     it('should apply testId as data-testid attribute when provided', () => {
         render(
             <ThemeProvider theme={testTheme}>
-                <Masonry testId="my-test-masonry" />
+                <Masonry testId="my-test-masonry">
+                    <div>test</div>
+                </Masonry>
             </ThemeProvider>,
         );
 
@@ -19,7 +21,9 @@ describe('Masonry - testId prop', () => {
     it('should not render data-testid attribute when testId is not provided', () => {
         const { container } = render(
             <ThemeProvider theme={testTheme}>
-                <Masonry />
+                <Masonry>
+                    <div>test</div>
+                </Masonry>
             </ThemeProvider>,
         );
 

@@ -9,7 +9,7 @@ describe('FileInput - testId prop', () => {
     it('should apply testId as data-testid attribute when provided', () => {
         render(
             <ThemeProvider theme={testTheme}>
-                <FileInput testId="my-test-fileinput" placeholder="test" />
+                <FileInput testId="my-test-fileinput" onChange={() => {}} />
             </ThemeProvider>,
         );
 
@@ -19,7 +19,7 @@ describe('FileInput - testId prop', () => {
     it('should not render data-testid attribute when testId is not provided', () => {
         const { container } = render(
             <ThemeProvider theme={testTheme}>
-                <FileInput placeholder="test" />
+                <FileInput onChange={() => {}} />
             </ThemeProvider>,
         );
 

@@ -9,7 +9,7 @@ describe('ImageInput - testId prop', () => {
     it('should apply testId as data-testid attribute when provided', () => {
         render(
             <ThemeProvider theme={testTheme}>
-                <ImageInput testId="my-test-imageinput" placeholder="test" />
+                <ImageInput testId="my-test-imageinput" onChange={() => {}} />
             </ThemeProvider>,
         );
 
@@ -19,7 +19,7 @@ describe('ImageInput - testId prop', () => {
     it('should not render data-testid attribute when testId is not provided', () => {
         const { container } = render(
             <ThemeProvider theme={testTheme}>
-                <ImageInput placeholder="test" />
+                <ImageInput onChange={() => {}} />
             </ThemeProvider>,
         );
 
