@@ -8,7 +8,7 @@ import { testTheme } from '../../test-theme';
 describe('SegmentedControl - testId prop', () => {
     const testOptions = [
         { label: 'Option 1', value: 'option1' },
-        { label: 'Option 2', value: 'option2' }
+        { label: 'Option 2', value: 'option2' },
     ];
 
     it('should apply testId as data-testid attribute when provided', () => {

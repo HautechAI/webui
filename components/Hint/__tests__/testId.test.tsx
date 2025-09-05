@@ -9,7 +9,7 @@ describe('Hint - testId prop', () => {
     it('should apply testId as data-testid attribute when provided', () => {
         render(
             <ThemeProvider theme={testTheme}>
-                <Hint testId="my-test-hint" />
+                <Hint testId="my-test-hint" hint="Test hint message" />
             </ThemeProvider>,
         );
 
@@ -19,7 +19,7 @@ describe('Hint - testId prop', () => {
     it('should not render data-testid attribute when testId is not provided', () => {
         const { container } = render(
             <ThemeProvider theme={testTheme}>
-                <Hint />
+                <Hint hint="Test hint message" />
             </ThemeProvider>,
         );
 

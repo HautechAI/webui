@@ -9,7 +9,7 @@ describe('NumberWithUnitsInput - testId prop', () => {
     const testProps = {
         value: '100',
         units: 'px',
-        availableUnits: ['px', 'rem', '%']
+        availableUnits: ['px', 'rem', '%'],
     };
 
     it('should apply testId as data-testid attribute when provided', () => {

@@ -10,6 +10,7 @@ export interface NodeHeaderProps {
     icon?: React.ReactNode;
     label: string;
     badge?: React.ReactNode;
+    testId?: string;
 }
 
 const NoShrink = styled.div`

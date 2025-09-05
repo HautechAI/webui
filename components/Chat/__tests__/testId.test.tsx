@@ -6,10 +6,21 @@ import { ThemeProvider } from '../../ThemeProvider/src';
 import { testTheme } from '../../test-theme';
 
 describe('Chat - testId prop', () => {
+    const mockMessages = [
+        {
+            id: '1',
+            author: {
+                name: 'Test User',
+                initials: 'TU',
+            },
+            content: 'Test message',
+        },
+    ];
+
     it('should apply testId as data-testid attribute when provided', () => {
         render(
             <ThemeProvider theme={testTheme}>
-                <Chat testId="my-test-chat" />
+                <Chat testId="my-test-chat" messages={mockMessages} />
             </ThemeProvider>,
         );
 
@@ -19,7 +30,7 @@ describe('Chat - testId prop', () => {
     it('should not render data-testid attribute when testId is not provided', () => {
         const { container } = render(
             <ThemeProvider theme={testTheme}>
-                <Chat />
+                <Chat messages={mockMessages} />
             </ThemeProvider>,
         );
 

@@ -54,7 +54,14 @@ const Heading = styled(Row)`
     padding: 0 ${themeVars.spacing.ml};
 `;
 
-export const ContextMenu = ({ menus, heading, children, variation = 'menu', isLeftClick, testId }: ContextMenuProps) => {
+export const ContextMenu = ({
+    menus,
+    heading,
+    children,
+    variation = 'menu',
+    isLeftClick,
+    testId,
+}: ContextMenuProps) => {
     const [isOpen, setIsOpen] = useState(false);
     const [position, setPosition] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
     const menuRef = useRef<HTMLDivElement>(null);

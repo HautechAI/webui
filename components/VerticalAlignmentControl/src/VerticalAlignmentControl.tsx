@@ -29,7 +29,16 @@ const VerticalAlignmentControl = ({ value, onChange, size, testId }: VerticalAli
         onChange?.(event, newValue as 'top' | 'middle' | 'bottom');
     };
 
-    return <SegmentedControl options={options} value={value} onChange={handleChange} whitespace="m" size={size} testId={testId} />;
+    return (
+        <SegmentedControl
+            options={options}
+            value={value}
+            onChange={handleChange}
+            whitespace="m"
+            size={size}
+            testId={testId}
+        />
+    );
 };
 
 export default VerticalAlignmentControl;

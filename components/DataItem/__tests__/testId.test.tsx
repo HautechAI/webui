@@ -9,7 +9,7 @@ describe('DataItem - testId prop', () => {
     const testProps = {
         label: 'Test Label',
         value: 'Test Value',
-        direction: 'row' as const
+        direction: 'row' as const,
     };
 
     it('should apply testId as data-testid attribute when provided', () => {
