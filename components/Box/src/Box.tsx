@@ -31,6 +31,8 @@ export type BoxProps = PropsWithChildren<{
     justifyContent?: 'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-around';
     grow?: number;
     shrink?: number;
+
+    testId?: string;
 }>;
 
 export const Box = forwardRef((props: BoxProps, ref: React.ForwardedRef<HTMLDivElement>) => {
@@ -55,6 +57,7 @@ export const Box = forwardRef((props: BoxProps, ref: React.ForwardedRef<HTMLDivE
         grow,
         shrink,
         style,
+        testId,
         ...rest
     } = props;
 
@@ -81,5 +84,5 @@ export const Box = forwardRef((props: BoxProps, ref: React.ForwardedRef<HTMLDivE
         ...style,
     };
 
-    return <div {...rest} ref={ref} style={styleInline} />;
+    return <div {...rest} ref={ref} style={styleInline} data-testid={testId} />;
 });

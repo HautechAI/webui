@@ -14,11 +14,12 @@ export type TileTabGroupProps = PropsWithChildren<{
     selected?: string;
     onSelect?: (value: string) => void;
     wrap?: boolean;
+    testId?: string;
 }>;
 
 export const TileTabGroup = (props: TileTabGroupProps) => {
     return (
-        <StyledTileTabGroup $wrap={props.wrap}>
+        <StyledTileTabGroup $wrap={props.wrap} data-testid={props.testId}>
             {React.Children.map(props.children, (child) => {
                 if (React.isValidElement(child)) {
                     const value = (child.props as { value?: string })['value'] as string;

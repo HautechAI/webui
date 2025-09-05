@@ -8,6 +8,7 @@ export type ToolButtonProps = {
     selected?: boolean;
     disabled?: boolean;
     onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
+    testId?: string;
 };
 
 // Styled components
@@ -70,10 +71,10 @@ const getIcon = (icon: React.ReactNode) => (
 );
 
 export const ToolButton = (props: ToolButtonProps) => {
-    const { selected = false, icon, ...rest } = props;
+    const { selected = false, icon, testId, ...rest } = props;
 
     return (
-        <StyledButton data-selected={selected ? 'true' : undefined} {...rest}>
+        <StyledButton data-selected={selected ? 'true' : undefined} testId={testId} {...rest}>
             {getIcon(icon)}
         </StyledButton>
     );

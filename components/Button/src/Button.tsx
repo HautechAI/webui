@@ -14,6 +14,7 @@ export type ButtonProps = {
     disabled?: boolean;
     onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
     stretch?: boolean;
+    testId?: string;
 };
 
 const StyledButton = styled(ButtonBase)`
@@ -120,11 +121,19 @@ export const Button = (props: ButtonProps) => {
         leadingIcon,
         trailingIcon,
         label,
+        testId,
         ...rest
     } = props;
 
     return (
-        <StyledButton data-variant={variant} data-hierarchy={hierarchy} data-size={size} stretch={stretch} {...rest}>
+        <StyledButton
+            data-variant={variant}
+            data-hierarchy={hierarchy}
+            data-size={size}
+            stretch={stretch}
+            testId={testId}
+            {...rest}
+        >
             {leadingIcon}
             <Typography variant={LabelVariants[size]}>{label}</Typography>
             {trailingIcon}

@@ -52,13 +52,14 @@ export type PropertyBlockProps = {
     className?: string;
     label?: string;
     onToggle?: () => void;
+    testId?: string;
 };
 
 export const PropertyBlock = (props: PropertyBlockProps) => {
-    const { children, removable = false, removed = false, className, label = 'Property', onToggle } = props;
+    const { children, removable = false, removed = false, className, label = 'Property', onToggle, testId } = props;
 
     return (
-        <Container className={className}>
+        <Container className={className} data-testid={testId}>
             <PropertyHeader>
                 <Label>
                     <Typography

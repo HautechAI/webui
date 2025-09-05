@@ -14,15 +14,17 @@ export type ImageInputWithSamplesProps = {
     imageInputProps?: Omit<ImageInputProps, 'onChange'>;
     labelSamples?: string;
     samples: Sample[];
+    testId?: string;
 };
 
 export const ImageInputWithSamples = (props: ImageInputWithSamplesProps) => {
     const {
         imageInputProps, //
         labelSamples = 'Or choose one of the samples',
+        testId,
     } = props;
     return (
-        <Column spacing="xxl" align="center">
+        <Column spacing="xxl" align="center" testId={testId}>
             <ImageInput onChange={props.onUpload} {...imageInputProps} />
             <Column spacing="l">
                 <Typography variant="H2" color="layout.onSurface.primary" textAlign="center">

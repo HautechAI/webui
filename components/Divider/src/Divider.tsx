@@ -7,6 +7,6 @@ const StyledDivider = styled.div`
     border-bottom-color: ${themeVars.layout.strokes};
 `;
 
-export const Divider = (props: { className?: string }) => {
-    return <StyledDivider className={props.className} />;
+export const Divider = (props: { className?: string; testId?: string }) => {
+    return <StyledDivider className={props.className} data-testid={props.testId} />;
 };

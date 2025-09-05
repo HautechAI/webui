@@ -128,6 +128,7 @@ export type ChatMessage = {
 export type ChatProps = {
     messages: ChatMessage[];
     className?: string;
+    testId?: string;
 };
 
 const MessageContainer = styled.div`
@@ -138,11 +139,12 @@ const MessageContainer = styled.div`
 `;
 
 export const Chat = (props: ChatProps) => {
-    const { messages, className } = props;
+    const { messages, className, testId } = props;
 
     return (
         <div
             className={className}
+            data-testid={testId}
             style={{
                 width: '100%',
                 height: '100%',

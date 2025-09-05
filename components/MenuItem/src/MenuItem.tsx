@@ -57,6 +57,7 @@ export type MenuItemProps = (MainProps | CtaProps) & {
     leadingIcon?: React.ReactNode;
     trailingIcon?: React.ReactNode;
     onClick?: () => void;
+    testId?: string;
 };
 
 const renderIcon = (icon?: React.ReactNode, color?: string) =>
@@ -78,9 +79,16 @@ export const MenuItem = ({
     type,
     size = 'small',
     onClick,
+    testId,
 }: MenuItemProps) => {
     return (
-        <Container data-selected={!!isSelected} data-type={type} data-size={size} onClick={onClick}>
+        <Container
+            data-selected={!!isSelected}
+            data-type={type}
+            data-size={size}
+            onClick={onClick}
+            data-testid={testId}
+        >
             <Row spacing="m">
                 {renderIcon(leadingIcon)}
                 <Typography

@@ -21,6 +21,8 @@ export interface TimelineTrackProps {
     onStartMove?: () => void;
     /** Called when move/resize operation finishes */
     onFinishMove?: (start: number, duration: number) => void;
+    /** Test ID for component testing */
+    testId?: string;
 }
 
 // Container styles - track container with hover and selected states
@@ -103,6 +105,7 @@ export const TimelineTrack = forwardRef<HTMLDivElement, TimelineTrackProps>((pro
         onStartMove,
         onFinishMove,
         className,
+        testId,
     } = props;
 
     const trackWidth = Math.max(0, duration * scale);
@@ -178,7 +181,7 @@ export const TimelineTrack = forwardRef<HTMLDivElement, TimelineTrackProps>((pro
     };
 
     return (
-        <Container ref={ref} className={className} data-selected={selected}>
+        <Container ref={ref} className={className} data-selected={selected} data-testid={testId}>
             <Track
                 style={{
                     width: trackWidth,

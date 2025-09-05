@@ -10,6 +10,7 @@ export type IconButtonProps = {
     disabled?: boolean;
     onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
     customBackground?: string;
+    testId?: string;
 };
 
 const StyledButton = styled(ButtonBase)`
@@ -91,7 +92,7 @@ const StyledButton = styled(ButtonBase)`
 `;
 
 export const IconButton = (props: IconButtonProps) => {
-    const { variant = 'filled', size = 'medium', icon, customBackground, ...rest } = props;
+    const { variant = 'filled', size = 'medium', icon, customBackground, testId, ...rest } = props;
 
     const iconSizes: Record<NonNullable<IconButtonProps['size']>, number> = {
         medium: 24,
@@ -107,6 +108,7 @@ export const IconButton = (props: IconButtonProps) => {
         <StyledButton
             data-variant={variant}
             data-size={size}
+            testId={testId}
             style={
                 customBackground
                     ? ({ ['--icon-button-bg' as string]: customBackground } as React.CSSProperties)

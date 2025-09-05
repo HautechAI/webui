@@ -51,6 +51,7 @@ export type FloatingPanelProps = {
     collapsed?: boolean;
     onToggleCollapsed?: () => void;
     showProgress?: boolean;
+    testId?: string;
 };
 
 export const FloatingPanel = (props: FloatingPanelProps) => {
@@ -58,7 +59,7 @@ export const FloatingPanel = (props: FloatingPanelProps) => {
         width: props.width ? `${props.width}px` : undefined,
     };
     return (
-        <Container className={props.className} style={style}>
+        <Container className={props.className} style={style} data-testid={props.testId}>
             <Header>
                 <IconButton
                     variant="flat"

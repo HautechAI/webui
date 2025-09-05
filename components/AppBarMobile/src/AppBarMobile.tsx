@@ -31,11 +31,13 @@ export type AppBarMobileProps = {
     top?: React.ReactNode;
     center?: React.ReactNode;
     bottom?: React.ReactNode;
+
+    testId?: string;
 };
 export const AppBarMobile = (props: AppBarMobileProps) => {
-    const { hierarchy = 'mid' } = props;
+    const { hierarchy = 'mid', testId } = props;
     return (
-        <Container data-hierarchy={hierarchy}>
+        <Container data-hierarchy={hierarchy} data-testid={testId}>
             <RowContainer>{props.top}</RowContainer>
             <RowContainer>{props.center}</RowContainer>
             <RowContainer>{props.bottom}</RowContainer>

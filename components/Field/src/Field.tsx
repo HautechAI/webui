@@ -25,10 +25,21 @@ export type FieldProps = LockedProps & {
     caption?: string;
     actionButton?: React.ReactNode;
     children: React.ReactNode;
+    testId?: string;
 };
 
 export const Field = (props: FieldProps) => {
-    const { label, labelPosition = 'top', error, caption, locked, onLockedClick, actionButton, children } = props;
+    const {
+        label,
+        labelPosition = 'top',
+        error,
+        caption,
+        locked,
+        onLockedClick,
+        actionButton,
+        children,
+        testId,
+    } = props;
     const ref = useRef<HTMLDivElement>(null);
 
     const handleClick = useCallback(
@@ -44,7 +55,12 @@ export const Field = (props: FieldProps) => {
     const Main = labelPosition === 'top' ? Column : Row;
 
     return (
-        <Container onClick={handleClick} ref={ref} style={{ flex: labelPosition === 'right' ? undefined : 1 }}>
+        <Container
+            onClick={handleClick}
+            ref={ref}
+            style={{ flex: labelPosition === 'right' ? undefined : 1 }}
+            data-testid={testId}
+        >
             <Main spacing={labelPosition === 'top' ? 'm' : 'ml'} stretch reverse={labelPosition === 'right'}>
                 <Row spacing="s" align="center">
                     {label && (

@@ -133,6 +133,7 @@ export type TextInputProps = {
     type: 'text' | 'password' | 'email' | 'number';
     variation?: 'filled' | 'outlined';
     size?: 'medium' | 'small';
+    testId?: string;
 } & Pick<Partial<IconButtonProps>, 'icon'> & {
         onIconButtonClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
     };
@@ -143,11 +144,11 @@ export const TextInput = (props: TextInputProps) => {
         ref.current?.focus();
     }, []);
 
-    const { disabled, icon } = props;
+    const { disabled, icon, testId } = props;
     const size = props.size ?? 'medium';
 
     return (
-        <Container onClick={handleClick} data-disabled={!!disabled} size={size}>
+        <Container onClick={handleClick} data-disabled={!!disabled} size={size} data-testid={testId}>
             <InputContainer
                 data-disabled={!!disabled}
                 variation={props.variation ?? 'filled'}

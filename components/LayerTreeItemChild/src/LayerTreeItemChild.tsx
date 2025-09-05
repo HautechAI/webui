@@ -16,6 +16,8 @@ export interface LayerTreeItemChildProps {
     onSelect?: () => void;
     /** Whether the label text is user editable (defaults to true) */
     editable?: boolean;
+    /** Test ID for testing purposes */
+    testId?: string;
 }
 
 const Container = styled.div<{ selected: boolean }>`
@@ -72,7 +74,7 @@ const InputContainer = styled.div`
 `;
 
 export const LayerTreeItemChild = (props: LayerTreeItemChildProps) => {
-    const { label, selected = false, input, onChange, onSelect, editable = true } = props;
+    const { label, selected = false, input, onChange, onSelect, editable = true, testId } = props;
 
     const [isEditing, setIsEditing] = useState(false);
     const [currentLabel, setCurrentLabel] = useState(label);
@@ -114,7 +116,7 @@ export const LayerTreeItemChild = (props: LayerTreeItemChildProps) => {
     }, [editable, isEditing, label]);
 
     return (
-        <Container selected={selected} onClick={handleContainerClick}>
+        <Container selected={selected} onClick={handleContainerClick} data-testid={testId}>
             <ChildIndent />
             <Content>
                 <EditableTextContainer>

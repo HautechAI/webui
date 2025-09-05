@@ -62,6 +62,7 @@ export type BottomSheetProps = {
     };
     zIndex?: number;
     backdropStyle?: React.CSSProperties;
+    testId?: string;
 };
 
 export const BottomSheet = (props: BottomSheetProps) => {
@@ -75,7 +76,7 @@ export const BottomSheet = (props: BottomSheetProps) => {
         '--bs-z-index': props.zIndex ? `${props.zIndex}` : undefined,
     };
     return (
-        <Container data-open={props.open} data-z={props.zIndex ? 'true' : undefined}>
+        <Container data-open={props.open} data-z={props.zIndex ? 'true' : undefined} data-testid={props.testId}>
             <Backdrop onClick={props?.onClose} style={props.backdropStyle} />
             <ContentContainer style={styleInsets}>
                 <Content>{props.children}</Content>

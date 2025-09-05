@@ -1,10 +1,10 @@
 import React from 'react';
 import { styled } from '@hautechai/webui.themeprovider';
 import { themeVars } from '@hautechai/webui.themeprovider';
-import { Divider } from '@hautechai/webui.divider';
 
 export interface NodeContentProps {
     children: React.ReactNode;
+    testId?: string;
 }
 
 const Container = styled.div`
@@ -14,11 +14,6 @@ const Container = styled.div`
     align-items: center;
 `;
 
-export const NodeContent: React.FC<NodeContentProps> = ({ children }) => {
-    return (
-        <>
-            <Container>{children}</Container>
-            <Divider />
-        </>
-    );
+export const NodeContent: React.FC<NodeContentProps> = ({ children, testId }) => {
+    return <Container data-testid={testId}>{children}</Container>;
 };

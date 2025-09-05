@@ -22,6 +22,8 @@ export interface LayerTreeItemParentProps {
     onClick?: () => void;
     /** Handler for when the label text changes */
     onChange?: (value: string) => void;
+    /** Test ID for testing purposes */
+    testId?: string;
 }
 
 const Container = styled.div<{ selected: boolean }>`
@@ -98,6 +100,7 @@ export const LayerTreeItemParent = (props: LayerTreeItemParentProps) => {
         onExpandToggle,
         onClick,
         onChange,
+        testId,
     } = props;
 
     const [isEditing, setIsEditing] = useState(false);
@@ -126,7 +129,7 @@ export const LayerTreeItemParent = (props: LayerTreeItemParentProps) => {
     }, [label]);
 
     return (
-        <Container selected={selected}>
+        <Container selected={selected} data-testid={testId}>
             <ExpandButton>
                 <IconButton
                     variant="flat"

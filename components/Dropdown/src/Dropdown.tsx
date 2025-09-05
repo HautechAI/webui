@@ -185,6 +185,7 @@ export type DropdownProps = {
     options: Array<{ label: string; value: string }>;
     onChange?: (value: string) => void;
     hasError?: boolean;
+    testId?: string;
 };
 
 export const Dropdown = (props: DropdownProps) => {
@@ -224,12 +225,12 @@ export const Dropdown = (props: DropdownProps) => {
         };
     }, [isOpen]);
 
-    const { disabled } = props;
+    const { disabled, testId } = props;
     const size = props.size ?? 'medium';
     const collapsed = !!props.collapsed;
 
     return (
-        <Container data-disabled={disabled} data-collapsed={collapsed} ref={ref}>
+        <Container data-disabled={disabled} data-collapsed={collapsed} ref={ref} data-testid={testId}>
             <ButtonContainer
                 data-disabled={disabled}
                 data-type={props.type ?? 'filled'}

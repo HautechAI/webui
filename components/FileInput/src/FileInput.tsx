@@ -72,6 +72,7 @@ export type FileInputProps = {
 
     variant?: 'dropzone' | 'button';
     stretch?: boolean;
+    testId?: string;
 };
 
 export const FileInput: React.FC<FileInputProps> = (props) => {
@@ -83,6 +84,7 @@ export const FileInput: React.FC<FileInputProps> = (props) => {
         labelDragRejectedButton = 'Uploading again',
         stopPropagation = true,
         accept,
+        testId,
     } = props;
 
     const dropzoneRef = useRef<HTMLDivElement>(null);
@@ -154,7 +156,7 @@ export const FileInput: React.FC<FileInputProps> = (props) => {
     };
 
     return props.variant === 'button' ? (
-        <ButtonFileInput ref={dropzoneRef} {...rootProps}>
+        <ButtonFileInput ref={dropzoneRef} {...rootProps} data-testid={testId}>
             <input {...getInputProps()} />
             <Button label={labelButton} leadingIcon={<UploadIcon size={20} />} stretch={props.stretch} />
         </ButtonFileInput>
@@ -164,6 +166,7 @@ export const FileInput: React.FC<FileInputProps> = (props) => {
             data-reject={isDragReject}
             data-accept={delayedAccept}
             data-active={isDragActive}
+            data-testid={testId}
             {...rootProps}
         >
             <input {...getInputProps()} />

@@ -1,9 +1,11 @@
 import { styled } from '@hautechai/webui.themeprovider';
 import { themeVars, ThemeType } from '@hautechai/webui.themeprovider';
 
-const BaseComponent = (props: Pick<RowProps, 'className' | 'children'> & { style?: React.CSSProperties }) => {
-    const { className, children, style } = props;
-    return <div {...{ className, children, style }} />;
+const BaseComponent = (
+    props: Pick<RowProps, 'className' | 'children' | 'testId'> & { style?: React.CSSProperties },
+) => {
+    const { className, children, style, testId } = props;
+    return <div {...{ className, children, style }} data-testid={testId} />;
 };
 
 const Container = styled(BaseComponent)`
@@ -24,10 +26,12 @@ export type RowProps = {
     justify?: Justify;
     fullHeight?: boolean;
     noOverflow?: boolean;
+    testId?: string;
 };
 
 export const Row = (props: RowProps) => {
-    const { children, wrap, reverse, spacing, stretch, align, justify, fullHeight, noOverflow, ...rest } = props;
+    const { children, wrap, reverse, spacing, stretch, align, justify, fullHeight, noOverflow, testId, ...rest } =
+        props;
     const style: React.CSSProperties = {
         flexDirection: reverse ? 'row-reverse' : 'row',
         alignItems: align,
@@ -39,7 +43,7 @@ export const Row = (props: RowProps) => {
         gap: spacing ? themeVars.spacing[spacing] : 0,
     };
     return (
-        <Container style={style} {...rest}>
+        <Container style={style} testId={testId} {...rest}>
             {children}
         </Container>
     );

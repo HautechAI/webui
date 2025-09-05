@@ -6,9 +6,10 @@ export type HorizontalTextAlignmentControlProps = {
     value?: 'left' | 'center' | 'right';
     onChange?: (event: React.MouseEvent<HTMLDivElement, MouseEvent>, value: 'left' | 'center' | 'right') => void;
     size?: 'default' | 'small';
+    testId?: string;
 };
 
-const HorizontalTextAlignmentControl = ({ value, onChange, size }: HorizontalTextAlignmentControlProps) => {
+const HorizontalTextAlignmentControl = ({ value, onChange, size, testId }: HorizontalTextAlignmentControlProps) => {
     const options = [
         {
             value: 'left' as const,
@@ -28,7 +29,16 @@ const HorizontalTextAlignmentControl = ({ value, onChange, size }: HorizontalTex
         onChange?.(event, newValue as 'left' | 'center' | 'right');
     };
 
-    return <SegmentedControl options={options} value={value} onChange={handleChange} whitespace="m" size={size} />;
+    return (
+        <SegmentedControl
+            options={options}
+            value={value}
+            onChange={handleChange}
+            whitespace="m"
+            size={size}
+            testId={testId}
+        />
+    );
 };
 
 export default HorizontalTextAlignmentControl;

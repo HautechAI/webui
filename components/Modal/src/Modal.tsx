@@ -54,12 +54,13 @@ export type ModalProps = {
         bottom?: number | string;
     };
     backdropStyle?: React.CSSProperties;
+    testId?: string;
 };
 
 export const Modal = (props: ModalProps) => {
     const contentPosition = { top: 0, left: 0, ...props.contentPosition };
     return (
-        <Container data-open={!!props.open}>
+        <Container data-open={!!props.open} data-testid={props.testId}>
             <Backdrop onClick={props.onClose} style={props.backdropStyle} />
             <ContentContainer
                 data-custom-position={!!props.contentPosition}

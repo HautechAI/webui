@@ -96,9 +96,10 @@ export type SwitchProps = {
     checked?: boolean;
     onChange?: (checked: boolean) => void;
     disabled?: boolean;
+    testId?: string;
 };
 
-export const Switch = ({ checked: controlledChecked, onChange, disabled }: SwitchProps) => {
+export const Switch = ({ checked: controlledChecked, onChange, disabled, testId }: SwitchProps) => {
     const [uncontrolledChecked, setUncontrolledChecked] = useState(false);
     const isControlled = controlledChecked !== undefined;
     const checked = isControlled ? controlledChecked : uncontrolledChecked;
@@ -112,7 +113,7 @@ export const Switch = ({ checked: controlledChecked, onChange, disabled }: Switc
     };
 
     return (
-        <SwitchContainer data-disabled={!!disabled}>
+        <SwitchContainer data-disabled={!!disabled} data-testid={testId}>
             <HiddenCheckbox
                 type="checkbox"
                 checked={checked !== undefined ? !!checked : undefined}
