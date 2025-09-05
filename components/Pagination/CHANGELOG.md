@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.23](https://github.com/HautechAI/webui/compare/@hautechai/webui.pagination@2.1.22...@hautechai/webui.pagination@2.1.23) (2025-09-05)
+
+**Note:** Version bump only for package @hautechai/webui.pagination
+
 ## [2.1.22](https://github.com/HautechAI/webui/compare/@hautechai/webui.pagination@2.1.21...@hautechai/webui.pagination@2.1.22) (2025-08-24)
 
 **Note:** Version bump only for package @hautechai/webui.pagination
