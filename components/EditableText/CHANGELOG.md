@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.14](https://github.com/HautechAI/webui/compare/@hautechai/webui.editabletext@2.1.13...@hautechai/webui.editabletext@2.1.14) (2025-09-06)
+
+**Note:** Version bump only for package @hautechai/webui.editabletext
+
 ## [2.1.13](https://github.com/HautechAI/webui/compare/@hautechai/webui.editabletext@2.1.12...@hautechai/webui.editabletext@2.1.13) (2025-09-05)
 
 **Note:** Version bump only for package @hautechai/webui.editabletext

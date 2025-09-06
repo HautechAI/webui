@@ -1,7 +1,7 @@
 {
     "name": "@hautechai/webui.layertreeitemchild",
     "description": "Child item component for layer tree with editable label and optional input",
-    "version": "1.0.6",
+    "version": "1.0.7",
     "type": "module",
     "main": "src/index.tsx",
     "publishConfig": {
