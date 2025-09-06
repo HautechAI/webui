@@ -1,7 +1,7 @@
 {
     "name": "@hautechai/webui.numberwithunitsinput",
     "description": "Number input with units selection",
-    "version": "1.0.9",
+    "version": "1.0.10",
     "type": "module",
     "main": "src/index.tsx",
     "publishConfig": {

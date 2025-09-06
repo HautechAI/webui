@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.24](https://github.com/HautechAI/webui/compare/@hautechai/webui.counter@2.1.23...@hautechai/webui.counter@2.1.24) (2025-09-06)
+
+**Note:** Version bump only for package @hautechai/webui.counter
+
 ## [2.1.23](https://github.com/HautechAI/webui/compare/@hautechai/webui.counter@2.1.22...@hautechai/webui.counter@2.1.23) (2025-09-05)
 
 **Note:** Version bump only for package @hautechai/webui.counter

@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.21](https://github.com/HautechAI/webui/compare/@hautechai/webui.timelinetrack@2.0.20...@hautechai/webui.timelinetrack@2.0.21) (2025-09-06)
+
+**Note:** Version bump only for package @hautechai/webui.timelinetrack
+
 ## [2.0.20](https://github.com/HautechAI/webui/compare/@hautechai/webui.timelinetrack@2.0.19...@hautechai/webui.timelinetrack@2.0.20) (2025-09-05)
 
 **Note:** Version bump only for package @hautechai/webui.timelinetrack

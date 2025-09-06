@@ -1,7 +1,7 @@
 {
     "name": "@hautechai/webui.timelinetoolbar",
     "description": "Timeline toolbar component with playback controls and time display",
-    "version": "1.0.6",
+    "version": "1.0.7",
     "type": "module",
     "main": "src/index.tsx",
     "publishConfig": {
