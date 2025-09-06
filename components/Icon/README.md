@@ -78,7 +78,8 @@ import {
   TextStrikethroughIcon,
   TextUppercaseIcon,
   TextLowercaseIcon,
-  TextTitlecaseIcon
+  TextTitlecaseIcon,
+  WarningIcon
 } from '@hautechai/webui.icon';
 
 // Basic usage
@@ -103,6 +104,9 @@ import {
 <TextUppercaseIcon size={24} />
 <TextLowercaseIcon size={24} />
 <TextTitlecaseIcon size={24} />
+
+// Warning and alert icons
+<WarningIcon size={24} />
 
 // Alignment icons
 <AlignTextLeftIcon size={24} />
