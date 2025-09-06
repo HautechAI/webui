@@ -64,10 +64,11 @@ export const NodePort: React.FC<NodePortProps> = ({ type, label, interactiveHand
         <Container data-testid={testId} data-type={type}>
             {label && (
                 <LabelContainer>
-                    {state === 'warning' && <WarningIcon size={16} color="actions.warning" />}
+                    {state === 'warning' && type === 'input' && <WarningIcon size={16} color="actions.warning" />}
                     <Typography variant="CaptionRegular" color="layout.onSurface.secondary">
                         {label}
                     </Typography>
+                    {state === 'warning' && type === 'output' && <WarningIcon size={16} color="actions.warning" />}
                 </LabelContainer>
             )}
             <PortHandle data-type={type} data-state={state}>
