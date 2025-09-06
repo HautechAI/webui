@@ -45,4 +45,55 @@ describe('NodePort', () => {
         expect(getByText('Test Label')).toBeInTheDocument();
         expect(getByTestId('interactive-handle')).toBeInTheDocument();
     });
+
+    it('should render in normal state by default', () => {
+        const { container } = render(
+            <ThemeProvider theme={testTheme}>
+                <NodePort type="input" label="Test Label" />
+            </ThemeProvider>,
+        );
+        const portHandle = container.querySelector('[data-state="normal"]');
+        expect(portHandle).toBeInTheDocument();
+    });
+
+    it('should render warning icon in warning state', () => {
+        const { container } = render(
+            <ThemeProvider theme={testTheme}>
+                <NodePort type="input" label="Test Label" state="warning" />
+            </ThemeProvider>,
+        );
+        // Check for the WarningIcon's SVG
+        const warningIcon = container.querySelector('svg[viewBox="0 0 20 20"]');
+        expect(warningIcon).toBeInTheDocument();
+    });
+
+    it('should apply error styling to port handle in error state', () => {
+        const { container } = render(
+            <ThemeProvider theme={testTheme}>
+                <NodePort type="input" label="Test Label" state="error" />
+            </ThemeProvider>,
+        );
+        const portHandle = container.querySelector('[data-state="error"]');
+        expect(portHandle).toBeInTheDocument();
+    });
+
+    it('should not render warning icon in normal state', () => {
+        const { container } = render(
+            <ThemeProvider theme={testTheme}>
+                <NodePort type="input" label="Test Label" state="normal" />
+            </ThemeProvider>,
+        );
+        const warningIcon = container.querySelector('svg[viewBox="0 0 20 20"]');
+        expect(warningIcon).not.toBeInTheDocument();
+    });
+
+    it('should not render warning icon in error state', () => {
+        const { container } = render(
+            <ThemeProvider theme={testTheme}>
+                <NodePort type="input" label="Test Label" state="error" />
+            </ThemeProvider>,
+        );
+        const warningIcon = container.querySelector('svg[viewBox="0 0 20 20"]');
+        expect(warningIcon).not.toBeInTheDocument();
+    });
 });
