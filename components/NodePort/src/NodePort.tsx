@@ -2,12 +2,14 @@ import React, { ReactNode } from 'react';
 import { styled } from '@hautechai/webui.themeprovider';
 import { themeVars } from '@hautechai/webui.themeprovider';
 import { Typography } from '@hautechai/webui.typography';
+import { WarningIcon } from '@hautechai/webui.icon';
 
 export interface NodePortProps {
     type: 'input' | 'output';
     label?: string;
     interactiveHandle?: ReactNode;
     testId?: string;
+    state?: 'normal' | 'warning' | 'error';
 }
 
 const Container = styled.div`
@@ -45,17 +47,33 @@ const PortHandle = styled.div`
     &[data-type='output'] {
         right: -6px;
     }
+
+    &[data-state='error'] {
+        background: ${themeVars.actions.error};
+    }
 `;
 
-export const NodePort: React.FC<NodePortProps> = ({ type, label, interactiveHandle, testId }) => {
+const LabelContainer = styled.div`
+    display: flex;
+    align-items: center;
+    gap: ${themeVars.spacing.s};
+`;
+
+export const NodePort: React.FC<NodePortProps> = ({ type, label, interactiveHandle, testId, state = 'normal' }) => {
     return (
         <Container data-testid={testId} data-type={type}>
             {label && (
-                <Typography variant="CaptionRegular" color="layout.onSurface.secondary">
-                    {label}
-                </Typography>
+                <LabelContainer>
+                    {state === 'warning' && type === 'input' && <WarningIcon size={16} color="actions.warning" />}
+                    <Typography variant="CaptionRegular" color="layout.onSurface.secondary">
+                        {label}
+                    </Typography>
+                    {state === 'warning' && type === 'output' && <WarningIcon size={16} color="actions.warning" />}
+                </LabelContainer>
             )}
-            <PortHandle data-type={type}>{interactiveHandle}</PortHandle>
+            <PortHandle data-type={type} data-state={state}>
+                {interactiveHandle}
+            </PortHandle>
         </Container>
     );
 };

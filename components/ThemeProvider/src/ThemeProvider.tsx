@@ -69,6 +69,7 @@ export type ThemeType = {
             onNeutral: string;
             success: string;
             onSuccess: string;
+            warning: string;
             error: string;
             onError: string;
         };

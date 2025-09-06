@@ -36,6 +36,7 @@ export const testTheme: ThemeType = {
             onNeutral: '#FCFCFC',
             success: '#2C8D31',
             onSuccess: '#F2FBF2',
+            warning: '#D2B232',
             error: '#D36560',
             onError: '#FCF6E6',
         },

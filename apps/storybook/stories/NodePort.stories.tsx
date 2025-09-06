@@ -56,3 +56,35 @@ export const WithInteractiveHandle = {
         ),
     },
 };
+
+export const WarningState = {
+    args: {
+        type: 'input',
+        label: 'Warning Port',
+        state: 'warning',
+    },
+};
+
+export const WarningStateOutput = {
+    args: {
+        type: 'output',
+        label: 'Warning Output',
+        state: 'warning',
+    },
+};
+
+export const ErrorState = {
+    args: {
+        type: 'input',
+        label: 'Error Port',
+        state: 'error',
+    },
+};
+
+export const ErrorStateOutput = {
+    args: {
+        type: 'output',
+        label: 'Error Output',
+        state: 'error',
+    },
+};
