@@ -8,8 +8,9 @@ import { useDropzone } from 'react-dropzone';
 
 const FileInputContainer = styled.div<Pick<FileInputProps, 'stretch'>>`
     display: flex;
-    width: 320px;
-    height: 120px;
+    width: ${({ stretch }) => (stretch ? 'auto' : '320px')};
+    height: ${({ stretch }) => (stretch ? 'auto' : '120px')};
+    flex: ${({ stretch }) => (stretch ? 1 : 'none')};
     padding: ${themeVars.spacing.xxxl};
     flex-direction: column;
     justify-content: center;
@@ -124,7 +125,7 @@ export const FileInput: React.FC<FileInputProps> = (props) => {
     }, [isDragAccept]);
 
     const renderLabel = (label: string, color: TypographyProps['color']) => (
-        <Typography variant="H1" color={color}>
+        <Typography variant="H1" color={color} textAlign="center">
             {label}
         </Typography>
     );
@@ -163,6 +164,7 @@ export const FileInput: React.FC<FileInputProps> = (props) => {
     ) : (
         <FileInputContainer
             ref={dropzoneRef}
+            stretch={props.stretch}
             data-reject={isDragReject}
             data-accept={delayedAccept}
             data-active={isDragActive}
