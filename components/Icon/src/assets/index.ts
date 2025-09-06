@@ -90,6 +90,7 @@ export * from './trousers';
 export * from './undo';
 export * from './unlink';
 export * from './upload';
+export * from './warning';
 export * from './w';
 export * from './workflow';
 export * from './play';
