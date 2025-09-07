@@ -30,11 +30,7 @@ describe('VisualEditorTextInput', () => {
     it('should disable input when isPort is true', () => {
         const { container } = render(
             <TestWrapper>
-                <VisualEditorTextInput
-                    isPort={true}
-                    keyframesState="noKeyframes"
-                    value="test value"
-                />
+                <VisualEditorTextInput isPort={true} keyframesState="noKeyframes" value="test value" />
             </TestWrapper>,
         );
 
@@ -45,12 +41,7 @@ describe('VisualEditorTextInput', () => {
     it('should disable input when disabled prop is true', () => {
         const { container } = render(
             <TestWrapper>
-                <VisualEditorTextInput
-                    isPort={false}
-                    keyframesState="noKeyframes"
-                    value="test value"
-                    disabled={true}
-                />
+                <VisualEditorTextInput isPort={false} keyframesState="noKeyframes" value="test value" disabled={true} />
             </TestWrapper>,
         );
 
@@ -160,11 +151,7 @@ describe('VisualEditorTextInput', () => {
     it('should handle different keyframe states', () => {
         const { container: container1 } = render(
             <TestWrapper>
-                <VisualEditorTextInput
-                    isPort={false}
-                    keyframesState="hasKeyframes"
-                    value="test value"
-                />
+                <VisualEditorTextInput isPort={false} keyframesState="hasKeyframes" value="test value" />
             </TestWrapper>,
         );
 
@@ -172,11 +159,7 @@ describe('VisualEditorTextInput', () => {
 
         const { container: container2 } = render(
             <TestWrapper>
-                <VisualEditorTextInput
-                    isPort={false}
-                    keyframesState="isKeyframe"
-                    value="test value"
-                />
+                <VisualEditorTextInput isPort={false} keyframesState="isKeyframe" value="test value" />
             </TestWrapper>,
         );
 

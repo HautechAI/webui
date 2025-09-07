@@ -11,7 +11,7 @@ const Container = styled.div`
     align-items: center;
     gap: ${themeVars.spacing.s};
     flex: 1;
-    
+
     &[data-disabled='true'] {
         cursor: not-allowed;
         color: ${themeVars.layout.strokes};
@@ -38,10 +38,14 @@ const HoverControlsContainer = styled.div`
 `;
 
 // Local PortToggle component
-const PortToggle = ({ isPort, onTogglePort, disabled }: { 
-    isPort: boolean; 
-    onTogglePort?: () => void; 
-    disabled?: boolean; 
+const PortToggle = ({
+    isPort,
+    onTogglePort,
+    disabled,
+}: {
+    isPort: boolean;
+    onTogglePort?: () => void;
+    disabled?: boolean;
 }) => (
     <ToggleIconButton
         variant="flat"
@@ -53,21 +57,15 @@ const PortToggle = ({ isPort, onTogglePort, disabled }: {
 );
 
 // Local KeyframeToggle wrapper
-const LocalKeyframeToggle = ({ 
-    keyframesState, 
-    onToggleKeyframe, 
-    disabled 
-}: { 
-    keyframesState: KeyframeToggleState; 
-    onToggleKeyframe?: () => void; 
-    disabled?: boolean; 
-}) => (
-    <KeyframeToggle
-        state={keyframesState}
-        onClick={onToggleKeyframe}
-        disabled={disabled}
-    />
-);
+const LocalKeyframeToggle = ({
+    keyframesState,
+    onToggleKeyframe,
+    disabled,
+}: {
+    keyframesState: KeyframeToggleState;
+    onToggleKeyframe?: () => void;
+    disabled?: boolean;
+}) => <KeyframeToggle state={keyframesState} onClick={onToggleKeyframe} disabled={disabled} />;
 
 export type VisualEditorNumberWithUnitsInputProps = {
     // Visual editor specific props
@@ -75,7 +73,7 @@ export type VisualEditorNumberWithUnitsInputProps = {
     onTogglePort?: () => void;
     keyframesState: KeyframeToggleState;
     onToggleKeyframe?: () => void;
-    
+
     // NumberWithUnitsInput props
     value: string;
     onChange?: (value: string) => void;
@@ -93,14 +91,7 @@ export type VisualEditorNumberWithUnitsInputProps = {
 };
 
 export const VisualEditorNumberWithUnitsInput = (props: VisualEditorNumberWithUnitsInputProps) => {
-    const {
-        isPort,
-        onTogglePort,
-        keyframesState,
-        onToggleKeyframe,
-        disabled,
-        ...inputProps
-    } = props;
+    const { isPort, onTogglePort, keyframesState, onToggleKeyframe, disabled, ...inputProps } = props;
 
     const [isHovered, setIsHovered] = useState(false);
     const [isFocused, setIsFocused] = useState(false);
@@ -117,21 +108,14 @@ export const VisualEditorNumberWithUnitsInput = (props: VisualEditorNumberWithUn
             onBlurCapture={() => setIsFocused(false)}
         >
             <InputWrapper>
-                <NumberWithUnitsInput
-                    {...inputProps}
-                    disabled={isComponentDisabled}
-                />
+                <NumberWithUnitsInput {...inputProps} disabled={isComponentDisabled} />
             </InputWrapper>
             <HoverControlsContainer data-show={showHoverControls}>
-                <PortToggle 
-                    isPort={isPort} 
-                    onTogglePort={onTogglePort} 
-                    disabled={disabled} 
-                />
-                <LocalKeyframeToggle 
-                    keyframesState={keyframesState} 
-                    onToggleKeyframe={onToggleKeyframe} 
-                    disabled={isComponentDisabled} 
+                <PortToggle isPort={isPort} onTogglePort={onTogglePort} disabled={disabled} />
+                <LocalKeyframeToggle
+                    keyframesState={keyframesState}
+                    onToggleKeyframe={onToggleKeyframe}
+                    disabled={isComponentDisabled}
                 />
             </HoverControlsContainer>
         </Container>

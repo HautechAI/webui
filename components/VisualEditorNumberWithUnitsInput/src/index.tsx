@@ -1,1 +1,4 @@
-export { VisualEditorNumberWithUnitsInput, type VisualEditorNumberWithUnitsInputProps } from './VisualEditorNumberWithUnitsInput';
+export {
+    VisualEditorNumberWithUnitsInput,
+    type VisualEditorNumberWithUnitsInputProps,
+} from './VisualEditorNumberWithUnitsInput';

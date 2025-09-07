@@ -231,7 +231,7 @@ describe('VisualEditorSegmentedControl', () => {
         );
 
         const mainContainer = container.querySelector('[data-disabled="false"]');
-        
+
         // Test focus
         fireEvent.focusIn(mainContainer!);
         expect(container.querySelector('[data-show="true"]')).toBeTruthy();

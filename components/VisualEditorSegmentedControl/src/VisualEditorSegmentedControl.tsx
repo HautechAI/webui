@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { SegmentedControl, type SegmentedControlProps } from '@hautechai/webui.segmentedcontrol';
+import { SegmentedControl } from '@hautechai/webui.segmentedcontrol';
 import { KeyframeToggle, type KeyframeToggleState } from '@hautechai/webui.keyframetoggle';
 import { ToggleIconButton } from '@hautechai/webui.toggleiconbutton';
 import { WorkflowIcon, UnlinkIcon } from '@hautechai/webui.icon';
@@ -11,7 +11,7 @@ const Container = styled.div`
     display: flex;
     align-items: center;
     gap: ${themeVars.spacing.s};
-    
+
     &[data-disabled='true'] {
         cursor: not-allowed;
         color: ${themeVars.layout.strokes};
@@ -37,10 +37,14 @@ const TogglesCluster = styled.div`
 `;
 
 // Local PortToggle component
-const PortToggle = ({ isPort, onTogglePort, disabled }: { 
-    isPort: boolean; 
-    onTogglePort?: () => void; 
-    disabled?: boolean; 
+const PortToggle = ({
+    isPort,
+    onTogglePort,
+    disabled,
+}: {
+    isPort: boolean;
+    onTogglePort?: () => void;
+    disabled?: boolean;
 }) => (
     <ToggleIconButton
         variant="flat"
@@ -52,21 +56,15 @@ const PortToggle = ({ isPort, onTogglePort, disabled }: {
 );
 
 // Local KeyframeToggle wrapper
-const LocalKeyframeToggle = ({ 
-    keyframesState, 
-    onToggleKeyframe, 
-    disabled 
-}: { 
-    keyframesState: KeyframeToggleState; 
-    onToggleKeyframe?: () => void; 
-    disabled?: boolean; 
-}) => (
-    <KeyframeToggle
-        state={keyframesState}
-        onClick={onToggleKeyframe}
-        disabled={disabled}
-    />
-);
+const LocalKeyframeToggle = ({
+    keyframesState,
+    onToggleKeyframe,
+    disabled,
+}: {
+    keyframesState: KeyframeToggleState;
+    onToggleKeyframe?: () => void;
+    disabled?: boolean;
+}) => <KeyframeToggle state={keyframesState} onClick={onToggleKeyframe} disabled={disabled} />;
 
 export type VisualEditorSegmentedControlProps = {
     // Visual editor specific props
@@ -74,7 +72,7 @@ export type VisualEditorSegmentedControlProps = {
     onTogglePort?: () => void;
     keyframesState: KeyframeToggleState;
     onToggleKeyframe?: () => void;
-    
+
     // SegmentedControl props
     options: Array<{
         value: string;
@@ -95,14 +93,7 @@ export type VisualEditorSegmentedControlProps = {
 };
 
 export const VisualEditorSegmentedControl = (props: VisualEditorSegmentedControlProps) => {
-    const {
-        isPort,
-        onTogglePort,
-        keyframesState,
-        onToggleKeyframe,
-        disabled,
-        ...segmentedControlProps
-    } = props;
+    const { isPort, onTogglePort, keyframesState, onToggleKeyframe, disabled, ...segmentedControlProps } = props;
 
     const [isHovered, setIsHovered] = useState(false);
     const [isFocused, setIsFocused] = useState(false);
@@ -126,15 +117,11 @@ export const VisualEditorSegmentedControl = (props: VisualEditorSegmentedControl
                 />
             </ControlWrapper>
             <TogglesCluster data-show={showToggles}>
-                <PortToggle 
-                    isPort={isPort} 
-                    onTogglePort={onTogglePort} 
-                    disabled={disabled} 
-                />
-                <LocalKeyframeToggle 
-                    keyframesState={keyframesState} 
-                    onToggleKeyframe={onToggleKeyframe} 
-                    disabled={isComponentDisabled} 
+                <PortToggle isPort={isPort} onTogglePort={onTogglePort} disabled={disabled} />
+                <LocalKeyframeToggle
+                    keyframesState={keyframesState}
+                    onToggleKeyframe={onToggleKeyframe}
+                    disabled={isComponentDisabled}
                 />
             </TogglesCluster>
         </Container>

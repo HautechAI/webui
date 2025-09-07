@@ -5,10 +5,14 @@ import { ToggleIconButton } from '@hautechai/webui.toggleiconbutton';
 import { WorkflowIcon, UnlinkIcon } from '@hautechai/webui.icon';
 
 // Local PortToggle component
-const PortToggle = ({ isPort, onTogglePort, disabled }: { 
-    isPort: boolean; 
-    onTogglePort?: () => void; 
-    disabled?: boolean; 
+const PortToggle = ({
+    isPort,
+    onTogglePort,
+    disabled,
+}: {
+    isPort: boolean;
+    onTogglePort?: () => void;
+    disabled?: boolean;
 }) => (
     <ToggleIconButton
         variant="flat"
@@ -20,21 +24,15 @@ const PortToggle = ({ isPort, onTogglePort, disabled }: {
 );
 
 // Local KeyframeToggle wrapper
-const LocalKeyframeToggle = ({ 
-    keyframesState, 
-    onToggleKeyframe, 
-    disabled 
-}: { 
-    keyframesState: KeyframeToggleState; 
-    onToggleKeyframe?: () => void; 
-    disabled?: boolean; 
-}) => (
-    <KeyframeToggle
-        state={keyframesState}
-        onClick={onToggleKeyframe}
-        disabled={disabled}
-    />
-);
+const LocalKeyframeToggle = ({
+    keyframesState,
+    onToggleKeyframe,
+    disabled,
+}: {
+    keyframesState: KeyframeToggleState;
+    onToggleKeyframe?: () => void;
+    disabled?: boolean;
+}) => <KeyframeToggle state={keyframesState} onClick={onToggleKeyframe} disabled={disabled} />;
 
 export type VisualEditorTextInputProps = {
     // Visual editor specific props
@@ -42,7 +40,7 @@ export type VisualEditorTextInputProps = {
     onTogglePort?: () => void;
     keyframesState: KeyframeToggleState;
     onToggleKeyframe?: () => void;
-    
+
     // TextInput props
     value?: string;
     onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
@@ -60,28 +58,17 @@ export type VisualEditorTextInputProps = {
 };
 
 export const VisualEditorTextInput = (props: VisualEditorTextInputProps) => {
-    const {
-        isPort,
-        onTogglePort,
-        keyframesState,
-        onToggleKeyframe,
-        disabled,
-        ...textInputProps
-    } = props;
+    const { isPort, onTogglePort, keyframesState, onToggleKeyframe, disabled, ...textInputProps } = props;
 
     const isInputDisabled = disabled || isPort;
 
     const hoverControls = (
         <>
-            <PortToggle 
-                isPort={isPort} 
-                onTogglePort={onTogglePort} 
-                disabled={disabled} 
-            />
-            <LocalKeyframeToggle 
-                keyframesState={keyframesState} 
-                onToggleKeyframe={onToggleKeyframe} 
-                disabled={isInputDisabled} 
+            <PortToggle isPort={isPort} onTogglePort={onTogglePort} disabled={disabled} />
+            <LocalKeyframeToggle
+                keyframesState={keyframesState}
+                onToggleKeyframe={onToggleKeyframe}
+                disabled={isInputDisabled}
             />
         </>
     );

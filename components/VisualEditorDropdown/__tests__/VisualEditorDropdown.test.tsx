@@ -198,7 +198,7 @@ describe('VisualEditorDropdown', () => {
 
     it('should call onChange when dropdown value changes', () => {
         const mockOnChange = vi.fn();
-        const { container } = render(
+        render(
             <TestWrapper>
                 <VisualEditorDropdown
                     isPort={false}
