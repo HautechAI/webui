@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { fn } from '@storybook/test';
 import { Box } from '../../../components/Box/src';
 import ColorPickerInput from '../../../components/ColorPickerInput/src';
+import { IconButton } from '../../../components/IconButton/src';
+import { PlaceholderIcon } from '../../../components/Icon/src';
 
 export default {
     title: 'Input/ColorPickerInput',
@@ -174,5 +176,64 @@ export const Variations = () => {
                 placeholder="Outlined variation"
             />
         </Box>
+    );
+};
+
+export const WithHoverControls = () => {
+    const [color, setColor] = useState('#E11D48');
+
+    return (
+        <ColorPickerInput
+            value={color}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setColor(e.target.value)}
+            onColorChange={(color: string) => setColor(color)}
+            placeholder="Color picker with hover controls"
+            hoverControls={
+                <>
+                    <IconButton variant="flat" icon={<PlaceholderIcon />} size="xsmall" />
+                    <IconButton variant="flat" icon={<PlaceholderIcon />} size="xsmall" />
+                </>
+            }
+        />
+    );
+};
+
+export const WithHoverControlsSmall = () => {
+    const [color, setColor] = useState('#059669');
+
+    return (
+        <ColorPickerInput
+            value={color}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setColor(e.target.value)}
+            onColorChange={(color: string) => setColor(color)}
+            size="small"
+            placeholder="Small color picker with controls"
+            hoverControls={
+                <>
+                    <IconButton variant="flat" icon={<PlaceholderIcon />} size="xsmall" />
+                    <IconButton variant="flat" icon={<PlaceholderIcon />} size="xsmall" />
+                </>
+            }
+        />
+    );
+};
+
+export const WithHoverControlsAndAlpha = () => {
+    const [color, setColor] = useState('#F59E0BCC');
+
+    return (
+        <ColorPickerInput
+            value={color}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setColor(e.target.value)}
+            onColorChange={(color: string) => setColor(color)}
+            alphaEnabled={true}
+            placeholder="Color picker with alpha and controls"
+            hoverControls={
+                <>
+                    <IconButton variant="flat" icon={<PlaceholderIcon />} size="xsmall" />
+                    <IconButton variant="flat" icon={<PlaceholderIcon />} size="xsmall" />
+                </>
+            }
+        />
     );
 };
