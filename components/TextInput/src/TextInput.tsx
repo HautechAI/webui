@@ -185,12 +185,11 @@ export const TextInput = (props: TextInputProps) => {
     }, []);
 
     const { disabled, icon, testId, hoverControls } = props;
-  
+
     const size = props.size ?? 'medium';
     const showHoverControls = (isHovered || isFocused) && hoverControls && !disabled;
 
     return (
-
         <Container
             onClick={handleClick}
             data-disabled={!!disabled}
