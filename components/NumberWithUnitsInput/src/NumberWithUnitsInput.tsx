@@ -142,6 +142,7 @@ export type NumberWithUnitsInputProps = {
     leadingIcon?: React.ReactNode;
     hasError?: boolean;
     className?: string;
+    testId?: string;
 };
 
 export const NumberWithUnitsInput = (props: NumberWithUnitsInputProps) => {
@@ -210,6 +211,7 @@ export const NumberWithUnitsInput = (props: NumberWithUnitsInputProps) => {
             size={size}
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
+            data-testid={props.testId}
         >
             <InputBox
                 data-disabled={!!disabled}

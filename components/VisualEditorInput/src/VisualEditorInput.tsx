@@ -154,6 +154,7 @@ export type VisualEditorInputProps = {
     hasError?: boolean;
     variation?: 'filled' | 'outlined';
     size?: 'medium' | 'small';
+    testId?: string;
 };
 
 const KeyframeContainer = styled.div`
@@ -269,6 +270,7 @@ export const VisualEditorInput = (props: VisualEditorInputProps) => {
             size={size}
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
+            data-testid={props.testId}
         >
             <InputBox
                 data-disabled={!!isInputDisabled}

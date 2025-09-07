@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.9](https://github.com/HautechAI/webui/compare/@hautechai/webui.panel@2.1.8...@hautechai/webui.panel@2.1.9) (2025-09-06)
+
+**Note:** Version bump only for package @hautechai/webui.panel
+
+## [2.1.8](https://github.com/HautechAI/webui/compare/@hautechai/webui.panel@2.1.7...@hautechai/webui.panel@2.1.8) (2025-09-05)
+
+**Note:** Version bump only for package @hautechai/webui.panel
+
 ## [2.1.7](https://github.com/HautechAI/webui/compare/@hautechai/webui.panel@2.1.6...@hautechai/webui.panel@2.1.7) (2025-08-18)
 
 **Note:** Version bump only for package @hautechai/webui.panel

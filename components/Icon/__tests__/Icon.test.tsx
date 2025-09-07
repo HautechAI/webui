@@ -35,6 +35,7 @@ import {
     TextUppercaseIcon,
     TextLowercaseIcon,
     TextTitlecaseIcon,
+    WarningIcon,
 } from '../src/assets';
 import { ThemeProvider } from '../../ThemeProvider/src';
 import { testTheme } from '../../test-theme';
@@ -425,6 +426,16 @@ describe('Icon', () => {
             render(
                 <ThemeProvider theme={testTheme}>
                     <TextTitlecaseIcon />
+                </ThemeProvider>,
+            );
+        }).not.toThrow();
+    });
+
+    it('should render WarningIcon without crashing', () => {
+        expect(() => {
+            render(
+                <ThemeProvider theme={testTheme}>
+                    <WarningIcon />
                 </ThemeProvider>,
             );
         }).not.toThrow();

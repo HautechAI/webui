@@ -1,7 +1,14 @@
 import { styled } from '@hautechai/webui.themeprovider';
 import { themeVars } from '@hautechai/webui.themeprovider';
 
-const Container = styled.div<
+const BaseContainer = (
+    props: Pick<PanelProps, 'className' | 'children' | 'testId'> & { style?: React.CSSProperties },
+) => {
+    const { className, children, style, testId } = props;
+    return <div {...{ className, children, style }} data-testid={testId} />;
+};
+
+const Container = styled(BaseContainer)<
     Required<Pick<PanelProps, 'hierarchy' | 'size'>> & Pick<PanelProps, 'stretch' | 'highlighted'>
 >`
     display: flex;
@@ -58,19 +65,21 @@ export type PanelProps = {
     size?: 'small' | 'medium';
     stretch?: boolean;
     highlighted?: boolean;
+    testId?: string;
 };
 
 export const Panel = (props: PanelProps) => {
-    const { hierarchy = 'mid' } = props;
+    const { hierarchy = 'mid', testId, ...restProps } = props;
     return (
         <Container
-            className={props.className}
+            className={restProps.className}
             hierarchy={hierarchy}
-            size={props.size ?? 'medium'}
-            stretch={props.stretch}
-            highlighted={props.highlighted}
+            size={restProps.size ?? 'medium'}
+            stretch={restProps.stretch}
+            highlighted={restProps.highlighted}
+            testId={testId}
         >
-            {props.children}
+            {restProps.children}
         </Container>
     );
 };

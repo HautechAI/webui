@@ -44,11 +44,12 @@ export type AppBarProps = {
     left?: React.ReactNode;
     center?: React.ReactNode;
     right?: React.ReactNode;
+    testId?: string;
 };
 export const AppBar = (props: AppBarProps) => {
-    const { hierarchy = 'mid' } = props;
+    const { hierarchy = 'mid', testId } = props;
     return (
-        <Container data-hierarchy={hierarchy}>
+        <Container data-hierarchy={hierarchy} data-testid={testId}>
             <LeftContainer>{props.left}</LeftContainer>
             <CenterContainer>{props.center}</CenterContainer>
             <RightContainer>{props.right}</RightContainer>

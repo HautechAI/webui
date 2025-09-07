@@ -160,4 +160,49 @@ describe('FileInput', () => {
         // The detailed drag/drop testing would require more complex setup with react-dropzone
         expect(mockOnChange).not.toHaveBeenCalled();
     });
+
+    it('should apply stretch styles when stretch prop is true', () => {
+        const { container } = render(
+            <ThemeProvider theme={testTheme}>
+                <FileInput onChange={() => {}} stretch={true} />
+            </ThemeProvider>,
+        );
+
+        const fileInputContainer = container.querySelector('[data-active="false"]');
+        expect(fileInputContainer).toBeTruthy();
+
+        // Check that the component has flex: 1 styles when stretch is enabled
+        const computedStyle = window.getComputedStyle(fileInputContainer as Element);
+        expect(computedStyle.flex).toBe('1 0 0%');
+    });
+
+    it('should not apply stretch styles when stretch prop is false or undefined', () => {
+        const { container } = render(
+            <ThemeProvider theme={testTheme}>
+                <FileInput onChange={() => {}} stretch={false} />
+            </ThemeProvider>,
+        );
+
+        const fileInputContainer = container.querySelector('[data-active="false"]');
+        expect(fileInputContainer).toBeTruthy();
+
+        // Check that the component does not have flex: 1 when stretch is disabled
+        const computedStyle = window.getComputedStyle(fileInputContainer as Element);
+        expect(computedStyle.flex).toBe('0 0 auto');
+    });
+
+    it('should center-align caption text', () => {
+        const { container } = render(
+            <ThemeProvider theme={testTheme}>
+                <FileInput onChange={() => {}} label="Test Label" />
+            </ThemeProvider>,
+        );
+
+        const typography = container.querySelector('[data-variant="H1"]');
+        expect(typography).toBeTruthy();
+
+        // Check that text alignment is set to center
+        const computedStyle = window.getComputedStyle(typography as Element);
+        expect(computedStyle.textAlign).toBe('center');
+    });
 });

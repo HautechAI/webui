@@ -6,9 +6,10 @@ export type VerticalAlignmentControlProps = {
     value?: 'top' | 'middle' | 'bottom';
     onChange?: (event: React.MouseEvent<HTMLDivElement, MouseEvent>, value: 'top' | 'middle' | 'bottom') => void;
     size?: 'default' | 'small';
+    testId?: string;
 };
 
-const VerticalAlignmentControl = ({ value, onChange, size }: VerticalAlignmentControlProps) => {
+const VerticalAlignmentControl = ({ value, onChange, size, testId }: VerticalAlignmentControlProps) => {
     const options = [
         {
             value: 'top' as const,
@@ -28,7 +29,16 @@ const VerticalAlignmentControl = ({ value, onChange, size }: VerticalAlignmentCo
         onChange?.(event, newValue as 'top' | 'middle' | 'bottom');
     };
 
-    return <SegmentedControl options={options} value={value} onChange={handleChange} whitespace="m" size={size} />;
+    return (
+        <SegmentedControl
+            options={options}
+            value={value}
+            onChange={handleChange}
+            whitespace="m"
+            size={size}
+            testId={testId}
+        />
+    );
 };
 
 export default VerticalAlignmentControl;

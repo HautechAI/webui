@@ -10,6 +10,7 @@ export interface NodeHeaderProps {
     icon?: React.ReactNode;
     label: string;
     badge?: React.ReactNode;
+    testId?: string;
 }
 
 const NoShrink = styled.div`
@@ -34,13 +35,13 @@ const LabelContainer = styled.div`
     flex: 1;
 `;
 
-export const NodeHeader: React.FC<NodeHeaderProps> = ({ icon, label, badge }) => {
+export const NodeHeader: React.FC<NodeHeaderProps> = ({ icon, label, badge, testId }) => {
     const sizedIcon = React.isValidElement<{ size?: number; color?: IconColorProp }>(icon)
         ? React.cloneElement(icon, { size: 16, color: 'layout.onSurface.secondary' })
         : icon;
     return (
         <>
-            <Container>
+            <Container data-testid={testId}>
                 {sizedIcon && <NoShrink>{sizedIcon}</NoShrink>}
                 <Column overflow="hidden" stretch>
                     <LabelContainer>

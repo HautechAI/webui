@@ -1,7 +1,7 @@
 {
     "name": "@hautechai/webui.nodeport",
     "description": "Port component for Node system",
-    "version": "1.0.7",
+    "version": "1.0.9",
     "type": "module",
     "main": "src/index.tsx",
     "publishConfig": {
@@ -14,6 +14,7 @@
     },
     "author": "HautechAI",
     "dependencies": {
+        "@hautechai/webui.icon": "workspace:^",
         "@hautechai/webui.themeprovider": "workspace:^",
         "@hautechai/webui.typography": "workspace:^"
     },

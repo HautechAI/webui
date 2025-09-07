@@ -8,4 +8,5 @@ export type OperationItemProps = {
     unread?: boolean;
     title: string;
     progress?: number;
+    testId?: string;
 };

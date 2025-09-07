@@ -19,12 +19,13 @@ export type CardProps = {
     onClick?: React.MouseEventHandler<HTMLElement>;
     href?: string;
     tileComponent?: TileProps['component'];
+    testId?: string;
 };
 
 export const Card = (props: CardProps) => {
     const ActionWrapper = props.href ? 'a' : props.onClick ? ButtonBase : Fragment;
     return (
-        <Column spacing="s" stretch={props.fullWidth}>
+        <Column spacing="s" stretch={props.fullWidth} testId={props.testId}>
             <ActionWrapper onClick={props.onClick} href={props.href}>
                 <Tile
                     width={props.fullWidth ? '100%' : props.width}

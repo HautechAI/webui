@@ -1,8 +1,13 @@
 import { ComponentProps } from 'react';
 import * as S from './Table.styled';
 
-export const Root = (props: ComponentProps<typeof S.Root>) => {
-    return <S.Root {...props}></S.Root>;
+export type TableRootProps = ComponentProps<typeof S.Root> & {
+    testId?: string;
+};
+
+export const Root = (props: TableRootProps) => {
+    const { testId, ...otherProps } = props;
+    return <S.Root data-testid={testId} {...otherProps}></S.Root>;
 };
 
 export const Head = (props: ComponentProps<typeof S.Head>) => {

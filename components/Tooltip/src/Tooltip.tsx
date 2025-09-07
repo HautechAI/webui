@@ -37,6 +37,7 @@ type TooltipBaseProps = {
     reposition?: boolean;
     boundaryElement?: HTMLElement;
     zIndex?: number;
+    testId?: string;
 };
 
 type TooltipSmallProps = TooltipBaseProps & {
@@ -79,7 +80,7 @@ export const Tooltip = (props: TooltipProps) => {
         </Typography>
     );
     return (
-        <TooltipContainer>
+        <TooltipContainer data-testid={props.testId}>
             <TinyPopover
                 reposition={props.reposition ?? false}
                 boundaryElement={props.boundaryElement}

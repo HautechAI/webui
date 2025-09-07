@@ -27,9 +27,10 @@ export type ZoomProps = {
     value: number;
     onChange: (value: number) => void;
     step?: number;
+    testId?: string;
 };
 
-export const Zoom = ({ value, onChange, step = 10 }: ZoomProps) => {
+export const Zoom = ({ value, onChange, step = 10, testId }: ZoomProps) => {
     const handleDecrement = useCallback(() => {
         const newValue = Math.floor(value / step) * step;
         // If value is already at a step boundary, go to previous step
@@ -45,7 +46,7 @@ export const Zoom = ({ value, onChange, step = 10 }: ZoomProps) => {
     }, [value, onChange, step]);
 
     return (
-        <ZoomContainer>
+        <ZoomContainer data-testid={testId}>
             <ZoomControls>
                 <IconButton size="xsmall" variant="flat" onClick={handleDecrement} icon={<MinusIcon />} />
                 <Typography variant="Body" textAlign="center">

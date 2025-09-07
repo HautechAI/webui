@@ -10,6 +10,7 @@ export type MenuProps = {
     trigger?: () => React.ReactNode;
     contentPositions?: PopoverProps['contentPositions'];
     size?: 'small' | 'medium';
+    testId?: string;
 };
 
 export const Menu = (props: MenuProps) => {
@@ -17,7 +18,7 @@ export const Menu = (props: MenuProps) => {
     const size = props.size ?? 'small';
 
     const renderMenuList = () => (
-        <Column spacing="s">
+        <Column spacing="s" testId={props.testId}>
             {props.options.map((opt) => {
                 const key = opt.value ?? opt.label;
                 const isSelected = props.value ? opt.value === props.value : opt.isSelected;

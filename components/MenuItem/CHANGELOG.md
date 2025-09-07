@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.11](https://github.com/HautechAI/webui/compare/@hautechai/webui.menuitem@2.1.10...@hautechai/webui.menuitem@2.1.11) (2025-09-06)
+
+**Note:** Version bump only for package @hautechai/webui.menuitem
+
+## [2.1.10](https://github.com/HautechAI/webui/compare/@hautechai/webui.menuitem@2.1.9...@hautechai/webui.menuitem@2.1.10) (2025-09-05)
+
+**Note:** Version bump only for package @hautechai/webui.menuitem
+
 ## [2.1.9](https://github.com/HautechAI/webui/compare/@hautechai/webui.menuitem@2.1.8...@hautechai/webui.menuitem@2.1.9) (2025-08-18)
 
 **Note:** Version bump only for package @hautechai/webui.menuitem

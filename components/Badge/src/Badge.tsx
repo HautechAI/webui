@@ -10,7 +10,7 @@ export const Badge = (props: BadgeProps) => {
               ? 'actions.error'
               : 'layout.onSurface.secondary';
     return (
-        <S.Container data-color={props.color}>
+        <S.Container data-color={props.color} data-testid={props.testId}>
             <Typography color={textColor} variant="LabelSmallRegular">
                 {props.label}
             </Typography>

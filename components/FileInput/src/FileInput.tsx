@@ -8,8 +8,9 @@ import { useDropzone } from 'react-dropzone';
 
 const FileInputContainer = styled.div<Pick<FileInputProps, 'stretch'>>`
     display: flex;
-    width: 320px;
-    height: 120px;
+    width: ${({ stretch }) => (stretch ? 'auto' : '320px')};
+    height: ${({ stretch }) => (stretch ? 'auto' : '120px')};
+    flex: ${({ stretch }) => (stretch ? 1 : 'none')};
     padding: ${themeVars.spacing.xxxl};
     flex-direction: column;
     justify-content: center;
@@ -72,6 +73,7 @@ export type FileInputProps = {
 
     variant?: 'dropzone' | 'button';
     stretch?: boolean;
+    testId?: string;
 };
 
 export const FileInput: React.FC<FileInputProps> = (props) => {
@@ -83,6 +85,7 @@ export const FileInput: React.FC<FileInputProps> = (props) => {
         labelDragRejectedButton = 'Uploading again',
         stopPropagation = true,
         accept,
+        testId,
     } = props;
 
     const dropzoneRef = useRef<HTMLDivElement>(null);
@@ -122,7 +125,7 @@ export const FileInput: React.FC<FileInputProps> = (props) => {
     }, [isDragAccept]);
 
     const renderLabel = (label: string, color: TypographyProps['color']) => (
-        <Typography variant="H1" color={color}>
+        <Typography variant="H1" color={color} textAlign="center">
             {label}
         </Typography>
     );
@@ -154,16 +157,18 @@ export const FileInput: React.FC<FileInputProps> = (props) => {
     };
 
     return props.variant === 'button' ? (
-        <ButtonFileInput ref={dropzoneRef} {...rootProps}>
+        <ButtonFileInput ref={dropzoneRef} {...rootProps} data-testid={testId}>
             <input {...getInputProps()} />
             <Button label={labelButton} leadingIcon={<UploadIcon size={20} />} stretch={props.stretch} />
         </ButtonFileInput>
     ) : (
         <FileInputContainer
             ref={dropzoneRef}
+            stretch={props.stretch}
             data-reject={isDragReject}
             data-accept={delayedAccept}
             data-active={isDragActive}
+            data-testid={testId}
             {...rootProps}
         >
             <input {...getInputProps()} />

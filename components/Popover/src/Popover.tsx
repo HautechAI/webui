@@ -17,13 +17,15 @@ export const Popover = forwardRef<PopoverRef, PopoverProps>((props: PopoverProps
     }));
 
     return (
-        <TinyPopover
-            content={<S.Container>{props.content({ close })}</S.Container>}
-            isOpen={isOpen}
-            onClickOutside={close}
-            positions={props.contentPositions ?? ['top', 'bottom', 'left', 'right']}
-        >
-            <div onClick={toggle}>{props.trigger()}</div>
-        </TinyPopover>
+        <div data-testid={props.testId}>
+            <TinyPopover
+                content={<S.Container>{props.content({ close })}</S.Container>}
+                isOpen={isOpen}
+                onClickOutside={close}
+                positions={props.contentPositions ?? ['top', 'bottom', 'left', 'right']}
+            >
+                <div onClick={toggle}>{props.trigger()}</div>
+            </TinyPopover>
+        </div>
     );
 });

@@ -175,6 +175,7 @@ export type TextAreaProps = {
     actionButton?: React.ReactNode;
     actionButtonInside?: boolean;
     actionButtonPosition?: 'top' | 'middle' | 'bottom';
+    testId?: string;
 };
 
 export const TextArea = (props: TextAreaProps) => {
@@ -194,7 +195,7 @@ export const TextArea = (props: TextAreaProps) => {
     } = props;
 
     return (
-        <Container onClick={handleClick} data-disabled={!!disabled}>
+        <Container onClick={handleClick} data-disabled={!!disabled} data-testid={props.testId}>
             <InputContainer
                 data-disabled={!!disabled}
                 data-has-error={!!props.hasError}

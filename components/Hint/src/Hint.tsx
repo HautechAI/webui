@@ -19,11 +19,19 @@ export type HintProps = {
     position?: 'right' | 'left' | 'top' | 'bottom';
     buttonLabel?: string;
     onClick?: () => void;
+    testId?: string;
 };
 
-export const Hint = ({ hint, buttonLabel, onClick, position = 'bottom' }: HintProps) => {
+export const Hint = ({ hint, buttonLabel, onClick, position = 'bottom', testId }: HintProps) => {
     return (
-        <Tooltip size="medium" text={hint} buttonLabel={buttonLabel} onClick={onClick} position={position}>
+        <Tooltip
+            size="medium"
+            text={hint}
+            buttonLabel={buttonLabel}
+            onClick={onClick}
+            position={position}
+            testId={testId}
+        >
             <Icon size={16} />
         </Tooltip>
     );

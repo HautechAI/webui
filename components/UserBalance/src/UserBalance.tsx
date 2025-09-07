@@ -8,12 +8,13 @@ export type UserBalanceProps = {
     buttonLabel?: string;
     label?: string;
     onTopUpClick?: () => void;
+    testId?: string;
 };
 
 export const UserBalance = (props: UserBalanceProps) => {
     const { label = 'Balance', buttonLabel = 'Top up' } = props;
     return (
-        <Panel hierarchy="high">
+        <Panel hierarchy="high" testId={props.testId}>
             <Row spacing="ml" stretch>
                 <DataItem label={label} value={props.balance} size="small" stretch />
                 <Button label={buttonLabel} size="small" onClick={props.onTopUpClick} />

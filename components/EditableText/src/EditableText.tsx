@@ -12,6 +12,7 @@ export type EditableTextProps = {
     onStartEditing?: () => void;
     onChange?: (value: string) => void;
     onFinishEditing?: () => void;
+    testId?: string;
 };
 
 // Get Typography variant based on size and selected state
@@ -68,6 +69,7 @@ export const EditableText = (props: EditableTextProps) => {
             <div
                 ref={containerRef}
                 style={{ display: 'inline-block' }}
+                data-testid={props.testId}
                 onKeyDown={(e) => {
                     if (e.key === 'Enter') {
                         onFinishEditing?.();
@@ -80,9 +82,13 @@ export const EditableText = (props: EditableTextProps) => {
     }
 
     return (
-        <div onDoubleClick={handleDoubleClick} style={{ cursor: 'pointer', display: 'inline-block', width: '100%' }}>
+        <div
+            onDoubleClick={handleDoubleClick}
+            style={{ cursor: 'pointer', display: 'inline-block', width: '100%' }}
+            data-testid={props.testId}
+        >
             <Typography variant={getTypographyVariant(size, selected)} noWrap={true} overflow="ellipsis">
-                {text.trim() || '\u00A0'}
+                {text?.trim() || '\u00A0'}
             </Typography>
         </div>
     );

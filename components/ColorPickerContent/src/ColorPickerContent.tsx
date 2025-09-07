@@ -203,6 +203,8 @@ export interface ColorPickerContentProps {
     onChange?: (color: HSVColor) => void;
     /** Whether to show alpha controls */
     withAlpha?: boolean;
+    /** Test ID for component testing */
+    testId?: string;
 }
 
 type ColorFormat = 'HEX' | 'RGB' | 'HSL';
@@ -217,6 +219,7 @@ export const ColorPickerContent: React.FC<ColorPickerContentProps> = ({
     value = { h: 0, s: 100, v: 100, a: 1 },
     onChange,
     withAlpha = true,
+    testId,
 }) => {
     const [colorFormat, setColorFormat] = useState<ColorFormat>('HEX');
     const [isDragging, setIsDragging] = useState<'sv' | 'hue' | 'alpha' | null>(null);
@@ -468,7 +471,7 @@ export const ColorPickerContent: React.FC<ColorPickerContentProps> = ({
     };
 
     return (
-        <Container>
+        <Container data-testid={testId}>
             <ColorPalette>
                 <SVPanel
                     ref={svPanelRef}

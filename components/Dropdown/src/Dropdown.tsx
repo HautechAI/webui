@@ -209,6 +209,7 @@ export type DropdownProps = {
     onChange?: (value: string) => void;
     hasError?: boolean;
     hoverControls?: React.ReactNode;
+    testId?: string;
 };
 
 export const Dropdown = (props: DropdownProps) => {
@@ -266,13 +267,13 @@ export const Dropdown = (props: DropdownProps) => {
         };
     }, [isOpen]);
 
-    const { disabled, hoverControls } = props;
+    const { disabled, testId, hoverControls } = props;
     const size = props.size ?? 'medium';
     const collapsed = !!props.collapsed;
     const showHoverControls = (isHovered || isFocused) && hoverControls && !disabled;
 
     return (
-        <Container data-disabled={disabled} data-collapsed={collapsed} ref={ref}>
+        <Container data-disabled={disabled} data-collapsed={collapsed} ref={ref} data-testid={testId}>
             <ButtonContainer
                 data-disabled={disabled}
                 data-type={props.type ?? 'filled'}

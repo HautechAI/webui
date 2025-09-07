@@ -10,6 +10,7 @@ export type TimelineRulerProps = {
     length: number;
     /** Distance between numbered graduations in pixels */
     numberedGraduationsDistance: number;
+    testId?: string;
 };
 
 const StyledRuler = styled.div`
@@ -92,7 +93,7 @@ const formatTimeLabel = (seconds: number): string => {
 };
 
 export const TimelineRuler: React.FC<TimelineRulerProps> = (props) => {
-    const { scale, length, numberedGraduationsDistance } = props;
+    const { scale, length, numberedGraduationsDistance, testId } = props;
 
     const graduationData = useMemo(() => {
         const timeInterval = getTimeInterval(length, numberedGraduationsDistance, scale);
@@ -131,7 +132,7 @@ export const TimelineRuler: React.FC<TimelineRulerProps> = (props) => {
     const { numberedGraduations, subGraduationWidth, additionalUnnumberedGraduations } = graduationData;
 
     return (
-        <StyledRuler>
+        <StyledRuler data-testid={testId}>
             <StyledTimelineRuler style={{ width: `${graduationData.totalWidth}px` }}>
                 {numberedGraduations.map((time, index) => {
                     const isLast = index === numberedGraduations.length - 1;

@@ -9,6 +9,7 @@ export type KeyframeToggleProps = {
     onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
     state: KeyframeToggleState;
     disabled?: boolean;
+    testId?: string;
 };
 
 const StyledButton = styled('button')`
@@ -48,13 +49,13 @@ const StyledButton = styled('button')`
 `;
 
 export const KeyframeToggle = (props: KeyframeToggleProps) => {
-    const { state, onClick, disabled, ...rest } = props;
+    const { state, onClick, disabled, testId, ...rest } = props;
 
     // Determine icon style based on state
     const iconStyle = state === 'isKeyframe' ? 'bold' : 'outlined';
 
     return (
-        <StyledButton data-state={state} onClick={onClick} disabled={disabled} {...rest}>
+        <StyledButton data-state={state} onClick={onClick} disabled={disabled} data-testid={testId} {...rest}>
             <DiamondIcon size={16} style={iconStyle} color="currentColor" />
         </StyledButton>
     );

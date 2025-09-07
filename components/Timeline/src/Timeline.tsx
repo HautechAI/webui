@@ -62,6 +62,8 @@ export interface TimelineProps {
     onStartMoveKeyframe?: (keyframeId: string) => void;
     /** Called when keyframe move operation finishes */
     onFinishMoveKeyframe?: (keyframeId: string, time: number) => void;
+    /** Test ID for component testing */
+    testId?: string;
 }
 
 // Wrapper that now reserves 24px for the custom scrollbar area above the timeline grid
@@ -172,6 +174,7 @@ export const Timeline: React.FC<TimelineProps> = ({
     onFinishMoveTrack,
     onStartMoveKeyframe,
     onFinishMoveKeyframe,
+    testId,
 }) => {
     // Use provided duration directly (previously computed as maxTime)
     const timelineDuration = duration;
@@ -242,7 +245,7 @@ export const Timeline: React.FC<TimelineProps> = ({
     }, []);
 
     return (
-        <Wrapper height={height}>
+        <Wrapper height={height} data-testid={testId}>
             <TimelineScrollbar
                 duration={timelineDuration}
                 scale={internalScale}
