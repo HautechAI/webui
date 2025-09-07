@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.28](https://github.com/HautechAI/webui/compare/@hautechai/webui.layertreeitemparent@2.1.27...@hautechai/webui.layertreeitemparent@2.1.28) (2025-09-07)
+
+**Note:** Version bump only for package @hautechai/webui.layertreeitemparent
+
 ## [2.1.27](https://github.com/HautechAI/webui/compare/@hautechai/webui.layertreeitemparent@2.1.26...@hautechai/webui.layertreeitemparent@2.1.27) (2025-09-06)
 
 **Note:** Version bump only for package @hautechai/webui.layertreeitemparent
