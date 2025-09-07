@@ -1,0 +1,1 @@
+export { VisualEditorTextInput, type VisualEditorTextInputProps } from './VisualEditorTextInput';

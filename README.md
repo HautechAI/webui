@@ -43,7 +43,11 @@ The library includes the following components organized by category:
 | [**ToggleIconButton**](components/ToggleIconButton/README.md)                             | Toggle button component optimized for displaying icons with different color schemes       |
 | [**ToolButton**](components/ToolButton/README.md)                                         | Icon button component with selected state functionality for toolbar interfaces            |
 | [**VerticalAlignmentControl**](components/VerticalAlignmentControl/README.md)             | Multi-option alignment selector for vertical alignment with icon-only interface           |
+| [**VisualEditorDropdown**](components/VisualEditorDropdown/README.md)                     | Visual editor dropdown wrapper with port connectivity and keyframe timeline controls      |
 | [**VisualEditorInput**](components/VisualEditorInput/README.md)                           | Visual editor input component with keyframe support, unit controls, and port connectivity |
+| [**VisualEditorNumberWithUnitsInput**](components/VisualEditorNumberWithUnitsInput/README.md) | Visual editor number with units input wrapper with port connectivity and keyframe timeline controls |
+| [**VisualEditorSegmentedControl**](components/VisualEditorSegmentedControl/README.md)     | Visual editor segmented control wrapper with port connectivity and keyframe timeline controls |
+| [**VisualEditorTextInput**](components/VisualEditorTextInput/README.md)                   | Visual editor text input wrapper with port connectivity and keyframe timeline controls    |
 | [**Zoom**](components/Zoom/README.md)                                                     | Zoom control component with increment/decrement buttons for adjusting zoom levels         |
 
 ### Data Display
