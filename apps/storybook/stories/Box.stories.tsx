@@ -26,6 +26,13 @@ export const Main = {
     },
 };
 
+export const Padding = {
+    args: {
+        children: 'content',
+        padding: 'l',
+    },
+};
+
 export const PaddingTop = {
     args: {
         children: 'content',
