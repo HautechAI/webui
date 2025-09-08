@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.4](https://github.com/HautechAI/webui/compare/@hautechai/webui.chat@2.1.3...@hautechai/webui.chat@2.1.4) (2025-09-08)
+
+**Note:** Version bump only for package @hautechai/webui.chat
+
 ## [2.1.3](https://github.com/HautechAI/webui/compare/@hautechai/webui.chat@2.1.2...@hautechai/webui.chat@2.1.3) (2025-09-06)
 
 **Note:** Version bump only for package @hautechai/webui.chat
