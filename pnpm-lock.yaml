@@ -1222,6 +1222,28 @@ importers:
                 version: link:../Typography
         publishDirectory: dist
 
+    components/VisualEditorNumberWithUnitsInput:
+        dependencies:
+            '@hautechai/webui.dropdown':
+                specifier: workspace:^
+                version: link:../Dropdown
+            '@hautechai/webui.icon':
+                specifier: workspace:^
+                version: link:../Icon
+            '@hautechai/webui.keyframetoggle':
+                specifier: workspace:^
+                version: link:../KeyframeToggle
+            '@hautechai/webui.themeprovider':
+                specifier: workspace:^
+                version: link:../ThemeProvider
+            '@hautechai/webui.toggleiconbutton':
+                specifier: workspace:^
+                version: link:../ToggleIconButton
+            '@hautechai/webui.typography':
+                specifier: workspace:^
+                version: link:../Typography
+        publishDirectory: dist
+
     components/Zoom:
         dependencies:
             '@hautechai/webui.icon':
