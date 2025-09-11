@@ -108,10 +108,8 @@ describe('VisualEditorNumberWithUnitsInput', () => {
         const buttons = container.querySelectorAll('button');
         expect(buttons.length).toBeGreaterThan(0);
 
-        // The keyframe toggle should be one of the buttons
-        const keyframeButton = Array.from(buttons).find(
-            (button) => button.querySelector('svg') || button.hasAttribute('data-state'),
-        );
+        // The keyframe toggle should be the button with data-state attribute
+        const keyframeButton = Array.from(buttons).find((button) => button.hasAttribute('data-state'));
         expect(keyframeButton).toBeTruthy();
 
         fireEvent.click(keyframeButton!);
