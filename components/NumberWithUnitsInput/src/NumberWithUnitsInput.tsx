@@ -105,6 +105,23 @@ const InnerIconContainer = styled.div<{ size: 'medium' | 'small' }>`
     align-items: center;
 `;
 
+const HoverControlsContainer = styled.div`
+    display: flex;
+    align-items: center;
+    gap: ${themeVars.spacing.xs};
+    opacity: 0;
+    width: 0;
+    overflow: hidden;
+    transition:
+        opacity ${themeVars.animation.duration.normal} ${themeVars.animation.timing.ease},
+        width ${themeVars.animation.duration.normal} ${themeVars.animation.timing.ease};
+
+    &[data-show='true'] {
+        opacity: 1;
+        width: auto;
+    }
+`;
+
 const UnitsContainer = styled.div`
     min-width: 24px;
     display: flex;
@@ -140,6 +157,7 @@ export type NumberWithUnitsInputProps = {
     size?: 'medium' | 'small';
     variation?: 'filled' | 'outlined';
     leadingIcon?: React.ReactNode;
+    hoverControls?: React.ReactNode;
     hasError?: boolean;
     className?: string;
     testId?: string;
@@ -148,12 +166,21 @@ export type NumberWithUnitsInputProps = {
 export const NumberWithUnitsInput = (props: NumberWithUnitsInputProps) => {
     const ref = useRef<HTMLInputElement>(null);
     const [isHovered, setIsHovered] = useState(false);
+    const [isFocused, setIsFocused] = useState(false);
 
     const handleClick = useCallback(() => {
         if (!props.disabled) {
             ref.current?.focus();
         }
     }, [props.disabled]);
+
+    const handleFocus = useCallback(() => {
+        setIsFocused(true);
+    }, []);
+
+    const handleBlur = useCallback(() => {
+        setIsFocused(false);
+    }, []);
 
     const handleInputChange = useCallback(
         (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -169,8 +196,9 @@ export const NumberWithUnitsInput = (props: NumberWithUnitsInputProps) => {
         [props.onChangeUnits],
     );
 
-    const { disabled, leadingIcon } = props;
+    const { disabled, leadingIcon, hoverControls } = props;
     const size = props.size ?? 'small';
+    const showHoverControls = (isHovered || isFocused) && hoverControls && !disabled;
 
     const unitsOptions = props.availableUnits.map((unit) => ({
         label: unit,
@@ -229,8 +257,13 @@ export const NumberWithUnitsInput = (props: NumberWithUnitsInputProps) => {
                         placeholder={props.placeholder}
                         value={props.value}
                         onChange={handleInputChange}
+                        onFocus={handleFocus}
+                        onBlur={handleBlur}
                     />
                 </InputContainer>
+                {hoverControls && (
+                    <HoverControlsContainer data-show={showHoverControls}>{hoverControls}</HoverControlsContainer>
+                )}
                 {renderTrailingControls()}
             </InputBox>
         </Container>

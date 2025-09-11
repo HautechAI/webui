@@ -31,6 +31,7 @@ yarn add @hautechai/webui.numberwithunitsinput
 | size           | 'medium' \| 'small'     | Optional size variant (defaults to 'small')              |
 | variation      | 'filled' \| 'outlined'  | Optional input style variant (defaults to 'filled')      |
 | leadingIcon    | React.ReactNode         | Optional icon element displayed at input start           |
+| hoverControls  | React.ReactNode         | Optional controls displayed on hover/focus               |
 | hasError       | boolean                 | Optional error state styling                             |
 | className      | string                  | Optional CSS class name for styling the input element    |
 
