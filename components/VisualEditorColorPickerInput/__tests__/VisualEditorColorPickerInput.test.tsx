@@ -133,7 +133,7 @@ describe('VisualEditorColorPickerInput', () => {
         }
     });
 
-    it('should not disable input when isPort is true (for hover controls visibility)', () => {
+    it('should not disable input element when isPort is true (to allow hover controls)', () => {
         const props = {
             value: '#FF0000',
             isPort: true,
@@ -148,7 +148,12 @@ describe('VisualEditorColorPickerInput', () => {
 
         const input = container.querySelector('input');
         expect(input).toBeTruthy();
+        // Input element should not be disabled so hover controls can show
         expect(input!.disabled).toBe(false);
+
+        // But input should appear disabled visually
+        const wrapper = container.querySelector('[data-is-port="true"]');
+        expect(wrapper).toBeTruthy();
     });
 
     it('should prevent color changes when isPort is true', () => {
