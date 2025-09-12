@@ -29,7 +29,6 @@ const Container = styled.div`
 export const ButtonContainer = styled.div`
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
     align-items: center;
     cursor: pointer;
 
@@ -122,6 +121,7 @@ const Label = styled(Typography)`
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+    flex: 1;
 `;
 
 const RotatingArrow = styled.div`
@@ -270,7 +270,7 @@ export const Dropdown = (props: DropdownProps) => {
     const { disabled, testId, hoverControls } = props;
     const size = props.size ?? 'medium';
     const collapsed = !!props.collapsed;
-    const showHoverControls = (isHovered || isFocused) && hoverControls && !disabled;
+    const showHoverControls = (isHovered || isFocused) && !!hoverControls;
 
     return (
         <Container data-disabled={disabled} data-collapsed={collapsed} ref={ref} data-testid={testId}>
