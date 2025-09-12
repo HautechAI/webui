@@ -45,6 +45,7 @@ The library includes the following components organized by category:
 | [**VerticalAlignmentControl**](components/VerticalAlignmentControl/README.md)                 | Multi-option alignment selector for vertical alignment with icon-only interface           |
 | [**VisualEditorInput**](components/VisualEditorInput/README.md)                               | Visual editor input component with keyframe support, unit controls, and port connectivity |
 | [**VisualEditorNumberWithUnitsInput**](components/VisualEditorNumberWithUnitsInput/README.md) | Visual editor number input with units selection, keyframe support, and port management    |
+| [**VisualEditorSegmentedControl**](components/VisualEditorSegmentedControl/README.md)         | Visual editor segmented control with port and keyframe controls always visible            |
 | [**Zoom**](components/Zoom/README.md)                                                         | Zoom control component with increment/decrement buttons for adjusting zoom levels         |
 
 ### Data Display
