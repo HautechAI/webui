@@ -1260,6 +1260,25 @@ importers:
                 version: link:../ToggleIconButton
         publishDirectory: dist
 
+    components/VisualEditorSegmentedControl:
+        dependencies:
+            '@hautechai/webui.icon':
+                specifier: workspace:^
+                version: link:../Icon
+            '@hautechai/webui.keyframetoggle':
+                specifier: workspace:^
+                version: link:../KeyframeToggle
+            '@hautechai/webui.segmentedcontrol':
+                specifier: workspace:^
+                version: link:../SegmentedControl
+            '@hautechai/webui.themeprovider':
+                specifier: workspace:^
+                version: link:../ThemeProvider
+            '@hautechai/webui.toggleiconbutton':
+                specifier: workspace:^
+                version: link:../ToggleIconButton
+        publishDirectory: dist
+
     components/Zoom:
         dependencies:
             '@hautechai/webui.icon':

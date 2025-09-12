@@ -1,0 +1,26 @@
+{
+    "name": "@hautechai/webui.visualeditorsegmentedcontrol",
+    "description": "Visual editor segmented control with port and keyframe controls",
+    "version": "1.0.0",
+    "type": "module",
+    "main": "src/index.tsx",
+    "publishConfig": {
+        "directory": "dist",
+        "access": "public",
+        "linkDirectory": false
+    },
+    "scripts": {
+        "prepack": "node ../../scripts/build-component.mjs",
+        "lint:tsc": "tsc --noEmit",
+        "lint": "pnpm lint:tsc"
+    },
+    "author": "HautechAI",
+    "dependencies": {
+        "@hautechai/webui.icon": "workspace:^",
+        "@hautechai/webui.keyframetoggle": "workspace:^",
+        "@hautechai/webui.segmentedcontrol": "workspace:^",
+        "@hautechai/webui.themeprovider": "workspace:^",
+        "@hautechai/webui.toggleiconbutton": "workspace:^"
+    },
+    "license": "Apache-2.0"
+}
