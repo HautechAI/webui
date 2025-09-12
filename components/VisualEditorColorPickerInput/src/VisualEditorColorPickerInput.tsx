@@ -88,14 +88,13 @@ export const VisualEditorColorPickerInput = (props: VisualEditorColorPickerInput
     // Create hover controls based on isPort state
     const renderHoverControls = () => {
         if (props.isPort) {
-            // When isPort is true, show UnlinkIcon
+            // When isPort is true, show UnlinkIcon - keep it accessible so users can disconnect
             return (
                 <ToggleIconButton
                     variant="flat"
                     size="xsmall"
                     icon={<UnlinkIcon size={16} />}
                     onClick={props.onTogglePort}
-                    disabled={props.disabled}
                 />
             );
         }
