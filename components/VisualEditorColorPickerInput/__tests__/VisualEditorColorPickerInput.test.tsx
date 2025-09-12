@@ -133,7 +133,7 @@ describe('VisualEditorColorPickerInput', () => {
         }
     });
 
-    it('should disable input when isPort is true', () => {
+    it('should not disable input when isPort is true (for hover controls visibility)', () => {
         const props = {
             value: '#FF0000',
             isPort: true,
@@ -148,7 +148,30 @@ describe('VisualEditorColorPickerInput', () => {
 
         const input = container.querySelector('input');
         expect(input).toBeTruthy();
-        expect(input!.disabled).toBe(true);
+        expect(input!.disabled).toBe(false);
+    });
+
+    it('should prevent color changes when isPort is true', () => {
+        const onChange = vi.fn();
+        const props = {
+            value: '#FF0000',
+            isPort: true,
+            keyframesState: 'noKeyframes' as const,
+            onChange,
+        };
+
+        const { container } = render(
+            <TestWrapper>
+                <VisualEditorColorPickerInput {...props} />
+            </TestWrapper>,
+        );
+
+        const input = container.querySelector('input');
+        expect(input).toBeTruthy();
+
+        // Try to change the color - should not call onChange
+        fireEvent.change(input!, { target: { value: '#00FF00' } });
+        expect(onChange).not.toHaveBeenCalled();
     });
 
     it('should disable input when disabled prop is true', () => {

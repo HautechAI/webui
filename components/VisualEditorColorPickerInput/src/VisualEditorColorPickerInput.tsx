@@ -57,9 +57,12 @@ export const VisualEditorColorPickerInput = (props: VisualEditorColorPickerInput
 
     const handleColorChange = useCallback(
         (color: string) => {
-            props.onChange?.(color);
+            // Prevent color changes when connected to a port
+            if (!props.isPort) {
+                props.onChange?.(color);
+            }
         },
-        [props.onChange],
+        [props.onChange, props.isPort],
     );
 
     // Create hover controls based on isPort state
@@ -95,7 +98,7 @@ export const VisualEditorColorPickerInput = (props: VisualEditorColorPickerInput
                 value={props.value}
                 onColorChange={handleColorChange}
                 placeholder={props.placeholder}
-                disabled={props.disabled || props.isPort}
+                disabled={props.disabled}
                 size={size}
                 variation={props.variation}
                 hoverControls={renderHoverControls()}
