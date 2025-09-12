@@ -1,13 +1,13 @@
 {
-    "name": "@hautechai/webui.colorpickercontent",
-    "description": "Color picker content component with SV panel, hue/alpha sliders, eyedropper, and format inputs",
-    "version": "1.0.14",
+    "name": "@hautechai/webui.visualeditordropdown",
+    "description": "Visual editor dropdown with keyframe support and port state management",
+    "version": "1.0.1",
     "type": "module",
     "main": "src/index.tsx",
     "publishConfig": {
         "directory": "dist",
-        "linkDirectory": false,
-        "access": "public"
+        "access": "public",
+        "linkDirectory": false
     },
     "scripts": {
         "prepack": "node ../../scripts/build-component.mjs",
@@ -16,12 +16,11 @@
     },
     "author": "HautechAI",
     "dependencies": {
-        "@hautechai/webui.button": "workspace:^",
         "@hautechai/webui.dropdown": "workspace:^",
         "@hautechai/webui.icon": "workspace:^",
-        "@hautechai/webui.textinput": "workspace:^",
+        "@hautechai/webui.keyframetoggle": "workspace:^",
         "@hautechai/webui.themeprovider": "workspace:^",
-        "@hautechai/webui.tooltip": "workspace:^"
+        "@hautechai/webui.toggleiconbutton": "workspace:^"
     },
     "license": "Apache-2.0"
 }

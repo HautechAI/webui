@@ -1,0 +1,17 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## 1.0.1 (2025-09-12)
+
+**Note:** Version bump only for package @hautechai/webui.visualeditordropdown
+
+# Changelog
+
+## 1.0.0
+
+- Initial release of VisualEditorDropDown component
+- Based on Dropdown component with keyframe support and port state management
+- Includes hover controls for port management (WorkflowIcon/UnlinkIcon)
+- Supports all standard dropdown features with visual editor enhancements

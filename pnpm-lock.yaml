@@ -1216,6 +1216,25 @@ importers:
                 version: link:../ToggleIconButton
         publishDirectory: dist
 
+    components/VisualEditorDropDown:
+        dependencies:
+            '@hautechai/webui.dropdown':
+                specifier: workspace:^
+                version: link:../Dropdown
+            '@hautechai/webui.icon':
+                specifier: workspace:^
+                version: link:../Icon
+            '@hautechai/webui.keyframetoggle':
+                specifier: workspace:^
+                version: link:../KeyframeToggle
+            '@hautechai/webui.themeprovider':
+                specifier: workspace:^
+                version: link:../ThemeProvider
+            '@hautechai/webui.toggleiconbutton':
+                specifier: workspace:^
+                version: link:../ToggleIconButton
+        publishDirectory: dist
+
     components/VisualEditorInput:
         dependencies:
             '@hautechai/webui.dropdown':
@@ -1252,6 +1271,25 @@ importers:
             '@hautechai/webui.numberwithunitsinput':
                 specifier: workspace:^
                 version: link:../NumberWithUnitsInput
+            '@hautechai/webui.themeprovider':
+                specifier: workspace:^
+                version: link:../ThemeProvider
+            '@hautechai/webui.toggleiconbutton':
+                specifier: workspace:^
+                version: link:../ToggleIconButton
+        publishDirectory: dist
+
+    components/VisualEditorSegmentedControl:
+        dependencies:
+            '@hautechai/webui.icon':
+                specifier: workspace:^
+                version: link:../Icon
+            '@hautechai/webui.keyframetoggle':
+                specifier: workspace:^
+                version: link:../KeyframeToggle
+            '@hautechai/webui.segmentedcontrol':
+                specifier: workspace:^
+                version: link:../SegmentedControl
             '@hautechai/webui.themeprovider':
                 specifier: workspace:^
                 version: link:../ThemeProvider

@@ -103,7 +103,7 @@ describe('Dropdown', () => {
             expect(hoverControlsContainer.getAttribute('data-show')).toBe('false');
         });
 
-        it('should not show hoverControls when disabled', () => {
+        it('should show hoverControls even when disabled', () => {
             const { container } = render(
                 <ThemeProvider theme={testTheme}>
                     <Dropdown
@@ -117,8 +117,15 @@ describe('Dropdown', () => {
             const buttonContainer = container.querySelector('[data-size]') as HTMLElement;
             const hoverControlsContainer = container.querySelector('[data-show]') as HTMLElement;
 
-            // Hover should not show controls when disabled
+            // Initially hidden
+            expect(hoverControlsContainer.getAttribute('data-show')).toBe('false');
+
+            // Should show controls even when disabled on hover
             fireEvent.mouseEnter(buttonContainer);
+            expect(hoverControlsContainer.getAttribute('data-show')).toBe('true');
+
+            // Hide on mouse leave
+            fireEvent.mouseLeave(buttonContainer);
             expect(hoverControlsContainer.getAttribute('data-show')).toBe('false');
         });
 

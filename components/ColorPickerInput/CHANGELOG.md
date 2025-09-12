@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.14](https://github.com/HautechAI/webui/compare/@hautechai/webui.colorpickerinput@1.0.13...@hautechai/webui.colorpickerinput@1.0.14) (2025-09-12)
+
+**Note:** Version bump only for package @hautechai/webui.colorpickerinput
+
 ## [1.0.13](https://github.com/HautechAI/webui/compare/@hautechai/webui.colorpickerinput@1.0.12...@hautechai/webui.colorpickerinput@1.0.13) (2025-09-07)
 
 **Note:** Version bump only for package @hautechai/webui.colorpickerinput

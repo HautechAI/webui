@@ -1,7 +1,7 @@
 {
-    "name": "@hautechai/webui.visualeditornumberwithunitsinput",
-    "description": "Visual editor number input with units selection and keyframe support",
-    "version": "1.0.2",
+    "name": "@hautechai/webui.visualeditorsegmentedcontrol",
+    "description": "Visual editor segmented control with port and keyframe controls",
+    "version": "1.0.1",
     "type": "module",
     "main": "src/index.tsx",
     "publishConfig": {
@@ -18,7 +18,7 @@
     "dependencies": {
         "@hautechai/webui.icon": "workspace:^",
         "@hautechai/webui.keyframetoggle": "workspace:^",
-        "@hautechai/webui.numberwithunitsinput": "workspace:^",
+        "@hautechai/webui.segmentedcontrol": "workspace:^",
         "@hautechai/webui.themeprovider": "workspace:^",
         "@hautechai/webui.toggleiconbutton": "workspace:^"
     },
