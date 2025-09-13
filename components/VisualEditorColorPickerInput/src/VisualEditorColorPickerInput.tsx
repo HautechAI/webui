@@ -24,6 +24,9 @@ const ColorPickerWrapper = styled.div<{ isPort: boolean }>`
         inset: 0;
         z-index: 1;
         cursor: default;
+        /* Allow clicks to pass through to hover controls by excluding their area */
+        /* The hover controls are positioned on the right side of the input */
+        right: 32px; /* Adjust based on hover controls width */
     }
 
     /* Make the input appear disabled when isPort=true */
