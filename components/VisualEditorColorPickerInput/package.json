@@ -1,7 +1,7 @@
 {
     "name": "@hautechai/webui.visualeditorcolorpickerinput",
     "description": "Visual editor color picker input with keyframe support and port toggle",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "type": "module",
     "main": "src/index.tsx",
     "publishConfig": {
@@ -16,9 +16,9 @@
     },
     "author": "HautechAI",
     "dependencies": {
+        "@hautechai/webui.colorpickerinput": "workspace:^",
         "@hautechai/webui.icon": "workspace:^",
         "@hautechai/webui.keyframetoggle": "workspace:^",
-        "@hautechai/webui.colorpickerinput": "workspace:^",
         "@hautechai/webui.themeprovider": "workspace:^",
         "@hautechai/webui.toggleiconbutton": "workspace:^"
     },
