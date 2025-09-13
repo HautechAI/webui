@@ -11,6 +11,7 @@ Color picker input component based on TextInput with popover color selection, su
 | alphaEnabled     | boolean                                          | Optional whether to enable alpha channel support (default: false)             |
 | popoverDirection | PopoverPosition[]                                | Optional popover positioning directions (default: bottom, top, left, right)   |
 | onColorChange    | (color: string) => void                          | Optional callback when color value changes                                    |
+| preventPopover   | boolean                                          | Optional prevent popover from opening while keeping hover controls functional |
 | value            | string                                           | Optional hex color value (default: #000000)                                   |
 | onChange         | (e: React.ChangeEvent<HTMLInputElement>) => void | Optional input change handler                                                 |
 | size             | 'medium' \| 'small'                              | Optional input size (default: medium)                                         |

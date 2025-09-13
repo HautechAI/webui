@@ -13,29 +13,6 @@ const Container = styled.div<{ size: 'medium' | 'small' }>`
     flex: 1;
 `;
 
-const ColorPickerWrapper = styled.div<{ isPort: boolean }>`
-    position: relative;
-    flex: 1;
-
-    /* Create an overlay when isPort=true to prevent popover opening */
-    &[data-is-port='true']::before {
-        content: '';
-        position: absolute;
-        inset: 0;
-        z-index: 1;
-        cursor: default;
-        /* Allow clicks to pass through to hover controls by excluding their area */
-        /* The hover controls are positioned on the right side of the input */
-        right: 32px; /* Adjust based on hover controls width */
-    }
-
-    /* Make the input appear disabled when isPort=true */
-    &[data-is-port='true'] input {
-        cursor: default;
-        opacity: 0.6;
-    }
-`;
-
 const KeyframeContainer = styled.div`
     display: flex;
     align-items: center;
@@ -116,20 +93,19 @@ export const VisualEditorColorPickerInput = (props: VisualEditorColorPickerInput
 
     return (
         <Container size={size} data-testid={props.testId}>
-            <ColorPickerWrapper isPort={props.isPort} data-is-port={props.isPort}>
-                <ColorPickerInput
-                    value={props.value}
-                    onColorChange={handleColorChange}
-                    placeholder={props.placeholder}
-                    disabled={props.disabled}
-                    size={size}
-                    variation={props.variation}
-                    hoverControls={renderHoverControls()}
-                    hasError={props.hasError}
-                    className={props.className}
-                    alphaEnabled={props.alphaEnabled}
-                />
-            </ColorPickerWrapper>
+            <ColorPickerInput
+                value={props.value}
+                onColorChange={handleColorChange}
+                placeholder={props.placeholder}
+                disabled={props.disabled}
+                size={size}
+                variation={props.variation}
+                hoverControls={renderHoverControls()}
+                hasError={props.hasError}
+                className={props.className}
+                alphaEnabled={props.alphaEnabled}
+                preventPopover={props.isPort}
+            />
             <KeyframeContainer onMouseEnter={handleKeyframeMouseEnter} onMouseLeave={handleKeyframeMouseLeave}>
                 <KeyframeToggle state={props.keyframesState} onClick={handleKeyframeClick} disabled={props.disabled} />
             </KeyframeContainer>

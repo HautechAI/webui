@@ -151,9 +151,9 @@ describe('VisualEditorColorPickerInput', () => {
         // Input element should not be disabled so hover controls can show
         expect(input!.disabled).toBe(false);
 
-        // But input should appear disabled visually
-        const wrapper = container.querySelector('[data-is-port="true"]');
-        expect(wrapper).toBeTruthy();
+        // But input should appear disabled visually (reduced opacity)
+        const computedStyle = window.getComputedStyle(input!);
+        expect(computedStyle.opacity).toBe('0.6');
     });
 
     it('should prevent color changes when isPort is true', () => {
