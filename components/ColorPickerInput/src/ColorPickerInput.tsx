@@ -33,6 +33,19 @@ const ColorSwatch = styled.div<{ color: string; size: 'medium' | 'small' | numbe
     }
 `;
 
+// Wrapper to handle preventPopover styling
+const ColorPickerWrapper = styled.div<{ preventPopover: boolean }>`
+    /* Apply disabled styling when preventPopover is true */
+    ${({ preventPopover }) =>
+        preventPopover &&
+        `
+        input {
+            cursor: default;
+            opacity: 0.6;
+        }
+    `}
+`;
+
 // Color utility functions
 const hexToHsv = (hex: string): HSVColor => {
     // Remove # if present
@@ -147,6 +160,8 @@ export interface ColorPickerInputProps extends Omit<TextInputProps, 'leadingIcon
     popoverDirection?: PopoverPosition[];
     /** Callback when color value changes */
     onColorChange?: (color: string) => void;
+    /** Prevent popover from opening while keeping hover controls functional */
+    preventPopover?: boolean;
 }
 
 export const ColorPickerInput = (props: ColorPickerInputProps) => {
@@ -158,6 +173,7 @@ export const ColorPickerInput = (props: ColorPickerInputProps) => {
         onColorChange,
         size = 'medium',
         hoverControls,
+        preventPopover = false,
         ...textInputProps
     } = props;
 
@@ -186,10 +202,12 @@ export const ColorPickerInput = (props: ColorPickerInputProps) => {
         [onChange, onColorChange, alphaEnabled],
     );
 
-    // Handle opening popover (triggered by popover)
+    // Handle opening popover (triggered by popover) - prevent if preventPopover is true
     const handleOpenPopover = useCallback(() => {
-        setIsPopoverOpen(true);
-    }, []);
+        if (!preventPopover) {
+            setIsPopoverOpen(true);
+        }
+    }, [preventPopover]);
 
     // Handle input change - format hex value
     const handleInputChange = useCallback(
@@ -220,15 +238,17 @@ export const ColorPickerInput = (props: ColorPickerInputProps) => {
             contentPositions={popoverDirection}
             trigger={() => (
                 <div onClick={handleOpenPopover}>
-                    <TextInput
-                        {...textInputProps}
-                        type="text"
-                        value={value}
-                        onChange={handleInputChange}
-                        size={size}
-                        leadingIcon={colorSwatch}
-                        hoverControls={hoverControls}
-                    />
+                    <ColorPickerWrapper preventPopover={preventPopover}>
+                        <TextInput
+                            {...textInputProps}
+                            type="text"
+                            value={value}
+                            onChange={handleInputChange}
+                            size={size}
+                            leadingIcon={colorSwatch}
+                            hoverControls={hoverControls}
+                        />
+                    </ColorPickerWrapper>
                 </div>
             )}
             content={() => (
