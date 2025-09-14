@@ -16,6 +16,16 @@ describe('Logo - testId prop', () => {
         expect(screen.getByTestId('my-test-logo')).toBeInTheDocument();
     });
 
+    it('should apply testId to Liana logo', () => {
+        render(
+            <ThemeProvider theme={testTheme}>
+                <Logo name="liana" testId="liana-logo" />
+            </ThemeProvider>,
+        );
+
+        expect(screen.getByTestId('liana-logo')).toBeInTheDocument();
+    });
+
     it('should not render data-testid attribute when testId is not provided', () => {
         const { container } = render(
             <ThemeProvider theme={testTheme}>

@@ -19,14 +19,16 @@ yarn add @hautechai/webui.logo
 
 ## Parameters
 
-| Parameter | Type             | Description                                                                                  |
-| --------- | ---------------- | -------------------------------------------------------------------------------------------- |
-| variant   | 'full' \| 'icon' | Optional logo variant - 'full' shows complete logo with text, 'icon' shows minimal icon only |
+| Parameter | Type                 | Description                                                                                                                                  |
+| --------- | -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| name      | 'hautech' \| 'liana' | Optional brand name - 'hautech' for Hautech logo (default), 'liana' for Liana logo                                                           |
+| variant   | 'full' \| 'icon'     | Optional logo variant - 'full' shows complete logo with text, 'icon' shows minimal icon only (note: Liana logo only supports 'full' variant) |
 
 Inherits all standard SVG element properties through SVGProps<SVGSVGElement>.
 
 ## Usage Example
 
 ```tsx
-<Logo variant="full" width={120} height={40} />
+<Logo name="hautech" variant="full" width={120} height={40} />
+<Logo name="liana" width={92} height={26} />
 ```
