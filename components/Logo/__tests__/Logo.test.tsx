@@ -68,7 +68,20 @@ describe('Logo', () => {
         expect(svg).toHaveAttribute('height', '26');
     });
 
-    it('should render Liana logo even when variant="icon" is specified', () => {
+    it('should render Liana full logo when name="liana" and variant="full"', () => {
+        const { container } = render(
+            <ThemeProvider theme={testTheme}>
+                <Logo name="liana" variant="full" />
+            </ThemeProvider>,
+        );
+
+        const svg = container.querySelector('svg');
+        expect(svg).toBeInTheDocument();
+        expect(svg).toHaveAttribute('width', '92');
+        expect(svg).toHaveAttribute('height', '26');
+    });
+
+    it('should render Liana icon logo when name="liana" and variant="icon"', () => {
         const { container } = render(
             <ThemeProvider theme={testTheme}>
                 <Logo name="liana" variant="icon" />
@@ -77,8 +90,8 @@ describe('Logo', () => {
 
         const svg = container.querySelector('svg');
         expect(svg).toBeInTheDocument();
-        // Liana only has full variant, so it should render with its default dimensions
-        expect(svg).toHaveAttribute('width', '92');
+        // Liana icon variant has its own dimensions
+        expect(svg).toHaveAttribute('width', '32');
         expect(svg).toHaveAttribute('height', '26');
     });
 

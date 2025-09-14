@@ -36,6 +36,14 @@ export const HautechIcon = {
 export const Liana = {
     args: {
         name: 'liana',
+        variant: 'full',
+    },
+};
+
+export const LianaIcon = {
+    args: {
+        name: 'liana',
+        variant: 'icon',
     },
 };
 

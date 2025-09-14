@@ -113,13 +113,65 @@ const SvgLogoLiana = (props: SVGProps<SVGSVGElement>) => (
     </svg>
 );
 
+const SvgLogoLianaIcon = (props: SVGProps<SVGSVGElement>) => (
+    <svg xmlns="http://www.w3.org/2000/svg" width={32} height={26} viewBox="0 0 32 26" fill="none" {...props}>
+        <path
+            d="M6.00635 20.7411C7.39357 21.9809 7.95972 23.5078 8.19078 24.5476C8.33644 25.2031 7.79045 25.75 7.1001 25.75H2.1001C1.40974 25.75 0.850098 25.2063 0.850098 24.5357L0.850098 19.7622C0.850098 19.0598 1.46278 18.5215 2.1605 18.7058C3.19291 18.9787 4.67523 19.5514 6.00635 20.7411Z"
+            fill="url(#paint0_linear_liana_icon)"
+        />
+        <path
+            d="M0.850098 16.0357L0.850098 11.1786C0.850098 10.5079 1.40974 9.96429 2.1001 9.96429L10.1039 9.96429C12.16 9.96429 14.1259 10.7843 15.5418 12.2324L18.5998 15.3599C19.7798 16.5667 21.418 17.25 23.1314 17.25L29.6001 17.25C30.2905 17.25 30.8501 17.7937 30.8501 18.4643V23.3214C30.8501 23.9921 30.2905 24.5357 29.6001 24.5357H28.3151C25.5624 24.5357 23.0592 22.9857 21.8972 20.5617C20.9288 18.5416 18.8428 17.25 16.5489 17.25L2.1001 17.25C1.40974 17.25 0.850098 16.7063 0.850098 16.0357Z"
+            fill="url(#paint1_linear_liana_icon)"
+        />
+        <path
+            d="M0.850098 6.32143L0.850099 1.46429C0.850099 0.793654 1.40974 0.25 2.1001 0.25L10.1039 0.250001C12.16 0.250001 14.1259 1.06997 15.5418 2.51813L18.5998 5.64561C19.7798 6.85242 21.418 7.53572 23.1314 7.53572L29.6001 7.53572C30.2905 7.53572 30.8501 8.07937 30.8501 8.75V13.6071C30.8501 14.2778 30.2905 14.8214 29.6001 14.8214H28.3151C25.5624 14.8214 23.0592 13.2715 21.8972 10.8474C20.9288 8.82734 18.8428 7.5357 16.5489 7.53571L2.1001 7.53571C1.40974 7.53571 0.850098 6.99206 0.850098 6.32143Z"
+            fill="url(#paint2_linear_liana_icon)"
+        />
+        <defs>
+            <linearGradient
+                id="paint0_linear_liana_icon"
+                x1="15.85"
+                y1="0.25"
+                x2="15.85"
+                y2="25.75"
+                gradientUnits="userSpaceOnUse"
+            >
+                <stop stopColor="#61ACC0" />
+                <stop offset="1" stopColor="#6161C0" />
+            </linearGradient>
+            <linearGradient
+                id="paint1_linear_liana_icon"
+                x1="15.85"
+                y1="0.25"
+                x2="15.85"
+                y2="25.75"
+                gradientUnits="userSpaceOnUse"
+            >
+                <stop stopColor="#61ACC0" />
+                <stop offset="1" stopColor="#6161C0" />
+            </linearGradient>
+            <linearGradient
+                id="paint2_linear_liana_icon"
+                x1="15.85"
+                y1="0.25"
+                x2="15.85"
+                y2="25.75"
+                gradientUnits="userSpaceOnUse"
+            >
+                <stop stopColor="#61ACC0" />
+                <stop offset="1" stopColor="#6161C0" />
+            </linearGradient>
+        </defs>
+    </svg>
+);
+
 export const Logo = (props: LogoProps) => {
     const { name = 'hautech', variant = 'full', testId, ...rest } = props;
     const svgProps = { ...rest, 'data-testid': testId };
 
-    // Liana only has a full variant (no icon variant)
+    // Liana has both full and icon variants
     if (name === 'liana') {
-        return <SvgLogoLiana {...svgProps} />;
+        return variant === 'icon' ? <SvgLogoLianaIcon {...svgProps} /> : <SvgLogoLiana {...svgProps} />;
     }
 
     // Hautech has both full and icon variants
