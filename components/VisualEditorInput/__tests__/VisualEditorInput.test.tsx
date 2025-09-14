@@ -72,7 +72,7 @@ describe('VisualEditorInput', () => {
         expect(onToggleKeyframe).toHaveBeenCalledTimes(1);
     });
 
-    it('should show hover controls on hover when not disabled', () => {
+    it('should show port toggle controls when rendered', () => {
         const onTogglePort = vi.fn();
         const { container } = render(
             <TestWrapper>
@@ -82,16 +82,12 @@ describe('VisualEditorInput', () => {
             </TestWrapper>,
         );
 
-        // Find the container
-        const containerElement = container.firstChild as HTMLElement;
-        expect(containerElement).toBeTruthy();
-
-        // Trigger hover
-        fireEvent.mouseEnter(containerElement);
-
-        // Check if hover controls are visible
-        const hoverControls = container.querySelector('[data-show="true"]');
-        expect(hoverControls).toBeTruthy();
+        // Check if port toggle button is visible (always visible now, not on hover)
+        const portToggleButtons = container.querySelectorAll('button[data-variant="flat"][data-size="xsmall"]');
+        const portToggleButton = Array.from(portToggleButtons).find(
+            (button) => button !== container.querySelector('button[data-state]'), // Exclude keyframe button
+        );
+        expect(portToggleButton).toBeTruthy();
     });
 
     it('should call onTogglePort when port toggle button is clicked', () => {
@@ -103,10 +99,6 @@ describe('VisualEditorInput', () => {
                 </VisualEditorInput>
             </TestWrapper>,
         );
-
-        // Find the container and trigger hover
-        const containerElement = container.firstChild as HTMLElement;
-        fireEvent.mouseEnter(containerElement);
 
         // Find the port toggle button (WorkflowIcon button)
         const portToggleButtons = container.querySelectorAll('button[data-variant="flat"][data-size="xsmall"]');
@@ -128,16 +120,15 @@ describe('VisualEditorInput', () => {
             </TestWrapper>,
         );
 
-        // Find the container and trigger hover
-        const containerElement = container.firstChild as HTMLElement;
-        fireEvent.mouseEnter(containerElement);
-
-        // When isPort is true, should show UnlinkIcon
-        const hoverControls = container.querySelector('[data-show="true"]');
-        expect(hoverControls).toBeTruthy();
+        // When isPort is true, should show UnlinkIcon in the port toggle
+        const portToggleButtons = container.querySelectorAll('button[data-variant="flat"][data-size="xsmall"]');
+        const portToggleButton = Array.from(portToggleButtons).find(
+            (button) => button !== container.querySelector('button[data-state]'), // Exclude keyframe button
+        );
+        expect(portToggleButton).toBeTruthy();
     });
 
-    it('should disable hover controls when disabled', () => {
+    it('should disable controls when disabled', () => {
         const { container } = render(
             <TestWrapper>
                 <VisualEditorInput isPort={false} keyframesState="noKeyframes" disabled={true}>
@@ -146,13 +137,18 @@ describe('VisualEditorInput', () => {
             </TestWrapper>,
         );
 
-        // Find the container and trigger hover
-        const containerElement = container.firstChild as HTMLElement;
-        fireEvent.mouseEnter(containerElement);
+        // Port toggle button should be disabled
+        const portToggleButtons = container.querySelectorAll('button[data-variant="flat"][data-size="xsmall"]');
+        const portToggleButton = Array.from(portToggleButtons).find(
+            (button) => button !== container.querySelector('button[data-state]'), // Exclude keyframe button
+        );
+        expect(portToggleButton).toBeTruthy();
+        expect(portToggleButton).toHaveAttribute('disabled');
 
-        // Hover controls should not be visible when disabled
-        const hoverControls = container.querySelector('[data-show="true"]');
-        expect(hoverControls).toBeFalsy();
+        // Keyframe button should also be disabled
+        const keyframeButton = container.querySelector('button[data-state]');
+        expect(keyframeButton).toBeTruthy();
+        expect(keyframeButton).toHaveAttribute('disabled');
     });
 
     it('should render with different keyframe states', () => {
