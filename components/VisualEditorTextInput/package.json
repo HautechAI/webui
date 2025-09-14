@@ -18,6 +18,7 @@
     "dependencies": {
         "@hautechai/webui.icon": "workspace:^",
         "@hautechai/webui.keyframetoggle": "workspace:^",
+        "@hautechai/webui.textinput": "workspace:^",
         "@hautechai/webui.themeprovider": "workspace:^",
         "@hautechai/webui.toggleiconbutton": "workspace:^"
     },

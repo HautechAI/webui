@@ -1,9 +1,10 @@
 import { styled } from '@hautechai/webui.themeprovider';
 import { themeVars } from '@hautechai/webui.themeprovider';
+import { TextInput } from '@hautechai/webui.textinput';
 import { KeyframeToggle, type KeyframeToggleState } from '@hautechai/webui.keyframetoggle';
 import { ToggleIconButton } from '@hautechai/webui.toggleiconbutton';
 import { WorkflowIcon, UnlinkIcon } from '@hautechai/webui.icon';
-import React, { useCallback, useRef, useState } from 'react';
+import React, { useCallback, useState } from 'react';
 
 const Container = styled.div<{ size: 'medium' | 'small' }>`
     display: flex;
@@ -15,118 +16,6 @@ const Container = styled.div<{ size: 'medium' | 'small' }>`
         color: ${themeVars.layout.strokes};
     }
 `;
-
-const InputBox = styled.div<{ variation: 'filled' | 'outlined'; size: 'medium' | 'small' }>`
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    cursor: text;
-
-    padding: ${({ size }) =>
-        size === 'small'
-            ? `${themeVars.spacing.s} ${themeVars.spacing.m}`
-            : `${themeVars.spacing.m} ${themeVars.spacing.ml}`};
-    flex: 1 0 0;
-
-    border-radius: ${themeVars.cornerRadius.m};
-    border-width: ${themeVars.stroke.thin};
-    border-style: solid;
-    border-color: ${themeVars.layout.strokes};
-
-    background: ${({ variation }) => (variation === 'filled' ? themeVars.layout.surfaceLow : 'transparent')};
-    &[data-has-error='true'] {
-        border-color: ${themeVars.actions.error};
-        outline-width: ${themeVars.stroke.thin};
-        outline-style: solid;
-        outline-color: ${themeVars.actions.error};
-    }
-
-    &:hover {
-        border-color: ${themeVars.layout.onSurface.tertiary};
-    }
-
-    &:active {
-        border-color: ${themeVars.layout.onSurface.tertiary};
-        outline-width: ${themeVars.stroke.thin};
-        outline-style: solid;
-        outline-color: ${themeVars.layout.onSurface.tertiary};
-    }
-
-    &:focus-within {
-        border-color: ${themeVars.actions.primary};
-        outline-width: ${themeVars.stroke.thin};
-        outline-style: solid;
-        outline-color: ${themeVars.actions.primary};
-    }
-
-    &[data-disabled='true'] {
-        cursor: not-allowed;
-    }
-
-    transition:
-        border-color ${themeVars.animation.duration.fast} ${themeVars.animation.timing.easeOut},
-        outline-color ${themeVars.animation.duration.fast} ${themeVars.animation.timing.easeOut};
-`;
-
-const CustomInput = styled.input`
-    box-sizing: border-box;
-    width: 100%;
-
-    font-family: Inter;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 20px;
-
-    color: ${themeVars.layout.onSurface.primary};
-    background: transparent;
-    border: none;
-
-    &:focus {
-        outline: none;
-    }
-
-    &::placeholder {
-        color: ${themeVars.layout.onSurface.secondary};
-    }
-
-    &:disabled {
-        cursor: not-allowed;
-        color: ${themeVars.layout.strokes};
-
-        &::placeholder {
-            color: ${themeVars.layout.strokes};
-        }
-    }
-`;
-
-const InnerIconContainer = styled.div<{ size: 'medium' | 'small' }>`
-    width: ${({ size }) => (size === 'small' ? '16px' : '20px')};
-    height: ${({ size }) => (size === 'small' ? '16px' : '20px')};
-    display: flex;
-    justify-content: center;
-    align-items: center;
-`;
-
-const TrailingContainer = styled.div`
-    display: flex;
-    align-items: center;
-    gap: ${themeVars.spacing.s};
-`;
-
-const getIcon = (icon: React.ReactNode, size: 'medium' | 'small') => (
-    <InnerIconContainer size={size}>
-        {React.Children.map(icon, (child) => {
-            if (React.isValidElement<{ size: number }>(child)) {
-                return React.cloneElement(child, {
-                    size: size === 'small' ? 16 : 20,
-                });
-            }
-            return child;
-        })}
-    </InnerIconContainer>
-);
 
 export type VisualEditorTextInputProps = {
     className?: string;
@@ -152,19 +41,8 @@ const KeyframeContainer = styled.div`
     align-items: center;
 `;
 
-const InputContainer = styled.div`
-    flex: 1;
-`;
-
 export const VisualEditorTextInput = (props: VisualEditorTextInputProps) => {
-    const ref = useRef<HTMLInputElement>(null);
     const [isHovered, setIsHovered] = useState(false);
-
-    const handleClick = useCallback(() => {
-        if (!props.disabled && !props.isPort) {
-            ref.current?.focus();
-        }
-    }, [props.disabled, props.isPort]);
 
     const handleInputChange = useCallback(
         (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -194,40 +72,31 @@ export const VisualEditorTextInput = (props: VisualEditorTextInputProps) => {
     const inputType = props.type ?? 'text'; // Default to text
     const isInputDisabled = disabled || isPort;
 
-    const renderTrailingControls = () => {
+    const renderHoverControls = () => {
         // When isPort is true and hovering, show UnlinkIcon
         if (isPort && isHovered) {
             return (
-                <TrailingContainer>
-                    <ToggleIconButton
-                        variant="flat"
-                        size="xsmall"
-                        icon={<UnlinkIcon size={16} />}
-                        onClick={props.onTogglePort}
-                        disabled={disabled}
-                    />
-                </TrailingContainer>
+                <ToggleIconButton
+                    variant="flat"
+                    size="xsmall"
+                    icon={<UnlinkIcon size={16} />}
+                    onClick={props.onTogglePort}
+                    disabled={disabled}
+                />
             );
         }
 
         // When hovering (and not port), show workflow icon
         if (isHovered && !isPort) {
             return (
-                <TrailingContainer>
-                    <ToggleIconButton
-                        variant="flat"
-                        size="xsmall"
-                        icon={<WorkflowIcon size={16} />}
-                        onClick={props.onTogglePort}
-                        disabled={disabled}
-                    />
-                </TrailingContainer>
+                <ToggleIconButton
+                    variant="flat"
+                    size="xsmall"
+                    icon={<WorkflowIcon size={16} />}
+                    onClick={props.onTogglePort}
+                    disabled={disabled}
+                />
             );
-        }
-
-        // Default: show trailing icon if provided
-        if (trailingIcon) {
-            return <TrailingContainer>{getIcon(trailingIcon, size)}</TrailingContainer>;
         }
 
         return null;
@@ -235,33 +104,26 @@ export const VisualEditorTextInput = (props: VisualEditorTextInputProps) => {
 
     return (
         <Container
-            onClick={handleClick}
             data-disabled={!!isInputDisabled}
             size={size}
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
             data-testid={props.testId}
         >
-            <InputBox
-                data-disabled={!!isInputDisabled}
+            <TextInput
+                className={props.className}
+                placeholder={props.placeholder}
+                disabled={isInputDisabled}
+                leadingIcon={leadingIcon}
+                trailingIcon={trailingIcon}
+                hoverControls={renderHoverControls()}
+                value={props.value}
+                onChange={handleInputChange}
+                hasError={props.hasError}
+                type={inputType}
                 variation={props.variation ?? 'filled'}
-                data-has-error={!!props.hasError}
                 size={size}
-            >
-                {leadingIcon ? getIcon(leadingIcon, size) : null}
-                <InputContainer>
-                    <CustomInput
-                        className={props.className}
-                        type={inputType}
-                        disabled={isInputDisabled}
-                        ref={ref}
-                        placeholder={props.placeholder}
-                        value={props.value}
-                        onChange={handleInputChange}
-                    />
-                </InputContainer>
-                {renderTrailingControls()}
-            </InputBox>
+            />
             <KeyframeContainer onMouseEnter={handleKeyframeMouseEnter} onMouseLeave={handleKeyframeMouseLeave}>
                 <KeyframeToggle state={keyframesState} onClick={handleKeyframeClick} disabled={disabled} />
             </KeyframeContainer>
