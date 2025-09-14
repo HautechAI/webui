@@ -6,16 +6,16 @@ A wrapper component that adds Port toggle and Keyframes toggle functionality to 
 
 ## Parameters
 
-| Parameter        | Type                                            | Description                                                    |
-| ---------------- | ----------------------------------------------- | -------------------------------------------------------------- |
+| Parameter        | Type                                            | Description                                                              |
+| ---------------- | ----------------------------------------------- | ------------------------------------------------------------------------ |
 | children         | React.ReactNode                                 | Required input component to wrap (e.g., TextInput, NumberWithUnitsInput) |
-| isPort           | boolean                                         | Required port connection state - affects hover controls display |
-| keyframesState   | 'noKeyframes' \| 'hasKeyframes' \| 'isKeyframe' | Required keyframe timeline state                               |
-| onToggleKeyframe | () => void                                      | Optional callback for keyframe toggle interactions             |
-| onTogglePort     | () => void                                      | Optional callback for port connection toggle                   |
-| disabled         | boolean                                         | Optional disabled state for the entire component               |
-| size             | 'medium' \| 'small'                             | Optional size variant (defaults to 'small')                   |
-| testId           | string                                          | Optional test identifier for testing                           |
+| isPort           | boolean                                         | Required port connection state - affects hover controls display          |
+| keyframesState   | 'noKeyframes' \| 'hasKeyframes' \| 'isKeyframe' | Required keyframe timeline state                                         |
+| onToggleKeyframe | () => void                                      | Optional callback for keyframe toggle interactions                       |
+| onTogglePort     | () => void                                      | Optional callback for port connection toggle                             |
+| disabled         | boolean                                         | Optional disabled state for the entire component                         |
+| size             | 'medium' \| 'small'                             | Optional size variant (defaults to 'small')                              |
+| testId           | string                                          | Optional test identifier for testing                                     |
 
 ## Usage Example
 
@@ -27,10 +27,10 @@ A wrapper component that adds Port toggle and Keyframes toggle functionality to 
     onToggleKeyframe={() => console.log('Keyframe toggled')}
     onTogglePort={() => console.log('Port toggled')}
 >
-    <TextInput 
-        type="text" 
-        value="Sample text" 
-        placeholder="Enter text" 
+    <TextInput
+        type="text"
+        value="Sample text"
+        placeholder="Enter text"
         onChange={(e) => setValue(e.target.value)}
     />
 </VisualEditorInput>

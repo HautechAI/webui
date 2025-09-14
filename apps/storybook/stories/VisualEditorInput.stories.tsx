@@ -100,9 +100,9 @@ export const Interactive = {
             const [keyframesStateText, setKeyframesStateText] = useState<'noKeyframes' | 'hasKeyframes' | 'isKeyframe'>(
                 'noKeyframes',
             );
-            const [keyframesStateNumber, setKeyframesStateNumber] = useState<'noKeyframes' | 'hasKeyframes' | 'isKeyframe'>(
-                'noKeyframes',
-            );
+            const [keyframesStateNumber, setKeyframesStateNumber] = useState<
+                'noKeyframes' | 'hasKeyframes' | 'isKeyframe'
+            >('noKeyframes');
 
             const availableUnits = ['px', '%', 'em', 'rem', 'vh', 'vw'];
 

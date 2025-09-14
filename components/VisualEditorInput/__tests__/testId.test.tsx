@@ -10,11 +10,7 @@ describe('VisualEditorInput - testId prop', () => {
     it('should apply testId as data-testid attribute when provided', () => {
         render(
             <ThemeProvider theme={testTheme}>
-                <VisualEditorInput
-                    testId="my-test-visualeditorinput"
-                    isPort={false}
-                    keyframesState="noKeyframes"
-                >
+                <VisualEditorInput testId="my-test-visualeditorinput" isPort={false} keyframesState="noKeyframes">
                     <TextInput type="text" value="test" placeholder="Enter text" />
                 </VisualEditorInput>
             </ThemeProvider>,
@@ -26,10 +22,7 @@ describe('VisualEditorInput - testId prop', () => {
     it('should not render data-testid attribute when testId is not provided', () => {
         const { container } = render(
             <ThemeProvider theme={testTheme}>
-                <VisualEditorInput
-                    isPort={false}
-                    keyframesState="noKeyframes"
-                >
+                <VisualEditorInput isPort={false} keyframesState="noKeyframes">
                     <TextInput type="text" value="test" placeholder="Enter text" />
                 </VisualEditorInput>
             </ThemeProvider>,

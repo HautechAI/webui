@@ -36,8 +36,7 @@ const HoverControlsContainer = styled.div`
     gap: ${themeVars.spacing.xs};
     opacity: 0;
     pointer-events: none;
-    transition:
-        opacity ${themeVars.animation.duration.fast} ${themeVars.animation.timing.easeOut};
+    transition: opacity ${themeVars.animation.duration.fast} ${themeVars.animation.timing.easeOut};
 
     &[data-show='true'] {
         opacity: 1;
@@ -115,9 +114,7 @@ export const VisualEditorInput = (props: VisualEditorInputProps) => {
         >
             <InputWrapper>
                 {props.children}
-                <HoverControlsContainer data-show={showHoverControls}>
-                    {renderHoverControls()}
-                </HoverControlsContainer>
+                <HoverControlsContainer data-show={showHoverControls}>{renderHoverControls()}</HoverControlsContainer>
             </InputWrapper>
             <KeyframeContainer onMouseEnter={handleKeyframeMouseEnter} onMouseLeave={handleKeyframeMouseLeave}>
                 <KeyframeToggle state={props.keyframesState} onClick={handleKeyframeClick} disabled={props.disabled} />

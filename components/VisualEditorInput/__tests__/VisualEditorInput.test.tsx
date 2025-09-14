@@ -14,10 +14,7 @@ describe('VisualEditorInput', () => {
     it('should render without crashing with TextInput child', () => {
         const { container } = render(
             <TestWrapper>
-                <VisualEditorInput
-                    isPort={false}
-                    keyframesState="noKeyframes"
-                >
+                <VisualEditorInput isPort={false} keyframesState="noKeyframes">
                     <TextInput type="text" value="test" placeholder="Enter text" />
                 </VisualEditorInput>
             </TestWrapper>,
@@ -29,10 +26,7 @@ describe('VisualEditorInput', () => {
     it('should render without crashing with NumberWithUnitsInput child', () => {
         const { container } = render(
             <TestWrapper>
-                <VisualEditorInput
-                    isPort={false}
-                    keyframesState="noKeyframes"
-                >
+                <VisualEditorInput isPort={false} keyframesState="noKeyframes">
                     <NumberWithUnitsInput
                         value="100"
                         units="px"
@@ -49,10 +43,7 @@ describe('VisualEditorInput', () => {
     it('should render keyframe toggle', () => {
         const { container } = render(
             <TestWrapper>
-                <VisualEditorInput
-                    isPort={false}
-                    keyframesState="noKeyframes"
-                >
+                <VisualEditorInput isPort={false} keyframesState="noKeyframes">
                     <TextInput type="text" value="test" placeholder="Enter text" />
                 </VisualEditorInput>
             </TestWrapper>,
@@ -67,11 +58,7 @@ describe('VisualEditorInput', () => {
         const onToggleKeyframe = vi.fn();
         const { container } = render(
             <TestWrapper>
-                <VisualEditorInput
-                    isPort={false}
-                    keyframesState="noKeyframes"
-                    onToggleKeyframe={onToggleKeyframe}
-                >
+                <VisualEditorInput isPort={false} keyframesState="noKeyframes" onToggleKeyframe={onToggleKeyframe}>
                     <TextInput type="text" value="test" placeholder="Enter text" />
                 </VisualEditorInput>
             </TestWrapper>,
@@ -89,11 +76,7 @@ describe('VisualEditorInput', () => {
         const onTogglePort = vi.fn();
         const { container } = render(
             <TestWrapper>
-                <VisualEditorInput
-                    isPort={false}
-                    keyframesState="noKeyframes"
-                    onTogglePort={onTogglePort}
-                >
+                <VisualEditorInput isPort={false} keyframesState="noKeyframes" onTogglePort={onTogglePort}>
                     <TextInput type="text" value="test" placeholder="Enter text" />
                 </VisualEditorInput>
             </TestWrapper>,
@@ -115,11 +98,7 @@ describe('VisualEditorInput', () => {
         const onTogglePort = vi.fn();
         const { container } = render(
             <TestWrapper>
-                <VisualEditorInput
-                    isPort={false}
-                    keyframesState="noKeyframes"
-                    onTogglePort={onTogglePort}
-                >
+                <VisualEditorInput isPort={false} keyframesState="noKeyframes" onTogglePort={onTogglePort}>
                     <TextInput type="text" value="test" placeholder="Enter text" />
                 </VisualEditorInput>
             </TestWrapper>,
@@ -131,8 +110,8 @@ describe('VisualEditorInput', () => {
 
         // Find the port toggle button (WorkflowIcon button)
         const portToggleButtons = container.querySelectorAll('button[data-variant="flat"][data-size="xsmall"]');
-        const portToggleButton = Array.from(portToggleButtons).find(button => 
-            button !== container.querySelector('button[data-state]') // Exclude keyframe button
+        const portToggleButton = Array.from(portToggleButtons).find(
+            (button) => button !== container.querySelector('button[data-state]'), // Exclude keyframe button
         );
         expect(portToggleButton).toBeTruthy();
 
@@ -143,10 +122,7 @@ describe('VisualEditorInput', () => {
     it('should show UnlinkIcon when isPort is true', () => {
         const { container } = render(
             <TestWrapper>
-                <VisualEditorInput
-                    isPort={true}
-                    keyframesState="noKeyframes"
-                >
+                <VisualEditorInput isPort={true} keyframesState="noKeyframes">
                     <TextInput type="text" value="test" placeholder="Enter text" />
                 </VisualEditorInput>
             </TestWrapper>,
@@ -164,11 +140,7 @@ describe('VisualEditorInput', () => {
     it('should disable hover controls when disabled', () => {
         const { container } = render(
             <TestWrapper>
-                <VisualEditorInput
-                    isPort={false}
-                    keyframesState="noKeyframes"
-                    disabled={true}
-                >
+                <VisualEditorInput isPort={false} keyframesState="noKeyframes" disabled={true}>
                     <TextInput type="text" value="test" placeholder="Enter text" />
                 </VisualEditorInput>
             </TestWrapper>,
@@ -186,17 +158,14 @@ describe('VisualEditorInput', () => {
     it('should render with different keyframe states', () => {
         const { container } = render(
             <TestWrapper>
-                <VisualEditorInput
-                    isPort={false}
-                    keyframesState="hasKeyframes"
-                >
+                <VisualEditorInput isPort={false} keyframesState="hasKeyframes">
                     <TextInput type="text" value="test" placeholder="Enter text" />
                 </VisualEditorInput>
             </TestWrapper>,
         );
 
         expect(container.firstChild).toBeTruthy();
-        
+
         // Find the keyframe toggle button
         const keyframeButton = container.querySelector('button[data-state="hasKeyframes"]');
         expect(keyframeButton).toBeTruthy();
@@ -205,10 +174,7 @@ describe('VisualEditorInput', () => {
     it('should render with small size by default', () => {
         const { container } = render(
             <TestWrapper>
-                <VisualEditorInput
-                    isPort={false}
-                    keyframesState="noKeyframes"
-                >
+                <VisualEditorInput isPort={false} keyframesState="noKeyframes">
                     <TextInput type="text" value="test" placeholder="Enter text" />
                 </VisualEditorInput>
             </TestWrapper>,
@@ -221,11 +187,7 @@ describe('VisualEditorInput', () => {
     it('should render with medium size when specified', () => {
         const { container } = render(
             <TestWrapper>
-                <VisualEditorInput
-                    isPort={false}
-                    keyframesState="noKeyframes"
-                    size="medium"
-                >
+                <VisualEditorInput isPort={false} keyframesState="noKeyframes" size="medium">
                     <TextInput type="text" value="test" placeholder="Enter text" />
                 </VisualEditorInput>
             </TestWrapper>,
@@ -238,11 +200,7 @@ describe('VisualEditorInput', () => {
     it('should apply testId correctly', () => {
         const { container } = render(
             <TestWrapper>
-                <VisualEditorInput
-                    isPort={false}
-                    keyframesState="noKeyframes"
-                    testId="test-visual-editor-input"
-                >
+                <VisualEditorInput isPort={false} keyframesState="noKeyframes" testId="test-visual-editor-input">
                     <TextInput type="text" value="test" placeholder="Enter text" />
                 </VisualEditorInput>
             </TestWrapper>,
