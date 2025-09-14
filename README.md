@@ -48,6 +48,7 @@ The library includes the following components organized by category:
 | [**VisualEditorInput**](components/VisualEditorInput/README.md)                               | Visual editor input component with keyframe support, unit controls, and port connectivity |
 | [**VisualEditorNumberWithUnitsInput**](components/VisualEditorNumberWithUnitsInput/README.md) | Visual editor number input with units selection, keyframe support, and port management    |
 | [**VisualEditorSegmentedControl**](components/VisualEditorSegmentedControl/README.md)         | Visual editor segmented control with port and keyframe controls always visible            |
+| [**VisualEditorTextInput**](components/VisualEditorTextInput/README.md)                       | Visual editor text input component with keyframe support and port connectivity            |
 | [**Zoom**](components/Zoom/README.md)                                                         | Zoom control component with increment/decrement buttons for adjusting zoom levels         |
 
 ### Data Display
