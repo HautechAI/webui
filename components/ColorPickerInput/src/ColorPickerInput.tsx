@@ -35,6 +35,7 @@ const ColorSwatch = styled.div<{ color: string; size: 'medium' | 'small' | numbe
 
 // Wrapper to handle preventPopover styling
 const ColorPickerWrapper = styled.div<{ preventPopover: boolean }>`
+    flex: 1;
     /* Apply disabled styling when preventPopover is true */
     ${({ preventPopover }) =>
         preventPopover &&
@@ -237,19 +238,17 @@ export const ColorPickerInput = (props: ColorPickerInputProps) => {
         <Popover
             contentPositions={popoverDirection}
             trigger={() => (
-                <div onClick={handleOpenPopover}>
-                    <ColorPickerWrapper preventPopover={preventPopover}>
-                        <TextInput
-                            {...textInputProps}
-                            type="text"
-                            value={value}
-                            onChange={handleInputChange}
-                            size={size}
-                            leadingIcon={colorSwatch}
-                            hoverControls={hoverControls}
-                        />
-                    </ColorPickerWrapper>
-                </div>
+                <ColorPickerWrapper preventPopover={preventPopover} onClick={handleOpenPopover}>
+                    <TextInput
+                        {...textInputProps}
+                        type="text"
+                        value={value}
+                        onChange={handleInputChange}
+                        size={size}
+                        leadingIcon={colorSwatch}
+                        hoverControls={hoverControls}
+                    />
+                </ColorPickerWrapper>
             )}
             content={() => (
                 <ColorPickerContent value={hsvValue} onChange={handleColorChange} withAlpha={alphaEnabled} />

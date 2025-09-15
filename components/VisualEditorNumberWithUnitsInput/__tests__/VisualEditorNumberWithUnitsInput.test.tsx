@@ -171,13 +171,17 @@ describe('VisualEditorNumberWithUnitsInput', () => {
         expect(container.querySelector('[role="combobox"], select, button')).toBeTruthy();
     });
 
-    it('should disable input when isPort is true', () => {
+    it('should not disable input when isPort is true but prevent value changes', () => {
+        const onChange = vi.fn();
+        const onChangeUnits = vi.fn();
         const props = {
             value: '100',
             units: 'px',
             availableUnits: ['px', '%', 'em'],
             isPort: true,
             keyframesState: 'noKeyframes' as const,
+            onChange,
+            onChangeUnits,
         };
 
         const { container } = render(
@@ -188,6 +192,48 @@ describe('VisualEditorNumberWithUnitsInput', () => {
 
         const input = container.querySelector('input');
         expect(input).toBeTruthy();
+        // Input should not be disabled to allow hover controls to show
+        expect(input!.disabled).toBe(false);
+
+        // But value changes should be prevented
+        fireEvent.change(input!, { target: { value: '200' } });
+        expect(onChange).not.toHaveBeenCalled();
+    });
+
+    it('should show port toggle button (UnlinkIcon) when isPort is true and allow disconnecting', () => {
+        const onTogglePort = vi.fn();
+        const props = {
+            value: '100',
+            units: 'px',
+            availableUnits: ['px', '%', 'em'],
+            isPort: true,
+            keyframesState: 'noKeyframes' as const,
+            onTogglePort,
+        };
+
+        const { container } = render(
+            <TestWrapper>
+                <VisualEditorNumberWithUnitsInput {...props} />
+            </TestWrapper>,
+        );
+
+        // Hover over the input to show controls
+        const inputContainer = container.firstChild as HTMLElement;
+        fireEvent.mouseEnter(inputContainer);
+
+        // The UnlinkIcon button should be visible and clickable
+        const buttons = container.querySelectorAll('button');
+        // Find the port toggle button (should contain UnlinkIcon, not the keyframe button)
+        const portToggleButton = Array.from(buttons).find(
+            (button) => !button.hasAttribute('data-state'), // Keyframe buttons have data-state
+        );
+
+        expect(portToggleButton).toBeTruthy();
+        expect(portToggleButton!.disabled).toBe(false);
+
+        // Click the port toggle button
+        fireEvent.click(portToggleButton!);
+        expect(onTogglePort).toHaveBeenCalled();
     });
 
     it('should disable input when disabled prop is true', () => {
