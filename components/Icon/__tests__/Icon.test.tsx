@@ -25,6 +25,12 @@ import {
     AlignTopIcon,
     AlignMiddleIcon,
     AlignBottomIcon,
+    AlignHorizontalLeftIcon,
+    AlignHorizontalCenterIcon,
+    AlignHorizontalRightIcon,
+    AlignVerticalTopIcon,
+    AlignVerticalCenterIcon,
+    AlignVerticalBottomIcon,
     PlayCircleIcon,
     SkipToEndIcon,
     RectangleIcon,
@@ -286,6 +292,66 @@ describe('Icon', () => {
             render(
                 <ThemeProvider theme={testTheme}>
                     <AlignBottomIcon />
+                </ThemeProvider>,
+            );
+        }).not.toThrow();
+    });
+
+    it('should render AlignHorizontalLeftIcon without crashing', () => {
+        expect(() => {
+            render(
+                <ThemeProvider theme={testTheme}>
+                    <AlignHorizontalLeftIcon />
+                </ThemeProvider>,
+            );
+        }).not.toThrow();
+    });
+
+    it('should render AlignHorizontalCenterIcon without crashing', () => {
+        expect(() => {
+            render(
+                <ThemeProvider theme={testTheme}>
+                    <AlignHorizontalCenterIcon />
+                </ThemeProvider>,
+            );
+        }).not.toThrow();
+    });
+
+    it('should render AlignHorizontalRightIcon without crashing', () => {
+        expect(() => {
+            render(
+                <ThemeProvider theme={testTheme}>
+                    <AlignHorizontalRightIcon />
+                </ThemeProvider>,
+            );
+        }).not.toThrow();
+    });
+
+    it('should render AlignVerticalTopIcon without crashing', () => {
+        expect(() => {
+            render(
+                <ThemeProvider theme={testTheme}>
+                    <AlignVerticalTopIcon />
+                </ThemeProvider>,
+            );
+        }).not.toThrow();
+    });
+
+    it('should render AlignVerticalCenterIcon without crashing', () => {
+        expect(() => {
+            render(
+                <ThemeProvider theme={testTheme}>
+                    <AlignVerticalCenterIcon />
+                </ThemeProvider>,
+            );
+        }).not.toThrow();
+    });
+
+    it('should render AlignVerticalBottomIcon without crashing', () => {
+        expect(() => {
+            render(
+                <ThemeProvider theme={testTheme}>
+                    <AlignVerticalBottomIcon />
                 </ThemeProvider>,
             );
         }).not.toThrow();
