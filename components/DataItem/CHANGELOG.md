@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.27](https://github.com/HautechAI/webui/compare/@hautechai/webui.dataitem@2.1.26...@hautechai/webui.dataitem@2.1.27) (2025-09-15)
+
+**Note:** Version bump only for package @hautechai/webui.dataitem
+
 ## [2.1.26](https://github.com/HautechAI/webui/compare/@hautechai/webui.dataitem@2.1.25...@hautechai/webui.dataitem@2.1.26) (2025-09-06)
 
 **Note:** Version bump only for package @hautechai/webui.dataitem

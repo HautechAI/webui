@@ -1,7 +1,7 @@
 {
     "name": "@hautechai/webui.visualeditornumberwithunitsinput",
     "description": "Visual editor number input with units selection and keyframe support",
-    "version": "1.0.4",
+    "version": "1.0.5",
     "type": "module",
     "main": "src/index.tsx",
     "publishConfig": {

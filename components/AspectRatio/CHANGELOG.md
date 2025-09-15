@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.30](https://github.com/HautechAI/webui/compare/@hautechai/webui.aspectratio@2.1.29...@hautechai/webui.aspectratio@2.1.30) (2025-09-15)
+
+**Note:** Version bump only for package @hautechai/webui.aspectratio
+
 ## [2.1.29](https://github.com/HautechAI/webui/compare/@hautechai/webui.aspectratio@2.1.28...@hautechai/webui.aspectratio@2.1.29) (2025-09-08)
 
 **Note:** Version bump only for package @hautechai/webui.aspectratio

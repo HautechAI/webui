@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.23](https://github.com/HautechAI/webui/compare/@hautechai/webui.icon@2.1.22...@hautechai/webui.icon@2.1.23) (2025-09-15)
+
+**Note:** Version bump only for package @hautechai/webui.icon
+
 ## [2.1.22](https://github.com/HautechAI/webui/compare/@hautechai/webui.icon@2.1.21...@hautechai/webui.icon@2.1.22) (2025-09-06)
 
 **Note:** Version bump only for package @hautechai/webui.icon

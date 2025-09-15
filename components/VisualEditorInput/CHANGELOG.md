@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.36](https://github.com/HautechAI/webui/compare/@hautechai/webui.visualeditorinput@2.1.35...@hautechai/webui.visualeditorinput@2.1.36) (2025-09-15)
+
+**Note:** Version bump only for package @hautechai/webui.visualeditorinput
+
 ## [2.1.35](https://github.com/HautechAI/webui/compare/@hautechai/webui.visualeditorinput@2.1.34...@hautechai/webui.visualeditorinput@2.1.35) (2025-09-14)
 
 **Note:** Version bump only for package @hautechai/webui.visualeditorinput
