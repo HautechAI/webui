@@ -1,3 +1,12 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## 2.1.36 (2025-09-15)
+
+**Note:** Version bump only for package @hautechai/webui.visualeditortextinput
+
 # CHANGELOG
 
 ## [2.1.35] - 2024-01-15
