@@ -151,7 +151,7 @@ describe('VisualEditorTextInput', () => {
         expect(mockOnTogglePort).toHaveBeenCalledTimes(1);
     });
 
-    it('should show unlink icon on hover when isPort is true', () => {
+    it('should show unlink icon when isPort is true', () => {
         const mockOnTogglePort = vi.fn();
         const props = {
             value: 'Port text',
@@ -166,19 +166,31 @@ describe('VisualEditorTextInput', () => {
             </TestWrapper>,
         );
 
-        const visualEditorContainer = container.querySelector('[data-disabled="true"]');
-        expect(visualEditorContainer).toBeTruthy();
-
-        // Trigger hover
-        fireEvent.mouseEnter(visualEditorContainer!);
-
-        // Look for unlink icon button
+        // Unlink icon button should be visible immediately when isPort=true (no hover needed)
         const unlinkButton = container.querySelector('button[data-variant="flat"][data-size="xsmall"]');
         expect(unlinkButton).toBeTruthy();
 
         // Click the unlink button
         fireEvent.click(unlinkButton!);
         expect(mockOnTogglePort).toHaveBeenCalledTimes(1);
+    });
+
+    it('should not show port toggle buttons when not hovering and isPort is false', () => {
+        const props = {
+            value: 'Regular text',
+            isPort: false,
+            keyframesState: 'noKeyframes' as const,
+        };
+
+        const { container } = render(
+            <TestWrapper>
+                <VisualEditorTextInput {...props} />
+            </TestWrapper>,
+        );
+
+        // No port toggle button should be visible when not hovering and isPort=false
+        const portToggleButton = container.querySelector('button[data-variant="flat"][data-size="xsmall"]');
+        expect(portToggleButton).toBeNull();
     });
 
     it('should disable input when isPort is true', () => {

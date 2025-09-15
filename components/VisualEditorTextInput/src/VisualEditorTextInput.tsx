@@ -73,8 +73,8 @@ export const VisualEditorTextInput = (props: VisualEditorTextInputProps) => {
     const isInputDisabled = disabled || isPort;
 
     const renderHoverControls = () => {
-        // When isPort is true and hovering, show UnlinkIcon
-        if (isPort && isHovered) {
+        // When isPort is true, always show UnlinkIcon (not just on hover)
+        if (isPort) {
             return (
                 <ToggleIconButton
                     variant="flat"
