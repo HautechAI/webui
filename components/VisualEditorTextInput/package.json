@@ -1,0 +1,26 @@
+{
+    "name": "@hautechai/webui.visualeditortextinput",
+    "description": "Visual editor text input component with keyframe support",
+    "version": "2.1.35",
+    "type": "module",
+    "main": "src/index.tsx",
+    "publishConfig": {
+        "directory": "dist",
+        "access": "public",
+        "linkDirectory": false
+    },
+    "scripts": {
+        "prepack": "node ../../scripts/build-component.mjs",
+        "lint:tsc": "tsc --noEmit",
+        "lint": "pnpm lint:tsc"
+    },
+    "author": "HautechAI",
+    "dependencies": {
+        "@hautechai/webui.icon": "workspace:^",
+        "@hautechai/webui.keyframetoggle": "workspace:^",
+        "@hautechai/webui.textinput": "workspace:^",
+        "@hautechai/webui.themeprovider": "workspace:^",
+        "@hautechai/webui.toggleiconbutton": "workspace:^"
+    },
+    "license": "Apache-2.0"
+}
