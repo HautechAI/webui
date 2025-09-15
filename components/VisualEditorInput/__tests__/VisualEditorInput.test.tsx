@@ -1,6 +1,8 @@
 import { render, fireEvent } from '@testing-library/react';
 import { describe, expect, it, vi } from 'vitest';
 import { VisualEditorInput } from '../src/VisualEditorInput';
+import { TextInput } from '../../TextInput/src';
+import { NumberWithUnitsInput } from '../../NumberWithUnitsInput/src';
 import { ThemeProvider } from '../../ThemeProvider/src';
 import { testTheme } from '../../test-theme';
 
@@ -9,216 +11,198 @@ const TestWrapper = ({ children }: { children: React.ReactNode }) => (
 );
 
 describe('VisualEditorInput', () => {
-    it('should render without crashing', () => {
-        const props = {
-            value: '100',
-            units: 'px',
-            availableUnits: ['px', '%', 'em'],
-            isPort: false,
-            keyframesState: 'noKeyframes' as const,
-        };
-
+    it('should render without crashing with TextInput child', () => {
         const { container } = render(
             <TestWrapper>
-                <VisualEditorInput {...props} />
+                <VisualEditorInput isPort={false} keyframesState="noKeyframes">
+                    <TextInput type="text" value="test" placeholder="Enter text" />
+                </VisualEditorInput>
             </TestWrapper>,
         );
 
         expect(container.firstChild).toBeTruthy();
     });
 
-    it('should render with isPort true', () => {
-        const props = {
-            value: '100',
-            units: 'px',
-            availableUnits: ['px', '%', 'em'],
-            isPort: true,
-            keyframesState: 'noKeyframes' as const,
-        };
-
+    it('should render without crashing with NumberWithUnitsInput child', () => {
         const { container } = render(
             <TestWrapper>
-                <VisualEditorInput {...props} />
+                <VisualEditorInput isPort={false} keyframesState="noKeyframes">
+                    <NumberWithUnitsInput
+                        value="100"
+                        units="px"
+                        availableUnits={['px', '%']}
+                        placeholder="Enter value"
+                    />
+                </VisualEditorInput>
             </TestWrapper>,
         );
 
         expect(container.firstChild).toBeTruthy();
+    });
+
+    it('should render keyframe toggle', () => {
+        const { container } = render(
+            <TestWrapper>
+                <VisualEditorInput isPort={false} keyframesState="noKeyframes">
+                    <TextInput type="text" value="test" placeholder="Enter text" />
+                </VisualEditorInput>
+            </TestWrapper>,
+        );
+
+        // Find the keyframe toggle button (it should have data-state attribute)
+        const keyframeButton = container.querySelector('button[data-state]');
+        expect(keyframeButton).toBeTruthy();
+    });
+
+    it('should call onToggleKeyframe when keyframe button is clicked', () => {
+        const onToggleKeyframe = vi.fn();
+        const { container } = render(
+            <TestWrapper>
+                <VisualEditorInput isPort={false} keyframesState="noKeyframes" onToggleKeyframe={onToggleKeyframe}>
+                    <TextInput type="text" value="test" placeholder="Enter text" />
+                </VisualEditorInput>
+            </TestWrapper>,
+        );
+
+        // Find the keyframe toggle button
+        const keyframeButton = container.querySelector('button[data-state]');
+        expect(keyframeButton).toBeTruthy();
+
+        fireEvent.click(keyframeButton!);
+        expect(onToggleKeyframe).toHaveBeenCalledTimes(1);
+    });
+
+    it('should show port toggle controls when rendered', () => {
+        const onTogglePort = vi.fn();
+        const { container } = render(
+            <TestWrapper>
+                <VisualEditorInput isPort={false} keyframesState="noKeyframes" onTogglePort={onTogglePort}>
+                    <TextInput type="text" value="test" placeholder="Enter text" />
+                </VisualEditorInput>
+            </TestWrapper>,
+        );
+
+        // Check if port toggle button is visible (always visible now, not on hover)
+        const portToggleButtons = container.querySelectorAll('button[data-variant="flat"][data-size="xsmall"]');
+        const portToggleButton = Array.from(portToggleButtons).find(
+            (button) => button !== container.querySelector('button[data-state]'), // Exclude keyframe button
+        );
+        expect(portToggleButton).toBeTruthy();
+    });
+
+    it('should call onTogglePort when port toggle button is clicked', () => {
+        const onTogglePort = vi.fn();
+        const { container } = render(
+            <TestWrapper>
+                <VisualEditorInput isPort={false} keyframesState="noKeyframes" onTogglePort={onTogglePort}>
+                    <TextInput type="text" value="test" placeholder="Enter text" />
+                </VisualEditorInput>
+            </TestWrapper>,
+        );
+
+        // Find the port toggle button (WorkflowIcon button)
+        const portToggleButtons = container.querySelectorAll('button[data-variant="flat"][data-size="xsmall"]');
+        const portToggleButton = Array.from(portToggleButtons).find(
+            (button) => button !== container.querySelector('button[data-state]'), // Exclude keyframe button
+        );
+        expect(portToggleButton).toBeTruthy();
+
+        fireEvent.click(portToggleButton!);
+        expect(onTogglePort).toHaveBeenCalledTimes(1);
+    });
+
+    it('should show UnlinkIcon when isPort is true', () => {
+        const { container } = render(
+            <TestWrapper>
+                <VisualEditorInput isPort={true} keyframesState="noKeyframes">
+                    <TextInput type="text" value="test" placeholder="Enter text" />
+                </VisualEditorInput>
+            </TestWrapper>,
+        );
+
+        // When isPort is true, should show UnlinkIcon in the port toggle
+        const portToggleButtons = container.querySelectorAll('button[data-variant="flat"][data-size="xsmall"]');
+        const portToggleButton = Array.from(portToggleButtons).find(
+            (button) => button !== container.querySelector('button[data-state]'), // Exclude keyframe button
+        );
+        expect(portToggleButton).toBeTruthy();
+    });
+
+    it('should disable controls when disabled', () => {
+        const { container } = render(
+            <TestWrapper>
+                <VisualEditorInput isPort={false} keyframesState="noKeyframes" disabled={true}>
+                    <TextInput type="text" value="test" placeholder="Enter text" />
+                </VisualEditorInput>
+            </TestWrapper>,
+        );
+
+        // Port toggle button should be disabled
+        const portToggleButtons = container.querySelectorAll('button[data-variant="flat"][data-size="xsmall"]');
+        const portToggleButton = Array.from(portToggleButtons).find(
+            (button) => button !== container.querySelector('button[data-state]'), // Exclude keyframe button
+        );
+        expect(portToggleButton).toBeTruthy();
+        expect(portToggleButton).toHaveAttribute('disabled');
+
+        // Keyframe button should also be disabled
+        const keyframeButton = container.querySelector('button[data-state]');
+        expect(keyframeButton).toBeTruthy();
+        expect(keyframeButton).toHaveAttribute('disabled');
     });
 
     it('should render with different keyframe states', () => {
-        const props = {
-            value: '100',
-            units: 'px',
-            availableUnits: ['px', '%', 'em'],
-            isPort: false,
-            keyframesState: 'hasKeyframes' as const,
-        };
-
         const { container } = render(
             <TestWrapper>
-                <VisualEditorInput {...props} />
+                <VisualEditorInput isPort={false} keyframesState="hasKeyframes">
+                    <TextInput type="text" value="test" placeholder="Enter text" />
+                </VisualEditorInput>
             </TestWrapper>,
         );
 
         expect(container.firstChild).toBeTruthy();
+
+        // Find the keyframe toggle button
+        const keyframeButton = container.querySelector('button[data-state="hasKeyframes"]');
+        expect(keyframeButton).toBeTruthy();
     });
 
-    it('should disable units dropdown when component is disabled', () => {
-        const mockOnChangeUnits = vi.fn();
-        const props = {
-            value: '100',
-            units: 'px',
-            availableUnits: ['px', '%', 'em'],
-            isPort: false,
-            keyframesState: 'noKeyframes' as const,
-            disabled: true,
-            onChangeUnits: mockOnChangeUnits,
-        };
-
+    it('should render with small size by default', () => {
         const { container } = render(
             <TestWrapper>
-                <VisualEditorInput {...props} />
+                <VisualEditorInput isPort={false} keyframesState="noKeyframes">
+                    <TextInput type="text" value="test" placeholder="Enter text" />
+                </VisualEditorInput>
             </TestWrapper>,
         );
 
-        // Find the component container
-        const visualEditorInputContainer = container.querySelector('[data-disabled="true"]');
-        expect(visualEditorInputContainer).toBeTruthy();
-
-        // Trigger hover to show dropdown (even though disabled)
-        fireEvent.mouseEnter(visualEditorInputContainer!);
-
-        // Look for any dropdown in the component
-        const allDropdowns = container.querySelectorAll('[data-collapsed="true"]');
-
-        // When disabled, the dropdown should either not appear or be disabled
-        // Currently it appears but without disabled attribute (this is the bug)
-        if (allDropdowns.length > 0) {
-            const dropdown = allDropdowns[0] as HTMLElement;
-            // The dropdown should be disabled when the VisualEditorInput is disabled
-            expect(dropdown.getAttribute('data-disabled')).toBe('true');
-        } else {
-            // If no dropdown appears, that's also acceptable for disabled state
-            expect(allDropdowns.length).toBe(0);
-        }
+        expect(container.firstChild).toBeTruthy();
+        // Component should render without errors with default small size
     });
 
-    it('should disable port toggle buttons when component is disabled', () => {
-        const mockOnTogglePort = vi.fn();
-        const props = {
-            value: '100',
-            units: 'px',
-            availableUnits: ['px', '%', 'em'],
-            isPort: false,
-            keyframesState: 'noKeyframes' as const,
-            disabled: true,
-            onTogglePort: mockOnTogglePort,
-        };
-
+    it('should render with medium size when specified', () => {
         const { container } = render(
             <TestWrapper>
-                <VisualEditorInput {...props} />
+                <VisualEditorInput isPort={false} keyframesState="noKeyframes" size="medium">
+                    <TextInput type="text" value="test" placeholder="Enter text" />
+                </VisualEditorInput>
             </TestWrapper>,
         );
 
-        // Find the component container
-        const visualEditorInputContainer = container.querySelector('[data-disabled="true"]');
-        expect(visualEditorInputContainer).toBeTruthy();
-
-        // Trigger hover to show port toggle button (workflow icon)
-        fireEvent.mouseEnter(visualEditorInputContainer!);
-
-        // Look for the workflow icon toggle button
-        const toggleButtons = container.querySelectorAll('button');
-
-        // Find button that should be disabled
-        const portToggleButton = Array.from(toggleButtons).find(
-            (button) => button.getAttribute('data-variant') === 'flat' && button.getAttribute('data-size') === 'xsmall',
-        );
-
-        if (portToggleButton) {
-            expect(portToggleButton.disabled).toBe(true);
-        }
+        expect(container.firstChild).toBeTruthy();
+        // Component should render without errors with medium size
     });
 
-    it('should disable unlink port toggle button when component is disabled and isPort is true', () => {
-        const mockOnTogglePort = vi.fn();
-        const props = {
-            value: '100',
-            units: 'px',
-            availableUnits: ['px', '%', 'em'],
-            isPort: true,
-            keyframesState: 'noKeyframes' as const,
-            disabled: true,
-            onTogglePort: mockOnTogglePort,
-        };
-
+    it('should apply testId correctly', () => {
         const { container } = render(
             <TestWrapper>
-                <VisualEditorInput {...props} />
+                <VisualEditorInput isPort={false} keyframesState="noKeyframes" testId="test-visual-editor-input">
+                    <TextInput type="text" value="test" placeholder="Enter text" />
+                </VisualEditorInput>
             </TestWrapper>,
         );
 
-        // Find the component container
-        const visualEditorInputContainer = container.querySelector('[data-disabled="true"]');
-        expect(visualEditorInputContainer).toBeTruthy();
-
-        // Trigger hover to show unlink button
-        fireEvent.mouseEnter(visualEditorInputContainer!);
-
-        // Look for the unlink toggle button
-        const toggleButtons = container.querySelectorAll('button');
-
-        // Find button that should be disabled
-        const unlinkToggleButton = Array.from(toggleButtons).find(
-            (button) => button.getAttribute('data-variant') === 'flat' && button.getAttribute('data-size') === 'xsmall',
-        );
-
-        if (unlinkToggleButton) {
-            expect(unlinkToggleButton.disabled).toBe(true);
-        }
-    });
-
-    it('should allow disconnect button to be clickable when isPort is true but component is not disabled', () => {
-        const mockOnTogglePort = vi.fn();
-        const props = {
-            value: '100',
-            units: 'px',
-            availableUnits: ['px', '%', 'em'],
-            isPort: true,
-            keyframesState: 'noKeyframes' as const,
-            disabled: false,
-            onTogglePort: mockOnTogglePort,
-        };
-
-        const { container } = render(
-            <TestWrapper>
-                <VisualEditorInput {...props} />
-            </TestWrapper>,
-        );
-
-        // Find the component container
-        const visualEditorInputContainer = container.querySelector('[data-disabled="true"]');
-        expect(visualEditorInputContainer).toBeTruthy();
-
-        // Trigger hover to show disconnect button
-        fireEvent.mouseEnter(visualEditorInputContainer!);
-
-        // Look for the disconnect toggle button (UnlinkIcon)
-        const toggleButtons = container.querySelectorAll('button');
-
-        // Find the disconnect button that should NOT be disabled
-        const disconnectButton = Array.from(toggleButtons).find(
-            (button) => button.getAttribute('data-variant') === 'flat' && button.getAttribute('data-size') === 'xsmall',
-        );
-
-        if (disconnectButton) {
-            // The disconnect button should NOT be disabled when only isPort=true
-            expect(disconnectButton.disabled).toBe(false);
-
-            // Click the disconnect button to verify it's functional
-            fireEvent.click(disconnectButton);
-            expect(mockOnTogglePort).toHaveBeenCalledTimes(1);
-        }
+        const element = container.querySelector('[data-testid="test-visual-editor-input"]');
+        expect(element).toBeTruthy();
     });
 });
