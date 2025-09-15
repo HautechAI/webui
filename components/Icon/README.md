@@ -72,6 +72,12 @@ import {
   AlignTopIcon,
   AlignMiddleIcon,
   AlignBottomIcon,
+  AlignHorizontalLeftIcon,
+  AlignHorizontalCenterIcon,
+  AlignHorizontalRightIcon,
+  AlignVerticalTopIcon,
+  AlignVerticalCenterIcon,
+  AlignVerticalBottomIcon,
   LineHeightIcon,
   LetterSpacingIcon,
   TextUnderlineIcon,
@@ -115,6 +121,16 @@ import {
 <AlignTopIcon size={24} />
 <AlignMiddleIcon size={24} />
 <AlignBottomIcon size={24} />
+
+// New horizontal alignment icons
+<AlignHorizontalLeftIcon size={24} />
+<AlignHorizontalCenterIcon size={24} />
+<AlignHorizontalRightIcon size={24} />
+
+// New vertical alignment icons
+<AlignVerticalTopIcon size={24} />
+<AlignVerticalCenterIcon size={24} />
+<AlignVerticalBottomIcon size={24} />
 
 // Using style variants
 <PlayIcon size={24} style="outlined" />
