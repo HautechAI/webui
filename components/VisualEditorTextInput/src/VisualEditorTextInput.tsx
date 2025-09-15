@@ -73,19 +73,6 @@ export const VisualEditorTextInput = (props: VisualEditorTextInputProps) => {
     const isInputDisabled = disabled || isPort;
 
     const renderHoverControls = () => {
-        // When isPort is true, always show UnlinkIcon (not just on hover)
-        if (isPort) {
-            return (
-                <ToggleIconButton
-                    variant="flat"
-                    size="xsmall"
-                    icon={<UnlinkIcon size={16} />}
-                    onClick={props.onTogglePort}
-                    disabled={disabled}
-                />
-            );
-        }
-
         // When hovering (and not port), show workflow icon
         if (isHovered && !isPort) {
             return (
@@ -124,6 +111,16 @@ export const VisualEditorTextInput = (props: VisualEditorTextInputProps) => {
                 variation={props.variation ?? 'filled'}
                 size={size}
             />
+            {/* Always show port toggle when isPort=true */}
+            {isPort && (
+                <ToggleIconButton
+                    variant="flat"
+                    size="xsmall"
+                    icon={<UnlinkIcon size={16} />}
+                    onClick={props.onTogglePort}
+                    disabled={disabled}
+                />
+            )}
             <KeyframeContainer onMouseEnter={handleKeyframeMouseEnter} onMouseLeave={handleKeyframeMouseLeave}>
                 <KeyframeToggle state={keyframesState} onClick={handleKeyframeClick} disabled={disabled} />
             </KeyframeContainer>

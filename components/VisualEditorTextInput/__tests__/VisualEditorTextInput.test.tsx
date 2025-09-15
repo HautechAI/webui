@@ -175,6 +175,34 @@ describe('VisualEditorTextInput', () => {
         expect(mockOnTogglePort).toHaveBeenCalledTimes(1);
     });
 
+    it('should always show port toggle when isPort is true (not just on hover)', () => {
+        const mockOnTogglePort = vi.fn();
+        const props = {
+            value: 'Port text',
+            isPort: true,
+            keyframesState: 'noKeyframes' as const,
+            onTogglePort: mockOnTogglePort,
+        };
+
+        const { container } = render(
+            <TestWrapper>
+                <VisualEditorTextInput {...props} />
+            </TestWrapper>,
+        );
+
+        // Port toggle should be visible without any user interaction
+        const portToggleButton = container.querySelector('button[data-variant="flat"][data-size="xsmall"]');
+        expect(portToggleButton).toBeTruthy();
+
+        // The button should be clickable
+        fireEvent.click(portToggleButton!);
+        expect(mockOnTogglePort).toHaveBeenCalledTimes(1);
+
+        // Port toggle should still be visible after interactions (no hover state dependency)
+        const portToggleAfterClick = container.querySelector('button[data-variant="flat"][data-size="xsmall"]');
+        expect(portToggleAfterClick).toBeTruthy();
+    });
+
     it('should not show port toggle buttons when not hovering and isPort is false', () => {
         const props = {
             value: 'Regular text',
