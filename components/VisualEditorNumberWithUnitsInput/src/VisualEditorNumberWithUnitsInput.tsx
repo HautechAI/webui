@@ -1,9 +1,22 @@
-import { type KeyframeToggleState } from '@hautechai/webui.keyframetoggle';
+import { styled } from '@hautechai/webui.themeprovider';
+import { themeVars } from '@hautechai/webui.themeprovider';
+import { KeyframeToggle, type KeyframeToggleState } from '@hautechai/webui.keyframetoggle';
 import { ToggleIconButton } from '@hautechai/webui.toggleiconbutton';
 import { NumberWithUnitsInput } from '@hautechai/webui.numberwithunitsinput';
-import { VisualEditorInput } from '../../VisualEditorInput/src';
 import { WorkflowIcon, UnlinkIcon } from '@hautechai/webui.icon';
-import React from 'react';
+import React, { useCallback } from 'react';
+
+const Container = styled.div<{ size: 'medium' | 'small' }>`
+    display: flex;
+    gap: ${({ size }) => (size === 'small' ? themeVars.spacing.s : themeVars.spacing.m)};
+    align-items: center;
+    flex: 1;
+`;
+
+const KeyframeContainer = styled.div`
+    display: flex;
+    align-items: center;
+`;
 
 export type VisualEditorNumberWithUnitsInputProps = {
     className?: string;
@@ -28,17 +41,52 @@ export type VisualEditorNumberWithUnitsInputProps = {
 export const VisualEditorNumberWithUnitsInput = (props: VisualEditorNumberWithUnitsInputProps) => {
     const size = props.size ?? 'small';
 
+    const handleKeyframeClick = useCallback(
+        (e: React.MouseEvent<HTMLButtonElement>) => {
+            e.stopPropagation(); // Prevent triggering input focus
+            props.onToggleKeyframe?.();
+        },
+        [props.onToggleKeyframe],
+    );
+
+    const handleKeyframeMouseEnter = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
+        e.stopPropagation(); // Prevent triggering input hover
+    }, []);
+
+    const handleKeyframeMouseLeave = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
+        e.stopPropagation(); // Prevent triggering input hover leave
+    }, []);
+
+    const handleInputChange = useCallback(
+        (value: string) => {
+            // Prevent value changes when connected to a port
+            if (!props.isPort) {
+                props.onChange?.(value);
+            }
+        },
+        [props.onChange, props.isPort],
+    );
+
+    const handleUnitsChange = useCallback(
+        (units: string) => {
+            // Prevent units changes when connected to a port
+            if (!props.isPort) {
+                props.onChangeUnits?.(units);
+            }
+        },
+        [props.onChangeUnits, props.isPort],
+    );
+
     // Create hover controls based on isPort state
     const renderHoverControls = () => {
         if (props.isPort) {
-            // When isPort is true, show UnlinkIcon
+            // When isPort is true, show UnlinkIcon - keep it accessible so users can disconnect
             return (
                 <ToggleIconButton
                     variant="flat"
                     size="xsmall"
                     icon={<UnlinkIcon size={16} />}
                     onClick={props.onTogglePort}
-                    disabled={props.disabled}
                 />
             );
         }
@@ -56,23 +104,15 @@ export const VisualEditorNumberWithUnitsInput = (props: VisualEditorNumberWithUn
     };
 
     return (
-        <VisualEditorInput
-            isPort={props.isPort}
-            keyframesState={props.keyframesState}
-            onToggleKeyframe={props.onToggleKeyframe}
-            onTogglePort={props.onTogglePort}
-            disabled={props.disabled}
-            size={size}
-            testId={props.testId}
-        >
+        <Container size={size} data-testid={props.testId}>
             <NumberWithUnitsInput
                 value={props.value}
-                onChange={props.onChange}
+                onChange={handleInputChange}
                 units={props.units}
                 availableUnits={props.availableUnits}
-                onChangeUnits={props.onChangeUnits}
+                onChangeUnits={handleUnitsChange}
                 placeholder={props.placeholder}
-                disabled={props.disabled || props.isPort}
+                disabled={props.disabled}
                 size={size}
                 variation={props.variation}
                 leadingIcon={props.leadingIcon}
@@ -80,6 +120,9 @@ export const VisualEditorNumberWithUnitsInput = (props: VisualEditorNumberWithUn
                 hasError={props.hasError}
                 className={props.className}
             />
-        </VisualEditorInput>
+            <KeyframeContainer onMouseEnter={handleKeyframeMouseEnter} onMouseLeave={handleKeyframeMouseLeave}>
+                <KeyframeToggle state={props.keyframesState} onClick={handleKeyframeClick} disabled={props.disabled} />
+            </KeyframeContainer>
+        </Container>
     );
 };

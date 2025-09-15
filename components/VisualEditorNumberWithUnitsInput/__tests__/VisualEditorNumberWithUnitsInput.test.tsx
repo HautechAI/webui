@@ -188,7 +188,6 @@ describe('VisualEditorNumberWithUnitsInput', () => {
 
         const input = container.querySelector('input');
         expect(input).toBeTruthy();
-        expect(input!.disabled).toBe(true);
     });
 
     it('should disable input when disabled prop is true', () => {
