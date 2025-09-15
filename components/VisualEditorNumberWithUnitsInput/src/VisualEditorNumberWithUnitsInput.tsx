@@ -57,17 +57,36 @@ export const VisualEditorNumberWithUnitsInput = (props: VisualEditorNumberWithUn
         e.stopPropagation(); // Prevent triggering input hover leave
     }, []);
 
+    const handleInputChange = useCallback(
+        (value: string) => {
+            // Prevent value changes when connected to a port
+            if (!props.isPort) {
+                props.onChange?.(value);
+            }
+        },
+        [props.onChange, props.isPort],
+    );
+
+    const handleUnitsChange = useCallback(
+        (units: string) => {
+            // Prevent units changes when connected to a port
+            if (!props.isPort) {
+                props.onChangeUnits?.(units);
+            }
+        },
+        [props.onChangeUnits, props.isPort],
+    );
+
     // Create hover controls based on isPort state
     const renderHoverControls = () => {
         if (props.isPort) {
-            // When isPort is true, show UnlinkIcon
+            // When isPort is true, show UnlinkIcon - keep it accessible so users can disconnect
             return (
                 <ToggleIconButton
                     variant="flat"
                     size="xsmall"
                     icon={<UnlinkIcon size={16} />}
                     onClick={props.onTogglePort}
-                    disabled={props.disabled}
                 />
             );
         }
@@ -88,12 +107,12 @@ export const VisualEditorNumberWithUnitsInput = (props: VisualEditorNumberWithUn
         <Container size={size} data-testid={props.testId}>
             <NumberWithUnitsInput
                 value={props.value}
-                onChange={props.onChange}
+                onChange={handleInputChange}
                 units={props.units}
                 availableUnits={props.availableUnits}
-                onChangeUnits={props.onChangeUnits}
+                onChangeUnits={handleUnitsChange}
                 placeholder={props.placeholder}
-                disabled={props.disabled || props.isPort}
+                disabled={props.disabled}
                 size={size}
                 variation={props.variation}
                 leadingIcon={props.leadingIcon}
