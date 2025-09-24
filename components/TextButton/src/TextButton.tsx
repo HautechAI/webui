@@ -25,6 +25,7 @@ const StyledButton = styled(ButtonBase)`
 `;
 
 export type TextButtonProps = {
+    id?: string;
     hierarchy?: 'primary' | 'secondary';
     size?: 'medium' | 'small' | 'xsmall';
     label: string;
