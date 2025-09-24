@@ -44,7 +44,7 @@ const LabelVariants: Record<Required<TextButtonProps>['size'], TypographyProps['
 };
 
 export const TextButton = (props: TextButtonProps) => {
-    const { hierarchy = 'primary', size = 'medium', leadingIcon, trailingIcon, label, testId, ...rest } = props;
+    const { hierarchy = 'primary', size = 'medium', leadingIcon, trailingIcon, label, testId, id, ...rest } = props;
 
     const gapBySize = {
         medium: themeVars.spacing.m,
@@ -70,8 +70,8 @@ export const TextButton = (props: TextButtonProps) => {
     };
 
     return (
-        <span style={styleVars}>
-            <StyledButton testId={testId} {...(rest as Omit<ButtonBaseProps, 'children'>)}>
+        <span id={id} style={styleVars}>
+            <StyledButton testId={testId} {...(rest as Omit<ButtonBaseProps, 'children' | 'id'>)}>
                 {leadingIcon}
                 <Typography variant={LabelVariants[size]}>{label}</Typography>
                 {trailingIcon}
