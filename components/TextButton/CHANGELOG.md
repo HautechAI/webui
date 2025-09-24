@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.2.0](https://github.com/HautechAI/webui/compare/@hautechai/webui.textbutton@2.1.11...@hautechai/webui.textbutton@2.2.0) (2025-09-24)
+
+### Features
+
+- add `id` prop support to IconButton and TextButton (pass through to DOM) ([#231](https://github.com/HautechAI/webui/issues/231)) ([3297d9b](https://github.com/HautechAI/webui/commit/3297d9bffc5dc192c233b1a645eebb10a3cac6a4))
+
 ## [2.1.11](https://github.com/HautechAI/webui/compare/@hautechai/webui.textbutton@2.1.10...@hautechai/webui.textbutton@2.1.11) (2025-09-06)
 
 **Note:** Version bump only for package @hautechai/webui.textbutton
