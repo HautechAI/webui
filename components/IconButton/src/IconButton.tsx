@@ -4,6 +4,7 @@ import { themeVars } from '@hautechai/webui.themeprovider';
 import React from 'react';
 
 export type IconButtonProps = {
+    id?: string;
     variant?: 'filled' | 'outlined' | 'flat' | 'primary';
     size?: 'medium' | 'small' | 'xsmall';
     icon: React.ReactNode;
