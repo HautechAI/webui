@@ -77,6 +77,18 @@ describe('NodePort', () => {
         expect(portHandle).toBeInTheDocument();
     });
 
+    it('should apply success styling to port handle in success state and not render warning icon', () => {
+        const { container } = render(
+            <ThemeProvider theme={testTheme}>
+                <NodePort type="input" label="Success Label" state="success" />
+            </ThemeProvider>,
+        );
+        const portHandle = container.querySelector('[data-state="success"]');
+        expect(portHandle).toBeInTheDocument();
+        const warningIcon = container.querySelector('svg[viewBox="0 0 20 20"]');
+        expect(warningIcon).not.toBeInTheDocument();
+    });
+
     it('should not render warning icon in normal state', () => {
         const { container } = render(
             <ThemeProvider theme={testTheme}>

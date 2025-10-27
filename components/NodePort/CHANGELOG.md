@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.0](https://github.com/HautechAI/webui/compare/@hautechai/webui.nodeport@1.0.10...@hautechai/webui.nodeport@1.1.0) (2025-10-27)
+
+### Features
+
+- Add `success` state to NodePort component with styles using `themeVars.actions.success` and `themeVars.actions.onSuccess`. No icon is rendered for success; warning icon behavior unchanged.
+
 ## [1.0.10](https://github.com/HautechAI/webui/compare/@hautechai/webui.nodeport@1.0.9...@hautechai/webui.nodeport@1.0.10) (2025-09-15)
 
 **Note:** Version bump only for package @hautechai/webui.nodeport
