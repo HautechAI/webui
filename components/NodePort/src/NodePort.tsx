@@ -52,18 +52,9 @@ const PortHandle = styled.div`
         background: ${themeVars.actions.error};
     }
 
-    /* Success state styles */
+    /* Success state mirrors error: only background changes */
     &[data-state='success'] {
         background: ${themeVars.actions.success};
-        border-color: ${themeVars.actions.onSuccess};
-        color: ${themeVars.actions.onSuccess};
-    }
-
-    /* Optional: keep same tokens on hover */
-    &[data-state='success']:hover {
-        background: ${themeVars.actions.success};
-        border-color: ${themeVars.actions.onSuccess};
-        color: ${themeVars.actions.onSuccess};
     }
 `;
 
