@@ -9,7 +9,7 @@ export interface NodePortProps {
     label?: string;
     interactiveHandle?: ReactNode;
     testId?: string;
-    state?: 'normal' | 'warning' | 'error';
+    state?: 'normal' | 'warning' | 'error' | 'success';
 }
 
 const Container = styled.div`
@@ -50,6 +50,11 @@ const PortHandle = styled.div`
 
     &[data-state='error'] {
         background: ${themeVars.actions.error};
+    }
+
+    /* Success state mirrors error: only background changes */
+    &[data-state='success'] {
+        background: ${themeVars.actions.success};
     }
 `;
 

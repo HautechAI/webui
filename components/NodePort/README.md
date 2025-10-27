@@ -19,12 +19,12 @@ yarn add @hautechai/webui.nodeport
 
 ## Parameters
 
-| Parameter         | Type                             | Description                                                                                                        |
-| ----------------- | -------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
-| type              | 'input' \| 'output'              | Specifies whether this is an input or output port, affecting positioning and styling                               |
-| label             | string                           | Optional label for the port, displayed using Typography component                                                  |
-| interactiveHandle | ReactNode                        | Optional interactive element rendered inside the port handle for custom interactions                               |
-| state             | 'normal' \| 'warning' \| 'error' | Optional state of the port. Warning state shows warning icon next to label, error state colors the port handle red |
+| Parameter         | Type                                          | Description                                                                                                                                                   |
+| ----------------- | --------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| type              | 'input' \| 'output'                           | Specifies whether this is an input or output port, affecting positioning and styling                                                                          |
+| label             | string                                        | Optional label for the port, displayed using Typography component                                                                                             |
+| interactiveHandle | ReactNode                                     | Optional interactive element rendered inside the port handle for custom interactions                                                                          |
+| state             | 'normal' \| 'warning' \| 'error' \| 'success' | Optional state of the port. Warning state shows warning icon next to label, error state colors the port handle red, success state uses actions.success tokens |
 
 ## Usage Example
 
@@ -37,6 +37,9 @@ yarn add @hautechai/webui.nodeport
 
 // Error state with red port handle
 <NodePort type="input" label="Error Port" state="error" />
+
+// Success state with themed success tokens (no icon)
+<NodePort type="input" label="Success Port" state="success" />
 
 // With interactive handle
 <NodePort
@@ -52,4 +55,10 @@ yarn add @hautechai/webui.nodeport
         }} />
     }
 />
+
+## Theming
+
+Success state styling uses the following theme tokens:
+- actions.success (background)
+- actions.onSuccess (border and text color)
 ```

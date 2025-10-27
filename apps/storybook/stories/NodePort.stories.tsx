@@ -88,3 +88,19 @@ export const ErrorStateOutput = {
         state: 'error',
     },
 };
+
+export const SuccessState = {
+    args: {
+        type: 'input',
+        label: 'Success Port',
+        state: 'success',
+    },
+};
+
+export const SuccessStateOutput = {
+    args: {
+        type: 'output',
+        label: 'Success Output',
+        state: 'success',
+    },
+};
