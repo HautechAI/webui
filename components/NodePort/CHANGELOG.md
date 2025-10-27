@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.2.0](https://github.com/HautechAI/webui/compare/@hautechai/webui.nodeport@1.0.10...@hautechai/webui.nodeport@1.2.0) (2025-10-27)
+
+### Features
+
+- **nodeport:** add success state ([#232](https://github.com/HautechAI/webui/issues/232)) ([516a3cf](https://github.com/HautechAI/webui/commit/516a3cfa6d50d56ffadafd70cba54ce4b80ba3cd))
+
 ## [1.1.0](https://github.com/HautechAI/webui/compare/@hautechai/webui.nodeport@1.0.10...@hautechai/webui.nodeport@1.1.0) (2025-10-27)
 
 ### Features
